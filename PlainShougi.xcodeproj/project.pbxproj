@@ -11,14 +11,16 @@
 		128D156D280FE47E003FF480 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
 		128D156F280FE47F003FF480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
 		128D1572280FE47F003FF480 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D1571280FE47F003FF480 /* Preview Assets.xcassets */; };
+		128D1579280FE4E4003FF480 /* 配置Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 配置Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		128D1567280FE47E003FF480 /* PlainShougi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlainShougi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		128D1567280FE47E003FF480 /* 将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		128D156A280FE47E003FF480 /* PlainShougiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainShougiApp.swift; sourceTree = "<group>"; };
 		128D156C280FE47E003FF480 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		128D156E280FE47F003FF480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		128D1571280FE47F003FF480 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		128D1578280FE4E4003FF480 /* 配置Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "配置Model.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +45,7 @@
 		128D1568280FE47E003FF480 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				128D1567280FE47E003FF480 /* PlainShougi.app */,
+				128D1567280FE47E003FF480 /* 将棋盤.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -53,6 +55,7 @@
 			children = (
 				128D156A280FE47E003FF480 /* PlainShougiApp.swift */,
 				128D156C280FE47E003FF480 /* ContentView.swift */,
+				128D1578280FE4E4003FF480 /* 配置Model.swift */,
 				128D156E280FE47F003FF480 /* Assets.xcassets */,
 				128D1570280FE47F003FF480 /* Preview Content */,
 			);
@@ -84,7 +87,7 @@
 			);
 			name = PlainShougi;
 			productName = PlainShougi;
-			productReference = 128D1567280FE47E003FF480 /* PlainShougi.app */;
+			productReference = 128D1567280FE47E003FF480 /* 将棋盤.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -139,6 +142,7 @@
 			files = (
 				128D156D280FE47E003FF480 /* ContentView.swift in Sources */,
 				128D156B280FE47E003FF480 /* PlainShougiApp.swift in Sources */,
+				128D1579280FE4E4003FF480 /* 配置Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +285,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.self.PlainShougi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "将棋盤";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -310,7 +314,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.self.PlainShougi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "将棋盤";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
