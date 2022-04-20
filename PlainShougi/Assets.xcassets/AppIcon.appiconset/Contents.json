@@ -31,7 +31,7 @@
       "size" : "40x40"
     },
     {
-      "filename" : "120.png",
+      "filename" : "iconShougi120.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
@@ -77,19 +77,19 @@
       "size" : "76x76"
     },
     {
-      "filename" : "152.png",
+      "filename" : "iconShougi152.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "167.png",
+      "filename" : "iconShougi167.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "1024 IMG_2939_srcnn_anime_noise3_4xのコピー3.png",
+      "filename" : "iconShougi1024.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
