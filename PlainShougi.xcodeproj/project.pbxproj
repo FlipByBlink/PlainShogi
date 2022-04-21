@@ -24,6 +24,7 @@
 		128D156E280FE47F003FF480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		128D1571280FE47F003FF480 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		128D1578280FE4E4003FF480 /* 配置Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "配置Model.swift"; sourceTree = "<group>"; };
+		12D198532810DD6500CE6578 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +41,7 @@
 		128D155E280FE47E003FF480 = {
 			isa = PBXGroup;
 			children = (
+				12D198532810DD6500CE6578 /* README.md */,
 				128D1569280FE47E003FF480 /* PlainShougi */,
 				128D1568280FE47E003FF480 /* Products */,
 			);
