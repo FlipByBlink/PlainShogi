@@ -1,12 +1,21 @@
 # Plain将棋盤
 
-ただの将棋盤です。
+駒を自由に動かせるただの将棋盤です。
 
-iOSの標準機能に沿ったシンプルな将棋盤です。
+iOSの標準機能に沿ったシンプルな将棋盤アプリです。
 
 文字のサイズや太さなどはOSシステム設定に適応して変わります。
 
 任意の駒を減らすことも出来ます。
+
+
+Simple Shogi board App.
+
+This App based on iOS system design.
+
+Character adapts OS option by Dynamic Type.
+
+you can reduce a piece.
 
 
 ## AppStore link
