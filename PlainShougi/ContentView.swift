@@ -118,24 +118,23 @@ struct 盤外: View {
             Spacer()
             
             ForEach(種類.allCases) { 職名 in
-                if let 人数 = 配置.手駒[陣営]?.filter{$0 == 職名}.count {
-                    if 人数 > 0 {
-                        コマ(名: 職名, 余白なし: true, 数: 人数)
-                            .onDrag{
-                                配置.持ち上げる(兵(陣営,職名))
-                            } preview: {
-                                コマ(名: 職名)
-                                    .border(.primary)
-                                    .rotationEffect(反転(陣営 == .玉))
-                                    .onAppear { 振動() }
-                            }
-                            .onTapGesture(count: 3) {
-                                let ひとつ = 配置.手駒[陣営]!.firstIndex(of:職名)!
-                                配置.手駒[陣営]!.remove(at: ひとつ)
-                            }
-                    } else {
-                        EmptyView()
-                    }
+                let 人数 = 配置.手駒[陣営]!.filter{$0 == 職名}.count
+                if 人数 > 0 {
+                    コマ(名: 職名, 余白なし: true, 数: 人数)
+                        .onDrag{
+                            配置.持ち上げる(兵(陣営,職名))
+                        } preview: {
+                            コマ(名: 職名)
+                                .border(.primary)
+                                .rotationEffect(反転(陣営 == .玉))
+                                .onAppear { 振動() }
+                        }
+                        .onTapGesture(count: 3) {
+                            let ひとつ = 配置.手駒[陣営]!.firstIndex(of:職名)!
+                            配置.手駒[陣営]!.remove(at: ひとつ)
+                        }
+                } else {
+                    EmptyView()
                 }
             }
             
