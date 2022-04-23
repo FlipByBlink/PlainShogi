@@ -116,14 +116,14 @@ class 配置Model: ObservableObject {
     func 持ち上げる(_ ここ: Int) -> NSItemProvider {
         盤上のここから = ここ
         盤外のこれを = nil
-        return NSItemProvider(object: "" as NSItemProviderWriting)
+        return 書き出す()
     }
     
     
     func 持ち上げる(_ これ: 兵) -> NSItemProvider {
         盤外のこれを = これ
         盤上のここから = nil
-        return NSItemProvider(object: "" as NSItemProviderWriting)
+        return 書き出す()
     }
     
     
@@ -234,6 +234,13 @@ class 配置Model: ObservableObject {
         }
         
         手駒 = 手駒メモ
+    }
+    
+    
+    func 書き出す() -> NSItemProvider {
+        var 📄 = self.盤上.description
+        📄 += self.手駒.description
+        return NSItemProvider(object: 📄 as NSItemProviderWriting)
     }
     
     
