@@ -239,21 +239,21 @@ class 配置Model: ObservableObject {
     
     func 書き出す() -> NSItemProvider {
         
-        var 📄 = ""
+        var 📄 = "\n\n☗"
         
-        self.手駒[.玉]?.forEach{ 駒 in
-            📄 += 駒.rawValue + "⃞"
+        self.手駒[.玉]?.forEach{ ｺﾏ in
+            📄 += ｺﾏ.rawValue + "͙"
         }
         
         📄 += "\n－－－－－－－－－\n"
         
         for 行 in 0 ..< 9 {
             for 列 in 0 ..< 9 {
-                if let 駒 = self.盤上[行*9+列] {
-                    if 駒.陣営 == .玉 {
-                        📄 += 駒.職名.rawValue + "⃞"
+                if let ｺﾏ = self.盤上[行*9+列] {
+                    if ｺﾏ.陣営 == .玉 {
+                        📄 += ｺﾏ.職名.rawValue + "͙"
                     } else {
-                        📄 += 駒.職名.rawValue
+                        📄 += ｺﾏ.職名.rawValue
                     }
                 } else {
                     📄 += "　"
@@ -262,7 +262,7 @@ class 配置Model: ObservableObject {
             📄 += "\n"
         }
 
-        📄 += "－－－－－－－－－\n"
+        📄 += "－－－－－－－－－\n☖"
         
         self.手駒[.王]?.forEach{ 駒 in
             📄 += 駒.rawValue
