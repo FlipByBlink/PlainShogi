@@ -57,16 +57,16 @@ struct マス: View {
                         .rotationEffect(反転(兵士.陣営 == .玉))
                         .onAppear { 振動() }
                 }
-                .onDrop(of: [.text], isTargeted: nil) { _ in
-                    配置.移動(ここへ: 位置)
+                .onDrop(of: [.text], isTargeted: nil) { 📨 in
+                    配置.移動(ここへ: 位置, 📨)
                 }
                 .onTapGesture(count: 2) {
                     配置.裏返す(位置)
                 }
         } else {
             背景()
-                .onDrop(of: [.text], isTargeted: nil) { _ in
-                    配置.移動(ここへ: 位置)
+                .onDrop(of: [.text], isTargeted: nil) { 📨 in
+                    配置.移動(ここへ: 位置, 📨)
                 }
         }
     }

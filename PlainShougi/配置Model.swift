@@ -1,6 +1,7 @@
 
 import Combine
 import SwiftUI
+import UniformTypeIdentifiers
 
 
 let 初期配置: [Int: 兵] =
@@ -127,7 +128,29 @@ class 配置Model: ObservableObject {
     }
     
     
-    func 移動(ここへ: Int) -> Bool {
+    func 移動(ここへ: Int, _ 📦: [NSItemProvider]) -> Bool {
+        guard let 🗂 = 📦.first else { return false }
+        🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { NSSecureCodingA, ⓔrror in
+            
+            if ⓔrror != nil { print("👿: ", ⓔrror.debugDescription) }
+            
+            guard let 📋 = NSSecureCodingA as? Data else { return }
+            if let 📄 = String(data: 📋, encoding: .utf8) {
+                if 📄.first == "☗" {
+                    print("将棋盤のデータです")
+                    self.外部から取り込む(📄)
+                } else if 📄.first == "\n" {
+                    print("おそらくゲーム内でのコマの移動です")
+                } else {
+                    print("🐛")
+                }
+            }
+        }
+        
+//        provider.loadObject(ofClass: String.self) { NSItemProviderReadingA, ErrorA in
+//            print("NSItemProviderReadingA?: ", NSItemProviderReadingA?.debugDescription)
+//        }
+        
         if let 出発地 = 盤上のここから {
             
             if ここへ == 出発地 { return true }
@@ -158,6 +181,13 @@ class 配置Model: ObservableObject {
         データ保存()
         
         return true
+    }
+    
+    func 外部から取り込む(_ 📦: String) {
+        print(📦)
+        DispatchQueue.main.async {
+            self.盤上 = 初期配置 //fix later
+        }
     }
     
     
