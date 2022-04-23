@@ -26,12 +26,14 @@ struct PlainShougiApp: App {
                         Label("AppStore リンク", systemImage: "link")
                     }
                     
-                    Toggle(isOn: $English表記) {
-                        Label("English piece", systemImage: "p.square")
-                    }
-                    
-                    Toggle(isOn: $枠を非表示) {
-                        Label("枠を非表示", systemImage: "square.dashed")
+                    Menu("オプション") {
+                        Toggle(isOn: $English表記) {
+                            Label("English term", systemImage: "p.square")
+                        }
+                        
+                        Toggle(isOn: $枠を非表示) {
+                            Label("枠を非表示", systemImage: "square.dashed")
+                        }
                     }
                     
                     Button {
