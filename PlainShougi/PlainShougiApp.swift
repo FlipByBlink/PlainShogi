@@ -8,6 +8,7 @@ struct PlainShougiApp: App {
     
     @AppStorage("枠を非表示") var 枠を非表示: Bool = false
     
+    @AppStorage("English表記") var English表記: Bool = false
     
     var body: some Scene {
         WindowGroup {
@@ -25,14 +26,18 @@ struct PlainShougiApp: App {
                         Label("AppStore リンク", systemImage: "link")
                     }
                     
-                    Button {
-                        配置.はじめに戻す()
-                    } label: {
-                        Label("はじめに戻す", systemImage: "arrow.counterclockwise")
+                    Toggle(isOn: $English表記) {
+                        Label("English piece", systemImage: "p.square")
                     }
                     
                     Toggle(isOn: $枠を非表示) {
                         Label("枠を非表示", systemImage: "square.dashed")
+                    }
+                    
+                    Button {
+                        配置.はじめに戻す()
+                    } label: {
+                        Label("はじめに戻す", systemImage: "arrow.counterclockwise")
                     }
                     
                     Label("盤外の駒をトリプルタップして削除", systemImage: "trash")

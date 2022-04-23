@@ -81,11 +81,15 @@ struct コマ: View {
     
     var 数: Int = 1
     
+    @AppStorage("English表記") var English表記: Bool = false
+    
     var 表記: String {
+        let 字 = English表記 ? 名.english : 名.rawValue
+        
         if 数 > 1 {
-            return 名.rawValue + 数.description
+            return 字 + 数.description
         } else {
-            return 名.rawValue
+            return 字
         }
     }
     

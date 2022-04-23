@@ -69,7 +69,7 @@ enum 種類: String, CaseIterable, Identifiable {
         }
     }
     
-    var English表記: String {
+    var english: String {
         switch self {
         case .歩: return "P"
         case .と: return "+P"
