@@ -238,8 +238,36 @@ class 配置Model: ObservableObject {
     
     
     func 書き出す() -> NSItemProvider {
-        var 📄 = self.盤上.description
-        📄 += self.手駒.description
+        
+        var 📄 = ""
+        
+        self.手駒[.玉]?.forEach{ 駒 in
+            📄 += 駒.rawValue + "⃞"
+        }
+        
+        📄 += "\n－－－－－－－－－\n"
+        
+        for 行 in 0 ..< 9 {
+            for 列 in 0 ..< 9 {
+                if let 駒 = self.盤上[行*9+列] {
+                    if 駒.陣営 == .玉 {
+                        📄 += 駒.職名.rawValue + "⃞"
+                    } else {
+                        📄 += 駒.職名.rawValue
+                    }
+                } else {
+                    📄 += "　"
+                }
+            }
+            📄 += "\n"
+        }
+
+        📄 += "－－－－－－－－－\n"
+        
+        self.手駒[.王]?.forEach{ 駒 in
+            📄 += 駒.rawValue
+        }
+        
         return NSItemProvider(object: 📄 as NSItemProviderWriting)
     }
     
