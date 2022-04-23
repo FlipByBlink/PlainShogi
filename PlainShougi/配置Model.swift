@@ -68,6 +68,26 @@ enum 種類: String, CaseIterable, Identifiable {
         default: return self
         }
     }
+    
+    var English表記: String {
+        switch self {
+        case .歩: return "P"
+        case .と: return "+P"
+        case .角: return "B"
+        case .馬: return "+B"
+        case .飛: return "R"
+        case .龍: return "+R"
+        case .香: return "L"
+        case .杏: return "+L"
+        case .桂: return "N"
+        case .圭: return "+N"
+        case .銀: return "S"
+        case .全: return "+S"
+        case .金: return "G"
+        case .王: return "K"
+        case .玉: return "K"
+        }
+    }
 }
 
 
