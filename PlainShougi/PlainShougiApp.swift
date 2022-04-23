@@ -20,7 +20,7 @@ struct PlainShougiApp: App {
             .statusBar(hidden: true)
             .overlay(alignment: .bottomTrailing) {
                 Menu {
-                    let 🔗 = "https://apps.apple.com/jp/developer/ryo-yamashita/id1347562710"
+                    let 🔗 = "https://apps.apple.com/jp/developer/id1347562710"
                     Link(destination: URL(string: 🔗)!) {
                         Label("AppStore リンク", systemImage: "link")
                     }
