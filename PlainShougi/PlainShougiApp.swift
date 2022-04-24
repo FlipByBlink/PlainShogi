@@ -24,14 +24,6 @@ struct PlainShougiApp: App {
                     将棋.今 = .アクティブ直後
                 }
             }
-            .alert("外部から取り込みますか？", isPresented: $将棋.取り込み確認) {
-                Button("はい") {
-                    将棋.外部から取り込む()
-                }
-                Button("いいえ", role: .cancel) {
-                    print("いいえを押しました")
-                }
-            }
             .overlay(alignment: .bottomTrailing) {
                 Menu {
                     let 🔗 = "https://apps.apple.com/app/id1620268476"
