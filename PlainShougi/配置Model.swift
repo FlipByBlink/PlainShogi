@@ -199,8 +199,58 @@ class 配置Model: ObservableObject {
     
     func 外部から取り込む(_ 📦: String) {
         print(📦)
+        
+        var 盤上のコマ: [Int: 兵] = [:]
+        
+        var ﾃｺﾞﾏ: [王か玉か: [種類]] = [.玉: [], .王: []]
+        
+        var 改行数: Int = 0
+        
+        var 位置: Int = 0
+        
+        for 文字 in 📦 {
+            print("a.d:" + 文字.description + "; 位置:" + 位置.description + ";")
+            if 文字 == "\n" {
+                print("文字 == \\n")
+                改行数 += 1
+                continue
+            }
+            
+            if 改行数 == 0 || 改行数 == 12 {
+                種類.allCases.forEach { ｼｮｸﾒｲ in
+                    print("ｼｮｸﾒｲ:",ｼｮｸﾒｲ)
+                    
+                    if 文字.description == ｼｮｸﾒｲ.rawValue {
+                        ﾃｺﾞﾏ[.王]?.append(ｼｮｸﾒｲ)
+                    }
+                    
+                    if 文字.description == ｼｮｸﾒｲ.rawValue + "͙" {
+                        ﾃｺﾞﾏ[.玉]?.append(ｼｮｸﾒｲ)
+                    }
+                }
+            }
+            
+            if 1 < 改行数 && 改行数 < 11 {
+                種類.allCases.forEach { ｼｮｸﾒｲ in
+                    print("ｼｮｸﾒｲ:",ｼｮｸﾒｲ)
+                    
+                    if 文字.description == ｼｮｸﾒｲ.rawValue {
+                        盤上のコマ.updateValue(兵(.王, ｼｮｸﾒｲ), forKey: 位置)
+                    }
+
+                    if 文字.description == ｼｮｸﾒｲ.rawValue + "͙" {
+                        盤上のコマ.updateValue(兵(.玉, ｼｮｸﾒｲ), forKey: 位置)
+                    }
+                }
+                位置 += 1
+            }
+        }
+        
+        print(盤上のコマ.debugDescription)
+        
         DispatchQueue.main.async {
-            self.盤上 = 初期配置 //fix later
+            self.盤上 = 盤上のコマ //fix later
+            self.手駒 = ﾃｺﾞﾏ
         }
     }
     
