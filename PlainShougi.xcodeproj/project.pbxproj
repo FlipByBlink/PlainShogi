@@ -12,7 +12,7 @@
 		128D156D280FE47E003FF480 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
 		128D156F280FE47F003FF480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
 		128D1572280FE47F003FF480 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D1571280FE47F003FF480 /* Preview Assets.xcassets */; };
-		128D1579280FE4E4003FF480 /* 配置Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 配置Model.swift */; };
+		128D1579280FE4E4003FF480 /* 将棋Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 将棋Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		128D156C280FE47E003FF480 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		128D156E280FE47F003FF480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		128D1571280FE47F003FF480 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		128D1578280FE4E4003FF480 /* 配置Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "配置Model.swift"; sourceTree = "<group>"; };
+		128D1578280FE4E4003FF480 /* 将棋Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "将棋Model.swift"; sourceTree = "<group>"; };
 		12D198532810DD6500CE6578 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,7 +61,7 @@
 				128D156A280FE47E003FF480 /* PlainShougiApp.swift */,
 				128D156C280FE47E003FF480 /* ContentView.swift */,
 				124B75572810CD6D00027DCA /* Localizable.strings */,
-				128D1578280FE4E4003FF480 /* 配置Model.swift */,
+				128D1578280FE4E4003FF480 /* 将棋Model.swift */,
 				128D156E280FE47F003FF480 /* Assets.xcassets */,
 				128D1570280FE47F003FF480 /* Preview Content */,
 			);
@@ -150,7 +150,7 @@
 			files = (
 				128D156D280FE47E003FF480 /* ContentView.swift in Sources */,
 				128D156B280FE47E003FF480 /* PlainShougiApp.swift in Sources */,
-				128D1579280FE4E4003FF480 /* 配置Model.swift in Sources */,
+				128D1579280FE4E4003FF480 /* 将棋Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

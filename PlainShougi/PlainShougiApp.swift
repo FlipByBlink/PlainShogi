@@ -4,7 +4,7 @@ import SwiftUI
 
 @main
 struct PlainShougiApp: App {
-    @StateObject var 配置 = 配置Model()
+    @StateObject var 将棋 = 将棋Model()
     
     @AppStorage("枠を非表示") var 枠を非表示: Bool = false
     
@@ -16,7 +16,7 @@ struct PlainShougiApp: App {
                 Rectangle().opacity(0)
                 
                 ContentView()
-                    .environmentObject(配置)
+                    .environmentObject(将棋)
             }
             .statusBar(hidden: true)
             .overlay(alignment: .bottomTrailing) {
@@ -37,7 +37,7 @@ struct PlainShougiApp: App {
                     }
                     
                     Button {
-                        配置.はじめに戻す()
+                        将棋.はじめに戻す()
                     } label: {
                         Label("はじめに戻す", systemImage: "arrow.counterclockwise")
                     }
