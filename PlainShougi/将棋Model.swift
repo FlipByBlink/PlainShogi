@@ -125,7 +125,6 @@ class 将棋Model: ObservableObject {
     
     func 持ち上げる(_ ここ: Int) -> NSItemProvider {
         盤上のここから = ここ
-        盤外のこれを = nil
         今 = .コマ移動
         return 書き出す()
     }
@@ -133,7 +132,6 @@ class 将棋Model: ObservableObject {
     
     func 持ち上げる(_ これ: 兵) -> NSItemProvider {
         盤外のこれを = これ
-        盤上のここから = nil
         今 = .コマ召喚
         return 書き出す()
     }
@@ -142,7 +140,8 @@ class 将棋Model: ObservableObject {
     func 移動(ここへ: Int, _ 📦: [NSItemProvider]) -> Bool {
         guard let 🗂 = 📦.first else { return false }
         
-        if 今 == .アクティブ直後 {
+        switch 今 {
+        case .アクティブ直後:
             🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
                 
                 if ⓔrror != nil { print("👿: ", ⓔrror.debugDescription) }
@@ -156,15 +155,12 @@ class 将棋Model: ObservableObject {
                     }
                 }
             }
-            
             //provider.loadObject(ofClass: String.self) { NSItemProviderReadingA, ErrorA in
             // print("NSItemProviderReadingA?: ", NSItemProviderReadingA?.debugDescription)
             //}
-        }
-        
-        
-        if let 出発地 = 盤上のここから {
-            
+        case .コマ移動:
+            let 出発地 = 盤上のここから!
+                
             if ここへ == 出発地 { return true }
             
             if let 先客 = 盤上[ここへ] {
@@ -177,10 +173,9 @@ class 将棋Model: ObservableObject {
             盤上.removeValue(forKey: 出発地)
             
             盤上のここから = nil
-        }
-        
-        if let これ = 盤外のこれを {
-            
+        case .コマ召喚:
+            let これ = 盤外のこれを!
+                
             if 盤上[ここへ] != nil { return true }
             
             盤上.updateValue(これ, forKey: ここへ)
