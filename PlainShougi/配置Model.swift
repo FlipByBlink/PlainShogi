@@ -144,11 +144,12 @@ class 配置Model: ObservableObject {
     
     func 移動(ここへ: Int, _ 📦: [NSItemProvider]) -> Bool {
         guard let 🗂 = 📦.first else { return false }
-        🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { NSSecureCodingA, ⓔrror in
+        🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
             
             if ⓔrror != nil { print("👿: ", ⓔrror.debugDescription) }
             
-            guard let 📋 = NSSecureCodingA as? Data else { return }
+            guard let 📋 = 📁 as? Data else { return }
+            
             if let 📄 = String(data: 📋, encoding: .utf8) {
                 if 📄.first == "☗" {
                     print("将棋盤のデータです")
@@ -208,8 +209,8 @@ class 配置Model: ObservableObject {
         
         var 位置: Int = 0
         
-        for 文字 in 📦 {
-            print("a.d:" + 文字.description + "; 位置:" + 位置.description + ";")
+        for 文字 in 📦 { //FIXME: 末尾大幅空白がない場合もできるようにする
+            print("文字.d:" + 文字.description + "; 位置:" + 位置.description + ";")
             if 文字 == "\n" {
                 print("文字 == \\n")
                 改行数 += 1
@@ -218,7 +219,7 @@ class 配置Model: ObservableObject {
             
             if 改行数 == 0 || 改行数 == 12 {
                 種類.allCases.forEach { ｼｮｸﾒｲ in
-                    print("ｼｮｸﾒｲ:",ｼｮｸﾒｲ)
+                    print("ｼｮｸﾒｲ:", ｼｮｸﾒｲ)
                     
                     if 文字.description == ｼｮｸﾒｲ.rawValue {
                         ﾃｺﾞﾏ[.王]?.append(ｼｮｸﾒｲ)
@@ -232,7 +233,7 @@ class 配置Model: ObservableObject {
             
             if 1 < 改行数 && 改行数 < 11 {
                 種類.allCases.forEach { ｼｮｸﾒｲ in
-                    print("ｼｮｸﾒｲ:",ｼｮｸﾒｲ)
+                    print("ｼｮｸﾒｲ:", ｼｮｸﾒｲ)
                     
                     if 文字.description == ｼｮｸﾒｲ.rawValue {
                         盤上のコマ.updateValue(兵(.王, ｼｮｸﾒｲ), forKey: 位置)
