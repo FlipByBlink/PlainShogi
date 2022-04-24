@@ -146,7 +146,6 @@ class 将棋Model: ObservableObject {
         
         switch 今 {
         case .アクティブ直後:
-            取り込み確認 = true
             🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
                 
                 if ⓔrror != nil { print("👿: ", ⓔrror.debugDescription) }
@@ -158,6 +157,7 @@ class 将棋Model: ObservableObject {
                         print("おそらく将棋盤のデータです")
                         DispatchQueue.main.async {
                             self.将棋盤テキストデータ = 📄
+                            self.取り込み確認 = true
                         }
                     }
                 }
