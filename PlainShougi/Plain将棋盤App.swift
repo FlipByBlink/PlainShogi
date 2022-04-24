@@ -3,7 +3,7 @@ import SwiftUI
 
 
 @main
-struct PlainShougiApp: App {
+struct Plain将棋盤App: App {
     @StateObject var 将棋 = 将棋Model()
     
     @AppStorage("English表記") var English表記: Bool = false
@@ -30,6 +30,8 @@ struct PlainShougiApp: App {
                         Toggle(isOn: $English表記) {
                             Label("English term", systemImage: "p.square")
                         }
+                        
+                        Label("盤外の駒をトリプルタップして削除", systemImage: "trash")
                     } label: {
                         Label("オプション", systemImage: "gear")
                     }
@@ -39,8 +41,6 @@ struct PlainShougiApp: App {
                     } label: {
                         Label("はじめに戻す", systemImage: "arrow.counterclockwise")
                     }
-                    
-                    Label("盤外の駒をトリプルタップして削除", systemImage: "trash")
                     
                     Label("盤上の駒をダブルタップして裏返す", systemImage: "rotate.right")
                     
