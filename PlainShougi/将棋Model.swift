@@ -122,6 +122,10 @@ class 将棋Model: ObservableObject {
     
     @Published var 今: 段階 = .アクティブ直後
     
+    @Published var 取り込み確認 = false
+    
+    @Published var 将棋盤テキストデータ = ""
+    
     
     func 持ち上げる(_ ここ: Int) -> NSItemProvider {
         盤上のここから = ここ
@@ -142,6 +146,7 @@ class 将棋Model: ObservableObject {
         
         switch 今 {
         case .アクティブ直後:
+            取り込み確認 = true
             🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
                 
                 if ⓔrror != nil { print("👿: ", ⓔrror.debugDescription) }
@@ -151,7 +156,9 @@ class 将棋Model: ObservableObject {
                 if let 📄 = String(data: 📋, encoding: .utf8) {
                     if 📄.first == "☗" {
                         print("おそらく将棋盤のデータです")
-                        self.外部から取り込む(📄)
+                        DispatchQueue.main.async {
+                            self.将棋盤テキストデータ = 📄
+                        }
                     }
                 }
             }
@@ -190,8 +197,8 @@ class 将棋Model: ObservableObject {
         return true
     }
     
-    func 外部から取り込む(_ 📦: String) {
-        print(📦)
+    func 外部から取り込む() {
+        print(将棋盤テキストデータ)
         
         var 盤上のコマ: [Int: 兵] = [:]
         
@@ -201,7 +208,7 @@ class 将棋Model: ObservableObject {
         
         var 列: Int = 0
         
-        for 文字 in 📦 {
+        for 文字 in 将棋盤テキストデータ {
             if 文字 == "\n" {
                 改行数 += 1
                 列 = 0
