@@ -11,22 +11,22 @@ struct ContentView: View {
             盤外(陣営: .玉)
             
             VStack(spacing: 0) {
-                枠線()
+                Divider()
                 
                 ForEach( 0 ..< 9 ) { 行 in
                     HStack(spacing: 0) {
-                        枠線()
+                        Divider()
                         
                         ForEach( 0 ..< 9 ) { 列 in
                             let ここ = 行 * 9 + 列
                             
                             マス(位置: ここ)
                             
-                            枠線()
+                            Divider()
                         }
                     }
                     
-                    枠線()
+                    Divider()
                 }
             }
             .aspectRatio(1, contentMode: .fit)
@@ -155,16 +155,6 @@ struct 背景: View {
     var body: some View {
         Rectangle()
             .foregroundColor(Color(uiColor: .systemBackground))
-    }
-}
-
-
-struct 枠線: View {
-    @AppStorage("枠を非表示") var 枠を非表示: Bool = false
-    
-    var body: some View {
-        Divider()
-            .opacity(枠を非表示 ? 0 : 1)
     }
 }
 

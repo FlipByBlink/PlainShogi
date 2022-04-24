@@ -6,8 +6,6 @@ import SwiftUI
 struct PlainShougiApp: App {
     @StateObject var 将棋 = 将棋Model()
     
-    @AppStorage("枠を非表示") var 枠を非表示: Bool = false
-    
     @AppStorage("English表記") var English表記: Bool = false
     
     @Environment(\.scenePhase) var 🔛
@@ -33,14 +31,12 @@ struct PlainShougiApp: App {
                         Label("AppStore リンク", systemImage: "link")
                     }
                     
-                    Menu("オプション") {
+                    Menu {
                         Toggle(isOn: $English表記) {
                             Label("English term", systemImage: "p.square")
                         }
-                        
-                        Toggle(isOn: $枠を非表示) {
-                            Label("枠を非表示", systemImage: "square.dashed")
-                        }
+                    } label: {
+                        Label("オプション", systemImage: "gear")
                     }
                     
                     Button {
