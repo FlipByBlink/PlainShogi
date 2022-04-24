@@ -144,6 +144,7 @@ class 配置Model: ObservableObject {
     
     func 移動(ここへ: Int, _ 📦: [NSItemProvider]) -> Bool {
         guard let 🗂 = 📦.first else { return false }
+        
         🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
             
             if ⓔrror != nil { print("👿: ", ⓔrror.debugDescription) }
@@ -207,20 +208,17 @@ class 配置Model: ObservableObject {
         
         var 改行数: Int = 0
         
-        var 位置: Int = 0
+        var 列: Int = 0
         
-        for 文字 in 📦 { //FIXME: 末尾大幅空白がない場合もできるようにする
-            print("文字.d:" + 文字.description + "; 位置:" + 位置.description + ";")
+        for 文字 in 📦 {
             if 文字 == "\n" {
-                print("文字 == \\n")
                 改行数 += 1
+                列 = 0
                 continue
             }
             
             if 改行数 == 0 || 改行数 == 12 {
                 種類.allCases.forEach { ｼｮｸﾒｲ in
-                    print("ｼｮｸﾒｲ:", ｼｮｸﾒｲ)
-                    
                     if 文字.description == ｼｮｸﾒｲ.rawValue {
                         ﾃｺﾞﾏ[.王]?.append(ｼｮｸﾒｲ)
                     }
@@ -233,24 +231,23 @@ class 配置Model: ObservableObject {
             
             if 1 < 改行数 && 改行数 < 11 {
                 種類.allCases.forEach { ｼｮｸﾒｲ in
-                    print("ｼｮｸﾒｲ:", ｼｮｸﾒｲ)
+                    let 座標 = ( 改行数 - 2 ) * 9 + 列
                     
                     if 文字.description == ｼｮｸﾒｲ.rawValue {
-                        盤上のコマ.updateValue(兵(.王, ｼｮｸﾒｲ), forKey: 位置)
+                        盤上のコマ.updateValue(兵(.王, ｼｮｸﾒｲ), forKey: 座標)
                     }
 
                     if 文字.description == ｼｮｸﾒｲ.rawValue + "͙" {
-                        盤上のコマ.updateValue(兵(.玉, ｼｮｸﾒｲ), forKey: 位置)
+                        盤上のコマ.updateValue(兵(.玉, ｼｮｸﾒｲ), forKey: 座標)
                     }
                 }
-                位置 += 1
             }
+            
+            列 += 1
         }
         
-        print(盤上のコマ.debugDescription)
-        
         DispatchQueue.main.async {
-            self.盤上 = 盤上のコマ //fix later
+            self.盤上 = 盤上のコマ
             self.手駒 = ﾃｺﾞﾏ
         }
     }
