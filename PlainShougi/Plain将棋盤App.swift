@@ -22,6 +22,7 @@ struct Plain将棋盤App: App {
             .overlay(alignment: .bottomTrailing) {
                 Menu {
                     let 🔗 = "https://apps.apple.com/app/id1620268476"
+                    
                     Link(destination: URL(string: 🔗)!) {
                         Label("AppStore リンク", systemImage: "link")
                     }
@@ -33,7 +34,7 @@ struct Plain将棋盤App: App {
                         
                         Label("盤外の駒をトリプルタップして削除", systemImage: "trash")
                     } label: {
-                        Label("オプション", systemImage: "gear")
+                        Label("その他", systemImage: "gear")
                     }
                     
                     Button {

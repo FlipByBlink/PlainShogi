@@ -2,7 +2,7 @@
 
 駒を自由に動かせるただの将棋盤です。
 
-iOSの標準機能に沿ったシンプルな将棋盤アプリです。
+iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 
 文字のサイズや太さなどはOSシステム設定に適応して変わります。
 
@@ -11,11 +11,13 @@ iOSの標準機能に沿ったシンプルな将棋盤アプリです。
 
 Simple Shogi board App.
 
-This App based on iOS system design.
+You can move a piece freely.
 
-Character adapts OS option by Dynamic Type.
+This app based on iOS system UI design.
 
-you can reduce a piece.
+Character adapts font size and weight by OS option.
+
+You can reduce a piece.
 
 
 ## AppStore link
