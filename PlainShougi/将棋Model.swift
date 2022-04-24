@@ -195,9 +195,9 @@ class 将棋Model: ObservableObject {
     func 外部から取り込む(_ 📦: String) {
         print(📦)
         
-        var ﾃｷｽﾄ盤上: [Int: 兵] = [:]
+        var 盤上テキスト: [Int: 兵] = [:]
         
-        var ﾃｷｽﾄ手駒: [王か玉か: [種類]] = [.玉: [], .王: []]
+        var 手駒テキスト: [王か玉か: [種類]] = [.玉: [], .王: []]
         
         var 改行数: Int = 0
         
@@ -213,11 +213,11 @@ class 将棋Model: ObservableObject {
             if 改行数 == 0 || 改行数 == 12 {
                 種類.allCases.forEach { ｼｮｸﾒｲ in
                     if 文字.description == ｼｮｸﾒｲ.rawValue {
-                        ﾃｷｽﾄ手駒[.王]?.append(ｼｮｸﾒｲ)
+                        手駒テキスト[.王]?.append(ｼｮｸﾒｲ)
                     }
                     
                     if 文字.description == ｼｮｸﾒｲ.rawValue + "͙" {
-                        ﾃｷｽﾄ手駒[.玉]?.append(ｼｮｸﾒｲ)
+                        手駒テキスト[.玉]?.append(ｼｮｸﾒｲ)
                     }
                 }
             }
@@ -227,11 +227,11 @@ class 将棋Model: ObservableObject {
                     let 座標 = ( 改行数 - 2 ) * 9 + 列
                     
                     if 文字.description == ｼｮｸﾒｲ.rawValue {
-                        ﾃｷｽﾄ盤上.updateValue(兵(.王, ｼｮｸﾒｲ), forKey: 座標)
+                        盤上テキスト.updateValue(兵(.王, ｼｮｸﾒｲ), forKey: 座標)
                     }
 
                     if 文字.description == ｼｮｸﾒｲ.rawValue + "͙" {
-                        ﾃｷｽﾄ盤上.updateValue(兵(.玉, ｼｮｸﾒｲ), forKey: 座標)
+                        盤上テキスト.updateValue(兵(.玉, ｼｮｸﾒｲ), forKey: 座標)
                     }
                 }
             }
@@ -240,8 +240,8 @@ class 将棋Model: ObservableObject {
         }
         
         DispatchQueue.main.async {
-            self.盤上 = ﾃｷｽﾄ盤上
-            self.手駒 = ﾃｷｽﾄ手駒
+            self.盤上 = 盤上テキスト
+            self.手駒 = 手駒テキスト
         }
     }
     
@@ -258,23 +258,21 @@ class 将棋Model: ObservableObject {
     func データ保存() {
         let 🗄 = UserDefaults.standard
         
-        var 盤上メモ: [String: [String]] = [:]
+        var 盤上ログ: [String: [String]] = [:]
         
-        盤上.forEach { (key: Int, value: 兵) in
-            盤上メモ.updateValue([value.陣営.rawValue, value.職名.rawValue], forKey: key.description)
+        盤上.forEach { (ｲﾁ: Int, ｺﾏ: 兵) in
+            盤上ログ.updateValue([ｺﾏ.陣営.rawValue, ｺﾏ.職名.rawValue], forKey: ｲﾁ.description)
         }
         
-        🗄.set(盤上メモ, forKey: "盤上")
+        🗄.set(盤上ログ, forKey: "盤上")
         
-        var 手駒メモ: [String: [String]] = ["王": [], "玉": []]
+        var 手駒ログ: [String: [String]] = ["王": [], "玉": []]
         
-        手駒.forEach { (key: 王か玉か, value: [種類]) in
-            value.forEach { 職名 in
-                手駒メモ[key.rawValue]?.append(職名.rawValue)
-            }
+        手駒.forEach { (ｼﾞﾝｴｲ: 王か玉か, ﾃｺﾞﾏﾀﾁ: [種類]) in
+            ﾃｺﾞﾏﾀﾁ.forEach { 手駒ログ[ｼﾞﾝｴｲ.rawValue]?.append($0.rawValue) }
         }
         
-        🗄.set(手駒メモ, forKey: "手駒")
+        🗄.set(手駒ログ, forKey: "手駒")
     }
     
     
@@ -285,40 +283,40 @@ class 将棋Model: ObservableObject {
     func データ読み込み() {
         let 🗄 = UserDefaults.standard
         
-        var 盤上メモ: [Int: 兵] = [:]
+        var 盤上ログ: [Int: 兵] = [:]
         
         if let 💾 = 🗄.dictionary(forKey: "盤上") as? [String:[String]] {
             💾.forEach { (key: String, value: [String]) in
                 if let 位置 = Int(key) {
                     if let 陣営 = 王か玉か.init(rawValue: value[0]) {
                         if let 職名 = 種類.init(rawValue: value[1]) {
-                            盤上メモ.updateValue(兵(陣営,職名), forKey: 位置)
+                            盤上ログ.updateValue(兵(陣営,職名), forKey: 位置)
                         }
                     }
                 }
             }
         }
         
-        if 盤上メモ.isEmpty == false {
-            盤上 = 盤上メモ
+        if 盤上ログ.isEmpty == false {
+            盤上 = 盤上ログ
         }
         
         
-        var 手駒メモ: [王か玉か: [種類]] = [.王:[], .玉:[]]
+        var 手駒ログ: [王か玉か: [種類]] = [.王:[], .玉:[]]
         
         if let 💾 = 🗄.dictionary(forKey: "手駒") as? [String:[String]] {
             💾.forEach { (key: String, value: [String]) in
                 value.forEach { 名 in
                     if let 職名 = 種類.init(rawValue: 名) {
                         if let 陣営 = 王か玉か.init(rawValue: key) {
-                            手駒メモ[陣営]?.append(職名)
+                            手駒ログ[陣営]?.append(職名)
                         }
                     }
                 }
             }
         }
         
-        手駒 = 手駒メモ
+        手駒 = 手駒ログ
     }
     
     
@@ -326,8 +324,8 @@ class 将棋Model: ObservableObject {
         
         var 📄 = "\n☗"
         
-        self.手駒[.玉]?.forEach{ ｺﾏ in
-            📄 += ｺﾏ.rawValue + "͙"
+        self.手駒[.玉]?.forEach{ ﾃｺﾞﾏ in
+            📄 += ﾃｺﾞﾏ.rawValue + "͙"
         }
         
         📄 += "\n－－－－－－－－－\n"
@@ -349,8 +347,8 @@ class 将棋Model: ObservableObject {
 
         📄 += "－－－－－－－－－\n☖"
         
-        self.手駒[.王]?.forEach{ 駒 in
-            📄 += 駒.rawValue
+        self.手駒[.王]?.forEach{ ﾃｺﾞﾏ in
+            📄 += ﾃｺﾞﾏ.rawValue
         }
         
         return NSItemProvider(object: 📄 as NSItemProviderWriting)

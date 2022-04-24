@@ -18,9 +18,7 @@ struct ContentView: View {
                         Divider()
                         
                         ForEach( 0 ..< 9 ) { 列 in
-                            let ここ = 行 * 9 + 列
-                            
-                            マス(位置: ここ)
+                            マス(位置: 行*9+列)
                             
                             Divider()
                         }
@@ -171,6 +169,10 @@ func 反転(_ 玉かどうか: Bool) -> Angle {
 func 振動() {
     UISelectionFeedbackGenerator().selectionChanged()
 }
+
+
+
+
 
 
 
