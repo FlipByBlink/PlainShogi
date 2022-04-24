@@ -103,6 +103,13 @@ struct 兵 {
 }
 
 
+enum 段階 {
+    case アクティブ直後
+    case コマ移動
+    case コマ召喚
+}
+
+
 class 将棋Model: ObservableObject {
     
     @Published var 盤上: [Int: 兵] = 初期配置
@@ -113,10 +120,13 @@ class 将棋Model: ObservableObject {
     
     @Published var 盤外のこれを: 兵? = nil
     
+    @Published var 今: 段階 = .アクティブ直後
+    
     
     func 持ち上げる(_ ここ: Int) -> NSItemProvider {
         盤上のここから = ここ
         盤外のこれを = nil
+        今 = .コマ移動
         return 書き出す()
     }
     
@@ -124,6 +134,7 @@ class 将棋Model: ObservableObject {
     func 持ち上げる(_ これ: 兵) -> NSItemProvider {
         盤外のこれを = これ
         盤上のここから = nil
+        今 = .コマ召喚
         return 書き出す()
     }
     
@@ -131,27 +142,26 @@ class 将棋Model: ObservableObject {
     func 移動(ここへ: Int, _ 📦: [NSItemProvider]) -> Bool {
         guard let 🗂 = 📦.first else { return false }
         
-        🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
-            
-            if ⓔrror != nil { print("👿: ", ⓔrror.debugDescription) }
-            
-            guard let 📋 = 📁 as? Data else { return }
-            
-            if let 📄 = String(data: 📋, encoding: .utf8) {
-                if 📄.first == "☗" {
-                    print("将棋盤のデータです")
-                    self.外部から取り込む(📄)
-                } else if 📄.first == "\n" {
-                    print("おそらくゲーム内でのコマの移動です")
-                } else {
-                    print("🐛")
+        if 今 == .アクティブ直後 {
+            🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
+                
+                if ⓔrror != nil { print("👿: ", ⓔrror.debugDescription) }
+                
+                guard let 📋 = 📁 as? Data else { return }
+                
+                if let 📄 = String(data: 📋, encoding: .utf8) {
+                    if 📄.first == "☗" {
+                        print("おそらく将棋盤のデータです")
+                        self.外部から取り込む(📄)
+                    }
                 }
             }
+            
+            //provider.loadObject(ofClass: String.self) { NSItemProviderReadingA, ErrorA in
+            // print("NSItemProviderReadingA?: ", NSItemProviderReadingA?.debugDescription)
+            //}
         }
         
-//        provider.loadObject(ofClass: String.self) { NSItemProviderReadingA, ErrorA in
-//            print("NSItemProviderReadingA?: ", NSItemProviderReadingA?.debugDescription)
-//        }
         
         if let 出発地 = 盤上のここから {
             
