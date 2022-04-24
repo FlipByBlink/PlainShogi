@@ -19,11 +19,7 @@ struct PlainShougiApp: App {
                     .environmentObject(将棋)
             }
             .statusBar(hidden: true)
-            .onChange(of: 🔛) { newValue in
-                if newValue == .active {
-                    将棋.今 = .アクティブ直後
-                }
-            }
+            .onChange(of: 🔛) { if $0 == .active { 将棋.今 = .アクティブ直後 } }
             .overlay(alignment: .bottomTrailing) {
                 Menu {
                     let 🔗 = "https://apps.apple.com/app/id1620268476"
