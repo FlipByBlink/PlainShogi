@@ -3,18 +3,6 @@ import Combine
 import SwiftUI
 import UniformTypeIdentifiers
 
-
-struct 兵 {
-    let 陣営: 王か玉か
-    let 職名: 種類
-    
-    init(_ ｼﾞﾝｴｲ: 王か玉か, _ ｼｮｸﾒｲ: 種類) {
-        陣営 = ｼﾞﾝｴｲ
-        職名 = ｼｮｸﾒｲ
-    }
-}
-
-
 class 将棋Model: ObservableObject {
     
     @Published var 盤上: [Int: 兵] = 初期配置
