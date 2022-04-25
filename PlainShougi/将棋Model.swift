@@ -89,6 +89,26 @@ enum 種類: String, CaseIterable, Identifiable {
         case .玉: return "K"
         }
     }
+    
+    var englishテキスト: String {
+        switch self {
+        case .歩: return "Ｐ"
+        case .と: return "Ｐ︭"
+        case .角: return "Ｂ"
+        case .馬: return "Ｂ︭"
+        case .飛: return "Ｒ"
+        case .龍: return "Ｒ︭"
+        case .香: return "Ｌ"
+        case .杏: return "Ｌ︭"
+        case .桂: return "Ｎ"
+        case .圭: return "Ｎ︭"
+        case .銀: return "Ｓ"
+        case .全: return "Ｓ︭"
+        case .金: return "Ｇ"
+        case .王: return "Ｋ"
+        case .玉: return "Ｋ"
+        }
+    }
 }
 
 
@@ -158,9 +178,6 @@ class 将棋Model: ObservableObject {
                     }
                 }
             }
-            //provider.loadObject(ofClass: String.self) { NSItemProviderReadingA, ErrorA in
-            // print("NSItemProviderReadingA?: ", NSItemProviderReadingA?.debugDescription)
-            //}
         case .コマ移動:
             let 出発地 = 盤上のここから!
                 
@@ -274,7 +291,7 @@ class 将棋Model: ObservableObject {
         var 📄 = "\n☗"
         
         self.手駒[.玉]?.forEach{ ﾃｺﾞﾏ in
-            📄 += En表記 ? ﾃｺﾞﾏ.english + "͙" : ﾃｺﾞﾏ.rawValue + "͙"
+            📄 += En表記 ? ﾃｺﾞﾏ.englishテキスト + "͙" : ﾃｺﾞﾏ.rawValue + "͙"
         }
         
         📄 += "\n－－－－－－－－－\n"
@@ -282,7 +299,7 @@ class 将棋Model: ObservableObject {
         for 行 in 0 ..< 9 {
             for 列 in 0 ..< 9 {
                 if let ｺﾏ = self.盤上[行*9+列] {
-                    📄 += En表記 ? ｺﾏ.職名.english : ｺﾏ.職名.rawValue
+                    📄 += En表記 ? ｺﾏ.職名.englishテキスト : ｺﾏ.職名.rawValue
                     
                     if ｺﾏ.陣営 == .玉 {
                         📄 += "͙"
@@ -297,7 +314,7 @@ class 将棋Model: ObservableObject {
         📄 += "－－－－－－－－－\n☖"
         
         self.手駒[.王]?.forEach{ ﾃｺﾞﾏ in
-            📄 += En表記 ? ﾃｺﾞﾏ.english : ﾃｺﾞﾏ.rawValue
+            📄 += En表記 ? ﾃｺﾞﾏ.englishテキスト : ﾃｺﾞﾏ.rawValue
         }
         
         return NSItemProvider(object: 📄 as NSItemProviderWriting)
@@ -326,11 +343,11 @@ class 将棋Model: ObservableObject {
             
             if 改行数 == 0 || 改行数 == 12 {
                 種類.allCases.forEach { ｼｭﾙｲ in
-                    if 字 == ｼｭﾙｲ.rawValue || 字 == ｼｭﾙｲ.english {
+                    if 字 == ｼｭﾙｲ.rawValue || 字 == ｼｭﾙｲ.englishテキスト {
                         手駒テキスト[.王]?.append(ｼｭﾙｲ)
                     }
                     
-                    if 字 == ｼｭﾙｲ.rawValue + "͙" || 字 == ｼｭﾙｲ.english + "͙" {
+                    if 字 == ｼｭﾙｲ.rawValue + "͙" || 字 == ｼｭﾙｲ.englishテキスト + "͙" {
                         手駒テキスト[.玉]?.append(ｼｭﾙｲ)
                     }
                 }
@@ -340,11 +357,11 @@ class 将棋Model: ObservableObject {
                 種類.allCases.forEach { ｼｭﾙｲ in
                     let 座標 = ( 改行数 - 2 ) * 9 + 列
                     
-                    if 字 == ｼｭﾙｲ.rawValue || 字 == ｼｭﾙｲ.english {
+                    if 字 == ｼｭﾙｲ.rawValue || 字 == ｼｭﾙｲ.englishテキスト {
                         盤上テキスト.updateValue(兵(.王, ｼｭﾙｲ), forKey: 座標)
                     }
                     
-                    if 字 == ｼｭﾙｲ.rawValue + "͙" || 字 == ｼｭﾙｲ.english + "͙" {
+                    if 字 == ｼｭﾙｲ.rawValue + "͙" || 字 == ｼｭﾙｲ.englishテキスト + "͙" {
                         盤上テキスト.updateValue(兵(.玉, ｼｭﾙｲ), forKey: 座標)
                     }
                 }
