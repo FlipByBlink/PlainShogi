@@ -261,6 +261,8 @@ class 将棋Model: ObservableObject {
             self.盤上 = 盤上テキスト
             self.手駒 = 手駒テキスト
         }
+        
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
     
     
