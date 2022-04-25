@@ -56,7 +56,7 @@ struct マス: View {
                         .onAppear { 振動() }
                 }
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
-                    将棋.移動(ここへ: 位置, 📨)
+                    将棋.移動(位置, 📨)
                 }
                 .onTapGesture(count: 2) {
                     将棋.裏返す(位置)
@@ -64,7 +64,7 @@ struct マス: View {
         } else {
             背景()
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
-                    将棋.移動(ここへ: 位置, 📨)
+                    将棋.移動(位置, 📨)
                 }
         }
     }
@@ -119,20 +119,20 @@ struct 盤外: View {
         HStack {
             Spacer()
             
-            ForEach(種類.allCases) { 職名 in
-                let 人数 = 将棋.手駒[陣営]!.filter{$0 == 職名}.count
+            ForEach(種類.allCases) { ｼｭﾙｲ in
+                let 人数 = 将棋.手駒[陣営]!.filter{$0 == ｼｭﾙｲ}.count
                 if 人数 > 0 {
-                    コマ(名: 職名, 余白なし: true, 数: 人数)
+                    コマ(名: ｼｭﾙｲ, 余白なし: true, 数: 人数)
                         .onDrag{
-                            将棋.持ち上げる(兵(陣営,職名))
+                            将棋.持ち上げる(兵(陣営,ｼｭﾙｲ))
                         } preview: {
-                            コマ(名: 職名)
+                            コマ(名: ｼｭﾙｲ)
                                 .border(.primary)
                                 .rotationEffect(反転(陣営 == .玉))
                                 .onAppear { 振動() }
                         }
                         .onTapGesture(count: 3) {
-                            let ひとつ = 将棋.手駒[陣営]!.firstIndex(of:職名)!
+                            let ひとつ = 将棋.手駒[陣営]!.firstIndex(of:ｼｭﾙｲ)!
                             将棋.手駒[陣営]!.remove(at: ひとつ)
                         }
                 } else {
