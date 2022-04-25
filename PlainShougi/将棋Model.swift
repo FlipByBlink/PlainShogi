@@ -13,28 +13,44 @@ class 将棋Model: ObservableObject {
     
     @Published var 盤外のこれを: 兵? = nil
     
-    @Published var 今: 段階 = .アクティブ直後
+    @Published var 今: 段階 = .コマを持っていない
     
     
     func 持ち上げる(_ ここから: Int) -> NSItemProvider {
         盤上のここから = ここから
-        今 = .コマ移動
+        今 = .コマを移動
         return 外部へテキストを書き出す()
     }
     
     
     func 持ち上げる(_ これを: 兵) -> NSItemProvider {
         盤外のこれを = これを
-        今 = .コマ召喚
+        今 = .コマを召喚
         return 外部へテキストを書き出す()
     }
     
     
     func 移動(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool {
+        
+        print("📦: ",📦)
+        
         guard let 🗂 = 📦.first else { return false }
         
+//        print("🗂.hasItemConformingToTypeIdentifier(コマ)",🗂.hasItemConformingToTypeIdentifier("コマ"))
+        if let 🏷 = 🗂.suggestedName {
+            print("🗂.suggestedName: ", 🏷)
+            
+            if 🏷 != "コマ" {
+                今 = .コマを持っていない
+            }
+        } else {
+            今 = .コマを持っていない
+        }
+        
+//        print("🗂.registeredTypeIdentifiers(): ", 🗂.registeredTypeIdentifiers())
+        
         switch 今 {
-        case .アクティブ直後:
+        case .コマを持っていない:
             🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
                 
                 if ⓔrror != nil { print("👿: ", ⓔrror.debugDescription) }
@@ -51,7 +67,7 @@ class 将棋Model: ObservableObject {
                     }
                 }
             }
-        case .コマ移動:
+        case .コマを移動:
             if let 出発地 = 盤上のここから {
                 if 行先 == 出発地 { return true }
                 
@@ -68,7 +84,7 @@ class 将棋Model: ObservableObject {
             } else {
                 print("🐛")
             }
-        case .コマ召喚:
+        case .コマを召喚:
             if let これ = 盤外のこれを {
                 if 盤上[行先] != nil { return true }
                 
@@ -193,8 +209,12 @@ class 将棋Model: ObservableObject {
         self.手駒[.王]?.forEach{ ﾃｺﾞﾏ in
             📄 += En表記 ? ﾃｺﾞﾏ.englishテキスト : ﾃｺﾞﾏ.rawValue
         }
-        
-        return NSItemProvider(object: 📄 as NSItemProviderWriting)
+//        let a = NSItemProvider(item: 📄 as NSSecureCoding, typeIdentifier: "コマ")
+        let 📦 = NSItemProvider(object: 📄 as NSItemProviderWriting)
+        📦.suggestedName = "コマ"
+//        a.registerObject(📄 as NSItemProviderWriting, visibility: .all)
+        return 📦
+//        return NSItemProvider(object: 📄 as NSItemProviderWriting)
     }
     
     

@@ -17,9 +17,9 @@ enum 王か玉か: String {
 
 
 enum 段階 {
-    case アクティブ直後
-    case コマ移動
-    case コマ召喚
+    case コマを持っていない
+    case コマを移動
+    case コマを召喚
 }
 
 
