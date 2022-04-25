@@ -8,8 +8,6 @@ struct Plain将棋盤App: App {
     
     @AppStorage("English表記") var English表記: Bool = false
     
-//    @Environment(\.scenePhase) var 🔛
-    
     var body: some Scene {
         WindowGroup {
             ZStack {
@@ -56,6 +54,5 @@ struct Plain将棋盤App: App {
                 .accessibilityLabel("メニュー")
             }
         }
-//        .onChange(of: 🔛) { if $0 == .active { 将棋.今 = .コマを持っていない } }
     }
 }

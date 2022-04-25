@@ -31,12 +31,8 @@ class 将棋Model: ObservableObject {
     
     
     func 移動(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool {
-        
-        print("📦: ",📦)
-        
         guard let 🗂 = 📦.first else { return false }
         
-//        print("🗂.hasItemConformingToTypeIdentifier(コマ)",🗂.hasItemConformingToTypeIdentifier("コマ"))
         if let 🏷 = 🗂.suggestedName {
             print("🗂.suggestedName: ", 🏷)
             
@@ -46,8 +42,6 @@ class 将棋Model: ObservableObject {
         } else {
             今 = .コマを持っていない
         }
-        
-//        print("🗂.registeredTypeIdentifiers(): ", 🗂.registeredTypeIdentifiers())
         
         switch 今 {
         case .コマを持っていない:
@@ -61,9 +55,7 @@ class 将棋Model: ObservableObject {
                     if 📄.first == "☗" {
                         print("おそらく将棋盤のデータです")
                         
-                        DispatchQueue.main.async {
-                            self.外部からテキストを取り込む(📄)
-                        }
+                        self.外部からテキストを取り込む(📄)
                     }
                 }
             }
@@ -209,12 +201,10 @@ class 将棋Model: ObservableObject {
         self.手駒[.王]?.forEach{ ﾃｺﾞﾏ in
             📄 += En表記 ? ﾃｺﾞﾏ.englishテキスト : ﾃｺﾞﾏ.rawValue
         }
-//        let a = NSItemProvider(item: 📄 as NSSecureCoding, typeIdentifier: "コマ")
+        
         let 📦 = NSItemProvider(object: 📄 as NSItemProviderWriting)
         📦.suggestedName = "コマ"
-//        a.registerObject(📄 as NSItemProviderWriting, visibility: .all)
         return 📦
-//        return NSItemProvider(object: 📄 as NSItemProviderWriting)
     }
     
     
