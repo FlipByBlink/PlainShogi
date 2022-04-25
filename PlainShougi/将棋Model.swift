@@ -126,14 +126,14 @@ class 将棋Model: ObservableObject {
     func 持ち上げる(_ ここから: Int) -> NSItemProvider {
         盤上のここから = ここから
         今 = .コマ移動
-        return 書き出す()
+        return 外部へテキストを書き出す()
     }
     
     
     func 持ち上げる(_ これを: 兵) -> NSItemProvider {
         盤外のこれを = これを
         今 = .コマ召喚
-        return 書き出す()
+        return 外部へテキストを書き出す()
     }
     
     
@@ -153,7 +153,7 @@ class 将棋Model: ObservableObject {
                         print("おそらく将棋盤のデータです")
                         
                         DispatchQueue.main.async {
-                            self.外部から取り込む(📄)
+                            self.外部からテキストを取り込む(📄)
                         }
                     }
                 }
@@ -189,12 +189,12 @@ class 将棋Model: ObservableObject {
             盤外のこれを = nil
         }
         
-        データ保存()
+        ログ保存()
         
         return true
     }
     
-    func 外部から取り込む(_ 📦: String) {
+    func 外部からテキストを取り込む(_ 📦: String) {
         print(📦)
         
         var 盤上テキスト: [Int: 兵] = [:]
@@ -257,7 +257,7 @@ class 将棋Model: ObservableObject {
     }
     
     
-    func データ保存() {
+    func ログ保存() {
         let 🗄 = UserDefaults.standard
         
         var 盤上ログ: [String: [String]] = [:]
@@ -279,10 +279,10 @@ class 将棋Model: ObservableObject {
     
     
     init() {
-        データ読み込み()
+        ログ読み込み()
     }
     
-    func データ読み込み() {
+    func ログ読み込み() {
         let 🗄 = UserDefaults.standard
         
         var 盤上ログ: [Int: 兵] = [:]
@@ -320,7 +320,7 @@ class 将棋Model: ObservableObject {
     }
     
     
-    func 書き出す() -> NSItemProvider {
+    func 外部へテキストを書き出す() -> NSItemProvider {
         
         var 📄 = "\n☗"
         
