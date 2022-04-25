@@ -123,15 +123,15 @@ class 将棋Model: ObservableObject {
     @Published var 今: 段階 = .アクティブ直後
     
     
-    func 持ち上げる(_ ｺｺｶﾗ: Int) -> NSItemProvider {
-        盤上のここから = ｺｺｶﾗ
+    func 持ち上げる(_ ここから: Int) -> NSItemProvider {
+        盤上のここから = ここから
         今 = .コマ移動
         return 書き出す()
     }
     
     
-    func 持ち上げる(_ ｺﾚｦ: 兵) -> NSItemProvider {
-        盤外のこれを = ｺﾚｦ
+    func 持ち上げる(_ これを: 兵) -> NSItemProvider {
+        盤外のこれを = これを
         今 = .コマ召喚
         return 書き出す()
     }

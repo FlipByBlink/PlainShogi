@@ -60,8 +60,8 @@
 			children = (
 				128D156A280FE47E003FF480 /* Plain将棋盤App.swift */,
 				128D156C280FE47E003FF480 /* ContentView.swift */,
-				124B75572810CD6D00027DCA /* Localizable.strings */,
 				128D1578280FE4E4003FF480 /* 将棋Model.swift */,
+				124B75572810CD6D00027DCA /* Localizable.strings */,
 				128D156E280FE47F003FF480 /* Assets.xcassets */,
 				128D1570280FE47F003FF480 /* Preview Content */,
 			);
