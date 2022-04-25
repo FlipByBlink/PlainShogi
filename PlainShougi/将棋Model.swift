@@ -205,20 +205,22 @@ class 将棋Model: ObservableObject {
         
         var 列: Int = 0
         
-        for 文字 in 📦 {
-            if 文字 == "\n" {
+        for 文字1つ in 📦 {
+            if 文字1つ == "\n" {
                 改行数 += 1
                 列 = 0
                 continue
             }
             
+            let 字 = 文字1つ.description
+            
             if 改行数 == 0 || 改行数 == 12 {
                 種類.allCases.forEach { ｼｭﾙｲ in
-                    if 文字.description == ｼｭﾙｲ.rawValue {
+                    if 字 == ｼｭﾙｲ.rawValue || 字 == ｼｭﾙｲ.english {
                         手駒テキスト[.王]?.append(ｼｭﾙｲ)
                     }
                     
-                    if 文字.description == ｼｭﾙｲ.rawValue + "͙" {
+                    if 字 == ｼｭﾙｲ.rawValue + "͙" || 字 == ｼｭﾙｲ.english + "͙" {
                         手駒テキスト[.玉]?.append(ｼｭﾙｲ)
                     }
                 }
@@ -228,11 +230,11 @@ class 将棋Model: ObservableObject {
                 種類.allCases.forEach { ｼｭﾙｲ in
                     let 座標 = ( 改行数 - 2 ) * 9 + 列
                     
-                    if 文字.description == ｼｭﾙｲ.rawValue {
+                    if 字 == ｼｭﾙｲ.rawValue || 字 == ｼｭﾙｲ.english {
                         盤上テキスト.updateValue(兵(.王, ｼｭﾙｲ), forKey: 座標)
                     }
 
-                    if 文字.description == ｼｭﾙｲ.rawValue + "͙" {
+                    if 字 == ｼｭﾙｲ.rawValue + "͙" || 字 == ｼｭﾙｲ.english + "͙" {
                         盤上テキスト.updateValue(兵(.玉, ｼｭﾙｲ), forKey: 座標)
                     }
                 }
@@ -322,10 +324,16 @@ class 将棋Model: ObservableObject {
     
     func 外部へテキストを書き出す() -> NSItemProvider {
         
+        let English表記 = UserDefaults.standard.bool(forKey: "English表記")
+        
         var 📄 = "\n☗"
         
         self.手駒[.玉]?.forEach{ ﾃｺﾞﾏ in
-            📄 += ﾃｺﾞﾏ.rawValue + "͙"
+            if English表記 {
+                📄 += ﾃｺﾞﾏ.english + "͙"
+            } else {
+                📄 += ﾃｺﾞﾏ.rawValue + "͙"
+            }
         }
         
         📄 += "\n－－－－－－－－－\n"
@@ -334,9 +342,17 @@ class 将棋Model: ObservableObject {
             for 列 in 0 ..< 9 {
                 if let ｺﾏ = self.盤上[行*9+列] {
                     if ｺﾏ.陣営 == .玉 {
-                        📄 += ｺﾏ.職名.rawValue + "͙"
+                        if English表記 {
+                            📄 += ｺﾏ.職名.english.description + "͙"
+                        } else {
+                            📄 += ｺﾏ.職名.rawValue + "͙"
+                        }
                     } else {
-                        📄 += ｺﾏ.職名.rawValue
+                        if English表記 {
+                            📄 += ｺﾏ.職名.english.description
+                        } else {
+                            📄 += ｺﾏ.職名.rawValue
+                        }
                     }
                 } else {
                     📄 += "　"
@@ -348,7 +364,11 @@ class 将棋Model: ObservableObject {
         📄 += "－－－－－－－－－\n☖"
         
         self.手駒[.王]?.forEach{ ﾃｺﾞﾏ in
-            📄 += ﾃｺﾞﾏ.rawValue
+            if English表記 {
+                📄 += ﾃｺﾞﾏ.english
+            } else {
+                📄 += ﾃｺﾞﾏ.rawValue
+            }
         }
         
         return NSItemProvider(object: 📄 as NSItemProviderWriting)
