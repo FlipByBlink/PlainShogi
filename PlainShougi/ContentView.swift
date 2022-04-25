@@ -3,7 +3,6 @@ import SwiftUI
 
 
 struct ContentView: View {
-    
     @EnvironmentObject var 将棋: 将棋Model
     
     var body: some View {
@@ -38,7 +37,6 @@ struct ContentView: View {
 
 
 struct マス: View {
-    
     @EnvironmentObject var 将棋: 将棋Model
     
     var 位置: Int
@@ -72,7 +70,6 @@ struct マス: View {
 
 
 struct コマ: View {
-    
     var 名: 種類
     
     var 余白なし: Bool = false
@@ -110,7 +107,6 @@ struct コマ: View {
 
 
 struct 盤外: View {
-    
     @EnvironmentObject var 将棋: 将棋Model
     
     var 陣営: 王か玉か
