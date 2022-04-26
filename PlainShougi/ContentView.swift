@@ -6,32 +6,52 @@ struct ContentView: View {
     @EnvironmentObject var 将棋: 将棋Model
     
     var body: some View {
-        VStack {
-            盤外(陣営: .玉)
-            
-            VStack(spacing: 0) {
-                Divider()
-                
-                ForEach( 0 ..< 9 ) { 行 in
-                    HStack(spacing: 0) {
-                        Divider()
-                        
-                        ForEach( 0 ..< 9 ) { 列 in
-                            マス(位置: 行*9+列)
-                            
-                            Divider()
-                        }
-                    }
-                    
-                    Divider()
+        GeometryReader { 📐 in
+            let マスの大きさ: CGFloat = {
+                if 📐.size.width/9 < 📐.size.height/11 {
+                    return 📐.size.width/9
+                } else {
+                    return (📐.size.height-8*4-16*2)/11
                 }
-            }
-            .aspectRatio(1, contentMode: .fit)
-            .border(.primary)
+            }()
             
-            盤外(陣営: .王)
+            VStack {
+                Spacer()
+                
+                盤外(陣営: .玉)
+                    .frame(height: マスの大きさ, alignment: .center)
+                    .padding(8)
+                
+                VStack(spacing: 0) {
+                    Divider()
+                    
+                    ForEach( 0 ..< 9 ) { 行 in
+                        HStack(spacing: 0) {
+                            Divider()
+                            
+                            ForEach( 0 ..< 9 ) { 列 in
+                                マス(位置: 行*9+列)
+                                
+                                Divider()
+                            }
+                        }
+                        
+                        Divider()
+                    }
+                }
+                .frame(width: マスの大きさ*9,
+                       height: マスの大きさ*9,
+                       alignment: .center)
+                .border(.primary)
+                
+                盤外(陣営: .王)
+                    .frame(height: マスの大きさ, alignment: .center)
+                    .padding(8)
+                
+                Spacer()
+            }
         }
-        .padding()
+        .padding(16)
     }
 }
 
@@ -137,8 +157,6 @@ struct 盤外: View {
             
             Spacer()
         }
-        .frame(height: 48, alignment: .center)
-        .padding()
         .rotationEffect(反転(陣営 == .玉))
     }
 }
