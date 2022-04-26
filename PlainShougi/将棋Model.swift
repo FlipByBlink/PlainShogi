@@ -13,19 +13,19 @@ class 将棋Model: ObservableObject {
     
     @Published var 盤外のこれを: 兵? = nil
     
-    @Published var 今: 段階 = .コマを持っていない
+    @Published var 今: 段階 = .駒を持っていない
     
     
     func 持ち上げる(_ ここから: Int) -> NSItemProvider {
         盤上のここから = ここから
-        今 = .コマを移動
+        今 = .盤上の駒を持ち上げている
         return 外部へテキストを書き出す()
     }
     
     
     func 持ち上げる(_ これを: 兵) -> NSItemProvider {
         盤外のこれを = これを
-        今 = .コマを召喚
+        今 = .手駒を持ち上げている
         return 外部へテキストを書き出す()
     }
     
@@ -37,18 +37,15 @@ class 将棋Model: ObservableObject {
         
         if let 🏷 = 🗂.suggestedName {
             print("🗂.suggestedName: ", 🏷)
-            
-            if 🏷 != "コマ" {
-                今 = .コマを持っていない
-            }
+            if 🏷 != "コマ" { 今 = .駒を持っていない }
         } else {
-            今 = .コマを持っていない
+            print("🗂.suggestedName: nil")
+            今 = .駒を持っていない
         }
         
         switch 今 {
-        case .コマを持っていない:
+        case .駒を持っていない:
             🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
-                
                 if ⓔrror != nil { print("👿: ", ⓔrror.debugDescription) }
                 
                 guard let 📋 = 📁 as? Data else { return }
@@ -61,7 +58,7 @@ class 将棋Model: ObservableObject {
                     }
                 }
             }
-        case .コマを移動:
+        case .盤上の駒を持ち上げている:
             if let 出発地 = 盤上のここから {
                 if 行先 == 出発地 { return true }
                 
@@ -78,7 +75,7 @@ class 将棋Model: ObservableObject {
             } else {
                 print("🐛")
             }
-        case .コマを召喚:
+        case .手駒を持ち上げている:
             if let これ = 盤外のこれを {
                 if 盤上[行先] != nil { return true }
                 
@@ -172,7 +169,6 @@ class 将棋Model: ObservableObject {
     
     
     func 外部へテキストを書き出す() -> NSItemProvider {
-        
         let En表記 = UserDefaults.standard.bool(forKey: "English表記")
         
         var 📄 = "\n☗"
@@ -211,7 +207,7 @@ class 将棋Model: ObservableObject {
     
     
     func 外部からテキストを取り込む(_ 📦: String) {
-        print(📦)
+        print("📦: ",📦)
         
         var 盤上テキスト: [Int: 兵] = [:]
         
@@ -283,5 +279,6 @@ let 初期配置: [Int: 兵] =
  54:兵(.王,.歩),55:兵(.王,.歩),56:兵(.王,.歩),57:兵(.王,.歩),58:兵(.王,.歩),59:兵(.王,.歩),60:兵(.王,.歩),61:兵(.王,.歩),62:兵(.王,.歩),
  64:兵(.王,.角),70:兵(.王,.飛),
  72:兵(.王,.香),73:兵(.王,.桂),74:兵(.王,.銀),75:兵(.王,.金),76:兵(.王,.王),77:兵(.王,.金),78:兵(.王,.銀),79:兵(.王,.桂),80:兵(.王,.香)]
+
 
 let 初期手駒: [王か玉か: [種類]] = [.玉: [], .王: []]

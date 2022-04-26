@@ -89,7 +89,6 @@ struct コマ: View {
     }
     
     var body: some View {
-        
         ZStack {
             背景()
             
@@ -174,7 +173,6 @@ func 振動() {
 
 
 struct ContentView_Previews: PreviewProvider {
-    
     static let 将棋 = 将棋Model()
     
     static var previews: some View {
