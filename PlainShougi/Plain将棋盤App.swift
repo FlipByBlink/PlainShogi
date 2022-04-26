@@ -48,9 +48,8 @@ struct Plain将棋盤App: App {
                 } label: {
                     Text("…")
                         .foregroundColor(.primary)
-                        .padding()
+                        .padding(32)
                 }
-                .padding()
                 .accessibilityLabel("メニュー")
             }
         }
