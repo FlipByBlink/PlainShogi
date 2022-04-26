@@ -72,9 +72,7 @@ class 将棋Model: ObservableObject {
                 盤上.removeValue(forKey: 出発地)
                 
                 盤上のここから = nil
-            } else {
-                print("🐛")
-            }
+            } else { print("🐛") }
         case .手駒を持ち上げている:
             if let これ = 盤外のこれを {
                 if 盤上[行先] != nil { return true }
@@ -85,9 +83,7 @@ class 将棋Model: ObservableObject {
                 手駒[これ.陣営]!.remove(at: ひとつ)
                 
                 盤外のこれを = nil
-            } else {
-                print("🐛")
-            }
+            } else { print("🐛") }
         }
         
         ログ保存()
@@ -267,6 +263,7 @@ class 将棋Model: ObservableObject {
     func はじめに戻す() {
         self.盤上 = 初期配置
         self.手駒 = 初期手駒
+        
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
 }

@@ -11,7 +11,7 @@ struct ContentView: View {
                 if 📐.size.width/9 < 📐.size.height/11 {
                     return 📐.size.width/9
                 } else {
-                    return (📐.size.height-8*4-16*2)/11
+                    return (📐.size.height-4*4-16*2)/11
                 }
             }()
             
@@ -20,7 +20,7 @@ struct ContentView: View {
                 
                 盤外(陣営: .玉)
                     .frame(height: マスの大きさ, alignment: .center)
-                    .padding(8)
+                    .padding(4)
                 
                 VStack(spacing: 0) {
                     Divider()
@@ -46,7 +46,7 @@ struct ContentView: View {
                 
                 盤外(陣営: .王)
                     .frame(height: マスの大きさ, alignment: .center)
-                    .padding(8)
+                    .padding(4)
                 
                 Spacer()
             }
