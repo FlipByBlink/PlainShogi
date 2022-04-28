@@ -98,6 +98,8 @@ class 将棋Model: ObservableObject {
                 self.盤上[位置] = 兵(これ.陣営, 裏)
             }
         }
+        
+        振動()
     }
     
     
