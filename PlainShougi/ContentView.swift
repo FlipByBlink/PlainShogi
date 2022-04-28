@@ -141,9 +141,9 @@ struct 盤外: View {
             Spacer()
             
             ForEach(種類.allCases) { 種類毎 in
-                let 人数 = 将棋.手駒[陣営]!.filter{$0 == 種類毎}.count
-                if 人数 > 0 {
-                    コマ(種類毎, 人数, 余白なし: true)
+                let 数 = 将棋.手駒[陣営]!.filter{$0 == 種類毎}.count
+                if 数 > 0 {
+                    コマ(種類毎, 数, 余白なし: true)
                         .onDrag{
                             将棋.持ち上げる(兵(陣営,種類毎))
                         } preview: {

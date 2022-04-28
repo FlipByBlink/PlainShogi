@@ -46,7 +46,7 @@ class 将棋Model: ObservableObject {
         switch 今 {
         case .駒を持っていない:
             🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
-                if ⓔrror != nil { print("👿: ", ⓔrror.debugDescription) }
+                if ⓔrror != nil { print("👿 loadItem: ", ⓔrror.debugDescription) }
                 
                 guard let 📋 = 📁 as? Data else { return }
                 
