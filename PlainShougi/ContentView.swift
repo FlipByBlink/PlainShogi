@@ -80,7 +80,7 @@ struct マス: View {
                     将棋.裏返す(位置)
                 }
         } else {
-            背景()
+            Color(uiColor: .systemBackground)
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
                     将棋.移動(位置, 📨)
                 }
@@ -110,7 +110,7 @@ struct コマ: View {
     
     var body: some View {
         ZStack {
-            背景()
+            Color(uiColor: .systemBackground)
             
             if 余白なし {
                 Text(表記)
@@ -123,10 +123,10 @@ struct コマ: View {
         .accessibilityHidden(true)
     }
     
-    init(_ ｼｮｸﾒｲ:種類, _ ｶｽﾞ: Int = 1, 余白なし ﾖﾊｸﾅｼ: Bool = false) {
+    init(_ ｼｮｸﾒｲ:種類, _ ｶｽﾞ:Int = 1, 余白なし ﾖﾊｸﾅｼ:Bool = false) {
         職名 = ｼｮｸﾒｲ
         数 = ｶｽﾞ
-        self.余白なし = ﾖﾊｸﾅｼ
+        余白なし = ﾖﾊｸﾅｼ
     }
 }
 
@@ -164,14 +164,6 @@ struct 盤外: View {
             Spacer()
         }
         .rotationEffect(反転(陣営 == .玉))
-    }
-}
-
-
-struct 背景: View {
-    var body: some View {
-        Rectangle()
-            .foregroundColor(Color(uiColor: .systemBackground))
     }
 }
 
