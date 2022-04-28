@@ -9,22 +9,22 @@ class 将棋Model: ObservableObject {
     
     @Published var 手駒: [王か玉か: [種類]] = 初期手駒
     
-    @Published var 盤上のここから: Int? = nil
+    @Published var 動き出した駒の位置: Int? = nil
     
-    @Published var 盤外のこれを: 兵? = nil
+    @Published var 持ち上げられた手駒: 兵? = nil
     
     @Published var 今: 段階 = .駒を持っていない
     
     
     func 持ち上げる(_ ここから: Int) -> NSItemProvider {
-        盤上のここから = ここから
+        動き出した駒の位置 = ここから
         今 = .盤上の駒を持ち上げている
         return 外部へテキストを書き出す()
     }
     
     
     func 持ち上げる(_ これを: 兵) -> NSItemProvider {
-        盤外のこれを = これを
+        持ち上げられた手駒 = これを
         今 = .手駒を持ち上げている
         return 外部へテキストを書き出す()
     }
@@ -59,7 +59,7 @@ class 将棋Model: ObservableObject {
                 }
             }
         case .盤上の駒を持ち上げている:
-            if let 出発地 = 盤上のここから {
+            if let 出発地 = 動き出した駒の位置 {
                 if 行先 == 出発地 { return true }
                 
                 if let 先客 = 盤上[行先] {
@@ -71,10 +71,10 @@ class 将棋Model: ObservableObject {
                 盤上.updateValue(盤上[出発地]!, forKey: 行先)
                 盤上.removeValue(forKey: 出発地)
                 
-                盤上のここから = nil
+                動き出した駒の位置 = nil
             } else { print("🐛") }
         case .手駒を持ち上げている:
-            if let これ = 盤外のこれを {
+            if let これ = 持ち上げられた手駒 {
                 if 盤上[行先] != nil { return true }
                 
                 盤上.updateValue(これ, forKey: 行先)
@@ -82,7 +82,7 @@ class 将棋Model: ObservableObject {
                 let ひとつ = 手駒[これ.陣営]!.firstIndex(of:これ.職名)!
                 手駒[これ.陣営]!.remove(at: ひとつ)
                 
-                盤外のこれを = nil
+                持ち上げられた手駒 = nil
             } else { print("🐛") }
         }
         
@@ -223,27 +223,27 @@ class 将棋Model: ObservableObject {
             let 字 = 文字1つ.description
             
             if 改行数 == 0 || 改行数 == 12 {
-                種類.allCases.forEach { ｼｭﾙｲ in
-                    if 字 == ｼｭﾙｲ.rawValue || 字 == ｼｭﾙｲ.englishテキスト {
-                        手駒テキスト[.王]?.append(ｼｭﾙｲ)
+                種類.allCases.forEach { 種類毎 in
+                    if 字 == 種類毎.rawValue || 字 == 種類毎.englishテキスト {
+                        手駒テキスト[.王]?.append(種類毎)
                     }
                     
-                    if 字 == ｼｭﾙｲ.rawValue + "͙" || 字 == ｼｭﾙｲ.englishテキスト + "͙" {
-                        手駒テキスト[.玉]?.append(ｼｭﾙｲ)
+                    if 字 == 種類毎.rawValue + "͙" || 字 == 種類毎.englishテキスト + "͙" {
+                        手駒テキスト[.玉]?.append(種類毎)
                     }
                 }
             }
             
             if 1 < 改行数 && 改行数 < 11 {
-                種類.allCases.forEach { ｼｭﾙｲ in
+                種類.allCases.forEach { 種類毎 in
                     let 座標 = ( 改行数 - 2 ) * 9 + 列
                     
-                    if 字 == ｼｭﾙｲ.rawValue || 字 == ｼｭﾙｲ.englishテキスト {
-                        盤上テキスト.updateValue(兵(.王, ｼｭﾙｲ), forKey: 座標)
+                    if 字 == 種類毎.rawValue || 字 == 種類毎.englishテキスト {
+                        盤上テキスト.updateValue(兵(.王, 種類毎), forKey: 座標)
                     }
                     
-                    if 字 == ｼｭﾙｲ.rawValue + "͙" || 字 == ｼｭﾙｲ.englishテキスト + "͙" {
-                        盤上テキスト.updateValue(兵(.玉, ｼｭﾙｲ), forKey: 座標)
+                    if 字 == 種類毎.rawValue + "͙" || 字 == 種類毎.englishテキスト + "͙" {
+                        盤上テキスト.updateValue(兵(.玉, 種類毎), forKey: 座標)
                     }
                 }
             }
