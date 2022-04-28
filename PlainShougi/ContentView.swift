@@ -62,15 +62,15 @@ struct マス: View {
     var 位置: Int
     
     var body: some View {
-        if let 兵士: 兵 = 将棋.盤上[位置] {
-            コマ(名: 兵士.職名, 余白なし: true)
-                .rotationEffect(反転(兵士.陣営 == .玉))
+        if let 兵員: 兵 = 将棋.盤上[位置] {
+            コマ(職名: 兵員.職名, 余白なし: true)
+                .rotationEffect(反転(兵員.陣営 == .玉))
                 .onDrag {
                     将棋.持ち上げる(位置)
                 } preview: {
-                    コマ(名: 兵士.職名)
+                    コマ(職名: 兵員.職名)
                         .border(.primary)
-                        .rotationEffect(反転(兵士.陣営 == .玉))
+                        .rotationEffect(反転(兵員.陣営 == .玉))
                         .onAppear { 振動() }
                 }
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
@@ -90,7 +90,7 @@ struct マス: View {
 
 
 struct コマ: View {
-    var 名: 種類
+    var 職名: 種類
     
     var 余白なし: Bool = false
     
@@ -99,7 +99,7 @@ struct コマ: View {
     @AppStorage("English表記") var English表記: Bool = false
     
     var 表記: String {
-        let 字 = English表記 ? 名.english : 名.rawValue
+        let 字 = English表記 ? 職名.english : 職名.rawValue
         
         if 数 > 1 {
             return 字 + 数.description
@@ -134,20 +134,20 @@ struct 盤外: View {
         HStack {
             Spacer()
             
-            ForEach(種類.allCases) { ｼｭﾙｲ in
-                let 人数 = 将棋.手駒[陣営]!.filter{$0 == ｼｭﾙｲ}.count
+            ForEach(種類.allCases) { 種類毎 in
+                let 人数 = 将棋.手駒[陣営]!.filter{$0 == 種類毎}.count
                 if 人数 > 0 {
-                    コマ(名: ｼｭﾙｲ, 余白なし: true, 数: 人数)
+                    コマ(職名: 種類毎, 余白なし: true, 数: 人数)
                         .onDrag{
-                            将棋.持ち上げる(兵(陣営,ｼｭﾙｲ))
+                            将棋.持ち上げる(兵(陣営,種類毎))
                         } preview: {
-                            コマ(名: ｼｭﾙｲ)
+                            コマ(職名: 種類毎)
                                 .border(.primary)
                                 .rotationEffect(反転(陣営 == .玉))
                                 .onAppear { 振動() }
                         }
                         .onTapGesture(count: 3) {
-                            let ひとつ = 将棋.手駒[陣営]!.firstIndex(of:ｼｭﾙｲ)!
+                            let ひとつ = 将棋.手駒[陣営]!.firstIndex(of:種類毎)!
                             将棋.手駒[陣営]!.remove(at: ひとつ)
                         }
                 } else {
