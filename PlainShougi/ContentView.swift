@@ -63,12 +63,12 @@ struct マス: View {
     
     var body: some View {
         if let 兵員: 兵 = 将棋.盤上[位置] {
-            コマ(職名: 兵員.職名, 余白なし: true)
+            コマ(兵員.職名, 余白なし: true)
                 .rotationEffect(反転(兵員.陣営 == .玉))
                 .onDrag {
                     将棋.持ち上げる(位置)
                 } preview: {
-                    コマ(職名: 兵員.職名)
+                    コマ(兵員.職名)
                         .border(.primary)
                         .rotationEffect(反転(兵員.陣営 == .玉))
                         .onAppear { 振動() }
@@ -92,9 +92,9 @@ struct マス: View {
 struct コマ: View {
     var 職名: 種類
     
-    var 余白なし: Bool = false
+    var 余白なし: Bool
     
-    var 数: Int = 1
+    var 数: Int
     
     @AppStorage("English表記") var English表記: Bool = false
     
@@ -122,6 +122,12 @@ struct コマ: View {
         .minimumScaleFactor(0.1)
         .accessibilityHidden(true)
     }
+    
+    init(_ ｼｮｸﾒｲ:種類, _ ｶｽﾞ: Int = 1, 余白なし ﾖﾊｸﾅｼ: Bool = false) {
+        職名 = ｼｮｸﾒｲ
+        数 = ｶｽﾞ
+        self.余白なし = ﾖﾊｸﾅｼ
+    }
 }
 
 
@@ -137,11 +143,11 @@ struct 盤外: View {
             ForEach(種類.allCases) { 種類毎 in
                 let 人数 = 将棋.手駒[陣営]!.filter{$0 == 種類毎}.count
                 if 人数 > 0 {
-                    コマ(職名: 種類毎, 余白なし: true, 数: 人数)
+                    コマ(種類毎, 人数, 余白なし: true)
                         .onDrag{
                             将棋.持ち上げる(兵(陣営,種類毎))
                         } preview: {
-                            コマ(職名: 種類毎)
+                            コマ(種類毎)
                                 .border(.primary)
                                 .rotationEffect(反転(陣営 == .玉))
                                 .onAppear { 振動() }
