@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		124B75552810CD6D00027DCA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
+		126A53172823F95D003937A6 /* 広告AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126A53162823F95D003937A6 /* 広告AD.swift */; };
 		126C18F32816460F002CD046 /* 型Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* 型Type.swift */; };
 		128D156B280FE47E003FF480 /* Plain将棋盤App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156A280FE47E003FF480 /* Plain将棋盤App.swift */; };
 		128D156D280FE47E003FF480 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		124B75562810CD6D00027DCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		124B75582810CD8100027DCA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		126A53162823F95D003937A6 /* 広告AD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "広告AD.swift"; sourceTree = "<group>"; };
 		126C18F22816460F002CD046 /* 型Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "型Type.swift"; sourceTree = "<group>"; };
 		128D1567280FE47E003FF480 /* 将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		128D156A280FE47E003FF480 /* Plain将棋盤App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plain将棋盤App.swift"; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				128D156C280FE47E003FF480 /* ContentView.swift */,
 				128D1578280FE4E4003FF480 /* 将棋Model.swift */,
 				126C18F22816460F002CD046 /* 型Type.swift */,
+				126A53162823F95D003937A6 /* 広告AD.swift */,
 				124B75572810CD6D00027DCA /* Localizable.strings */,
 				128D156E280FE47F003FF480 /* Assets.xcassets */,
 				128D1570280FE47F003FF480 /* Preview Content */,
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				128D156D280FE47E003FF480 /* ContentView.swift in Sources */,
+				126A53172823F95D003937A6 /* 広告AD.swift in Sources */,
 				128D156B280FE47E003FF480 /* Plain将棋盤App.swift in Sources */,
 				126C18F32816460F002CD046 /* 型Type.swift in Sources */,
 				128D1579280FE4E4003FF480 /* 将棋Model.swift in Sources */,

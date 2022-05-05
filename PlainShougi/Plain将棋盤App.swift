@@ -15,6 +15,8 @@ struct Plain将棋盤App: App {
                 
                 ContentView()
                     .environmentObject(将棋)
+                
+                広告AD()
             }
             .statusBar(hidden: true)
             .overlay(alignment: .bottomTrailing) {
