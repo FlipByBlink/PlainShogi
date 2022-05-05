@@ -23,7 +23,7 @@ struct SourceCodeView: View {
                             ScrollView(.vertical) {
                                 ScrollView(.horizontal) {
                                     Text(try! String(contentsOf: 📍))
-                                        .font(.body.monospaced())
+                                        .font(.caption.monospaced())
                                         .padding()
                                 }
                             }
@@ -37,7 +37,7 @@ struct SourceCodeView: View {
                     NavigationLink("Bundle.main.infoDictionary") {
                         ScrollView {
                             Text(Bundle.main.infoDictionary!.description)
-                                .font(.body.monospaced())
+                                .font(.caption.monospaced())
                                 .padding()
                         }
                     }
