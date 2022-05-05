@@ -8,6 +8,8 @@ struct Plain将棋盤App: App {
     
     @AppStorage("English表記") var English表記: Bool = false
     
+    @State private var 🚩SourceCode = false
+    
     var body: some Scene {
         WindowGroup {
             ZStack {
@@ -28,6 +30,12 @@ struct Plain将棋盤App: App {
                     }
                     
                     Menu {
+                        Button {
+                            🚩SourceCode = true
+                        } label: {
+                            Label("ソースコードを確認する", systemImage: "doc.plaintext")
+                        }
+                        
                         Toggle(isOn: $English表記) {
                             Label("English term", systemImage: "p.square")
                         }
@@ -53,6 +61,9 @@ struct Plain将棋盤App: App {
                         .padding(32)
                 }
                 .accessibilityLabel("メニュー")
+            }
+            .popover(isPresented: $🚩SourceCode) {
+                SourceCodeView()
             }
         }
     }
