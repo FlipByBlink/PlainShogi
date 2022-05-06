@@ -4,10 +4,22 @@ import SwiftUI
 
 struct SourceCodeView: View {
     
-    let 📁URL = Bundle.main.bundleURL.appendingPathComponent("📁")
+    let 📲URL = Bundle.main.bundleURL
     
-    var 📑: [String] {
-        try! FileManager.default.contentsOfDirectory(atPath: 📁URL.path)
+    var 📁Primary: URL {
+        📲URL.appendingPathComponent("📁Primary")
+    }
+    
+    var 📑Primary: [String] {
+        try! FileManager.default.contentsOfDirectory(atPath: 📁Primary.path)
+    }
+    
+    var 📁Secondary: URL {
+        📲URL.appendingPathComponent("📁Secondary")
+    }
+    
+    var 📑Secondary: [String] {
+        try! FileManager.default.contentsOfDirectory(atPath: 📁Secondary.path)
     }
     
     @Environment(\.dismiss) var 🔙: DismissAction
@@ -16,9 +28,27 @@ struct SourceCodeView: View {
         NavigationView {
             List {
                 Section {
-                    ForEach(📑, id: \.self) { 📃 in
+                    ForEach(📑Primary, id: \.self) { 📃 in
                         NavigationLink(📃) {
-                            let 📍 = 📁URL.appendingPathComponent(📃)
+                            let 📍 = 📁Primary.appendingPathComponent(📃)
+                            
+                            ScrollView(.vertical) {
+                                ScrollView(.horizontal) {
+                                    Text(try! String(contentsOf: 📍))
+                                        .font(.caption.monospaced())
+                                        .padding()
+                                }
+                            }
+                            .navigationBarTitle(📃)
+                            .navigationBarTitleDisplayMode(.inline)
+                        }
+                    }
+                }
+                
+                Section {
+                    ForEach(📑Secondary, id: \.self) { 📃 in
+                        NavigationLink(📃) {
+                            let 📍 = 📁Secondary.appendingPathComponent(📃)
                             
                             ScrollView(.vertical) {
                                 ScrollView(.horizontal) {
