@@ -8,7 +8,7 @@ struct Plain将棋盤App: App {
     
     @AppStorage("English表記") var English表記: Bool = false
     
-    @State private var 🚩SourceCode = false
+    @State private var 🚩ソース確認 = false
     
     var body: some Scene {
         WindowGroup {
@@ -31,7 +31,7 @@ struct Plain将棋盤App: App {
                     
                     Menu {
                         Button {
-                            🚩SourceCode = true
+                            🚩ソース確認 = true
                         } label: {
                             Label("ソースコードを確認する", systemImage: "doc.plaintext")
                         }
@@ -62,7 +62,7 @@ struct Plain将棋盤App: App {
                 }
                 .accessibilityLabel("メニュー")
             }
-            .popover(isPresented: $🚩SourceCode) {
+            .popover(isPresented: $🚩ソース確認) {
                 ソース確認SourceCheck()
             }
         }
