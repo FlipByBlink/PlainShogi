@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		123BC8B82824AC1F00812C82 /* README.md in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D198532810DD6500CE6578 /* README.md */; };
-		123BC8B92824AC1F00812C82 /* 型Type.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* 型Type.swift */; };
 		123BC8BA2824AC1F00812C82 /* 広告AD.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126A53162823F95D003937A6 /* 広告AD.swift */; };
 		123BC8BB2824AC1F00812C82 /* ソース確認SourceCheck.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126A531A2824027E003937A6 /* ソース確認SourceCheck.swift */; };
 		124B75552810CD6D00027DCA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
@@ -24,6 +23,7 @@
 		128D1572280FE47F003FF480 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D1571280FE47F003FF480 /* Preview Assets.xcassets */; };
 		128D1579280FE4E4003FF480 /* 将棋Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 将棋Model.swift */; };
 		129A8F2D2824BA0B00EFD58A /* Localizable.strings in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
+		129A8F2E28251C1500EFD58A /* 型Type.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* 型Type.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,7 +34,6 @@
 			dstSubfolderSpec = 7;
 			files = (
 				123BC8B82824AC1F00812C82 /* README.md in CopyFiles */,
-				123BC8B92824AC1F00812C82 /* 型Type.swift in CopyFiles */,
 				123BC8BA2824AC1F00812C82 /* 広告AD.swift in CopyFiles */,
 				123BC8BB2824AC1F00812C82 /* ソース確認SourceCheck.swift in CopyFiles */,
 			);
@@ -46,6 +45,7 @@
 			dstPath = "📁Primary";
 			dstSubfolderSpec = 7;
 			files = (
+				129A8F2E28251C1500EFD58A /* 型Type.swift in CopyFiles */,
 				126A531D2824052A003937A6 /* Plain将棋盤App.swift in CopyFiles */,
 				126A531E2824052A003937A6 /* ContentView.swift in CopyFiles */,
 				126A531F2824052A003937A6 /* 将棋Model.swift in CopyFiles */,
