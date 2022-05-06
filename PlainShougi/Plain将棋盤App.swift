@@ -79,9 +79,9 @@ struct メニュー: View {
                     Group {
                         Label("盤外の駒をトリプルタップして削除", systemImage: "trash")
                         
-                        Label("駒を他アプリへドラッグして盤面を書き出す", systemImage: "square.and.arrow.up")
+                        Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
                         
-                        Label("テキストをドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
+                        Label("他のアプリからテキストを盤上にドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
                     }
                     .foregroundStyle(.secondary)
                 } header: {
@@ -108,6 +108,15 @@ struct メニュー: View {
                     } label: {
                         Label("ソースコードを確認する", systemImage: "doc.plaintext")
                     }
+                }
+                
+                
+                Section {
+                    Text(将棋.テキストに変換する())
+                        .padding()
+                        .textSelection(.enabled)
+                } header: {
+                    Text("テキスト書き出し例")
                 }
             }
             .navigationTitle("メニュー")

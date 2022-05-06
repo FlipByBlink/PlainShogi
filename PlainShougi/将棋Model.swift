@@ -166,9 +166,19 @@ class 将棋Model: ObservableObject {
     
     
     func 外部へテキストを書き出す() -> NSItemProvider {
+        var 📄 = "\n"
+        📄 += テキストに変換する()
+        
+        let 📦 = NSItemProvider(object: 📄 as NSItemProviderWriting)
+        📦.suggestedName = "コマ"
+        return 📦
+    }
+    
+    
+    func テキストに変換する() -> String {
         let En表記 = UserDefaults.standard.bool(forKey: "English表記")
         
-        var 📄 = "\n☗"
+        var 📄 = "☗"
         
         self.手駒[.玉]?.forEach{ ﾃｺﾞﾏ in
             📄 += En表記 ? ﾃｺﾞﾏ.englishテキスト + "͙" : ﾃｺﾞﾏ.rawValue + "͙"
@@ -190,16 +200,14 @@ class 将棋Model: ObservableObject {
             }
             📄 += "\n"
         }
-
+        
         📄 += "－－－－－－－－－\n☖"
         
         self.手駒[.王]?.forEach{ ﾃｺﾞﾏ in
             📄 += En表記 ? ﾃｺﾞﾏ.englishテキスト : ﾃｺﾞﾏ.rawValue
         }
         
-        let 📦 = NSItemProvider(object: 📄 as NSItemProviderWriting)
-        📦.suggestedName = "コマ"
-        return 📦
+        return 📄
     }
     
     
