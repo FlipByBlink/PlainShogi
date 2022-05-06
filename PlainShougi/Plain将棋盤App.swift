@@ -14,12 +14,14 @@ struct Plain将棋盤App: App {
                 Rectangle().opacity(0)
                 
                 ContentView()
+                    .environmentObject(将棋)
                 
                 広告AD()
             }
             .statusBar(hidden: true)
             .sheet(isPresented: $🚩メニューを開く) {
                 メニュー()
+                    .environmentObject(将棋)
             }
             .overlay(alignment: .bottomTrailing) {
                 Button {
@@ -31,7 +33,6 @@ struct Plain将棋盤App: App {
                 }
                 .accessibilityLabel("メニュー")
             }
-            .environmentObject(将棋)
         }
     }
 }
