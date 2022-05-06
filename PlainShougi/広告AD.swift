@@ -17,7 +17,7 @@ struct 広告AD: View {
     var 🆔: String {
         //FlipByBlink appIdentifier: 1444571751
         //FadeInAlarm appIdentifier: 1465336070
-        if 🄻aunchCount % 2 == 1 { //FIXME: 2 -> 6
+        if 🄻aunchCount % 2 == 1 {
             return "1444571751"
         } else {
             return "1465336070"
@@ -95,7 +95,7 @@ struct 広告AD: View {
         .task {
             🄻aunchCount += 1
             //if 🄻aunchCount % 6 == 0 {
-            if 🄻aunchCount % 2 == 0 {
+            if 🄻aunchCount % 2 == 0 { //FIXME: 2 -> 6
                 🄿resentAdBanner = true
             }
         }

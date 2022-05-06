@@ -1,11 +1,16 @@
 
 "AppStore リンク" = "AppStore link";
+
 "はじめに戻す" = "Initialize";
-"枠を非表示" = "Hide edge line";
+
 "その他" = "Others";
+
 "盤外の駒をトリプルタップして削除" = "Triple tap a piece out of the board: Delete it";
+
 "盤上の駒をダブルタップして裏返す" = "Double tap a piece on the board: Turn it";
+
 "駒を長押しで選択してそのまま移動" = "Long press a piece, move it";
+
 "メニュー" = "Menu";
 
 "📄TextAboutAD" = "This App shows banner advertisement about applications on AppStore. These are Apps by PlainShogiBoard developer. AD banner is rarely presented. It appears one in every six times. To hide the banner, tap the × OR swipe down.";

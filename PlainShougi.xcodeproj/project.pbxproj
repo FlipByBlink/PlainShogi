@@ -23,6 +23,7 @@
 		128D156F280FE47F003FF480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
 		128D1572280FE47F003FF480 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D1571280FE47F003FF480 /* Preview Assets.xcassets */; };
 		128D1579280FE4E4003FF480 /* 将棋Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 将棋Model.swift */; };
+		129A8F2D2824BA0B00EFD58A /* Localizable.strings in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +49,16 @@
 				126A531D2824052A003937A6 /* Plain将棋盤App.swift in CopyFiles */,
 				126A531E2824052A003937A6 /* ContentView.swift in CopyFiles */,
 				126A531F2824052A003937A6 /* 将棋Model.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		129A8F2B2824B9A000EFD58A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "📁Localizable";
+			dstSubfolderSpec = 7;
+			files = (
+				129A8F2D2824BA0B00EFD58A /* Localizable.strings in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +143,7 @@
 				128D1565280FE47E003FF480 /* Resources */,
 				126A531C28240508003937A6 /* CopyFiles */,
 				123BC8B72824ABFF00812C82 /* CopyFiles */,
+				129A8F2B2824B9A000EFD58A /* CopyFiles */,
 			);
 			buildRules = (
 			);

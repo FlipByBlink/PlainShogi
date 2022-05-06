@@ -13,6 +13,8 @@ struct ソース確認SourceCheck: View {
                 
                 📑Section("📁Secondary")
                 
+                📑LocalizableSection()
+                
                 Section {
                     NavigationLink("Bundle.main.infoDictionary") {
                         ScrollView {
@@ -80,6 +82,34 @@ struct 📑Section: View {
     
     init(_ ⓓirPath: String) {
         self.ⓓirPath = ⓓirPath
+    }
+}
+
+
+struct 📑LocalizableSection: View {
+    
+    var 📁URL: URL {
+        Bundle.main.bundleURL.appendingPathComponent("📁Localizable")
+    }
+    
+    var 📦: [String] {
+        ["ja.lproj/Localizable.strings", "en.lproj/Localizable.strings"]
+    }
+    
+    var body: some View {
+        Section {
+            ForEach(📦, id: \.self) { 📃 in
+                NavigationLink(📃) {
+                    let 📍 = 📁URL.appendingPathComponent(📃)
+                    
+                    ScrollView(.vertical) {
+                        📄View(try! String(contentsOf: 📍))
+                    }
+                    .navigationBarTitle(📃)
+                    .navigationBarTitleDisplayMode(.inline)
+                }
+            }
+        }
     }
 }
 
