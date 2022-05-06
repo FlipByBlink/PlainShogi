@@ -6,9 +6,7 @@ import SwiftUI
 struct Plain将棋盤App: App {
     @StateObject var 将棋 = 将棋Model()
     
-    @AppStorage("English表記") var English表記: Bool = false
-    
-    @State private var 🚩ソース確認 = false
+    @State private var 🚩メニューを開く = false
     
     var body: some Scene {
         WindowGroup {
@@ -16,49 +14,16 @@ struct Plain将棋盤App: App {
                 Rectangle().opacity(0)
                 
                 ContentView()
-                    .environmentObject(将棋)
                 
                 広告AD()
             }
             .statusBar(hidden: true)
+            .sheet(isPresented: $🚩メニューを開く) {
+                メニュー()
+            }
             .overlay(alignment: .bottomTrailing) {
-                Menu {
-                    let 🔗 = "https://apps.apple.com/app/id1620268476"
-                    
-                    Link(destination: URL(string: 🔗)!) {
-                        Label("AppStore リンク", systemImage: "link")
-                    }
-                    
-                    Menu {
-                        Button {
-                            🚩ソース確認 = true
-                        } label: {
-                            Label("ソースコードを確認する", systemImage: "doc.plaintext")
-                        }
-                        
-                        Toggle(isOn: $English表記) {
-                            Label("English term", systemImage: "p.square")
-                        }
-                        
-                        Label("盤外の駒をトリプルタップして削除", systemImage: "trash")
-                        
-                        Label("駒を他アプリへドラッグして盤面を書き出す", systemImage: "square.and.arrow.up")
-                        
-                        Label("テキストをドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
-                    } label: {
-                        Label("その他", systemImage: "gear")
-                    }
-                    
-                    Button {
-                        将棋.はじめに戻す()
-                    } label: {
-                        Label("はじめに戻す", systemImage: "arrow.counterclockwise")
-                    }
-                    
-                    Label("盤上の駒をダブルタップして裏返す", systemImage: "rotate.right")
-                    
-                    Label("駒を長押しで選択してそのまま移動", systemImage: "hand.draw")
-                    
+                Button {
+                    🚩メニューを開く = true
                 } label: {
                     Text("…")
                         .foregroundColor(.primary)
@@ -66,8 +31,96 @@ struct Plain将棋盤App: App {
                 }
                 .accessibilityLabel("メニュー")
             }
-            .sheet(isPresented: $🚩ソース確認) {
-                ソース確認SourceCheck()
+            .environmentObject(将棋)
+        }
+    }
+}
+
+
+struct メニュー: View {
+    
+    @EnvironmentObject var 将棋: 将棋Model
+    
+    @Environment(\.dismiss) var 🔙: DismissAction
+    
+    @AppStorage("English表記") var English表記: Bool = false
+    
+    var body: some View {
+        NavigationView {
+            List {
+                Section {
+                    Label("駒を長押しで選択してそのまま移動", systemImage: "hand.draw")
+                    
+                    Label("盤上の駒をダブルタップして裏返す", systemImage: "rotate.right")
+                } header: {
+                    Text("あそび方")
+                }
+                
+                
+                Button {
+                    将棋.はじめに戻す()
+                    🔙.callAsFunction()
+                } label: {
+                    Label("盤面を元に戻す", systemImage: "arrow.counterclockwise")
+                }
+                
+                
+                Section {
+                    let 🔗 = "https://apps.apple.com/app/id1620268476"
+                    Link(destination: URL(string: 🔗)!) {
+                        Label("AppStore リンク", systemImage: "link")
+                    }
+                }
+
+                
+                Section {
+                    Toggle(isOn: $English表記) {
+                        Label("English表記", systemImage: "p.square")
+                    }
+                } header: {
+                    Text("オプション")
+                }
+                
+                
+                Section {
+                    Label("盤外の駒をトリプルタップして削除", systemImage: "trash")
+                    
+                    Label("駒を他アプリへドラッグして盤面を書き出す", systemImage: "square.and.arrow.up")
+                    
+                    Label("テキストをドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
+                } header: {
+                    Text("細かな使い方")
+                }
+                
+                
+                Section {
+                    NavigationLink {
+                        Text("📄TextAboutAD")
+                            .padding()
+                            .navigationTitle("About self-AD")
+                    } label: {
+                        Label("アプリ内広告について", systemImage: "exclamationmark.bubble")
+                    }
+                    
+                    NavigationLink {
+                        ソース確認SourceCheck()
+                    } label: {
+                        Label("ソースコードを確認する", systemImage: "doc.plaintext")
+                    }
+                }
+            }
+            .navigationTitle("メニュー")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        🔙.callAsFunction()
+                    } label: {
+                        Image(systemName: "chevron.down")
+                            .foregroundStyle(.secondary)
+                            .grayscale(1.0)
+                            .padding(8)
+                    }
+                }
             }
         }
     }

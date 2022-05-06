@@ -7,45 +7,31 @@ struct ソース確認SourceCheck: View {
     @Environment(\.dismiss) var 🔙: DismissAction
     
     var body: some View {
-        NavigationView {
-            List {
-                📑Section("📁Primary")
-                
-                📑Section("📁Secondary")
-                
-                📑LocalizableSection()
-                
-                Section {
-                    NavigationLink("Bundle.main.infoDictionary") {
-                        ScrollView {
-                            📄View(Bundle.main.infoDictionary!.description)
-                        }
+        List {
+            📑Section("📁Primary")
+            
+            📑Section("📁Secondary")
+            
+            📑LocalizableSection()
+            
+            Section {
+                NavigationLink("Bundle.main.infoDictionary") {
+                    ScrollView {
+                        📄View(Bundle.main.infoDictionary!.description)
                     }
-                }
-                
-                let 🔗 = "https://github.com/FlipByBlink/PlainShougi"
-                Section {
-                    Link(destination: URL(string: 🔗)!) {
-                        Label("Web Repository link", systemImage: "link")
-                    }
-                } footer: {
-                    Text(🔗)
                 }
             }
-            .navigationTitle("Source code")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        🔙.callAsFunction()
-                    } label: {
-                        Image(systemName: "chevron.down")
-                            .foregroundStyle(.secondary)
-                            .grayscale(1.0)
-                            .padding(8)
-                    }
+            
+            let 🔗 = "https://github.com/FlipByBlink/PlainShougi"
+            Section {
+                Link(destination: URL(string: 🔗)!) {
+                    Label("Web Repository link", systemImage: "link")
                 }
+            } footer: {
+                Text(🔗)
             }
         }
+        .navigationTitle("Source code")
     }
 }
 
