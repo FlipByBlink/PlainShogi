@@ -4,62 +4,14 @@ import SwiftUI
 
 struct SourceCodeView: View {
     
-    let 📲URL = Bundle.main.bundleURL
-    
-    let 💾 = FileManager.default
-    
-    var 📁Primary: URL {
-        📲URL.appendingPathComponent("📁Primary")
-    }
-    
-    var 📑Primary: [String] {
-        try! 💾.contentsOfDirectory(atPath: 📁Primary.path)
-    }
-    
-    var 📁Secondary: URL {
-        📲URL.appendingPathComponent("📁Secondary")
-    }
-    
-    var 📑Secondary: [String] {
-        try! 💾.contentsOfDirectory(atPath: 📁Secondary.path)
-    }
-    
     @Environment(\.dismiss) var 🔙: DismissAction
     
     var body: some View {
         NavigationView {
             List {
-                Section {
-                    ForEach(📑Primary, id: \.self) { 📃 in
-                        NavigationLink(📃) {
-                            let 📍 = 📁Primary.appendingPathComponent(📃)
-                            
-                            ScrollView(.vertical) {
-                                ScrollView(.horizontal) {
-                                    📄View(try! String(contentsOf: 📍))
-                                }
-                            }
-                            .navigationBarTitle(📃)
-                            .navigationBarTitleDisplayMode(.inline)
-                        }
-                    }
-                }
+                📑Section("Primary")
                 
-                Section {
-                    ForEach(📑Secondary, id: \.self) { 📃 in
-                        NavigationLink(📃) {
-                            let 📍 = 📁Secondary.appendingPathComponent(📃)
-                            
-                            ScrollView(.vertical) {
-                                ScrollView(.horizontal) {
-                                    📄View(try! String(contentsOf: 📍))
-                                }
-                            }
-                            .navigationBarTitle(📃)
-                            .navigationBarTitleDisplayMode(.inline)
-                        }
-                    }
-                }
+                📑Section("Secondary")
                 
                 Section {
                     NavigationLink("Bundle.main.infoDictionary") {
@@ -69,13 +21,13 @@ struct SourceCodeView: View {
                     }
                 }
                 
-                let 🔗 = URL(string: "https://github.com/FlipByBlink/PlainShougi")!
+                let 🔗 = "https://github.com/FlipByBlink/PlainShougi"
                 Section {
-                    Link(destination: 🔗) {
+                    Link(destination: URL(string: 🔗)!) {
                         Label("Web Repository link", systemImage: "link")
                     }
                 } footer: {
-                    Text(🔗.description)
+                    Text(🔗)
                 }
             }
             .navigationTitle("Source code")
@@ -95,6 +47,41 @@ struct SourceCodeView: View {
     }
 }
 
+
+struct 📑Section: View {
+    
+    var ⓓirPath: String
+    
+    var 📁URL: URL {
+        Bundle.main.bundleURL.appendingPathComponent("📁" + ⓓirPath)
+    }
+    
+    var 📦: [String] {
+        try! FileManager.default.contentsOfDirectory(atPath: 📁URL.path)
+    }
+    
+    var body: some View {
+        Section {
+            ForEach(📦, id: \.self) { 📃 in
+                NavigationLink(📃) {
+                    let 📍 = 📁URL.appendingPathComponent(📃)
+                    
+                    ScrollView(.vertical) {
+                        ScrollView(.horizontal) {
+                            📄View(try! String(contentsOf: 📍))
+                        }
+                    }
+                    .navigationBarTitle(📃)
+                    .navigationBarTitleDisplayMode(.inline)
+                }
+            }
+        }
+    }
+    
+    init(_ ⓓirPath: String) {
+        self.ⓓirPath = ⓓirPath
+    }
+}
 
 
 struct 📄View: View {
