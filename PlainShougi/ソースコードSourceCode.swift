@@ -6,12 +6,14 @@ struct SourceCodeView: View {
     
     let 📲URL = Bundle.main.bundleURL
     
+    let 💾 = FileManager.default
+    
     var 📁Primary: URL {
         📲URL.appendingPathComponent("📁Primary")
     }
     
     var 📑Primary: [String] {
-        try! FileManager.default.contentsOfDirectory(atPath: 📁Primary.path)
+        try! 💾.contentsOfDirectory(atPath: 📁Primary.path)
     }
     
     var 📁Secondary: URL {
@@ -19,7 +21,7 @@ struct SourceCodeView: View {
     }
     
     var 📑Secondary: [String] {
-        try! FileManager.default.contentsOfDirectory(atPath: 📁Secondary.path)
+        try! 💾.contentsOfDirectory(atPath: 📁Secondary.path)
     }
     
     @Environment(\.dismiss) var 🔙: DismissAction
