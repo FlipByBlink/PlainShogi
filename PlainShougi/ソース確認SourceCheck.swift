@@ -2,7 +2,7 @@
 import SwiftUI
 
 
-struct SourceCodeView: View {
+struct ソース確認SourceCheck: View {
     
     @Environment(\.dismiss) var 🔙: DismissAction
     
@@ -102,8 +102,8 @@ struct 📄View: View {
 
 
 
-struct SourceCodeView_Previews: PreviewProvider {
+struct ソース確認SourceCheck_Previews: PreviewProvider {
     static var previews: some View {
-        SourceCodeView()
+        ソース確認SourceCheck()
     }
 }
