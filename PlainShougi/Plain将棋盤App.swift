@@ -41,6 +41,10 @@ struct Plain将棋盤App: App {
                         }
                         
                         Label("盤外の駒をトリプルタップして削除", systemImage: "trash")
+                        
+                        Label("駒を他アプリへドラッグして盤面を書き出す", systemImage: "square.and.arrow.up")
+                        
+                        Label("テキストをドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
                     } label: {
                         Label("その他", systemImage: "gear")
                     }
