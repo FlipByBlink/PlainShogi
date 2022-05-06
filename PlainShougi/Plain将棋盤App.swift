@@ -62,7 +62,7 @@ struct Plain将棋盤App: App {
                 }
                 .accessibilityLabel("メニュー")
             }
-            .popover(isPresented: $🚩ソース確認) {
+            .fullScreenCover(isPresented: $🚩ソース確認) {
                 ソース確認SourceCheck()
             }
         }
