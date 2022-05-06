@@ -69,7 +69,7 @@ struct 📑Section: View {
                     let 📍 = 📁URL.appendingPathComponent(📃)
                     
                     ScrollView(.vertical) {
-                        ScrollView(.horizontal) {
+                        ScrollView(.horizontal, showsIndicators: false) {
                             📄View(try! String(contentsOf: 📍))
                         }
                     }

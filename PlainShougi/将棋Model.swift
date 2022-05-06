@@ -34,8 +34,6 @@ class 将棋Model: ObservableObject {
     func 移動(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool {
         guard let 🗂 = 📦.first else { return false }
         
-        print("🗂.registeredTypeIdentifiers: ",🗂.registeredTypeIdentifiers)
-        
         if let 🏷 = 🗂.suggestedName {
             print("🗂.suggestedName: ", 🏷)
             if 🏷 != "コマ" { 今 = .駒を持っていない }
