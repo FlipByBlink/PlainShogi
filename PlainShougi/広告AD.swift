@@ -78,7 +78,7 @@ struct 広告AD: View {
         .task {
             🄻aunchCount += 1
             //if 🄻aunchCount % 6 == 0 {
-            if 🄻aunchCount % 2 == 0 { //FIXME: 2 -> 6
+            if 🄻aunchCount % 1 == 0 { //FIXME: 1 -> 6
                 🄿resentAdBanner = true
             }
         }
