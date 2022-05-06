@@ -55,6 +55,7 @@ struct メニュー: View {
                 } header: {
                     Text("あそび方")
                 }
+                .foregroundStyle(.primary)
                 
                 
                 Button {
@@ -62,14 +63,6 @@ struct メニュー: View {
                     🔙.callAsFunction()
                 } label: {
                     Label("盤面を元に戻す", systemImage: "arrow.counterclockwise")
-                }
-                
-                
-                Section {
-                    let 🔗 = "https://apps.apple.com/app/id1620268476"
-                    Link(destination: URL(string: 🔗)!) {
-                        Label("AppStore リンク", systemImage: "link")
-                    }
                 }
 
                 
@@ -83,17 +76,25 @@ struct メニュー: View {
                 
                 
                 Section {
-                    Label("盤外の駒をトリプルタップして削除", systemImage: "trash")
-                    
-                    Label("駒を他アプリへドラッグして盤面を書き出す", systemImage: "square.and.arrow.up")
-                    
-                    Label("テキストをドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
+                    Group {
+                        Label("盤外の駒をトリプルタップして削除", systemImage: "trash")
+                        
+                        Label("駒を他アプリへドラッグして盤面を書き出す", systemImage: "square.and.arrow.up")
+                        
+                        Label("テキストをドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
+                    }
+                    .foregroundStyle(.secondary)
                 } header: {
                     Text("細かな使い方")
                 }
                 
                 
                 Section {
+                    let 🔗 = "https://apps.apple.com/app/id1620268476"
+                    Link(destination: URL(string: 🔗)!) {
+                        Label("AppStore リンク", systemImage: "link")
+                    }
+                    
                     NavigationLink {
                         Text("📄TextAboutAD")
                             .padding()
