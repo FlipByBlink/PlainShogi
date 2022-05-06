@@ -50,31 +50,6 @@ struct 広告AD: View {
                     } message: {
                         Text("📄TextAboutAD")
                     }
-
-//                    .popover(isPresented: $🄿resentNote) {
-//                        ZStack {
-//                            Color.clear
-//
-//                            VStack(spacing: 12) {
-//                                Text("About self-AD")
-//                                    .font(.title2.bold())
-//
-//                                Text("📄TextAboutAD")
-//                            }
-//                            .padding(36)
-//                        }
-//                        .overlay(alignment: .topLeading) {
-//                            Button {
-//                                🄿resentNote = false
-//                            } label: {
-//                                Image(systemName: "xmark.circle.fill")
-//                                    .font(.title3.bold())
-//                                    .foregroundColor(.secondary)
-//                                    .symbolRenderingMode(.hierarchical)
-//                                    .padding()
-//                            }
-//                        }
-//                    }
                     
                     Button {
                         🄿resentAdBanner = false
