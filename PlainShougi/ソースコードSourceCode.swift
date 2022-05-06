@@ -36,9 +36,7 @@ struct SourceCodeView: View {
                             
                             ScrollView(.vertical) {
                                 ScrollView(.horizontal) {
-                                    Text(try! String(contentsOf: 📍))
-                                        .font(.caption.monospaced())
-                                        .padding()
+                                    📄View(try! String(contentsOf: 📍))
                                 }
                             }
                             .navigationBarTitle(📃)
@@ -54,9 +52,7 @@ struct SourceCodeView: View {
                             
                             ScrollView(.vertical) {
                                 ScrollView(.horizontal) {
-                                    Text(try! String(contentsOf: 📍))
-                                        .font(.caption.monospaced())
-                                        .padding()
+                                    📄View(try! String(contentsOf: 📍))
                                 }
                             }
                             .navigationBarTitle(📃)
@@ -68,9 +64,7 @@ struct SourceCodeView: View {
                 Section {
                     NavigationLink("Bundle.main.infoDictionary") {
                         ScrollView {
-                            Text(Bundle.main.infoDictionary!.description)
-                                .font(.caption.monospaced())
-                                .padding()
+                            📄View(Bundle.main.infoDictionary!.description)
                         }
                     }
                 }
@@ -98,6 +92,23 @@ struct SourceCodeView: View {
                 }
             }
         }
+    }
+}
+
+
+
+struct 📄View: View {
+    
+    var 📄: String
+    
+    var body: some View {
+        Text(📄)
+            .font(.caption.monospaced())
+            .padding()
+    }
+    
+    init(_ 📄: String) {
+        self.📄 = 📄
     }
 }
 
