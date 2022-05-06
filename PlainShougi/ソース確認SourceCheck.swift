@@ -9,9 +9,9 @@ struct ソース確認SourceCheck: View {
     var body: some View {
         NavigationView {
             List {
-                📑Section("Primary")
+                📑Section("📁Primary")
                 
-                📑Section("Secondary")
+                📑Section("📁Secondary")
                 
                 Section {
                     NavigationLink("Bundle.main.infoDictionary") {
@@ -53,7 +53,7 @@ struct 📑Section: View {
     var ⓓirPath: String
     
     var 📁URL: URL {
-        Bundle.main.bundleURL.appendingPathComponent("📁" + ⓓirPath)
+        Bundle.main.bundleURL.appendingPathComponent(ⓓirPath)
     }
     
     var 📦: [String] {
@@ -98,6 +98,10 @@ struct 📄View: View {
         self.📄 = 📄
     }
 }
+
+
+
+
 
 
 
