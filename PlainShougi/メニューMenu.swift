@@ -14,9 +14,11 @@ struct メニューMenu: View {
         NavigationView {
             List {
                 Section {
-                    Label("駒を長押しして持ち上げ、そのままスライドさせて移動する", systemImage: "hand.draw")
+                    Label("長押しで駒を持ち上げ、そのままスライドさせて移動する", systemImage: "hand.draw")
+                        .padding(.vertical, 8)
                     
-                    Label("盤上の駒をダブルタップして裏返す", systemImage: "rotate.right")
+                    Label("ダブルタップで盤上の駒を裏返す", systemImage: "rotate.right")
+                        .padding(.vertical, 8)
                 } header: {
                     Text("あそび方")
                 }
@@ -42,7 +44,7 @@ struct メニューMenu: View {
                 
                 Section {
                     Group {
-                        Label("盤外の駒をトリプルタップして削除する", systemImage: "trash")
+                        Label("トリプルタップで盤外の駒を削除する", systemImage: "trash")
                         
                         Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
                         
@@ -58,7 +60,7 @@ struct メニューMenu: View {
                     let 🔗 = "https://apps.apple.com/app/id1620268476"
                     Link(destination: URL(string: 🔗)!) {
                         HStack {
-                            Label("AppStore リンク", systemImage: "link")
+                            Label("AppStoreのアプリページを開く", systemImage: "link")
                             
                             Spacer()
                             
@@ -90,7 +92,7 @@ struct メニューMenu: View {
                     Text("テキスト書き出し例")
                 }
             }
-            .navigationTitle("メニュー")
+            .navigationTitle("Plain将棋盤")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
