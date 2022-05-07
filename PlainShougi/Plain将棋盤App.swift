@@ -50,7 +50,7 @@ struct メニュー: View {
         NavigationView {
             List {
                 Section {
-                    Label("駒を長押しで選択してそのまま移動", systemImage: "hand.draw")
+                    Label("駒を長押しして持ち上げ、そのままスライドさせて移動する", systemImage: "hand.draw")
                     
                     Label("盤上の駒をダブルタップして裏返す", systemImage: "rotate.right")
                 } header: {
@@ -69,7 +69,7 @@ struct メニュー: View {
                 
                 Section {
                     Toggle(isOn: $English表記) {
-                        Label("English表記", systemImage: "p.square")
+                        Label("English表記に変更する", systemImage: "p.square")
                     }
                 } header: {
                     Text("オプション")
@@ -78,7 +78,7 @@ struct メニュー: View {
                 
                 Section {
                     Group {
-                        Label("盤外の駒をトリプルタップして削除", systemImage: "trash")
+                        Label("盤外の駒をトリプルタップして削除する", systemImage: "trash")
                         
                         Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
                         
@@ -93,7 +93,13 @@ struct メニュー: View {
                 Section {
                     let 🔗 = "https://apps.apple.com/app/id1620268476"
                     Link(destination: URL(string: 🔗)!) {
-                        Label("AppStore リンク", systemImage: "link")
+                        HStack {
+                            Label("AppStore リンク", systemImage: "link")
+                            
+                            Spacer()
+                            
+                            Image(systemName: "arrow.up.forward.app")
+                        }
                     }
                     
                     NavigationLink {

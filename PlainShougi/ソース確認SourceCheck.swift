@@ -25,7 +25,13 @@ struct ソース確認SourceCheck: View {
             let 🔗 = "https://github.com/FlipByBlink/PlainShougi"
             Section {
                 Link(destination: URL(string: 🔗)!) {
-                    Label("Web Repository link", systemImage: "link")
+                    HStack {
+                        Label("Web Repository link", systemImage: "link")
+                        
+                        Spacer()
+                        
+                        Image(systemName: "arrow.up.forward.app")
+                    }
                 }
             } footer: {
                 Text(🔗)
