@@ -1,20 +1,47 @@
 
-"AppStore リンク" = "AppStore link";
+// ======== Menu ========
+"🌏Plain将棋盤" = "PlainShogiBoard";
 
-"はじめに戻す" = "Initialize";
+"🌏あそび方" = "How to";
 
-"その他" = "Others";
+"🌏駒を移動する" = "Long press a piece, move it";
 
-"盤外の駒をトリプルタップして削除" = "Triple tap a piece out of the board: Delete it";
+"🌏駒を裏返す" = "Double tap a piece on the board: Turn it";
 
-"盤上の駒をダブルタップして裏返す" = "Double tap a piece on the board: Turn it";
+"🌏盤面を元に戻す" = "Initialize";
 
-"駒を長押しで選択してそのまま移動" = "Long press a piece, move it";
+"🌏オプション" = "Option";
 
-"ソースコードを確認する" = "Check source code";
+"🌏English表記に変更する" = "English term";
 
-"メニュー" = "Menu";
+"🌏細かな使い方" = "More how to";
 
-"English表記" = "English term";
+"🌏盤外の駒を削除する" = "Triple tap a piece out of the board: Delete it";
 
-"📄TextAboutAD" = "This App shows banner advertisement about applications on AppStore. These are Apps by PlainShogiBoard developer. AD banner is rarely presented. It appears one in every six times. To hide the banner, tap the × OR swipe down.";
+"🌏盤面を書き出す" = "Export shogi board as plain text by dropping a piece into other apps";
+
+"🌏盤面を読み込む" = "Import shogi board by dropping export-text into shogi board";
+
+"🌏AppStoreのアプリページを開く" = "Open AppStore page";
+
+"🌏ソースコードを確認する" = "Check source code";
+
+"🌏テキスト書き出し例" = "Example";
+
+"🌏プレーンテキスト" = "Plain text";
+
+"🌏閉じる" = "Dismiss";
+
+
+// ======== Accessibility label =========
+"🌏メニューを開く" = "Open menu";
+
+
+// ======== AD label =========
+"🌏セルフ広告" = "self-AD";
+
+"🌏セルフ広告について" = "About self-AD";
+
+"🌏広告説明文" = "This App shows banner advertisement about applications on AppStore. These are Apps by PlainShogiBoard developer. AD banner is rarely presented. It appears one in every six times. To hide the banner, tap the × OR swipe down.";
+
+"🌏了解しました" = "OK";

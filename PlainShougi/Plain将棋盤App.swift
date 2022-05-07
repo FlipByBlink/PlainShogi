@@ -31,7 +31,7 @@ struct Plain将棋盤App: App {
                         .foregroundColor(.primary)
                         .padding(32)
                 }
-                .accessibilityLabel("メニュー")
+                .accessibilityLabel("🌏メニューを開く")
             }
         }
     }

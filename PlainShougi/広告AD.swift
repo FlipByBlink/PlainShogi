@@ -34,7 +34,7 @@ struct 広告AD: View {
                     Button {
                         🄿resentNote = true
                     } label: {
-                        Text("self-AD")
+                        Text("🌏セルフ広告")
                             .kerning(0.5)
                             .underline()
                             .foregroundStyle(.tertiary)
@@ -43,12 +43,12 @@ struct 広告AD: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
                     }
-                    .alert("About self-AD", isPresented: $🄿resentNote) {
-                        Button("OK") {
+                    .alert("🌏セルフ広告について", isPresented: $🄿resentNote) {
+                        Button("🌏了解しました") {
                             print("Pressed OK button.")
                         }
                     } message: {
-                        Text("📄TextAboutAD")
+                        Text("🌏広告説明文")
                     }
                     
                     Button {

@@ -51,8 +51,6 @@ class 将棋Model: ObservableObject {
                 
                 if let 📄 = String(data: 📋, encoding: .utf8) {
                     if 📄.first == "☗" {
-                        print("おそらく将棋盤のデータです")
-                        
                         self.外部からテキストを取り込む(📄)
                     }
                 }
