@@ -17,7 +17,7 @@ struct 広告AD: View {
     var 🆔: String {
         //FlipByBlink appIdentifier: 1444571751
         //FadeInAlarm appIdentifier: 1465336070
-        if 🄻aunchCount % 2 == 1 {
+        if 🄻aunchCount % 12 == 0 {
             return "1444571751"
         } else {
             return "1465336070"
