@@ -25,6 +25,7 @@
 		129A8F2D2824BA0B00EFD58A /* Localizable.strings in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		129A8F2E28251C1500EFD58A /* 型Type.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* 型Type.swift */; };
 		12C948072825F5A500F1EAAF /* メニューMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C948062825F5A500F1EAAF /* メニューMenu.swift */; };
+		12C948082825F63100F1EAAF /* メニューMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12C948062825F5A500F1EAAF /* メニューMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,7 @@
 			dstPath = "📁Secondary";
 			dstSubfolderSpec = 7;
 			files = (
+				12C948082825F63100F1EAAF /* メニューMenu.swift in CopyFiles */,
 				123BC8B82824AC1F00812C82 /* README.md in CopyFiles */,
 				123BC8BA2824AC1F00812C82 /* 広告AD.swift in CopyFiles */,
 				123BC8BB2824AC1F00812C82 /* ソース確認SourceCheck.swift in CopyFiles */,
