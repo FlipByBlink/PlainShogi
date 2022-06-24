@@ -75,7 +75,7 @@ struct メニューMenu: View {
                     }
                     
                     NavigationLink {
-                        ソース確認SourceCheck()
+                        Text("ソース確認SourceCheck()")
                     } label: {
                         Label("🌏ソースコードを確認する", systemImage: "doc.plaintext")
                     }
