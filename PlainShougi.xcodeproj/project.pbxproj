@@ -30,7 +30,6 @@
 		128D156F280FE47F003FF480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
 		128D1572280FE47F003FF480 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D1571280FE47F003FF480 /* Preview Assets.xcassets */; };
 		128D1579280FE4E4003FF480 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 📱AppModel.swift */; };
-		129A8F2D2824BA0B00EFD58A /* Localizable.strings in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		12D436932865CD5E00B707F5 /* 🛠MenuSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368C2865CD5E00B707F5 /* 🛠MenuSheet.swift */; };
 		12D436942865CD5E00B707F5 /* 📓SourceCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368E2865CD5E00B707F5 /* 📓SourceCodeMenu.swift */; };
 		12D436952865CD5E00B707F5 /* 📄AppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368F2865CD5E00B707F5 /* 📄AppDescription.swift */; };
@@ -114,16 +113,6 @@
 			files = (
 				120363212865E22000636EBD /* 🛒PurchaseSection.swift in CopyFiles */,
 				120363222865E22000636EBD /* 🛒StoreModel.swift in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		129A8F2B2824B9A000EFD58A /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "📁Localizable";
-			dstSubfolderSpec = 7;
-			files = (
-				129A8F2D2824BA0B00EFD58A /* Localizable.strings in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +257,6 @@
 				128D1563280FE47E003FF480 /* Sources */,
 				128D1564280FE47E003FF480 /* Frameworks */,
 				128D1565280FE47E003FF480 /* Resources */,
-				129A8F2B2824B9A000EFD58A /* CopyFiles */,
 				1203630D2865E1B400636EBD /* CopyFiles */,
 				1203630E2865E1B600636EBD /* CopyFiles */,
 				1203630F2865E1B800636EBD /* CopyFiles */,

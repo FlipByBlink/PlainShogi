@@ -2,7 +2,7 @@
 
 <br>
 
-![](AppTemplate/Assets.xcassets/LaunchIcon.imageset/LaunchIcon.png)
+![](PlainShougi/Assets.xcassets/LaunchIcon.imageset/LaunchIcon.png)
 
 <br>
 
@@ -12,7 +12,7 @@
 [apps.apple.com/app/id1620268476](https://apps.apple.com/app/id1620268476)
 
 
-<!-- Manually sync below text between "📄AppDescription.swift" and "/README.md(here)" and "AppStoreConnect/AAAA/Description". -->
+<!-- Manually sync below text between "📄AppDescription.swift" and "/README.md(here)" and "AppStoreConnect/_/Description". -->
 
 ## 📄 Description
 
