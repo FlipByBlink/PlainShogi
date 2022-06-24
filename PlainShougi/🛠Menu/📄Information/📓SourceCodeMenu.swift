@@ -21,6 +21,8 @@ struct 📓SourceCodeMenu: View {
                 📓CodeSection(📁.rawValue)
             }
             
+            //📑LocalizableSection()
+            
             📑BundleMainInfoDictionary()
             
             🔗RepositoryLink()
@@ -67,6 +69,34 @@ struct 📓CodeSection: View {
         🄳irectoryPath = ⓓirectoryPath
     }
 }
+
+
+//struct 📑LocalizableSection: View {
+//
+//    var 📁URL: URL {
+//        Bundle.main.bundleURL.appendingPathComponent("📁Localizable")
+//    }
+//
+//    var 📦: [String] {
+//        ["ja.lproj/Localizable.strings", "en.lproj/Localizable.strings"]
+//    }
+//
+//    var body: some View {
+//        Section {
+//            ForEach(📦, id: \.self) { 📃 in
+//                NavigationLink(📃) {
+//                    let 📍 = 📁URL.appendingPathComponent(📃)
+//
+//                    ScrollView(.vertical) {
+//                        📄View(try! String(contentsOf: 📍))
+//                    }
+//                    .navigationBarTitle(📃)
+//                    .navigationBarTitleDisplayMode(.inline)
+//                }
+//            }
+//        }
+//    }
+//}
 
 
 let 🄱undleMainInfoDictionary = Bundle.main.infoDictionary!.description
