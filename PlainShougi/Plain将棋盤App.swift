@@ -1,10 +1,10 @@
 
 import SwiftUI
 
-
 @main
 struct Plain将棋盤App: App {
-    @StateObject var 将棋 = 将棋Model()
+    
+    @StateObject var 📱 = 📱AppModel()
     
     @State private var 🚩メニューを開く = false
     
@@ -14,14 +14,14 @@ struct Plain将棋盤App: App {
                 Rectangle().opacity(0)
                 
                 ContentView()
-                    .environmentObject(将棋)
+                    .environmentObject(📱)
                 
                 広告AD()
             }
             .statusBar(hidden: true)
             .sheet(isPresented: $🚩メニューを開く) {
                 メニューMenu()
-                    .environmentObject(将棋)
+                    .environmentObject(📱)
             }
             .overlay(alignment: .bottomTrailing) {
                 Button {

@@ -3,8 +3,7 @@ import Combine
 import SwiftUI
 import UniformTypeIdentifiers
 
-
-class 将棋Model: ObservableObject {
+class 📱AppModel: ObservableObject {
     
     @Published var 盤上: [Int: 兵] = 初期配置
     

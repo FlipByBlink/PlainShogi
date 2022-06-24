@@ -1,10 +1,8 @@
 
 import SwiftUI
 
-
 struct メニューMenu: View {
-    
-    @EnvironmentObject var 将棋: 将棋Model
+    @EnvironmentObject var 📱: 📱AppModel
     
     @Environment(\.dismiss) var 🔙: DismissAction
     
@@ -26,7 +24,7 @@ struct メニューMenu: View {
                 
                 
                 Button {
-                    将棋.はじめに戻す()
+                    📱.はじめに戻す()
                     🔙.callAsFunction()
                 } label: {
                     Label("🌏盤面を元に戻す", systemImage: "arrow.counterclockwise")
@@ -85,7 +83,7 @@ struct メニューMenu: View {
                 
                 
                 Section {
-                    Text(将棋.テキストに変換する())
+                    Text(📱.テキストに変換する())
                         .padding()
                         .accessibilityLabel("🌏プレーンテキスト")
                         .textSelection(.enabled)

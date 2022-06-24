@@ -1,10 +1,7 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
-    @EnvironmentObject var 将棋: 将棋Model
-    
     var body: some View {
         GeometryReader { 📐 in
             let マスの大きさ: CGFloat = {
@@ -57,16 +54,16 @@ struct ContentView: View {
 
 
 struct マス: View {
-    @EnvironmentObject var 将棋: 将棋Model
+    @EnvironmentObject var 📱: 📱AppModel
     
     var 位置: Int
     
     var body: some View {
-        if let 兵員: 兵 = 将棋.盤上[位置] {
+        if let 兵員: 兵 = 📱.盤上[位置] {
             コマ(兵員.職名, 余白なし: true)
                 .rotationEffect(反転(兵員.陣営 == .玉))
                 .onDrag {
-                    将棋.持ち上げる(位置)
+                    📱.持ち上げる(位置)
                 } preview: {
                     コマ(兵員.職名)
                         .border(.primary)
@@ -74,15 +71,15 @@ struct マス: View {
                         .onAppear { 振動() }
                 }
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
-                    将棋.移動(位置, 📨)
+                    📱.移動(位置, 📨)
                 }
                 .onTapGesture(count: 2) {
-                    将棋.裏返す(位置)
+                    📱.裏返す(位置)
                 }
         } else {
             Color(uiColor: .systemBackground)
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
-                    将棋.移動(位置, 📨)
+                    📱.移動(位置, 📨)
                 }
         }
     }
@@ -132,7 +129,7 @@ struct コマ: View {
 
 
 struct 盤外: View {
-    @EnvironmentObject var 将棋: 将棋Model
+    @EnvironmentObject var 📱: 📱AppModel
     
     var 陣営: 王か玉か
     
@@ -141,11 +138,11 @@ struct 盤外: View {
             Spacer()
             
             ForEach(種類.allCases) { 種類毎 in
-                let 数 = 将棋.手駒[陣営]!.filter{$0 == 種類毎}.count
+                let 数 = 📱.手駒[陣営]!.filter{$0 == 種類毎}.count
                 if 数 > 0 {
                     コマ(種類毎, 数, 余白なし: true)
                         .onDrag{
-                            将棋.持ち上げる(兵(陣営,種類毎))
+                            📱.持ち上げる(兵(陣営,種類毎))
                         } preview: {
                             コマ(種類毎)
                                 .border(.primary)
@@ -153,8 +150,8 @@ struct 盤外: View {
                                 .onAppear { 振動() }
                         }
                         .onTapGesture(count: 3) {
-                            let ひとつ = 将棋.手駒[陣営]!.firstIndex(of:種類毎)!
-                            将棋.手駒[陣営]!.remove(at: ひとつ)
+                            let ひとつ = 📱.手駒[陣営]!.firstIndex(of:種類毎)!
+                            📱.手駒[陣営]!.remove(at: ひとつ)
                         }
                 } else {
                     EmptyView()
@@ -189,19 +186,19 @@ func 振動() {
 
 
 struct ContentView_Previews: PreviewProvider {
-    static let 将棋 = 将棋Model()
+    static let 📱 = 📱AppModel()
     
     static var previews: some View {
         ContentView()
             .previewLayout(.fixed(width: 400, height: 400))
-            .environmentObject(将棋)
+            .environmentObject(📱)
             .task {
-                将棋.手駒[.玉] = [.歩,.歩,.金]
-                将棋.手駒[.王] = [.歩,.銀]
+                📱.手駒[.玉] = [.歩,.歩,.金]
+                📱.手駒[.王] = [.歩,.銀]
             }
         
         ContentView()
             .previewLayout(.fixed(width: 300, height: 600))
-            .environmentObject(将棋)
+            .environmentObject(📱)
     }
 }
