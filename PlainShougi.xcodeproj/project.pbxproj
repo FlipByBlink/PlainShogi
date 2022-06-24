@@ -22,8 +22,6 @@
 		128D1579280FE4E4003FF480 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 📱AppModel.swift */; };
 		129A8F2D2824BA0B00EFD58A /* Localizable.strings in CopyFiles */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		129A8F2E28251C1500EFD58A /* 型Type.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* 型Type.swift */; };
-		12C948072825F5A500F1EAAF /* メニューMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C948062825F5A500F1EAAF /* メニューMenu.swift */; };
-		12C948082825F63100F1EAAF /* メニューMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12C948062825F5A500F1EAAF /* メニューMenu.swift */; };
 		12D436932865CD5E00B707F5 /* 🛠MenuSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368C2865CD5E00B707F5 /* 🛠MenuSheet.swift */; };
 		12D436942865CD5E00B707F5 /* 📓SourceCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368E2865CD5E00B707F5 /* 📓SourceCodeMenu.swift */; };
 		12D436952865CD5E00B707F5 /* 📄AppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368F2865CD5E00B707F5 /* 📄AppDescription.swift */; };
@@ -46,7 +44,6 @@
 			dstPath = "📁Secondary";
 			dstSubfolderSpec = 7;
 			files = (
-				12C948082825F63100F1EAAF /* メニューMenu.swift in CopyFiles */,
 				123BC8B82824AC1F00812C82 /* README.md in CopyFiles */,
 				123BC8BB2824AC1F00812C82 /* ソース確認SourceCheck.swift in CopyFiles */,
 			);
@@ -88,7 +85,6 @@
 		128D156E280FE47F003FF480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		128D1571280FE47F003FF480 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		128D1578280FE4E4003FF480 /* 📱AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel.swift"; sourceTree = "<group>"; };
-		12C948062825F5A500F1EAAF /* メニューMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "メニューMenu.swift"; sourceTree = "<group>"; };
 		12D198532810DD6500CE6578 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12D4368C2865CD5E00B707F5 /* 🛠MenuSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛠MenuSheet.swift"; sourceTree = "<group>"; };
 		12D4368E2865CD5E00B707F5 /* 📓SourceCodeMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📓SourceCodeMenu.swift"; sourceTree = "<group>"; };
@@ -141,7 +137,6 @@
 				128D1578280FE4E4003FF480 /* 📱AppModel.swift */,
 				126C18F22816460F002CD046 /* 型Type.swift */,
 				126A531A2824027E003937A6 /* ソース確認SourceCheck.swift */,
-				12C948062825F5A500F1EAAF /* メニューMenu.swift */,
 				12D436992865CD6D00B707F5 /* 🧩Sub */,
 				12D4368B2865CD5E00B707F5 /* 🛠Menu */,
 				124B75572810CD6D00027DCA /* Localizable.strings */,
@@ -288,7 +283,6 @@
 			files = (
 				128D156D280FE47E003FF480 /* ContentView.swift in Sources */,
 				12D436982865CD5E00B707F5 /* 🛠MenuButton.swift in Sources */,
-				12C948072825F5A500F1EAAF /* メニューMenu.swift in Sources */,
 				12D436A52865CD8400B707F5 /* 🛒StoreModel.swift in Sources */,
 				126A531B2824027E003937A6 /* ソース確認SourceCheck.swift in Sources */,
 				12D436A92865CD8400B707F5 /* 📣ADBanner.swift in Sources */,
