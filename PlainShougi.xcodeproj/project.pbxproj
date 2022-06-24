@@ -7,8 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120363132865E20200636EBD /* Plain将棋盤App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 128D156A280FE47E003FF480 /* Plain将棋盤App.swift */; };
+		120363142865E20200636EBD /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
+		120363152865E20200636EBD /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 📱AppModel.swift */; };
+		120363162865E20700636EBD /* 型Type.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* 型Type.swift */; };
+		120363172865E20C00636EBD /* 🛠MenuButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D436922865CD5E00B707F5 /* 🛠MenuButton.swift */; };
+		120363182865E20C00636EBD /* 🛠MenuSheet.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D4368C2865CD5E00B707F5 /* 🛠MenuSheet.swift */; };
+		120363192865E21400636EBD /* 📄InformationMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D436902865CD5E00B707F5 /* 📄InformationMenu.swift */; };
+		1203631A2865E21400636EBD /* 📄AppDescription.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D4368F2865CD5E00B707F5 /* 📄AppDescription.swift */; };
+		1203631B2865E21400636EBD /* 🏷VersionSection.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D436912865CD5E00B707F5 /* 🏷VersionSection.swift */; };
+		1203631C2865E21400636EBD /* 📓SourceCodeMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D4368E2865CD5E00B707F5 /* 📓SourceCodeMenu.swift */; };
+		1203631D2865E21900636EBD /* 📣ADMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D436A12865CD8400B707F5 /* 📣ADMenu.swift */; };
+		1203631E2865E21900636EBD /* 📣ADView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D4369F2865CD8400B707F5 /* 📣ADView.swift */; };
+		1203631F2865E21900636EBD /* 📣AppName.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D436A02865CD8400B707F5 /* 📣AppName.swift */; };
+		120363202865E21900636EBD /* 📣ADBanner.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D436A22865CD8400B707F5 /* 📣ADBanner.swift */; };
+		120363212865E22000636EBD /* 🛒PurchaseSection.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D4369B2865CD8300B707F5 /* 🛒PurchaseSection.swift */; };
+		120363222865E22000636EBD /* 🛒StoreModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D4369D2865CD8300B707F5 /* 🛒StoreModel.swift */; };
 		124B75552810CD6D00027DCA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
-		126A531B2824027E003937A6 /* ソース確認SourceCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126A531A2824027E003937A6 /* ソース確認SourceCheck.swift */; };
 		126C18F32816460F002CD046 /* 型Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* 型Type.swift */; };
 		128D156B280FE47E003FF480 /* Plain将棋盤App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156A280FE47E003FF480 /* Plain将棋盤App.swift */; };
 		128D156D280FE47E003FF480 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
@@ -32,6 +47,76 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		1203630D2865E1B400636EBD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = main;
+			dstSubfolderSpec = 7;
+			files = (
+				120363132865E20200636EBD /* Plain将棋盤App.swift in CopyFiles */,
+				120363142865E20200636EBD /* ContentView.swift in CopyFiles */,
+				120363152865E20200636EBD /* 📱AppModel.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1203630E2865E1B600636EBD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "🧩Sub";
+			dstSubfolderSpec = 7;
+			files = (
+				120363162865E20700636EBD /* 型Type.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1203630F2865E1B800636EBD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "🛠Menu";
+			dstSubfolderSpec = 7;
+			files = (
+				120363172865E20C00636EBD /* 🛠MenuButton.swift in CopyFiles */,
+				120363182865E20C00636EBD /* 🛠MenuSheet.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		120363102865E1B900636EBD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "📄Information";
+			dstSubfolderSpec = 7;
+			files = (
+				120363192865E21400636EBD /* 📄InformationMenu.swift in CopyFiles */,
+				1203631A2865E21400636EBD /* 📄AppDescription.swift in CopyFiles */,
+				1203631B2865E21400636EBD /* 🏷VersionSection.swift in CopyFiles */,
+				1203631C2865E21400636EBD /* 📓SourceCodeMenu.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		120363112865E1C900636EBD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "📣AD";
+			dstSubfolderSpec = 7;
+			files = (
+				1203631D2865E21900636EBD /* 📣ADMenu.swift in CopyFiles */,
+				1203631E2865E21900636EBD /* 📣ADView.swift in CopyFiles */,
+				1203631F2865E21900636EBD /* 📣AppName.swift in CopyFiles */,
+				120363202865E21900636EBD /* 📣ADBanner.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		120363122865E1CB00636EBD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "🛒InAppPurchase";
+			dstSubfolderSpec = 7;
+			files = (
+				120363212865E22000636EBD /* 🛒PurchaseSection.swift in CopyFiles */,
+				120363222865E22000636EBD /* 🛒StoreModel.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		129A8F2B2824B9A000EFD58A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,7 +132,6 @@
 /* Begin PBXFileReference section */
 		124B75562810CD6D00027DCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		124B75582810CD8100027DCA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		126A531A2824027E003937A6 /* ソース確認SourceCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ソース確認SourceCheck.swift"; sourceTree = "<group>"; };
 		126C18F22816460F002CD046 /* 型Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "型Type.swift"; sourceTree = "<group>"; };
 		128D1567280FE47E003FF480 /* 将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		128D156A280FE47E003FF480 /* Plain将棋盤App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plain将棋盤App.swift"; sourceTree = "<group>"; };
@@ -105,8 +189,6 @@
 				128D156A280FE47E003FF480 /* Plain将棋盤App.swift */,
 				128D156C280FE47E003FF480 /* ContentView.swift */,
 				128D1578280FE4E4003FF480 /* 📱AppModel.swift */,
-				126C18F22816460F002CD046 /* 型Type.swift */,
-				126A531A2824027E003937A6 /* ソース確認SourceCheck.swift */,
 				12D436992865CD6D00B707F5 /* 🧩Sub */,
 				12D4368B2865CD5E00B707F5 /* 🛠Menu */,
 				124B75572810CD6D00027DCA /* Localizable.strings */,
@@ -148,6 +230,7 @@
 		12D436992865CD6D00B707F5 /* 🧩Sub */ = {
 			isa = PBXGroup;
 			children = (
+				126C18F22816460F002CD046 /* 型Type.swift */,
 				12D4369E2865CD8400B707F5 /* 📣AD */,
 				12D4369A2865CD8300B707F5 /* 🛒InAppPurchase */,
 			);
@@ -186,6 +269,12 @@
 				128D1564280FE47E003FF480 /* Frameworks */,
 				128D1565280FE47E003FF480 /* Resources */,
 				129A8F2B2824B9A000EFD58A /* CopyFiles */,
+				1203630D2865E1B400636EBD /* CopyFiles */,
+				1203630E2865E1B600636EBD /* CopyFiles */,
+				1203630F2865E1B800636EBD /* CopyFiles */,
+				120363102865E1B900636EBD /* CopyFiles */,
+				120363112865E1C900636EBD /* CopyFiles */,
+				120363122865E1CB00636EBD /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -252,7 +341,6 @@
 				128D156D280FE47E003FF480 /* ContentView.swift in Sources */,
 				12D436982865CD5E00B707F5 /* 🛠MenuButton.swift in Sources */,
 				12D436A52865CD8400B707F5 /* 🛒StoreModel.swift in Sources */,
-				126A531B2824027E003937A6 /* ソース確認SourceCheck.swift in Sources */,
 				12D436A92865CD8400B707F5 /* 📣ADBanner.swift in Sources */,
 				128D156B280FE47E003FF480 /* Plain将棋盤App.swift in Sources */,
 				126C18F32816460F002CD046 /* 型Type.swift in Sources */,

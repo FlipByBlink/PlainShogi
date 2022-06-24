@@ -14,13 +14,11 @@ struct 📄InformationMenu: View {
                         .navigationBarTitle("About")
                         .navigationBarTitleDisplayMode(.inline)
                         .textSelection(.enabled)
-                        .redacted(reason: .placeholder)
                     } label: {
                         Text(📄AppDescription)
                             .font(.subheadline)
                             .lineLimit(4)
                             .padding(8)
-                            .redacted(reason: .placeholder)
                     }
                 } header: {
                     Text("About")
@@ -30,7 +28,7 @@ struct 📄InformationMenu: View {
                 🏷VersionSection()
                 
                 
-                let 🔗 = "https://apps.apple.com/app/id1111" //FIXME: AppStore URL
+                let 🔗 = "https://apps.apple.com/app/id1620268476"
                 Section {
                     Link(destination: URL(string: 🔗)!) {
                         HStack {
@@ -50,12 +48,14 @@ struct 📄InformationMenu: View {
                 Section {
                     NavigationLink {
                         Text("""
-                            2022-AA-AA
+                            2022-04-21
                             
-                            (English)This application don't collect user infomation.
+                            ### Japanese
+                            このアプリ自身において、ユーザーの情報を一切収集しません。
                             
-                            (Japanese)このアプリ自身において、ユーザーの情報を一切収集しません。
-                            """) //FIXME: Privacy Policy
+                            ### English
+                            This application don't collect user infomation.
+                            """)
                         .padding(32)
                         .textSelection(.enabled)
                         .navigationTitle("Privacy Policy")
@@ -63,11 +63,6 @@ struct 📄InformationMenu: View {
                         Label("Privacy Policy", systemImage: "person.text.rectangle")
                     }
                 }
-                
-                
-                // Transparency Report section ?
-                // - Background
-                // - Bussiness model
                 
                 
                 NavigationLink {

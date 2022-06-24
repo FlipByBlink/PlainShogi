@@ -1,5 +1,21 @@
 # ☖ Plain将棋盤
 
+<br>
+
+![](AppTemplate/Assets.xcassets/LaunchIcon.imageset/LaunchIcon.png)
+
+<br>
+
+
+## 🔗 AppStore link
+
+[apps.apple.com/app/id1620268476](https://apps.apple.com/app/id1620268476)
+
+
+<!-- Manually sync below text between "📄AppDescription.swift" and "/README.md(here)" and "AppStoreConnect/AAAA/Description". -->
+
+## 📄 Description
+
 駒を自由に動かせるただの将棋盤です。
 
 iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
@@ -12,6 +28,8 @@ iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 
 任意の駒を減らすことも出来ます。
 
+
+<!--==== English description ====-->
 
 Simple Shogi board App.
 
@@ -28,13 +46,31 @@ English term option.
 You can reduce a piece.
 
 
-## AppStore link
-https://apps.apple.com/app/id1620268476
+==== Localization: All ====
+
+English
+
+Japanese(native)
+
+<br>
 
 
-## Source code link
-https://github.com/FlipByBlink/PlainShougi
+## 🧰 Source code link
 
+[github.com/FlipByBlink/PlainShougi](https://github.com/FlipByBlink/PlainShougi)
+
+
+### Source code (Mirror) link
+
+[gitlab.com/FlipByBlink/PlainShougi_Mirror](https://gitlab.com/FlipByBlink/PlainShougi_Mirror)
+
+
+## ✉️ Contact
+
+sear_pandora_0x@icloud.com
+
+
+<br>
 
 <br>
 
@@ -63,6 +99,15 @@ This application don't collect user infomation.
 
 <br>
 
+------
+
 <br>
 
-------
+<br>
+
+
+<!-- URL "Support page for AppStore" -->
+<!-- https://flipbyblink.github.io/PlainShougi/ -->
+
+<!-- URL "Privacy Policy for AppStore" -->
+<!-- https://flipbyblink.github.io/PlainShougi/#privacy-policy-for-appstore -->
