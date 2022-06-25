@@ -48,9 +48,9 @@ You can reduce a piece.
 
 ==== Localization: All ====
 
-English
-
 Japanese(native)
+
+English
 
 <br>
 
