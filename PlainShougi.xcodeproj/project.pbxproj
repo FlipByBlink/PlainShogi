@@ -167,6 +167,7 @@
 			children = (
 				12D198532810DD6500CE6578 /* README.md */,
 				128D1569280FE47E003FF480 /* PlainShougi */,
+				128D156E280FE47F003FF480 /* Assets.xcassets */,
 				128D1568280FE47E003FF480 /* Products */,
 				12A9251C2866A8960035DC83 /* Frameworks */,
 			);
@@ -188,9 +189,7 @@
 				128D1578280FE4E4003FF480 /* 📱AppModel.swift */,
 				12D436992865CD6D00B707F5 /* 🧩Sub */,
 				12D4368B2865CD5E00B707F5 /* 🛠Menu */,
-				124B75572810CD6D00027DCA /* Localizable.strings */,
-				12A925232866AA6C0035DC83 /* InfoPlist.strings */,
-				128D156E280FE47F003FF480 /* Assets.xcassets */,
+				12A925252866AB9F0035DC83 /* 🌏Localization */,
 			);
 			path = PlainShougi;
 			sourceTree = "<group>";
@@ -209,6 +208,15 @@
 				12A9251D2866A8960035DC83 /* StoreKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		12A925252866AB9F0035DC83 /* 🌏Localization */ = {
+			isa = PBXGroup;
+			children = (
+				124B75572810CD6D00027DCA /* Localizable.strings */,
+				12A925232866AA6C0035DC83 /* InfoPlist.strings */,
+			);
+			path = "🌏Localization";
 			sourceTree = "<group>";
 		};
 		12D4368B2865CD5E00B707F5 /* 🛠Menu */ = {

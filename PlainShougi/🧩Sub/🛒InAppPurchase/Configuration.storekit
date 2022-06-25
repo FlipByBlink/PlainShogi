@@ -5,7 +5,7 @@
   ],
   "products" : [
     {
-      "displayPrice" : "10.0",
+      "displayPrice" : "99.9",
       "familyShareable" : false,
       "internalID" : "4D4A3592",
       "localizations" : [
@@ -20,7 +20,7 @@
           "locale" : "ja"
         }
       ],
-      "productID" : "Plain将棋盤.adfree",
+      "productID" : "PlainShogi.adfree",
       "referenceName" : "AD_Free(Xcode)",
       "type" : "NonConsumable"
     }

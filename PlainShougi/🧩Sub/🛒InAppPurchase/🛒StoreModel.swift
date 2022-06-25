@@ -61,7 +61,7 @@ class 🛒StoreModel: ObservableObject {
     @MainActor
     func 🅁equestProducts() async {
         do {
-            if let 📦 = try await Product.products(for: ["Plain将棋盤.adfree"]).first {
+            if let 📦 = try await Product.products(for: ["PlainShogi.adfree"]).first {
                 🎫Product = 📦
             }
         } catch {
