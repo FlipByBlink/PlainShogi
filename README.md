@@ -55,7 +55,7 @@ English
 
 ## 🧰 Source code link
 
-[github.com/FlipByBlink/PlainShougi](https://github.com/FlipByBlink/PlainShougi)
+[github.com/FlipByBlink/PlainShogi](https://github.com/FlipByBlink/PlainShogi)
 
 
 ### Source code (Mirror) link
@@ -104,7 +104,7 @@ This application don't collect user infomation.
 
 
 <!-- URL "Support page for AppStore" -->
-<!-- https://flipbyblink.github.io/PlainShougi/ -->
+<!-- https://flipbyblink.github.io/PlainShogi/ -->
 
 <!-- URL "Privacy Policy for AppStore" -->
-<!-- https://flipbyblink.github.io/PlainShougi/#privacy-policy-for-appstore -->
+<!-- https://flipbyblink.github.io/PlainShogi/#privacy-policy-for-appstore -->

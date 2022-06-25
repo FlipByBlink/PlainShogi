@@ -89,7 +89,7 @@ struct 📑BundleMainInfoDictionary: View {
 
 struct 🔗RepositoryLink: View {
     var body: some View {
-        let 🔗 = "https://github.com/FlipByBlink/PlainShougi"
+        let 🔗 = "https://github.com/FlipByBlink/PlainShogi"
         Section {
             Link(destination: URL(string: 🔗)!) {
                 HStack {
