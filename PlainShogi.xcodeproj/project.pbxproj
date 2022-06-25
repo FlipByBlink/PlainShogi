@@ -127,7 +127,7 @@
 		128D1567280FE47E003FF480 /* 将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		128D156A280FE47E003FF480 /* Plain将棋盤App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plain将棋盤App.swift"; sourceTree = "<group>"; };
 		128D156C280FE47E003FF480 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		128D156E280FE47F003FF480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PlainShougi/Assets.xcassets; sourceTree = "<group>"; };
+		128D156E280FE47F003FF480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PlainShogi/Assets.xcassets; sourceTree = "<group>"; };
 		128D1571280FE47F003FF480 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		128D1578280FE4E4003FF480 /* 📱AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel.swift"; sourceTree = "<group>"; };
 		12A9251B28669FA20035DC83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				12D198532810DD6500CE6578 /* README.md */,
-				128D1569280FE47E003FF480 /* PlainShougi */,
+				128D1569280FE47E003FF480 /* PlainShogi */,
 				128D156E280FE47F003FF480 /* Assets.xcassets */,
 				128D1568280FE47E003FF480 /* Products */,
 				12A9251C2866A8960035DC83 /* Frameworks */,
@@ -181,7 +181,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		128D1569280FE47E003FF480 /* PlainShougi */ = {
+		128D1569280FE47E003FF480 /* PlainShogi */ = {
 			isa = PBXGroup;
 			children = (
 				128D156A280FE47E003FF480 /* Plain将棋盤App.swift */,
@@ -191,7 +191,7 @@
 				12D4368B2865CD5E00B707F5 /* 🛠Menu */,
 				12A925252866AB9F0035DC83 /* 🌏Localization */,
 			);
-			path = PlainShougi;
+			path = PlainShogi;
 			sourceTree = "<group>";
 		};
 		128D1570280FE47F003FF480 /* Preview Content */ = {
@@ -276,9 +276,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		128D1566280FE47E003FF480 /* PlainShougi */ = {
+		128D1566280FE47E003FF480 /* PlainShogi */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 128D1575280FE47F003FF480 /* Build configuration list for PBXNativeTarget "PlainShougi" */;
+			buildConfigurationList = 128D1575280FE47F003FF480 /* Build configuration list for PBXNativeTarget "PlainShogi" */;
 			buildPhases = (
 				128D1563280FE47E003FF480 /* Sources */,
 				128D1564280FE47E003FF480 /* Frameworks */,
@@ -294,7 +294,7 @@
 			);
 			dependencies = (
 			);
-			name = PlainShougi;
+			name = PlainShogi;
 			productName = PlainShougi;
 			productReference = 128D1567280FE47E003FF480 /* 将棋盤.app */;
 			productType = "com.apple.product-type.application";
@@ -314,7 +314,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 128D1562280FE47E003FF480 /* Build configuration list for PBXProject "PlainShougi" */;
+			buildConfigurationList = 128D1562280FE47E003FF480 /* Build configuration list for PBXProject "PlainShogi" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -328,7 +328,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				128D1566280FE47E003FF480 /* PlainShougi */,
+				128D1566280FE47E003FF480 /* PlainShogi */,
 			);
 		};
 /* End PBXProject section */
@@ -519,11 +519,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_ASSET_PATHS = "\"PlainShougi/🧩Sub/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "PlainShogi/🧩Sub/Preview\\ Content";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PlainShougi/🧩Sub/Info.plist";
+				INFOPLIST_FILE = "PlainShogi/🧩Sub/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -548,11 +548,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_ASSET_PATHS = "\"PlainShougi/🧩Sub/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "PlainShogi/🧩Sub/Preview\\ Content";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PlainShougi/🧩Sub/Info.plist";
+				INFOPLIST_FILE = "PlainShogi/🧩Sub/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -573,7 +573,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		128D1562280FE47E003FF480 /* Build configuration list for PBXProject "PlainShougi" */ = {
+		128D1562280FE47E003FF480 /* Build configuration list for PBXProject "PlainShogi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				128D1573280FE47F003FF480 /* Debug */,
@@ -582,7 +582,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		128D1575280FE47F003FF480 /* Build configuration list for PBXNativeTarget "PlainShougi" */ = {
+		128D1575280FE47F003FF480 /* Build configuration list for PBXNativeTarget "PlainShogi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				128D1576280FE47F003FF480 /* Debug */,

@@ -2,7 +2,7 @@
 
 <br>
 
-![](PlainShougi/Assets.xcassets/LaunchIcon.imageset/LaunchIcon.png)
+![](PlainShogi/Assets.xcassets/LaunchIcon.imageset/LaunchIcon.png)
 
 <br>
 
