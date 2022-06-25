@@ -31,6 +31,7 @@
 		128D1572280FE47F003FF480 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D1571280FE47F003FF480 /* Preview Assets.xcassets */; };
 		128D1579280FE4E4003FF480 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 📱AppModel.swift */; };
 		12A9251E2866A8960035DC83 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A9251D2866A8960035DC83 /* StoreKit.framework */; };
+		12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
 		12D436932865CD5E00B707F5 /* 🛠MenuSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368C2865CD5E00B707F5 /* 🛠MenuSheet.swift */; };
 		12D436942865CD5E00B707F5 /* 📓SourceCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368E2865CD5E00B707F5 /* 📓SourceCodeMenu.swift */; };
 		12D436952865CD5E00B707F5 /* 📄AppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368F2865CD5E00B707F5 /* 📄AppDescription.swift */; };
@@ -131,6 +132,8 @@
 		128D1578280FE4E4003FF480 /* 📱AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel.swift"; sourceTree = "<group>"; };
 		12A9251B28669FA20035DC83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12A9251D2866A8960035DC83 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		12A925222866AA6C0035DC83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		12A925242866AA6F0035DC83 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12D198532810DD6500CE6578 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12D4368C2865CD5E00B707F5 /* 🛠MenuSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛠MenuSheet.swift"; sourceTree = "<group>"; };
 		12D4368E2865CD5E00B707F5 /* 📓SourceCodeMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📓SourceCodeMenu.swift"; sourceTree = "<group>"; };
@@ -186,6 +189,7 @@
 				12D436992865CD6D00B707F5 /* 🧩Sub */,
 				12D4368B2865CD5E00B707F5 /* 🛠Menu */,
 				124B75572810CD6D00027DCA /* Localizable.strings */,
+				12A925232866AA6C0035DC83 /* InfoPlist.strings */,
 				128D156E280FE47F003FF480 /* Assets.xcassets */,
 			);
 			path = PlainShougi;
@@ -330,6 +334,7 @@
 				12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */,
 				124B75552810CD6D00027DCA /* Localizable.strings in Resources */,
 				128D156F280FE47F003FF480 /* Assets.xcassets in Resources */,
+				12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +374,15 @@
 				124B75582810CD8100027DCA /* ja */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		12A925232866AA6C0035DC83 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12A925222866AA6C0035DC83 /* en */,
+				12A925242866AA6F0035DC83 /* ja */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
