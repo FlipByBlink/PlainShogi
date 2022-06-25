@@ -18,21 +18,21 @@ class 📱AppModel: ObservableObject {
     @AppStorage("English表記") var 🚩English表記: Bool = false
     
     
-    func 持ち上げる(_ ここから: Int) -> NSItemProvider {
+    func 盤上の駒を持ち上げる(_ ここから: Int) -> NSItemProvider {
         動き出した駒の位置 = ここから
         現状 = .盤上の駒を持ち上げている
         return 外部へテキストを書き出す()
     }
     
     
-    func 持ち上げる(_ これを: 兵) -> NSItemProvider {
+    func 手駒を持ち上げる(_ これを: 兵) -> NSItemProvider {
         持ち上げられた手駒 = これを
         現状 = .手駒を持ち上げている
         return 外部へテキストを書き出す()
     }
     
     
-    func 移動(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool {
+    func 駒を動かす(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool {
         guard let 🗂 = 📦.first else { return false }
         
         if let 🏷 = 🗂.suggestedName {
@@ -44,44 +44,44 @@ class 📱AppModel: ObservableObject {
         }
         
         switch 現状 {
-        case .駒を持ち上げていない:
-            🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
-                if ⓔrror != nil { print("👿 loadItem: ", ⓔrror.debugDescription) }
-                
-                guard let 📋 = 📁 as? Data else { return }
-                
-                if let 📄 = String(data: 📋, encoding: .utf8) {
-                    if 📄.first == "☗" {
-                        self.外部からテキストを取り込む(📄)
+            case .駒を持ち上げていない:
+                🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
+                    if ⓔrror != nil { print("👿 loadItem: ", ⓔrror.debugDescription) }
+                    
+                    guard let 📋 = 📁 as? Data else { return }
+                    
+                    if let 📄 = String(data: 📋, encoding: .utf8) {
+                        if 📄.first == "☗" {
+                            self.外部からテキストを取り込む(📄)
+                        }
                     }
                 }
-            }
-        case .盤上の駒を持ち上げている:
-            if let 出発地 = 動き出した駒の位置 {
-                if 行先 == 出発地 { return true }
-                
-                if let 先客 = 駒の配置[行先] {
-                    if 先客.陣営 == 駒の配置[出発地]?.陣営 { return true }
+            case .盤上の駒を持ち上げている:
+                if let 出発地 = 動き出した駒の位置 {
+                    if 行先 == 出発地 { return true }
                     
-                    手駒[駒の配置[出発地]!.陣営]!.append(先客.職名.生駒)
-                }
-                
-                駒の配置.updateValue(駒の配置[出発地]!, forKey: 行先)
-                駒の配置.removeValue(forKey: 出発地)
-                
-                動き出した駒の位置 = nil
-            } else { print("🐛") }
-        case .手駒を持ち上げている:
-            if let これ = 持ち上げられた手駒 {
-                if 駒の配置[行先] != nil { return true }
-                
-                駒の配置.updateValue(これ, forKey: 行先)
-                
-                let ひとつ = 手駒[これ.陣営]!.firstIndex(of:これ.職名)!
-                手駒[これ.陣営]!.remove(at: ひとつ)
-                
-                持ち上げられた手駒 = nil
-            } else { print("🐛") }
+                    if let 先客 = 駒の配置[行先] {
+                        if 先客.陣営 == 駒の配置[出発地]?.陣営 { return true }
+                        
+                        手駒[駒の配置[出発地]!.陣営]!.append(先客.職名.生駒)
+                    }
+                    
+                    駒の配置.updateValue(駒の配置[出発地]!, forKey: 行先)
+                    駒の配置.removeValue(forKey: 出発地)
+                    
+                    動き出した駒の位置 = nil
+                } else { print("🐛") }
+            case .手駒を持ち上げている:
+                if let これ = 持ち上げられた手駒 {
+                    if 駒の配置[行先] != nil { return true }
+                    
+                    駒の配置.updateValue(これ, forKey: 行先)
+                    
+                    let ひとつ = 手駒[これ.陣営]!.firstIndex(of:これ.職名)!
+                    手駒[これ.陣営]!.remove(at: ひとつ)
+                    
+                    持ち上げられた手駒 = nil
+                } else { print("🐛") }
         }
         
         ログ保存()
@@ -90,7 +90,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 裏返す(_ 位置: Int) {
+    func 駒を裏返す(_ 位置: Int) {
         if let これ = self.駒の配置[位置] {
             if let 裏 = これ.職名.裏側 {
                 self.駒の配置[位置] = 兵(これ.陣営, 裏)
