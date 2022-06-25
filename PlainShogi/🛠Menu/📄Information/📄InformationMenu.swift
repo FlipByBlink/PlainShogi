@@ -19,6 +19,7 @@ struct 📄InformationMenu: View {
                             .font(.subheadline)
                             .lineLimit(6)
                             .padding(8)
+                            .accessibilityLabel("About")
                     }
                 } header: {
                     Text("About")

@@ -55,7 +55,7 @@ struct 🛠MenuSheet: View {
                 Section {
                     Text(📱.テキストに変換する())
                         .padding()
-                        .accessibilityLabel("PlainText")
+                        .accessibilityLabel("Plain text")
                         .textSelection(.enabled)
                 } header: {
                     Text("テキスト書き出し例")
