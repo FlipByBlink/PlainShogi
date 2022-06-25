@@ -102,7 +102,6 @@ struct 🔗RepositoryLink: View {
             }
         } footer: {
             Text(🔗)
-                .textSelection(.enabled)
         }
         
         
@@ -123,7 +122,6 @@ struct 🔗RepositoryLink: View {
             }
         } footer: {
             Text(Mirror🔗)
-                .textSelection(.enabled)
         }
     }
 }

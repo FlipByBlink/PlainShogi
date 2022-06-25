@@ -42,7 +42,6 @@ struct 📄InformationMenu: View {
                     }
                 } footer: {
                     Text(🔗)
-                        .textSelection(.enabled)
                 }
                 
                 

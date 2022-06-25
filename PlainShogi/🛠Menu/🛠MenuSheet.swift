@@ -16,7 +16,7 @@ struct 🛠MenuSheet: View {
                     Label("ダブルタップで盤上の駒を裏返す", systemImage: "rotate.right")
                         .padding(.vertical, 8)
                 } header: {
-                    Text("How to")
+                    Text("あそび方")
                 }
                 .foregroundStyle(.primary)
                 
@@ -34,7 +34,7 @@ struct 🛠MenuSheet: View {
                         Label("English表記に変更する", systemImage: "p.square")
                     }
                 } header: {
-                    Text("Option")
+                    Text("オプション")
                 }
                 
                 
