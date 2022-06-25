@@ -87,7 +87,6 @@ sear_pandora_0x@icloud.com
 
 2022-04-21
 
-
 ### Japanese
 このアプリ自身において、ユーザーの情報を一切収集しません。
 

@@ -17,7 +17,7 @@ struct 📄InformationMenu: View {
                     } label: {
                         Text(📄AppDescription)
                             .font(.subheadline)
-                            .lineLimit(4)
+                            .lineLimit(6)
                             .padding(8)
                     }
                 } header: {
