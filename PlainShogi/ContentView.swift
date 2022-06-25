@@ -95,12 +95,12 @@ struct コマ: View {
     var 手駒の数: Int
     
     var 表記: String {
-        let 字 = 📱.🚩English表記 ? 職名.English表記 : 職名.rawValue
+        let 一文字 = 📱.🚩English表記 ? 職名.English表記 : 職名.rawValue
         
         if 手駒の数 > 1 {
-            return 字 + 手駒の数.description
+            return 一文字 + 手駒の数.description
         } else {
-            return 字
+            return 一文字
         }
     }
     
