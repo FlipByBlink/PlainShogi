@@ -13,7 +13,7 @@ struct 🛠MenuButton: View {
                 .foregroundColor(.primary)
                 .padding(32)
         }
-        .accessibilityLabel("🌏メニューを開く")
+        .accessibilityLabel("Open menu")
         .sheet(isPresented: $🚩ShowMenu) {
             🛠MenuSheet()
                 .onDisappear {
