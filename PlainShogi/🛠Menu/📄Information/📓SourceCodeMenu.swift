@@ -106,7 +106,7 @@ struct 🔗RepositoryLink: View {
         }
         
         
-        let Mirror🔗 = "https://gitlab.com/FlipByBlink/PlainShougi_Mirror"
+        let Mirror🔗 = "https://gitlab.com/FlipByBlink/PlainShogi_Mirror"
         Section {
             Link(destination: URL(string: Mirror🔗)!) {
                 HStack {

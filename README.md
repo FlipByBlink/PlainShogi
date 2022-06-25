@@ -60,7 +60,7 @@ English
 
 ### Source code (Mirror) link
 
-[gitlab.com/FlipByBlink/PlainShougi_Mirror](https://gitlab.com/FlipByBlink/PlainShougi_Mirror)
+[gitlab.com/FlipByBlink/PlainShogi_Mirror](https://gitlab.com/FlipByBlink/PlainShogi_Mirror)
 
 
 ## ✉️ Contact
