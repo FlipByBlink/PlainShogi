@@ -30,7 +30,7 @@ struct 🛠MenuSheet: View {
                 
                 
                 Section {
-                    Toggle(isOn: 📱.$🚩En表記) {
+                    Toggle(isOn: 📱.$🚩English表記) {
                         Label("English表記に変更する", systemImage: "p.square")
                     }
                 } header: {

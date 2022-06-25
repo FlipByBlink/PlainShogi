@@ -15,7 +15,7 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 
-                盤外(陣営: .玉)
+                盤外(陣営: .玉側)
                     .frame(height: マスの大きさ, alignment: .center)
                     .padding(4)
                 
@@ -41,7 +41,7 @@ struct ContentView: View {
                        alignment: .center)
                 .border(.primary)
                 
-                盤外(陣営: .王)
+                盤外(陣営: .王側)
                     .frame(height: マスの大きさ, alignment: .center)
                     .padding(4)
                 
@@ -59,16 +59,16 @@ struct マス: View {
     var 位置: Int
     
     var body: some View {
-        if let 兵員: 兵 = 📱.盤上[位置] {
+        if let 兵員: 兵 = 📱.駒の配置[位置] {
             コマ(兵員.職名, 余白なし: true)
-                .rotationEffect(反転(兵員.陣営 == .玉))
+                .rotationEffect(反転(兵員.陣営 == .玉側))
                 .onDrag {
                     📱.持ち上げる(位置)
                 } preview: {
                     コマ(兵員.職名)
                         .environmentObject(📱)
                         .border(.primary)
-                        .rotationEffect(反転(兵員.陣営 == .玉))
+                        .rotationEffect(反転(兵員.陣営 == .玉側))
                         .onAppear { 振動() }
                 }
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
@@ -90,14 +90,14 @@ struct マス: View {
 struct コマ: View {
     @EnvironmentObject var 📱: 📱AppModel
     
-    var 職名: 種類
+    var 職名: 駒の種類
     
     var 余白なし: Bool
     
     var 数: Int
     
     var 表記: String {
-        let 字 = 📱.🚩En表記 ? 職名.english : 職名.rawValue
+        let 字 = 📱.🚩English表記 ? 職名.english : 職名.rawValue
         
         if 数 > 1 {
             return 字 + 数.description
@@ -121,7 +121,7 @@ struct コマ: View {
         .accessibilityHidden(true)
     }
     
-    init(_ ｼｮｸﾒｲ:種類, _ ｶｽﾞ:Int = 1, 余白なし ﾖﾊｸﾅｼ:Bool = false) {
+    init(_ ｼｮｸﾒｲ:駒の種類, _ ｶｽﾞ:Int = 1, 余白なし ﾖﾊｸﾅｼ:Bool = false) {
         職名 = ｼｮｸﾒｲ
         数 = ｶｽﾞ
         余白なし = ﾖﾊｸﾅｼ
@@ -132,13 +132,13 @@ struct コマ: View {
 struct 盤外: View {
     @EnvironmentObject var 📱: 📱AppModel
     
-    var 陣営: 王か玉か
+    var 陣営: 王側か玉側か
     
     var body: some View {
         HStack {
             Spacer()
             
-            ForEach(種類.allCases) { 種類毎 in
+            ForEach(駒の種類.allCases) { 種類毎 in
                 let 数 = 📱.手駒[陣営]!.filter{$0 == 種類毎}.count
                 if 数 > 0 {
                     コマ(種類毎, 数, 余白なし: true)
@@ -147,7 +147,7 @@ struct 盤外: View {
                         } preview: {
                             コマ(種類毎)
                                 .border(.primary)
-                                .rotationEffect(反転(陣営 == .玉))
+                                .rotationEffect(反転(陣営 == .玉側))
                                 .onAppear { 振動() }
                         }
                         .onTapGesture(count: 3) {
@@ -161,7 +161,7 @@ struct 盤外: View {
             
             Spacer()
         }
-        .rotationEffect(反転(陣営 == .玉))
+        .rotationEffect(反転(陣営 == .玉側))
     }
 }
 
@@ -194,8 +194,8 @@ struct ContentView_Previews: PreviewProvider {
             .previewLayout(.fixed(width: 400, height: 400))
             .environmentObject(📱)
             .task {
-                📱.手駒[.玉] = [.歩,.歩,.金]
-                📱.手駒[.王] = [.歩,.銀]
+                📱.手駒[.玉側] = [.歩,.歩,.金]
+                📱.手駒[.王側] = [.歩,.銀]
             }
         
         ContentView()
