@@ -8,7 +8,7 @@ struct 📣ADBanner: View {
     
     @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
     
-    let 🅃iming: Int = 1 //FIXME: Change
+    let 🅃iming: Int = 3
     
     var body: some View {
         Group {

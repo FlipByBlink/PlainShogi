@@ -6,7 +6,6 @@
 
 <br>
 
-
 ## 🔗 AppStore link
 
 [apps.apple.com/app/id1620268476](https://apps.apple.com/app/id1620268476)
@@ -53,7 +52,6 @@ Japanese(native)
 English
 
 <br>
-
 
 ## 🧰 Source code link
 

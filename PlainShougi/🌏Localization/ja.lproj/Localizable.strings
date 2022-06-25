@@ -29,6 +29,24 @@
 "🌏テキスト書き出し例" = "テキスト書き出し例";
 
 
+// ======== AD label =========
+"🌏セルフ広告" = "セルフ広告";
+
+"🌏セルフ広告について" = "セルフ広告について";
+
+"🌏広告説明文" = "広告としてAppStoreアプリケーションに関するバナーを表示します。Plain将棋盤デベロッパーによるアプリ群が表示対象となります。広告はたまに表示されます。このアプリを6回起動する度に一時的に広告が有効になります。バナーを非表示するには「×マークをタップ」もしくは「下向きにスワイプ」をしてください。";
+
+"🌏了解しました" = "了解しました";
+
+
+// ======== Accessibility label =========
+"🌏メニューを開く" = "メニューを開く";
+
+"🌏閉じる" = "閉じる";
+
+"🌏プレーンテキスト" = "プレーンテキスト";
+
+
 // ==== Template ====
 "Open menu" = "メニューを開く";
 "Option" = "オプション";
@@ -60,7 +78,7 @@
 "Open AD link" = "広告のリンクを開く";
 "OK" = "了解しました";
 
-//"This App shows banner advertisement about applications on AppStore. These are Apps by TapWeight developer. AD banner is rarely presented on result screen. It appears one in every 4 times." = "広告としてAppStoreアプリケーションに関するバナーを表示します。「体重登録」デベロッパーによるアプリ群が表示対象となります。入力完了画面では、たまに広告が表示されます。それは4回表示する度に一時的に有効になります。";
+"This App shows banner advertisement about applications on AppStore. These are Apps by PlainShogiBoard developer. AD banner is rarely presented on Main screen. It appears one in every 3 times." = "広告としてAppStoreアプリケーションに関するバナーを表示します。「Plain将棋盤」デベロッパーによるアプリ群が表示対象となります。入力完了画面では、たまに広告が表示されます。それは3回表示する度に一時的に有効になります。";
 
 "Simple and normal ebook reader (for fixed-layout). Only a special feature. Turn a page with slightly longish voluntary blink." = "シンプルで一般的な電子書籍リーダー(固定レイアウト向け)。特殊な機能は1つだけ。目を閉じる時間を意識的にわずかに長くさせた瞬きでページめくりができます。";
 
@@ -69,21 +87,3 @@
 "Register weight data to the Apple \"Health\" application pre-installed on iPhone in the fastest possible way (as manual)." = "「ヘルスケア」アプリに体重データを(手動としては)最速で登録するためのアプリ。";
 
 "Register body temperature data to the \"Health\" app pre-installed on iPhone in the fastest possible way (as manual)." = "「ヘルスケア」アプリに体温データを(手動としては)最速で登録するためのアプリ。";
-
-
-// ======== AD label =========
-"🌏セルフ広告" = "セルフ広告";
-
-"🌏セルフ広告について" = "セルフ広告について";
-
-"🌏広告説明文" = "広告としてAppStoreアプリケーションに関するバナーを表示します。Plain将棋盤デベロッパーによるアプリ群が表示対象となります。広告はたまに表示されます。このアプリを6回起動する度に一時的に広告が有効になります。バナーを非表示するには「×マークをタップ」もしくは「下向きにスワイプ」をしてください。";
-
-"🌏了解しました" = "了解しました";
-
-
-// ======== Accessibility label =========
-"🌏メニューを開く" = "メニューを開く";
-
-"🌏閉じる" = "閉じる";
-
-"🌏プレーンテキスト" = "プレーンテキスト";
