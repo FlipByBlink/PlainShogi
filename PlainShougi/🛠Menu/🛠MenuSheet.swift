@@ -4,8 +4,6 @@ import SwiftUI
 struct 🛠MenuSheet: View {
     @EnvironmentObject var 📱: 📱AppModel
     
-    @AppStorage("English表記") var English表記: Bool = false
-    
     @Environment(\.dismiss) var 🔙: DismissAction
     
     var body: some View {
@@ -32,7 +30,7 @@ struct 🛠MenuSheet: View {
                 
                 
                 Section {
-                    Toggle(isOn: $English表記) {
+                    Toggle(isOn: 📱.$🚩En表記) {
                         Label("🌏English表記に変更する", systemImage: "p.square")
                     }
                 } header: {

@@ -66,6 +66,7 @@ struct マス: View {
                     📱.持ち上げる(位置)
                 } preview: {
                     コマ(兵員.職名)
+                        .environmentObject(📱)
                         .border(.primary)
                         .rotationEffect(反転(兵員.陣営 == .玉))
                         .onAppear { 振動() }
@@ -87,16 +88,16 @@ struct マス: View {
 
 
 struct コマ: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    
     var 職名: 種類
     
     var 余白なし: Bool
     
     var 数: Int
     
-    @AppStorage("English表記") var English表記: Bool = false
-    
     var 表記: String {
-        let 字 = English表記 ? 職名.english : 職名.rawValue
+        let 字 = 📱.🚩En表記 ? 職名.english : 職名.rawValue
         
         if 数 > 1 {
             return 字 + 数.description

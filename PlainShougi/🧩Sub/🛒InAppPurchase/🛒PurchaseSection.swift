@@ -84,6 +84,7 @@ struct 🛒ProductPreview: View {
         HStack {
             Image("ProductPreview_Before")
                 .resizable()
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .scaledToFit()
                 .shadow(radius: 2)
             
@@ -93,6 +94,7 @@ struct 🛒ProductPreview: View {
             
             Image("ProductPreview_After")
                 .resizable()
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .scaledToFit()
                 .shadow(radius: 2)
         }
