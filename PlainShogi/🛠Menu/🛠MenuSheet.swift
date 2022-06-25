@@ -22,10 +22,10 @@ struct 🛠MenuSheet: View {
                 
                 
                 Button {
-                    📱.はじめに戻す()
+                    📱.盤面を初期化する()
                     🔙.callAsFunction()
                 } label: {
-                    Label("盤面を元に戻す", systemImage: "arrow.counterclockwise")
+                    Label("盤面を初期化する", systemImage: "arrow.counterclockwise")
                 }
                 
                 

@@ -4,7 +4,7 @@
 "あそび方" = "How to";
 "長押しで駒を持ち上げ、そのままスライドさせて移動する" = "Long press a piece, move it";
 "ダブルタップで盤上の駒を裏返す" = "Double tap a piece on the board: Turn it";
-"盤面を元に戻す" = "Initialize";
+"盤面を初期化する" = "Initialize";
 "オプション" = "Option";
 "English表記に変更する" = "English term";
 "細かな使い方" = "More how to";

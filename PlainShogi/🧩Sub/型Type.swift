@@ -74,7 +74,7 @@ enum 駒の種類: String, CaseIterable, Identifiable {
         }
     }
     
-    var english: String {
+    var English表記: String {
         switch self {
         case .歩: return "P"
         case .と: return "+P"
@@ -94,7 +94,7 @@ enum 駒の種類: String, CaseIterable, Identifiable {
         }
     }
     
-    var englishテキスト: String {
+    var Englishプレーンテキスト: String {
         switch self {
         case .歩: return "Ｐ"
         case .と: return "ｐ"

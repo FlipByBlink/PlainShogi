@@ -16,7 +16,7 @@ struct ContentView: View {
                 Spacer()
                 
                 盤外(陣営: .玉側)
-                    .frame(height: マスの大きさ, alignment: .center)
+                    .frame(height: マスの大きさ)
                     .padding(4)
                 
                 VStack(spacing: 0) {
@@ -36,13 +36,11 @@ struct ContentView: View {
                         Divider()
                     }
                 }
-                .frame(width: マスの大きさ*9,
-                       height: マスの大きさ*9,
-                       alignment: .center)
+                .frame(width: マスの大きさ*9, height: マスの大きさ*9)
                 .border(.primary)
                 
                 盤外(陣営: .王側)
-                    .frame(height: マスの大きさ, alignment: .center)
+                    .frame(height: マスの大きさ)
                     .padding(4)
                 
                 Spacer()
@@ -61,18 +59,18 @@ struct マス: View {
     var body: some View {
         if let 兵員: 兵 = 📱.駒の配置[位置] {
             コマ(兵員.職名, 余白なし: true)
-                .rotationEffect(反転(兵員.陣営 == .玉側))
+                .rotationEffect(下向き(兵員.陣営 == .玉側))
                 .onDrag {
                     📱.盤上の駒を持ち上げる(位置)
                 } preview: {
                     コマ(兵員.職名)
                         .environmentObject(📱)
                         .border(.primary)
-                        .rotationEffect(反転(兵員.陣営 == .玉側))
-                        .onAppear { 振動() }
+                        .rotationEffect(下向き(兵員.陣営 == .玉側))
+                        .onAppear { 振動フィードバック() }
                 }
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
-                    📱.駒を動かす(位置, 📨)
+                    📱.持ち上げていた駒をここに置く(位置, 📨)
                 }
                 .onTapGesture(count: 2) {
                     📱.駒を裏返す(位置)
@@ -80,7 +78,7 @@ struct マス: View {
         } else {
             Color(uiColor: .systemBackground)
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
-                    📱.駒を動かす(位置, 📨)
+                    📱.持ち上げていた駒をここに置く(位置, 📨)
                 }
         }
     }
@@ -97,7 +95,7 @@ struct コマ: View {
     var 手駒の数: Int
     
     var 表記: String {
-        let 字 = 📱.🚩English表記 ? 職名.english : 職名.rawValue
+        let 字 = 📱.🚩English表記 ? 職名.English表記 : 職名.rawValue
         
         if 手駒の数 > 1 {
             return 字 + 手駒の数.description
@@ -139,19 +137,19 @@ struct 盤外: View {
             Spacer()
             
             ForEach(駒の種類.allCases) { 職名 in
-                let 駒数 = 📱.手駒[陣営]!.filter{$0 == 職名}.count
-                if 駒数 > 0 {
-                    コマ(職名, 駒数, 余白なし: true)
+                let 駒の数 = 📱.手駒[陣営]!.filter{$0 == 職名}.count
+                if 駒の数 > 0 {
+                    コマ(職名, 駒の数, 余白なし: true)
                         .onDrag{
                             📱.手駒を持ち上げる(兵(陣営,職名))
                         } preview: {
                             コマ(職名)
                                 .border(.primary)
-                                .rotationEffect(反転(陣営 == .玉側))
-                                .onAppear { 振動() }
+                                .rotationEffect(下向き(陣営 == .玉側))
+                                .onAppear { 振動フィードバック() }
                         }
                         .onTapGesture(count: 3) {
-                            let ひとつ = 📱.手駒[陣営]!.firstIndex(of:職名)!
+                            let ひとつ = 📱.手駒[陣営]!.firstIndex(of:職名)! //FIXME: 命名
                             📱.手駒[陣営]!.remove(at: ひとつ)
                         }
                 } else {
@@ -161,12 +159,12 @@ struct 盤外: View {
             
             Spacer()
         }
-        .rotationEffect(反転(陣営 == .玉側))
+        .rotationEffect(下向き(陣営 == .玉側))
     }
 }
 
 
-func 反転(_ 玉側かどうか: Bool) -> Angle {
+func 下向き(_ 玉側かどうか: Bool) -> Angle {
     if 玉側かどうか {
         return .degrees(180)
     } else {
@@ -175,7 +173,7 @@ func 反転(_ 玉側かどうか: Bool) -> Angle {
 }
 
 
-func 振動() {
+func 振動フィードバック() {
     UISelectionFeedbackGenerator().selectionChanged()
 }
 

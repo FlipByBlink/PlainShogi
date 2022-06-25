@@ -9,7 +9,7 @@ class 📱AppModel: ObservableObject {
     
     @Published var 手駒: [王側か玉側か: [駒の種類]] = 初期手駒
     
-    @Published var 動き出した駒の位置: Int? = nil
+    @Published var 持ち上げられた駒の元々の位置: Int? = nil
     
     @Published var 持ち上げられた手駒: 兵? = nil
     
@@ -19,7 +19,7 @@ class 📱AppModel: ObservableObject {
     
     
     func 盤上の駒を持ち上げる(_ ここから: Int) -> NSItemProvider {
-        動き出した駒の位置 = ここから
+        持ち上げられた駒の元々の位置 = ここから
         現状 = .盤上の駒を持ち上げている
         return 外部へテキストを書き出す()
     }
@@ -32,20 +32,20 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 駒を動かす(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool {
+    func 持ち上げていた駒をここに置く(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool {
         guard let 🗂 = 📦.first else { return false }
         
         if let 🏷 = 🗂.suggestedName {
-            print("🗂.suggestedName: ", 🏷)
+            print("🗂.suggestedName: ", 🏷) //TODO: 再検討
             if 🏷 != "コマ" { 現状 = .駒を持ち上げていない }
         } else {
-            print("🗂.suggestedName: nil")
+            print("🗂.suggestedName: nil") //TODO: 再検討
             現状 = .駒を持ち上げていない
         }
         
         switch 現状 {
             case .駒を持ち上げていない:
-                🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in
+                🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, ⓔrror in //TODO: async/await実装
                     if ⓔrror != nil { print("👿 loadItem: ", ⓔrror.debugDescription) }
                     
                     guard let 📋 = 📁 as? Data else { return }
@@ -57,19 +57,19 @@ class 📱AppModel: ObservableObject {
                     }
                 }
             case .盤上の駒を持ち上げている:
-                if let 出発地 = 動き出した駒の位置 {
-                    if 行先 == 出発地 { return true }
+                if let 出発地点 = 持ち上げられた駒の元々の位置 {
+                    if 行先 == 出発地点 { return true }
                     
                     if let 先客 = 駒の配置[行先] {
-                        if 先客.陣営 == 駒の配置[出発地]?.陣営 { return true }
+                        if 先客.陣営 == 駒の配置[出発地点]?.陣営 { return true }
                         
-                        手駒[駒の配置[出発地]!.陣営]!.append(先客.職名.生駒)
+                        手駒[駒の配置[出発地点]!.陣営]!.append(先客.職名.生駒)
                     }
                     
-                    駒の配置.updateValue(駒の配置[出発地]!, forKey: 行先)
-                    駒の配置.removeValue(forKey: 出発地)
+                    駒の配置.updateValue(駒の配置[出発地点]!, forKey: 行先)
+                    駒の配置.removeValue(forKey: 出発地点)
                     
-                    動き出した駒の位置 = nil
+                    持ち上げられた駒の元々の位置 = nil
                 } else { print("🐛") }
             case .手駒を持ち上げている:
                 if let これ = 持ち上げられた手駒 {
@@ -84,7 +84,7 @@ class 📱AppModel: ObservableObject {
                 } else { print("🐛") }
         }
         
-        ログ保存()
+        ログを更新する()
         
         return true
     }
@@ -97,16 +97,16 @@ class 📱AppModel: ObservableObject {
             }
         }
         
-        振動()
+        振動フィードバック()
     }
     
     
-    func ログ保存() {
+    func ログを更新する() {
         let 🗄 = UserDefaults.standard
         
         var 盤上ログ: [String: [String]] = [:]
         
-        駒の配置.forEach { (ｲﾁ: Int, ｺﾏ: 兵) in
+        駒の配置.forEach { (ｲﾁ: Int, ｺﾏ: 兵) in //FIXME: 命名
             盤上ログ.updateValue([ｺﾏ.陣営.rawValue, ｺﾏ.職名.rawValue], forKey: ｲﾁ.description)
         }
         
@@ -114,7 +114,7 @@ class 📱AppModel: ObservableObject {
         
         var 手駒ログ: [String: [String]] = ["王側": [], "玉側": []]
         
-        手駒.forEach { (ｼﾞﾝｴｲ: 王側か玉側か, ﾃｺﾞﾏﾀﾁ: [駒の種類]) in
+        手駒.forEach { (ｼﾞﾝｴｲ: 王側か玉側か, ﾃｺﾞﾏﾀﾁ: [駒の種類]) in //FIXME: 命名
             ﾃｺﾞﾏﾀﾁ.forEach { 手駒ログ[ｼﾞﾝｴｲ.rawValue]?.append($0.rawValue) }
         }
         
@@ -123,16 +123,16 @@ class 📱AppModel: ObservableObject {
     
     
     init() {
-        ログ読み込み()
+        ログを読み込む()
     }
     
-    func ログ読み込み() {
+    func ログを読み込む() {
         let 🗄 = UserDefaults.standard
         
         var 盤上ログ: [Int: 兵] = [:]
         
         if let 💾 = 🗄.dictionary(forKey: "駒の配置") as? [String: [String]] {
-            💾.forEach { (ｲﾁ: String, ｺﾏ: [String]) in
+            💾.forEach { (ｲﾁ: String, ｺﾏ: [String]) in //FIXME: 命名
                 if let ｼﾞﾝｴｲ = 王側か玉側か.init(rawValue: ｺﾏ[0]) {
                     if let ｼｮｸﾒｲ = 駒の種類.init(rawValue: ｺﾏ[1]) {
                         盤上ログ.updateValue(兵(ｼﾞﾝｴｲ,ｼｮｸﾒｲ), forKey: Int(ｲﾁ)!)
@@ -149,7 +149,7 @@ class 📱AppModel: ObservableObject {
         var 手駒ログ: [王側か玉側か: [駒の種類]] = 初期手駒
         
         if let 💾 = 🗄.dictionary(forKey: "手駒") as? [String:[String]] {
-            💾.forEach { (ｼﾞﾝｴｲ: String, ﾃｺﾞﾏﾀﾁ: [String]) in
+            💾.forEach { (ｼﾞﾝｴｲ: String, ﾃｺﾞﾏﾀﾁ: [String]) in //FIXME: 命名
                 ﾃｺﾞﾏﾀﾁ.forEach { ﾃｺﾞﾏ in
                     if let ｼｮｸﾒｲ = 駒の種類.init(rawValue: ﾃｺﾞﾏ) {
                         if let ｼﾞﾝｴｲ = 王側か玉側か.init(rawValue: ｼﾞﾝｴｲ) {
@@ -177,16 +177,16 @@ class 📱AppModel: ObservableObject {
     func テキストに変換する() -> String {
         var 📄 = "☗"
         
-        self.手駒[.玉側]?.forEach{ ﾃｺﾞﾏ in
-            📄 += 🚩English表記 ? ﾃｺﾞﾏ.englishテキスト + "͙" : ﾃｺﾞﾏ.rawValue + "͙"
+        self.手駒[.玉側]?.forEach{ ﾃｺﾞﾏ in //FIXME: 命名
+            📄 += 🚩English表記 ? ﾃｺﾞﾏ.Englishプレーンテキスト + "͙" : ﾃｺﾞﾏ.rawValue + "͙"
         }
         
         📄 += "\n－－－－－－－－－\n"
         
         for 行 in 0 ..< 9 {
             for 列 in 0 ..< 9 {
-                if let ｺﾏ = self.駒の配置[行*9+列] {
-                    📄 += 🚩English表記 ? ｺﾏ.職名.englishテキスト : ｺﾏ.職名.rawValue
+                if let ｺﾏ = self.駒の配置[行*9+列] { //FIXME: 命名
+                    📄 += 🚩English表記 ? ｺﾏ.職名.Englishプレーンテキスト : ｺﾏ.職名.rawValue
                     
                     if ｺﾏ.陣営 == .玉側 {
                         📄 += "͙"
@@ -200,8 +200,8 @@ class 📱AppModel: ObservableObject {
         
         📄 += "－－－－－－－－－\n☖"
         
-        self.手駒[.王側]?.forEach{ ﾃｺﾞﾏ in
-            📄 += 🚩English表記 ? ﾃｺﾞﾏ.englishテキスト : ﾃｺﾞﾏ.rawValue
+        self.手駒[.王側]?.forEach{ ﾃｺﾞﾏ in //FIXME: 命名
+            📄 += 🚩English表記 ? ﾃｺﾞﾏ.Englishプレーンテキスト : ﾃｺﾞﾏ.rawValue
         }
         
         return 📄
@@ -229,26 +229,26 @@ class 📱AppModel: ObservableObject {
             let 字 = 文字1つ.description
             
             if 改行数 == 0 || 改行数 == 12 {
-                駒の種類.allCases.forEach { 種類毎 in
-                    if 字 == 種類毎.rawValue || 字 == 種類毎.englishテキスト {
+                駒の種類.allCases.forEach { 種類毎 in //FIXME: 命名
+                    if 字 == 種類毎.rawValue || 字 == 種類毎.Englishプレーンテキスト {
                         手駒テキスト[.王側]?.append(種類毎)
                     }
                     
-                    if 字 == 種類毎.rawValue + "͙" || 字 == 種類毎.englishテキスト + "͙" {
+                    if 字 == 種類毎.rawValue + "͙" || 字 == 種類毎.Englishプレーンテキスト + "͙" {
                         手駒テキスト[.玉側]?.append(種類毎)
                     }
                 }
             }
             
             if 1 < 改行数 && 改行数 < 11 {
-                駒の種類.allCases.forEach { 種類毎 in
+                駒の種類.allCases.forEach { 種類毎 in //FIXME: 命名
                     let 座標 = ( 改行数 - 2 ) * 9 + 列
                     
-                    if 字 == 種類毎.rawValue || 字 == 種類毎.englishテキスト {
+                    if 字 == 種類毎.rawValue || 字 == 種類毎.Englishプレーンテキスト {
                         盤上テキスト.updateValue(兵(.王側, 種類毎), forKey: 座標)
                     }
                     
-                    if 字 == 種類毎.rawValue + "͙" || 字 == 種類毎.englishテキスト + "͙" {
+                    if 字 == 種類毎.rawValue + "͙" || 字 == 種類毎.Englishプレーンテキスト + "͙" {
                         盤上テキスト.updateValue(兵(.玉側, 種類毎), forKey: 座標)
                     }
                 }
@@ -266,7 +266,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func はじめに戻す() {
+    func 盤面を初期化する() {
         self.駒の配置 = 初期配置
         self.手駒 = 初期手駒
         
