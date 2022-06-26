@@ -8,7 +8,7 @@ class 📱AppModel: ObservableObject {
     @Published var 駒の配置: [Int: 将棋駒] = 初期配置
     
     //@Published var 手駒: [王側か玉側か: [駒の種類]] = 初期手駒
-    @Published var 手駒: [王側か玉側か: [駒の種類: Int]] = [.王側:[:],.玉側:[:]]
+    @Published var 手駒: [王側か玉側か: [駒の種類: Int]] = [.王側: [:], .玉側: [:]]
     
     @Published var 持ち上げられた駒の元々の位置: Int? = nil
     
@@ -83,11 +83,6 @@ class 📱AppModel: ObservableObject {
     func 手駒に加える(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         //手駒[陣営]!.append(職名)
         
-//        if let 現在の手駒の数 = 手駒[職名] {
-//            手駒[職名] = 現在の手駒の数 + 1
-//        } else {
-//            手駒[職名] = 1
-//        }
         if let 現在の手駒の数 = 手駒[陣営]?[職名] {
             手駒[陣営]?[職名] = 現在の手駒の数 + 1
         } else {
@@ -298,7 +293,7 @@ class 📱AppModel: ObservableObject {
     func 盤面を初期化する() {
         駒の配置 = 初期配置
         //手駒 = 初期手駒
-        手駒 = [:]
+        手駒 = [.王側: [:], .玉側: [:]]
         
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }

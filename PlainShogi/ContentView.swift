@@ -203,7 +203,7 @@ struct ContentView_Previews: PreviewProvider {
             }
         
         ContentView()
-            .previewLayout(.fixed(width: 300, height: 600))
+            .previewLayout(.fixed(width: 200, height: 500))
             .environmentObject(📱)
     }
 }
