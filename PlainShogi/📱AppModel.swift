@@ -38,30 +38,28 @@ class 📱AppModel: ObservableObject {
         
         switch 現状 {
             case .盤上の駒を持ち上げている:
-                if let 出発地点 = 持ち上げられた駒の元々の位置 {
-                    if 置いた位置 == 出発地点 { return true }
+                guard let 出発地点 = 持ち上げられた駒の元々の位置 else { return false }
+                if 置いた位置 == 出発地点 { return false }
+                
+                if let 先客 = 駒の配置[置いた位置] {
+                    if 先客.陣営 == 駒の配置[出発地点]?.陣営 { return true }
                     
-                    if let 先客 = 駒の配置[置いた位置] {
-                        if 先客.陣営 == 駒の配置[出発地点]?.陣営 { return true }
-                        
-                        手駒[駒の配置[出発地点]!.陣営]!.append(先客.職名.生駒)
-                    }
-                    
-                    駒の配置.updateValue(駒の配置[出発地点]!, forKey: 置いた位置)
-                    駒の配置.removeValue(forKey: 出発地点)
-                    
-                    持ち上げられた駒の元々の位置 = nil
-                } else { print("🐛") }
+                    手駒に加える(駒の配置[出発地点]!.陣営, 先客.職名)
+                }
+                
+                駒の配置.updateValue(駒の配置[出発地点]!, forKey: 置いた位置)
+                駒の配置.removeValue(forKey: 出発地点)
+                
+                持ち上げられた駒の元々の位置 = nil
             case .手駒を持ち上げている:
-                if let 駒 = 持ち上げられた手駒 {
-                    if 駒の配置[置いた位置] != nil { return true }
-                    
-                    駒の配置.updateValue(駒, forKey: 置いた位置)
-                    
-                    手駒[駒.陣営]!.remove(at: 手駒[駒.陣営]!.firstIndex(of:駒.職名)!)
-                    
-                    持ち上げられた手駒 = nil
-                } else { print("🐛") }
+                guard let 駒 = 持ち上げられた手駒 else { return false }
+                if 駒の配置[置いた位置] != nil { return false }
+                
+                駒の配置.updateValue(駒, forKey: 置いた位置)
+                
+                手駒から消す(駒)
+                
+                持ち上げられた手駒 = nil
             case .駒を持ち上げていない:
                 Task {
                     guard let 📦 = 📦ItemProvider.first else { return }
@@ -78,6 +76,15 @@ class 📱AppModel: ObservableObject {
         ログを更新する()
         
         return true
+    }
+    
+    
+    func 手駒に加える(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
+        手駒[陣営]!.append(職名)
+    }
+    
+    func 手駒から消す(_ 駒: 将棋駒) {
+        手駒[駒.陣営]!.remove(at: 手駒[駒.陣営]!.firstIndex(of:駒.職名)!)
     }
     
     
