@@ -63,13 +63,20 @@ class 📱AppModel: ObservableObject {
                 持ち上げられた手駒 = nil
             case .駒を持ち上げていない:
                 Task {
-                    guard let 📦 = 📦ItemProvider.first else { return }
-                    let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
-                    guard let 💾 = 🅂ecureCoding as? Data else { return }
-                    if let 📃 = String(data: 💾, encoding: .utf8) {
-                        if 📃.first == "☗" {
-                            このテキストを盤面に反映する(📃)
+                    do {
+                        guard let 📦 = 📦ItemProvider.first else { return }
+                        let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier) //FIXME: Error
+                        guard let 💾 = 🅂ecureCoding as? Data else { return }
+                        if let 📃 = String(data: 💾, encoding: .utf8) {
+                            if 📃.first == "☗" {
+                                DispatchQueue.main.async {
+                                    self.このテキストを盤面に反映する(📃)
+                                }
+                            }
                         }
+                    } catch {
+                        print("==== Error: 📦.loadItem ====")
+                        print(error)
                     }
                 }
         }
@@ -364,4 +371,13 @@ class 📱AppModel: ObservableObject {
 }
 
 
+
+
 //FIXME: > Publishing changes from background threads is not allowed; make sure to publish values from the main thread (via operators like receive(on:)) on model updates.
+
+//FIXME: >==== Error: 📦.loadItem ====
+//> [Pasteboard] Could not retrieve data representation of type public.utf8-plain-text. Error: Error Domain=NSCocoaErrorDomain Code=4099 "The connection to service created from an endpoint was invalidated from this process." UserInfo={NSDebugDescription=The connection to service created from an endpoint was invalidated from this process.}
+//> Error Domain=NSItemProviderErrorDomain Code=-1000 "Data transfer has been cancelled." UserInfo={NSLocalizedDescription=Data transfer has been cancelled.}
+
+//FIXME: >==== Error: 📦.loadItem ====
+//> Error Domain=NSItemProviderErrorDomain Code=-1000 "Cannot load representation of type public.text" UserInfo={NSLocalizedDescription=Cannot load representation of type public.text, NSUnderlyingError=0x283f97de0 {Error Domain=PBErrorDomain Code=0 "Cannot load representation of type public.utf8-plain-text" UserInfo={NSLocalizedDescription=Cannot load representation of type public.utf8-plain-text, NSUnderlyingError=0x283f945a0 {Error Domain=NSCocoaErrorDomain Code=4097 "connection to service with pid 68717 created from an endpoint" UserInfo={NSDebugDescription=connection to service with pid 68717 created from an endpoint}}}}}

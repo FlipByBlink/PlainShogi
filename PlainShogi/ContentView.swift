@@ -70,7 +70,7 @@ struct マス: View {
                         .rotationEffect(下向き(駒.陣営 == .玉側))
                         .onAppear { 振動フィードバック() }
                 }
-                .onDrop(of: [.text], isTargeted: nil) { 📦 in
+                .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
                     📱.駒をここに置く(位置, 📦)
                 }
                 .onTapGesture(count: 2) {
@@ -78,7 +78,7 @@ struct マス: View {
                 }
         } else {
             Color(uiColor: .systemBackground)
-                .onDrop(of: [.text], isTargeted: nil) { 📦 in
+                .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
                     📱.駒をここに置く(位置, 📦)
                 }
         }
