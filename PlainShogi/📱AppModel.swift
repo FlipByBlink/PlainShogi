@@ -32,9 +32,9 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 駒をここに置く(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool { //TODO: 処理の流れを見直す
+    func 駒をここに置く(_ 行先: Int, _ 📦ItemProvider: [NSItemProvider]) -> Bool { //TODO: 処理の流れを見直す
         
-        アプリ外部からのドロップかどうか確認する(📦)
+        アプリ外部からのドロップかどうか確認する(📦ItemProvider)
         
         switch 現状 {
             case .盤上の駒を持ち上げている:
@@ -63,16 +63,13 @@ class 📱AppModel: ObservableObject {
                     持ち上げられた手駒 = nil
                 } else { print("🐛") }
             case .駒を持ち上げていない:
-                guard let 🗂 = 📦.first else { return false }
-                
-                🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, 🚨 in //TODO: async/await実装
-                    if 🚨 != nil { print("🚨 loadItem: ", 🚨.debugDescription) }
-                    
-                    guard let 📋 = 📁 as? Data else { return }
-                    
-                    if let 📄 = String(data: 📋, encoding: .utf8) {
-                        if 📄.first == "☗" {
-                            self.外部からテキストを取り込む(📄)
+                Task {
+                    guard let 📦 = 📦ItemProvider.first else { return }
+                    let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
+                    guard let 💾 = 🅂ecureCoding as? Data else { return }
+                    if let 📃 = String(data: 💾, encoding: .utf8) {
+                        if 📃.first == "☗" {
+                            外部からテキストを取り込む(📃)
                         }
                     }
                 }
@@ -142,7 +139,7 @@ class 📱AppModel: ObservableObject {
         
         var 手駒ログ = 初期手駒
         
-        if let 💾 = 🗄.dictionary(forKey: "手駒") as? [String:[String]] {
+        if let 💾 = 🗄.dictionary(forKey: "手駒") as? [String: [String]] {
             💾.forEach { (陣営テキスト: String, 手駒テキスト: [String]) in
                 手駒テキスト.forEach { 駒テキスト in
                     if let 職名 = 駒の種類(rawValue: 駒テキスト) {
@@ -202,13 +199,13 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func アプリ外部からのドロップかどうか確認する(_ 📦: [NSItemProvider]) {
-        guard let 🗂 = 📦.first else { return }
+    func アプリ外部からのドロップかどうか確認する(_ 📦ItemProvider: [NSItemProvider]) {
+        guard let 📦 = 📦ItemProvider.first else { return }
         
-        if let 🏷 = 🗂.suggestedName {
+        if let 🏷 = 📦.suggestedName {
             if 🏷 != "アプリ内でのコマ移動です" {
                 現状 = .駒を持ち上げていない
-                print("🗂.suggestedName: ", 🏷)
+                print("📦.suggestedName: ", 🏷)
             }
         } else {
             現状 = .駒を持ち上げていない
