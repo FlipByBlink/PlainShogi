@@ -53,7 +53,7 @@ struct 🛠MenuSheet: View {
                 
                 
                 Section {
-                    Text(📱.テキストに変換する())
+                    Text(📱.現在の盤面をテキストに変換する())
                         .padding()
                         .accessibilityLabel("Plain text")
                         .textSelection(.enabled)

@@ -18,45 +18,45 @@ class 📱AppModel: ObservableObject {
     @AppStorage("English表記") var 🚩English表記: Bool = false
     
     
-    func 盤上の駒を持ち上げる(_ ここから: Int) -> NSItemProvider {
-        持ち上げられた駒の元々の位置 = ここから
+    func 盤上の駒を持ち上げる(_ 位置: Int) -> NSItemProvider {
+        持ち上げられた駒の元々の位置 = 位置
         現状 = .盤上の駒を持ち上げている
         return 外部書き出し用のテキストを準備する()
     }
     
     
-    func 手駒を持ち上げる(_ これを: 将棋駒) -> NSItemProvider {
-        持ち上げられた手駒 = これを
+    func 手駒を持ち上げる(_ 駒: 将棋駒) -> NSItemProvider {
+        持ち上げられた手駒 = 駒
         現状 = .手駒を持ち上げている
         return 外部書き出し用のテキストを準備する()
     }
     
     
-    func 駒をここに置く(_ 行先: Int, _ 📦ItemProvider: [NSItemProvider]) -> Bool {
+    func 駒をここに置く(_ 置いた位置: Int, _ 📦ItemProvider: [NSItemProvider]) -> Bool {
         
         アプリ外部からのドロップかどうか確認する(📦ItemProvider)
         
         switch 現状 {
             case .盤上の駒を持ち上げている:
                 if let 出発地点 = 持ち上げられた駒の元々の位置 {
-                    if 行先 == 出発地点 { return true }
+                    if 置いた位置 == 出発地点 { return true }
                     
-                    if let 先客 = 駒の配置[行先] {
+                    if let 先客 = 駒の配置[置いた位置] {
                         if 先客.陣営 == 駒の配置[出発地点]?.陣営 { return true }
                         
                         手駒[駒の配置[出発地点]!.陣営]!.append(先客.職名.生駒)
                     }
                     
-                    駒の配置.updateValue(駒の配置[出発地点]!, forKey: 行先)
+                    駒の配置.updateValue(駒の配置[出発地点]!, forKey: 置いた位置)
                     駒の配置.removeValue(forKey: 出発地点)
                     
                     持ち上げられた駒の元々の位置 = nil
                 } else { print("🐛") }
             case .手駒を持ち上げている:
                 if let 駒 = 持ち上げられた手駒 {
-                    if 駒の配置[行先] != nil { return true }
+                    if 駒の配置[置いた位置] != nil { return true }
                     
-                    駒の配置.updateValue(駒, forKey: 行先)
+                    駒の配置.updateValue(駒, forKey: 置いた位置)
                     
                     手駒[駒.陣営]!.remove(at: 手駒[駒.陣営]!.firstIndex(of:駒.職名)!)
                     
@@ -69,7 +69,7 @@ class 📱AppModel: ObservableObject {
                     guard let 💾 = 🅂ecureCoding as? Data else { return }
                     if let 📃 = String(data: 💾, encoding: .utf8) {
                         if 📃.first == "☗" {
-                            テキストを盤面に反映する(📃)
+                            このテキストを盤面に反映する(📃)
                         }
                     }
                 }
@@ -137,7 +137,7 @@ class 📱AppModel: ObservableObject {
         }
         
         
-        var 手駒ログ = 初期手駒
+        var 手駒ログ: [王側か玉側か: [駒の種類]] = [.玉側: [], .王側: []]
         
         if let 💾 = 🗄.dictionary(forKey: "手駒") as? [String: [String]] {
             💾.forEach { (陣営テキスト: String, 手駒テキスト: [String]) in
@@ -157,7 +157,7 @@ class 📱AppModel: ObservableObject {
     
     func 外部書き出し用のテキストを準備する() -> NSItemProvider {
         var 📄 = "\n"
-        📄 += テキストに変換する()
+        📄 += 現在の盤面をテキストに変換する()
         
         let 📦 = NSItemProvider(object: 📄 as NSItemProviderWriting)
         📦.suggestedName = "アプリ内でのコマ移動です"
@@ -165,7 +165,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func テキストに変換する() -> String {
+    func 現在の盤面をテキストに変換する() -> String {
         var 📄 = "☗"
         
         手駒[.玉側]?.forEach{ 駒 in
@@ -213,7 +213,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func テキストを盤面に反映する(_ 📃: String) {
+    func このテキストを盤面に反映する(_ 📃: String) {
         var 盤上テキスト: [Int: 将棋駒] = [:]
         var 手駒テキスト = 初期手駒
         var 改行数: Int = 0
