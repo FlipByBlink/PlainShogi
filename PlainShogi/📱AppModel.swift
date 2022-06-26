@@ -32,7 +32,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 持ち上げていた駒をここに置く(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool {
+    func 持ち上げていた駒をここに置く(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool { //TODO: 処理の流れを見直す
         guard let 🗂 = 📦.first else { return false }
         
         if let 🏷 = 🗂.suggestedName {

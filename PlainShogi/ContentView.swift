@@ -70,6 +70,7 @@ struct マス: View {
                         .onAppear { 振動フィードバック() }
                 }
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
+                    //TODO: ここでアプリ外部からのドラッグかを判定する処理をする
                     📱.持ち上げていた駒をここに置く(位置, 📨)
                 }
                 .onTapGesture(count: 2) {

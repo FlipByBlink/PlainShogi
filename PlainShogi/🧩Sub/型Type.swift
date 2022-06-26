@@ -1,5 +1,5 @@
 
-struct 将棋駒 {
+struct 将棋駒 { //TODO: 実装見直す？
     let 陣営: 王側か玉側か
     let 職名: 駒の種類
     
