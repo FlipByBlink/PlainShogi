@@ -21,27 +21,20 @@ class 📱AppModel: ObservableObject {
     func 盤上の駒を持ち上げる(_ ここから: Int) -> NSItemProvider {
         持ち上げられた駒の元々の位置 = ここから
         現状 = .盤上の駒を持ち上げている
-        return 外部へテキストを書き出す()
+        return 外部書き出し用のテキストを準備する()
     }
     
     
     func 手駒を持ち上げる(_ これを: 将棋駒) -> NSItemProvider {
         持ち上げられた手駒 = これを
         現状 = .手駒を持ち上げている
-        return 外部へテキストを書き出す()
+        return 外部書き出し用のテキストを準備する()
     }
     
     
-    func 持ち上げていた駒をここに置く(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool { //TODO: 処理の流れを見直す
-        guard let 🗂 = 📦.first else { return false }
+    func 駒をここに置く(_ 行先: Int, _ 📦: [NSItemProvider]) -> Bool { //TODO: 処理の流れを見直す
         
-        if let 🏷 = 🗂.suggestedName {
-            print("🗂.suggestedName: ", 🏷) //TODO: 再検討
-            if 🏷 != "コマ" { 現状 = .駒を持ち上げていない }
-        } else {
-            print("🗂.suggestedName: nil") //TODO: 再検討
-            現状 = .駒を持ち上げていない
-        }
+        アプリ外部からのドロップかどうか確認する(📦)
         
         switch 現状 {
             case .盤上の駒を持ち上げている:
@@ -70,6 +63,8 @@ class 📱AppModel: ObservableObject {
                     持ち上げられた手駒 = nil
                 } else { print("🐛") }
             case .駒を持ち上げていない:
+                guard let 🗂 = 📦.first else { return false }
+                
                 🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, 🚨 in //TODO: async/await実装
                     if 🚨 != nil { print("🚨 loadItem: ", 🚨.debugDescription) }
                     
@@ -163,12 +158,12 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 外部へテキストを書き出す() -> NSItemProvider {
+    func 外部書き出し用のテキストを準備する() -> NSItemProvider {
         var 📄 = "\n"
         📄 += テキストに変換する()
         
         let 📦 = NSItemProvider(object: 📄 as NSItemProviderWriting)
-        📦.suggestedName = "コマ"
+        📦.suggestedName = "アプリ内でのコマ移動です"
         return 📦
     }
     
@@ -204,6 +199,20 @@ class 📱AppModel: ObservableObject {
         }
         
         return 📄
+    }
+    
+    
+    func アプリ外部からのドロップかどうか確認する(_ 📦: [NSItemProvider]) {
+        guard let 🗂 = 📦.first else { return }
+        
+        if let 🏷 = 🗂.suggestedName {
+            if 🏷 != "アプリ内でのコマ移動です" {
+                現状 = .駒を持ち上げていない
+                print("🗂.suggestedName: ", 🏷)
+            }
+        } else {
+            現状 = .駒を持ち上げていない
+        }
     }
     
     

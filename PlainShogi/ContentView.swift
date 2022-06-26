@@ -70,8 +70,7 @@ struct マス: View {
                         .onAppear { 振動フィードバック() }
                 }
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
-                    //TODO: ここでアプリ外部からのドラッグかを判定する処理をする
-                    📱.持ち上げていた駒をここに置く(位置, 📨)
+                    📱.駒をここに置く(位置, 📨)
                 }
                 .onTapGesture(count: 2) {
                     📱.駒を裏返す(位置)
@@ -79,7 +78,7 @@ struct マス: View {
         } else {
             Color(uiColor: .systemBackground)
                 .onDrop(of: [.text], isTargeted: nil) { 📨 in
-                    📱.持ち上げていた駒をここに置く(位置, 📨)
+                    📱.駒をここに置く(位置, 📨)
                 }
         }
     }
@@ -145,6 +144,7 @@ struct 盤外: View {
                             📱.手駒を持ち上げる(将棋駒(陣営,職名))
                         } preview: {
                             コマ(職名)
+                                .environmentObject(📱)
                                 .border(.primary)
                                 .rotationEffect(下向き(陣営 == .玉側))
                                 .onAppear { 振動フィードバック() }
