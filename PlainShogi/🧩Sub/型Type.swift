@@ -10,7 +10,7 @@ struct 将棋駒 { //TODO: 実装見直す？
 }
 
 
-enum 王側か玉側か: String { //FIXME: これStringにする必要あるのかね？
+enum 王側か玉側か: String, CaseIterable {
     case 王側
     case 玉側
 }
