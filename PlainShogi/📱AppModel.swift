@@ -69,7 +69,7 @@ class 📱AppModel: ObservableObject {
                         guard let 💾 = 🅂ecureCoding as? Data else { return }
                         if let 📃 = String(data: 💾, encoding: .utf8) {
                             if 📃.first == "☗" {
-                                DispatchQueue.main.async {
+                                DispatchQueue.main.async { //このへん実装おかしい？
                                     self.このテキストを盤面に反映する(📃)
                                 }
                             }
@@ -286,7 +286,7 @@ class 📱AppModel: ObservableObject {
     
     
     func このテキストを盤面に反映する(_ 📃: String) {
-        var 盤上テキスト: [Int: 将棋駒] = [:]
+        var 盤上テキスト: [Int: 将棋駒] = [:] //このへん実装おかしい？
         var 手駒テキスト = 初期手駒
         var 改行数: Int = 0
         var 列: Int = 0
@@ -298,49 +298,51 @@ class 📱AppModel: ObservableObject {
                 列 = 0
                 continue
             }
-
+            
             let 駒テキスト = 字区切り.description
-
-            if 改行数 == 0 {
-                if let 数 = Int(駒テキスト) {
-                    手駒[.玉側]?[読み込み中の手駒の種類] = 数
-                } else {
-                    駒の種類.allCases.forEach { 職名 in
-                        if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
-                            //手駒テキスト[.玉側]?.append(職名)
-                            手駒テキスト[.玉側]?[職名] = 1
-                            
-                            読み込み中の手駒の種類 = 職名
+            
+            switch 改行数 {
+                case 0:
+                    if let 数 = Int(駒テキスト) {
+                        手駒[.玉側]?[読み込み中の手駒の種類] = 数
+                    } else {
+                        駒の種類.allCases.forEach { 職名 in
+                            if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
+                                //手駒テキスト[.玉側]?.append(職名)
+                                手駒テキスト[.玉側]?[職名] = 1
+                                
+                                読み込み中の手駒の種類 = 職名
+                            }
                         }
                     }
-                }
-            } else if 1 < 改行数 && 改行数 < 11 {
-                駒の種類.allCases.forEach { 職名 in
-                    let 座標 = ( 改行数 - 2 ) * 9 + 列
-
-                    if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
-                        盤上テキスト.updateValue(将棋駒(.王側, 職名), forKey: 座標)
-                    }
-
-                    if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
-                        盤上テキスト.updateValue(将棋駒(.玉側, 職名), forKey: 座標)
-                    }
-                }
-            } else if 改行数 == 12 {
-                if let 数 = Int(駒テキスト) {
-                    手駒[.王側]?[読み込み中の手駒の種類] = 数
-                } else {
+                case 1...11:
                     駒の種類.allCases.forEach { 職名 in
+                        let 座標 = ( 改行数 - 2 ) * 9 + 列
+                        
                         if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
-                            手駒テキスト[.王側]?[職名] = 1
-                            //手駒テキスト[.王側]?.append(職名)
-                            
-                            読み込み中の手駒の種類 = 職名
+                            盤上テキスト.updateValue(将棋駒(.王側, 職名), forKey: 座標)
+                        }
+                        
+                        if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
+                            盤上テキスト.updateValue(将棋駒(.玉側, 職名), forKey: 座標)
                         }
                     }
-                }
+                case 12:
+                    if let 数 = Int(駒テキスト) {
+                        手駒[.王側]?[読み込み中の手駒の種類] = 数
+                    } else {
+                        駒の種類.allCases.forEach { 職名 in
+                            if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
+                                手駒テキスト[.王側]?[職名] = 1
+                                //手駒テキスト[.王側]?.append(職名)
+                                
+                                読み込み中の手駒の種類 = 職名
+                            }
+                        }
+                    }
+                default: break
             }
-
+            
             列 += 1
         }
 
@@ -363,8 +365,6 @@ class 📱AppModel: ObservableObject {
 
 
 
-
-//FIXME: > Publishing changes from background threads is not allowed; make sure to publish values from the main thread (via operators like receive(on:)) on model updates.
 
 //FIXME: >==== Error: 📦.loadItem ====
 //> [Pasteboard] Could not retrieve data representation of type public.utf8-plain-text. Error: Error Domain=NSCocoaErrorDomain Code=4099 "The connection to service created from an endpoint was invalidated from this process." UserInfo={NSDebugDescription=The connection to service created from an endpoint was invalidated from this process.}
