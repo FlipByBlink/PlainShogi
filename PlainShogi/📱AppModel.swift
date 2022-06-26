@@ -44,18 +44,6 @@ class 📱AppModel: ObservableObject {
         }
         
         switch 現状 {
-            case .駒を持ち上げていない:
-                🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, 🚨 in //TODO: async/await実装
-                    if 🚨 != nil { print("🚨 loadItem: ", 🚨.debugDescription) }
-                    
-                    guard let 📋 = 📁 as? Data else { return }
-                    
-                    if let 📄 = String(data: 📋, encoding: .utf8) {
-                        if 📄.first == "☗" {
-                            self.外部からテキストを取り込む(📄)
-                        }
-                    }
-                }
             case .盤上の駒を持ち上げている:
                 if let 出発地点 = 持ち上げられた駒の元々の位置 {
                     if 行先 == 出発地点 { return true }
@@ -81,6 +69,18 @@ class 📱AppModel: ObservableObject {
                     
                     持ち上げられた手駒 = nil
                 } else { print("🐛") }
+            case .駒を持ち上げていない:
+                🗂.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier, options: nil) { 📁, 🚨 in //TODO: async/await実装
+                    if 🚨 != nil { print("🚨 loadItem: ", 🚨.debugDescription) }
+                    
+                    guard let 📋 = 📁 as? Data else { return }
+                    
+                    if let 📄 = String(data: 📋, encoding: .utf8) {
+                        if 📄.first == "☗" {
+                            self.外部からテキストを取り込む(📄)
+                        }
+                    }
+                }
         }
         
         ログを更新する()
