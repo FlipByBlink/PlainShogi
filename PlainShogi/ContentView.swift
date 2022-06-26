@@ -4,19 +4,11 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         GeometryReader { 📐 in
-            let マスの大きさ: CGFloat = {
-                if 📐.size.width/9 < 📐.size.height/11 {
-                    return 📐.size.width/9
-                } else {
-                    return (📐.size.height-4*4-16*2)/11
-                }
-            }()
-            
             VStack {
                 Spacer()
                 
                 盤外(陣営: .玉側)
-                    .frame(height: マスの大きさ)
+                    .frame(height: マスのサイズ(📐))
                     .padding(4)
                 
                 VStack(spacing: 0) {
@@ -27,7 +19,7 @@ struct ContentView: View {
                             Divider()
                             
                             ForEach( 0 ..< 9 ) { 列 in
-                                マス(位置: 行*9+列)
+                                マス(位置: 行 * 9 + 列)
                                 
                                 Divider()
                             }
@@ -36,17 +28,26 @@ struct ContentView: View {
                         Divider()
                     }
                 }
-                .frame(width: マスの大きさ*9, height: マスの大きさ*9)
                 .border(.primary)
+                .frame(width: マスのサイズ(📐) * 9,
+                       height: マスのサイズ(📐) * 9)
                 
                 盤外(陣営: .王側)
-                    .frame(height: マスの大きさ)
+                    .frame(height: マスのサイズ(📐))
                     .padding(4)
                 
                 Spacer()
             }
         }
         .padding(16)
+    }
+    
+    func マスのサイズ(_ 📐: GeometryProxy) -> CGFloat {
+        if 📐.size.width/9 < 📐.size.height/11 {
+            return 📐.size.width/9
+        } else {
+            return (📐.size.height-4*4-16*2)/11
+        }
     }
 }
 
@@ -69,16 +70,16 @@ struct マス: View {
                         .rotationEffect(下向き(駒.陣営 == .玉側))
                         .onAppear { 振動フィードバック() }
                 }
-                .onDrop(of: [.text], isTargeted: nil) { 📨 in
-                    📱.駒をここに置く(位置, 📨)
+                .onDrop(of: [.text], isTargeted: nil) { 📦 in
+                    📱.駒をここに置く(位置, 📦)
                 }
                 .onTapGesture(count: 2) {
                     📱.駒を裏返す(位置)
                 }
         } else {
             Color(uiColor: .systemBackground)
-                .onDrop(of: [.text], isTargeted: nil) { 📨 in
-                    📱.駒をここに置く(位置, 📨)
+                .onDrop(of: [.text], isTargeted: nil) { 📦 in
+                    📱.駒をここに置く(位置, 📦)
                 }
         }
     }
