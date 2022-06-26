@@ -32,7 +32,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 駒をここに置く(_ 行先: Int, _ 📦ItemProvider: [NSItemProvider]) -> Bool { //TODO: 処理の流れを見直す
+    func 駒をここに置く(_ 行先: Int, _ 📦ItemProvider: [NSItemProvider]) -> Bool {
         
         アプリ外部からのドロップかどうか確認する(📦ItemProvider)
         
@@ -69,7 +69,7 @@ class 📱AppModel: ObservableObject {
                     guard let 💾 = 🅂ecureCoding as? Data else { return }
                     if let 📃 = String(data: 💾, encoding: .utf8) {
                         if 📃.first == "☗" {
-                            外部からテキストを取り込む(📃)
+                            テキストを盤面に反映する(📃)
                         }
                     }
                 }
@@ -168,7 +168,7 @@ class 📱AppModel: ObservableObject {
     func テキストに変換する() -> String {
         var 📄 = "☗"
         
-        self.手駒[.玉側]?.forEach{ 駒 in
+        手駒[.玉側]?.forEach{ 駒 in
             📄 += 🚩English表記 ? 駒.Englishプレーンテキスト + "͙" : 駒.rawValue + "͙"
         }
         
@@ -191,7 +191,7 @@ class 📱AppModel: ObservableObject {
         
         📄 += "－－－－－－－－－\n☖"
         
-        self.手駒[.王側]?.forEach{ 駒 in
+        手駒[.王側]?.forEach{ 駒 in
             📄 += 🚩English表記 ? 駒.Englishプレーンテキスト : 駒.rawValue
         }
         
@@ -213,18 +213,13 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 外部からテキストを取り込む(_ 📦: String) {
-        print("📦: ",📦)
-        
+    func テキストを盤面に反映する(_ 📃: String) {
         var 盤上テキスト: [Int: 将棋駒] = [:]
-        
         var 手駒テキスト = 初期手駒
-        
         var 改行数: Int = 0
-        
         var 列: Int = 0
         
-        for 字区切り in 📦 {
+        for 字区切り in 📃 {
             if 字区切り == "\n" {
                 改行数 += 1
                 列 = 0
