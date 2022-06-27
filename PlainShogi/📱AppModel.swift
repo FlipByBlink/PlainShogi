@@ -125,15 +125,15 @@ class 📱AppModel: ObservableObject {
     func ログを更新する() {
         let 🗄 = UserDefaults.standard
 
-        var 盤上ログ: [String: [String]] = [:]
+        var 💾駒の配置: [String: [String]] = [:] //このへんおかしい？
 
         駒の配置.forEach { (位置: Int, 駒: 将棋駒) in
-            盤上ログ.updateValue([駒.陣営.rawValue, 駒.職名.rawValue], forKey: 位置.description)
+            💾駒の配置.updateValue([駒.陣営.rawValue, 駒.職名.rawValue], forKey: 位置.description)
         }
 
-        🗄.set(盤上ログ, forKey: "駒の配置")
+        🗄.set(💾駒の配置, forKey: "駒の配置")
 
-        var 手駒ログ: [String: [String: String]] = ["王側": [:], "玉側": [:]]
+        var 💾手駒: [String: [String: String]] = ["王側": [:], "玉側": [:]]
 
 //        手駒.forEach { (陣営: 王側か玉側か, 駒々: [駒の種類]) in
 //            駒々.forEach { 手駒ログ[陣営.rawValue]?.append($0.rawValue) }
@@ -141,11 +141,11 @@ class 📱AppModel: ObservableObject {
         
         王側か玉側か.allCases.forEach { 陣営 in
             手駒[陣営]?.forEach { (駒: 駒の種類, 数: Int) in
-                手駒ログ[陣営.rawValue]?[駒.rawValue] = 数.description
+                💾手駒[陣営.rawValue]?[駒.rawValue] = 数.description
             }
         }
 
-        🗄.set(手駒ログ, forKey: "手駒")
+        🗄.set(💾手駒, forKey: "手駒")
     }
     
     
@@ -158,8 +158,8 @@ class 📱AppModel: ObservableObject {
 
         var 盤上ログ: [Int: 将棋駒] = [:] //このへん実装おかしい？
 
-        if let 💾 = 🗄.dictionary(forKey: "駒の配置") as? [String: [String]] {
-            💾.forEach { (位置: String, 駒: [String]) in
+        if let 💾駒の配置 = 🗄.dictionary(forKey: "駒の配置") as? [String: [String]] {
+            💾駒の配置.forEach { (位置: String, 駒: [String]) in
                 if let 陣営 = 王側か玉側か(rawValue: 駒[0]) {
                     if let 職名 = 駒の種類(rawValue: 駒[1]) {
                         盤上ログ.updateValue(将棋駒(陣営,職名), forKey: Int(位置)!)
@@ -187,9 +187,9 @@ class 📱AppModel: ObservableObject {
 //            }
 //        }
         
-        if let 💾 = 🗄.dictionary(forKey: "手駒") as? [String: [String: String]] {
+        if let 💾手駒 = 🗄.dictionary(forKey: "手駒") as? [String: [String: String]] {
             王側か玉側か.allCases.forEach { 陣営 in
-                if let 手駒データ = 💾[陣営.rawValue] {
+                if let 手駒データ = 💾手駒[陣営.rawValue] {
                     手駒データ.forEach { (職名データ: String, 数データ: String) in
                         if let 職名 = 駒の種類(rawValue: 職名データ) {
                             手駒ログ[陣営]?[職名] = Int(数データ)
