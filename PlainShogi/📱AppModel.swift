@@ -52,6 +52,7 @@ class 📱AppModel: ObservableObject {
                 
                 持ち上げられた駒の元々の位置 = nil
                 駒を移動させたらログを更新する()
+                振動フィードバック()
             case .手駒を持ち上げている:
                 guard let 駒 = 持ち上げられた手駒 else { return false }
                 if 駒の配置[置いた位置] != nil { return false }
@@ -62,6 +63,7 @@ class 📱AppModel: ObservableObject {
                 
                 持ち上げられた手駒 = nil
                 駒を移動させたらログを更新する()
+                振動フィードバック()
             case .駒を持ち上げていない:
                 Task {
                     do {
