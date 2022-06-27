@@ -118,23 +118,20 @@ class 📱AppModel: ObservableObject {
     
     func 駒を移動させたらログを更新する() {
         let 🗄 = UserDefaults.standard
-
-        var セーブ用_駒の配置: [String: [String]] = [:] //このへんおかしい？
+        var セーブ用_駒の配置: [String: [String]] = [:]
+        var セーブ用_手駒: [String: [String: String]] = ["王側": [:], "玉側": [:]]
 
         駒の配置.forEach { (位置: Int, 駒: 将棋駒) in
             セーブ用_駒の配置.updateValue([駒.陣営.rawValue, 駒.職名.rawValue], forKey: 位置.description)
         }
-
-        🗄.set(セーブ用_駒の配置, forKey: "駒の配置")
-
-        var セーブ用_手駒: [String: [String: String]] = ["王側": [:], "玉側": [:]]
         
         王側か玉側か.allCases.forEach { 陣営 in
             手駒[陣営]?.forEach { (駒: 駒の種類, 数: Int) in
                 セーブ用_手駒[陣営.rawValue]?[駒.rawValue] = 数.description
             }
         }
-
+        
+        🗄.set(セーブ用_駒の配置, forKey: "駒の配置")
         🗄.set(セーブ用_手駒, forKey: "手駒")
     }
     
