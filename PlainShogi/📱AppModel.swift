@@ -119,23 +119,23 @@ class 📱AppModel: ObservableObject {
     func 駒を移動させたらログを更新する() {
         let 🗄 = UserDefaults.standard
 
-        var 💾駒の配置: [String: [String]] = [:] //このへんおかしい？
+        var セーブ用_駒の配置: [String: [String]] = [:] //このへんおかしい？
 
         駒の配置.forEach { (位置: Int, 駒: 将棋駒) in
-            💾駒の配置.updateValue([駒.陣営.rawValue, 駒.職名.rawValue], forKey: 位置.description)
+            セーブ用_駒の配置.updateValue([駒.陣営.rawValue, 駒.職名.rawValue], forKey: 位置.description)
         }
 
-        🗄.set(💾駒の配置, forKey: "駒の配置")
+        🗄.set(セーブ用_駒の配置, forKey: "駒の配置")
 
-        var 💾手駒: [String: [String: String]] = ["王側": [:], "玉側": [:]]
+        var セーブ用_手駒: [String: [String: String]] = ["王側": [:], "玉側": [:]]
         
         王側か玉側か.allCases.forEach { 陣営 in
             手駒[陣営]?.forEach { (駒: 駒の種類, 数: Int) in
-                💾手駒[陣営.rawValue]?[駒.rawValue] = 数.description
+                セーブ用_手駒[陣営.rawValue]?[駒.rawValue] = 数.description
             }
         }
 
-        🗄.set(💾手駒, forKey: "手駒")
+        🗄.set(セーブ用_手駒, forKey: "手駒")
     }
     
     
@@ -146,26 +146,26 @@ class 📱AppModel: ObservableObject {
     func 以前アプリ起動した際のログを読み込む() {
         let 🗄 = UserDefaults.standard
 
-        var 駒の配置ログ: [Int: 将棋駒] = [:] //このへん実装おかしい？
+        var ロード用_駒の配置: [Int: 将棋駒] = [:] //このへん実装おかしい？
 
         if let 💾駒の配置 = 🗄.dictionary(forKey: "駒の配置") as? [String: [String]] {
             💾駒の配置.forEach { (位置テキスト: String, 駒テキスト: [String]) in
                 if let 陣営 = 王側か玉側か(rawValue: 駒テキスト[0]) {
                     if let 職名 = 駒の種類(rawValue: 駒テキスト[1]) {
                         if let 位置 = Int(位置テキスト) {
-                            駒の配置ログ.updateValue(将棋駒(陣営,職名), forKey: 位置)
+                            ロード用_駒の配置.updateValue(将棋駒(陣営,職名), forKey: 位置)
                         }
                     }
                 }
             }
         }
 
-        if 駒の配置ログ.isEmpty == false {
-            駒の配置 = 駒の配置ログ
+        if ロード用_駒の配置.isEmpty == false {
+            駒の配置 = ロード用_駒の配置
         }
 
 
-        var 手駒ログ = 空の手駒 //このへん実装おかしい？
+        var ロード用_手駒 = 空の手駒 //このへん実装おかしい？
         
         if let 💾手駒 = 🗄.dictionary(forKey: "手駒") as? [String: [String: String]] {
             王側か玉側か.allCases.forEach { 陣営 in
@@ -173,7 +173,7 @@ class 📱AppModel: ObservableObject {
                     手駒テキスト.forEach { (職名テキスト: String, 数テキスト: String) in
                         if let 職名 = 駒の種類(rawValue: 職名テキスト) {
                             if let 数 = Int(数テキスト) {
-                                手駒ログ[陣営]?[職名] = 数
+                                ロード用_手駒[陣営]?[職名] = 数
                             }   
                         }
                     }
@@ -181,7 +181,7 @@ class 📱AppModel: ObservableObject {
             }
         }
 
-        手駒 = 手駒ログ
+        手駒 = ロード用_手駒
     }
     
     
