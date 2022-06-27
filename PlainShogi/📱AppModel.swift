@@ -7,7 +7,6 @@ class 📱AppModel: ObservableObject {
     
     @Published var 駒の配置: [Int: 将棋駒] = 初期配置
     
-    //@Published var 手駒: [王側か玉側か: [駒の種類]] = 初期手駒
     @Published var 手駒: [王側か玉側か: [駒の種類: Int]] = [.王側: [:], .玉側: [:]]
     
     @Published var 持ち上げられた駒の元々の位置: Int? = nil
@@ -88,19 +87,14 @@ class 📱AppModel: ObservableObject {
     
     
     func 手駒に加える(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
-        //手駒[陣営]!.append(職名)
-        
         if let 現在の手駒の数 = 手駒[陣営]?[職名] {
             手駒[陣営]?[職名] = 現在の手駒の数 + 1
         } else {
             手駒[陣営]?[職名] = 1
         }
-        
     }
     
     func 手駒から消す(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
-        //手駒[陣営]!.remove(at: 手駒[陣営]!.firstIndex(of:職名)!)
-        
         if let 現在の手駒の数 = 手駒[陣営]?[職名] {
             if 現在の手駒の数 >= 1 {
                 手駒[陣営]?[職名] = 現在の手駒の数 - 1
@@ -134,10 +128,6 @@ class 📱AppModel: ObservableObject {
         🗄.set(💾駒の配置, forKey: "駒の配置")
 
         var 💾手駒: [String: [String: String]] = ["王側": [:], "玉側": [:]]
-
-//        手駒.forEach { (陣営: 王側か玉側か, 駒々: [駒の種類]) in
-//            駒々.forEach { 手駒ログ[陣営.rawValue]?.append($0.rawValue) }
-//        }
         
         王側か玉側か.allCases.forEach { 陣営 in
             手駒[陣営]?.forEach { (駒: 駒の種類, 数: Int) in
@@ -176,18 +166,6 @@ class 📱AppModel: ObservableObject {
 
 
         var 手駒ログ = 空の手駒 //このへん実装おかしい？
-
-//        if let 💾 = 🗄.dictionary(forKey: "手駒") as? [String: [String]] {
-//            💾.forEach { (陣営テキスト: String, 手駒テキスト: [String]) in
-//                手駒テキスト.forEach { 駒テキスト in
-//                    if let 職名 = 駒の種類(rawValue: 駒テキスト) {
-//                        if let 陣営 = 王側か玉側か(rawValue: 陣営テキスト) {
-//                            手駒ログ[陣営]?.append(職名)
-//                        }
-//                    }
-//                }
-//            }
-//        }
         
         if let 💾手駒 = 🗄.dictionary(forKey: "手駒") as? [String: [String: String]] {
             王側か玉側か.allCases.forEach { 陣営 in
@@ -217,10 +195,6 @@ class 📱AppModel: ObservableObject {
     
     func 現在の盤面をテキストに変換する() -> String {
         var 📃 = "☗"
-
-//        手駒[.玉側]?.forEach{ 駒 in
-//            📄 += 🚩English表記 ? 駒.Englishプレーンテキスト + "͙" : 駒.rawValue + "͙"
-//        }
         
         駒の種類.allCases.forEach { 例 in
             手駒[.玉側]?.forEach { (職名: 駒の種類, 数: Int) in
@@ -252,10 +226,6 @@ class 📱AppModel: ObservableObject {
         }
 
         📃 += "－－－－－－－－－\n☖"
-
-//        手駒[.王側]?.forEach{ 駒 in
-//            📄 += 🚩English表記 ? 駒.Englishプレーンテキスト : 駒.rawValue
-//        }
         
         駒の種類.allCases.forEach { 例 in
             手駒[.王側]?.forEach { (職名: 駒の種類, 数: Int) in
@@ -311,7 +281,6 @@ class 📱AppModel: ObservableObject {
                     } else {
                         駒の種類.allCases.forEach { 職名 in
                             if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
-                                //手駒テキスト[.玉側]?.append(職名)
                                 手駒[.玉側]?[職名] = 1
                                 
                                 読み込み中の手駒の種類 = 職名
@@ -337,7 +306,6 @@ class 📱AppModel: ObservableObject {
                         駒の種類.allCases.forEach { 職名 in
                             if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
                                 手駒[.王側]?[職名] = 1
-                                //手駒テキスト[.王側]?.append(職名)
                                 
                                 読み込み中の手駒の種類 = 職名
                             }
