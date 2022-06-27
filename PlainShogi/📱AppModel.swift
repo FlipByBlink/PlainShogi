@@ -69,7 +69,7 @@ class 📱AppModel: ObservableObject {
                         guard let 💾 = 🅂ecureCoding as? Data else { return }
                         if let 📃 = String(data: 💾, encoding: .utf8) {
                             if 📃.first == "☗" {
-                                DispatchQueue.main.async { //このへん実装おかしい？
+                                DispatchQueue.main.async {
                                     self.このテキストを盤面に反映する(📃)
                                 }
                             }
@@ -156,7 +156,7 @@ class 📱AppModel: ObservableObject {
     func ログを読み込む() {
         let 🗄 = UserDefaults.standard
 
-        var 盤上ログ: [Int: 将棋駒] = [:]
+        var 盤上ログ: [Int: 将棋駒] = [:] //このへん実装おかしい？
 
         if let 💾 = 🗄.dictionary(forKey: "駒の配置") as? [String: [String]] {
             💾.forEach { (位置: String, 駒: [String]) in
@@ -173,7 +173,7 @@ class 📱AppModel: ObservableObject {
         }
 
 
-        var 手駒ログ = 初期手駒
+        var 手駒ログ = 空の手駒 //このへん実装おかしい？
 
 //        if let 💾 = 🗄.dictionary(forKey: "手駒") as? [String: [String]] {
 //            💾.forEach { (陣営テキスト: String, 手駒テキスト: [String]) in
@@ -204,17 +204,15 @@ class 📱AppModel: ObservableObject {
     
     
     func 外部書き出し用のテキストを準備する() -> NSItemProvider {
-        var 📄 = "\n"
-        📄 += 現在の盤面をテキストに変換する()
-        
-        let 📦 = NSItemProvider(object: 📄 as NSItemProviderWriting)
+        let 📃 = 現在の盤面をテキストに変換する()
+        let 📦 = NSItemProvider(object: 📃 as NSItemProviderWriting)
         📦.suggestedName = "アプリ内でのコマ移動です"
         return 📦
     }
     
     
     func 現在の盤面をテキストに変換する() -> String {
-        var 📄 = "☗"
+        var 📃 = "☗"
 
 //        手駒[.玉側]?.forEach{ 駒 in
 //            📄 += 🚩English表記 ? 駒.Englishプレーンテキスト + "͙" : 駒.rawValue + "͙"
@@ -223,33 +221,33 @@ class 📱AppModel: ObservableObject {
         駒の種類.allCases.forEach { 例 in
             手駒[.玉側]?.forEach { (職名: 駒の種類, 数: Int) in
                 if 例 == 職名 {
-                    📄 += 🚩English表記 ? 職名.Englishプレーンテキスト + "͙" : 職名.rawValue + "͙"
+                    📃 += 🚩English表記 ? 職名.Englishプレーンテキスト + "͙" : 職名.rawValue + "͙"
                     
                     if 数 >= 2 {
-                        📄 += 数.description
+                        📃 += 数.description
                     }
                 }
             }
         }
 
-        📄 += "\n－－－－－－－－－\n"
+        📃 += "\n－－－－－－－－－\n"
 
         for 行 in 0 ..< 9 {
             for 列 in 0 ..< 9 {
                 if let 駒 = self.駒の配置[行*9+列] {
-                    📄 += 🚩English表記 ? 駒.職名.Englishプレーンテキスト : 駒.職名.rawValue
+                    📃 += 🚩English表記 ? 駒.職名.Englishプレーンテキスト : 駒.職名.rawValue
 
                     if 駒.陣営 == .玉側 {
-                        📄 += "͙"
+                        📃 += "͙"
                     }
                 } else {
-                    📄 += "　"
+                    📃 += "　"
                 }
             }
-            📄 += "\n"
+            📃 += "\n"
         }
 
-        📄 += "－－－－－－－－－\n☖"
+        📃 += "－－－－－－－－－\n☖"
 
 //        手駒[.王側]?.forEach{ 駒 in
 //            📄 += 🚩English表記 ? 駒.Englishプレーンテキスト : 駒.rawValue
@@ -258,16 +256,16 @@ class 📱AppModel: ObservableObject {
         駒の種類.allCases.forEach { 例 in
             手駒[.王側]?.forEach { (職名: 駒の種類, 数: Int) in
                 if 例 == 職名 {
-                    📄 += 🚩English表記 ? 職名.Englishプレーンテキスト : 職名.rawValue
+                    📃 += 🚩English表記 ? 職名.Englishプレーンテキスト : 職名.rawValue
                     
                     if 数 >= 2 {
-                        📄 += 数.description
+                        📃 += 数.description
                     }
                 }
             }
         }
 
-        return 📄
+        return 📃
     }
     
     
@@ -286,8 +284,9 @@ class 📱AppModel: ObservableObject {
     
     
     func このテキストを盤面に反映する(_ 📃: String) {
-        var 盤上テキスト: [Int: 将棋駒] = [:] //このへん実装おかしい？
-        var 手駒テキスト = 初期手駒
+        駒の配置 = [:]
+        手駒 = 空の手駒
+        
         var 改行数: Int = 0
         var 列: Int = 0
         var 読み込み中の手駒の種類: 駒の種類 = .歩
@@ -309,7 +308,7 @@ class 📱AppModel: ObservableObject {
                         駒の種類.allCases.forEach { 職名 in
                             if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
                                 //手駒テキスト[.玉側]?.append(職名)
-                                手駒テキスト[.玉側]?[職名] = 1
+                                手駒[.玉側]?[職名] = 1
                                 
                                 読み込み中の手駒の種類 = 職名
                             }
@@ -317,14 +316,14 @@ class 📱AppModel: ObservableObject {
                     }
                 case 1...11:
                     駒の種類.allCases.forEach { 職名 in
-                        let 座標 = ( 改行数 - 2 ) * 9 + 列
+                        let 位置 = ( 改行数 - 2 ) * 9 + 列
                         
                         if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
-                            盤上テキスト.updateValue(将棋駒(.王側, 職名), forKey: 座標)
+                            駒の配置.updateValue(将棋駒(.王側, 職名), forKey: 位置)
                         }
                         
                         if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
-                            盤上テキスト.updateValue(将棋駒(.玉側, 職名), forKey: 座標)
+                            駒の配置.updateValue(将棋駒(.玉側, 職名), forKey: 位置)
                         }
                     }
                 case 12:
@@ -333,7 +332,7 @@ class 📱AppModel: ObservableObject {
                     } else {
                         駒の種類.allCases.forEach { 職名 in
                             if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
-                                手駒テキスト[.王側]?[職名] = 1
+                                手駒[.王側]?[職名] = 1
                                 //手駒テキスト[.王側]?.append(職名)
                                 
                                 読み込み中の手駒の種類 = 職名
@@ -346,18 +345,13 @@ class 📱AppModel: ObservableObject {
             列 += 1
         }
 
-        DispatchQueue.main.async {
-            self.駒の配置 = 盤上テキスト
-            self.手駒 = 手駒テキスト
-        }
-
         UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
     
     
     func 盤面を初期化する() {
         駒の配置 = 初期配置
-        手駒 = 初期手駒
+        手駒 = 空の手駒
         
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
