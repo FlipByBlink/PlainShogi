@@ -128,6 +128,32 @@ struct コマ: View {
 }
 
 
+struct 盤上のコマ: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    
+    var 職名: 駒の種類
+    
+    var 表記: String {
+        📱.🚩English表記 ? 職名.English表記 : 職名.rawValue
+    }
+    
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .foregroundStyle(.background)
+            
+            Text(表記)
+                .minimumScaleFactor(0.1)
+                .accessibilityHidden(true)
+        }
+    }
+    
+    init(_ ｼｮｸﾒｲ:駒の種類) {
+        職名 = ｼｮｸﾒｲ
+    }
+}
+
+
 struct 盤外: View {
     @EnvironmentObject var 📱: 📱AppModel
     
@@ -204,11 +230,12 @@ struct 盤外のコマ: View {
                     .onDrag{
                         📱.手駒を持ち上げる(将棋駒(陣営,職名))
                     } preview: {
-                        コマ(職名)
-                            .environmentObject(📱)
-                            .border(.primary)
-                            .rotationEffect(下向き(陣営 == .玉側))
-                            .onAppear { 振動フィードバック() }
+                        コマのプレビュー(陣営, 表記)
+//                        コマ(職名)
+//                            .environmentObject(📱)
+//                            .border(.primary)
+//                            .rotationEffect(下向き(陣営 == .玉側))
+//                            .onAppear { 振動フィードバック() }
                     }
                     .onTapGesture(count: 3) {
                         📱.手駒から減らす(陣営, 職名)
@@ -224,6 +251,30 @@ struct 盤外のコマ: View {
     }
 }
 
+
+struct コマのプレビュー: View { //TODO: 実装する？
+    var 陣営: 王側か玉側か
+    
+    var 表記: String
+    
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .foregroundStyle(.background)
+            
+            Text(表記)
+                .padding()
+        }
+        .border(.primary)
+        .rotationEffect(下向き(陣営 == .玉側))
+        .onAppear { 振動フィードバック() }
+    }
+    
+    init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ﾋｮｳｷ: String) {
+        陣営 = ｼﾞﾝｴｲ
+        表記 = ﾋｮｳｷ
+    }
+}
 
 func 下向き(_ 玉側かどうか: Bool) -> Angle {
     if 玉側かどうか {
