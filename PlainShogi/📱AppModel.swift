@@ -52,6 +52,7 @@ class 📱AppModel: ObservableObject {
                 駒の配置.removeValue(forKey: 出発地点)
                 
                 持ち上げられた駒の元々の位置 = nil
+                駒を移動させたらログを更新する()
             case .手駒を持ち上げている:
                 guard let 駒 = 持ち上げられた手駒 else { return false }
                 if 駒の配置[置いた位置] != nil { return false }
@@ -61,6 +62,7 @@ class 📱AppModel: ObservableObject {
                 手駒から消す(駒.陣営, 駒.職名)
                 
                 持ち上げられた手駒 = nil
+                駒を移動させたらログを更新する()
             case .駒を持ち上げていない:
                 Task {
                     do {
@@ -80,8 +82,6 @@ class 📱AppModel: ObservableObject {
                     }
                 }
         }
-        
-        ログを更新する()
         
         return true
     }
@@ -122,7 +122,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func ログを更新する() {
+    func 駒を移動させたらログを更新する() {
         let 🗄 = UserDefaults.standard
 
         var 💾駒の配置: [String: [String]] = [:] //このへんおかしい？
@@ -150,10 +150,10 @@ class 📱AppModel: ObservableObject {
     
     
     init() {
-        ログを読み込む()
+        以前アプリ起動した際のログを読み込む()
     }
     
-    func ログを読み込む() {
+    func 以前アプリ起動した際のログを読み込む() {
         let 🗄 = UserDefaults.standard
 
         var 駒の配置ログ: [Int: 将棋駒] = [:] //このへん実装おかしい？
