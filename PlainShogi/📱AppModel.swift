@@ -156,20 +156,22 @@ class 📱AppModel: ObservableObject {
     func ログを読み込む() {
         let 🗄 = UserDefaults.standard
 
-        var 盤上ログ: [Int: 将棋駒] = [:] //このへん実装おかしい？
+        var 駒の配置ログ: [Int: 将棋駒] = [:] //このへん実装おかしい？
 
         if let 💾駒の配置 = 🗄.dictionary(forKey: "駒の配置") as? [String: [String]] {
-            💾駒の配置.forEach { (位置: String, 駒: [String]) in
-                if let 陣営 = 王側か玉側か(rawValue: 駒[0]) {
-                    if let 職名 = 駒の種類(rawValue: 駒[1]) {
-                        盤上ログ.updateValue(将棋駒(陣営,職名), forKey: Int(位置)!)
+            💾駒の配置.forEach { (位置テキスト: String, 駒テキスト: [String]) in
+                if let 陣営 = 王側か玉側か(rawValue: 駒テキスト[0]) {
+                    if let 職名 = 駒の種類(rawValue: 駒テキスト[1]) {
+                        if let 位置 = Int(位置テキスト) {
+                            駒の配置ログ.updateValue(将棋駒(陣営,職名), forKey: 位置)
+                        }
                     }
                 }
             }
         }
 
-        if 盤上ログ.isEmpty == false {
-            駒の配置 = 盤上ログ
+        if 駒の配置ログ.isEmpty == false {
+            駒の配置 = 駒の配置ログ
         }
 
 
@@ -189,10 +191,12 @@ class 📱AppModel: ObservableObject {
         
         if let 💾手駒 = 🗄.dictionary(forKey: "手駒") as? [String: [String: String]] {
             王側か玉側か.allCases.forEach { 陣営 in
-                if let 手駒データ = 💾手駒[陣営.rawValue] {
-                    手駒データ.forEach { (職名データ: String, 数データ: String) in
-                        if let 職名 = 駒の種類(rawValue: 職名データ) {
-                            手駒ログ[陣営]?[職名] = Int(数データ)
+                if let 手駒テキスト = 💾手駒[陣営.rawValue] {
+                    手駒テキスト.forEach { (職名テキスト: String, 数テキスト: String) in
+                        if let 職名 = 駒の種類(rawValue: 職名テキスト) {
+                            if let 数 = Int(数テキスト) {
+                                手駒ログ[陣営]?[職名] = 数
+                            }   
                         }
                     }
                 }
