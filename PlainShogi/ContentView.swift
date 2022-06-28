@@ -8,7 +8,7 @@ struct ContentView: View {
                 Spacer()
                 
                 盤外(陣営: .玉側)
-                    .frame(height: マスのサイズ(📐))
+                    .frame(height: マス一辺の大きさ(📐))
                     .padding(4)
                 
                 VStack(spacing: 0) {
@@ -29,11 +29,11 @@ struct ContentView: View {
                     }
                 }
                 .border(.primary)
-                .frame(width: マスのサイズ(📐) * 9,
-                       height: マスのサイズ(📐) * 9)
+                .frame(width: マス一辺の大きさ(📐) * 9,
+                       height: マス一辺の大きさ(📐) * 9)
                 
                 盤外(陣営: .王側)
-                    .frame(height: マスのサイズ(📐))
+                    .frame(height: マス一辺の大きさ(📐))
                     .padding(4)
                 
                 Spacer()
@@ -42,11 +42,11 @@ struct ContentView: View {
         .padding(16)
     }
     
-    func マスのサイズ(_ 📐: GeometryProxy) -> CGFloat {
+    func マス一辺の大きさ(_ 📐: GeometryProxy) -> CGFloat {
         if 📐.size.width/9 < 📐.size.height/11 {
             return 📐.size.width/9
         } else {
-            return (📐.size.height-4*4-16*2)/11
+            return (📐.size.height-4*4-16*2)/11 //FIXME: もしかして"-16*2"はいらない？
         }
     }
 }
@@ -59,18 +59,11 @@ struct マス: View {
     
     var body: some View {
         if let 駒 = 📱.駒の配置[位置] {
-//            コマ(駒.職名, 余白なし: true)
             盤上のコマ(駒.陣営, 駒.職名)
-//                .rotationEffect(下向き(駒.陣営 == .玉側))
                 .onDrag {
                     📱.盤上の駒を持ち上げる(位置)
                 } preview: {
                     コマのプレビュー(駒.陣営, 📱.この駒の表記(駒.職名))
-//                    コマ(駒.職名)
-//                        .environmentObject(📱)
-//                        .border(.primary)
-//                        .rotationEffect(下向き(駒.陣営 == .玉側))
-//                        .onAppear { 振動フィードバック() }
                 }
                 .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
                     📱.駒をここに置く(位置, 📦)
@@ -87,48 +80,6 @@ struct マス: View {
         }
     }
 }
-
-
-//struct コマ: View {
-//    @EnvironmentObject var 📱: 📱AppModel
-//    
-//    var 職名: 駒の種類
-//    
-//    var 余白なし: Bool
-//    
-//    var 手駒の数: Int
-//    
-//    var 表記: String {
-//        let 一文字 = 📱.🚩English表記 ? 職名.English表記 : 職名.rawValue
-//        
-//        if 手駒の数 > 1 {
-//            return 一文字 + 手駒の数.description
-//        } else {
-//            return 一文字
-//        }
-//    }
-//    
-//    var body: some View {
-//        ZStack {
-//            Color(uiColor: .systemBackground)
-//            
-//            if 余白なし {
-//                Text(表記)
-//            } else {
-//                Text(表記)
-//                    .padding()
-//            }
-//        }
-//        .minimumScaleFactor(0.1)
-//        .accessibilityHidden(true)
-//    }
-//    
-//    init(_ ｼｮｸﾒｲ:駒の種類, _ ｶｽﾞ:Int = 1, 余白なし ﾖﾊｸﾅｼ:Bool = false) {
-//        職名 = ｼｮｸﾒｲ
-//        手駒の数 = ｶｽﾞ
-//        余白なし = ﾖﾊｸﾅｼ
-//    }
-//}
 
 
 struct 盤上のコマ: View {
@@ -164,34 +115,9 @@ struct 盤外: View {
     
     var body: some View {
         HStack {
-//            Spacer()
-            
             ForEach(駒の種類.allCases) { 職名 in
                 盤外のコマ(陣営, 職名)
             }
-//            ForEach(駒の種類.allCases) { 職名 in
-//                let 駒の数 = 📱.手駒[陣営]?[職名] ?? 0
-//                if 駒の数 > 0 {
-//                    コマ(職名, 駒の数, 余白なし: true)
-//                        .onDrag{
-//                            📱.手駒を持ち上げる(将棋駒(陣営,職名))
-//                        } preview: {
-//                            コマ(職名)
-//                                .environmentObject(📱)
-//                                .border(.primary)
-//                                .rotationEffect(下向き(陣営 == .玉側))
-//                                .onAppear { 振動フィードバック() }
-//                        }
-//                        .onTapGesture(count: 3) {
-//                            📱.手駒から減らす(陣営, 職名)
-//                            振動フィードバック()
-//                        }
-//                } else {
-//                    EmptyView()
-//                }
-//            }
-            
-//            Spacer()
         }
         .rotationEffect(下向き(陣営 == .玉側))
     }
@@ -236,11 +162,6 @@ struct 盤外のコマ: View {
                         📱.手駒を持ち上げる(将棋駒(陣営, 職名))
                     } preview: {
                         コマのプレビュー(陣営, 駒の表記)
-//                        コマ(職名)
-//                            .environmentObject(📱)
-//                            .border(.primary)
-//                            .rotationEffect(下向き(陣営 == .玉側))
-//                            .onAppear { 振動フィードバック() }
                     }
                     .onTapGesture(count: 3) {
                         📱.手駒から減らす(陣営, 職名)
