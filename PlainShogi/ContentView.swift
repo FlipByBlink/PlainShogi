@@ -40,7 +40,7 @@ struct ContentView: View {
             }
         }
         .padding(16)
-    }
+    } //FIXME: ここの構成を見直す
     
     func マス一辺の大きさ(_ 📐: GeometryProxy) -> CGFloat {
         if 📐.size.width/9 < 📐.size.height/11 {
@@ -115,10 +115,14 @@ struct 盤外: View {
     
     var body: some View {
         HStack {
+            Spacer()
+            
             ForEach(駒の種類.allCases) { 職名 in
                 盤外のコマ(陣営, 職名)
             }
-        }
+            
+            Spacer()
+        } //FIXME: ここの実装見直す
         .rotationEffect(下向き(陣営 == .玉側))
     }
 }
