@@ -74,7 +74,7 @@
 		1203630F2865E1B800636EBD /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "🛠Menu";
+			dstPath = "🧰Others";
 			dstSubfolderSpec = 7;
 			files = (
 				120363182865E20C00636EBD /* 🛠BaseMenu.swift in CopyFiles */,
@@ -188,7 +188,7 @@
 				128D156C280FE47E003FF480 /* ContentView.swift */,
 				128D1578280FE4E4003FF480 /* 📱AppModel.swift */,
 				12D436992865CD6D00B707F5 /* 🧩Sub */,
-				12D4368B2865CD5E00B707F5 /* 🛠Menu */,
+				12D4368B2865CD5E00B707F5 /* 🧰Others */,
 				12A925252866AB9F0035DC83 /* 🌏Localization */,
 			);
 			path = PlainShogi;
@@ -219,7 +219,7 @@
 			path = "🌏Localization";
 			sourceTree = "<group>";
 		};
-		12D4368B2865CD5E00B707F5 /* 🛠Menu */ = {
+		12D4368B2865CD5E00B707F5 /* 🧰Others */ = {
 			isa = PBXGroup;
 			children = (
 				12D4368C2865CD5E00B707F5 /* 🛠BaseMenu.swift */,
@@ -227,7 +227,7 @@
 				12D4369E2865CD8400B707F5 /* 📣AD */,
 				12D4369A2865CD8300B707F5 /* 🛒InAppPurchase */,
 			);
-			path = "🛠Menu";
+			path = "🧰Others";
 			sourceTree = "<group>";
 		};
 		12D4368D2865CD5E00B707F5 /* 📄Information */ = {
