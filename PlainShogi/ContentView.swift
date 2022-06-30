@@ -193,7 +193,7 @@ struct 盤外のコマ: View {
 }
 
 
-struct コマのプレビュー: View { //TODO: 実装する？
+struct コマのプレビュー: View {
     var 陣営: 王側か玉側か
     
     var 表記: String

@@ -68,7 +68,7 @@ class 📱AppModel: ObservableObject {
                 Task {
                     do {
                         guard let 📦 = 📦ItemProvider.first else { return }
-                        let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier) //FIXME: Error
+                        let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
                         guard let 💾 = 🅂ecureCoding as? Data else { return }
                         if let 📃 = String(data: 💾, encoding: .utf8) {
                             if 📃.first == "☗" {
