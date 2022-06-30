@@ -4,12 +4,13 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         GeometryReader { 📐 in
-            VStack {
-                Spacer()
+            VStack(spacing: 0) {
+                Spacer(minLength: 0)
                 
                 盤外(陣営: .玉側)
                     .frame(height: マス一辺の大きさ(📐))
-                    .padding(4)
+                
+                Spacer(minLength: 0)
                 
                 VStack(spacing: 0) {
                     Divider()
@@ -32,11 +33,12 @@ struct ContentView: View {
                 .frame(width: マス一辺の大きさ(📐) * 9,
                        height: マス一辺の大きさ(📐) * 9)
                 
+                Spacer(minLength: 0)
+                
                 盤外(陣営: .王側)
                     .frame(height: マス一辺の大きさ(📐))
-                    .padding(4)
                 
-                Spacer()
+                Spacer(minLength: 0) //⬅️
             }
         }
         .padding(16)
@@ -46,7 +48,7 @@ struct ContentView: View {
         if 📐.size.width/9 < 📐.size.height/11 {
             return 📐.size.width/9
         } else {
-            return (📐.size.height-4*4-16*2)/11 //FIXME: もしかして"-16*2"はいらない？
+            return 📐.size.height/11
         }
     }
 }
@@ -237,7 +239,6 @@ struct ContentView_Previews: PreviewProvider {
             .task {
                 📱.手駒[.王側]?[.歩] = 2
                 📱.手駒[.王側]?[.金] = 1
-                📱.手駒[.玉側]?[.角] = 1
                 📱.手駒[.玉側]?[.歩] = 1
             }
         
