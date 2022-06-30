@@ -60,25 +60,28 @@ struct マス: View {
     var 位置: Int
     
     var body: some View {
-        if let 駒 = 📱.駒の配置[位置] {
-            盤上のコマ(駒.陣営, 駒.職名)
-                .onDrag {
-                    📱.盤上の駒を持ち上げる(位置)
-                } preview: {
-                    コマのプレビュー(駒.陣営, 📱.この駒の表記(駒.職名))
-                }
-                .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
-                    📱.駒をここに置く(位置, 📦)
-                }
-                .onTapGesture(count: 2) {
-                    📱.駒を裏返す(位置)
-                }
-        } else {
-            Rectangle()
-                .foregroundStyle(.background)
-                .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
-                    📱.駒をここに置く(位置, 📦)
-                }
+        GeometryReader { 📐 in
+            if let 駒 = 📱.駒の配置[位置] {
+                盤上のコマ(駒.陣営, 駒.職名)
+                    .onDrag {
+                        📱.盤上の駒を持ち上げる(位置)
+                    } preview: {
+                        コマのプレビュー(駒.陣営, 📱.この駒の表記(駒.職名))
+                            .frame(height: 📐.size.height)
+                    }
+                    .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
+                        📱.駒をここに置く(位置, 📦)
+                    }
+                    .onTapGesture(count: 2) {
+                        📱.駒を裏返す(位置)
+                    }
+            } else {
+                Rectangle()
+                    .foregroundStyle(.background)
+                    .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
+                        📱.駒をここに置く(位置, 📦)
+                    }
+            }
         }
     }
 }
@@ -172,6 +175,7 @@ struct 盤外のコマ: View {
                     📱.手駒を持ち上げる(将棋駒(陣営, 職名))
                 } preview: {
                     コマのプレビュー(陣営, 駒の表記)
+                        .frame(height: 📐.size.height)
                 }
                 .onTapGesture(count: 3) {
                     📱.手駒から減らす(陣営, 職名)
@@ -200,8 +204,9 @@ struct コマのプレビュー: View { //TODO: 実装する？
                 .foregroundStyle(.background)
             
             Text(表記)
-                .padding()
+                .minimumScaleFactor(0.1)
         }
+        .aspectRatio(1.0, contentMode: .fit)
         .border(.primary)
         .rotationEffect(下向き(陣営 == .玉側))
         .onAppear { 振動フィードバック() }
