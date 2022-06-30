@@ -7,7 +7,7 @@ struct ContentView: View {
             VStack(spacing: 0) {
                 Spacer(minLength: 0)
                 
-                盤外(陣営: .玉側)
+                盤外(.玉側)
                     .frame(height: マス一辺の大きさ(📐))
                 
                 Spacer(minLength: 0)
@@ -35,7 +35,7 @@ struct ContentView: View {
                 
                 Spacer(minLength: 0)
                 
-                盤外(陣営: .王側)
+                盤外(.王側)
                     .frame(height: マス一辺の大きさ(📐))
                 
                 Spacer(minLength: 0)
@@ -120,8 +120,12 @@ struct 盤外: View {
             ForEach(駒の種類.allCases) { 職名 in
                 盤外のコマ(陣営, 職名)
             }
-        } //FIXME: ここの実装見直す
+        }
         .rotationEffect(下向き(陣営 == .玉側))
+    }
+    
+    init(_ ｼﾞﾝｴｲ: 王側か玉側か) {
+        陣営 = ｼﾞﾝｴｲ
     }
 }
 
