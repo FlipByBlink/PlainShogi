@@ -30,7 +30,10 @@ struct 🛠MenuSheet: View {
     var body: some View {
         NavigationView {
             List {
-                🛠AppMenu(🔙)
+                🛠盤面初期化ボタン(🔙)
+                
+                
+                🛠AppMenu()
                 
                 
                 📣ADMenu()

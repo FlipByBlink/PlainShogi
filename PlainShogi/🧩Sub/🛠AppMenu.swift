@@ -4,8 +4,6 @@ import SwiftUI
 struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
     
-    var 🔙: DismissAction
-    
     var body: some View {
         Section {
             Label("長押しで駒を持ち上げ、そのままスライドさせて移動する", systemImage: "hand.draw")
@@ -17,14 +15,6 @@ struct 🛠AppMenu: View {
             Text("あそび方")
         }
         .foregroundStyle(.primary)
-        
-        
-        Button {
-            📱.盤面を初期化する()
-            🔙.callAsFunction()
-        } label: {
-            Label("盤面を初期化する", systemImage: "arrow.counterclockwise")
-        }
         
         
         Section {
@@ -59,7 +49,22 @@ struct 🛠AppMenu: View {
             Text("テキスト書き出し例")
         }
     }
+}
+
+
+struct 🛠盤面初期化ボタン: View {
+    @EnvironmentObject var 📱: 📱AppModel
     
+    var 🔙: DismissAction
+    
+    var body: some View {
+        Button {
+            📱.盤面を初期化する()
+            🔙.callAsFunction()
+        } label: {
+            Label("盤面を初期化する", systemImage: "arrow.counterclockwise")
+        }
+    }
     
     init(_ 🔙: DismissAction) {
         self.🔙 = 🔙
