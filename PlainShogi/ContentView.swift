@@ -116,14 +116,10 @@ struct 盤外: View {
     var 陣営: 王側か玉側か
     
     var body: some View {
-        HStack {
-            Spacer()
-            
+        HStack(spacing: 0) {
             ForEach(駒の種類.allCases) { 職名 in
                 盤外のコマ(陣営, 職名)
             }
-            
-            Spacer()
         } //FIXME: ここの実装見直す
         .rotationEffect(下向き(陣営 == .玉側))
     }
@@ -157,22 +153,27 @@ struct 盤外のコマ: View {
         if 手駒の数 == 0 {
             EmptyView()
         } else {
-            ZStack {
-                Rectangle()
-                    .foregroundStyle(.background)
-                
-                Text(駒の表記 + 手駒の数の表記)
-                    .minimumScaleFactor(0.1)
-                    .accessibilityHidden(true)
-                    .onDrag{
-                        📱.手駒を持ち上げる(将棋駒(陣営, 職名))
-                    } preview: {
-                        コマのプレビュー(陣営, 駒の表記)
-                    }
-                    .onTapGesture(count: 3) {
-                        📱.手駒から減らす(陣営, 職名)
-                        振動フィードバック()
-                    }
+            GeometryReader { 📐 in
+                ZStack {
+                    Color.clear
+                    
+                    Rectangle()
+                        .foregroundStyle(.background)
+                        .frame(maxWidth: 📐.size.height * 1.5)
+                    
+                    Text(駒の表記 + 手駒の数の表記)
+                        .minimumScaleFactor(0.1)
+                }
+                .onDrag{
+                    📱.手駒を持ち上げる(将棋駒(陣営, 職名))
+                } preview: {
+                    コマのプレビュー(陣営, 駒の表記)
+                }
+                .onTapGesture(count: 3) {
+                    📱.手駒から減らす(陣営, 職名)
+                    振動フィードバック()
+                }
+                .accessibilityHidden(true)
             }
         }
     }
