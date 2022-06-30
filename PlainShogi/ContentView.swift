@@ -38,11 +38,11 @@ struct ContentView: View {
                 盤外(陣営: .王側)
                     .frame(height: マス一辺の大きさ(📐))
                 
-                Spacer(minLength: 0) //⬅️
+                Spacer(minLength: 0)
             }
         }
-        .padding(16)
-    } //FIXME: ここの構成を見直す
+        .padding()
+    }
     
     func マス一辺の大きさ(_ 📐: GeometryProxy) -> CGFloat {
         if 📐.size.width/9 < 📐.size.height/11 {
