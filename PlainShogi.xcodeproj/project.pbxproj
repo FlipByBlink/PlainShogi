@@ -11,8 +11,7 @@
 		120363142865E20200636EBD /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
 		120363152865E20200636EBD /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 📱AppModel.swift */; };
 		120363162865E20700636EBD /* 型Type.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* 型Type.swift */; };
-		120363172865E20C00636EBD /* 🛠MenuButton.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D436922865CD5E00B707F5 /* 🛠MenuButton.swift */; };
-		120363182865E20C00636EBD /* 🛠MenuSheet.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D4368C2865CD5E00B707F5 /* 🛠MenuSheet.swift */; };
+		120363182865E20C00636EBD /* 🛠BaseMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D4368C2865CD5E00B707F5 /* 🛠BaseMenu.swift */; };
 		120363192865E21400636EBD /* 📄InformationMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D436902865CD5E00B707F5 /* 📄InformationMenu.swift */; };
 		1203631A2865E21400636EBD /* 📄AppDescription.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D4368F2865CD5E00B707F5 /* 📄AppDescription.swift */; };
 		1203631B2865E21400636EBD /* 🏷VersionSection.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D436912865CD5E00B707F5 /* 🏷VersionSection.swift */; };
@@ -32,12 +31,11 @@
 		128D1579280FE4E4003FF480 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 📱AppModel.swift */; };
 		12A9251E2866A8960035DC83 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A9251D2866A8960035DC83 /* StoreKit.framework */; };
 		12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
-		12D436932865CD5E00B707F5 /* 🛠MenuSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368C2865CD5E00B707F5 /* 🛠MenuSheet.swift */; };
+		12D436932865CD5E00B707F5 /* 🛠BaseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368C2865CD5E00B707F5 /* 🛠BaseMenu.swift */; };
 		12D436942865CD5E00B707F5 /* 📓SourceCodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368E2865CD5E00B707F5 /* 📓SourceCodeMenu.swift */; };
 		12D436952865CD5E00B707F5 /* 📄AppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4368F2865CD5E00B707F5 /* 📄AppDescription.swift */; };
 		12D436962865CD5E00B707F5 /* 📄InformationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D436902865CD5E00B707F5 /* 📄InformationMenu.swift */; };
 		12D436972865CD5E00B707F5 /* 🏷VersionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D436912865CD5E00B707F5 /* 🏷VersionSection.swift */; };
-		12D436982865CD5E00B707F5 /* 🛠MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D436922865CD5E00B707F5 /* 🛠MenuButton.swift */; };
 		12D436A32865CD8400B707F5 /* 🛒PurchaseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4369B2865CD8300B707F5 /* 🛒PurchaseSection.swift */; };
 		12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D4369C2865CD8300B707F5 /* Configuration.storekit */; };
 		12D436A52865CD8400B707F5 /* 🛒StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D4369D2865CD8300B707F5 /* 🛒StoreModel.swift */; };
@@ -45,6 +43,8 @@
 		12D436A72865CD8400B707F5 /* 📣AppName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D436A02865CD8400B707F5 /* 📣AppName.swift */; };
 		12D436A82865CD8400B707F5 /* 📣ADMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D436A12865CD8400B707F5 /* 📣ADMenu.swift */; };
 		12D436A92865CD8400B707F5 /* 📣ADBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D436A22865CD8400B707F5 /* 📣ADBanner.swift */; };
+		12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
+		12F4444F286D4D250008A663 /* 🛠AppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +66,7 @@
 			dstPath = "🧩Sub";
 			dstSubfolderSpec = 7;
 			files = (
+				12F4444F286D4D250008A663 /* 🛠AppMenu.swift in CopyFiles */,
 				120363162865E20700636EBD /* 型Type.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,8 +77,7 @@
 			dstPath = "🛠Menu";
 			dstSubfolderSpec = 7;
 			files = (
-				120363172865E20C00636EBD /* 🛠MenuButton.swift in CopyFiles */,
-				120363182865E20C00636EBD /* 🛠MenuSheet.swift in CopyFiles */,
+				120363182865E20C00636EBD /* 🛠BaseMenu.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,12 +135,11 @@
 		12A925222866AA6C0035DC83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12A925242866AA6F0035DC83 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12D198532810DD6500CE6578 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		12D4368C2865CD5E00B707F5 /* 🛠MenuSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛠MenuSheet.swift"; sourceTree = "<group>"; };
+		12D4368C2865CD5E00B707F5 /* 🛠BaseMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛠BaseMenu.swift"; sourceTree = "<group>"; };
 		12D4368E2865CD5E00B707F5 /* 📓SourceCodeMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📓SourceCodeMenu.swift"; sourceTree = "<group>"; };
 		12D4368F2865CD5E00B707F5 /* 📄AppDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📄AppDescription.swift"; sourceTree = "<group>"; };
 		12D436902865CD5E00B707F5 /* 📄InformationMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📄InformationMenu.swift"; sourceTree = "<group>"; };
 		12D436912865CD5E00B707F5 /* 🏷VersionSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🏷VersionSection.swift"; sourceTree = "<group>"; };
-		12D436922865CD5E00B707F5 /* 🛠MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛠MenuButton.swift"; sourceTree = "<group>"; };
 		12D4369B2865CD8300B707F5 /* 🛒PurchaseSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒PurchaseSection.swift"; sourceTree = "<group>"; };
 		12D4369C2865CD8300B707F5 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		12D4369D2865CD8300B707F5 /* 🛒StoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒StoreModel.swift"; sourceTree = "<group>"; };
@@ -148,6 +147,7 @@
 		12D436A02865CD8400B707F5 /* 📣AppName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣AppName.swift"; sourceTree = "<group>"; };
 		12D436A12865CD8400B707F5 /* 📣ADMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADMenu.swift"; sourceTree = "<group>"; };
 		12D436A22865CD8400B707F5 /* 📣ADBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADBanner.swift"; sourceTree = "<group>"; };
+		12F4444D286D4B580008A663 /* 🛠AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠AppMenu.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,9 +222,10 @@
 		12D4368B2865CD5E00B707F5 /* 🛠Menu */ = {
 			isa = PBXGroup;
 			children = (
-				12D436922865CD5E00B707F5 /* 🛠MenuButton.swift */,
-				12D4368C2865CD5E00B707F5 /* 🛠MenuSheet.swift */,
+				12D4368C2865CD5E00B707F5 /* 🛠BaseMenu.swift */,
 				12D4368D2865CD5E00B707F5 /* 📄Information */,
+				12D4369E2865CD8400B707F5 /* 📣AD */,
+				12D4369A2865CD8300B707F5 /* 🛒InAppPurchase */,
 			);
 			path = "🛠Menu";
 			sourceTree = "<group>";
@@ -244,8 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				126C18F22816460F002CD046 /* 型Type.swift */,
-				12D4369E2865CD8400B707F5 /* 📣AD */,
-				12D4369A2865CD8300B707F5 /* 🛒InAppPurchase */,
+				12F4444D286D4B580008A663 /* 🛠AppMenu.swift */,
 				12A9251B28669FA20035DC83 /* Info.plist */,
 				128D1570280FE47F003FF480 /* Preview Content */,
 			);
@@ -354,7 +354,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				128D156D280FE47E003FF480 /* ContentView.swift in Sources */,
-				12D436982865CD5E00B707F5 /* 🛠MenuButton.swift in Sources */,
 				12D436A52865CD8400B707F5 /* 🛒StoreModel.swift in Sources */,
 				12D436A92865CD8400B707F5 /* 📣ADBanner.swift in Sources */,
 				128D156B280FE47E003FF480 /* Plain将棋盤App.swift in Sources */,
@@ -365,9 +364,10 @@
 				12D436A82865CD8400B707F5 /* 📣ADMenu.swift in Sources */,
 				12D436972865CD5E00B707F5 /* 🏷VersionSection.swift in Sources */,
 				12D436A32865CD8400B707F5 /* 🛒PurchaseSection.swift in Sources */,
-				12D436932865CD5E00B707F5 /* 🛠MenuSheet.swift in Sources */,
+				12D436932865CD5E00B707F5 /* 🛠BaseMenu.swift in Sources */,
 				12D436942865CD5E00B707F5 /* 📓SourceCodeMenu.swift in Sources */,
 				12D436952865CD5E00B707F5 /* 📄AppDescription.swift in Sources */,
+				12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */,
 				12D436962865CD5E00B707F5 /* 📄InformationMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
