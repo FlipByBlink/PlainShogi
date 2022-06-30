@@ -104,3 +104,21 @@ enum 駒の種類2: String, CaseIterable, Identifiable {
         }
     }
 }
+
+
+let 初期配置2: [駒の種類2?] =
+[.香, .桂, .銀, .金, .王, .金, .銀, .桂, .香,
+ nil, .飛, nil,nil,nil,nil,nil, .角, nil,
+ .歩, .歩, .歩, .歩, .歩, .歩, .歩, .歩, .歩,
+  nil,nil,nil,nil,nil,nil,nil,nil,nil,
+  nil,nil,nil,nil,nil,nil,nil,nil,nil,
+  nil,nil,nil,nil,nil,nil,nil,nil,nil,
+ .歩, .歩, .歩, .歩, .歩, .歩, .歩, .歩, .歩,
+ nil, .飛, nil,nil,nil,nil,nil, .角, nil,
+ .香, .桂, .銀, .金, .王, .金, .銀, .桂, .香]
+
+
+let 初期配置3: [Int: 駒の種類2] =
+[1:.香, 2:.桂, 3:.桂, 4:.桂, 5:.桂, 6:.桂, 7:.桂, 8:.桂, 9:.桂,
+/*  */11:.角,/*                        */17:.飛,
+19:.歩,20:.歩,21:.歩,22:.歩,23:.歩,24:.歩,25:.歩,26:.歩,27:.歩]
