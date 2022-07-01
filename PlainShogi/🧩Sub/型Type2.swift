@@ -85,6 +85,14 @@ enum 駒の種類2: String, CaseIterable, Identifiable {
         }
     }
     
+    var 成りがある: Bool {
+        if self.成駒表記 == nil {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     var Alphabet生駒表記: String {
         switch self {
             case .歩: return "P"
