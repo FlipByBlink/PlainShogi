@@ -1,6 +1,8 @@
 
 import SwiftUI
 
+//TODO: 実装変更にあたり各Viewについても再検討
+
 struct ContentView: View {
     var body: some View {
         GeometryReader { 📐 in
