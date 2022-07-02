@@ -3,7 +3,6 @@ import Combine
 import SwiftUI
 import UniformTypeIdentifiers
 
-//TODO: 駒移動の実装を再確認
 //FIXME: テキスト書き出し読み込み機能未実装
 
 class 📱AppModel: ObservableObject {
@@ -210,6 +209,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
+    //FIXME: 成駒が未実装
     //FIXME: Englishオプションが未実装
     func 現在の盤面をテキストに変換する() -> String {
         var 📃 = "☗"
@@ -264,6 +264,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
+    //FIXME: 成駒が未実装
     //FIXME: Englishオプションが未実装
     func このテキストを盤面に反映する(_ 📃: String) {
         駒の配置 = [:]
