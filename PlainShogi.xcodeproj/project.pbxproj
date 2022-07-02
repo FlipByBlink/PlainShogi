@@ -29,7 +29,6 @@
 		128D156F280FE47F003FF480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
 		128D1572280FE47F003FF480 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D1571280FE47F003FF480 /* Preview Assets.xcassets */; };
 		128D1579280FE4E4003FF480 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 📱AppModel.swift */; };
-		128E7E69286EB16300800EA4 /* 📱AppModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128E7E68286EB16300800EA4 /* 📱AppModel2.swift */; };
 		1291B7E1286DA1DB002FF5FC /* 型Type2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1291B7E0286DA1DB002FF5FC /* 型Type2.swift */; };
 		12A9251E2866A8960035DC83 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A9251D2866A8960035DC83 /* StoreKit.framework */; };
 		12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
@@ -132,7 +131,6 @@
 		128D156E280FE47F003FF480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PlainShogi/Assets.xcassets; sourceTree = "<group>"; };
 		128D1571280FE47F003FF480 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		128D1578280FE4E4003FF480 /* 📱AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel.swift"; sourceTree = "<group>"; };
-		128E7E68286EB16300800EA4 /* 📱AppModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel2.swift"; sourceTree = "<group>"; };
 		1291B7E0286DA1DB002FF5FC /* 型Type2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "型Type2.swift"; sourceTree = "<group>"; };
 		12A9251B28669FA20035DC83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12A9251D2866A8960035DC83 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -191,7 +189,6 @@
 				128D156A280FE47E003FF480 /* Plain将棋盤App.swift */,
 				128D156C280FE47E003FF480 /* ContentView.swift */,
 				128D1578280FE4E4003FF480 /* 📱AppModel.swift */,
-				128E7E68286EB16300800EA4 /* 📱AppModel2.swift */,
 				12D436992865CD6D00B707F5 /* 🧩Sub */,
 				12D4368B2865CD5E00B707F5 /* 🧰Others */,
 				12A925252866AB9F0035DC83 /* 🌏Localization */,
@@ -369,7 +366,6 @@
 				12D436A62865CD8400B707F5 /* 📣ADView.swift in Sources */,
 				12D436A82865CD8400B707F5 /* 📣ADMenu.swift in Sources */,
 				12D436972865CD5E00B707F5 /* 🏷VersionSection.swift in Sources */,
-				128E7E69286EB16300800EA4 /* 📱AppModel2.swift in Sources */,
 				1291B7E1286DA1DB002FF5FC /* 型Type2.swift in Sources */,
 				12D436A32865CD8400B707F5 /* 🛒PurchaseSection.swift in Sources */,
 				12D436932865CD5E00B707F5 /* 🛠BaseMenu.swift in Sources */,
