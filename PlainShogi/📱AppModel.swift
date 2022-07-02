@@ -3,15 +3,14 @@ import Combine
 import SwiftUI
 import UniformTypeIdentifiers
 
+//FIXME: Englishオプション未実装
+//FIXME: テキスト書き出し読み込み機能未実装
+
 class 📱AppModel: ObservableObject {
     
-    @Published var 駒の配置: [Int: 将棋駒] = 初期配置
+    @Published var 駒の配置: [Int: 盤上の駒] = 初期配置
     
-    //@Published var 駒の配置2: [Int: 盤上の駒] = 初期配置2
-    
-    @Published var 手駒: [王側か玉側か: [駒の種類: Int]] = [.王側: [:], .玉側: [:]]
-    
-    //@Published var 手駒2: [王側か玉側か: 手持ちの駒] = [:]
+    @Published var 手駒: [王側か玉側か: 手持ちの駒] = 空の手駒
     
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
@@ -21,7 +20,7 @@ class 📱AppModel: ObservableObject {
     
     var 持ち上げられた駒の元々の位置: Int? = nil
     
-    var 持ち上げられた手駒: 将棋駒? = nil
+    var 持ち上げられた手駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
     
     
     func 盤上の駒を持ち上げる(_ 位置: Int) -> NSItemProvider {
@@ -31,7 +30,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 手駒を持ち上げる(_ 駒: 将棋駒) -> NSItemProvider {
+    func 手駒を持ち上げる(_ 駒: (王側か玉側か, 駒の種類)) -> NSItemProvider {
         持ち上げられた手駒 = 駒
         現状 = .手駒を持ち上げている
         return 外部書き出し用のテキストを準備する()
@@ -50,7 +49,7 @@ class 📱AppModel: ObservableObject {
                 if let 先客 = 駒の配置[置いた位置] {
                     if 先客.陣営 == 駒の配置[出発地点]?.陣営 { return true }
                     
-                    手駒に加える(駒の配置[出発地点]!.陣営, 先客.職名)
+                    手駒[駒の配置[出発地点]!.陣営]?.一個増やす(先客.職名)
                 }
                 
                 駒の配置.updateValue(駒の配置[出発地点]!, forKey: 置いた位置)
@@ -63,9 +62,9 @@ class 📱AppModel: ObservableObject {
                 guard let 駒 = 持ち上げられた手駒 else { return false }
                 if 駒の配置[置いた位置] != nil { return false }
                 
-                駒の配置.updateValue(駒, forKey: 置いた位置)
+                駒の配置.updateValue(盤上の駒(駒.陣営, 駒.職名), forKey: 置いた位置)
                 
-                手駒から減らす(駒.陣営, 駒.職名)
+                手駒[駒.陣営]?.一個減らす(駒.職名)
                 
                 持ち上げられた手駒 = nil
                 駒を移動させたらログを更新する()
@@ -95,33 +94,33 @@ class 📱AppModel: ObservableObject {
     
     
     func この駒の表記(_ 職名: 駒の種類) -> String {
-        🚩English表記 ? 職名.English表記 : 職名.rawValue
+        🚩English表記 ? 職名.Alphabet生駒表記 : 職名.rawValue
     }
     
-    func この手駒の数(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> Int {
-        手駒[陣営]?[職名] ?? 0
-    }
+//    func この手駒の数(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> Int {
+//        手駒[陣営]?[職名] ?? 0
+//    }
     
-    func 手駒に加える(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
-        手駒[陣営]?[職名.生駒] = この手駒の数(陣営, 職名.生駒) + 1
-    }
+//    func 手駒に加える(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
+//        手駒[陣営]?[職名.生駒] = この手駒の数(陣営, 職名.生駒) + 1
+//    }
     
-    func 手駒から減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
-        if この手駒の数(陣営, 職名) >= 1 {
-            手駒[陣営]?[職名] = この手駒の数(陣営, 職名) - 1
-        }
-    }
+//    func 手駒から減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
+//        if この手駒の数(陣営, 職名) >= 1 {
+//            手駒[陣営]?[職名] = この手駒の数(陣営, 職名) - 1
+//        }
+//    }
     
     
-    func 駒を裏返す(_ 位置: Int) {
-        if let 駒 = 駒の配置[位置] {
-            if let 裏 = 駒.職名.裏側 {
-                駒の配置[位置] = 将棋駒(駒.陣営, 裏)
-                
-                振動フィードバック()
-            }
-        }
-    }
+//    func 駒を裏返す(_ 位置: Int) {
+//        if let 駒 = 駒の配置[位置] {
+//            if let 裏 = 駒.職名.裏側 {
+//                駒の配置[位置] = 将棋駒(駒.陣営, 裏)
+//
+//                振動フィードバック()
+//            }
+//        }
+//    }
     
     
     func 駒を移動させたらログを更新する() {
