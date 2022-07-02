@@ -210,7 +210,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    //FIXME: テキスト書き出し読み込みでEnglishオプションが未実装
+    //FIXME: Englishオプションが未実装
     func 現在の盤面をテキストに変換する() -> String {
         var 📃 = "☗"
 
@@ -264,67 +264,72 @@ class 📱AppModel: ObservableObject {
     }
     
     
+    //FIXME: Englishオプションが未実装
     func このテキストを盤面に反映する(_ 📃: String) {
-//        駒の配置 = [:]
-//        手駒 = 空の手駒
-//
-//        var 改行数: Int = 0
-//        var 列: Int = 0
-//        var 読み込み中の手駒の種類: 駒の種類 = .歩
-//
-//        for 字区切り in 📃 {
-//            if 字区切り == "\n" {
-//                改行数 += 1
-//                列 = 0
-//                continue
-//            }
-//
-//            let 駒テキスト = 字区切り.description
-//
-//            switch 改行数 {
-//                case 0:
-//                    if let 数 = Int(駒テキスト) {
-//                        手駒[.玉側]?[読み込み中の手駒の種類] = 数
-//                    } else {
-//                        駒の種類.allCases.forEach { 職名 in
+        駒の配置 = [:]
+        手駒 = 空の手駒
+
+        var 改行数: Int = 0
+        var 列: Int = 0
+        var 読み込み中の手駒の種類: 駒の種類 = .歩
+
+        for 字区切り in 📃 {
+            if 字区切り == "\n" {
+                改行数 += 1
+                列 = 0
+                continue
+            }
+
+            let 駒テキスト = 字区切り.description
+
+            switch 改行数 {
+                case 0:
+                    if let 数 = Int(駒テキスト) {
+                        手駒[.玉側]?.配分[読み込み中の手駒の種類] = 数
+                    } else {
+                        駒の種類.allCases.forEach { 職名 in
 //                            if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
-//                                手駒[.玉側]?[職名] = 1
-//
-//                                読み込み中の手駒の種類 = 職名
-//                            }
-//                        }
-//                    }
-//                case 1...11:
-//                    駒の種類.allCases.forEach { 職名 in
-//                        let 位置 = ( 改行数 - 2 ) * 9 + 列
-//
+                            if 駒テキスト == 職名.rawValue + "͙" {
+                                手駒[.玉側]?.配分[職名] = 1
+
+                                読み込み中の手駒の種類 = 職名
+                            }
+                        }
+                    }
+                case 1...11:
+                    駒の種類.allCases.forEach { 職名 in
+                        let 位置 = ( 改行数 - 2 ) * 9 + 列
+
 //                        if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
-//                            駒の配置.updateValue(将棋駒(.王側, 職名), forKey: 位置)
-//                        }
-//
+                        if 駒テキスト == 職名.rawValue {
+                            駒の配置.updateValue(盤上の駒(.王側, 職名), forKey: 位置)
+                        }
+
 //                        if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
-//                            駒の配置.updateValue(将棋駒(.玉側, 職名), forKey: 位置)
-//                        }
-//                    }
-//                case 12:
-//                    if let 数 = Int(駒テキスト) {
-//                        手駒[.王側]?[読み込み中の手駒の種類] = 数
-//                    } else {
-//                        駒の種類.allCases.forEach { 職名 in
+                        if 駒テキスト == 職名.rawValue + "͙" {
+                            駒の配置.updateValue(盤上の駒(.玉側, 職名), forKey: 位置)
+                        }
+                    }
+                case 12:
+                    if let 数 = Int(駒テキスト) {
+                        手駒[.王側]?.配分[読み込み中の手駒の種類] = 数
+                    } else {
+                        駒の種類.allCases.forEach { 職名 in
 //                            if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
-//                                手駒[.王側]?[職名] = 1
-//
-//                                読み込み中の手駒の種類 = 職名
-//                            }
-//                        }
-//                    }
-//                default: break
-//            }
-//
-//            列 += 1
-//        }
-//
-//        UINotificationFeedbackGenerator().notificationOccurred(.success)
+                            if 駒テキスト == 職名.rawValue {
+                                手駒[.王側]?.配分[職名] = 1
+
+                                読み込み中の手駒の種類 = 職名
+                            }
+                        }
+                    }
+                default: break
+            }
+
+            列 += 1
+        }
+
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
 }
 
