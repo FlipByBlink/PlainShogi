@@ -121,6 +121,15 @@ class 📱AppModel: ObservableObject {
     }
     
     
+    func 盤面を初期化する() {
+        駒の配置 = 初期配置
+        手駒 = 空の手駒
+        
+        UINotificationFeedbackGenerator().notificationOccurred(.error)
+    }
+    
+    
+    // ======== 以下、テキスト書き出し読み込み機能 ========
     func 駒を移動させたらログを更新する() {
 //        let 🗄 = UserDefaults.standard
 //        var セーブ用_駒の配置: [String: [String]] = [:]
@@ -313,14 +322,6 @@ class 📱AppModel: ObservableObject {
 //        }
 //
 //        UINotificationFeedbackGenerator().notificationOccurred(.success)
-    }
-    
-    
-    func 盤面を初期化する() {
-        駒の配置 = 初期配置
-        手駒 = 空の手駒
-        
-        UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
 }
 
