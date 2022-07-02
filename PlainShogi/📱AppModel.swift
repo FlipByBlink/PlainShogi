@@ -93,10 +93,19 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func この駒の表記(_ 職名: 駒の種類) -> String {
+    func この手駒の表記(_ 職名: 駒の種類) -> String {
         🚩English表記 ? 職名.Alphabet生駒表記 : 職名.rawValue
     }
     
+    func 盤上のこの駒の表記(_ 駒: 盤上の駒) -> String {
+        if 駒.成り {
+            return 🚩English表記 ? 駒.職名.Alphabet成駒表記! : 駒.職名.成駒表記!
+        } else {
+//            if 陣営 == .玉側 && 職名 == .王 {
+//                return "玉"
+            return 🚩English表記 ? 駒.職名.Alphabet生駒表記 : 駒.職名.rawValue
+        }
+    }
     
     func 駒を移動させたらログを更新する() {
 //        let 🗄 = UserDefaults.standard

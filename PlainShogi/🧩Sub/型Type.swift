@@ -20,18 +20,6 @@ struct 盤上の駒 {
     let 職名: 駒の種類
     var 成り: Bool
     
-    var 表記: String {
-        if 成り {
-            return 職名.成駒表記!
-        } else {
-            if 陣営 == .玉側 && 職名 == .王 {
-                return "玉"
-            } else {
-                return 職名.rawValue
-            }
-        }
-    }
-    
     mutating func 裏返す() {
         if 職名.成駒表記 != nil {
             成り.toggle()

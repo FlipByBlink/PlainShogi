@@ -68,7 +68,7 @@ struct マスもしくはコマ: View {
                     Rectangle()
                         .foregroundStyle(.background)
                     
-                    Text(駒.表記)
+                    Text(📱.盤上のこの駒の表記(駒))
                         .minimumScaleFactor(0.1)
                         .rotationEffect(下向き(駒.陣営 == .玉側))
                         .accessibilityHidden(true)
@@ -76,7 +76,7 @@ struct マスもしくはコマ: View {
                 .onDrag {
                     📱.盤上の駒を持ち上げる(位置)
                 } preview: {
-                    コマのプレビュー(駒.陣営, 駒.表記)
+                    コマのプレビュー(駒.陣営, 📱.盤上のこの駒の表記(駒))
                         .frame(height: 📐.size.height)
                 }
                 .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
@@ -98,8 +98,6 @@ struct マスもしくはコマ: View {
 
 
 struct 盤外: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    
     var 陣営: 王側か玉側か
     
     var body: some View {
@@ -123,10 +121,6 @@ struct 盤外のコマ: View {
     var 陣営: 王側か玉側か
     
     var 職名: 駒の種類
-    
-    var 駒の表記: String {
-        📱.この駒の表記(職名)
-    }
     
     var 手駒の数: Int {
         📱.手駒[陣営]?.個数(職名) ?? 0
@@ -152,13 +146,13 @@ struct 盤外のコマ: View {
                         .foregroundStyle(.background)
                         .frame(maxWidth: 📐.size.height * 1.5)
                     
-                    Text(駒の表記 + 手駒の数の表記)
+                    Text(📱.この手駒の表記(職名) + 手駒の数の表記)
                         .minimumScaleFactor(0.1)
                 }
                 .onDrag{
                     📱.手駒を持ち上げる((陣営, 職名))
                 } preview: {
-                    コマのプレビュー(陣営, 駒の表記)
+                    コマのプレビュー(陣営, 📱.この手駒の表記(職名))
                         .frame(height: 📐.size.height)
                 }
                 .onTapGesture(count: 3) {
