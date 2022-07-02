@@ -1,8 +1,6 @@
 
 import SwiftUI
 
-//TODO: 実装変更にあたり各Viewについても再検討
-
 struct ContentView: View {
     var body: some View {
         GeometryReader { 📐 in
@@ -22,7 +20,7 @@ struct ContentView: View {
                             Divider()
                             
                             ForEach( 0 ..< 9 ) { 列 in
-                                マスもしくはコマ(位置: 行*9+列)
+                                コマもしくはマス(位置: 行*9+列)
                                 
                                 Divider()
                             }
@@ -56,7 +54,7 @@ struct ContentView: View {
 }
 
 
-struct マスもしくはコマ: View {
+struct コマもしくはマス: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var 位置: Int

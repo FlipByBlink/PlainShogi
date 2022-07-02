@@ -4,7 +4,6 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 //TODO: 駒移動の実装を再確認
-//FIXME: Englishオプション未実装
 //FIXME: テキスト書き出し読み込み機能未実装
 
 class 📱AppModel: ObservableObject {
@@ -129,7 +128,22 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    // ======== 以下、テキスト書き出し読み込み機能 ========
+    func アプリ外部からのドロップかどうか確認する(_ 📦ItemProvider: [NSItemProvider]) {
+        guard let 📦 = 📦ItemProvider.first else { return }
+        
+        if let 🏷 = 📦.suggestedName {
+            if 🏷 != "アプリ内でのコマ移動です" {
+                現状 = .駒を持ち上げていない
+                print("📦.suggestedName: ", 🏷)
+            }
+        } else {
+            現状 = .駒を持ち上げていない
+        }
+    }
+    
+    
+    // ==============================================================
+    // ================ 以下、テキスト書き出し読み込み機能 ================
     func 駒を移動させたらログを更新する() {
 //        let 🗄 = UserDefaults.standard
 //        var セーブ用_駒の配置: [String: [String]] = [:]
@@ -244,20 +258,6 @@ class 📱AppModel: ObservableObject {
 //
 //        return 📃
         return "placeholder"
-    }
-    
-    
-    func アプリ外部からのドロップかどうか確認する(_ 📦ItemProvider: [NSItemProvider]) {
-        guard let 📦 = 📦ItemProvider.first else { return }
-        
-        if let 🏷 = 📦.suggestedName {
-            if 🏷 != "アプリ内でのコマ移動です" {
-                現状 = .駒を持ち上げていない
-                print("📦.suggestedName: ", 🏷)
-            }
-        } else {
-            現状 = .駒を持ち上げていない
-        }
     }
     
     
