@@ -13,13 +13,15 @@ class 📱AppModel: ObservableObject {
     
     //@Published var 手駒2: [王側か玉側か: 手持ちの駒] = [.王側: .init(), .玉側: .init()]
     
-    @Published var 持ち上げられた駒の元々の位置: Int? = nil
-    
-    @Published var 持ち上げられた手駒: 将棋駒? = nil
-    
-    @Published var 現状: 状況 = .駒を持ち上げていない
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
+    
+    
+    var 現状: 状況 = .駒を持ち上げていない
+    
+    var 持ち上げられた駒の元々の位置: Int? = nil
+    
+    var 持ち上げられた手駒: 将棋駒? = nil
     
     
     func 盤上の駒を持ち上げる(_ 位置: Int) -> NSItemProvider {
