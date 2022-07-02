@@ -1,6 +1,7 @@
 
 import SwiftUI
 
+//TODO: "職名"から"駒名"に変更を検討
 
 enum 王側か玉側か: String, CaseIterable {
     case 王側

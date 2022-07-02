@@ -150,7 +150,7 @@ struct 盤外のコマ: View {
                         .minimumScaleFactor(0.1)
                 }
                 .onDrag{
-                    📱.手駒を持ち上げる((陣営, 職名))
+                    📱.手駒を持ち上げる(陣営, 職名)
                 } preview: {
                     コマのプレビュー(陣営, 📱.この手駒の表記(陣営, 職名))
                         .frame(height: 📐.size.height)

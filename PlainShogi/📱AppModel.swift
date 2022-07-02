@@ -31,8 +31,8 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 手駒を持ち上げる(_ 駒: (王側か玉側か, 駒の種類)) -> NSItemProvider {
-        持ち上げられた手駒 = 駒
+    func 手駒を持ち上げる(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> NSItemProvider {
+        持ち上げられた手駒 = (陣営, 職名)
         現状 = .手駒を持ち上げている
         return 外部書き出し用のテキストを準備する()
     }
