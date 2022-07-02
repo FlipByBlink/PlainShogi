@@ -125,22 +125,22 @@ class 📱AppModel: ObservableObject {
     
     
     func 駒を移動させたらログを更新する() {
-        let 🗄 = UserDefaults.standard
-        var セーブ用_駒の配置: [String: [String]] = [:]
-        var セーブ用_手駒: [String: [String: String]] = ["王側": [:], "玉側": [:]]
-
-        駒の配置.forEach { (位置: Int, 駒: 将棋駒) in
-            セーブ用_駒の配置.updateValue([駒.陣営.rawValue, 駒.職名.rawValue], forKey: 位置.description)
-        }
-        
-        王側か玉側か.allCases.forEach { 陣営 in
-            手駒[陣営]?.forEach { (駒: 駒の種類, 数: Int) in
-                セーブ用_手駒[陣営.rawValue]?[駒.rawValue] = 数.description
-            }
-        }
-        
-        🗄.set(セーブ用_駒の配置, forKey: "駒の配置")
-        🗄.set(セーブ用_手駒, forKey: "手駒")
+//        let 🗄 = UserDefaults.standard
+//        var セーブ用_駒の配置: [String: [String]] = [:]
+//        var セーブ用_手駒: [String: [String: String]] = ["王側": [:], "玉側": [:]]
+//
+//        駒の配置.forEach { (位置: Int, 駒: 将棋駒) in
+//            セーブ用_駒の配置.updateValue([駒.陣営.rawValue, 駒.職名.rawValue], forKey: 位置.description)
+//        }
+//
+//        王側か玉側か.allCases.forEach { 陣営 in
+//            手駒[陣営]?.forEach { (駒: 駒の種類, 数: Int) in
+//                セーブ用_手駒[陣営.rawValue]?[駒.rawValue] = 数.description
+//            }
+//        }
+//
+//        🗄.set(セーブ用_駒の配置, forKey: "駒の配置")
+//        🗄.set(セーブ用_手駒, forKey: "手駒")
     }
     
     
@@ -149,36 +149,36 @@ class 📱AppModel: ObservableObject {
     }
     
     func 以前アプリ起動した際のログを読み込む() {
-        let 🗄 = UserDefaults.standard
-
-        if let ロード用_駒の配置 = 🗄.dictionary(forKey: "駒の配置") as? [String: [String]] {
-            if let ロード用_手駒 = 🗄.dictionary(forKey: "手駒") as? [String: [String: String]] {
-                駒の配置 = [:]
-                手駒 = 空の手駒
-            
-                ロード用_駒の配置.forEach { (位置テキスト: String, 駒テキスト: [String]) in
-                    if let 陣営 = 王側か玉側か(rawValue: 駒テキスト[0]) {
-                        if let 職名 = 駒の種類(rawValue: 駒テキスト[1]) {
-                            if let 位置 = Int(位置テキスト) {
-                                駒の配置.updateValue(将棋駒(陣営,職名), forKey: 位置)
-                            }
-                        }
-                    }
-                }
-                
-                王側か玉側か.allCases.forEach { 陣営 in
-                    if let 一方の手駒テキスト = ロード用_手駒[陣営.rawValue] {
-                        一方の手駒テキスト.forEach { (職名テキスト: String, 数テキスト: String) in
-                            if let 職名 = 駒の種類(rawValue: 職名テキスト) {
-                                if let 数 = Int(数テキスト) {
-                                    手駒[陣営]?[職名] = 数
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+//        let 🗄 = UserDefaults.standard
+//
+//        if let ロード用_駒の配置 = 🗄.dictionary(forKey: "駒の配置") as? [String: [String]] {
+//            if let ロード用_手駒 = 🗄.dictionary(forKey: "手駒") as? [String: [String: String]] {
+//                駒の配置 = [:]
+//                手駒 = 空の手駒
+//
+//                ロード用_駒の配置.forEach { (位置テキスト: String, 駒テキスト: [String]) in
+//                    if let 陣営 = 王側か玉側か(rawValue: 駒テキスト[0]) {
+//                        if let 職名 = 駒の種類(rawValue: 駒テキスト[1]) {
+//                            if let 位置 = Int(位置テキスト) {
+//                                駒の配置.updateValue(将棋駒(陣営,職名), forKey: 位置)
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                王側か玉側か.allCases.forEach { 陣営 in
+//                    if let 一方の手駒テキスト = ロード用_手駒[陣営.rawValue] {
+//                        一方の手駒テキスト.forEach { (職名テキスト: String, 数テキスト: String) in
+//                            if let 職名 = 駒の種類(rawValue: 職名テキスト) {
+//                                if let 数 = Int(数テキスト) {
+//                                    手駒[陣営]?[職名] = 数
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
     
     
@@ -191,52 +191,53 @@ class 📱AppModel: ObservableObject {
     
     
     func 現在の盤面をテキストに変換する() -> String {
-        var 📃 = "☗"
-        
-        駒の種類.allCases.forEach { 例 in
-            手駒[.玉側]?.forEach { (職名: 駒の種類, 数: Int) in
-                if 例 == 職名 {
-                    📃 += 🚩English表記 ? 職名.Englishプレーンテキスト + "͙" : 職名.rawValue + "͙"
-                    
-                    if 数 >= 2 {
-                        📃 += 数.description
-                    }
-                }
-            }
-        }
-
-        📃 += "\n－－－－－－－－－\n"
-
-        for 行 in 0 ..< 9 {
-            for 列 in 0 ..< 9 {
-                if let 駒 = self.駒の配置[行*9+列] {
-                    📃 += 🚩English表記 ? 駒.職名.Englishプレーンテキスト : 駒.職名.rawValue
-
-                    if 駒.陣営 == .玉側 {
-                        📃 += "͙"
-                    }
-                } else {
-                    📃 += "　"
-                }
-            }
-            📃 += "\n"
-        }
-
-        📃 += "－－－－－－－－－\n☖"
-        
-        駒の種類.allCases.forEach { 例 in
-            手駒[.王側]?.forEach { (職名: 駒の種類, 数: Int) in
-                if 例 == 職名 {
-                    📃 += 🚩English表記 ? 職名.Englishプレーンテキスト : 職名.rawValue
-                    
-                    if 数 >= 2 {
-                        📃 += 数.description
-                    }
-                }
-            }
-        }
-
-        return 📃
+//        var 📃 = "☗"
+//
+//        駒の種類.allCases.forEach { 例 in
+//            手駒[.玉側]?.forEach { (職名: 駒の種類, 数: Int) in
+//                if 例 == 職名 {
+//                    📃 += 🚩English表記 ? 職名.Englishプレーンテキスト + "͙" : 職名.rawValue + "͙"
+//
+//                    if 数 >= 2 {
+//                        📃 += 数.description
+//                    }
+//                }
+//            }
+//        }
+//
+//        📃 += "\n－－－－－－－－－\n"
+//
+//        for 行 in 0 ..< 9 {
+//            for 列 in 0 ..< 9 {
+//                if let 駒 = self.駒の配置[行*9+列] {
+//                    📃 += 🚩English表記 ? 駒.職名.Englishプレーンテキスト : 駒.職名.rawValue
+//
+//                    if 駒.陣営 == .玉側 {
+//                        📃 += "͙"
+//                    }
+//                } else {
+//                    📃 += "　"
+//                }
+//            }
+//            📃 += "\n"
+//        }
+//
+//        📃 += "－－－－－－－－－\n☖"
+//
+//        駒の種類.allCases.forEach { 例 in
+//            手駒[.王側]?.forEach { (職名: 駒の種類, 数: Int) in
+//                if 例 == 職名 {
+//                    📃 += 🚩English表記 ? 職名.Englishプレーンテキスト : 職名.rawValue
+//
+//                    if 数 >= 2 {
+//                        📃 += 数.description
+//                    }
+//                }
+//            }
+//        }
+//
+//        return 📃
+        return "placeholder"
     }
     
     
@@ -255,66 +256,66 @@ class 📱AppModel: ObservableObject {
     
     
     func このテキストを盤面に反映する(_ 📃: String) {
-        駒の配置 = [:]
-        手駒 = 空の手駒
-        
-        var 改行数: Int = 0
-        var 列: Int = 0
-        var 読み込み中の手駒の種類: 駒の種類 = .歩
-        
-        for 字区切り in 📃 {
-            if 字区切り == "\n" {
-                改行数 += 1
-                列 = 0
-                continue
-            }
-            
-            let 駒テキスト = 字区切り.description
-            
-            switch 改行数 {
-                case 0:
-                    if let 数 = Int(駒テキスト) {
-                        手駒[.玉側]?[読み込み中の手駒の種類] = 数
-                    } else {
-                        駒の種類.allCases.forEach { 職名 in
-                            if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
-                                手駒[.玉側]?[職名] = 1
-                                
-                                読み込み中の手駒の種類 = 職名
-                            }
-                        }
-                    }
-                case 1...11:
-                    駒の種類.allCases.forEach { 職名 in
-                        let 位置 = ( 改行数 - 2 ) * 9 + 列
-                        
-                        if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
-                            駒の配置.updateValue(将棋駒(.王側, 職名), forKey: 位置)
-                        }
-                        
-                        if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
-                            駒の配置.updateValue(将棋駒(.玉側, 職名), forKey: 位置)
-                        }
-                    }
-                case 12:
-                    if let 数 = Int(駒テキスト) {
-                        手駒[.王側]?[読み込み中の手駒の種類] = 数
-                    } else {
-                        駒の種類.allCases.forEach { 職名 in
-                            if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
-                                手駒[.王側]?[職名] = 1
-                                
-                                読み込み中の手駒の種類 = 職名
-                            }
-                        }
-                    }
-                default: break
-            }
-            
-            列 += 1
-        }
-
-        UINotificationFeedbackGenerator().notificationOccurred(.success)
+//        駒の配置 = [:]
+//        手駒 = 空の手駒
+//
+//        var 改行数: Int = 0
+//        var 列: Int = 0
+//        var 読み込み中の手駒の種類: 駒の種類 = .歩
+//
+//        for 字区切り in 📃 {
+//            if 字区切り == "\n" {
+//                改行数 += 1
+//                列 = 0
+//                continue
+//            }
+//
+//            let 駒テキスト = 字区切り.description
+//
+//            switch 改行数 {
+//                case 0:
+//                    if let 数 = Int(駒テキスト) {
+//                        手駒[.玉側]?[読み込み中の手駒の種類] = 数
+//                    } else {
+//                        駒の種類.allCases.forEach { 職名 in
+//                            if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
+//                                手駒[.玉側]?[職名] = 1
+//
+//                                読み込み中の手駒の種類 = 職名
+//                            }
+//                        }
+//                    }
+//                case 1...11:
+//                    駒の種類.allCases.forEach { 職名 in
+//                        let 位置 = ( 改行数 - 2 ) * 9 + 列
+//
+//                        if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
+//                            駒の配置.updateValue(将棋駒(.王側, 職名), forKey: 位置)
+//                        }
+//
+//                        if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
+//                            駒の配置.updateValue(将棋駒(.玉側, 職名), forKey: 位置)
+//                        }
+//                    }
+//                case 12:
+//                    if let 数 = Int(駒テキスト) {
+//                        手駒[.王側]?[読み込み中の手駒の種類] = 数
+//                    } else {
+//                        駒の種類.allCases.forEach { 職名 in
+//                            if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
+//                                手駒[.王側]?[職名] = 1
+//
+//                                読み込み中の手駒の種類 = 職名
+//                            }
+//                        }
+//                    }
+//                default: break
+//            }
+//
+//            列 += 1
+//        }
+//
+//        UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
     
     
