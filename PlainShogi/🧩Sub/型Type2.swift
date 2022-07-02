@@ -7,7 +7,7 @@ struct 盤上に置かれた駒 {
     
     let 陣営: 王側か玉側か
     let 職名: 駒の種類2
-    let 成り: Bool
+    var 成り: Bool
     
     var 表記: String {
         if 📱.🚩English表記 {
@@ -26,6 +26,13 @@ struct 盤上に置かれた駒 {
                     return 職名.rawValue
                 }
             }
+        }
+    }
+    
+    mutating func 裏返す() {
+        if self.職名.成駒表記 != nil {
+            self.成り.toggle()
+            UISelectionFeedbackGenerator().selectionChanged()
         }
     }
     

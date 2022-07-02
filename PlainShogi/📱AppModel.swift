@@ -11,7 +11,7 @@ class 📱AppModel: ObservableObject {
     
     @Published var 手駒: [王側か玉側か: [駒の種類: Int]] = [.王側: [:], .玉側: [:]]
     
-    //@Published var 手駒2: [王側か玉側か: 手持ちの駒] = [.王側: .init(), .玉側: .init()]
+    //@Published var 手駒2: [王側か玉側か: 手持ちの駒] = [:]
     
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
