@@ -217,8 +217,7 @@ class 📱AppModel: ObservableObject {
         駒の種類.allCases.forEach { 例 in
             手駒[.玉側]?.配分.forEach { (職名: 駒の種類, 数: Int) in
                 if 例 == 職名 {
-                    //📃 += 🚩English表記 ? 職名.Englishプレーンテキスト + "͙" : 職名.rawValue + "͙"
-                    📃 += 職名.rawValue + "͙"
+                    📃 += 🚩English表記 ? 駒をEnglishプレーンテキストに変換(職名) + "͙" : 職名.rawValue + "͙"
 
                     if 数 >= 2 {
                         📃 += 数.description
@@ -232,8 +231,7 @@ class 📱AppModel: ObservableObject {
         for 行 in 0 ..< 9 {
             for 列 in 0 ..< 9 {
                 if let 駒 = self.駒の配置[行*9+列] {
-//                    📃 += 🚩English表記 ? 駒.職名.Englishプレーンテキスト : 駒.職名.rawValue
-                    📃 += 駒.職名.rawValue
+                    📃 += 🚩English表記 ? 駒をEnglishプレーンテキストに変換(駒.職名, 駒.成り) : 駒.職名.rawValue
 
                     if 駒.陣営 == .玉側 {
                         📃 += "͙"
@@ -250,8 +248,7 @@ class 📱AppModel: ObservableObject {
         駒の種類.allCases.forEach { 例 in
             手駒[.王側]?.配分.forEach { (職名: 駒の種類, 数: Int) in
                 if 例 == 職名 {
-//                    📃 += 🚩English表記 ? 職名.Englishプレーンテキスト : 職名.rawValue
-                    📃 += 職名.rawValue
+                    📃 += 🚩English表記 ? 駒をEnglishプレーンテキストに変換(職名) : 職名.rawValue
 
                     if 数 >= 2 {
                         📃 += 数.description
@@ -335,6 +332,18 @@ class 📱AppModel: ObservableObject {
 }
 
 
+func 駒をEnglishプレーンテキストに変換(_ 職名: 駒の種類, _ 成り: Bool = false) -> String {
+    switch 職名 {
+        case .歩: return 成り ? "ｐ" : "Ｐ"
+        case .角: return 成り ? "ｂ" : "Ｂ"
+        case .飛: return 成り ? "ｒ" : "Ｒ"
+        case .香: return 成り ? "ｌ" : "Ｌ"
+        case .桂: return 成り ? "ｎ" : "Ｎ"
+        case .銀: return 成り ? "ｓ" : "Ｓ"
+        case .金: return "Ｇ"
+        case .王: return "Ｋ"
+    }
+}
 
 
 //FIXME: >==== Error: 📦.loadItem ====
