@@ -3,8 +3,6 @@ import Combine
 import SwiftUI
 import UniformTypeIdentifiers
 
-//FIXME: テキスト書き出し読み込み機能未実装
-
 class 📱AppModel: ObservableObject {
     
     @Published var 駒の配置: [Int: 盤上の駒] = 初期配置
@@ -141,9 +139,16 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    //FIXME: 成駒が適切に対応できてない
     // ==============================================================
     // ================ 以下、テキスト書き出し読み込み機能 ================
+    func 外部書き出し用のテキストを準備する() -> NSItemProvider {
+        let 📃 = 現在の盤面をテキストに変換する()
+        let 📦 = NSItemProvider(object: 📃 as NSItemProviderWriting)
+        📦.suggestedName = "アプリ内でのコマ移動です"
+        return 📦
+    }
+    
+    
     func 駒を移動させたらログを更新する() {
         let 🗄 = UserDefaults.standard
         var セーブ用_駒の配置: [String: [String]] = [:]
@@ -206,16 +211,6 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 外部書き出し用のテキストを準備する() -> NSItemProvider {
-        let 📃 = 現在の盤面をテキストに変換する()
-        let 📦 = NSItemProvider(object: 📃 as NSItemProviderWriting)
-        📦.suggestedName = "アプリ内でのコマ移動です"
-        return 📦
-    }
-    
-    
-    //FIXME: 成駒が未実装
-    //FIXME: Englishオプションが未実装
     func 現在の盤面をテキストに変換する() -> String {
         var 📃 = "☗"
 
@@ -270,8 +265,6 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    //FIXME: 成駒が未実装
-    //FIXME: Englishオプションが未実装
     func このテキストを盤面に反映する(_ 📃: String) {
         駒の配置 = [:]
         手駒 = 空の手駒
@@ -294,53 +287,26 @@ class 📱AppModel: ObservableObject {
                     if let 数 = Int(駒テキスト) {
                         手駒[.玉側]?.配分[読み込み中の手駒の種類] = 数
                     } else {
-                        駒の種類.allCases.forEach { 職名 in
-//                            if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
-//                            if 駒テキスト == 職名.rawValue + "͙" {
-//                                手駒[.玉側]?.配分[職名] = 1
-//
-//                                読み込み中の手駒の種類 = 職名
-//                            }
-                            if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
-                                手駒[駒.陣営]?.配分[駒.職名] = 1
-                                
-                                読み込み中の手駒の種類 = 駒.職名
-                            }
+                        if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
+                            手駒[駒.陣営]?.配分[駒.職名] = 1
+                            
+                            読み込み中の手駒の種類 = 駒.職名
                         }
                     }
                 case 1...11:
-//                    駒の種類.allCases.forEach { 職名 in
-                        let 位置 = ( 改行数 - 2 ) * 9 + 列
-
-//                        if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
-//                        if 駒テキスト == 職名.rawValue {
-//                            駒の配置.updateValue(盤上の駒(.王側, 職名), forKey: 位置)
-//                        }
-                        if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
-                            駒の配置.updateValue(盤上の駒(駒.陣営, 駒.職名, 駒.成り), forKey: 位置)
-                        }
-
-//                        if 駒テキスト == 職名.rawValue + "͙" || 駒テキスト == 職名.Englishプレーンテキスト + "͙" {
-//                        if 駒テキスト == 職名.rawValue + "͙" {
-//                            駒の配置.updateValue(盤上の駒(.玉側, 職名), forKey: 位置)
-//                        }
-//                    }
+                    let 位置 = ( 改行数 - 2 ) * 9 + 列
+                
+                    if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
+                        駒の配置.updateValue(盤上の駒(駒.陣営, 駒.職名, 駒.成り), forKey: 位置)
+                    }
                 case 12:
                     if let 数 = Int(駒テキスト) {
                         手駒[.王側]?.配分[読み込み中の手駒の種類] = 数
                     } else {
-                        駒の種類.allCases.forEach { 職名 in
-//                            if 駒テキスト == 職名.rawValue || 駒テキスト == 職名.Englishプレーンテキスト {
-                            if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
-                                手駒[駒.陣営]?.配分[駒.職名] = 1
-                                
-                                読み込み中の手駒の種類 = 駒.職名
-                            }
-//                            if 駒テキスト == 職名.rawValue {
-//                                手駒[.王側]?.配分[職名] = 1
-//
-//                                読み込み中の手駒の種類 = 職名
-//                            }
+                        if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
+                            手駒[駒.陣営]?.配分[駒.職名] = 1
+                            
+                            読み込み中の手駒の種類 = 駒.職名
                         }
                     }
                 default: break
