@@ -3,6 +3,7 @@ import Combine
 import SwiftUI
 import UniformTypeIdentifiers
 
+//TODO: 駒移動の実装を再確認
 //FIXME: Englishオプション未実装
 //FIXME: テキスト書き出し読み込み機能未実装
 
@@ -93,14 +94,6 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func この手駒の表記(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> String {
-        if 陣営 == .玉側 && 職名 == .王 {
-            return 🚩English表記 ? "K" : "玉"
-        } else {
-            return 🚩English表記 ? 職名.Alphabet生駒表記 : 職名.rawValue
-        }
-    }
-    
     func 盤上のこの駒の表記(_ 駒: 盤上の駒) -> String {
         if 駒.成り {
             return 🚩English表記 ? 駒.職名.Alphabet成駒表記! : 駒.職名.成駒表記!
@@ -112,6 +105,21 @@ class 📱AppModel: ObservableObject {
             }
         }
     }
+    
+    
+    func この手駒の表記(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> String {
+        if 陣営 == .玉側 && 職名 == .王 {
+            return 🚩English表記 ? "K" : "玉"
+        } else {
+            return 🚩English表記 ? 職名.Alphabet生駒表記 : 職名.rawValue
+        }
+    }
+    
+    
+    func この手駒の数(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> Int {
+        手駒[陣営]?.個数(職名) ?? 0
+    }
+    
     
     func 駒を移動させたらログを更新する() {
 //        let 🗄 = UserDefaults.standard

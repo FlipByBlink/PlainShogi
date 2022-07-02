@@ -23,7 +23,7 @@ struct 盤上の駒 {
     mutating func 裏返す() {
         if 職名.成駒表記 != nil {
             成り.toggle()
-            UISelectionFeedbackGenerator().selectionChanged()
+            振動フィードバック()
         }
     }
     
@@ -38,21 +38,21 @@ struct 盤上の駒 {
 struct 手持ちの駒 {
     var 配分: [駒の種類: Int] = [:]
     
-    func 個数(_ 駒: 駒の種類) -> Int {
-        if let 数 = 配分[駒] {
+    func 個数(_ 職名: 駒の種類) -> Int {
+        if let 数 = 配分[職名] {
             return 数
         } else {
             return 0
         }
     }
     
-    mutating func 一個増やす(_ 駒: 駒の種類) {
-        配分[駒] = 個数(駒) + 1
+    mutating func 一個増やす(_ 職名: 駒の種類) {
+        配分[職名] = 個数(職名) + 1
     }
     
-    mutating func 一個減らす(_ 駒: 駒の種類) {
-        if 個数(駒) >= 1 {
-            配分[駒] = 個数(駒) - 1
+    mutating func 一個減らす(_ 職名: 駒の種類) {
+        if 個数(職名) >= 1 {
+            配分[職名] = 個数(職名) - 1
         }
     }
 }
