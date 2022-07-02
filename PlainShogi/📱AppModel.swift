@@ -169,36 +169,36 @@ class 📱AppModel: ObservableObject {
     }
     
     func 以前アプリ起動した際のログを読み込む() {
-//        let 🗄 = UserDefaults.standard
-//
-//        if let ロード用_駒の配置 = 🗄.dictionary(forKey: "駒の配置") as? [String: [String]] {
-//            if let ロード用_手駒 = 🗄.dictionary(forKey: "手駒") as? [String: [String: String]] {
-//                駒の配置 = [:]
-//                手駒 = 空の手駒
-//
-//                ロード用_駒の配置.forEach { (位置テキスト: String, 駒テキスト: [String]) in
-//                    if let 陣営 = 王側か玉側か(rawValue: 駒テキスト[0]) {
-//                        if let 職名 = 駒の種類(rawValue: 駒テキスト[1]) {
-//                            if let 位置 = Int(位置テキスト) {
-//                                駒の配置.updateValue(将棋駒(陣営,職名), forKey: 位置)
-//                            }
-//                        }
-//                    }
-//                }
-//
-//                王側か玉側か.allCases.forEach { 陣営 in
-//                    if let 一方の手駒テキスト = ロード用_手駒[陣営.rawValue] {
-//                        一方の手駒テキスト.forEach { (職名テキスト: String, 数テキスト: String) in
-//                            if let 職名 = 駒の種類(rawValue: 職名テキスト) {
-//                                if let 数 = Int(数テキスト) {
-//                                    手駒[陣営]?[職名] = 数
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        let 🗄 = UserDefaults.standard
+
+        if let ロード用_駒の配置 = 🗄.dictionary(forKey: "駒の配置") as? [String: [String]] {
+            if let ロード用_手駒 = 🗄.dictionary(forKey: "手駒") as? [String: [String: String]] {
+                駒の配置 = [:]
+                手駒 = 空の手駒
+
+                ロード用_駒の配置.forEach { (位置テキスト: String, 駒テキスト: [String]) in
+                    if let 陣営 = 王側か玉側か(rawValue: 駒テキスト[0]) {
+                        if let 職名 = 駒の種類(rawValue: 駒テキスト[1]) {
+                            if let 位置 = Int(位置テキスト) {
+                                駒の配置.updateValue(盤上の駒(陣営, 職名), forKey: 位置)
+                            }
+                        }
+                    }
+                }
+
+                王側か玉側か.allCases.forEach { 陣営 in
+                    if let 一方の手駒テキスト = ロード用_手駒[陣営.rawValue] {
+                        一方の手駒テキスト.forEach { (職名テキスト: String, 数テキスト: String) in
+                            if let 職名 = 駒の種類(rawValue: 職名テキスト) {
+                                if let 数 = Int(数テキスト) {
+                                    手駒[陣営]?.配分.updateValue(数, forKey: 職名)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     
