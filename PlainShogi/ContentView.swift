@@ -22,7 +22,7 @@ struct ContentView: View {
                             Divider()
                             
                             ForEach( 0 ..< 9 ) { 列 in
-                                マス(位置: 行 * 9 + 列)
+                                マスもしくはコマ(位置: 行*9+列)
                                 
                                 Divider()
                             }
@@ -56,7 +56,7 @@ struct ContentView: View {
 }
 
 
-struct マス: View {
+struct マスもしくはコマ: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var 位置: Int
@@ -64,19 +64,27 @@ struct マス: View {
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.駒の配置[位置] {
-                盤上のコマ(位置)
-                    .onDrag {
-                        📱.盤上の駒を持ち上げる(位置)
-                    } preview: {
-                        コマのプレビュー(駒.陣営, 📱.駒の配置[位置]?.表記 ?? "🐛")
-                            .frame(height: 📐.size.height)
-                    }
-                    .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
-                        📱.駒をここに置く(位置, 📦)
-                    }
-                    .onTapGesture(count: 2) {
-                        📱.駒の配置[位置]?.裏返す()
-                    }
+                ZStack {
+                    Rectangle()
+                        .foregroundStyle(.background)
+                    
+                    Text(駒.表記)
+                        .minimumScaleFactor(0.1)
+                        .rotationEffect(下向き(駒.陣営 == .玉側))
+                        .accessibilityHidden(true)
+                }
+                .onDrag {
+                    📱.盤上の駒を持ち上げる(位置)
+                } preview: {
+                    コマのプレビュー(駒.陣営, 駒.表記)
+                        .frame(height: 📐.size.height)
+                }
+                .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
+                    📱.駒をここに置く(位置, 📦)
+                }
+                .onTapGesture(count: 2) {
+                    📱.駒の配置[位置]?.裏返す()
+                }
             } else {
                 Rectangle()
                     .foregroundStyle(.background)
@@ -85,29 +93,6 @@ struct マス: View {
                     }
             }
         }
-    }
-}
-
-
-struct 盤上のコマ: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    
-    var 位置: Int
-    
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .foregroundStyle(.background)
-            
-            Text(📱.駒の配置[位置]?.表記 ?? "🐛")
-                .minimumScaleFactor(0.1)
-                .rotationEffect(下向き(📱.駒の配置[位置]?.陣営 == .玉側))
-                .accessibilityHidden(true)
-        }
-    }
-    
-    init(_ ｲﾁ: Int) {
-        位置 = ｲﾁ
     }
 }
 
