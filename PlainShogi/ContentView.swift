@@ -146,13 +146,13 @@ struct 盤外のコマ: View {
                         .foregroundStyle(.background)
                         .frame(maxWidth: 📐.size.height * 1.5)
                     
-                    Text(📱.この手駒の表記(職名) + 手駒の数の表記)
+                    Text(📱.この手駒の表記(陣営, 職名) + 手駒の数の表記)
                         .minimumScaleFactor(0.1)
                 }
                 .onDrag{
                     📱.手駒を持ち上げる((陣営, 職名))
                 } preview: {
-                    コマのプレビュー(陣営, 📱.この手駒の表記(職名))
+                    コマのプレビュー(陣営, 📱.この手駒の表記(陣営, 職名))
                         .frame(height: 📐.size.height)
                 }
                 .onTapGesture(count: 3) {
