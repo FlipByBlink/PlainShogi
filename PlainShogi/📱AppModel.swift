@@ -96,12 +96,12 @@ class 📱AppModel: ObservableObject {
     
     func 盤上のこの駒の表記(_ 駒: 盤上の駒) -> String {
         if 駒.成り {
-            return 🚩English表記 ? 駒.職名.Alphabet成駒表記! : 駒.職名.成駒表記!
+            return 🚩English表記 ? 駒.職名.English成駒表記! : 駒.職名.成駒表記!
         } else {
             if 駒.陣営 == .玉側 && 駒.職名 == .王 {
                 return 🚩English表記 ? "K" : "玉"
             } else {
-                return 🚩English表記 ? 駒.職名.Alphabet生駒表記 : 駒.職名.rawValue
+                return 🚩English表記 ? 駒.職名.English生駒表記 : 駒.職名.rawValue
             }
         }
     }
@@ -111,7 +111,7 @@ class 📱AppModel: ObservableObject {
         if 陣営 == .玉側 && 職名 == .王 {
             return 🚩English表記 ? "K" : "玉"
         } else {
-            return 🚩English表記 ? 職名.Alphabet生駒表記 : 職名.rawValue
+            return 🚩English表記 ? 職名.English生駒表記 : 職名.rawValue
         }
     }
     

@@ -1,8 +1,4 @@
 
-import SwiftUI
-
-//TODO: "職名"から"駒名"に変更を検討
-
 enum 王側か玉側か: String, CaseIterable {
     case 王側
     case 玉側
@@ -92,7 +88,7 @@ enum 駒の種類: String, CaseIterable, Identifiable {
 //        }
 //    }
     
-    var Alphabet生駒表記: String {
+    var English生駒表記: String {
         switch self {
             case .歩: return "P"
             case .角: return "B"
@@ -105,7 +101,7 @@ enum 駒の種類: String, CaseIterable, Identifiable {
         }
     }
     
-    var Alphabet成駒表記: String? {
+    var English成駒表記: String? {
         switch self {
             case .歩: return "+P"
             case .角: return "+B"
