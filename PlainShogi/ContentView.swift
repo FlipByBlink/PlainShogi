@@ -96,15 +96,15 @@ struct コマもしくはマス: View {
                     .foregroundStyle(.background)
             }
         }
-//        .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
-//            📱.駒をここにドロップする(位置, 📦)
-//        }
-        .onDrop(of: [.utf8PlainText], delegate: 📨DropDelegate(📱, 位置))
+        //.onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
+        //    📱.駒をここにドロップする(位置, 📦)
+        //}
+        .onDrop(of: [.utf8PlainText], delegate: 📬DropDelegate(📱, 位置))
     }
 }
 
 
-struct 📨DropDelegate: DropDelegate {
+struct 📬DropDelegate: DropDelegate {
     var 📱: 📱AppModel
     var 位置: Int
     
@@ -113,6 +113,14 @@ struct 📨DropDelegate: DropDelegate {
         let 📦 = info.itemProviders(for: [UTType.utf8PlainText])
         debugPrint(📦)
         return 📱.駒をここにドロップする(位置, 📦)
+    }
+    
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        if 位置 == 📱.ドラッグした盤上の駒の元々の位置 {
+            return DropProposal(operation: .cancel)
+        }
+        
+        return nil
     }
     
     init(_ model: 📱AppModel, _ ｲﾁ: Int) {
