@@ -27,7 +27,8 @@ struct ContentView: View {
                     }
                 }
                 .border(.primary)
-                .frame(width: マス一辺の大きさ(📐)*9, height: マス一辺の大きさ(📐)*9)
+                .frame(width: マス一辺の大きさ(📐)*9,
+                       height: マス一辺の大きさ(📐)*9)
                 
                 
                 盤外(.王側, マス一辺の大きさ(📐))
@@ -85,7 +86,7 @@ struct コマもしくはマス: View {
                 Rectangle().foregroundStyle(.background)
             }
         }
-        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップDelegate(📱, 位置))
+        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, 位置))
     }
 }
 
@@ -107,7 +108,7 @@ struct 盤外: View {
             .frame(height: 📏)
             .rotationEffect(下向き(陣営 == .玉側))
         }
-        .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップDelegate(📱, 陣営))
+        .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, 陣営))
     }
     
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ height: CGFloat) {

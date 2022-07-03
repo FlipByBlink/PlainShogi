@@ -3,7 +3,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 //TODO: 実装方法を色々検討する
-struct 📬盤上ドロップDelegate: DropDelegate {
+struct 📬盤上ドロップ: DropDelegate {
     var 📱: 📱AppModel
     var 位置: Int
     
@@ -22,14 +22,14 @@ struct 📬盤上ドロップDelegate: DropDelegate {
         📱.アプリ外部からのドロップかどうかを確認する(info)
     }
     
-    init(_ 📱: 📱AppModel, _ ｲﾁ: Int) {
-        self.📱 = 📱
+    init(_ ⓐppModel: 📱AppModel, _ ｲﾁ: Int) {
+        📱 = ⓐppModel
         位置 = ｲﾁ
     }
 }
 
 
-struct 📬盤外ドロップDelegate: DropDelegate {
+struct 📬盤外ドロップ: DropDelegate {
     var 📱: 📱AppModel
     var 陣営: 王側か玉側か
     
@@ -43,8 +43,8 @@ struct 📬盤外ドロップDelegate: DropDelegate {
         📱.アプリ外部からのドロップかどうかを確認する(info)
     }
     
-    init(_ 📱: 📱AppModel, _ ｼﾞﾝｴｲ: 王側か玉側か) {
-        self.📱 = 📱
+    init(_ ⓐppModel: 📱AppModel, _ ｼﾞﾝｴｲ: 王側か玉側か) {
+        📱 = ⓐppModel
         陣営 = ｼﾞﾝｴｲ
     }
 }
