@@ -1,5 +1,6 @@
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct ContentView: View {
     var body: some View {
@@ -98,20 +99,25 @@ struct コマもしくはマス: View {
 //        .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
 //            📱.駒をここにドロップする(位置, 📦)
 //        }
-        .onDrop(of: [.utf8PlainText], delegate: 📨DropDelegate(駒の配置: $📱.駒の配置, 📱: 📱))
+        .onDrop(of: [.utf8PlainText], delegate: 📨DropDelegate(📱, 位置))
     }
 }
 
 
 struct 📨DropDelegate: DropDelegate {
-    @Binding var 駒の配置: [Int: 盤上の駒]
-    
     var 📱: 📱AppModel
+    var 位置: Int
     
     func performDrop(info: DropInfo) -> Bool {
-        //駒の配置 = 初期配置
-        📱.盤面を初期化する()
-        return true
+        debugPrint(info)
+        let 📦 = info.itemProviders(for: [UTType.utf8PlainText])
+        debugPrint(📦)
+        return 📱.駒をここにドロップする(位置, 📦)
+    }
+    
+    init(_ model: 📱AppModel, _ ｲﾁ: Int) {
+        📱 = model
+        位置 = ｲﾁ
     }
 }
 
