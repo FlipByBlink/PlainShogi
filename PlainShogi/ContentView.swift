@@ -99,41 +99,10 @@ struct コマもしくはマス: View {
         //.onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
         //    📱.駒をここにドロップする(位置, 📦)
         //}
-        .onDrop(of: [.utf8PlainText], delegate: 📬DropDelegate(📱, 位置))
+        .onDrop(of: [.utf8PlainText], delegate: 📬盤上DropDelegate(📱, 位置))
     }
 }
 
-
-struct 📬DropDelegate: DropDelegate {
-    var 📱: 📱AppModel
-    var 位置: Int
-    
-    func performDrop(info: DropInfo) -> Bool {
-        debugPrint(info)
-        let 📦 = info.itemProviders(for: [UTType.utf8PlainText])
-        debugPrint(📦)
-        return 📱.駒をここにドロップする(位置, 📦)
-    }
-    
-    func dropUpdated(info: DropInfo) -> DropProposal? {
-        if 位置 == 📱.ドラッグした盤上の駒の元々の位置 {
-            return DropProposal(operation: .cancel)
-        }
-        
-        if let 元々の位置 = 📱.ドラッグした盤上の駒の元々の位置 {
-            if 📱.駒の配置[位置]?.陣営 == 📱.駒の配置[元々の位置]?.陣営 {
-                return DropProposal(operation: .cancel)
-            }
-        }
-        
-        return nil
-    }
-    
-    init(_ model: 📱AppModel, _ ｲﾁ: Int) {
-        📱 = model
-        位置 = ｲﾁ
-    }
-}
 
 struct 盤外: View {
     var 陣営: 王側か玉側か
