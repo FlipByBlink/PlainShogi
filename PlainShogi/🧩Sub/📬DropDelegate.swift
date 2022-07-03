@@ -19,17 +19,11 @@ struct 📬盤上ドロップDelegate: DropDelegate {
     }
     
     func validateDrop(info: DropInfo) -> Bool {
-        let 📦 = info.itemProviders(for: [UTType.utf8PlainText])
-        📱.アプリ外部からのドロップかどうかを確認する(📦)
-        if 📦.isEmpty {
-            return false
-        } else {
-            return true
-        }
+        📱.アプリ外部からのドロップかどうかを確認する(info)
     }
     
-    init(_ model: 📱AppModel, _ ｲﾁ: Int) {
-        📱 = model
+    init(_ 📱: 📱AppModel, _ ｲﾁ: Int) {
+        self.📱 = 📱
         位置 = ｲﾁ
     }
 }
@@ -46,17 +40,11 @@ struct 📬盤外ドロップDelegate: DropDelegate {
     }
     
     func validateDrop(info: DropInfo) -> Bool {
-        let 📦 = info.itemProviders(for: [UTType.utf8PlainText])
-        📱.アプリ外部からのドロップかどうかを確認する(📦)
-        if 📦.isEmpty {
-            return false
-        } else {
-            return true
-        }
+        📱.アプリ外部からのドロップかどうかを確認する(info)
     }
     
-    init(_ model: 📱AppModel, _ ｼﾞﾝｴｲ: 王側か玉側か) {
-        📱 = model
+    init(_ 📱: 📱AppModel, _ ｼﾞﾝｴｲ: 王側か玉側か) {
+        self.📱 = 📱
         陣営 = ｼﾞﾝｴｲ
     }
 }

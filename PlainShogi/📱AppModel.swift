@@ -174,8 +174,8 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func アプリ外部からのドロップかどうかを確認する(_ 📦ItemProvider: [NSItemProvider]) {
-        guard let 📦 = 📦ItemProvider.first else { return }
+    func アプリ外部からのドロップかどうかを確認する(_ ⓘnfo: DropInfo) -> Bool {
+        guard let 📦 = ⓘnfo.itemProviders(for: [UTType.utf8PlainText]).first else { return false }
         
         if let 🏷 = 📦.suggestedName {
             if 🏷 != "アプリ内でのコマ移動" {
@@ -187,6 +187,8 @@ class 📱AppModel: ObservableObject {
             print("アプリ外部からのアイテムです")
             現状 = .アプリ外部からドラッグしている
         }
+        
+        return true
     }
     
     
