@@ -42,6 +42,12 @@ struct 📬盤外DropDelegate: DropDelegate {
     var 陣営: 王側か玉側か
     
     func performDrop(info: DropInfo) -> Bool {
+        print("Dropped 盤外")
         return true
+    }
+    
+    init(_ model: 📱AppModel, _ ｼﾞﾝｴｲ: 王側か玉側か) {
+        📱 = model
+        陣営 = ｼﾞﾝｴｲ
     }
 }

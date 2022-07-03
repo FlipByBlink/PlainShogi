@@ -3,15 +3,18 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct ContentView: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    
     var body: some View {
         GeometryReader { 📐 in
             VStack(spacing: 0) {
-                Spacer(minLength: 0)
+                ZStack {
+                    Rectangle().foregroundStyle(.background)
+                    
+                    盤外(.玉側).frame(height: マス一辺の大きさ(📐))
+                }
+                .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外DropDelegate(📱, .玉側))
                 
-                盤外(.玉側)
-                    .frame(height: マス一辺の大きさ(📐))
-                
-                Spacer(minLength: 0)
                 
                 VStack(spacing: 0) {
                     Divider()
@@ -31,15 +34,15 @@ struct ContentView: View {
                     }
                 }
                 .border(.primary)
-                .frame(width: マス一辺の大きさ(📐) * 9,
-                       height: マス一辺の大きさ(📐) * 9)
+                .frame(width: マス一辺の大きさ(📐)*9, height: マス一辺の大きさ(📐)*9)
                 
-                Spacer(minLength: 0)
                 
-                盤外(.王側)
-                    .frame(height: マス一辺の大きさ(📐))
-                
-                Spacer(minLength: 0)
+                ZStack {
+                    Rectangle().foregroundStyle(.background)
+                    
+                    盤外(.王側).frame(height: マス一辺の大きさ(📐))
+                }
+                .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外DropDelegate(📱, .王側))
             }
         }
         .padding()
@@ -92,13 +95,9 @@ struct コマもしくはマス: View {
                         .frame(height: 📐.size.height + 8)
                 }
             } else { // ======== マス ========
-                Rectangle()
-                    .foregroundStyle(.background)
+                Rectangle().foregroundStyle(.background)
             }
         }
-        //.onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
-        //    📱.駒をここにドロップする(位置, 📦)
-        //}
         .onDrop(of: [.utf8PlainText], delegate: 📬盤上DropDelegate(📱, 位置))
     }
 }
