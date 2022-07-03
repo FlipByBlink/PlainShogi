@@ -35,9 +35,6 @@ class 📱AppModel: ObservableObject {
     
     
     func 駒をここにドロップする(_ 置いた位置: Int, _ 📦ItemProvider: [NSItemProvider]) -> Bool {
-        
-        アプリ外部からのドロップかどうかを確認する(📦ItemProvider)
-        
         switch 現状 {
             case .盤上の駒をドラッグしている:
                 guard let 出発地点 = ドラッグした盤上の駒の元々の位置 else { return false }

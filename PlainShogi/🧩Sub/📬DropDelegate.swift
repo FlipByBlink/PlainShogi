@@ -3,7 +3,6 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 //TODO: 実装方法を色々検討する
-//TODO: 「アプリ外からのドロップか判定」をDelegate内で実装する
 struct 📬盤上DropDelegate: DropDelegate {
     var 📱: 📱AppModel
     var 位置: Int
@@ -15,7 +14,6 @@ struct 📬盤上DropDelegate: DropDelegate {
         return 📱.駒をここにドロップする(位置, 📦)
     }
     
-    //FIXME: アプリ外からドロップする際に適切に動作しない
     func dropUpdated(info: DropInfo) -> DropProposal? {
         if 📱.現状 == .アプリ外部からドラッグしている {
             return nil
@@ -55,6 +53,7 @@ struct 📬盤外DropDelegate: DropDelegate {
     var 📱: 📱AppModel
     var 陣営: 王側か玉側か
     
+    //TODO: ちゃんと実装する
     func performDrop(info: DropInfo) -> Bool {
         print("Dropped 盤外")
         return true
