@@ -17,6 +17,10 @@ struct 📬盤上DropDelegate: DropDelegate {
     
     //FIXME: アプリ外からドロップする際に適切に動作しない
     func dropUpdated(info: DropInfo) -> DropProposal? {
+        if 📱.現状 == .アプリ外部からドラッグしている {
+            return nil
+        }
+        
         if 位置 == 📱.ドラッグした盤上の駒の元々の位置 {
             return DropProposal(operation: .cancel)
         }
@@ -28,6 +32,16 @@ struct 📬盤上DropDelegate: DropDelegate {
         }
         
         return nil
+    }
+    
+    func validateDrop(info: DropInfo) -> Bool {
+        let 📦 = info.itemProviders(for: [UTType.utf8PlainText])
+        📱.アプリ外部からのドロップかどうかを確認する(📦)
+        if 📦.isEmpty {
+            return false
+        } else {
+            return true
+        }
     }
     
     init(_ model: 📱AppModel, _ ｲﾁ: Int) {
@@ -44,6 +58,16 @@ struct 📬盤外DropDelegate: DropDelegate {
     func performDrop(info: DropInfo) -> Bool {
         print("Dropped 盤外")
         return true
+    }
+    
+    func validateDrop(info: DropInfo) -> Bool {
+        let 📦 = info.itemProviders(for: [UTType.utf8PlainText])
+        📱.アプリ外部からのドロップかどうかを確認する(📦)
+        if 📦.isEmpty {
+            return false
+        } else {
+            return true
+        }
     }
     
     init(_ model: 📱AppModel, _ ｼﾞﾝｴｲ: 王側か玉側か) {
