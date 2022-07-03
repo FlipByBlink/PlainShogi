@@ -137,6 +137,8 @@ struct 盤外のコマ: View {
         }
     }
     
+    @State private var コマの透明度: Double = 1.0
+    
     var body: some View {
         if 持ち駒の数 == 0 {
             EmptyView()
@@ -151,19 +153,25 @@ struct 盤外のコマ: View {
                     
                     Text(持ち駒の表記 + 持ち駒の数の表記)
                         .minimumScaleFactor(0.1)
-                }
-                .onDrag{
-                    📱.この持ち駒をドラッグする(陣営, 職名)
-                } preview: {
-                    コマのプレビュー(陣営, 持ち駒の表記)
-                        .frame(height: 📐.size.height + 8)
+                        .opacity(コマの透明度)
                 }
                 .onTapGesture(count: 3) {
                     📱.手駒[陣営]?.一個減らす(職名)
                     振動フィードバック()
                 }
-                .accessibilityHidden(true)
+                .onDrag{
+                    コマの透明度 = 0.25
+                    withAnimation(.easeIn(duration: 1).delay(0.5)) {
+                        コマの透明度 = 1.0
+                    }
+                    
+                    return 📱.この持ち駒をドラッグする(陣営, 職名)
+                } preview: {
+                    コマのプレビュー(陣営, 持ち駒の表記)
+                        .frame(height: 📐.size.height + 8)
+                }
             }
+            .accessibilityHidden(true)
         }
     }
     
