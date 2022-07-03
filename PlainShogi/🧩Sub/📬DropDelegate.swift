@@ -3,7 +3,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 //TODO: 実装方法を色々検討する
-struct 📬盤上DropDelegate: DropDelegate {
+struct 📬盤上ドロップDelegate: DropDelegate {
     var 📱: 📱AppModel
     var 位置: Int
     
@@ -15,28 +15,7 @@ struct 📬盤上DropDelegate: DropDelegate {
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        switch 📱.現状 {
-            case .盤上の駒をドラッグしている:
-                if 位置 == 📱.ドラッグした盤上の駒の元々の位置 {
-                    return DropProposal(operation: .cancel)
-                }
-                
-                if let 元々の位置 = 📱.ドラッグした盤上の駒の元々の位置 {
-                    if 📱.駒の配置[位置]?.陣営 == 📱.駒の配置[元々の位置]?.陣営 {
-                        return DropProposal(operation: .cancel)
-                    }
-                }
-                
-            case .持ち駒をドラッグしている:
-                if 📱.駒の配置[位置] != nil {
-                    return .init(operation: .cancel)
-                }
-                
-            case .アプリ外部からドラッグしている:
-                return nil
-        }
-        
-        return nil
+        📱.ここはドロップ可能か確認する(info, 位置)
     }
     
     func validateDrop(info: DropInfo) -> Bool {
@@ -56,7 +35,7 @@ struct 📬盤上DropDelegate: DropDelegate {
 }
 
 
-struct 📬盤外DropDelegate: DropDelegate {
+struct 📬盤外ドロップDelegate: DropDelegate {
     var 📱: 📱AppModel
     var 陣営: 王側か玉側か
     

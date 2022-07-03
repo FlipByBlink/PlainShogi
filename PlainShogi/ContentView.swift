@@ -48,7 +48,6 @@ struct ContentView: View {
 
 struct コマもしくはマス: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     var 位置: Int
     
     @State private var コマの透明度: Double = 1.0
@@ -77,7 +76,7 @@ struct コマもしくはマス: View {
                         }
                     }
                     
-                    return 📱.この盤上の駒をドラッグする(位置)
+                    return 📱.この盤上の駒をドラッグし始める(位置)
                 } preview: {
                     コマのプレビュー(駒.陣営, 📱.この盤上の駒の表記(駒))
                         .frame(height: 📐.size.height + 8)
@@ -86,7 +85,7 @@ struct コマもしくはマス: View {
                 Rectangle().foregroundStyle(.background)
             }
         }
-        .onDrop(of: [.utf8PlainText], delegate: 📬盤上DropDelegate(📱, 位置))
+        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップDelegate(📱, 位置))
     }
 }
 
@@ -108,7 +107,7 @@ struct 盤外: View {
             .frame(height: 📏)
             .rotationEffect(下向き(陣営 == .玉側))
         }
-        .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外DropDelegate(📱, 陣営))
+        .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップDelegate(📱, 陣営))
     }
     
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ height: CGFloat) {
@@ -120,9 +119,7 @@ struct 盤外: View {
 
 struct 盤外のコマ: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     var 陣営: 王側か玉側か
-    
     var 職名: 駒の種類
     
     var 持ち駒の表記: String { 📱.この持ち駒の表記(陣営, 職名) }
@@ -167,7 +164,7 @@ struct 盤外のコマ: View {
                         }
                     }
                     
-                    return 📱.この持ち駒をドラッグする(陣営, 職名)
+                    return 📱.この持ち駒をドラッグし始める(陣営, 職名)
                 } preview: {
                     コマのプレビュー(陣営, 持ち駒の表記)
                         .frame(height: 📐.size.height + 8)
@@ -186,7 +183,6 @@ struct 盤外のコマ: View {
 
 struct コマのプレビュー: View {
     var 陣営: 王側か玉側か
-    
     var 表記: String
     
     var body: some View {
