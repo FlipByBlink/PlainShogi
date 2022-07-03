@@ -79,8 +79,10 @@ struct コマもしくはマス: View {
                 }
                 .onDrag {
                     コマの透明度 = 0.25
-                    withAnimation(.easeIn(duration: 0.5).delay(1)) {
-                        コマの透明度 = 1.0
+                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                        withAnimation(.easeIn(duration: 1.5)) {
+                            コマの透明度 = 1.0
+                        }
                     }
                     
                     return 📱.この盤上の駒をドラッグする(位置)
@@ -161,8 +163,10 @@ struct 盤外のコマ: View {
                 }
                 .onDrag{
                     コマの透明度 = 0.25
-                    withAnimation(.easeIn(duration: 0.5).delay(1)) {
-                        コマの透明度 = 1.0
+                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                        withAnimation(.easeIn(duration: 1.5)) {
+                            コマの透明度 = 1.0
+                        }
                     }
                     
                     return 📱.この持ち駒をドラッグする(陣営, 職名)
