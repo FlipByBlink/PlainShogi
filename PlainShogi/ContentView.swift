@@ -79,7 +79,7 @@ struct コマもしくはマス: View {
                 }
                 .onDrag {
                     コマの透明度 = 0.25
-                    withAnimation(.easeIn(duration: 2).delay(1)) {
+                    withAnimation(.easeIn(duration: 0.5).delay(1)) {
                         コマの透明度 = 1.0
                     }
                     
@@ -161,7 +161,7 @@ struct 盤外のコマ: View {
                 }
                 .onDrag{
                     コマの透明度 = 0.25
-                    withAnimation(.easeIn(duration: 1).delay(0.5)) {
+                    withAnimation(.easeIn(duration: 0.5).delay(1)) {
                         コマの透明度 = 1.0
                     }
                     
