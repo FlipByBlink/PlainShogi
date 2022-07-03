@@ -15,21 +15,21 @@ class 📱AppModel: ObservableObject {
     
     var 現状: 状況 = .アプリ外部からドラッグしている
     
-    var ドラッグされた盤上の駒の元々の位置: Int? = nil
+    var ドラッグした盤上の駒の元々の位置: Int? = nil
     
-    var ドラッグされた手駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
+    var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
     
     
     func この盤上の駒をドラッグする(_ 位置: Int) -> NSItemProvider {
-        ドラッグされた盤上の駒の元々の位置 = 位置
+        ドラッグした盤上の駒の元々の位置 = 位置
         現状 = .盤上の駒をドラッグしている
         return ドラッグ対象となるアイテムを用意する()
     }
     
     
-    func この手駒をドラッグする(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> NSItemProvider {
-        ドラッグされた手駒 = (陣営, 職名)
-        現状 = .手駒をドラッグしている
+    func この持ち駒をドラッグする(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> NSItemProvider {
+        ドラッグした持ち駒 = (陣営, 職名)
+        現状 = .持ち駒をドラッグしている
         return ドラッグ対象となるアイテムを用意する()
     }
     
@@ -40,7 +40,7 @@ class 📱AppModel: ObservableObject {
         
         switch 現状 {
             case .盤上の駒をドラッグしている:
-                guard let 出発地点 = ドラッグされた盤上の駒の元々の位置 else { return false }
+                guard let 出発地点 = ドラッグした盤上の駒の元々の位置 else { return false }
                 if 置いた位置 == 出発地点 { return false }
                 
                 let 動かした駒 = 駒の配置[出発地点]!
@@ -54,19 +54,19 @@ class 📱AppModel: ObservableObject {
                 駒の配置.removeValue(forKey: 出発地点)
                 駒の配置.updateValue(動かした駒, forKey: 置いた位置)
                 
-                ドラッグされた盤上の駒の元々の位置 = nil
+                ドラッグした盤上の駒の元々の位置 = nil
                 駒を移動させたらログを更新する()
                 振動フィードバック()
                 
-            case .手駒をドラッグしている:
-                guard let 駒 = ドラッグされた手駒 else { return false }
+            case .持ち駒をドラッグしている:
+                guard let 駒 = ドラッグした持ち駒 else { return false }
                 if 駒の配置[置いた位置] != nil { return false }
                 
                 駒の配置.updateValue(盤上の駒(駒.陣営, 駒.職名), forKey: 置いた位置)
                 
                 手駒[駒.陣営]?.一個減らす(駒.職名)
                 
-                ドラッグされた手駒 = nil
+                ドラッグした持ち駒 = nil
                 駒を移動させたらログを更新する()
                 振動フィードバック()
                 
@@ -94,7 +94,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 盤上のこの駒の表記(_ 駒: 盤上の駒) -> String {
+    func この盤上の駒の表記(_ 駒: 盤上の駒) -> String {
         if 駒.成り {
             return 🚩English表記 ? 駒.職名.English成駒表記! : 駒.職名.成駒表記!
         } else {
@@ -107,7 +107,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func この手駒の表記(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> String {
+    func この持ち駒の表記(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> String {
         if 陣営 == .玉側 && 職名 == .王 {
             return 🚩English表記 ? "K" : "玉"
         } else {
@@ -116,7 +116,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func この手駒の数(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> Int {
+    func この持ち駒の数(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> Int {
         手駒[陣営]?.個数(職名) ?? 0
     }
     
@@ -284,7 +284,7 @@ class 📱AppModel: ObservableObject {
 
         var 改行数: Int = 0
         var 列: Int = 0
-        var 読み込み中の手駒の種類: 駒の種類 = .歩
+        var 読み込み中の持ち駒の種類: 駒の種類 = .歩
 
         for 字区切り in 📃 {
             if 字区切り == "\n" {
@@ -298,12 +298,12 @@ class 📱AppModel: ObservableObject {
             switch 改行数 {
                 case 0:
                     if let 数 = Int(駒テキスト) {
-                        手駒[.玉側]?.配分[読み込み中の手駒の種類] = 数
+                        手駒[.玉側]?.配分[読み込み中の持ち駒の種類] = 数
                     } else {
                         if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
                             手駒[駒.陣営]?.配分[駒.職名] = 1
                             
-                            読み込み中の手駒の種類 = 駒.職名
+                            読み込み中の持ち駒の種類 = 駒.職名
                         }
                     }
                 case 1...11:
@@ -314,12 +314,12 @@ class 📱AppModel: ObservableObject {
                     }
                 case 12:
                     if let 数 = Int(駒テキスト) {
-                        手駒[.王側]?.配分[読み込み中の手駒の種類] = 数
+                        手駒[.王側]?.配分[読み込み中の持ち駒の種類] = 数
                     } else {
                         if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
                             手駒[駒.陣営]?.配分[駒.職名] = 1
                             
-                            読み込み中の手駒の種類 = 駒.職名
+                            読み込み中の持ち駒の種類 = 駒.職名
                         }
                     }
                 default: break
