@@ -120,6 +120,12 @@ struct 📬DropDelegate: DropDelegate {
             return DropProposal(operation: .cancel)
         }
         
+        if let 元々の位置 = 📱.ドラッグした盤上の駒の元々の位置 {
+            if 📱.駒の配置[位置]?.陣営 == 📱.駒の配置[元々の位置]?.陣営 {
+                return DropProposal(operation: .cancel)
+            }
+        }
+        
         return nil
     }
     
