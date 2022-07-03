@@ -43,18 +43,21 @@ class 📱AppModel: ObservableObject {
                 guard let 出発地点 = 持ち上げられた駒の元々の位置 else { return false }
                 if 置いた位置 == 出発地点 { return false }
                 
+                let 動かした駒 = 駒の配置[出発地点]!
+                
                 if let 先客 = 駒の配置[置いた位置] {
-                    if 先客.陣営 == 駒の配置[出発地点]?.陣営 { return true }
+                    if 先客.陣営 == 動かした駒.陣営 { return false }
                     
-                    手駒[駒の配置[出発地点]!.陣営]?.一個増やす(先客.職名)
+                    手駒[動かした駒.陣営]?.一個増やす(先客.職名)
                 }
                 
-                駒の配置.updateValue(駒の配置[出発地点]!, forKey: 置いた位置)
                 駒の配置.removeValue(forKey: 出発地点)
+                駒の配置.updateValue(動かした駒, forKey: 置いた位置)
                 
                 持ち上げられた駒の元々の位置 = nil
                 駒を移動させたらログを更新する()
                 振動フィードバック()
+                
             case .手駒を持ち上げている:
                 guard let 駒 = 持ち上げられた手駒 else { return false }
                 if 駒の配置[置いた位置] != nil { return false }
@@ -66,6 +69,7 @@ class 📱AppModel: ObservableObject {
                 持ち上げられた手駒 = nil
                 駒を移動させたらログを更新する()
                 振動フィードバック()
+                
             case .駒を持ち上げていない:
                 Task {
                     do {
