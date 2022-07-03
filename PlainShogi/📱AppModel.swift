@@ -7,7 +7,7 @@ class 📱AppModel: ObservableObject {
     
     @Published var 駒の配置: [Int: 盤上の駒] = 初期配置
     
-    @Published var 手駒: [王側か玉側か: 手持ちの駒] = 空の手駒
+    @Published var 手駒: [王側か玉側か: 持ち駒] = 空の手駒
     
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
