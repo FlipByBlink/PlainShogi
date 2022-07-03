@@ -91,7 +91,7 @@ class 📱AppModel: ObservableObject {
     
     // ================================================================================
     // ============================= 以下、ドロップDelegate =============================
-    func 駒をここにドロップする(_ 置いた位置: Int, _ 📦ItemProvider: [NSItemProvider]) -> Bool {
+    func 盤上のここにドロップする(_ 置いた位置: Int, _ ⓘnfo: DropInfo) -> Bool {
         switch 現状 {
             case .盤上の駒をドラッグしている:
                 guard let 出発地点 = ドラッグした盤上の駒の元々の位置 else { return false }
@@ -125,8 +125,9 @@ class 📱AppModel: ObservableObject {
                 振動フィードバック()
                 
             case .アプリ外部からドラッグしている:
-                Task {
+                Task { //FIXME: この辺を関数にして分離する
                     do {
+                        let 📦ItemProvider = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
                         guard let 📦 = 📦ItemProvider.first else { return }
                         let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
                         guard let 💾 = 🅂ecureCoding as? Data else { return }
@@ -188,6 +189,12 @@ class 📱AppModel: ObservableObject {
             現状 = .アプリ外部からドラッグしている
         }
         
+        return true
+    }
+    
+    
+    //TODO: 実装する
+    func 盤外にドロップする(_ 陣営: 王側か玉側か, _ ⓘnfo: DropInfo) -> Bool {
         return true
     }
     

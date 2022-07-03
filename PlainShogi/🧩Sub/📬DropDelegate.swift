@@ -8,10 +8,7 @@ struct 📬盤上ドロップ: DropDelegate {
     var 位置: Int
     
     func performDrop(info: DropInfo) -> Bool {
-        debugPrint(info)
-        let 📦 = info.itemProviders(for: [UTType.utf8PlainText])
-        debugPrint(📦)
-        return 📱.駒をここにドロップする(位置, 📦)
+        📱.盤上のここにドロップする(位置, info)
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
@@ -35,8 +32,7 @@ struct 📬盤外ドロップ: DropDelegate {
     
     //TODO: ちゃんと実装する
     func performDrop(info: DropInfo) -> Bool {
-        print("Dropped 盤外")
-        return true
+        📱.盤外にドロップする(陣営, info)
     }
     
     func validateDrop(info: DropInfo) -> Bool {
