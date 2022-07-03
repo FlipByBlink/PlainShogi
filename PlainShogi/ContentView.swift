@@ -3,17 +3,10 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct ContentView: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    
     var body: some View {
         GeometryReader { 📐 in
             VStack(spacing: 0) {
-                ZStack {
-                    Rectangle().foregroundStyle(.background)
-                    
-                    盤外(.玉側).frame(height: マス一辺の大きさ(📐))
-                }
-                .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外DropDelegate(📱, .玉側))
+                盤外(.玉側, マス一辺の大きさ(📐))
                 
                 
                 VStack(spacing: 0) {
@@ -37,12 +30,7 @@ struct ContentView: View {
                 .frame(width: マス一辺の大きさ(📐)*9, height: マス一辺の大きさ(📐)*9)
                 
                 
-                ZStack {
-                    Rectangle().foregroundStyle(.background)
-                    
-                    盤外(.王側).frame(height: マス一辺の大きさ(📐))
-                }
-                .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外DropDelegate(📱, .王側))
+                盤外(.王側, マス一辺の大きさ(📐))
             }
         }
         .padding()
@@ -104,19 +92,28 @@ struct コマもしくはマス: View {
 
 
 struct 盤外: View {
+    @EnvironmentObject var 📱: 📱AppModel
     var 陣営: 王側か玉側か
+    var 📏: CGFloat
     
     var body: some View {
-        HStack(spacing: 0) {
-            ForEach(駒の種類.allCases) { 職名 in
-                盤外のコマ(陣営, 職名)
+        ZStack {
+            Rectangle().foregroundStyle(.background)
+            
+            HStack(spacing: 0) {
+                ForEach(駒の種類.allCases) { 職名 in
+                    盤外のコマ(陣営, 職名)
+                }
             }
+            .frame(height: 📏)
+            .rotationEffect(下向き(陣営 == .玉側))
         }
-        .rotationEffect(下向き(陣営 == .玉側))
+        .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外DropDelegate(📱, 陣営))
     }
     
-    init(_ ｼﾞﾝｴｲ: 王側か玉側か) {
+    init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ height: CGFloat) {
         陣営 = ｼﾞﾝｴｲ
+        📏 = height
     }
 }
 
