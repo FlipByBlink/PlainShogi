@@ -80,7 +80,7 @@ class 📱AppModel: ObservableObject {
                             }
                         }
                     } catch {
-                        print("======== Error: 📦.loadItem ========")
+                        print("======== ⚠️ Error: 📦.loadItem ========")
                         print(error)
                     }
                 }
@@ -129,11 +129,13 @@ class 📱AppModel: ObservableObject {
         guard let 📦 = 📦ItemProvider.first else { return }
         
         if let 🏷 = 📦.suggestedName {
-            if 🏷 != "アプリ内でのコマ移動です" {
-                現状 = .駒を持ち上げていない
+            if 🏷 != "アプリ内でのコマ移動" {
+                print("アプリ外部からのアイテムがドロップされました")
                 print("📦.suggestedName: ", 🏷)
+                現状 = .駒を持ち上げていない
             }
         } else {
+            print("アプリ外部からのアイテムがドロップされました")
             現状 = .駒を持ち上げていない
         }
     }
@@ -142,7 +144,7 @@ class 📱AppModel: ObservableObject {
     func ドラッグ対象のアイテムを用意する() -> NSItemProvider {
         let 📃 = 現在の盤面をテキストに変換する()
         let 📦 = NSItemProvider(object: 📃 as NSItemProviderWriting)
-        📦.suggestedName = "アプリ内でのコマ移動です"
+        📦.suggestedName = "アプリ内でのコマ移動"
         return 📦
     }
     
