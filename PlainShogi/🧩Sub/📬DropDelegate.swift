@@ -15,18 +15,25 @@ struct 📬盤上DropDelegate: DropDelegate {
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        if 📱.現状 == .アプリ外部からドラッグしている {
-            return nil
-        }
-        
-        if 位置 == 📱.ドラッグした盤上の駒の元々の位置 {
-            return DropProposal(operation: .cancel)
-        }
-        
-        if let 元々の位置 = 📱.ドラッグした盤上の駒の元々の位置 {
-            if 📱.駒の配置[位置]?.陣営 == 📱.駒の配置[元々の位置]?.陣営 {
-                return DropProposal(operation: .cancel)
-            }
+        switch 📱.現状 {
+            case .盤上の駒をドラッグしている:
+                if 位置 == 📱.ドラッグした盤上の駒の元々の位置 {
+                    return DropProposal(operation: .cancel)
+                }
+                
+                if let 元々の位置 = 📱.ドラッグした盤上の駒の元々の位置 {
+                    if 📱.駒の配置[位置]?.陣営 == 📱.駒の配置[元々の位置]?.陣営 {
+                        return DropProposal(operation: .cancel)
+                    }
+                }
+                
+            case .持ち駒をドラッグしている:
+                if 📱.駒の配置[位置] != nil {
+                    return .init(operation: .cancel)
+                }
+                
+            case .アプリ外部からドラッグしている:
+                return nil
         }
         
         return nil

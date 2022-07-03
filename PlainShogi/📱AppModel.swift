@@ -23,6 +23,7 @@ class 📱AppModel: ObservableObject {
     func この盤上の駒をドラッグする(_ 位置: Int) -> NSItemProvider {
         ドラッグした盤上の駒の元々の位置 = 位置
         現状 = .盤上の駒をドラッグしている
+        ドラッグした持ち駒 = nil
         return ドラッグ対象となるアイテムを用意する()
     }
     
@@ -30,6 +31,7 @@ class 📱AppModel: ObservableObject {
     func この持ち駒をドラッグする(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> NSItemProvider {
         ドラッグした持ち駒 = (陣営, 職名)
         現状 = .持ち駒をドラッグしている
+        ドラッグした盤上の駒の元々の位置 = nil
         return ドラッグ対象となるアイテムを用意する()
     }
     
@@ -134,10 +136,14 @@ class 📱AppModel: ObservableObject {
                 print("アプリ外部からのアイテムです")
                 print("📦.suggestedName: ", 🏷)
                 現状 = .アプリ外部からドラッグしている
+                ドラッグした盤上の駒の元々の位置 = nil
+                ドラッグした持ち駒 = nil
             }
         } else {
             print("アプリ外部からのアイテムです")
             現状 = .アプリ外部からドラッグしている
+            ドラッグした盤上の駒の元々の位置 = nil
+            ドラッグした持ち駒 = nil
         }
     }
     
