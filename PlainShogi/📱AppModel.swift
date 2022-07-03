@@ -13,34 +13,34 @@ class 📱AppModel: ObservableObject {
     @AppStorage("English表記") var 🚩English表記: Bool = false
     
     
-    var 現状: 状況 = .駒を持ち上げていない
+    var 現状: 状況 = .アプリ外部からドラッグしている
     
-    var 持ち上げられた駒の元々の位置: Int? = nil
+    var ドラッグされた盤上の駒の元々の位置: Int? = nil
     
-    var 持ち上げられた手駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
+    var ドラッグされた手駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
     
     
-    func 盤上の駒を持ち上げる(_ 位置: Int) -> NSItemProvider {
-        持ち上げられた駒の元々の位置 = 位置
-        現状 = .盤上の駒を持ち上げている
+    func この盤上の駒をドラッグする(_ 位置: Int) -> NSItemProvider {
+        ドラッグされた盤上の駒の元々の位置 = 位置
+        現状 = .盤上の駒をドラッグしている
         return ドラッグ対象となるアイテムを用意する()
     }
     
     
-    func 手駒を持ち上げる(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> NSItemProvider {
-        持ち上げられた手駒 = (陣営, 職名)
-        現状 = .手駒を持ち上げている
+    func この手駒をドラッグする(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> NSItemProvider {
+        ドラッグされた手駒 = (陣営, 職名)
+        現状 = .手駒をドラッグしている
         return ドラッグ対象となるアイテムを用意する()
     }
     
     
-    func 駒をここに置く(_ 置いた位置: Int, _ 📦ItemProvider: [NSItemProvider]) -> Bool {
+    func 駒をここにドロップする(_ 置いた位置: Int, _ 📦ItemProvider: [NSItemProvider]) -> Bool {
         
-        アプリ外部からのドロップかどうか確認する(📦ItemProvider)
+        アプリ外部からのドロップかどうかを確認する(📦ItemProvider)
         
         switch 現状 {
-            case .盤上の駒を持ち上げている:
-                guard let 出発地点 = 持ち上げられた駒の元々の位置 else { return false }
+            case .盤上の駒をドラッグしている:
+                guard let 出発地点 = ドラッグされた盤上の駒の元々の位置 else { return false }
                 if 置いた位置 == 出発地点 { return false }
                 
                 let 動かした駒 = 駒の配置[出発地点]!
@@ -54,23 +54,23 @@ class 📱AppModel: ObservableObject {
                 駒の配置.removeValue(forKey: 出発地点)
                 駒の配置.updateValue(動かした駒, forKey: 置いた位置)
                 
-                持ち上げられた駒の元々の位置 = nil
+                ドラッグされた盤上の駒の元々の位置 = nil
                 駒を移動させたらログを更新する()
                 振動フィードバック()
                 
-            case .手駒を持ち上げている:
-                guard let 駒 = 持ち上げられた手駒 else { return false }
+            case .手駒をドラッグしている:
+                guard let 駒 = ドラッグされた手駒 else { return false }
                 if 駒の配置[置いた位置] != nil { return false }
                 
                 駒の配置.updateValue(盤上の駒(駒.陣営, 駒.職名), forKey: 置いた位置)
                 
                 手駒[駒.陣営]?.一個減らす(駒.職名)
                 
-                持ち上げられた手駒 = nil
+                ドラッグされた手駒 = nil
                 駒を移動させたらログを更新する()
                 振動フィードバック()
                 
-            case .駒を持ち上げていない:
+            case .アプリ外部からドラッグしている:
                 Task {
                     do {
                         guard let 📦 = 📦ItemProvider.first else { return }
@@ -129,18 +129,18 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func アプリ外部からのドロップかどうか確認する(_ 📦ItemProvider: [NSItemProvider]) {
+    func アプリ外部からのドロップかどうかを確認する(_ 📦ItemProvider: [NSItemProvider]) {
         guard let 📦 = 📦ItemProvider.first else { return }
         
         if let 🏷 = 📦.suggestedName {
             if 🏷 != "アプリ内でのコマ移動" {
                 print("アプリ外部からのアイテムがドロップされました")
                 print("📦.suggestedName: ", 🏷)
-                現状 = .駒を持ち上げていない
+                現状 = .アプリ外部からドラッグしている
             }
         } else {
             print("アプリ外部からのアイテムがドロップされました")
-            現状 = .駒を持ち上げていない
+            現状 = .アプリ外部からドラッグしている
         }
     }
     

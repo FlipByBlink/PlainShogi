@@ -72,13 +72,13 @@ struct コマもしくはマス: View {
                         .accessibilityHidden(true)
                 }
                 .onDrag {
-                    📱.盤上の駒を持ち上げる(位置)
+                    📱.この盤上の駒をドラッグする(位置)
                 } preview: {
                     コマのプレビュー(駒.陣営, 📱.盤上のこの駒の表記(駒))
                         .frame(height: 📐.size.height + 8)
                 }
                 .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
-                    📱.駒をここに置く(位置, 📦)
+                    📱.駒をここにドロップする(位置, 📦)
                 }
                 .onTapGesture(count: 2) {
                     📱.駒の配置[位置]?.裏返す()
@@ -87,7 +87,7 @@ struct コマもしくはマス: View {
                 Rectangle()
                     .foregroundStyle(.background)
                     .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
-                        📱.駒をここに置く(位置, 📦)
+                        📱.駒をここにドロップする(位置, 📦)
                     }
             }
         }
@@ -146,7 +146,7 @@ struct 盤外のコマ: View {
                         .minimumScaleFactor(0.1)
                 }
                 .onDrag{
-                    📱.手駒を持ち上げる(陣営, 職名)
+                    📱.この手駒をドラッグする(陣営, 職名)
                 } preview: {
                     コマのプレビュー(陣営, 📱.この手駒の表記(陣営, 職名))
                         .frame(height: 📐.size.height + 8)

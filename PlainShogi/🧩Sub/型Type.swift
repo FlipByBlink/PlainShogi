@@ -6,9 +6,9 @@ enum 王側か玉側か: String, CaseIterable {
 
 
 enum 状況 {
-    case 駒を持ち上げていない
-    case 盤上の駒を持ち上げている
-    case 手駒を持ち上げている
+    case 盤上の駒をドラッグしている
+    case 手駒をドラッグしている
+    case アプリ外部からドラッグしている
 }
 
 
