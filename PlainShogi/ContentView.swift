@@ -59,12 +59,12 @@ struct コマもしくはマス: View {
     
     var 位置: Int
     
-    @State private var 駒の透明度: Double = 1.0
+    @State private var コマの透明度: Double = 1.0
     
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.駒の配置[位置] {
-                ZStack {
+                ZStack { // ======== コマ ========
                     Rectangle()
                         .foregroundStyle(.background)
                     
@@ -72,18 +72,15 @@ struct コマもしくはマス: View {
                         .minimumScaleFactor(0.1)
                         .rotationEffect(下向き(駒.陣営 == .玉側))
                         .accessibilityHidden(true)
-                        .opacity(駒の透明度)
+                        .opacity(コマの透明度)
                 }
                 .onTapGesture(count: 2) {
                     📱.駒の配置[位置]?.裏返す()
                 }
-                .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
-                    📱.駒をここにドロップする(位置, 📦)
-                }
                 .onDrag {
-                    駒の透明度 = 0.25
-                    withAnimation(.easeIn(duration: 3)) {
-                        駒の透明度 = 1.0
+                    コマの透明度 = 0.25
+                    withAnimation(.easeIn(duration: 3.5)) {
+                        コマの透明度 = 1.0
                     }
                     
                     return 📱.この盤上の駒をドラッグする(位置)
@@ -91,13 +88,13 @@ struct コマもしくはマス: View {
                     コマのプレビュー(駒.陣営, 📱.この盤上の駒の表記(駒))
                         .frame(height: 📐.size.height + 8)
                 }
-            } else {
+            } else { // ======== マス ========
                 Rectangle()
                     .foregroundStyle(.background)
-                    .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
-                        📱.駒をここにドロップする(位置, 📦)
-                    }
             }
+        }
+        .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
+            📱.駒をここにドロップする(位置, 📦)
         }
     }
 }
