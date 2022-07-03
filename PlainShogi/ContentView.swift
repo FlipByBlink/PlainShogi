@@ -95,12 +95,25 @@ struct コマもしくはマス: View {
                     .foregroundStyle(.background)
             }
         }
-        .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
-            📱.駒をここにドロップする(位置, 📦)
-        }
+//        .onDrop(of: [.utf8PlainText], isTargeted: nil) { 📦 in
+//            📱.駒をここにドロップする(位置, 📦)
+//        }
+        .onDrop(of: [.utf8PlainText], delegate: 📨DropDelegate(駒の配置: $📱.駒の配置, 📱: 📱))
     }
 }
 
+
+struct 📨DropDelegate: DropDelegate {
+    @Binding var 駒の配置: [Int: 盤上の駒]
+    
+    var 📱: 📱AppModel
+    
+    func performDrop(info: DropInfo) -> Bool {
+        //駒の配置 = 初期配置
+        📱.盤面を初期化する()
+        return true
+    }
+}
 
 struct 盤外: View {
     var 陣営: 王側か玉側か
