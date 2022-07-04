@@ -127,13 +127,12 @@ class 📱AppModel: ObservableObject {
                         guard let 📦 = 📦ItemProvider.first else { return }
                         let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
                         guard let 💾 = 🅂ecureCoding as? Data else { return }
-                        if let 📃 = String(data: 💾, encoding: .utf8) {
-                            if 📃.first == "☗" {
-                                DispatchQueue.main.async {
-                                    self.このテキストを盤面に反映する(📃)
-                                    self.現状 = .何もドラッグしてない
-                                }
-                            }
+                        guard let 📃 = String(data: 💾, encoding: .utf8) else { return }
+                        if 📃.first != "☗" { return }
+                        
+                        DispatchQueue.main.async {
+                            self.このアイテムを盤面に反映する(📃)
+                            self.現状 = .何もドラッグしてない
                         }
                     } catch {
                         print("======== ⚠️ Error: 📦.loadItem ========")
@@ -355,7 +354,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func このテキストを盤面に反映する(_ 📃: String) {
+    func このアイテムを盤面に反映する(_ 📃: String) {
         駒の配置 = [:]
         手駒 = 空の手駒
 
