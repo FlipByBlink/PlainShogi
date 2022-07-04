@@ -4,9 +4,11 @@ import UniformTypeIdentifiers
 
 struct ContentView: View {
     var body: some View {
-        GeometryReader { 📐 in
+        GeometryReader { 画面 in
+            let マスの大きさ = マスの大きさを計算する(画面)
+            
             VStack(spacing: 0) {
-                盤外(.玉側, マスの大きさ(📐))
+                盤外(.玉側, マスの大きさ)
                 
                 VStack(spacing: 0) {
                     Divider()
@@ -26,20 +28,19 @@ struct ContentView: View {
                     }
                 }
                 .border(.primary)
-                .frame(width: マスの大きさ(📐) * 9,
-                       height: マスの大きさ(📐) * 9)
+                .frame(width: マスの大きさ * 9, height: マスの大きさ * 9)
                 
-                盤外(.王側, マスの大きさ(📐))
+                盤外(.王側, マスの大きさ)
             }
         }
         .padding()
     }
     
-    func マスの大きさ(_ 📐: GeometryProxy) -> CGFloat {
-        if 📐.size.width/9 < 📐.size.height/11 {
-            return 📐.size.width/9
+    func マスの大きさを計算する(_ 画面: GeometryProxy) -> CGFloat {
+        if 画面.size.width/9 < 画面.size.height/11 {
+            return 画面.size.width/9
         } else {
-            return 📐.size.height/11
+            return 画面.size.height/11
         }
     }
 }
@@ -195,6 +196,7 @@ struct コマのプレビュー: View {
             
             Text(表記)
                 .minimumScaleFactor(0.1)
+                .padding(4)
         }
         .aspectRatio(1.0, contentMode: .fit)
         .border(.primary)
