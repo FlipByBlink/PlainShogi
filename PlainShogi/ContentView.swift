@@ -47,46 +47,30 @@ struct ContentView: View {
 
 struct 盤上のコマもしくはマス: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @State private var ドラッグ中 = false
     var 位置: Int
-    
-    @State private var コマの透明度: Double = 1.0
     
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.駒の配置[位置] {
-                ZStack { // ======== コマ ========
-                    Rectangle()
-                        .foregroundStyle(.background)
-                    
-                    Text(📱.この盤上の駒の表記(駒))
-                        .minimumScaleFactor(0.1)
-                        .rotationEffect(下向き(駒.陣営 == .玉側))
-                        .opacity(コマの透明度)
-                }
-                .onTapGesture(count: 2) {
-                    📱.駒の配置[位置]?.裏返す()
-                }
-                .onDrag {
-                    駒を持ち上げた直後は見た目を控えめにする()
-                    return 📱.この盤上の駒をドラッグし始める(位置)
-                } preview: {
-                    コマのプレビュー(駒.陣営, 📱.この盤上の駒の表記(駒))
-                        .frame(height: 📐.size.height + 8)
-                }
-            } else { // ======== マス ========
-                Rectangle().foregroundStyle(.background)
+                コマ(📱.この盤上の駒の表記(駒), $ドラッグ中)
+                    .rotationEffect(下向き(駒.陣営 == .玉側))
+                    .onTapGesture(count: 2) {
+                        📱.駒の配置[位置]?.裏返す()
+                    }
+                    .onDrag {
+                        ドラッグ中 = true
+                        return 📱.この盤上の駒をドラッグし始める(位置)
+                    } preview: {
+                        コマのプレビュー(駒.陣営, 📱.この盤上の駒の表記(駒))
+                            .frame(height: 📐.size.height + 8)
+                    }
+            } else { // ==== マス ====
+                Rectangle()
+                    .foregroundStyle(.background)
             }
         }
         .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, 位置))
-    }
-    
-    func 駒を持ち上げた直後は見た目を控えめにする() {
-        コマの透明度 = 0.25
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            withAnimation(.easeIn(duration: 1.5)) {
-                コマの透明度 = 1.0
-            }
-        }
     }
 }
 
@@ -120,6 +104,7 @@ struct 盤外: View {
 
 struct 盤外のコマ: View {
     @EnvironmentObject var 📱: 📱AppModel
+    @State private var ドラッグ中 = false
     var 陣営: 王側か玉側か
     var 職名: 駒の種類
     
@@ -135,8 +120,6 @@ struct 盤外のコマ: View {
         }
     }
     
-    @State private var コマの透明度: Double = 1.0
-    
     var body: some View {
         if 持ち駒の数 == 0 {
             EmptyView()
@@ -145,20 +128,15 @@ struct 盤外のコマ: View {
                 ZStack {
                     Color.clear
                     
-                    Rectangle()
-                        .foregroundStyle(.background)
+                    コマ(持ち駒の表記 + 持ち駒の数の表記, $ドラッグ中)
                         .frame(maxWidth: 📐.size.height * 1.5)
-                    
-                    Text(持ち駒の表記 + 持ち駒の数の表記)
-                        .minimumScaleFactor(0.1)
-                        .opacity(コマの透明度)
                 }
                 .onTapGesture(count: 3) {
                     📱.手駒[陣営]?.一個減らす(職名)
                     振動フィードバック()
                 }
                 .onDrag{
-                    駒を持ち上げた直後は見た目を控えめにする()
+                    ドラッグ中 = true
                     return 📱.この持ち駒をドラッグし始める(陣営, 職名)
                 } preview: {
                     コマのプレビュー(陣営, 持ち駒の表記)
@@ -168,18 +146,40 @@ struct 盤外のコマ: View {
         }
     }
     
-    func 駒を持ち上げた直後は見た目を控えめにする() {
-        コマの透明度 = 0.25
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            withAnimation(.easeIn(duration: 1.5)) {
-                コマの透明度 = 1.0
-            }
-        }
-    }
-    
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼｮｸﾒｲ: 駒の種類) {
         陣営 = ｼﾞﾝｴｲ
         職名 = ｼｮｸﾒｲ
+    }
+}
+
+
+struct コマ: View {
+    var 表記: String
+    @Binding var ドラッグ中: Bool
+    
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .foregroundStyle(.background)
+            
+            Text(表記)
+                .minimumScaleFactor(0.1)
+                .opacity(ドラッグ中 ? 0.25 : 1.0)
+                .onChange(of: ドラッグ中) { ⓝewValue in
+                    if ⓝewValue {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            withAnimation(.easeIn(duration: 1.5)) {
+                                ドラッグ中 = false
+                            }
+                        }
+                    }
+                }
+        }
+    }
+    
+    init(_ ﾋｮｳｷ: String, _ ドラッグ中: Binding<Bool>) {
+        表記 = ﾋｮｳｷ
+        _ドラッグ中 = ドラッグ中
     }
 }
 
