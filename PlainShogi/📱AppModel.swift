@@ -124,9 +124,7 @@ class 📱AppModel: ObservableObject {
                 let 📦ItemProvider = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
                 guard let 📦 = 📦ItemProvider.first else { return false }
                 
-                DispatchQueue.main.async {
-                    self.このアイテムを盤面に反映する(📦) //FIXME: ここの呼び出し方を再検討
-                }
+                このアイテムを盤面に反映する(📦) //FIXME: ここの呼び出し方を再検討
                 
             case .何もドラッグしてない:
                 return false
@@ -342,9 +340,8 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    @MainActor
     func このアイテムを盤面に反映する(_ 📦: NSItemProvider) {
-        Task { //FIXME: この辺を関数にして分離する(作業中)
+        Task { @MainActor in //FIXME: この辺を関数にして分離する(作業中)
             do {
                 let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
                 guard let 💾 = 🅂ecureCoding as? Data else { return }
@@ -352,8 +349,8 @@ class 📱AppModel: ObservableObject {
                 
                 if 📃.first != "☗" { return }
                 
-                駒の配置 = [:]
-                手駒 = 空の手駒
+                var 読み込み中の駒の配置: [Int: 盤上の駒] = [:]
+                var 読み込み中の手駒: [王側か玉側か: 持ち駒] = 空の手駒
                 
                 var 改行数: Int = 0
                 var 列: Int = 0
@@ -371,10 +368,10 @@ class 📱AppModel: ObservableObject {
                     switch 改行数 {
                         case 0:
                             if let 数 = Int(駒テキスト) {
-                                手駒[.玉側]?.配分[読み込み中の持ち駒の種類] = 数
+                                読み込み中の手駒[.玉側]?.配分[読み込み中の持ち駒の種類] = 数
                             } else {
                                 if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
-                                    手駒[駒.陣営]?.配分[駒.職名] = 1
+                                    読み込み中の手駒[駒.陣営]?.配分[駒.職名] = 1
                                     
                                     読み込み中の持ち駒の種類 = 駒.職名
                                 }
@@ -383,14 +380,14 @@ class 📱AppModel: ObservableObject {
                             let 位置 = ( 改行数 - 2 ) * 9 + 列
                             
                             if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
-                                駒の配置.updateValue(盤上の駒(駒.陣営, 駒.職名, 駒.成り), forKey: 位置)
+                                読み込み中の駒の配置.updateValue(盤上の駒(駒.陣営, 駒.職名, 駒.成り), forKey: 位置)
                             }
                         case 12:
                             if let 数 = Int(駒テキスト) {
-                                手駒[.王側]?.配分[読み込み中の持ち駒の種類] = 数
+                                読み込み中の手駒[.王側]?.配分[読み込み中の持ち駒の種類] = 数
                             } else {
                                 if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
-                                    手駒[駒.陣営]?.配分[駒.職名] = 1
+                                    読み込み中の手駒[駒.陣営]?.配分[駒.職名] = 1
                                     
                                     読み込み中の持ち駒の種類 = 駒.職名
                                 }
@@ -400,6 +397,9 @@ class 📱AppModel: ObservableObject {
                     
                     列 += 1
                 }
+                
+                駒の配置 = 読み込み中の駒の配置
+                手駒 = 読み込み中の手駒
                 
                 UINotificationFeedbackGenerator().notificationOccurred(.success)
                 現状 = .何もドラッグしてない
