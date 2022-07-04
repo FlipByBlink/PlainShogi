@@ -6,7 +6,7 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { 📐 in
             VStack(spacing: 0) {
-                盤外(.玉側, マス一辺の大きさ(📐))
+                盤外(.玉側, マスの大きさ(📐))
                 
                 VStack(spacing: 0) {
                     Divider()
@@ -16,7 +16,7 @@ struct ContentView: View {
                             Divider()
                             
                             ForEach( 0 ..< 9 ) { 列 in
-                                盤上のコマもしくはマス(位置: 行*9+列)
+                                盤上のコマもしくはマス(位置: 行 * 9 + 列)
                                 
                                 Divider()
                             }
@@ -26,16 +26,16 @@ struct ContentView: View {
                     }
                 }
                 .border(.primary)
-                .frame(width: マス一辺の大きさ(📐)*9,
-                       height: マス一辺の大きさ(📐)*9)
+                .frame(width: マスの大きさ(📐) * 9,
+                       height: マスの大きさ(📐) * 9)
                 
-                盤外(.王側, マス一辺の大きさ(📐))
+                盤外(.王側, マスの大きさ(📐))
             }
         }
         .padding()
     }
     
-    func マス一辺の大きさ(_ 📐: GeometryProxy) -> CGFloat {
+    func マスの大きさ(_ 📐: GeometryProxy) -> CGFloat {
         if 📐.size.width/9 < 📐.size.height/11 {
             return 📐.size.width/9
         } else {
@@ -78,7 +78,7 @@ struct 盤上のコマもしくはマス: View {
 struct 盤外: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 陣営: 王側か玉側か
-    var 📏: CGFloat
+    var コマの大きさ: CGFloat
     
     var body: some View {
         ZStack {
@@ -89,15 +89,15 @@ struct 盤外: View {
                     盤外のコマ(陣営, 職名)
                 }
             }
-            .frame(height: 📏)
+            .frame(height: コマの大きさ)
             .rotationEffect(下向き(陣営 == .玉側))
         }
         .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, 陣営))
     }
     
-    init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ height: CGFloat) {
+    init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｵｵｷｻ: CGFloat) {
         陣営 = ｼﾞﾝｴｲ
-        📏 = height
+        コマの大きさ = ｵｵｷｻ
     }
 }
 

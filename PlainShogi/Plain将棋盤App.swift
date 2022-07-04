@@ -4,9 +4,9 @@ import SwiftUI
 @main
 struct Plain将棋盤App: App {
     
-    @StateObject var 📱 = 📱AppModel()
+    let 📱 = 📱AppModel()
     
-    @StateObject var 🛒 = 🛒StoreModel()
+    let 🛒 = 🛒StoreModel()
     
     var body: some Scene {
         WindowGroup {
