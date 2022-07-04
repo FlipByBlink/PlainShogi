@@ -36,6 +36,9 @@ struct 🛠MenuSheet: View {
                 🛠AppMenu()
                 
                 
+                🛠盤面整理ボタン(🔙)
+                
+                
                 📣ADMenu()
                 
                 

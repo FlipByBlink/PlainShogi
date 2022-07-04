@@ -74,3 +74,24 @@ struct 🛠盤面初期化ボタン: View {
         self.🔙 = 🔙
     }
 }
+
+
+struct 🛠盤面整理ボタン: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    
+    var 🔙: DismissAction
+    
+    var body: some View {
+        Button {
+            📱.駒を整理中 = true
+            🔙.callAsFunction()
+        } label: {
+            Label("駒を消したり増やしたりする", systemImage: "wand.and.rays")
+        }
+    }
+    
+    init(_ 🔙: DismissAction) {
+        self.🔙 = 🔙
+    }
+}
+

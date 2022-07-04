@@ -38,6 +38,8 @@ class 📱AppModel: ObservableObject {
     
     @Published var 移動直後の駒の位置: Int?
     
+    @Published var 駒を整理中: Bool = false
+    
     
     func この盤上の駒の表記(_ 駒: 盤上の駒) -> String {
         if 駒.成り {
