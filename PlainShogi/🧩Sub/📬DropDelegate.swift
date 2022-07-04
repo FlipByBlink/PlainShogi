@@ -11,11 +11,11 @@ struct 📬盤上ドロップ: DropDelegate {
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        📱.ここはドロップ可能か確認する(位置)
+        📱.盤上のここはドロップ可能か確認する(位置)
     }
     
     func validateDrop(info: DropInfo) -> Bool {
-        📱.アプリ外部からのドロップかどうかを確認する(info)
+        📱.有効なドロップかチェックする(info)
     }
     
     init(_ ⓐppModel: 📱AppModel, _ ｲﾁ: Int) {
@@ -33,8 +33,12 @@ struct 📬盤外ドロップ: DropDelegate {
         📱.盤外にドロップする(陣営, info)
     }
     
+    func dropUpdated(info: DropInfo) -> DropProposal? {
+        📱.盤外のここはドロップ可能か確認する(陣営)
+    }
+    
     func validateDrop(info: DropInfo) -> Bool {
-        📱.アプリ外部からのドロップかどうかを確認する(info)
+        📱.有効なドロップかチェックする(info)
     }
     
     init(_ ⓐppModel: 📱AppModel, _ ｼﾞﾝｴｲ: 王側か玉側か) {

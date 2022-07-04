@@ -132,7 +132,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func ここはドロップ可能か確認する(_ 位置: Int) -> DropProposal? {
+    func 盤上のここはドロップ可能か確認する(_ 位置: Int) -> DropProposal? {
         switch 現状 {
             case .盤上の駒をドラッグしている:
                 if 位置 == ドラッグした盤上の駒の元々の位置 {
@@ -157,8 +157,20 @@ class 📱AppModel: ObservableObject {
         return nil
     }
     
+    func 盤外のここはドロップ可能か確認する(_ ドロップしようとしている陣営: 王側か玉側か) -> DropProposal? {
+        if 現状 == .持ち駒をドラッグしている {
+            if let 駒 = ドラッグした持ち駒 {
+                if ドロップしようとしている陣営 == 駒.陣営 {
+                    return DropProposal(operation: .cancel)
+                }
+            }
+        }
+        
+        return nil
+    }
     
-    func アプリ外部からのドロップかどうかを確認する(_ ⓘnfo: DropInfo) -> Bool {
+        
+    func 有効なドロップかチェックする(_ ⓘnfo: DropInfo) -> Bool {
         let 📦ItemProvider = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
         guard let 📦 = 📦ItemProvider.first else { return false }
         
