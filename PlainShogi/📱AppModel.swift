@@ -199,6 +199,36 @@ class 📱AppModel: ObservableObject {
     
     //TODO: 実装する
     func 盤外にドロップする(_ 陣営: 王側か玉側か, _ ⓘnfo: DropInfo) -> Bool {
+        switch 現状 {
+            case .盤上の駒をドラッグしている:
+                guard let 出発地点 = ドラッグした盤上の駒の元々の位置 else { return false }
+                let 動かした駒 = 駒の配置[出発地点]!
+                
+                駒の配置.removeValue(forKey: 出発地点)
+                手駒[動かした駒.陣営]?.一個増やす(動かした駒.職名)
+                
+                現状 = .何もドラッグしてない
+                駒を移動させたらログを更新する()
+                振動フィードバック()
+                
+            case .持ち駒をドラッグしている:
+                guard let 駒 = ドラッグした持ち駒 else { return false }
+                
+                手駒[駒.陣営]?.一個減らす(駒.職名)
+                手駒[陣営]?.一個増やす(駒.職名)
+                
+                現状 = .何もドラッグしてない
+                駒を移動させたらログを更新する()
+                振動フィードバック()
+                
+            case .アプリ外部からドラッグしている:
+                print("placeholder")
+                //FIXME: テキスト書き出し関数 呼び出し
+                
+            case .何もドラッグしてない:
+                return false
+        }
+        
         return true
     }
     
