@@ -16,7 +16,7 @@ struct ContentView: View {
                             Divider()
                             
                             ForEach( 0 ..< 9 ) { 列 in
-                                コマもしくはマス(位置: 行*9+列)
+                                盤上のコマもしくはマス(位置: 行*9+列)
                                 
                                 Divider()
                             }
@@ -45,7 +45,7 @@ struct ContentView: View {
 }
 
 
-struct コマもしくはマス: View {
+struct 盤上のコマもしくはマス: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 位置: Int
     
@@ -61,7 +61,6 @@ struct コマもしくはマス: View {
                     Text(📱.この盤上の駒の表記(駒))
                         .minimumScaleFactor(0.1)
                         .rotationEffect(下向き(駒.陣営 == .玉側))
-                        .accessibilityHidden(true)
                         .opacity(コマの透明度)
                 }
                 .onTapGesture(count: 2) {
@@ -166,7 +165,6 @@ struct 盤外のコマ: View {
                         .frame(height: 📐.size.height + 8)
                 }
             }
-            .accessibilityHidden(true)
         }
     }
     
