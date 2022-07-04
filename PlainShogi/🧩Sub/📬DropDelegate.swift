@@ -2,7 +2,6 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-//TODO: 実装方法を色々検討する
 struct 📬盤上ドロップ: DropDelegate {
     var 📱: 📱AppModel
     var 位置: Int
@@ -12,7 +11,7 @@ struct 📬盤上ドロップ: DropDelegate {
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        📱.ここはドロップ可能か確認する(info, 位置)
+        📱.ここはドロップ可能か確認する(位置, info)
     }
     
     func validateDrop(info: DropInfo) -> Bool {

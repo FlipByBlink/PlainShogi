@@ -153,7 +153,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func ここはドロップ可能か確認する(_ info: DropInfo, _ 位置: Int) -> DropProposal? {
+    func ここはドロップ可能か確認する(_ 位置: Int, _ info: DropInfo) -> DropProposal? {
         switch 現状 {
             case .盤上の駒をドラッグしている:
                 if 位置 == ドラッグした盤上の駒の元々の位置 {
