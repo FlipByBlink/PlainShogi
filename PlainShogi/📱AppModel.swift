@@ -125,10 +125,9 @@ class 📱AppModel: ObservableObject {
                     do {
                         let 📦ItemProvider = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
                         guard let 📦 = 📦ItemProvider.first else { return }
-                        let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
+                        let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier) //FIXME: なんか動作していない
                         guard let 💾 = 🅂ecureCoding as? Data else { return }
                         guard let 📃 = String(data: 💾, encoding: .utf8) else { return }
-                        if 📃.first != "☗" { return }
                         
                         DispatchQueue.main.async {
                             self.このアイテムを盤面に反映する(📃)
@@ -355,6 +354,8 @@ class 📱AppModel: ObservableObject {
     
     
     func このアイテムを盤面に反映する(_ 📃: String) {
+        if 📃.first != "☗" { return }
+        
         駒の配置 = [:]
         手駒 = 空の手駒
 
