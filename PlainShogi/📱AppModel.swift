@@ -122,7 +122,7 @@ class 📱AppModel: ObservableObject {
                 
             case .アプリ外部からドラッグしている:
                 let 📦 = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
-                このアイテムを盤面に反映する(📦) //FIXME: ここの呼び出し方を再検討
+                このアイテムを盤面に反映する(📦)
                 
             case .何もドラッグしてない:
                 return false
@@ -176,7 +176,6 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    //TODO: 実装する
     func 盤外にドロップする(_ 陣営: 王側か玉側か, _ ⓘnfo: DropInfo) -> Bool {
         switch 現状 {
             case .盤上の駒をドラッグしている:
@@ -197,8 +196,8 @@ class 📱AppModel: ObservableObject {
                 駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
             case .アプリ外部からドラッグしている:
-                print("placeholder")
-                //FIXME: テキスト書き出し関数 呼び出し
+                let 📦 = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
+                このアイテムを盤面に反映する(📦)
                 
             case .何もドラッグしてない:
                 return false
@@ -337,16 +336,14 @@ class 📱AppModel: ObservableObject {
     
     
     func このアイテムを盤面に反映する(_ 📦ItemProvider: [NSItemProvider]) {
-        Task { @MainActor in //FIXME: この辺を関数にして分離する(作業中)
+        Task { @MainActor in
             do {
                 guard let 📦 = 📦ItemProvider.first else { return }
                 let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
                 guard let 💾 = 🅂ecureCoding as? Data else { return }
                 guard let 📃 = String(data: 💾, encoding: .utf8) else { return }
-                
                 if 📃.first != "☗" { return }
                 
-                //FIXME: 命名を再検討    駒の配置 手駒 駒⃣の配置 手⃣駒 駒⃞の配置 手⃞駒 駒⃝の配置 手⃝駒 駒́の配置 手́駒
                 var 駒⃣の配置: [Int: 盤上の駒] = [:]
                 var 手⃣駒: [王側か玉側か: 持ち駒] = 空の手駒
                 
