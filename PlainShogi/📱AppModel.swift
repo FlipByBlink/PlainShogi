@@ -24,7 +24,7 @@ class 📱AppModel: ObservableObject {
                     ドラッグした持ち駒 = nil
                 case .持ち駒をドラッグしている:
                     ドラッグした盤上の駒の元々の位置 = nil
-                case .アプリ外部からドラッグしている:
+                case .アプリ外部からドラッグしている, .何もドラッグしてない:
                     ドラッグした盤上の駒の元々の位置 = nil
                     ドラッグした持ち駒 = nil
             }
@@ -108,7 +108,7 @@ class 📱AppModel: ObservableObject {
                 駒の配置.removeValue(forKey: 出発地点)
                 駒の配置.updateValue(動かした駒, forKey: 置いた位置)
                 
-                ドラッグした盤上の駒の元々の位置 = nil
+                現状 = .何もドラッグしてない
                 駒を移動させたらログを更新する()
                 振動フィードバック()
                 
@@ -120,7 +120,7 @@ class 📱AppModel: ObservableObject {
                 
                 手駒[駒.陣営]?.一個減らす(駒.職名)
                 
-                ドラッグした持ち駒 = nil
+                現状 = .何もドラッグしてない
                 駒を移動させたらログを更新する()
                 振動フィードバック()
                 
@@ -135,6 +135,7 @@ class 📱AppModel: ObservableObject {
                             if 📃.first == "☗" {
                                 DispatchQueue.main.async {
                                     self.このテキストを盤面に反映する(📃)
+                                    self.現状 = .何もドラッグしてない
                                 }
                             }
                         }
@@ -143,6 +144,9 @@ class 📱AppModel: ObservableObject {
                         print(error)
                     }
                 }
+                
+            case .何もドラッグしてない:
+                return false
         }
         
         return true
@@ -167,7 +171,7 @@ class 📱AppModel: ObservableObject {
                     return .init(operation: .cancel)
                 }
                 
-            case .アプリ外部からドラッグしている:
+            case .アプリ外部からドラッグしている, .何もドラッグしてない:
                 return nil
         }
         
