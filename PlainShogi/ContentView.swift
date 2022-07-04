@@ -67,6 +67,23 @@ struct 盤上のコマもしくはマス: View {
                         コマのプレビュー(駒.陣営, 📱.この盤上の駒の表記(駒))
                             .frame(height: 📐.size.height + 8)
                     }
+                    .overlay(alignment: .topLeading) {
+                        if 📱.駒を整理中 {
+                            Button {
+                                📱.駒の配置.removeValue(forKey: 位置)
+                            } label: {
+                                Image(systemName: "minus.circle")
+                                    .symbolRenderingMode(.hierarchical)
+                                    .tint(.primary)
+                                    .imageScale(.small)
+                                    .padding(1)
+                                    .background {
+                                        Circle()
+                                            .foregroundStyle(.background)
+                                    }
+                            }
+                        }
+                    }
             } else { // ==== マス ====
                 Rectangle()
                     .foregroundStyle(.background)
@@ -159,6 +176,7 @@ struct 盤外のコマ: View {
 
 
 struct コマ: View {
+    @EnvironmentObject var 📱: 📱AppModel
     var 表記: String
     @Binding var ドラッグ中: Bool
     
@@ -170,6 +188,7 @@ struct コマ: View {
             Text(表記)
                 .minimumScaleFactor(0.1)
                 .opacity(ドラッグ中 ? 0.25 : 1.0)
+                .rotationEffect(.degrees(📱.駒を整理中 ? 10 : 0))
                 .onChange(of: ドラッグ中) { ⓝewValue in
                     if ⓝewValue {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
