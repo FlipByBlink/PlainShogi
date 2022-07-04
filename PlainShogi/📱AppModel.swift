@@ -108,9 +108,7 @@ class 📱AppModel: ObservableObject {
                 駒の配置.removeValue(forKey: 出発地点)
                 駒の配置.updateValue(動かした駒, forKey: 置いた位置)
                 
-                現状 = .何もドラッグしてない
-                駒を移動させたらログを更新する()
-                振動フィードバック()
+                駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
             case .持ち駒をドラッグしている:
                 guard let 駒 = ドラッグした持ち駒 else { return false }
@@ -120,9 +118,7 @@ class 📱AppModel: ObservableObject {
                 
                 手駒[駒.陣営]?.一個減らす(駒.職名)
                 
-                現状 = .何もドラッグしてない
-                駒を移動させたらログを更新する()
-                振動フィードバック()
+                駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
             case .アプリ外部からドラッグしている:
                 Task { //FIXME: この辺を関数にして分離する
@@ -207,9 +203,7 @@ class 📱AppModel: ObservableObject {
                 駒の配置.removeValue(forKey: 出発地点)
                 手駒[動かした駒.陣営]?.一個増やす(動かした駒.職名)
                 
-                現状 = .何もドラッグしてない
-                駒を移動させたらログを更新する()
-                振動フィードバック()
+                駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
             case .持ち駒をドラッグしている:
                 guard let 駒 = ドラッグした持ち駒 else { return false }
@@ -217,9 +211,7 @@ class 📱AppModel: ObservableObject {
                 手駒[駒.陣営]?.一個減らす(駒.職名)
                 手駒[陣営]?.一個増やす(駒.職名)
                 
-                現状 = .何もドラッグしてない
-                駒を移動させたらログを更新する()
-                振動フィードバック()
+                駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
             case .アプリ外部からドラッグしている:
                 print("placeholder")
@@ -230,6 +222,13 @@ class 📱AppModel: ObservableObject {
         }
         
         return true
+    }
+    
+    
+    func 駒を移動し終わったらログを更新してフィードバックを発生させる() {
+        現状 = .何もドラッグしてない
+        ログを更新する()
+        振動フィードバック()
     }
     
     
@@ -277,7 +276,7 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func 駒を移動させたらログを更新する() {
+    func ログを更新する() {
         let 🗄 = UserDefaults.standard
         var セーブ用_駒の配置: [String: [String]] = [:]
         var セーブ用_手駒: [String: [String: String]] = ["王側": [:], "玉側": [:]]
