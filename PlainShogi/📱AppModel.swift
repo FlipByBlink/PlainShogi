@@ -121,9 +121,7 @@ class 📱AppModel: ObservableObject {
                 駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
             case .アプリ外部からドラッグしている:
-                let 📦ItemProvider = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
-                guard let 📦 = 📦ItemProvider.first else { return false }
-                
+                let 📦 = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
                 このアイテムを盤面に反映する(📦) //FIXME: ここの呼び出し方を再検討
                 
             case .何もドラッグしてない:
@@ -340,15 +338,17 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func このアイテムを盤面に反映する(_ 📦: NSItemProvider) {
+    func このアイテムを盤面に反映する(_ 📦ItemProvider: [NSItemProvider]) {
         Task { @MainActor in //FIXME: この辺を関数にして分離する(作業中)
             do {
+                guard let 📦 = 📦ItemProvider.first else { return }
                 let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
                 guard let 💾 = 🅂ecureCoding as? Data else { return }
                 guard let 📃 = String(data: 💾, encoding: .utf8) else { return }
                 
                 if 📃.first != "☗" { return }
                 
+                //FIXME: 命名を再検討
                 var 読み込み中の駒の配置: [Int: 盤上の駒] = [:]
                 var 読み込み中の手駒: [王側か玉側か: 持ち駒] = 空の手駒
                 
