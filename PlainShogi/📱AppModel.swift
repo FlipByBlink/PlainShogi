@@ -12,6 +12,8 @@ class 📱AppModel: ObservableObject {
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
     
+    @AppStorage("移動直後の駒を目立たせる") var 🚩移動直後の駒を目立たせる: Bool = false
+    
     
     var ドラッグした盤上の駒の元々の位置: Int? = nil
     

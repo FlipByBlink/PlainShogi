@@ -21,6 +21,10 @@ struct 🛠AppMenu: View {
             Toggle(isOn: 📱.$🚩English表記) {
                 Label("English表記に変更する", systemImage: "p.square")
             }
+            
+            Toggle(isOn: 📱.$🚩移動直後の駒を目立たせる) {
+                Label("移動直後の駒を目立たせる", systemImage: "exclamationmark.square")
+            }
         } header: {
             Text("オプション")
         }

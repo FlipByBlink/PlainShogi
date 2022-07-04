@@ -56,11 +56,7 @@ struct 盤上のコマもしくはマス: View {
             if let 駒 = 📱.駒の配置[位置] {
                 コマ(📱.この盤上の駒の表記(駒), $ドラッグ中)
                     .rotationEffect(下向き(駒.陣営 == .玉側))
-                    .overlay {
-                        if 📱.移動直後の駒の位置 == 位置 {
-                            Rectangle().stroke()
-                        }
-                    }
+                    .overlay { 移動直後に目立たせるための枠線(位置) }
                     .onTapGesture(count: 2) {
                         📱.駒の配置[位置]?.裏返す()
                     }
@@ -215,6 +211,24 @@ struct コマのプレビュー: View {
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ﾋｮｳｷ: String) {
         陣営 = ｼﾞﾝｴｲ
         表記 = ﾋｮｳｷ
+    }
+}
+
+
+struct 移動直後に目立たせるための枠線: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    var 位置: Int
+    
+    var body: some View {
+        if 📱.🚩移動直後の駒を目立たせる {
+            if 📱.移動直後の駒の位置 == 位置 {
+                Rectangle().stroke()
+            }
+        }
+    }
+    
+    init(_ ｲﾁ: Int) {
+        位置 = ｲﾁ
     }
 }
 
