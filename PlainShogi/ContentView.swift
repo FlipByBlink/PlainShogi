@@ -8,7 +8,6 @@ struct ContentView: View {
             VStack(spacing: 0) {
                 盤外(.玉側, マス一辺の大きさ(📐))
                 
-                
                 VStack(spacing: 0) {
                     Divider()
                     
@@ -29,7 +28,6 @@ struct ContentView: View {
                 .border(.primary)
                 .frame(width: マス一辺の大きさ(📐)*9,
                        height: マス一辺の大きさ(📐)*9)
-                
                 
                 盤外(.王側, マス一辺の大きさ(📐))
             }
@@ -71,7 +69,7 @@ struct コマもしくはマス: View {
                 }
                 .onDrag {
                     コマの透明度 = 0.25
-                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         withAnimation(.easeIn(duration: 1.5)) {
                             コマの透明度 = 1.0
                         }
@@ -159,7 +157,7 @@ struct 盤外のコマ: View {
                 }
                 .onDrag{
                     コマの透明度 = 0.25
-                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         withAnimation(.easeIn(duration: 1.5)) {
                             コマの透明度 = 1.0
                         }
