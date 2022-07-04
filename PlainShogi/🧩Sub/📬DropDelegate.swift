@@ -11,7 +11,7 @@ struct 📬盤上ドロップ: DropDelegate {
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        📱.ここはドロップ可能か確認する(位置, info)
+        📱.ここはドロップ可能か確認する(位置)
     }
     
     func validateDrop(info: DropInfo) -> Bool {

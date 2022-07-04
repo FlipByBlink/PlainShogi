@@ -75,7 +75,7 @@ struct コマもしくはマス: View {
                         withAnimation(.easeIn(duration: 1.5)) {
                             コマの透明度 = 1.0
                         }
-                    }
+                    } //TODO: ここをモデル化
                     
                     return 📱.この盤上の駒をドラッグし始める(位置)
                 } preview: {
