@@ -124,20 +124,8 @@ class 📱AppModel: ObservableObject {
                 let 📦ItemProvider = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
                 guard let 📦 = 📦ItemProvider.first else { return false }
                 
-                Task { //FIXME: この辺を関数にして分離する
-                    do {
-                        let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
-                        guard let 💾 = 🅂ecureCoding as? Data else { return }
-                        guard let 📃 = String(data: 💾, encoding: .utf8) else { return }
-                        
-                        DispatchQueue.main.async {
-                            self.このアイテムを盤面に反映する(📃)
-                            self.現状 = .何もドラッグしてない
-                        }
-                    } catch {
-                        print("======== ⚠️ Error: 📦.loadItem ========")
-                        print(error)
-                    }
+                DispatchQueue.main.async {
+                    self.このアイテムを盤面に反映する(📦) //FIXME: ここの呼び出し方を再検討
                 }
                 
             case .何もドラッグしてない:
@@ -354,59 +342,72 @@ class 📱AppModel: ObservableObject {
     }
     
     
-    func このアイテムを盤面に反映する(_ 📃: String) {
-        if 📃.first != "☗" { return }
-        
-        駒の配置 = [:]
-        手駒 = 空の手駒
-
-        var 改行数: Int = 0
-        var 列: Int = 0
-        var 読み込み中の持ち駒の種類: 駒の種類 = .歩
-
-        for 字区切り in 📃 {
-            if 字区切り == "\n" {
-                改行数 += 1
-                列 = 0
-                continue
-            }
-
-            let 駒テキスト = 字区切り.description
-
-            switch 改行数 {
-                case 0:
-                    if let 数 = Int(駒テキスト) {
-                        手駒[.玉側]?.配分[読み込み中の持ち駒の種類] = 数
-                    } else {
-                        if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
-                            手駒[駒.陣営]?.配分[駒.職名] = 1
-                            
-                            読み込み中の持ち駒の種類 = 駒.職名
-                        }
-                    }
-                case 1...11:
-                    let 位置 = ( 改行数 - 2 ) * 9 + 列
+    @MainActor
+    func このアイテムを盤面に反映する(_ 📦: NSItemProvider) {
+        Task { //FIXME: この辺を関数にして分離する(作業中)
+            do {
+                let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
+                guard let 💾 = 🅂ecureCoding as? Data else { return }
+                guard let 📃 = String(data: 💾, encoding: .utf8) else { return }
                 
-                    if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
-                        駒の配置.updateValue(盤上の駒(駒.陣営, 駒.職名, 駒.成り), forKey: 位置)
+                if 📃.first != "☗" { return }
+                
+                駒の配置 = [:]
+                手駒 = 空の手駒
+                
+                var 改行数: Int = 0
+                var 列: Int = 0
+                var 読み込み中の持ち駒の種類: 駒の種類 = .歩
+                
+                for 字区切り in 📃 {
+                    if 字区切り == "\n" {
+                        改行数 += 1
+                        列 = 0
+                        continue
                     }
-                case 12:
-                    if let 数 = Int(駒テキスト) {
-                        手駒[.王側]?.配分[読み込み中の持ち駒の種類] = 数
-                    } else {
-                        if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
-                            手駒[駒.陣営]?.配分[駒.職名] = 1
+                    
+                    let 駒テキスト = 字区切り.description
+                    
+                    switch 改行数 {
+                        case 0:
+                            if let 数 = Int(駒テキスト) {
+                                手駒[.玉側]?.配分[読み込み中の持ち駒の種類] = 数
+                            } else {
+                                if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
+                                    手駒[駒.陣営]?.配分[駒.職名] = 1
+                                    
+                                    読み込み中の持ち駒の種類 = 駒.職名
+                                }
+                            }
+                        case 1...11:
+                            let 位置 = ( 改行数 - 2 ) * 9 + 列
                             
-                            読み込み中の持ち駒の種類 = 駒.職名
-                        }
+                            if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
+                                駒の配置.updateValue(盤上の駒(駒.陣営, 駒.職名, 駒.成り), forKey: 位置)
+                            }
+                        case 12:
+                            if let 数 = Int(駒テキスト) {
+                                手駒[.王側]?.配分[読み込み中の持ち駒の種類] = 数
+                            } else {
+                                if let 駒 = プレーンテキストを駒に変換(駒テキスト) {
+                                    手駒[駒.陣営]?.配分[駒.職名] = 1
+                                    
+                                    読み込み中の持ち駒の種類 = 駒.職名
+                                }
+                            }
+                        default: break
                     }
-                default: break
+                    
+                    列 += 1
+                }
+                
+                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                現状 = .何もドラッグしてない
+            } catch {
+                print("======== ⚠️ Error: 📦.loadItem ========")
+                print(error)
             }
-
-            列 += 1
         }
-
-        UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
 }
 
