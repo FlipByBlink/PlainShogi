@@ -121,11 +121,12 @@ class 📱AppModel: ObservableObject {
                 駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
             case .アプリ外部からドラッグしている:
+                let 📦ItemProvider = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
+                guard let 📦 = 📦ItemProvider.first else { return false }
+                
                 Task { //FIXME: この辺を関数にして分離する
                     do {
-                        let 📦ItemProvider = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
-                        guard let 📦 = 📦ItemProvider.first else { return }
-                        let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier) //FIXME: なんか動作していない
+                        let 🅂ecureCoding = try await 📦.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
                         guard let 💾 = 🅂ecureCoding as? Data else { return }
                         guard let 📃 = String(data: 💾, encoding: .utf8) else { return }
                         
