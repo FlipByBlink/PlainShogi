@@ -29,7 +29,6 @@ struct 📬盤外ドロップ: DropDelegate {
     var 📱: 📱AppModel
     var 陣営: 王側か玉側か
     
-    //FIXME: 間違った陣営へ手駒が足される場合がある
     func performDrop(info: DropInfo) -> Bool {
         📱.盤外にドロップする(陣営, info)
     }
