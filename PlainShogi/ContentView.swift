@@ -99,7 +99,7 @@ struct 盤外: View {
             }
             .frame(height: コマの大きさ)
         }
-        .overlay(alignment: .bottomLeading) { 手駒調整Button(陣営) }
+        .overlay(alignment: .bottomLeading) { 手駒調整ボタン(陣営) }
         .rotationEffect(下向き(陣営 == .玉側))
         .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, 陣営))
     }

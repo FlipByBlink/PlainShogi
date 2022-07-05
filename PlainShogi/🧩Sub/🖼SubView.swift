@@ -74,9 +74,8 @@ struct 整理完了ボタン: View {
 }
 
 
-struct 手駒調整Button: View {
+struct 手駒調整ボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.dismiss) var 🔙: DismissAction
     var 陣営: 王側か玉側か
     
     @State private var 手駒の数を増減中: Bool = false
@@ -93,7 +92,7 @@ struct 手駒調整Button: View {
             }
             .tint(.primary)
             .sheet(isPresented: $手駒の数を増減中) {
-                手駒調整Sheet(陣営)
+                手駒調整シート(陣営)
                     .onDisappear {
                         手駒の数を増減中 = false
                     }
@@ -106,7 +105,7 @@ struct 手駒調整Button: View {
     }
 }
 
-struct 手駒調整Sheet: View {
+struct 手駒調整シート: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.dismiss) var 🔙: DismissAction
     var 陣営: 王側か玉側か

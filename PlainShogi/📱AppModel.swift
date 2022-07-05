@@ -20,6 +20,9 @@ class 📱AppModel: ObservableObject {
     @Published var 駒を整理中: Bool = false
     
     
+    @Published var 🚩メニューを表示: Bool = false
+    
+    
     var ドラッグした盤上の駒の元々の位置: Int? = nil
     
     var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
