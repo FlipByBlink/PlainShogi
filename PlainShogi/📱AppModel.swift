@@ -145,6 +145,42 @@ class 📱AppModel: ObservableObject {
         return true
     }
     
+    func 盤外のこちら側にドロップする(_ ドロップされた陣営: 王側か玉側か, _ ⓘnfo: DropInfo) -> Bool {
+        switch 現状 {
+            case .盤上の駒をドラッグしている:
+                guard let 出発地点 = ドラッグした盤上の駒の元々の位置 else { return false }
+                let 動かした駒 = 駒の配置[出発地点]!
+                
+                駒の配置.removeValue(forKey: 出発地点)
+                手駒[ドロップされた陣営]?.一個増やす(動かした駒.職名)
+                
+                駒を移動し終わったらログを更新してフィードバックを発生させる()
+                
+            case .持ち駒をドラッグしている:
+                guard let 駒 = ドラッグした持ち駒 else { return false }
+                
+                手駒[駒.陣営]?.一個減らす(駒.職名)
+                手駒[ドロップされた陣営]?.一個増やす(駒.職名)
+                
+                駒を移動し終わったらログを更新してフィードバックを発生させる()
+                
+            case .アプリ外部からドラッグしている:
+                let 📦 = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
+                このアイテムを盤面に反映する(📦)
+                
+            case .何もドラッグしてない:
+                return false
+        }
+        
+        return true
+    }
+    
+    func 駒を移動し終わったらログを更新してフィードバックを発生させる() {
+        現状 = .何もドラッグしてない
+        ログを更新する()
+        振動フィードバック()
+    }
+    
     
     func 盤上のここはドロップ可能か確認する(_ 位置: Int) -> DropProposal? {
         switch 現状 {
@@ -182,7 +218,6 @@ class 📱AppModel: ObservableObject {
         
         return nil
     }
-    
         
     func 有効なドロップかチェックする(_ ⓘnfo: DropInfo) -> Bool {
         let 📦ItemProvider = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
@@ -200,44 +235,6 @@ class 📱AppModel: ObservableObject {
         }
         
         return true
-    }
-    
-    
-    func 盤外にドロップする(_ ドロップされた陣営: 王側か玉側か, _ ⓘnfo: DropInfo) -> Bool {
-        switch 現状 {
-            case .盤上の駒をドラッグしている:
-                guard let 出発地点 = ドラッグした盤上の駒の元々の位置 else { return false }
-                let 動かした駒 = 駒の配置[出発地点]!
-                
-                駒の配置.removeValue(forKey: 出発地点)
-                手駒[ドロップされた陣営]?.一個増やす(動かした駒.職名)
-                
-                駒を移動し終わったらログを更新してフィードバックを発生させる()
-                
-            case .持ち駒をドラッグしている:
-                guard let 駒 = ドラッグした持ち駒 else { return false }
-                
-                手駒[駒.陣営]?.一個減らす(駒.職名)
-                手駒[ドロップされた陣営]?.一個増やす(駒.職名)
-                
-                駒を移動し終わったらログを更新してフィードバックを発生させる()
-                
-            case .アプリ外部からドラッグしている:
-                let 📦 = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
-                このアイテムを盤面に反映する(📦)
-                
-            case .何もドラッグしてない:
-                return false
-        }
-        
-        return true
-    }
-    
-    
-    func 駒を移動し終わったらログを更新してフィードバックを発生させる() {
-        現状 = .何もドラッグしてない
-        ログを更新する()
-        振動フィードバック()
     }
     
     
