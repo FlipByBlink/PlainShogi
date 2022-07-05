@@ -5,16 +5,15 @@ struct 🛠MenuButton: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        Button {
-            UISelectionFeedbackGenerator().selectionChanged()
-            📱.🚩メニューを表示 = true
+        Menu {
+            🛠盤面初期化ボタン()
+            🛠盤面整理ボタン()
         } label: {
             Text("…")
                 .padding()
-        }
-        .contextMenu {
-            🛠盤面初期化ボタン()
-            🛠盤面整理ボタン()
+        } primaryAction: {
+            📱.🚩メニューを表示 = true
+            振動フィードバック()
         }
         .disabled(📱.駒を整理中)
         .padding()
