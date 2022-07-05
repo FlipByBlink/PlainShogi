@@ -13,10 +13,11 @@ struct Plain将棋盤App: App {
             ContentView()
                 .statusBar(hidden: true)
                 .overlay(alignment: .bottomTrailing) {
-                    🛠MenuButton()
+                    🛠メニューボタン()
                 }
-                .overlay(alignment: .topLeading) {
-                    if 📱.駒を整理中 { 整理完了ボタン() }
+                .sheet(isPresented: $📱.🚩メニューを表示) {
+                    🛠MenuSheet()
+                        .onDisappear { 📱.🚩メニューを表示 = false } //TODO: これ必要かどうか再検討
                 }
                 .overlay(alignment: .bottom) {
                     📣ADBanner()

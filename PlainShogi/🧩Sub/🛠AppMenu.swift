@@ -1,29 +1,26 @@
 
 import SwiftUI
 
-struct 🛠MenuButton: View {
+struct 🛠メニューボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        Menu {
-            🛠盤面初期化ボタン()
-            🛠盤面整理ボタン()
-        } label: {
-            Text("…")
-                .padding()
-        } primaryAction: {
-            📱.🚩メニューを表示 = true
-            振動フィードバック()
-        }
-        .disabled(📱.駒を整理中)
-        .padding()
-        .tint(.primary)
-        .accessibilityLabel("Open menu")
-        .sheet(isPresented: $📱.🚩メニューを表示) {
-            🛠MenuSheet()
-                .onDisappear {
-                    📱.🚩メニューを表示 = false
-                }
+        if 📱.駒を整理中 {
+            整理完了ボタン()
+        } else {
+            Menu {
+                🛠盤面初期化ボタン()
+                🛠盤面整理開始ボタン()
+            } label: {
+                Text("…")
+                    .padding()
+            } primaryAction: {
+                📱.🚩メニューを表示 = true
+                振動フィードバック()
+            }
+            .padding()
+            .tint(.primary)
+            .accessibilityLabel("Open menu")
         }
     }
 }
@@ -35,7 +32,7 @@ struct 🛠AppMenu: View {
     var body: some View {
         🛠盤面初期化ボタン()
         
-        🛠盤面整理ボタン()
+        🛠盤面整理開始ボタン()
         
         Section {
             Label("長押しで駒を持ち上げ、そのままスライドさせて移動する", systemImage: "hand.draw")

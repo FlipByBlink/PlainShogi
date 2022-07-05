@@ -26,9 +26,7 @@ struct 🛠盤面初期化ボタン: View {
         Button {
             📱.盤面を初期化する()
             
-            if 📱.🚩メニューを表示 {
-                📱.🚩メニューを表示 = false
-            }
+            📱.🚩メニューを表示 = false
         } label: {
             Label("盤面を初期化する", systemImage: "arrow.counterclockwise")
         }
@@ -36,17 +34,17 @@ struct 🛠盤面初期化ボタン: View {
 }
 
 
-struct 🛠盤面整理ボタン: View {
+struct 🛠盤面整理開始ボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
         Button {
-            📱.移動直後の駒の位置 = nil
-            📱.駒を整理中 = true
-            
-            if 📱.🚩メニューを表示 {
-                📱.🚩メニューを表示 = false
+            withAnimation {
+                📱.移動直後の駒の位置 = nil
+                📱.駒を整理中 = true
             }
+            
+            📱.🚩メニューを表示 = false
         } label: {
             Label("駒を消したり増やしたりする", systemImage: "wand.and.rays")
         }
@@ -101,7 +99,7 @@ struct 整理完了ボタン: View {
         } label: {
             Image(systemName: "checkmark.circle.fill")
                 .font(.title2)
-                .padding()
+                .padding(24)
         }
         .tint(.secondary)
         .accessibilityLabel("DONE")
@@ -194,12 +192,3 @@ struct 手駒調整シート: View {
         陣営 = ｼﾞﾝｴｲ
     }
 }
-
-
-
-
-//struct SubView_Previews: PreviewProvider {
-//    static var previews: some View {
-//
-//    }
-//}
