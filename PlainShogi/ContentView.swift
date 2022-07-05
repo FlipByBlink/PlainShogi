@@ -246,7 +246,10 @@ struct 駒を消すボタン: View {
         if 📱.駒を整理中 {
             GeometryReader { 📐 in
                 Button {
-                    📱.駒の配置.removeValue(forKey: 位置)
+                    withAnimation {
+                        📱.駒の配置.removeValue(forKey: 位置)
+                        振動フィードバック()
+                    }
                 } label: {
                     ZStack(alignment: .topLeading) {
                         Color.clear
@@ -266,6 +269,25 @@ struct 駒を消すボタン: View {
     
     init(_ ｲﾁ: Int) {
         位置 = ｲﾁ
+    }
+}
+
+
+struct 整理完了ボタン: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    
+    var body: some View {
+        Button {
+            withAnimation {
+                📱.駒を整理中 = false
+                振動フィードバック()
+            }
+        } label: {
+            Image(systemName: "checkmark")
+                .foregroundColor(.primary)
+                .padding(32)
+        }
+        .accessibilityLabel("DONE")
     }
 }
 

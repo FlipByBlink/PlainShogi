@@ -4,7 +4,7 @@ import SwiftUI
 @main
 struct Plain将棋盤App: App {
     
-    let 📱 = 📱AppModel()
+    @ObservedObject var 📱 = 📱AppModel()
     
     let 🛒 = 🛒StoreModel()
     
@@ -13,7 +13,11 @@ struct Plain将棋盤App: App {
             ContentView()
                 .statusBar(hidden: true)
                 .overlay(alignment: .bottomTrailing) {
-                    🛠MenuButton()
+                    if 📱.駒を整理中 {
+                        整理完了ボタン()
+                    } else {
+                        🛠MenuButton()
+                    }
                 }
                 .overlay(alignment: .bottom) {
                     📣ADBanner()
