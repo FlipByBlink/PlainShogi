@@ -16,6 +16,7 @@ struct 🛠MenuButton: View {
             🛠盤面初期化ボタン()
             🛠盤面整理ボタン()
         }
+        .disabled(📱.駒を整理中)
         .padding()
         .tint(.primary)
         .accessibilityLabel("Open menu")
