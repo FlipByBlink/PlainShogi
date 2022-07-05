@@ -98,8 +98,9 @@ struct 盤外: View {
                 }
             }
             .frame(height: コマの大きさ)
-            .rotationEffect(下向き(陣営 == .玉側))
         }
+        .overlay(alignment: .bottomLeading) { 手駒調整Button(陣営) }
+        .rotationEffect(下向き(陣営 == .玉側))
         .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, 陣営))
     }
     
@@ -216,78 +217,6 @@ struct コマのプレビュー: View {
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ﾋｮｳｷ: String) {
         陣営 = ｼﾞﾝｴｲ
         表記 = ﾋｮｳｷ
-    }
-}
-
-
-struct 移動直後に目立たせるための枠線: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    var 位置: Int
-    
-    var body: some View {
-        if 📱.🚩移動直後の駒を目立たせる {
-            if 📱.移動直後の駒の位置 == 位置 {
-                Rectangle().stroke()
-            }
-        }
-    }
-    
-    init(_ ｲﾁ: Int) {
-        位置 = ｲﾁ
-    }
-}
-
-
-struct 駒を消すボタン: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    var 位置: Int
-    
-    var body: some View {
-        if 📱.駒を整理中 {
-            GeometryReader { 📐 in
-                Button {
-                    withAnimation {
-                        📱.駒の配置.removeValue(forKey: 位置)
-                        振動フィードバック()
-                    }
-                } label: {
-                    ZStack(alignment: .topLeading) {
-                        Color.clear
-                        
-                        Image(systemName: "xmark.circle.fill")
-                            .resizable()
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(.tint, .background)
-                            .tint(.primary)
-                            .frame(width: 📐.size.width * 2/5,
-                                   height: 📐.size.height * 2/5)
-                    }
-                }
-            }
-        }
-    }
-    
-    init(_ ｲﾁ: Int) {
-        位置 = ｲﾁ
-    }
-}
-
-
-struct 整理完了ボタン: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    
-    var body: some View {
-        Button {
-            withAnimation {
-                📱.駒を整理中 = false
-                振動フィードバック()
-            }
-        } label: {
-            Image(systemName: "checkmark")
-                .foregroundColor(.primary)
-                .padding(32)
-        }
-        .accessibilityLabel("DONE")
     }
 }
 

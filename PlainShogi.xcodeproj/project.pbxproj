@@ -24,6 +24,7 @@
 		120363222865E22000636EBD /* 🛒StoreModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D4369D2865CD8300B707F5 /* 🛒StoreModel.swift */; };
 		124B75552810CD6D00027DCA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		126C18F32816460F002CD046 /* 型Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* 型Type.swift */; };
+		127132E82873CDF20008AE46 /* 🖼SubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 🖼SubView.swift */; };
 		128D156B280FE47E003FF480 /* Plain将棋盤App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156A280FE47E003FF480 /* Plain将棋盤App.swift */; };
 		128D156D280FE47E003FF480 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
 		128D156F280FE47F003FF480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
@@ -125,6 +126,7 @@
 		124B75562810CD6D00027DCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		124B75582810CD8100027DCA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		126C18F22816460F002CD046 /* 型Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "型Type.swift"; sourceTree = "<group>"; };
+		127132E72873CDF20008AE46 /* 🖼SubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🖼SubView.swift"; sourceTree = "<group>"; };
 		128D1567280FE47E003FF480 /* 将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		128D156A280FE47E003FF480 /* Plain将棋盤App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plain将棋盤App.swift"; sourceTree = "<group>"; };
 		128D156C280FE47E003FF480 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				126C18F22816460F002CD046 /* 型Type.swift */,
 				12D424412871893D002D3E80 /* 📬ドロップDelegate.swift */,
+				127132E72873CDF20008AE46 /* 🖼SubView.swift */,
 				12F4444D286D4B580008A663 /* 🛠AppMenu.swift */,
 				12A9251B28669FA20035DC83 /* Info.plist */,
 				128D1570280FE47F003FF480 /* Preview Content */,
@@ -371,6 +374,7 @@
 				12D436932865CD5E00B707F5 /* 🛠BaseMenu.swift in Sources */,
 				12D436942865CD5E00B707F5 /* 📓SourceCodeMenu.swift in Sources */,
 				12D436952865CD5E00B707F5 /* 📄AppDescription.swift in Sources */,
+				127132E82873CDF20008AE46 /* 🖼SubView.swift in Sources */,
 				12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */,
 				12D436962865CD5E00B707F5 /* 📄InformationMenu.swift in Sources */,
 			);
