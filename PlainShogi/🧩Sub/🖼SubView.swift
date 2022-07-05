@@ -172,6 +172,7 @@ struct 手駒調整シート: View {
                     }
                 }
             }
+            .listStyle(.plain)
             .navigationTitle(陣営.rawValue)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
