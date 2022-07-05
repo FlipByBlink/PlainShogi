@@ -8,7 +8,7 @@ struct 移動直後に目立たせるための枠線: View {
     var body: some View {
         if 📱.🚩移動直後の駒を目立たせる {
             if 📱.移動直後の駒の位置 == 位置 {
-                Rectangle().stroke(style: .init(dash: [3,3]))
+                Rectangle().stroke()
             }
         }
     }
@@ -64,10 +64,11 @@ struct 整理完了ボタン: View {
                 振動フィードバック()
             }
         } label: {
-            Image(systemName: "checkmark")
-                .foregroundColor(.primary)
-                .padding(32)
+            Image(systemName: "checkmark.circle.fill")
+                .font(.title2)
+                .padding()
         }
+        .tint(.secondary)
         .accessibilityLabel("DONE")
     }
 }

@@ -10,9 +10,9 @@ struct 🛠MenuButton: View {
             🚩ShowMenu = true
         } label: {
             Text("…")
-                .foregroundColor(.primary)
                 .padding(32)
         }
+        .tint(.primary)
         .accessibilityLabel("Open menu")
         .sheet(isPresented: $🚩ShowMenu) {
             🛠MenuSheet()

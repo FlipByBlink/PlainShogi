@@ -15,6 +15,11 @@ class 📱AppModel: ObservableObject {
     @AppStorage("移動直後の駒を目立たせる") var 🚩移動直後の駒を目立たせる: Bool = false
     
     
+    @Published var 移動直後の駒の位置: Int?
+    
+    @Published var 駒を整理中: Bool = false
+    
+    
     var ドラッグした盤上の駒の元々の位置: Int? = nil
     
     var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
@@ -34,11 +39,6 @@ class 📱AppModel: ObservableObject {
             }
         }
     }
-    
-    
-    @Published var 移動直後の駒の位置: Int?
-    
-    @Published var 駒を整理中: Bool = false
     
     
     func この盤上の駒の表記(_ 駒: 盤上の駒) -> String {
