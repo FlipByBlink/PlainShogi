@@ -61,25 +61,39 @@ struct 🛠AppMenu: View {
         }
         
         
-        Section {
-            Group {
-                Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
-                
-                Label("他のアプリからテキストを盤上にドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
+        NavigationLink {
+            テキスト書き出し読み込みセクション()
+        } label: {
+            Label("テキスト書き出し/読み込み機能", systemImage: "square.and.arrow.up.on.square")
+        }
+    }
+}
+
+
+struct テキスト書き出し読み込みセクション: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    
+    var body: some View {
+        List {
+            Section {
+                Group {
+                    Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
+                    Label("他のアプリからテキストを盤上にドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
+                }
+                .foregroundStyle(.secondary)
+            } header: {
+                Text("細かな使い方")
             }
-            .foregroundStyle(.secondary)
-        } header: {
-            Text("細かな使い方")
+            
+            Section {
+                Text(📱.現在の盤面をテキストに変換する())
+                    .padding()
+                    .accessibilityLabel("Plain text")
+                    .textSelection(.enabled)
+            } header: {
+                Text("テキスト書き出し例")
+            }
         }
-        
-        
-        Section {
-            Text(📱.現在の盤面をテキストに変換する())
-                .padding()
-                .accessibilityLabel("Plain text")
-                .textSelection(.enabled)
-        } header: {
-            Text("テキスト書き出し例")
-        }
+        .navigationTitle("テキスト機能")
     }
 }
