@@ -87,39 +87,3 @@ struct 🛠AppMenu: View {
         }
     }
 }
-
-
-struct 🛠盤面初期化ボタン: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    
-    var body: some View {
-        Button {
-            📱.盤面を初期化する()
-            
-            if 📱.🚩メニューを表示 {
-                📱.🚩メニューを表示 = false
-            }
-        } label: {
-            Label("盤面を初期化する", systemImage: "arrow.counterclockwise")
-        }
-    }
-}
-
-
-struct 🛠盤面整理ボタン: View {
-    @EnvironmentObject var 📱: 📱AppModel
-    
-    var body: some View {
-        Button {
-            📱.移動直後の駒の位置 = nil
-            📱.駒を整理中 = true
-            
-            if 📱.🚩メニューを表示 {
-                📱.🚩メニューを表示 = false
-            }
-        } label: {
-            Label("駒を消したり増やしたりする", systemImage: "wand.and.rays")
-        }
-    }
-}
-
