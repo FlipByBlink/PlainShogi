@@ -30,10 +30,6 @@ struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        🛠盤面初期化ボタン()
-        
-        🛠盤面整理開始ボタン()
-        
         Section {
             Label("長押しで駒を持ち上げ、そのままスライドさせて移動する", systemImage: "hand.draw")
                 .padding(.vertical, 8)
@@ -60,9 +56,13 @@ struct 🛠AppMenu: View {
         
         
         Section {
+            🛠盤面初期化ボタン()
+            🛠盤面整理開始ボタン()
+        }
+        
+        
+        Section {
             Group {
-                Label("トリプルタップで盤外の駒を削除する", systemImage: "trash")
-                
                 Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
                 
                 Label("他のアプリからテキストを盤上にドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
