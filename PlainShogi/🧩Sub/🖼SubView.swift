@@ -190,8 +190,7 @@ struct 手駒調整シート: View {
                         🔙.callAsFunction()
                     } label: {
                         Image(systemName: "chevron.down")
-                            .foregroundStyle(.secondary)
-                            .grayscale(1.0)
+                            .foregroundColor(.secondary)
                             .padding(8)
                     }
                     .accessibilityLabel("Dismiss")
