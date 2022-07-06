@@ -62,10 +62,36 @@ struct 🛠AppMenu: View {
         
         
         NavigationLink {
+            細かな使い方セクション()
+        } label: {
+            Label("細かな使い方", systemImage: "magazine")
+        }
+        
+        
+        NavigationLink {
             テキスト書き出し読み込みセクション()
         } label: {
             Label("テキスト書き出し/読み込み機能", systemImage: "square.and.arrow.up.on.square")
         }
+    }
+}
+
+
+struct 細かな使い方セクション: View {
+    var body: some View {
+        List {
+            Section {
+                HStack {
+                    Text("…")
+                        .bold()
+                        .padding()
+                    Text("メニューボタンを長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
+                }
+                
+                Text("移動直後の駒にマークを付いたマークは空白のマスをタップすることで一旦 非表示にすることができます。")
+            }
+        }
+        .navigationTitle("細かな使い方")
     }
 }
 
