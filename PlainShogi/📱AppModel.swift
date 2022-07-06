@@ -12,13 +12,8 @@ class 📱AppModel: ObservableObject {
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
     
-    @AppStorage("移動直後の駒にマークを付ける") var 🚩移動直後の駒にマークを付ける: Bool = false
-    
-    
-    @Published var 移動直後の駒の位置: Int?
     
     @Published var 駒を整理中: Bool = false
-    
     
     @Published var 🚩メニューを表示: Bool = false
     
@@ -32,10 +27,8 @@ class 📱AppModel: ObservableObject {
             switch 現状 {
                 case .盤上の駒をドラッグしている:
                     ドラッグした持ち駒 = nil
-                    移動直後の駒の位置 = nil
                 case .持ち駒をドラッグしている:
                     ドラッグした盤上の駒の元々の位置 = nil
-                    移動直後の駒の位置 = nil
                 case .アプリ外部からドラッグしている, .何もドラッグしてない:
                     ドラッグした盤上の駒の元々の位置 = nil
                     ドラッグした持ち駒 = nil
@@ -74,7 +67,6 @@ class 📱AppModel: ObservableObject {
     func 盤面を初期化する() {
         駒の配置 = 初期配置
         手駒 = 空の手駒
-        移動直後の駒の位置 = nil
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
     
@@ -120,7 +112,6 @@ class 📱AppModel: ObservableObject {
                 駒の配置.removeValue(forKey: 出発地点)
                 駒の配置.updateValue(動かした駒, forKey: 置いた位置)
                 
-                移動直後の駒の位置 = 置いた位置
                 駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
             case .持ち駒をドラッグしている:
@@ -131,7 +122,6 @@ class 📱AppModel: ObservableObject {
                 
                 手駒[駒.陣営]?.一個減らす(駒.職名)
                 
-                移動直後の駒の位置 = 置いた位置
                 駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
             case .アプリ外部からドラッグしている:

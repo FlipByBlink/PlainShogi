@@ -46,10 +46,6 @@ struct 🛠AppMenu: View {
             Toggle(isOn: 📱.$🚩English表記) {
                 Label("English表記に変更する", systemImage: "p.square")
             }
-            
-            Toggle(isOn: 📱.$🚩移動直後の駒にマークを付ける) {
-                Label("移動直後の駒にマークを付ける", systemImage: "app.badge.checkmark")
-            }
         } header: {
             Text("オプション")
         }
@@ -74,11 +70,9 @@ struct 細かな使い方セクション: View {
             List {
                 Section {
                     Group {
-                    Text("メニューボタン(…←これ)を長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
-                    
-                    Text("移動直後の駒にマークを付いたマークは空白のマスをタップすることで一旦 非表示にすることができます。")
-                    
-                    Text("DynamicTypeに対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
+                        Text("メニューボタン(…←これ)を長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
+                        
+                        Text("DynamicTypeに対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
                     }
                     .padding()
                     .font(.subheadline)
