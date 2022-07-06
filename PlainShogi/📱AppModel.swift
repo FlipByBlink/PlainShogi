@@ -74,7 +74,7 @@ class 📱AppModel: ObservableObject {
     func 盤面を初期化する() {
         駒の配置 = 初期配置
         手駒 = 空の手駒
-        
+        移動直後の駒の位置 = nil
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
     

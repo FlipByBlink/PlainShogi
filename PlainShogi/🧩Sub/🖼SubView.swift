@@ -174,7 +174,7 @@ struct 手駒調整シート: View {
                             
                             Spacer()
                         }
-                        .padding(.vertical, 8)
+                        .padding()
                     } onIncrement: {
                         📱.手駒[陣営]?.一個増やす(職名)
                     } onDecrement: {

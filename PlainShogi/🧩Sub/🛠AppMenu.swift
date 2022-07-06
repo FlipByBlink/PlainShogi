@@ -48,7 +48,7 @@ struct 🛠AppMenu: View {
             }
             
             Toggle(isOn: 📱.$🚩移動直後の駒にマークを付ける) {
-                Label("移動直後の駒にマークを付ける", systemImage: "exclamationmark.square")
+                Label("移動直後の駒にマークを付ける", systemImage: "checkmark")
             }
         } header: {
             Text("オプション")
