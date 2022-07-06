@@ -13,7 +13,7 @@ class 📱AppModel: ObservableObject {
     @AppStorage("English表記") var 🚩English表記: Bool = false
     
     
-    @Published var 駒を整理中: Bool = false
+    @Published var 🚩駒を整理中: Bool = false
     
     @Published var 🚩メニューを表示: Bool = false
     

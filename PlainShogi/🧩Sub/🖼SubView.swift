@@ -22,7 +22,7 @@ struct 🛠盤面整理開始ボタン: View {
     var body: some View {
         Button {
             withAnimation {
-                📱.駒を整理中 = true
+                📱.🚩駒を整理中 = true
             }
             
             📱.🚩メニューを表示 = false
@@ -38,7 +38,7 @@ struct 駒を消すボタン: View {
     var 位置: Int
     
     var body: some View {
-        if 📱.駒を整理中 {
+        if 📱.🚩駒を整理中 {
             GeometryReader { 📐 in
                 Button {
                     withAnimation {
@@ -74,7 +74,7 @@ struct 整理完了ボタン: View {
     var body: some View {
         Button {
             withAnimation {
-                📱.駒を整理中 = false
+                📱.🚩駒を整理中 = false
                 UINotificationFeedbackGenerator().notificationOccurred(.success)
             }
         } label: {
@@ -95,7 +95,7 @@ struct 手駒調整ボタン: View {
     @State private var 手駒の数を増減中: Bool = false
     
     var body: some View {
-        if 📱.駒を整理中 {
+        if 📱.🚩駒を整理中 {
             Button {
                 手駒の数を増減中 = true
             } label: {

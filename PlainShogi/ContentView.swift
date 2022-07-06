@@ -160,7 +160,7 @@ struct コマ: View {
             Text(表記)
                 .minimumScaleFactor(0.1)
                 .opacity(ドラッグ中 ? 0.25 : 1.0)
-                .rotationEffect(.degrees(📱.駒を整理中 ? 20 : 0))
+                .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
                 .onChange(of: ドラッグ中) { ⓝewValue in
                     if ⓝewValue {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

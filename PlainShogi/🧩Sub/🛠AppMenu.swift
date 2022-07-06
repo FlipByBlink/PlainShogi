@@ -5,7 +5,7 @@ struct 🛠メニューボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        if 📱.駒を整理中 {
+        if 📱.🚩駒を整理中 {
             整理完了ボタン()
         } else {
             Menu {
