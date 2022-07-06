@@ -5,7 +5,7 @@ enum 王側か玉側か: String, CaseIterable {
 }
 
 
-enum 状況 {
+enum 状況 { //TODO: EditModeもcaseに加えるか検討
     case 盤上の駒をドラッグしている
     case 持ち駒をドラッグしている
     case アプリ外部からドラッグしている
@@ -113,8 +113,6 @@ enum 駒の種類: String, CaseIterable, Identifiable {
 let 空の手駒: [王側か玉側か: 持ち駒] = [.王側: 持ち駒(), .玉側: 持ち駒()]
 
 
-
-
 let 初期配置: [Int: 盤上の駒] = {
     var 配置: [Int: 盤上の駒] = [:]
     
@@ -138,6 +136,7 @@ let 初期配置: [Int: 盤上の駒] = {
 
 
 
+//以前の実装。参考資料として一応残している。
 //enum 駒の種類: String, CaseIterable, Identifiable {
 //
 //    case 歩

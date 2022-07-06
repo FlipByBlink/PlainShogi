@@ -12,7 +12,7 @@ class 📱AppModel: ObservableObject {
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
     
-    @AppStorage("移動直後の駒を目立たせる") var 🚩移動直後の駒を目立たせる: Bool = false
+    @AppStorage("移動直後の駒にマークを付ける") var 🚩移動直後の駒にマークを付ける: Bool = false
     
     
     @Published var 移動直後の駒の位置: Int?

@@ -55,8 +55,8 @@ struct 盤上のコマもしくはマス: View {
         GeometryReader { 📐 in
             if let 駒 = 📱.駒の配置[位置] {
                 コマ(📱.この盤上の駒の表記(駒), $ドラッグ中)
+                    .overlay() { 移動直後マーク(位置) }
                     .rotationEffect(下向き(駒.陣営 == .玉側))
-                    .overlay { 移動直後に目立たせるための枠線(位置) }
                     .overlay { 駒を消すボタン(位置) }
                     .onTapGesture(count: 2) { 📱.駒の配置[位置]?.裏返す() }
                     .onDrag {

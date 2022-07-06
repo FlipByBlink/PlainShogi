@@ -1,14 +1,26 @@
 
 import SwiftUI
 
-struct 移動直後に目立たせるための枠線: View {
+struct 移動直後マーク: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 位置: Int
     
     var body: some View {
-        if 📱.🚩移動直後の駒を目立たせる {
+        if 📱.🚩移動直後の駒にマークを付ける {
             if 📱.移動直後の駒の位置 == 位置 {
-                Rectangle().stroke()
+                GeometryReader { 📐 in
+                    ZStack(alignment: .bottomTrailing) {
+                        Color.clear
+                        
+                        Image(systemName: "checkmark.circle.fill")
+                            .resizable()
+                            .font(.body.weight(.semibold))
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.primary, .background)
+                            .frame(width: 📐.size.width * 1/3,
+                                   height: 📐.size.height * 1/3)
+                    }
+                }
             }
         }
     }
