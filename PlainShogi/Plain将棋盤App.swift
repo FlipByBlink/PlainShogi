@@ -16,8 +16,7 @@ struct Plain将棋盤App: App {
                     🛠メニューボタン()
                 }
                 .sheet(isPresented: $📱.🚩メニューを表示) {
-                    🛠MenuSheet()
-                        .onDisappear { 📱.🚩メニューを表示 = false } //TODO: これ必要かどうか再検討
+                    🛠AppMenu()
                 }
                 .overlay(alignment: .bottom) {
                     📣ADBanner()

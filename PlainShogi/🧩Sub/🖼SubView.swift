@@ -7,7 +7,6 @@ struct 🛠盤面初期化ボタン: View {
     var body: some View {
         Button {
             📱.盤面を初期化する()
-            
             📱.🚩メニューを表示 = false
         } label: {
             Label("盤面を初期化する", systemImage: "arrow.counterclockwise")
@@ -21,11 +20,9 @@ struct 🛠盤面整理開始ボタン: View {
     
     var body: some View {
         Button {
-            withAnimation {
-                📱.🚩駒を整理中 = true
-            }
-            
+            withAnimation { 📱.🚩駒を整理中 = true }
             📱.🚩メニューを表示 = false
+            振動フィードバック()
         } label: {
             Label("駒を消したり増やしたりする", systemImage: "wand.and.rays")
         }
@@ -91,13 +88,13 @@ struct 整理完了ボタン: View {
 struct 手駒調整ボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 陣営: 王側か玉側か
-    
     @State private var 手駒の数を増減中: Bool = false
     
     var body: some View {
         if 📱.🚩駒を整理中 {
             Button {
                 手駒の数を増減中 = true
+                振動フィードバック()
             } label: {
                 Image(systemName: "plusminus")
                     .minimumScaleFactor(0.1)
@@ -106,9 +103,7 @@ struct 手駒調整ボタン: View {
             .tint(.primary)
             .sheet(isPresented: $手駒の数を増減中) {
                 手駒調整シート(陣営)
-                    .onDisappear {
-                        手駒の数を増減中 = false
-                    }
+                    .onDisappear { 手駒の数を増減中 = false }
             }
         }
     }
