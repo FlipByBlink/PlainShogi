@@ -61,37 +61,33 @@ struct 🛠AppMenu: View {
         }
         
         
-        NavigationLink {
-            細かな使い方セクション()
-        } label: {
-            Label("細かな使い方", systemImage: "magazine")
-        }
-        
-        
-        NavigationLink {
-            テキスト書き出し読み込みセクション()
-        } label: {
-            Label("テキスト書き出し/読み込み機能", systemImage: "square.and.arrow.up.on.square")
-        }
+        細かな使い方セクション()
+            
+        テキスト書き出し読み込みセクション()
     }
 }
 
 
 struct 細かな使い方セクション: View {
     var body: some View {
-        List {
-            Section {
-                HStack {
-                    Text("…")
-                        .bold()
-                        .padding()
-                    Text("メニューボタンを長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
+        NavigationLink {
+            List {
+                Section {
+                    Group {
+                    Text("メニューボタン(…←これ)を長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
+                    
+                    Text("移動直後の駒にマークを付いたマークは空白のマスをタップすることで一旦 非表示にすることができます。")
+                    
+                    Text("DynamicTypeに対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
+                    }
+                    .padding()
+                    .font(.subheadline)
                 }
-                
-                Text("移動直後の駒にマークを付いたマークは空白のマスをタップすることで一旦 非表示にすることができます。")
             }
+            .navigationTitle("細かな使い方")
+        } label: {
+            Label("細かな使い方", systemImage: "magazine")
         }
-        .navigationTitle("細かな使い方")
     }
 }
 
@@ -100,26 +96,28 @@ struct テキスト書き出し読み込みセクション: View {
     @EnvironmentObject var 📱: 📱AppModel
     
     var body: some View {
-        List {
-            Section {
-                Group {
+        NavigationLink {
+            List {
+                Section {
                     Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
+                    
                     Label("他のアプリからテキストを盤上にドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
+                } header: {
+                    Text("細かな使い方")
                 }
-                .foregroundStyle(.secondary)
-            } header: {
-                Text("細かな使い方")
+                
+                Section {
+                    Text(📱.現在の盤面をテキストに変換する())
+                        .padding()
+                        .accessibilityLabel("Plain text")
+                        .textSelection(.enabled)
+                } header: {
+                    Text("テキスト書き出し例")
+                }
             }
-            
-            Section {
-                Text(📱.現在の盤面をテキストに変換する())
-                    .padding()
-                    .accessibilityLabel("Plain text")
-                    .textSelection(.enabled)
-            } header: {
-                Text("テキスト書き出し例")
-            }
+            .navigationTitle("テキスト機能")
+        } label: {
+            Label("テキスト書き出し/読み込み機能", systemImage: "square.and.arrow.up.on.square")
         }
-        .navigationTitle("テキスト機能")
     }
 }
