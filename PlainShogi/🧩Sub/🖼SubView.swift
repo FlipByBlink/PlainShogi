@@ -99,9 +99,8 @@ struct 手駒調整ボタン: View {
             Button {
                 手駒の数を増減中 = true
             } label: {
-                Label("手駒の数を増減する", systemImage: "plusminus")
+                Image(systemName: "plusminus")
                     .minimumScaleFactor(0.1)
-                    .labelStyle(.iconOnly)
                     .padding()
             }
             .tint(.primary)

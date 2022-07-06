@@ -5,10 +5,14 @@
 "長押しで駒を持ち上げ、そのままスライドさせて移動する" = "Long press a piece, move it";
 "ダブルタップで盤上の駒を裏返す" = "Double tap a piece on the board: Turn it";
 "盤面を初期化する" = "Initialize";
+"駒を消したり増やしたりする" = "Edit peaces";
 "オプション" = "Option";
 "English表記に変更する" = "English term";
 "細かな使い方" = "More how to";
-"トリプルタップで盤外の駒を削除する" = "Triple tap a piece out of the board: Delete it";
+"メニューボタン( … ←これ)を長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。" = "Launch \"Initialize Button\" / \"Edit Button\" by long press Menu button ";
+"DynamicTypeに対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。" = "Character adapts font size and weight by OS option.";
+"テキスト機能" = "Plain text";
+"テキスト書き出し/読み込み機能" = "Text Export/Import";
 "駒を他のアプリへドラッグして盤面をテキストとして書き出す" = "Export shogi board as plain text by dropping a piece into other apps";
 "他のアプリからテキストを盤上にドロップして盤面を読み込む" = "Import shogi board by dropping export-text into shogi board";
 "テキスト書き出し例" = "Example";

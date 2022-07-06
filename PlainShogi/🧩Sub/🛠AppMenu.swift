@@ -69,13 +69,9 @@ struct 細かな使い方セクション: View {
         NavigationLink {
             List {
                 Section {
-                    Group {
-                        Text("メニューボタン(…←これ)を長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
-                        
-                        Text("DynamicTypeに対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
-                    }
-                    .padding()
-                    .font(.subheadline)
+                    Text("メニューボタン( … ←これ)を長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
+                    
+                    Text("DynamicTypeに対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
                 }
             }
             .navigationTitle("細かな使い方")
@@ -96,8 +92,6 @@ struct テキスト書き出し読み込みセクション: View {
                     Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
                     
                     Label("他のアプリからテキストを盤上にドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
-                } header: {
-                    Text("細かな使い方")
                 }
                 
                 Section {
