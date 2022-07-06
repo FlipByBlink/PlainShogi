@@ -14,7 +14,7 @@ struct 移動直後マーク: View {
                         
                         Image(systemName: "checkmark.circle.fill")
                             .resizable()
-                            .font(.body.weight(.semibold))
+                            .font(.body.weight(.medium))
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(.primary, .background)
                             .frame(width: 📐.size.width * 1/3,
