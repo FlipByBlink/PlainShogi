@@ -84,10 +84,12 @@ struct 細かな使い方セクション: View {
             List {
                 VStack {
                     Text("メニューボタン( … ←これ)を長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
+                        .minimumScaleFactor(0.1)
                     
                     Image("MenuLongPress")
                         .resizable()
                         .scaledToFit()
+                        .frame(maxHeight: 240)
                         .border(.primary)
                         .padding()
                 }
