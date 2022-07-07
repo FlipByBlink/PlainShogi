@@ -149,7 +149,7 @@ struct テキスト書き出し読み込みセクション: View {
     }
 }
 
-//TODO: TimelineView検討
+
 struct テキスト変換プレビュー: View {
     var 🄽ameSpace: String
     var 🄸mageVolume: Int
@@ -191,15 +191,5 @@ struct テキスト変換プレビュー: View {
     init (_ 🄽ameSpace: String, 🄸mageVolume: Int) {
         self.🄽ameSpace = 🄽ameSpace
         self.🄸mageVolume = 🄸mageVolume
-    }
-}
-
-struct MyPreviewProvider_Previews: PreviewProvider {
-    static var previews: some View {
-        List {
-            テキスト変換プレビュー("TextExport", 🄸mageVolume: 3)
-            
-            テキスト変換プレビュー("TextImport", 🄸mageVolume: 5)
-        }
     }
 }
