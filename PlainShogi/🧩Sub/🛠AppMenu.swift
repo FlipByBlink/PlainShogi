@@ -154,31 +154,32 @@ struct テキスト変換プレビュー: View {
     var 🄽ameSpace: String
     var 🄸mageVolume: Int
     
-    @State private var 🄲ount: Int = 1
+    @State private var 🄲ount: Int = 3
     
     var body: some View {
-        ZStack {
-            ForEach( 1 ..< 🄸mageVolume+1, id: \.self) { ⓝumber in
-                if ⓝumber == 🄲ount {
-                    Image(🄽ameSpace + "/" + 🄲ount.description)
-                        .resizable()
-                        .scaledToFit()
-                        .overlay {
-                            GeometryReader { 📐 in
-                                ZStack(alignment: .bottomLeading) {
-                                    Color.clear
-                                    
-                                    Rectangle()
-                                        .foregroundColor(.gray)
-                                        .frame(width: CGFloat(🄲ount) * 📐.size.width/CGFloat(🄸mageVolume), height: 2)
-                                }
-                            }
-                        }//FIXME: ダークモードで微妙
-                        .cornerRadius(4)
+        VStack(spacing: 4) {
+            ZStack {
+                ForEach( 1 ..< 🄸mageVolume+1, id: \.self) { ⓝumber in
+                    if ⓝumber == 🄲ount {
+                        Image(🄽ameSpace + "/" + 🄲ount.description)
+                            .resizable()
+                            .scaledToFit()
+                    }
                 }
             }
+            
+            ZStack(alignment: .leading) {
+                GeometryReader { 📐 in
+                    Color.clear
+                    
+                    Rectangle()
+                        .foregroundStyle(.secondary)
+                        .frame(width: CGFloat(🄲ount) * 📐.size.width/CGFloat(🄸mageVolume))
+                }
+            }
+            .frame(height: 2)
         }
-        .onAppear { 🄲ount = 2 }
+        .onAppear { 🄲ount = 1 }
         .onChange(of: 🄲ount) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                 if 🄲ount == 🄸mageVolume {
@@ -188,7 +189,7 @@ struct テキスト変換プレビュー: View {
                 }
             }
         }
-        .animation(.default.speed(0.4), value: 🄲ount)
+        .animation(.default.speed(0.5), value: 🄲ount)
     }
     
     init (_ 🄽ameSpace: String, 🄸mageVolume: Int) {
