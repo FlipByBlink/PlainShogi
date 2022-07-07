@@ -117,6 +117,14 @@ struct 手駒調整シート: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.dismiss) var 🔙: DismissAction
     var 陣営: 王側か玉側か
+    var タイトル: String {
+        switch (陣営,📱.🚩English表記) {
+            case (.王側, false): return "王側の手駒"
+            case (.王側, true): return "↑ pieces ↑"
+            case (.玉側, false): return "玉側の手駒"
+            case (.玉側, true): return "↓ pieces ↓"
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -146,7 +154,7 @@ struct 手駒調整シート: View {
                 }
             }
             .listStyle(.plain)
-            .navigationTitle(陣営.rawValue)
+            .navigationTitle(タイトル)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
