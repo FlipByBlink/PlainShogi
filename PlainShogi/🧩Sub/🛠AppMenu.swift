@@ -125,12 +125,12 @@ struct テキスト書き出し読み込みセクション: View {
             List {
                 Section {
                     Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
-                    テキスト書き出し読み込みプレビュー("TextExport", 画像の枚数: 3)
+                    テキスト変換プレビュー("TextExport", 画像の枚数: 3)
                 }
                 
                 Section {
                     Label("他のアプリからテキストを盤上にドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
-                    テキスト書き出し読み込みプレビュー("TextImport", 画像の枚数: 5)
+                    テキスト変換プレビュー("TextImport", 画像の枚数: 5)
                 }
                 
                 Section {
@@ -151,7 +151,7 @@ struct テキスト書き出し読み込みセクション: View {
 
 //TODO: TimelineView検討
 //TODO: Taskとかも検討
-struct テキスト書き出し読み込みプレビュー: View {
+struct テキスト変換プレビュー: View {
     var NameSpace: String
     var 画像の枚数: Int
     @State private var 🏷FileName: Int = 0
@@ -160,24 +160,19 @@ struct テキスト書き出し読み込みプレビュー: View {
         Image(NameSpace + "/" + 🏷FileName.description)
             .resizable()
             .scaledToFit()
-            .cornerRadius(6)
+            .cornerRadius(4)
             .onAppear {
                 🏷FileName = 1
             }
             .onChange(of: 🏷FileName) { newValue in
-                if newValue == 画像の枚数 {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    if newValue == 画像の枚数 {
                         🏷FileName = 1
-                    }
-                } else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        withAnimation(.easeInOut) {
-                            🏷FileName += 1
-                        }
+                    } else {
+                        🏷FileName += 1
                     }
                 }
             }
-            
     }
     
     init (_ NameSpace: String, 画像の枚数: Int) {
@@ -189,9 +184,9 @@ struct テキスト書き出し読み込みプレビュー: View {
 struct MyPreviewProvider_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            テキスト書き出し読み込みプレビュー("TextExport", 画像の枚数: 3)
+            テキスト変換プレビュー("TextExport", 画像の枚数: 3)
             
-            テキスト書き出し読み込みプレビュー("TextImport", 画像の枚数: 5)
+            テキスト変換プレビュー("TextImport", 画像の枚数: 5)
         }
     }
 }
