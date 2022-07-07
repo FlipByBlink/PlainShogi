@@ -5,7 +5,8 @@
 "長押しで駒を持ち上げ、そのままスライドさせて移動する" = "Long press a piece, move it";
 "ダブルタップで盤上の駒を裏返す" = " Turn a piece on the board by double tap";
 "盤面を初期化する" = "Initialize";
-"駒を消したり増やしたりする" = "Edit peaces";
+"駒を消したり増やしたりする" = "Edit pieces";
+"手駒を整理する" = "Edit captured pieces";
 "オプション" = "Option";
 "English表記に変更する" = "English term";
 "細かな使い方" = "More how to";

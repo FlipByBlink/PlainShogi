@@ -80,7 +80,7 @@ struct 整理完了ボタン: View {
                 .padding(24)
         }
         .tint(.secondary)
-        .accessibilityLabel("DONE")
+        .accessibilityLabel("Done")
     }
 }
 
@@ -100,6 +100,7 @@ struct 手駒調整ボタン: View {
                     .minimumScaleFactor(0.1)
                     .padding()
             }
+            .accessibilityLabel("手駒を整理する")
             .tint(.primary)
             .sheet(isPresented: $手駒の数を増減中) {
                 手駒調整シート(陣営)
