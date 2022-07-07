@@ -154,38 +154,41 @@ struct テキスト変換プレビュー: View {
     var 🄽ameSpace: String
     var 🄸mageVolume: Int
     
-    @State private var 🄲ount: Int = 0
-    
-    var 🚩First: Bool { 🄲ount == 0 }
-    var 🏷FileName: String {
-        let 🏷 = 🚩First ? "1" : 🄲ount.description
-        return 🄽ameSpace + "/" + 🏷
-    }
+    @State private var 🄲ount: Int = 1
     
     var body: some View {
         ZStack {
-            ForEach( 0 ..< 🄸mageVolume+1, id: \.self) { ⓝumber in
+            ForEach( 1 ..< 🄸mageVolume+1, id: \.self) { ⓝumber in
                 if ⓝumber == 🄲ount {
-                    Image(🏷FileName)
+                    Image(🄽ameSpace + "/" + 🄲ount.description)
                         .resizable()
                         .scaledToFit()
+                        .overlay {
+                            GeometryReader { 📐 in
+                                ZStack(alignment: .bottomLeading) {
+                                    Color.clear
+                                    
+                                    Rectangle()
+                                        .foregroundColor(.gray)
+                                        .frame(width: CGFloat(🄲ount) * 📐.size.width/CGFloat(🄸mageVolume), height: 2)
+                                }
+                            }
+                        }//FIXME: ダークモードで微妙
                         .cornerRadius(4)
-                        .opacity(🚩First ? 0.4 : 1.0)
-                        .grayscale(🚩First ? 1 : 0)
                 }
             }
         }
-        .onAppear { 🄲ount = 1 }
+        .onAppear { 🄲ount = 2 }
         .onChange(of: 🄲ount) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                 if 🄲ount == 🄸mageVolume {
-                    🄲ount = 0
+                    🄲ount = 1
                 } else {
                     🄲ount += 1
                 }
             }
         }
-        .animation(.default.speed(0.5), value: 🄲ount)
+        .animation(.default.speed(0.4), value: 🄲ount)
     }
     
     init (_ 🄽ameSpace: String, 🄸mageVolume: Int) {
