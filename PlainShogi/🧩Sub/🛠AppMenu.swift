@@ -154,7 +154,7 @@ struct テキスト書き出し読み込みセクション: View {
 struct テキスト変換プレビュー: View {
     var NameSpace: String
     var 画像の枚数: Int
-    @State private var 🏷FileName: Int = 0
+    @State private var 🏷FileName: Int = 2
     
     var body: some View {
         Image(NameSpace + "/" + 🏷FileName.description)
@@ -173,6 +173,7 @@ struct テキスト変換プレビュー: View {
                     }
                 }
             }
+            .animation(.default, value: 🏷FileName)
     }
     
     init (_ NameSpace: String, 画像の枚数: Int) {
