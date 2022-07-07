@@ -125,12 +125,12 @@ struct テキスト書き出し読み込みセクション: View {
             List {
                 Section {
                     Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
-                    テキスト変換プレビュー("TextExport", 画像の枚数: 3)
+                    テキスト変換プレビュー("TextExport", 🄸mageVolume: 3)
                 }
                 
                 Section {
                     Label("他のアプリからテキストを盤上にドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
-                    テキスト変換プレビュー("TextImport", 画像の枚数: 5)
+                    テキスト変換プレビュー("TextImport", 🄸mageVolume: 5)
                 }
                 
                 Section {
@@ -150,44 +150,56 @@ struct テキスト書き出し読み込みセクション: View {
 }
 
 //TODO: TimelineView検討
-//TODO: Taskとかも検討
 struct テキスト変換プレビュー: View {
-    var NameSpace: String
-    var 画像の枚数: Int
-    @State private var 🏷FileName: Int = 2
+    var 🄽ameSpace: String
+    var 🄸mageVolume: Int
     
-    var body: some View {
-        Image(NameSpace + "/" + 🏷FileName.description)
-            .resizable()
-            .scaledToFit()
-            .cornerRadius(4)
-            .onAppear {
-                🏷FileName = 1
-            }
-            .onChange(of: 🏷FileName) { newValue in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    if newValue == 画像の枚数 {
-                        🏷FileName = 1
-                    } else {
-                        🏷FileName += 1
-                    }
-                }
-            }
-            .animation(.default, value: 🏷FileName)
+    @State private var 🄲ount: Int = 0
+    
+    var 🚩First: Bool { 🄲ount == 0 }
+    var 🏷FileName: String {
+        let 🏷 = 🚩First ? "1" : 🄲ount.description
+        return 🄽ameSpace + "/" + 🏷
     }
     
-    init (_ NameSpace: String, 画像の枚数: Int) {
-        self.NameSpace = NameSpace
-        self.画像の枚数 = 画像の枚数
+    var body: some View {
+        ZStack {
+            ForEach( 0 ..< 🄸mageVolume+1, id: \.self) { ⓝumber in
+                if ⓝumber == 🄲ount {
+                    Image(🏷FileName)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(4)
+                        .opacity(🚩First ? 0.4 : 1.0)
+                        .grayscale(🚩First ? 1 : 0)
+                }
+            }
+        }
+        .onAppear { 🄲ount = 1 }
+        .onChange(of: 🄲ount) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                if 🄲ount == 🄸mageVolume {
+                    🄲ount = 0
+                } else {
+                    🄲ount += 1
+                }
+            }
+        }
+        .animation(.default.speed(0.5), value: 🄲ount)
+    }
+    
+    init (_ 🄽ameSpace: String, 🄸mageVolume: Int) {
+        self.🄽ameSpace = 🄽ameSpace
+        self.🄸mageVolume = 🄸mageVolume
     }
 }
 
 struct MyPreviewProvider_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            テキスト変換プレビュー("TextExport", 画像の枚数: 3)
+            テキスト変換プレビュー("TextExport", 🄸mageVolume: 3)
             
-            テキスト変換プレビュー("TextImport", 画像の枚数: 5)
+            テキスト変換プレビュー("TextImport", 🄸mageVolume: 5)
         }
     }
 }
