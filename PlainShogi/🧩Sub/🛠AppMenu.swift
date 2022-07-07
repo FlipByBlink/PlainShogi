@@ -82,9 +82,29 @@ struct 細かな使い方セクション: View {
     var body: some View {
         NavigationLink {
             List {
-                Section {
+                VStack {
                     Text("メニューボタン( … ←これ)を長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
-                    Text("DynamicTypeに対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
+                    
+                    Image("MenuLongPress")
+                        .resizable()
+                        .scaledToFit()
+                        .border(.primary)
+                        .padding()
+                }
+                .padding()
+                
+                Section {
+                    HStack {
+                        Text("DynamicTypeに対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
+                        
+                        VStack {
+                            ForEach(DynamicTypeSize.allCases, id: \.self) { 📏 in
+                                Text("歩")
+                                    .dynamicTypeSize(📏)
+                            }
+                        }
+                        .padding()
+                    }
                 }
             }
             .navigationTitle("細かな使い方")
