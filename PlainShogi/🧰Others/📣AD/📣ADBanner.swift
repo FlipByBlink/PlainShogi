@@ -3,12 +3,8 @@ import SwiftUI
 
 struct 📣ADBanner: View {
     @EnvironmentObject var 🛒: 🛒StoreModel
-    
     @State private var 🚩ShowBanner = false
-    
     @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
-    
-    let 🅃iming: Int = 3
     
     var body: some View {
         Group {
@@ -23,27 +19,22 @@ struct 📣ADBanner: View {
                                 🚩ShowBanner = false
                                 UISelectionFeedbackGenerator().selectionChanged()
                             } label: {
-                                Image(systemName: "xmark.circle")
-                                    .symbolRenderingMode(.hierarchical)
-                                    .imageScale(.large)
-                                    .background {
-                                        Circle()
-                                            .foregroundStyle(.background)
-                                            .opacity(0.5)
-                                    }
-                                    .padding(6)
-                                    .padding(.trailing, 2)
+                                Image(systemName: "xmark.circle.fill")
+                                    .symbolRenderingMode(.multicolor)
+                                    .font(.title)
+                                    .offset(y: -26)
+                                    .shadow(radius: 1.5)
+                                    .padding()
                             }
-                            .tint(.pink)
                         }
                         .background {
                             RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .foregroundStyle(.background)
-                                .shadow(radius: 3)
+                                .shadow(color: .secondary, radius: 3, y: 0.5)
                         }
-                        .padding()
+                        .padding(14)
                         .transition(.move(edge: .bottom))
-                        .frame(minWidth: 300)
+                        .frame(minWidth: 250)
                 }
             }
         }
@@ -52,10 +43,8 @@ struct 📣ADBanner: View {
         .onAppear {
             🄻aunchCount += 1
             
-            Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { _ in
-                if 🄻aunchCount % 🅃iming == 0 {
-                    🚩ShowBanner = true
-                }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                if 🄻aunchCount > 5 { 🚩ShowBanner = true }
             }
         }
     }
