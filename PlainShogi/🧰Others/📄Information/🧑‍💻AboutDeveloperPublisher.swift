@@ -1,7 +1,17 @@
 
 import SwiftUI
 
-struct 🧑‍💻AboutDeveloperPublisher: View {
+struct 🧑‍💻AboutDeveloperPublisherLink: View {
+    var body: some View {
+        NavigationLink {
+            🧑‍💻AboutDeveloperPublisherMenu()
+        } label: {
+            Label("Developer / Publisher", systemImage: "person")
+        }
+    }
+}
+
+struct 🧑‍💻AboutDeveloperPublisherMenu: View {
     var body: some View {
         List {
             Section {

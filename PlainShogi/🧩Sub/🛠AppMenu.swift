@@ -54,7 +54,7 @@ struct 🛠AppMenu: View {
                 細かな使い方セクション()
                 テキスト書き出し読み込みセクション()
                 
-                📣ADMenu()
+                📣ADMenuLink()
                 📄InformationMenuLink()
             }
             .navigationTitle("Plain将棋盤")

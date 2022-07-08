@@ -263,8 +263,8 @@
 			children = (
 				12D436A12865CD8400B707F5 /* 📣ADMenu.swift */,
 				12D4369F2865CD8400B707F5 /* 📣ADView.swift */,
-				12D436A02865CD8400B707F5 /* 📣AppName.swift */,
 				12D436A22865CD8400B707F5 /* 📣ADBanner.swift */,
+				12D436A02865CD8400B707F5 /* 📣AppName.swift */,
 			);
 			path = "📣AD";
 			sourceTree = "<group>";

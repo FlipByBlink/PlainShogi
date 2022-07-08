@@ -30,9 +30,7 @@ struct 📄InformationMenu: View {
                         .padding(8)
                         .accessibilityLabel("About")
                 }
-            } header: {
-                Text("About")
-            }
+            } header: { Text("About") }
             
             
             let 🔗 = "https://apps.apple.com/app/id1620268476"
@@ -40,18 +38,11 @@ struct 📄InformationMenu: View {
                 Link(destination: URL(string: 🔗)!) {
                     HStack {
                         Label("Open AppStore page", systemImage: "link")
-                        
                         Spacer()
-                        
                         Image(systemName: "arrow.up.forward.app")
                     }
                 }
-            } footer: {
-                Text(🔗)
-            }
-            
-            
-            🕒VersionHistoryLink()
+            } footer: { Text(🔗) }
             
             
             Section {
@@ -59,10 +50,10 @@ struct 📄InformationMenu: View {
                     Text("""
                         2022-04-21
                         
-                        ### Japanese
+                        (Japanese)
                         このアプリ自身において、ユーザーの情報を一切収集しません。
                         
-                        ### English
+                        (English)
                         This application don't collect user infomation.
                         """)
                     .padding(32)
@@ -74,18 +65,9 @@ struct 📄InformationMenu: View {
             }
             
             
-            NavigationLink {
-                📓SourceCodeMenu()
-            } label: {
-                Label("Source code", systemImage: "doc.plaintext")
-            }
-            
-            
-            NavigationLink {
-                🧑‍💻AboutDeveloperPublisher()
-            } label: {
-                Label("Developer / Publisher", systemImage: "person")
-            }
+            🕒VersionHistoryLink()
+            📓SourceCodeLink()
+            🧑‍💻AboutDeveloperPublisherLink()
         }
         .navigationTitle("Information")
     }
