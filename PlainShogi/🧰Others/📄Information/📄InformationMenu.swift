@@ -26,7 +26,7 @@ struct 📄InformationMenu: View {
                 }
                 
                 
-                🏷VersionSection()
+                🕒VersionHistoryLink()
                 
                 
                 let 🔗 = "https://apps.apple.com/app/id1620268476"

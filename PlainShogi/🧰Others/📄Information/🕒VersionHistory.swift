@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct 🏷VersionSection: View {
+struct 🕒VersionHistoryLink: View {
     var body: some View {
         Section {
             NavigationLink {
@@ -29,11 +29,23 @@ struct 🏷VersionSection: View {
 let 🕒LatestVersionNumber = "1.2"
 
 let 🕒LatestVersionDescription = """
-- ああああ
-- いくつかの改善やバグ修正を行いました。
+- 盤面の駒を盤外へ直接移動できるように変更
+- 簡単に駒を消したり増やしたりする機能の追加
+- 初期化等のショートカットをメニューボタン長押しで呼び出す機能を追加
+- アプリ内広告バナーの表示頻度を「3回起動毎に起動直後1回」から「起動6回以降は起動直後毎回」に変更
+- アプリ内課金で広告非表示にできる機能を実装
+- 手駒を3回タップして消す機能の削除
+- 広くリファクタリング
+- いくつかの小さめの改善やバグ修正
 ==== English ====
-- AAAA
-- Various bugfixes and improvements.
+- Directly move a piece to out-of-board
+- Add Edit Mode
+- Add shortcut function by long press menu button
+- Change frequency in AD
+- Add In-App Purchase to hide AD
+- Delete function to delete a piece by 3 tapping
+- Widely refactoring
+- Various bugfixes and improvements
 """
 
 var 🕒VersionHistory: String {
