@@ -18,3 +18,20 @@
 "他のアプリからテキストを盤上にドロップして盤面を読み込む" = "Import shogi board by dropping export-text into shogi board";
 "テキスト書き出し例" = "Example";
 "テキスト" = "Text";
+
+
+// ==== AppStore Description ====
+"🌏AppStoreDescription" = "Simple Shogi board App.
+
+You can move a piece freely.
+
+This app based on iOS system UI design.
+
+Character adapts font size and weight by OS option.
+
+Output/Input function to/from plain text.
+
+English term option.
+
+You can reduce a piece.
+";

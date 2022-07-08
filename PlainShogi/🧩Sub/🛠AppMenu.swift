@@ -55,7 +55,7 @@ struct 🛠AppMenu: View {
                 テキスト書き出し読み込みセクション()
                 
                 📣ADMenu()
-                📄InformationMenu()
+                📄InformationMenuLink()
             }
             .navigationTitle("Plain将棋盤")
             .toolbar {

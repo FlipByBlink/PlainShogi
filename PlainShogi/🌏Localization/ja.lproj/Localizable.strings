@@ -40,3 +40,18 @@
 "Register weight data to the Apple \"Health\" application pre-installed on iPhone in the fastest possible way (as manual)." = "「ヘルスケア」アプリに体重データを(手動としては)最速で登録するためのアプリ。";
 
 "Register body temperature data to the \"Health\" app pre-installed on iPhone in the fastest possible way (as manual)." = "「ヘルスケア」アプリに体温データを(手動としては)最速で登録するためのアプリ。";
+
+
+// ==== AppStore Description ====
+"🌏AppStoreDescription" = "駒を自由に動かせるただの将棋盤です。
+
+iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
+
+文字のサイズや太さなどはOSシステム設定に適応して変わります。
+
+盤面をテキストデータとして書き出したり読み込んだり出来ます。
+
+駒を英語表記に変えられます。
+
+任意の駒を減らすことも出来ます。
+";
