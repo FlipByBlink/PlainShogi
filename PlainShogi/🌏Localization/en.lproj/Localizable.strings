@@ -19,7 +19,6 @@
 "テキスト書き出し例" = "Example";
 "テキスト" = "Text";
 
-
 // ==== AppStore Description ====
 "🌏AppStoreDescription" = "Simple Shogi board App.
 
@@ -33,5 +32,5 @@ Output/Input function to/from plain text.
 
 English term option.
 
-You can reduce a piece.
+You can reduce / increase pieces.
 ";

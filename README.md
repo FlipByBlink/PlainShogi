@@ -11,7 +11,7 @@
 [apps.apple.com/app/id1620268476](https://apps.apple.com/app/id1620268476)
 
 
-<!-- Manually sync below text between "📄AppDescription.swift" and "/README.md(here)" and "AppStoreConnect/_/Description". -->
+<!-- Manually sync below text between "/README.md(here)" and "Localizable.strings" and "AppStoreConnect/_/Description". -->
 
 ## 📄 Description
 
@@ -25,7 +25,7 @@ iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 
 駒を英語表記に変えられます。
 
-任意の駒を減らすことも出来ます。
+任意の駒を消したり増やしたりことも出来ます。
 
 
 <!--==== English description ====-->
@@ -42,7 +42,7 @@ Output/Input function to/from plain text.
 
 English term option.
 
-You can reduce a piece.
+You can reduce / increase pieces.
 
 
 ==== Localization: All ====
