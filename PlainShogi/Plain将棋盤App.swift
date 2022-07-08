@@ -12,15 +12,9 @@ struct Plain将棋盤App: App {
         WindowGroup {
             ContentView()
                 .statusBar(hidden: true)
-                .overlay(alignment: .bottomTrailing) {
-                    🛠メニューボタン()
-                }
-                .sheet(isPresented: $📱.🚩メニューを表示) {
-                    🛠AppMenu()
-                }
-                .overlay(alignment: .bottom) {
-                    📣ADBanner()
-                }
+                .overlay(alignment: .bottomTrailing) { 🛠メニューボタン() }
+                .sheet(isPresented: $📱.🚩メニューを表示) { 🛠AppMenu() }
+                .overlay(alignment: .bottom) { 📣ADBanner() }
                 .environmentObject(📱)
                 .environmentObject(🛒)
         }

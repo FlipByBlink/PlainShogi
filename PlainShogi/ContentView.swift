@@ -67,8 +67,7 @@ struct 盤上のコマもしくはマス: View {
                             .frame(height: 📐.size.height + 8)
                     }
             } else { // ==== マス ====
-                Rectangle()
-                    .foregroundStyle(.background)
+                Rectangle().foregroundStyle(.background)
             }
         }
         .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, 位置))
@@ -112,11 +111,7 @@ struct 盤外のコマ: View {
     var 持ち駒の表記: String { 📱.この持ち駒の表記(陣営, 職名) }
     var 持ち駒の数: Int { 📱.この持ち駒の数(陣営, 職名) }
     var 持ち駒の数の表記: String {
-        if 持ち駒の数 >= 2 {
-            return 持ち駒の数.description
-        } else {
-            return ""
-        }
+        持ち駒の数 >= 2 ? 持ち駒の数.description : ""
     }
     
     var body: some View {
@@ -155,8 +150,7 @@ struct コマ: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .foregroundStyle(.background)
+            Rectangle().foregroundStyle(.background)
             
             Text(表記)
                 .minimumScaleFactor(0.1)
@@ -187,8 +181,7 @@ struct コマのプレビュー: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .foregroundStyle(.background)
+            Rectangle().foregroundStyle(.background)
             
             Text(表記)
                 .minimumScaleFactor(0.1)
@@ -208,11 +201,7 @@ struct コマのプレビュー: View {
 
 
 func 下向き(_ 玉側かどうか: Bool) -> Angle {
-    if 玉側かどうか {
-        return .degrees(180)
-    } else {
-        return .zero
-    }
+    玉側かどうか ? .degrees(180) : .zero
 }
 
 

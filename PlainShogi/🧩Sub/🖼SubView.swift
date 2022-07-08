@@ -117,9 +117,9 @@ struct 手駒調整シート: View {
     var タイトル: String {
         switch (陣営,📱.🚩English表記) {
             case (.王側, false): return "王側の手駒"
-            case (.王側, true): return "↑"
+            case (.王側, true): return "↑ Pieces"
             case (.玉側, false): return "玉側の手駒"
-            case (.玉側, true): return "↓"
+            case (.玉側, true): return "↓ Pieces"
         }
     }
     
