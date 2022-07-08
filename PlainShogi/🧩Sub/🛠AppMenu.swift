@@ -167,17 +167,10 @@ struct テキスト変換プレビュー: View {
                     }
                 }
             }
+            .background(.white)
             
-            ZStack(alignment: .leading) {
-                GeometryReader { 📐 in
-                    Color.clear
-                    
-                    Rectangle()
-                        .foregroundStyle(.secondary)
-                        .frame(width: CGFloat(🄲ount) * 📐.size.width/CGFloat(🄸mageVolume))
-                }
-            }
-            .frame(height: 2)
+            ProgressView(value: Double(🄲ount), total: Double(🄸mageVolume))
+                .grayscale(1)
         }
         .onAppear { 🄲ount = 1 }
         .onChange(of: 🄲ount) { _ in
