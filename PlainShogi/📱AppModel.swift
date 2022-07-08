@@ -15,7 +15,7 @@ class 📱AppModel: ObservableObject {
     
     @Published var 🚩駒を整理中: Bool = false
     
-    @Published var 🚩メニューを表示: Bool = true
+    @Published var 🚩メニューを表示: Bool = false
     
     
     var ドラッグした盤上の駒の元々の位置: Int? = nil
