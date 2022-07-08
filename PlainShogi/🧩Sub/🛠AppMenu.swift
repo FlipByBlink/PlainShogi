@@ -125,7 +125,7 @@ struct テキスト書き出し読み込みセクション: View {
             List {
                 Section {
                     Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
-                    テキスト変換プレビュー("TextExport", 🄸mageVolume: 3)
+                    テキスト変換プレビュー("TextExport", 🄸mageVolume: 4)
                 }
                 
                 Section {
@@ -154,12 +154,12 @@ struct テキスト変換プレビュー: View {
     var 🄽ameSpace: String
     var 🄸mageVolume: Int
     
-    @State private var 🄲ount: Int = 3
+    @State private var 🄲ount: Int = 1
     
     var body: some View {
         VStack(spacing: 4) {
             ZStack {
-                ForEach( 1 ..< 🄸mageVolume+1, id: \.self) { ⓝumber in
+                ForEach( 0 ..< 🄸mageVolume, id: \.self) { ⓝumber in
                     if ⓝumber == 🄲ount {
                         Image(🄽ameSpace + "/" + 🄲ount.description)
                             .resizable()
@@ -169,14 +169,14 @@ struct テキスト変換プレビュー: View {
             }
             .background(.white)
             
-            ProgressView(value: Double(🄲ount), total: Double(🄸mageVolume))
+            ProgressView(value: Double(🄲ount), total: Double(🄸mageVolume - 1))
                 .grayscale(1)
         }
-        .onAppear { 🄲ount = 1 }
+        .onAppear { 🄲ount = 0 }
         .onChange(of: 🄲ount) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                if 🄲ount == 🄸mageVolume {
-                    🄲ount = 1
+                if 🄲ount == 🄸mageVolume - 1 {
+                    🄲ount = 0
                 } else {
                     🄲ount += 1
                 }
