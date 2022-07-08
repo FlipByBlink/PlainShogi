@@ -81,11 +81,11 @@ struct 📄InformationMenu: View {
             }
             
             
-//            NavigationLink {
-//                🧑‍💻AboutDeveloperPublisher()
-//            } label: {
-//                Label("Developer / Publisher", systemImage: "person")
-//            }
+            NavigationLink {
+                🧑‍💻AboutDeveloperPublisher()
+            } label: {
+                Label("Developer / Publisher", systemImage: "person")
+            }
         }
         .navigationTitle("Information")
     }
