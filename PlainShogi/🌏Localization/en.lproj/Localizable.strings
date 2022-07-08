@@ -20,7 +20,7 @@
 "テキスト" = "Text";
 
 // ==== AppStore Description ====
-"🌏AppStoreDescription" = "Simple Shogi board App.
+"🌏AppStoreDescription" = "Simple Shogi board.
 
 You can move a piece freely.
 
@@ -28,11 +28,11 @@ This app based on iOS system UI design.
 
 Character adapts font size and weight by OS option.
 
-Output/Input function to/from plain text.
+You can reduce / increase pieces.
 
 English term option.
 
-You can reduce / increase pieces.
+Output/Input function to/from plain text.
 ";
 
 // ===========================================

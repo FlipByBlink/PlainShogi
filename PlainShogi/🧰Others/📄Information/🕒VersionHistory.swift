@@ -32,8 +32,8 @@ let 🕒LatestVersionDescription = """
 - 盤面の駒を盤外へ直接移動できるように変更
 - 簡単に駒を消したり増やしたりする機能の追加
 - 初期化等のショートカットをメニューボタン長押しで呼び出す機能を追加
-- アプリ内課金で広告非表示にできる機能を実装
 - 手駒を3回タップして消す機能の削除
+- アプリ内課金で広告非表示にできる機能を実装
 - アプリ内広告バナーの表示頻度を「3回起動毎に起動直後1回」から「起動6回以降は起動直後毎回」に変更
 - 広くリファクタリング
 - いくつかの小さめの改善やバグ修正
@@ -41,8 +41,8 @@ let 🕒LatestVersionDescription = """
 - Directly move a piece to out-of-board
 - Add Edit Mode
 - Add shortcut function by long press menu button
-- Add In-App Purchase to hide AD
 - Delete function to delete a piece by 3 tapping
+- Add In-App Purchase to hide AD
 - Change frequency in AD ("1 in 3" → "after 5, every")
 - Widely refactoring
 - Various bugfixes and improvements
