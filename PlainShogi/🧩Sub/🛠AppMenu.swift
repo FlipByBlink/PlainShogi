@@ -83,7 +83,7 @@ struct 細かな使い方セクション: View {
         NavigationLink {
             List {
                 VStack {
-                    Text("メニューボタン( … ←これ)を長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
+                    Text("メニューボタンを長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
                         .minimumScaleFactor(0.1)
                     
                     Image("MenuLongPress")
@@ -97,7 +97,7 @@ struct 細かな使い方セクション: View {
                 
                 Section {
                     HStack {
-                        Text("DynamicTypeに対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
+                        Text("Dynamic Type に対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
                         
                         VStack {
                             ForEach(DynamicTypeSize.allCases, id: \.self) { 📏 in
@@ -124,12 +124,12 @@ struct テキスト書き出し読み込みセクション: View {
         NavigationLink {
             List {
                 Section {
-                    Label("駒を他のアプリへドラッグして盤面をテキストとして書き出す", systemImage: "square.and.arrow.up")
+                    Label("駒を他のアプリへドラッグして盤面をテキストとして書き出せます。", systemImage: "square.and.arrow.up")
                     テキスト変換プレビュー("TextExport", 🄸mageVolume: 4)
                 }
                 
                 Section {
-                    Label("他のアプリからテキストを盤上にドロップして盤面を読み込む", systemImage: "square.and.arrow.down")
+                    Label("他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。", systemImage: "square.and.arrow.down")
                     テキスト変換プレビュー("TextImport", 🄸mageVolume: 5)
                 }
                 
@@ -138,9 +138,7 @@ struct テキスト書き出し読み込みセクション: View {
                         .padding()
                         .accessibilityLabel("テキスト")
                         .textSelection(.enabled)
-                } header: {
-                    Text("テキスト書き出し例")
-                }
+                } header: { Text("テキスト書き出し例") }
             }
             .navigationTitle("テキスト機能")
         } label: {
