@@ -90,7 +90,7 @@ struct 🛒ProductPreview: View {
             
             Image(systemName: "arrow.right")
                 .font(.title2.weight(.semibold))
-                .foregroundStyle(.tertiary)
+                .foregroundStyle(.secondary)
             
             Image("ProductPreview_After")
                 .resizable()
