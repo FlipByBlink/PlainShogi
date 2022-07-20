@@ -157,7 +157,7 @@ class 📱AppModel: ObservableObject {
     func 駒を移動し終わったらログを更新してフィードバックを発生させる() {
         現状 = .何もドラッグしてない
         ログを更新する()
-        振動フィードバック()
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
     }
     
     
