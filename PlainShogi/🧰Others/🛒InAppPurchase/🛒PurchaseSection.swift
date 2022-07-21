@@ -86,7 +86,6 @@ struct 🛒ProductPreview: View {
                 .resizable()
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .scaledToFit()
-                .shadow(radius: 2)
             
             Image(systemName: "arrow.right")
                 .font(.title2.weight(.semibold))
@@ -96,7 +95,6 @@ struct 🛒ProductPreview: View {
                 .resizable()
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .scaledToFit()
-                .shadow(radius: 2)
         }
         .padding(.horizontal)
         .padding(24)
