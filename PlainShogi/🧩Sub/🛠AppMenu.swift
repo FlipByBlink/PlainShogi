@@ -125,12 +125,12 @@ struct テキスト書き出し読み込みセクション: View {
             List {
                 Section {
                     Label("駒を他のアプリへドラッグして盤面をテキストとして書き出せます。", systemImage: "square.and.arrow.up")
-                    テキスト変換プレビュー("TextExport", 🄸mageVolume: 4)
+                    テキスト変換プレビュー(フォルダー名: "TextExport", 枚数: 4)
                 }
                 
                 Section {
                     Label("他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。", systemImage: "square.and.arrow.down")
-                    テキスト変換プレビュー("TextImport", 🄸mageVolume: 5)
+                    テキスト変換プレビュー(フォルダー名: "TextImport", 枚数: 5)
                 }
                 
                 Section {
@@ -149,17 +149,17 @@ struct テキスト書き出し読み込みセクション: View {
 
 
 struct テキスト変換プレビュー: View {
-    var 🄽ameSpace: String
-    var 🄸mageVolume: Int
+    var フォルダー名: String
+    var 枚数: Int
     let 🕒 = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
-    @State private var 🄲ount: Int = 0
+    @State private var 表示中の画像: Int = 0
     
     var body: some View {
         VStack(spacing: 4) {
             ZStack {
-                ForEach( 0 ..< 🄸mageVolume, id: \.self) { ⓝumber in
-                    if ⓝumber == 🄲ount {
-                        Image(🄽ameSpace + "/" + 🄲ount.description)
+                ForEach( 0 ..< 枚数, id: \.self) { 番号 in
+                    if 番号 == 表示中の画像 {
+                        Image(フォルダー名 + "/" + 番号.description)
                             .resizable()
                             .scaledToFit()
                     }
@@ -167,21 +167,16 @@ struct テキスト変換プレビュー: View {
             }
             .background(.white)
             
-            ProgressView(value: Double(🄲ount), total: Double(🄸mageVolume - 1))
+            ProgressView(value: Double(表示中の画像), total: Double(枚数 - 1))
                 .grayscale(1)
         }
         .onReceive(🕒) { _ in
-            if 🄲ount == 🄸mageVolume - 1 {
-                🄲ount = 0
+            if 表示中の画像 == 枚数 - 1 {
+                表示中の画像 = 0
             } else {
-                🄲ount += 1
+                表示中の画像 += 1
             }
         }
-        .animation(.default.speed(0.5), value: 🄲ount)
-    }
-    
-    init (_ 🄽ameSpace: String, 🄸mageVolume: Int) {
-        self.🄽ameSpace = 🄽ameSpace
-        self.🄸mageVolume = 🄸mageVolume
+        .animation(.default.speed(0.5), value: 表示中の画像)
     }
 }
