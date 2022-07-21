@@ -127,11 +127,13 @@ struct テキスト書き出し読み込みセクション: View {
                     Label("駒を他のアプリへドラッグして盤面をテキストとして書き出せます。", systemImage: "square.and.arrow.up")
                     テキスト変換プレビュー(フォルダー名: "TextExport", 枚数: 4)
                 }
+                .listRowSeparator(.hidden)
                 
                 Section {
                     Label("他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。", systemImage: "square.and.arrow.down")
                     テキスト変換プレビュー(フォルダー名: "TextImport", 枚数: 5)
                 }
+                .listRowSeparator(.hidden)
                 
                 Section {
                     Text(📱.現在の盤面をテキストに変換する())
@@ -169,6 +171,7 @@ struct テキスト変換プレビュー: View {
             
             ProgressView(value: Double(表示中の画像), total: Double(枚数 - 1))
                 .grayscale(1)
+                .padding(.horizontal)
         }
         .onReceive(🕒) { _ in
             if 表示中の画像 == 枚数 - 1 {
@@ -178,5 +181,6 @@ struct テキスト変換プレビュー: View {
             }
         }
         .animation(.default.speed(0.5), value: 表示中の画像)
+        .padding(8)
     }
 }
