@@ -151,8 +151,8 @@ struct テキスト書き出し読み込みセクション: View {
 struct テキスト変換プレビュー: View {
     var 🄽ameSpace: String
     var 🄸mageVolume: Int
-    
-    @State private var 🄲ount: Int = 1
+    let 🕒 = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
+    @State private var 🄲ount: Int = 0
     
     var body: some View {
         VStack(spacing: 4) {
@@ -170,14 +170,11 @@ struct テキスト変換プレビュー: View {
             ProgressView(value: Double(🄲ount), total: Double(🄸mageVolume - 1))
                 .grayscale(1)
         }
-        .onAppear { 🄲ount = 0 }
-        .onChange(of: 🄲ount) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                if 🄲ount == 🄸mageVolume - 1 {
-                    🄲ount = 0
-                } else {
-                    🄲ount += 1
-                }
+        .onReceive(🕒) { _ in
+            if 🄲ount == 🄸mageVolume - 1 {
+                🄲ount = 0
+            } else {
+                🄲ount += 1
             }
         }
         .animation(.default.speed(0.5), value: 🄲ount)
