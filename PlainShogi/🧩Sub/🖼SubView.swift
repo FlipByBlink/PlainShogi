@@ -139,8 +139,6 @@ struct 手駒調整シート: View {
                             Text(📱.この持ち駒の数(陣営, 職名).description)
                                 .font(.title3)
                                 .monospacedDigit()
-                            
-                            Spacer()
                         }
                         .padding()
                     } onIncrement: {
