@@ -160,14 +160,13 @@ struct テキスト変換プレビュー: View {
         VStack(spacing: 4) {
             ZStack {
                 ForEach( 0 ..< 枚数, id: \.self) { 番号 in
-                    if 番号 == 表示中の画像 {
+                    if 番号 <= 表示中の画像 {
                         Image(フォルダー名 + "/" + 番号.description)
                             .resizable()
                             .scaledToFit()
                     }
                 }
             }
-            .background(.white)
             
             ProgressView(value: Double(表示中の画像), total: Double(枚数 - 1))
                 .grayscale(1)
