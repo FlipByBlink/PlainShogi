@@ -8,9 +8,7 @@ struct 📣ADBanner: View {
     
     var body: some View {
         Group {
-            if 🛒.🚩Purchased {
-                EmptyView()
-            } else {
+            if 🛒.🚩Purchased == false {
                 if 🚩ShowBanner {
                     📣ADView()
                         .padding(.horizontal)
@@ -36,6 +34,8 @@ struct 📣ADBanner: View {
                         .transition(.move(edge: .bottom))
                         .frame(minWidth: 250)
                 }
+            } else {
+                EmptyView()
             }
         }
         .animation(.easeOut.speed(1.5), value: 🚩ShowBanner)
