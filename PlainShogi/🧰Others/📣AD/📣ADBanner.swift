@@ -17,7 +17,7 @@ struct 📣ADBanner: View {
                         .overlay(alignment: .topTrailing) {
                             Button {
                                 🚩ShowBanner = false
-                                UISelectionFeedbackGenerator().selectionChanged()
+                                UINotificationFeedbackGenerator().notificationOccurred(.warning)
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
                                     .symbolRenderingMode(.multicolor)
