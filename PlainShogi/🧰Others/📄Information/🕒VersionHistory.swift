@@ -26,9 +26,22 @@ struct 🕒VersionHistoryLink: View {
 }
 
 
-let 🕒LatestVersionNumber = "1.2"
-
+let 🕒LatestVersionNumber = "1.2.1"
 let 🕒LatestVersionDescription = """
+軽微なバグ修正
+small bug fix
+"""
+
+var 🕒VersionHistory: String {
+    var 📃 = "🕒 Version " + 🕒LatestVersionNumber + " : "
+    📃 += "(builded on " + Date.now.formatted(date: .numeric, time: .omitted) + ")\n"
+    📃 += 🕒LatestVersionDescription + "\n\n\n"
+    📃 += 🕒PastVersionHistory
+    return 📃
+}
+
+let 🕒PastVersionHistory = """
+🕒 Version 1.2 : 2022-07-09
 - 盤面の駒を盤外へ直接移動できるように変更
 - 簡単に駒を消したり増やしたりする機能の追加
 - 初期化等のショートカットをメニューボタン長押しで呼び出す機能を追加
@@ -46,18 +59,9 @@ let 🕒LatestVersionDescription = """
 - Change frequency in AD ("1 in 3" → "after 5, every")
 - Widely refactoring
 - Various bugfixes and improvements
-"""
 
-var 🕒VersionHistory: String {
-    var 📃 = "🕒 Version " + 🕒LatestVersionNumber + " : "
-    📃 += "(builded on " + Date.now.formatted(date: .numeric, time: .omitted) + ")\n"
-    📃 += 🕒LatestVersionDescription + "\n\n\n"
-    📃 += 🕒PastVersionHistory
-    return 📃
-}
 
-let 🕒PastVersionHistory = """
-🕒 Version 1.1 : 2022-05-7
+🕒 Version 1.1 : 2022-05-07
 駒を英語表記に変更する機能を追加
 プレーンテキスト書き出し/読み込み機能を追加
 ソースコードをアプリ内で確認する機能を追加
