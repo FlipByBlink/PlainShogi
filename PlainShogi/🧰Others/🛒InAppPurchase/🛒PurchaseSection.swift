@@ -45,9 +45,7 @@ struct 🛒PurchaseSection: View {
                     .disabled(🚩BuyingNow)
                     .buttonStyle(.borderedProminent)
                     .overlay {
-                        if 🚩BuyingNow {
-                            ProgressView()
-                        }
+                        if 🚩BuyingNow { ProgressView() }
                     }
                     .alert(isPresented: $🚨ShowError) {
                         Alert(title: Text("Error"),
@@ -64,9 +62,7 @@ struct 🛒PurchaseSection: View {
             } header: {
                 Text("In-App Purchase")
             } footer: {
-                if 🛒.🚩Purchased {
-                    Text("Purchased")
-                }
+                if 🛒.🚩Purchased { Text("Purchased") }
             }
             
             
@@ -84,7 +80,6 @@ struct 🛒ProductPreview: View {
         HStack {
             Image("ProductPreview_Before")
                 .resizable()
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .scaledToFit()
             
             Image(systemName: "arrow.right")
@@ -93,7 +88,6 @@ struct 🛒ProductPreview: View {
             
             Image("ProductPreview_After")
                 .resizable()
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .scaledToFit()
         }
         .padding(.horizontal)
