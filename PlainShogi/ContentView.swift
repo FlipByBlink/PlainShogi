@@ -129,6 +129,14 @@ struct 盤外のコマ: View { //FIXME: 実装再検討
                             振動フィードバック()
                             ドラッグ中 = true
                             return 📱.この持ち駒をドラッグし始める(陣営, 職名)
+                        } preview: {
+                            ZStack {
+                                Rectangle().foregroundStyle(.background)
+                                Text(持ち駒の表記)
+                                    .minimumScaleFactor(0.1)
+                            }
+                            .frame(width: 📐.size.height, height: 📐.size.height)
+                            .rotationEffect(下向き(陣営 == .玉側))
                         }
                     
                     Spacer(minLength: 0)
