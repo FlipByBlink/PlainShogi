@@ -60,11 +60,8 @@ struct 盤上のコマもしくはマス: View {
                     .onTapGesture(count: 2) { 📱.駒の配置[位置]?.裏返す() }
                     .accessibilityHidden(true)
                     .onDrag {
-                        📱.この盤上の駒をドラッグし始める(位置)
-                    } preview: {
-                        コマのプレビュー(駒.陣営, 📱.この盤上の駒の表記(駒))
-                            .frame(height: 📐.size.height + 8)
-                            .onAppear { ドラッグ中 = true }
+                        ドラッグ中 = true
+                        return 📱.この盤上の駒をドラッグし始める(位置)
                     }
             } else { // ==== マス ====
                 Rectangle().foregroundStyle(.background)
@@ -80,7 +77,7 @@ struct 盤外: View {
     var 陣営: 王側か玉側か
     var コマの大きさ: CGFloat
     
-    var body: some View {
+    var body: some View { //FIXME: 実装再検討
         ZStack {
             Rectangle().foregroundStyle(.background)
             
@@ -126,11 +123,8 @@ struct 盤外のコマ: View {
                         .frame(maxWidth: 📐.size.height * 1.5)
                 }
                 .onDrag{
-                    📱.この持ち駒をドラッグし始める(陣営, 職名)
-                } preview: {
-                    コマのプレビュー(陣営, 持ち駒の表記)
-                        .frame(height: 📐.size.height + 8)
-                        .onAppear { ドラッグ中 = true }
+                    ドラッグ中 = true
+                    return 📱.この持ち駒をドラッグし始める(陣営, 職名)
                 }
             }
         }
@@ -171,31 +165,6 @@ struct コマ: View {
     init(_ ﾋｮｳｷ: String, _ ドラッグ中: Binding<Bool>) {
         表記 = ﾋｮｳｷ
         _ドラッグ中 = ドラッグ中
-    }
-}
-
-
-struct コマのプレビュー: View {
-    var 陣営: 王側か玉側か
-    var 表記: String
-    
-    var body: some View {
-        ZStack {
-            Rectangle().foregroundStyle(.background)
-            
-            Text(表記)
-                .minimumScaleFactor(0.1)
-                .padding(4)
-        }
-        .aspectRatio(1.0, contentMode: .fit)
-        .border(.primary)
-        .rotationEffect(下向き(陣営 == .玉側))
-        .onAppear { 振動フィードバック() }
-    }
-    
-    init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ﾋｮｳｷ: String) {
-        陣営 = ｼﾞﾝｴｲ
-        表記 = ﾋｮｳｷ
     }
 }
 
