@@ -26,9 +26,11 @@ struct 🕒VersionHistoryLink: View {
 }
 
 
-let 🕒LatestVersionNumber = "1.2.1"
+let 🕒LatestVersionNumber = "1.2.2"
 let 🕒LatestVersionDescription = """
+駒を持ち上げた際の見た目を調整
 軽微なバグ修正
+Adjust the look on draging a piece
 small bug fix
 """
 
@@ -41,6 +43,11 @@ var 🕒VersionHistory: String {
 }
 
 let 🕒PastVersionHistory = """
+🕒 Version 1.2.1 : 2022-07-21
+軽微なバグ修正
+small bug fix
+
+
 🕒 Version 1.2 : 2022-07-09
 - 盤面の駒を盤外へ直接移動できるように変更
 - 簡単に駒を消したり増やしたりする機能の追加
