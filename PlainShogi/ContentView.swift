@@ -81,7 +81,7 @@ struct 盤外: View {
         陣営 == .王側 ? 駒の種類.allCases : 駒の種類.allCases.reversed()
     }
     
-    var body: some View { //FIXME: 実装再検討
+    var body: some View {
         ZStack {
             Rectangle().foregroundStyle(.background)
             
@@ -92,8 +92,11 @@ struct 盤外: View {
             }
             .frame(height: コマの大きさ)
         }
-        .overlay(alignment: .bottomLeading) { 手駒調整ボタン(陣営) }
         .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, 陣営))
+        .overlay(alignment: 陣営 == .王側 ? .bottomLeading : .topTrailing) {
+            手駒調整ボタン(陣営)
+                .rotationEffect(下向き(陣営 == .玉側))
+        }
     }
     
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｵｵｷｻ: CGFloat) {
@@ -103,7 +106,7 @@ struct 盤外: View {
 }
 
 
-struct 盤外のコマ: View { //FIXME: 実装再検討
+struct 盤外のコマ: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var ドラッグ中 = false
     var 陣営: 王側か玉側か
