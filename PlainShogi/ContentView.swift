@@ -119,17 +119,19 @@ struct 盤外のコマ: View { //FIXME: 実装再検討
             EmptyView()
         } else {
             GeometryReader { 📐 in
-                ZStack {
-                    Color.clear
-                    
+                HStack {
+                    Spacer(minLength: 0)
+
                     コマ(持ち駒の表記 + 持ち駒の数の表記, $ドラッグ中)
                         .frame(maxWidth: 📐.size.height * 1.5)
                         .rotationEffect(下向き(陣営 == .玉側))
-                }
-                .onDrag{
-                    振動フィードバック()
-                    ドラッグ中 = true
-                    return 📱.この持ち駒をドラッグし始める(陣営, 職名)
+                        .onDrag{
+                            振動フィードバック()
+                            ドラッグ中 = true
+                            return 📱.この持ち駒をドラッグし始める(陣営, 職名)
+                        }
+                    
+                    Spacer(minLength: 0)
                 }
             }
         }
