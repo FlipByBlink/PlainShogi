@@ -126,7 +126,7 @@ struct 盤外のコマ: View {
                     Spacer(minLength: 0)
 
                     コマ(持ち駒の表記 + 持ち駒の数の表記, $ドラッグ中)
-                        .frame(maxWidth: 📐.size.height * 1.5)
+                        .frame(width: 📐.size.height * (持ち駒の数>=2 ? 1.5:1))
                         .rotationEffect(下向き(陣営 == .玉側))
                         .onDrag{
                             振動フィードバック()
