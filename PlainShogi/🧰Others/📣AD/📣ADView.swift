@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct 📣ADView: View {
-    var 🄰ppName: 📣AppName
+    @State private var 🄰ppName: 📣AppName
     
     var body: some View {
         Link(destination: 🄰ppName.🔗URL) {
@@ -21,7 +21,8 @@ struct 📣ADView: View {
                             .lineLimit(1)
                         
                         Image(systemName: "arrow.up.forward.app")
-                            .imageScale(.small)
+                            .resizable()
+                            .frame(width: 15, height: 15)
                     }
                     .minimumScaleFactor(0.1)
                     .padding(.trailing, 32)
@@ -40,6 +41,8 @@ struct 📣ADView: View {
             Text("AD")
                 .scaleEffect(x: 1.2)
                 .font(.subheadline.weight(.black))
+                .frame(maxHeight: 32)
+                .minimumScaleFactor(0.1)
                 .padding(.top, 8)
                 .padding(.leading, 3)
                 .foregroundStyle(.tertiary)

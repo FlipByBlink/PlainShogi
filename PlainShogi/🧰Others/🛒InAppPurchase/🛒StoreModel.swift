@@ -1,20 +1,24 @@
 
+let 🛒InAppPurchaseProductID = "PlainShogi.adfree"
+
+
 import StoreKit
+import SwiftUI
 
 typealias Transaction = StoreKit.Transaction
 
 class 🛒StoreModel: ObservableObject {
     
-    @Published var 🎫Product: Product?
-    @Published var 🎫PurchasedProduct: Product?
+    @Published private(set) var 🎫Product: Product?
+    @Published private(set) var 🚩Purchased: Bool? = nil
     
-    var 🚩Unconnected: Bool {
-        🎫Product == nil
+    @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
+    
+    var 🚩ADisActive: Bool {
+        !(🚩Purchased ?? true) && ( 🄻aunchCount > 5 )
     }
     
-    var 🚩Purchased: Bool {
-        🎫PurchasedProduct != nil
-    }
+    var 🚩Unconnected: Bool { 🎫Product == nil }
     
     var 🤖UpdateListenerTask: Task<Void, Error>? = nil
     
@@ -30,11 +34,11 @@ class 🛒StoreModel: ObservableObject {
             //Deliver products that the customer purchases.
             await 🅄pdateCustomerProductStatus()
         }
+        
+        🄻aunchCount += 1
     }
     
-    deinit {
-        🤖UpdateListenerTask?.cancel()
-    }
+    deinit { 🤖UpdateListenerTask?.cancel() }
     
     
     func 📪ListenForTransactions() -> Task<Void, Error> {
@@ -61,11 +65,11 @@ class 🛒StoreModel: ObservableObject {
     @MainActor
     func 🅁equestProducts() async {
         do {
-            if let 📦 = try await Product.products(for: ["PlainShogi.adfree"]).first {
+            if let 📦 = try await Product.products(for: [🛒InAppPurchaseProductID]).first {
                 🎫Product = 📦
             }
         } catch {
-            print("Failed product request from the App Store server: \(error)")
+            print(#function, "Failed product request from the App Store server: \(error)")
         }
     }
     
@@ -86,10 +90,8 @@ class 🛒StoreModel: ObservableObject {
                 
                 //Always finish a transaction.
                 await 🧾Transaction.finish()
-            case .userCancelled, .pending:
-                return
-            default:
-                return
+            case .userCancelled, .pending: return
+            default: return
         }
     }
     
@@ -109,28 +111,26 @@ class 🛒StoreModel: ObservableObject {
     
     @MainActor
     func 🅄pdateCustomerProductStatus() async {
-        guard let 🎫 = 🎫Product else { return }
-        
-        var 🆕PurchasedProduct: Product? = nil
+        var 🄿urchased = false
         
         for await 📦 in Transaction.currentEntitlements {
             do {
                 //Check whether the transaction is verified. If it isn’t, catch `failedVerification` error.
                 let 🧾Transaction = try 🔍CheckVerified(📦)
-                print(🧾Transaction.debugDescription)
-                
-                🆕PurchasedProduct = 🎫
+                if 🧾Transaction.productID == 🛒InAppPurchaseProductID {
+                    🄿urchased = true
+                }
             } catch {
                 print(#function, error)
             }
         }
         
-        🎫PurchasedProduct = 🆕PurchasedProduct
+        🚩Purchased = 🄿urchased
     }
     
     
     var 🎫Name: String {
-        guard let 🎫 = 🎫Product else { return "(Hide AD banner)" }
+        guard let 🎫 = 🎫Product else { return "(Placeholder)" }
         return 🎫.displayName
     }
     

@@ -2,7 +2,7 @@
 import SwiftUI
 import StoreKit
 
-struct 🛒PurchaseSection: View {
+struct 🛒PurchaseView: View {
     @EnvironmentObject var 🛒: 🛒StoreModel
     
     @State private var 🚩BuyingNow = false
@@ -11,68 +11,52 @@ struct 🛒PurchaseSection: View {
     @State var 🚨ErrorMessage = ""
     
     var body: some View {
-        Group {
-            Section {
-                HStack {
-                    Label(🛒.🎫Name, systemImage: "cart")
-                    
-                    Spacer()
-                    
-                    if 🛒.🚩Purchased {
-                        Image(systemName: "checkmark")
-                            .imageScale(.small)
-                            .foregroundStyle(.tertiary)
-                            .transition(.slide)
-                    }
-                    
-                    Button(🛒.🎫Price) {
-                        Task {
-                            do {
-                                🚩BuyingNow = true
-                                try await 🛒.👆Purchase()
-                            } catch 🚨StoreError.failedVerification {
-                                🚨ErrorMessage = "Your purchase could not be verified by the App Store."
-                                🚨ShowError = true
-                            } catch {
-                                print("Failed purchase: \(error)")
-                                🚨ErrorMessage = error.localizedDescription
-                                🚨ShowError = true
-                            }
-                            
-                            🚩BuyingNow = false
-                        }
-                    }
-                    .disabled(🚩BuyingNow)
-                    .buttonStyle(.borderedProminent)
-                    .overlay {
-                        if 🚩BuyingNow { ProgressView() }
-                    }
-                    .alert(isPresented: $🚨ShowError) {
-                        Alert(title: Text("Error"),
-                              message: Text(🚨ErrorMessage),
-                              dismissButton: .default(Text("OK")))
-                    }
-                }
-                .padding(.vertical)
-                .disabled(🛒.🚩Unconnected)
-                .disabled(🛒.🚩Purchased)
-                
-                
-                🛒ProductPreview()
-            } header: {
-                Text("In-App Purchase")
-            } footer: {
-                if 🛒.🚩Purchased { Text("Purchased") }
+        HStack {
+            Label(🛒.🎫Name, systemImage: "cart")
+            
+            Spacer()
+            
+            if 🛒.🚩Purchased ?? false {
+                Image(systemName: "checkmark")
+                    .imageScale(.small)
+                    .foregroundStyle(.tertiary)
+                    .transition(.slide)
             }
             
-            
-            🛒RestoreButton()
+            Button(🛒.🎫Price) {
+                Task {
+                    do {
+                        🚩BuyingNow = true
+                        try await 🛒.👆Purchase()
+                    } catch 🚨StoreError.failedVerification {
+                        🚨ErrorMessage = "Your purchase could not be verified by the App Store."
+                        🚨ShowError = true
+                    } catch {
+                        print("Failed purchase: \(error)")
+                        🚨ErrorMessage = error.localizedDescription
+                        🚨ShowError = true
+                    }
+                    
+                    🚩BuyingNow = false
+                }
+            }
+            .disabled(🚩BuyingNow)
+            .buttonStyle(.borderedProminent)
+            .overlay {
+                if 🚩BuyingNow { ProgressView() }
+            }
+            .alert(isPresented: $🚨ShowError) {
+                Alert(title: Text("Error"),
+                      message: Text(🚨ErrorMessage),
+                      dismissButton: .default(Text("OK")))
+            }
         }
+        .padding(.vertical)
+        .disabled(🛒.🚩Unconnected)
+        .disabled(🛒.🚩Purchased ?? false)
         .animation(.default, value: 🛒.🚩Purchased)
     }
 }
-
-
 
 
 struct 🛒ProductPreview: View {
@@ -94,8 +78,6 @@ struct 🛒ProductPreview: View {
         .padding(24)
     }
 }
-
-
 
 
 struct 🛒RestoreButton: View {
@@ -129,11 +111,11 @@ struct 🛒RestoreButton: View {
                 HStack {
                     Label("Restore Purchases", systemImage: "arrow.clockwise")
                         .font(.footnote)
-                        .foregroundColor(🛒.🚩Unconnected || 🛒.🚩Purchased ? .secondary : nil)
+                        .foregroundColor(🛒.🚩Unconnected ? .secondary : nil)
+                        .grayscale(🛒.🚩Purchased ?? false ? 1 : 0)
                     
                     if 🚩RestoringNow {
                         Spacer()
-                        
                         ProgressView()
                     }
                 }

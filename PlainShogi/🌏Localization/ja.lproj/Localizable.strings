@@ -32,12 +32,13 @@ iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 "Web Repository" = "Web リポジトリー";
 "(Mirror)" = "(ミラー)";
 
-// ======== AD =========
+// ======== AD / In-App Purchase =========
 "AD" = "広告";
-"About AD" = "広告について";
+"AD / Purchase" = "広告/課金";
+"Description" = "概要";
+"About AD / Purchase" = "広告/課金について";
 "In-App Purchase" = "アプリ内課金";
 "Hide AD banner" = "広告を非表示にする";
-"Purchased" = "購入済み";
 "Restore Purchases" = "購入情報を復元する";
 "Restored transactions" = "購入情報を確認しました";
 "Done" = "完了";
@@ -45,7 +46,7 @@ iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 "Open AD link" = "広告のリンクを開く";
 "OK" = "了解しました";
 
-"🌏ADDescription" = "広告としてAppStoreアプリケーションに関するバナーを表示します。「Plain将棋盤」デベロッパーによるアプリ群が表示対象となります。広告バナーはアプリを5回起動すると有効になります。";
+"This App shows banner advertisement about applications on AppStore. These are several Apps by this app's developer. It is activated after you launch this app 5 times." = "広告としてAppStoreアプリケーションに関するバナーを表示します。本アプリのデベロッパーによるアプリ群が表示対象となります。広告バナーはアプリを5回起動すると有効になります。";
 
 "Simple and normal ebook reader (for fixed-layout). Only a special feature. Turn a page with slightly longish voluntary blink." = "シンプルで一般的な電子書籍リーダー(固定レイアウト向け)。特殊な機能は1つだけ。目を閉じる時間を意識的にわずかに長くさせた瞬きでページめくりができます。";
 

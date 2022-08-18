@@ -7,13 +7,15 @@ struct 📣ADMenuLink: View {
     
     var body: some View {
         Section {
-            if 🛒.🚩Purchased == false { 📣ADView() }
+            🛒PurchaseView()
             
             NavigationLink {
                 📣ADMenu()
             } label: {
-                Label("About AD", systemImage: "megaphone")
+                Label("About AD / Purchase", systemImage: "megaphone")
             }
+        } header: {
+            Text("AD / Purchase")
         }
     }
 }
@@ -24,11 +26,20 @@ struct 📣ADMenu: View {
     var body: some View {
         List {
             Section {
-                Text("🌏ADDescription") //Localizable.strings
+                Text("This App shows banner advertisement about applications on AppStore. These are several Apps by this app's developer. It is activated after you launch this app 5 times.")
                     .padding()
-            } header: { Text("About") }
+                    .textSelection(.enabled)
+            } header: {
+                Text("Description")
+            }
             
-            🛒PurchaseSection()
+            Section {
+                🛒PurchaseView()
+                🛒ProductPreview()
+                🛒RestoreButton()
+            } header: {
+                Text("In-App Purchase")
+            }
             
             Section {
                 ForEach(📣AppName.allCases) { 🏷 in
@@ -36,6 +47,6 @@ struct 📣ADMenu: View {
                 }
             }
         }
-        .navigationTitle("About AD")
+        .navigationTitle("AD / Purchase")
     }
 }

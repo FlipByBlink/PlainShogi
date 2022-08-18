@@ -3,12 +3,11 @@ import SwiftUI
 
 struct 📣ADBanner: View {
     @EnvironmentObject var 🛒: 🛒StoreModel
-    @State private var 🚩ShowBanner = false
-    @AppStorage("🄻aunchCount") var 🄻aunchCount: Int = 0
+    @State private var 🚩ShowBanner = true
     
     var body: some View {
         Group {
-            if 🛒.🚩Purchased == false {
+            if 🛒.🚩ADisActive {
                 if 🚩ShowBanner {
                     📣ADView()
                         .padding(.horizontal)
@@ -32,20 +31,11 @@ struct 📣ADBanner: View {
                         }
                         .padding(14)
                         .transition(.move(edge: .bottom))
-                        .frame(minWidth: 250)
+                        .frame(minWidth: 300, maxHeight: 250, alignment: .bottom)
                 }
-            } else {
-                EmptyView()
             }
         }
-        .animation(.easeOut.speed(1.5), value: 🚩ShowBanner)
-        .animation(.easeOut.speed(1.5), value: 🛒.🚩Purchased)
-        .onAppear {
-            🄻aunchCount += 1
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                if 🄻aunchCount > 5 { 🚩ShowBanner = true }
-            }
-        }
+        .animation(.easeOut.speed(0.5), value: 🚩ShowBanner)
+        .animation(.easeOut.speed(0.5), value: 🛒.🚩Purchased)
     }
 }
