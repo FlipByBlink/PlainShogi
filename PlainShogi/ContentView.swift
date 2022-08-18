@@ -76,20 +76,22 @@ struct 盤外: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 陣営: 王側か玉側か
     var コマの大きさ: CGFloat
+    var 駒の並び順: [駒の種類] {
+        陣営 == .王側 ? 駒の種類.allCases : 駒の種類.allCases.reversed()
+    }
     
     var body: some View { //FIXME: 実装再検討
         ZStack {
             Rectangle().foregroundStyle(.background)
             
             HStack(spacing: 0) {
-                ForEach(駒の種類.allCases) { 職名 in
+                ForEach(駒の並び順) { 職名 in
                     盤外のコマ(陣営, 職名)
                 }
             }
             .frame(height: コマの大きさ)
         }
         .overlay(alignment: .bottomLeading) { 手駒調整ボタン(陣営) }
-        .rotationEffect(下向き(陣営 == .玉側))
         .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, 陣営))
     }
     
@@ -100,7 +102,7 @@ struct 盤外: View {
 }
 
 
-struct 盤外のコマ: View {
+struct 盤外のコマ: View { //FIXME: 実装再検討
     @EnvironmentObject var 📱: 📱AppModel
     @State private var ドラッグ中 = false
     var 陣営: 王側か玉側か
@@ -121,6 +123,7 @@ struct 盤外のコマ: View {
                     
                     コマ(持ち駒の表記 + 持ち駒の数の表記, $ドラッグ中)
                         .frame(maxWidth: 📐.size.height * 1.5)
+                        .rotationEffect(下向き(陣営 == .玉側))
                 }
                 .onDrag{
                     ドラッグ中 = true
