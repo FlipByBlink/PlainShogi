@@ -171,6 +171,7 @@ struct テキスト変換プレビュー: View {
             ProgressView(value: Double(表示中の画像), total: Double(枚数 - 1))
                 .grayscale(1)
                 .padding(.horizontal)
+                .accessibilityHidden(true)
         }
         .onReceive(🕒) { _ in
             if 表示中の画像 == 枚数 - 1 {
