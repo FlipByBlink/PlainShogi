@@ -60,6 +60,7 @@ struct 盤上のコマもしくはマス: View {
                     .onTapGesture(count: 2) { 📱.駒の配置[位置]?.裏返す() }
                     .accessibilityHidden(true)
                     .onDrag {
+                        振動フィードバック()
                         ドラッグ中 = true
                         return 📱.この盤上の駒をドラッグし始める(位置)
                     }
@@ -126,6 +127,7 @@ struct 盤外のコマ: View { //FIXME: 実装再検討
                         .rotationEffect(下向き(陣営 == .玉側))
                 }
                 .onDrag{
+                    振動フィードバック()
                     ドラッグ中 = true
                     return 📱.この持ち駒をドラッグし始める(陣営, 職名)
                 }
