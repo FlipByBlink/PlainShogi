@@ -5,7 +5,7 @@ import UniformTypeIdentifiers
 struct ContentView: View {
     var body: some View {
         GeometryReader { 画面 in
-            let マスの大きさ = マスの大きさを計算する(画面)
+            let マスの大きさ = min(画面.size.width/9, 画面.size.height/11)
             
             VStack(spacing: 0) {
                 盤外(.玉側, マスの大きさ)
@@ -34,14 +34,6 @@ struct ContentView: View {
             }
         }
         .padding()
-    }
-    
-    func マスの大きさを計算する(_ 画面: GeometryProxy) -> CGFloat {
-        if 画面.size.width/9 < 画面.size.height/11 {
-            return 画面.size.width/9
-        } else {
-            return 画面.size.height/11
-        }
     }
 }
 
