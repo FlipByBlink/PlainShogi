@@ -3,6 +3,7 @@ import Combine
 import SwiftUI
 import UniformTypeIdentifiers
 
+@MainActor
 class 📱AppModel: ObservableObject {
     
     @Published var 駒の配置: [Int: 盤上の駒] = 初期配置
