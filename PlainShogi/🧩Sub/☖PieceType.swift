@@ -7,10 +7,8 @@ struct 局面モデル: Codable {
     func 保存する() {
         do {
             let ⓔncoder = JSONEncoder()
-            ⓔncoder.outputFormatting = .prettyPrinted
             let ⓓata = try ⓔncoder.encode(self)
             UserDefaults.standard.set(ⓓata, forKey: "局面")
-            print(String(data: ⓓata, encoding: .utf8)!)
         } catch {
             print("🚨", error.localizedDescription)
         }
@@ -78,11 +76,7 @@ struct 持ち駒: Codable {
     var 配分: [駒の種類: Int] = [:]
     
     func 個数(_ 職名: 駒の種類) -> Int {
-        if let 数 = 配分[職名] {
-            return 数
-        } else {
-            return 0
-        }
+        配分[職名] ?? 0
     }
     
     static var 空: Self {
