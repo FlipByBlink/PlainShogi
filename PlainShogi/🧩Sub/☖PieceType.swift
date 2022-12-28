@@ -1,5 +1,38 @@
+import Foundation
 
-enum 王側か玉側か: String, CaseIterable {
+struct 局面モデル: Codable {
+    var 駒の配置: [Int: 盤上の駒] = 初期配置
+    var 手駒: [王側か玉側か: 持ち駒] = 空の手駒
+    
+    func 保存する() {
+        do {
+            let ⓔncoder = JSONEncoder()
+            ⓔncoder.outputFormatting = .prettyPrinted
+            let ⓓata = try ⓔncoder.encode(self)
+            UserDefaults.standard.set(ⓓata, forKey: "データ")
+            print(String(data: ⓓata, encoding: .utf8)!)
+        } catch {
+            print("🚨", error.localizedDescription)
+        }
+    }
+    
+    static func 読み込む() -> Self? {
+        if let ⓓata = UserDefaults.standard.data(forKey: "データ") {
+            do {
+                let ⓓecoder = JSONDecoder()
+                return try ⓓecoder.decode(Self.self, from: ⓓata)
+            } catch {
+                print("🚨", error.localizedDescription)
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+}
+
+
+enum 王側か玉側か: String, CaseIterable, Codable {
     case 王側
     case 玉側
 }
@@ -13,7 +46,7 @@ enum 状況 {
 }
 
 
-struct 盤上の駒 {
+struct 盤上の駒: Codable {
     let 陣営: 王側か玉側か
     let 職名: 駒の種類
     var 成り: Bool
@@ -33,7 +66,7 @@ struct 盤上の駒 {
 }
 
 
-struct 持ち駒 {
+struct 持ち駒: Codable {
     var 配分: [駒の種類: Int] = [:]
     
     func 個数(_ 職名: 駒の種類) -> Int {
@@ -56,7 +89,7 @@ struct 持ち駒 {
 }
 
 
-enum 駒の種類: String, CaseIterable, Identifiable {
+enum 駒の種類: String, CaseIterable, Identifiable, Codable {
     
     case 歩
     case 角
