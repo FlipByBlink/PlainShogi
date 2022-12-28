@@ -6,8 +6,7 @@ import UniformTypeIdentifiers
 @MainActor
 class 📱AppModel: ObservableObject {
     
-    @Published var 駒の配置: [Int: 盤上の駒] = 初期配置
-    @Published var 手駒: [王側か玉側か: 持ち駒] = 空の手駒
+    @Published var 局面: 局面モデル = .初期セット
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
     
@@ -53,7 +52,7 @@ class 📱AppModel: ObservableObject {
     }
     
     func この持ち駒の数(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> Int {
-        手駒[陣営]?.個数(職名) ?? 0
+        局面.手駒[陣営]?.個数(職名) ?? 0
     }
     
     
@@ -78,8 +77,8 @@ class 📱AppModel: ObservableObject {
     
     
     func 盤面を初期化する() {
-        駒の配置 = 初期配置
-        手駒 = 空の手駒
+        局面.盤駒 = 初期配置
+        局面.手駒 = 空の手駒
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
     
@@ -91,26 +90,26 @@ class 📱AppModel: ObservableObject {
                 guard let 出発地点 = ドラッグした盤上の駒の元々の位置 else { return false }
                 if 置いた位置 == 出発地点 { return false }
                 
-                let 動かした駒 = 駒の配置[出発地点]!
+                let 動かした駒 = 局面.盤駒[出発地点]!
                 
-                if let 先客 = 駒の配置[置いた位置] {
+                if let 先客 = 局面.盤駒[置いた位置] {
                     if 先客.陣営 == 動かした駒.陣営 { return false }
                     
-                    手駒[動かした駒.陣営]?.一個増やす(先客.職名)
+                    局面.手駒[動かした駒.陣営]?.一個増やす(先客.職名)
                 }
                 
-                駒の配置.removeValue(forKey: 出発地点)
-                駒の配置.updateValue(動かした駒, forKey: 置いた位置)
+                局面.盤駒.removeValue(forKey: 出発地点)
+                局面.盤駒.updateValue(動かした駒, forKey: 置いた位置)
                 
                 駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
             case .持ち駒をドラッグしている:
                 guard let 駒 = ドラッグした持ち駒 else { return false }
-                if 駒の配置[置いた位置] != nil { return false }
+                if 局面.盤駒[置いた位置] != nil { return false }
                 
-                駒の配置.updateValue(盤上の駒(駒.陣営, 駒.職名), forKey: 置いた位置)
+                局面.盤駒.updateValue(盤上の駒(駒.陣営, 駒.職名), forKey: 置いた位置)
                 
-                手駒[駒.陣営]?.一個減らす(駒.職名)
+                局面.手駒[駒.陣営]?.一個減らす(駒.職名)
                 
                 駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
@@ -129,18 +128,18 @@ class 📱AppModel: ObservableObject {
         switch 現状 {
             case .盤上の駒をドラッグしている:
                 guard let 出発地点 = ドラッグした盤上の駒の元々の位置 else { return false }
-                let 動かした駒 = 駒の配置[出発地点]!
+                let 動かした駒 = 局面.盤駒[出発地点]!
                 
-                駒の配置.removeValue(forKey: 出発地点)
-                手駒[ドロップされた陣営]?.一個増やす(動かした駒.職名)
+                局面.盤駒.removeValue(forKey: 出発地点)
+                局面.手駒[ドロップされた陣営]?.一個増やす(動かした駒.職名)
                 
                 駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
             case .持ち駒をドラッグしている:
                 guard let 駒 = ドラッグした持ち駒 else { return false }
                 
-                手駒[駒.陣営]?.一個減らす(駒.職名)
-                手駒[ドロップされた陣営]?.一個増やす(駒.職名)
+                局面.手駒[駒.陣営]?.一個減らす(駒.職名)
+                局面.手駒[ドロップされた陣営]?.一個増やす(駒.職名)
                 
                 駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
@@ -170,13 +169,13 @@ class 📱AppModel: ObservableObject {
                 }
                 
                 if let 元々の位置 = ドラッグした盤上の駒の元々の位置 {
-                    if 駒の配置[位置]?.陣営 == 駒の配置[元々の位置]?.陣営 {
+                    if 局面.盤駒[位置]?.陣営 == 局面.盤駒[元々の位置]?.陣営 {
                         return DropProposal(operation: .cancel)
                     }
                 }
                 
             case .持ち駒をドラッグしている:
-                if 駒の配置[位置] != nil {
+                if 局面.盤駒[位置] != nil {
                     return .init(operation: .cancel)
                 }
                 
@@ -223,14 +222,14 @@ class 📱AppModel: ObservableObject {
     
     func 以前アプリ起動した際のログを読み込む() {
         if let ⓓata = 局面モデル.読み込む() {
-            self.駒の配置 = ⓓata.駒の配置
-            self.手駒 = ⓓata.手駒
+            self.局面.盤駒 = ⓓata.盤駒
+            self.局面.手駒 = ⓓata.手駒
         }
     }
     
     
     func ログを更新する() {
-        let データ = 局面モデル(駒の配置: self.駒の配置, 手駒: self.手駒)
+        let データ = 局面モデル(盤駒: self.局面.盤駒, 手駒: self.局面.手駒)
         データ.保存する()
     }
     
@@ -240,7 +239,7 @@ class 📱AppModel: ObservableObject {
         var 📃 = "☗"
 
         駒の種類.allCases.forEach { 職名 in
-            if let 数 = 手駒[.玉側]?.個数(職名) {
+            if let 数 = 局面.手駒[.玉側]?.個数(職名) {
                 if 数 >= 1 {
                     📃 += 🚩English表記 ? 駒をEnglishプレーンテキストに変換(職名) : 職名.rawValue
                     📃 += "͙"
@@ -256,7 +255,7 @@ class 📱AppModel: ObservableObject {
 
         for 行 in 0 ..< 9 {
             for 列 in 0 ..< 9 {
-                if let 駒 = 駒の配置[行*9+列] {
+                if let 駒 = 局面.盤駒[行*9+列] {
                     if 🚩English表記 {
                         📃 += 駒をEnglishプレーンテキストに変換(駒.職名, 駒.成り)
                     } else {
@@ -276,7 +275,7 @@ class 📱AppModel: ObservableObject {
         📃 += "－－－－－－－－－\n☖"
 
         駒の種類.allCases.forEach { 職名 in
-            if let 数 = 手駒[.王側]?.個数(職名) {
+            if let 数 = 局面.手駒[.王側]?.個数(職名) {
                 if 数 >= 1 {
                     📃 += 🚩English表記 ? 駒をEnglishプレーンテキストに変換(職名) : 職名.rawValue
                 }
@@ -349,8 +348,8 @@ class 📱AppModel: ObservableObject {
                     列 += 1
                 }
                 
-                駒の配置 = 駒⃣の配置
-                手駒 = 手⃣駒
+                局面.盤駒 = 駒⃣の配置
+                局面.手駒 = 手⃣駒
                 
                 UINotificationFeedbackGenerator().notificationOccurred(.success)
                 現状 = .何もドラッグしてない

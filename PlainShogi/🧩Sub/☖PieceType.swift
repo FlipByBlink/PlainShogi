@@ -1,8 +1,8 @@
 import Foundation
 
 struct 局面モデル: Codable {
-    var 駒の配置: [Int: 盤上の駒] = 初期配置
-    var 手駒: [王側か玉側か: 持ち駒] = 空の手駒
+    var 盤駒: [Int: 盤上の駒] = [:]
+    var 手駒: [王側か玉側か: 持ち駒] = [:]
     
     func 保存する() {
         do {
@@ -28,6 +28,10 @@ struct 局面モデル: Codable {
         } else {
             return nil
         }
+    }
+    
+    static var 初期セット: Self {
+        Self(盤駒: 初期配置, 手駒: 空の手駒)
     }
 }
 

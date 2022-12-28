@@ -39,7 +39,7 @@ struct 駒を消すボタン: View {
             GeometryReader { 📐 in
                 Button {
                     withAnimation {
-                        📱.駒の配置.removeValue(forKey: 位置)
+                        📱.局面.盤駒.removeValue(forKey: 位置)
                         振動フィードバック()
                     }
                 } label: {
@@ -142,9 +142,9 @@ struct 手駒調整シート: View {
                         }
                         .padding()
                     } onIncrement: {
-                        📱.手駒[陣営]?.一個増やす(職名)
+                        📱.局面.手駒[陣営]?.一個増やす(職名)
                     } onDecrement: {
-                        📱.手駒[陣営]?.一個減らす(職名)
+                        📱.局面.手駒[陣営]?.一個減らす(職名)
                     }
                 }
             }
