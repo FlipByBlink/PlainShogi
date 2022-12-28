@@ -6,7 +6,7 @@ import UniformTypeIdentifiers
 @MainActor
 class 📱AppModel: ObservableObject {
     
-    @Published var 局面: 局面モデル = .初期セット
+    @Published var 局面: 局面モデル
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
     
@@ -77,8 +77,7 @@ class 📱AppModel: ObservableObject {
     
     
     func 盤面を初期化する() {
-        局面.盤駒 = 初期配置
-        局面.手駒 = 空の手駒
+        局面.初期化する()
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
     
@@ -218,19 +217,16 @@ class 📱AppModel: ObservableObject {
     
     // ==============================================================================
     // ============================= 以下、ログの更新や保存 =============================
-    init() { 以前アプリ起動した際のログを読み込む() }
-    
-    func 以前アプリ起動した際のログを読み込む() {
-        if let ⓓata = 局面モデル.読み込む() {
-            self.局面.盤駒 = ⓓata.盤駒
-            self.局面.手駒 = ⓓata.手駒
+    init() {
+        if let 局面 = 局面モデル.読み込む() {
+            self.局面 = 局面
+        } else {
+            self.局面 = .初期セット
         }
     }
     
-    
     func ログを更新する() {
-        let データ = 局面モデル(盤駒: self.局面.盤駒, 手駒: self.局面.手駒)
-        データ.保存する()
+        self.局面.保存する()
     }
     
     // ==============================================================================

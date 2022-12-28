@@ -1,15 +1,15 @@
 import Foundation
 
 struct 局面モデル: Codable {
-    var 盤駒: [Int: 盤上の駒] = [:]
-    var 手駒: [王側か玉側か: 持ち駒] = [:]
+    var 盤駒: [Int: 盤上の駒]
+    var 手駒: [王側か玉側か: 持ち駒]
     
     func 保存する() {
         do {
             let ⓔncoder = JSONEncoder()
             ⓔncoder.outputFormatting = .prettyPrinted
             let ⓓata = try ⓔncoder.encode(self)
-            UserDefaults.standard.set(ⓓata, forKey: "データ")
+            UserDefaults.standard.set(ⓓata, forKey: "局面")
             print(String(data: ⓓata, encoding: .utf8)!)
         } catch {
             print("🚨", error.localizedDescription)
@@ -17,7 +17,7 @@ struct 局面モデル: Codable {
     }
     
     static func 読み込む() -> Self? {
-        if let ⓓata = UserDefaults.standard.data(forKey: "データ") {
+        if let ⓓata = UserDefaults.standard.data(forKey: "局面") {
             do {
                 let ⓓecoder = JSONDecoder()
                 return try ⓓecoder.decode(Self.self, from: ⓓata)
@@ -32,6 +32,10 @@ struct 局面モデル: Codable {
     
     static var 初期セット: Self {
         Self(盤駒: 初期配置, 手駒: 空の手駒)
+    }
+    
+    mutating func 初期化する() {
+        self = .初期セット
     }
 }
 
@@ -79,6 +83,10 @@ struct 持ち駒: Codable {
         } else {
             return 0
         }
+    }
+    
+    static var 空: Self {
+        持ち駒(配分: [:])
     }
     
     mutating func 一個増やす(_ 職名: 駒の種類) {
@@ -147,7 +155,7 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
 
 
 
-let 空の手駒: [王側か玉側か: 持ち駒] = [.王側: 持ち駒(), .玉側: 持ち駒()]
+let 空の手駒: [王側か玉側か: 持ち駒] = [.王側: 持ち駒.空, .玉側: 持ち駒.空]
 
 
 let 初期配置: [Int: 盤上の駒] = {
