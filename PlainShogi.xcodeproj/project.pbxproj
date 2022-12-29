@@ -47,6 +47,7 @@
 		12DA3F432875C1F600F34701 /* 🖼SubView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 🖼SubView.swift */; };
 		12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
 		12F4444F286D4D250008A663 /* 🛠AppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
+		F54C93D7295D2DE6008D1D60 /* 📃TextImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */; };
 		F5951A2028ADEEBC00516538 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,7 @@
 		12D436A12865CD8400B707F5 /* 📣ADMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADMenu.swift"; sourceTree = "<group>"; };
 		12D436A22865CD8400B707F5 /* 📣ADBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADBanner.swift"; sourceTree = "<group>"; };
 		12F4444D286D4B580008A663 /* 🛠AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠AppMenu.swift"; sourceTree = "<group>"; };
+		F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📃TextImportExport.swift"; sourceTree = "<group>"; };
 		F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +246,7 @@
 				12D424412871893D002D3E80 /* 📬DropDelegate.swift */,
 				127132E72873CDF20008AE46 /* 🖼SubView.swift */,
 				12F4444D286D4B580008A663 /* 🛠AppMenu.swift */,
+				F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */,
 				128D1570280FE47F003FF480 /* Preview Content */,
 			);
 			path = "🧩Sub";
@@ -361,6 +364,7 @@
 				12D436A62865CD8400B707F5 /* 📣ADView.swift in Sources */,
 				12D436A82865CD8400B707F5 /* 📣ADMenu.swift in Sources */,
 				12D436972865CD5E00B707F5 /* 🕒VersionHistory.swift in Sources */,
+				F54C93D7295D2DE6008D1D60 /* 📃TextImportExport.swift in Sources */,
 				12D424422871893D002D3E80 /* 📬DropDelegate.swift in Sources */,
 				12D436A32865CD8400B707F5 /* 🛒PurchaseSection.swift in Sources */,
 				12D436942865CD5E00B707F5 /* 📓SourceCodeMenu.swift in Sources */,
