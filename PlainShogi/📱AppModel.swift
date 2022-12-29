@@ -47,8 +47,8 @@ class 📱AppModel: ObservableObject {
     }
     
     func この持ち駒の表記(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> String {
-        if 陣営 == .玉側 && 職名 == .王 {
-            return 🚩English表記 ? "K" : "玉"
+        if 陣営 == .玉側 && 職名 == .王 && !self.🚩English表記 {
+            return "玉"
         } else {
             return 🚩English表記 ? 職名.English生駒表記 : 職名.rawValue
         }
