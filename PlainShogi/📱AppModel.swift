@@ -30,8 +30,20 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func 表記(_ 駒: 盤上の駒) -> String {
-        駒.表記(self.🚩English表記) ?? "🐛"
+    func この盤上の駒の表記(_ 駒: 盤上の駒) -> String {
+        if 駒.成り {
+            if 🚩English表記 {
+                return 駒.職名.English成駒表記 ?? "🐛"
+            } else {
+                return 駒.職名.成駒表記 ?? "🐛"
+            }
+        } else {
+            if 駒.陣営 == .玉側 && 駒.職名 == .王 && !self.🚩English表記 {
+                return "玉"
+            } else {
+                return 🚩English表記 ? 駒.職名.English生駒表記 : 駒.職名.rawValue
+            }
+        }
     }
     
     func この持ち駒の表記(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> String {
@@ -46,7 +58,12 @@ class 📱AppModel: ObservableObject {
         局面.手駒[陣営]?.個数(職名) ?? 0
     }
     
+    func 盤面を初期化する() {
+        局面.初期化する()
+        UINotificationFeedbackGenerator().notificationOccurred(.error)
+    }
     
+    // ======== ドラッグ処理 ========
     func この盤上の駒をドラッグし始める(_ 位置: Int) -> NSItemProvider {
         ドラッグした盤上の駒の元々の位置 = 位置
         現状 = .盤上の駒をドラッグしている
@@ -64,12 +81,6 @@ class 📱AppModel: ObservableObject {
         let 📦 = NSItemProvider(object: 📃 as NSItemProviderWriting)
         📦.suggestedName = "アプリ内でのコマ移動"
         return 📦
-    }
-    
-    
-    func 盤面を初期化する() {
-        局面.初期化する()
-        UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
     
     // ================================================================================

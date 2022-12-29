@@ -46,7 +46,7 @@ struct 盤上のコマもしくはマス: View {
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.局面.盤駒[位置] {
-                コマ(📱.表記(駒), $ドラッグ中)
+                コマ(📱.この盤上の駒の表記(駒), $ドラッグ中)
                     .rotationEffect(下向き(駒.陣営 == .玉側))
                     .overlay { 駒を消すボタン(位置) }
                     .onTapGesture(count: 2) { 📱.局面.盤駒[位置]?.裏返す() }

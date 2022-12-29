@@ -61,22 +61,6 @@ struct 盤上の駒: Codable {
         }
     }
     
-    func 表記(_ English表記: Bool) -> String? {
-        if self.成り {
-            if English表記 {
-                return self.職名.English成駒表記
-            } else {
-                return self.職名.成駒表記
-            }
-        } else {
-            if self.陣営 == .玉側 && self.職名 == .王 {
-                return English表記 ? "K" : "玉"
-            } else {
-                return English表記 ? self.職名.English生駒表記 : self.職名.rawValue
-            }
-        }
-    }
-    
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼｮｸﾒｲ: 駒の種類, _ ﾅﾘ: Bool = false) {
         陣営 = ｼﾞﾝｴｲ
         職名 = ｼｮｸﾒｲ
