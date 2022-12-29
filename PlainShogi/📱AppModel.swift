@@ -58,6 +58,12 @@ class 📱AppModel: ObservableObject {
         return (駒の表記, 数, 数の表記)
     }
     
+    func この駒を裏返す(_ 位置: Int) {
+        self.局面.盤駒[位置]?.裏返す()
+        self.局面.保存する()
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+    }
+    
     func 盤面を初期化する() {
         局面.初期化する()
         UINotificationFeedbackGenerator().notificationOccurred(.error)
