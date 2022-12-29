@@ -64,12 +64,12 @@ struct 盤上の駒: Codable {
         }
     }
     
-    func 表記(_ English表記: Bool) -> String {
+    func 表記(_ English表記: Bool) -> String? {
         if self.成り {
             if English表記 {
-                return self.職名.English成駒表記 ?? "🐛"
+                return self.職名.English成駒表記
             } else {
-                return self.職名.成駒表記 ?? "🐛"
+                return self.職名.成駒表記
             }
         } else {
             if self.陣営 == .玉側 && self.職名 == .王 {
