@@ -37,12 +37,10 @@ struct 局面モデル: Codable {
     }
 }
 
-
 enum 王側か玉側か: String, CaseIterable, Codable {
     case 王側
     case 玉側
 }
-
 
 enum 状況 {
     case 盤上の駒をドラッグしている
@@ -50,7 +48,6 @@ enum 状況 {
     case アプリ外部からドラッグしている
     case 何もドラッグしてない
 }
-
 
 struct 盤上の駒: Codable {
     let 陣営: 王側か玉側か
@@ -87,7 +84,6 @@ struct 盤上の駒: Codable {
     }
 }
 
-
 struct 持ち駒: Codable {
     var 配分: [駒の種類: Int] = [:]
     
@@ -110,17 +106,8 @@ struct 持ち駒: Codable {
     }
 }
 
-
 enum 駒の種類: String, CaseIterable, Identifiable, Codable {
-    
-    case 歩
-    case 角
-    case 飛
-    case 香
-    case 桂
-    case 銀
-    case 金
-    case 王
+    case 歩, 角, 飛, 香, 桂, 銀, 金, 王
     
     var id: Self { self }
     
@@ -163,10 +150,7 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
 }
 
 
-
-
 let 空の手駒: [王側か玉側か: 持ち駒] = [.王側: 持ち駒.空, .玉側: 持ち駒.空]
-
 
 let 初期配置: [Int: 盤上の駒] = {
     var 配置: [Int: 盤上の駒] = [:]
