@@ -131,12 +131,12 @@ struct 手駒調整シート: View {
                         HStack {
                             Spacer()
                             
-                            Text(📱.この持ち駒の表記(陣営, 職名))
+                            Text(📱.この持ち駒のメタデータ(陣営, 職名).駒の表記)
                                 .font(.title)
                             
                             Spacer()
                             
-                            Text(📱.この持ち駒の数(陣営, 職名).description)
+                            Text(📱.この持ち駒のメタデータ(陣営, 職名).数.description)
                                 .font(.title3)
                                 .monospacedDigit()
                         }
