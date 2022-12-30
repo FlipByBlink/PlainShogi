@@ -4,7 +4,7 @@ import UniformTypeIdentifiers
 struct ContentView: View {
     var body: some View {
         GeometryReader { 画面 in
-            let マスの大きさ = min(画面.size.width/9, 画面.size.height/11)
+            let マスの大きさ = min(画面.size.width / 9, 画面.size.height / 11)
             VStack(spacing: 0) {
                 盤外(.玉側, マスの大きさ)
                 VStack(spacing: 0) {
@@ -80,8 +80,7 @@ struct 盤外: View {
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｵｵｷｻ: CGFloat) {
-        陣営 = ｼﾞﾝｴｲ
-        コマの大きさ = ｵｵｷｻ
+        (陣営, コマの大きさ) = (ｼﾞﾝｴｲ, ｵｵｷｻ)
     }
 }
 
@@ -123,8 +122,7 @@ struct 盤外のコマ: View {
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼｮｸﾒｲ: 駒の種類) {
-        陣営 = ｼﾞﾝｴｲ
-        職名 = ｼｮｸﾒｲ
+        (陣営, 職名) = (ｼﾞﾝｴｲ, ｼｮｸﾒｲ)
     }
 }
 
@@ -153,8 +151,7 @@ struct コマ: View {
         }
     }
     init(_ ﾋｮｳｷ: String, _ ドラッグ中: Binding<Bool>) {
-        表記 = ﾋｮｳｷ
-        _ドラッグ中 = ドラッグ中
+        (表記, _ドラッグ中) = (ﾋｮｳｷ, ドラッグ中)
     }
 }
 

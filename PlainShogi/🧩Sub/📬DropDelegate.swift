@@ -19,8 +19,7 @@ struct 📬盤上ドロップ: DropDelegate {
     }
     
     init(_ ⓐppModel: 📱AppModel, _ ｲﾁ: Int) {
-        📱 = ⓐppModel
-        位置 = ｲﾁ
+        (📱, 位置) = (ⓐppModel, ｲﾁ)
     }
 }
 
@@ -42,7 +41,6 @@ struct 📬盤外ドロップ: DropDelegate {
     }
     
     init(_ ⓐppModel: 📱AppModel, _ ｼﾞﾝｴｲ: 王側か玉側か) {
-        📱 = ⓐppModel
-        陣営 = ｼﾞﾝｴｲ
+        (📱, 陣営) = (ⓐppModel, ｼﾞﾝｴｲ)
     }
 }

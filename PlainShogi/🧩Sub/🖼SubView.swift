@@ -1,9 +1,7 @@
-
 import SwiftUI
 
 struct 🛠盤面初期化ボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     var body: some View {
         Button {
             📱.盤面を初期化する()
@@ -14,10 +12,8 @@ struct 🛠盤面初期化ボタン: View {
     }
 }
 
-
 struct 🛠盤面整理開始ボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     var body: some View {
         Button {
             withAnimation { 📱.🚩駒を整理中 = true }
@@ -29,11 +25,9 @@ struct 🛠盤面整理開始ボタン: View {
     }
 }
 
-
 struct 駒を消すボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 位置: Int
-    
     var body: some View {
         if 📱.🚩駒を整理中 {
             GeometryReader { 📐 in
@@ -45,7 +39,6 @@ struct 駒を消すボタン: View {
                 } label: {
                     ZStack(alignment: .topLeading) {
                         Color.clear
-                        
                         Image(systemName: "xmark.circle.fill")
                             .resizable()
                             .symbolRenderingMode(.palette)
@@ -58,14 +51,11 @@ struct 駒を消すボタン: View {
             }
         }
     }
-    
     init(_ ｲﾁ: Int) { 位置 = ｲﾁ }
 }
 
-
 struct 整理完了ボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     var body: some View {
         Button {
             withAnimation {
@@ -82,12 +72,10 @@ struct 整理完了ボタン: View {
     }
 }
 
-
 struct 手駒調整ボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 陣営: 王側か玉側か
     @State private var 手駒の数を増減中: Bool = false
-    
     var body: some View {
         if 📱.🚩駒を整理中 {
             Button {
@@ -106,7 +94,6 @@ struct 手駒調整ボタン: View {
             }
         }
     }
-    
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { 陣営 = ｼﾞﾝｴｲ }
 }
 
@@ -122,7 +109,6 @@ struct 手駒調整シート: View {
             case (.玉側, true): return "↓ Pieces"
         }
     }
-    
     var body: some View {
         NavigationView {
             List {
@@ -130,12 +116,9 @@ struct 手駒調整シート: View {
                     Stepper {
                         HStack {
                             Spacer()
-                            
                             Text(📱.この持ち駒のメタデータ(陣営, 職名).駒の表記)
                                 .font(.title)
-                            
                             Spacer()
-                            
                             Text(📱.この持ち駒のメタデータ(陣営, 職名).数.description)
                                 .font(.title3)
                                 .monospacedDigit()
@@ -164,9 +147,9 @@ struct 手駒調整シート: View {
             }
         }
     }
-    
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { 陣営 = ｼﾞﾝｴｲ }
 }
+
 
 
 

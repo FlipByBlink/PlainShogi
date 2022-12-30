@@ -1,9 +1,7 @@
-
 import SwiftUI
 
 struct 🛠メニューボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     var body: some View {
         if 📱.🚩駒を整理中 {
             整理完了ボタン()
@@ -27,33 +25,31 @@ struct 🛠メニューボタン: View {
 
 struct 🛠AppMenu: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     var body: some View {
         NavigationView {
             List {
                 Section {
                     Label("長押しで駒を持ち上げ、そのままスライドさせて移動する", systemImage: "hand.draw")
                         .padding(.vertical, 8)
-                    
                     Label("ダブルタップで盤上の駒を裏返す", systemImage: "rotate.right")
                         .padding(.vertical, 8)
-                } header: { Text("あそび方") }
+                } header: {
+                    Text("あそび方")
+                }
                 .foregroundStyle(.primary)
-                
                 Section {
                     Toggle(isOn: 📱.$🚩English表記) {
                         Label("English表記に変更する", systemImage: "p.square")
                     }
-                } header: { Text("オプション") }
-                
+                } header: {
+                    Text("オプション")
+                }
                 Section {
                     🛠盤面初期化ボタン()
                     🛠盤面整理開始ボタン()
                 }
-                
                 細かな使い方セクション()
                 テキスト書き出し読み込みセクション()
-                
                 📣ADMenuLink()
                 📄InformationMenuLink()
             }
@@ -77,7 +73,6 @@ struct 🛠AppMenu: View {
     }
 }
 
-
 struct 細かな使い方セクション: View {
     var body: some View {
         NavigationLink {
@@ -85,7 +80,6 @@ struct 細かな使い方セクション: View {
                 VStack {
                     Text("メニューボタンを長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
                         .minimumScaleFactor(0.1)
-                    
                     Image("MenuLongPress")
                         .resizable()
                         .scaledToFit()
@@ -94,11 +88,9 @@ struct 細かな使い方セクション: View {
                         .padding()
                 }
                 .padding()
-                
                 Section {
                     HStack {
                         Text("Dynamic Type に対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
-                        
                         VStack {
                             ForEach(DynamicTypeSize.allCases, id: \.self) { 📏 in
                                 Text("歩")
@@ -116,10 +108,8 @@ struct 細かな使い方セクション: View {
     }
 }
 
-
 struct テキスト書き出し読み込みセクション: View {
     @EnvironmentObject var 📱: 📱AppModel
-    
     var body: some View {
         NavigationLink {
             List {
@@ -128,19 +118,19 @@ struct テキスト書き出し読み込みセクション: View {
                     テキスト変換プレビュー(フォルダー名: "TextExport", 枚数: 4)
                 }
                 .listRowSeparator(.hidden)
-                
                 Section {
                     Label("他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。", systemImage: "square.and.arrow.down")
                     テキスト変換プレビュー(フォルダー名: "TextImport", 枚数: 5)
                 }
                 .listRowSeparator(.hidden)
-                
                 Section {
                     Text(📱.現在の盤面をテキストに変換する())
                         .padding()
                         .accessibilityLabel("テキスト")
                         .textSelection(.enabled)
-                } header: { Text("テキスト書き出し例") }
+                } header: {
+                    Text("テキスト書き出し例")
+                }
             }
             .navigationTitle("テキスト機能")
         } label: {
@@ -149,13 +139,11 @@ struct テキスト書き出し読み込みセクション: View {
     }
 }
 
-
 struct テキスト変換プレビュー: View {
     var フォルダー名: String
     var 枚数: Int
     let 🕒 = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
     @State private var 表示中の画像: Int = 0
-    
     var body: some View {
         VStack(spacing: 4) {
             ZStack {
@@ -167,7 +155,6 @@ struct テキスト変換プレビュー: View {
                     }
                 }
             }
-            
             ProgressView(value: Double(表示中の画像), total: Double(枚数 - 1))
                 .grayscale(1)
                 .padding(.horizontal)
