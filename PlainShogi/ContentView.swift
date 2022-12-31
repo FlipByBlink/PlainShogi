@@ -7,7 +7,7 @@ struct ContentView: View {
         GeometryReader { 画面 in
             let マスの大きさ = min(画面.size.width / 9, 画面.size.height / 11)
             VStack(spacing: 0) {
-                盤外(📱.🚩上下反転 ? .王側 : .玉側, マスの大きさ)
+                盤外(.対面, マスの大きさ)
                 VStack(spacing: 0) {
                     Divider()
                     ForEach( 0 ..< 9 ) { 行 in
@@ -24,7 +24,7 @@ struct ContentView: View {
                 }
                 .border(.primary)
                 .frame(width: マスの大きさ * 9, height: マスの大きさ * 9)
-                盤外(📱.🚩上下反転 ? .玉側 : .王側, マスの大きさ)
+                盤外(.手前, マスの大きさ)
             }
         }
         .padding()
@@ -70,7 +70,15 @@ struct 盤上のコマもしくはマス: View {
 
 struct 盤外: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 陣営: 王側か玉側か
+    var 立場: 手前か対面か
+    var 陣営: 王側か玉側か {
+        switch (self.立場, 📱.🚩上下反転) {
+            case (.手前, false): return .王側
+            case (.対面, false): return .玉側
+            case (.手前, true): return .玉側
+            case (.対面, true): return .王側
+        }
+    }
     var コマの大きさ: CGFloat
     var 駒の並び順: [駒の種類] {
         self.陣営 == .王側 ? 駒の種類.allCases : 駒の種類.allCases.reversed()
@@ -92,8 +100,11 @@ struct 盤外: View {
                 .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
         }
     }
-    init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｵｵｷｻ: CGFloat) {
-        (self.陣営, self.コマの大きさ) = (ｼﾞﾝｴｲ, ｵｵｷｻ)
+    init(_ ﾀﾁﾊﾞ: 手前か対面か, _ ｵｵｷｻ: CGFloat) {
+        (self.立場, self.コマの大きさ) = (ﾀﾁﾊﾞ, ｵｵｷｻ)
+    }
+    enum 手前か対面か {
+        case 手前, 対面
     }
 }
 
