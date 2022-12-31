@@ -42,7 +42,7 @@ struct 盤上のコマもしくはマス: View {
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.局面.盤駒[元々の位置] {
-                let 表記 = 📱.この盤上の駒の表記(駒, self.元々の位置)
+                let 表記 = 📱.この盤上の駒の表記(self.元々の位置)
                 コマ(表記, self.$ドラッグ中)
                     .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
                     .overlay { 駒を消すボタン(self.元々の位置) }

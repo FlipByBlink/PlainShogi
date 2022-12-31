@@ -33,7 +33,8 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func この盤上の駒の表記(_ 駒: 盤上の駒, _ 位置: Int) -> String {
+    func この盤上の駒の表記(_ 位置: Int) -> String {
+        guard let 駒 = self.局面.盤駒[位置] else { return "🐛" }
         let シンボル: String
         if 駒.成り {
             if self.🚩English表記 {
