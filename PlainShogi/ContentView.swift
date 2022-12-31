@@ -1,8 +1,10 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
+// MARK: 仕様
+// 手前が「王」、対面が「玉」。
+
 struct ContentView: View {
-    @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
         GeometryReader { 画面 in
             let マスの大きさ = min(画面.size.width / 9, 画面.size.height / 11)
@@ -34,22 +36,22 @@ struct 盤上のコマもしくはマス: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var ドラッグ中 = false
     var 画面上での左上からの位置: Int
-    var 位置: Int {
+    var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
     }
     var body: some View {
         GeometryReader { 📐 in
-            if let 駒 = 📱.局面.盤駒[位置] {
-                let 表記 = 📱.この盤上の駒の表記(駒, self.位置)
+            if let 駒 = 📱.局面.盤駒[元々の位置] {
+                let 表記 = 📱.この盤上の駒の表記(駒, self.元々の位置)
                 コマ(表記, self.$ドラッグ中)
                     .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
-                    .overlay { 駒を消すボタン(self.位置) }
-                    .onTapGesture(count: 2) { 📱.この駒を裏返す(self.位置) }
+                    .overlay { 駒を消すボタン(self.元々の位置) }
+                    .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
                     .accessibilityHidden(true)
                     .onDrag {
                         振動フィードバック()
                         self.ドラッグ中 = true
-                        return 📱.この盤上の駒をドラッグし始める(self.位置)
+                        return 📱.この盤上の駒をドラッグし始める(self.元々の位置)
                     } preview: {
                         ZStack {
                             Rectangle()
@@ -65,7 +67,7 @@ struct 盤上のコマもしくはマス: View {
                     .foregroundStyle(.background)
             }
         }
-        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, self.位置))
+        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, self.元々の位置))
     }
     init(_ 画面上での左上からの位置: Int) {
         self.画面上での左上からの位置 = 画面上での左上からの位置
