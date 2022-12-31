@@ -7,7 +7,7 @@ struct 🛠盤面初期化ボタン: View {
             📱.盤面を初期化する()
             📱.🚩メニューを表示 = false
         } label: {
-            Label("盤面を初期化する", systemImage: "arrow.counterclockwise")
+            Label("盤面を初期化", systemImage: "arrow.counterclockwise")
         }
     }
 }
