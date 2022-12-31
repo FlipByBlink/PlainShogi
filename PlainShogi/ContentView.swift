@@ -39,10 +39,10 @@ struct 盤上のコマもしくはマス: View {
     var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
     }
+    var 表記: String { 📱.この盤上の駒の表記(self.元々の位置) }
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.局面.盤駒[元々の位置] {
-                let 表記 = 📱.この盤上の駒の表記(self.元々の位置)
                 コマ(表記, self.$ドラッグ中)
                     .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
                     .overlay { 駒を消すボタン(self.元々の位置) }
