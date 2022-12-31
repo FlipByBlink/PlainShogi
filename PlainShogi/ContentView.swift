@@ -45,7 +45,6 @@ struct 盤上のコマもしくはマス: View {
             if let 駒 = 📱.局面.盤駒[元々の位置] {
                 コマ(表記, self.$ドラッグ中)
                     .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
-                    .foregroundStyle(駒.成り ? .red : .primary)
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
                     .accessibilityHidden(true)
@@ -59,7 +58,6 @@ struct 盤上のコマもしくはマス: View {
                                 .foregroundStyle(.background)
                             Text(表記)
                                 .minimumScaleFactor(0.1)
-                                .foregroundStyle(駒.成り ? .red : .primary)
                         }
                         .frame(width: 📐.size.height, height: 📐.size.height)
                         .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
