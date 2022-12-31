@@ -14,8 +14,7 @@ struct ContentView: View {
                         HStack(spacing: 0) {
                             Divider()
                             ForEach( 0 ..< 9 ) { 列 in
-                                let 位置 = 📱.🚩上下反転 ? 80 - (行 * 9 + 列) : 行 * 9 + 列
-                                盤上のコマもしくはマス(位置)
+                                盤上のコマもしくはマス(行 * 9 + 列)
                                 Divider()
                             }
                         }
@@ -34,7 +33,10 @@ struct ContentView: View {
 struct 盤上のコマもしくはマス: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var ドラッグ中 = false
-    var 位置: Int
+    var 画面上での左上からの位置: Int
+    var 位置: Int {
+        📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
+    }
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.局面.盤駒[位置] {
@@ -65,7 +67,9 @@ struct 盤上のコマもしくはマス: View {
         }
         .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, self.位置))
     }
-    init(_ ｲﾁ: Int) { self.位置 = ｲﾁ }
+    init(_ 画面上での左上からの位置: Int) {
+        self.画面上での左上からの位置 = 画面上での左上からの位置
+    }
 }
 
 struct 盤外: View {
