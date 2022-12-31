@@ -147,32 +147,32 @@ struct テキスト書き出し読み込みセクション: View {
 struct テキスト変換プレビュー: View {
     var フォルダー名: String
     var 枚数: Int
-    let 🕒 = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
+    let 🕒timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
     @State private var 表示中の画像: Int = 0
     var body: some View {
         VStack(spacing: 4) {
             ZStack {
-                ForEach( 0 ..< 枚数, id: \.self) { 番号 in
-                    if 番号 <= 表示中の画像 {
-                        Image(フォルダー名 + "/" + 番号.description)
+                ForEach( 0 ..< self.枚数, id: \.self) { 番号 in
+                    if 番号 <= self.表示中の画像 {
+                        Image(self.フォルダー名 + "/" + 番号.description)
                             .resizable()
                             .scaledToFit()
                     }
                 }
             }
-            ProgressView(value: Double(表示中の画像), total: Double(枚数 - 1))
+            ProgressView(value: Double(self.表示中の画像), total: Double(self.枚数 - 1))
                 .grayscale(1)
                 .padding(.horizontal)
                 .accessibilityHidden(true)
         }
-        .onReceive(🕒) { _ in
-            if 表示中の画像 == 枚数 - 1 {
-                表示中の画像 = 0
+        .onReceive(🕒timer) { _ in
+            if self.表示中の画像 == self.枚数 - 1 {
+                self.表示中の画像 = 0
             } else {
-                表示中の画像 += 1
+                self.表示中の画像 += 1
             }
         }
-        .animation(.default.speed(0.5), value: 表示中の画像)
+        .animation(.default.speed(0.5), value: self.表示中の画像)
         .padding(8)
     }
 }

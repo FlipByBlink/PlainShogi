@@ -55,14 +55,14 @@ struct 盤上の駒: Codable {
     var 成り: Bool
     
     mutating func 裏返す() {
-        if 職名.成駒表記 != nil {
-            成り.toggle()
+        if self.職名.成駒表記 != nil {
+            self.成り.toggle()
             振動フィードバック()
         }
     }
     
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼｮｸﾒｲ: 駒の種類, _ ﾅﾘ: Bool = false) {
-        (陣営, 職名, 成り) = (ｼﾞﾝｴｲ, ｼｮｸﾒｲ, ﾅﾘ)
+        (self.陣営, self.職名, self.成り) = (ｼﾞﾝｴｲ, ｼｮｸﾒｲ, ﾅﾘ)
     }
 }
 
@@ -70,20 +70,20 @@ struct 持ち駒: Codable {
     var 配分: [駒の種類: Int] = [:]
     
     func 個数(_ 職名: 駒の種類) -> Int {
-        配分[職名] ?? 0
+        self.配分[職名] ?? 0
     }
     
     static var 空: Self {
-        持ち駒(配分: [:])
+        Self(配分: [:])
     }
     
     mutating func 一個増やす(_ 職名: 駒の種類) {
-        配分[職名] = 個数(職名) + 1
+        self.配分[職名] = self.個数(職名) + 1
     }
     
     mutating func 一個減らす(_ 職名: 駒の種類) {
-        if 個数(職名) >= 1 {
-            配分[職名] = 個数(職名) - 1
+        if self.個数(職名) >= 1 {
+            self.配分[職名] = self.個数(職名) - 1
         }
     }
 }

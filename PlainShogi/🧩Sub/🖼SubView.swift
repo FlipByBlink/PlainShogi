@@ -47,7 +47,7 @@ struct 駒を消すボタン: View {
             GeometryReader { 📐 in
                 Button {
                     withAnimation {
-                        📱.局面.盤駒.removeValue(forKey: 位置)
+                        📱.局面.盤駒.removeValue(forKey: self.位置)
                         振動フィードバック()
                     }
                 } label: {
@@ -65,7 +65,7 @@ struct 駒を消すボタン: View {
             }
         }
     }
-    init(_ ｲﾁ: Int) { 位置 = ｲﾁ }
+    init(_ ｲﾁ: Int) { self.位置 = ｲﾁ }
 }
 
 struct 整理完了ボタン: View {
@@ -93,7 +93,7 @@ struct 手駒調整ボタン: View {
     var body: some View {
         if 📱.🚩駒を整理中 {
             Button {
-                手駒の数を増減中 = true
+                self.手駒の数を増減中 = true
                 振動フィードバック()
             } label: {
                 Image(systemName: "plusminus")
@@ -102,21 +102,21 @@ struct 手駒調整ボタン: View {
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
-            .sheet(isPresented: $手駒の数を増減中) {
-                手駒調整シート(陣営)
-                    .onDisappear { 手駒の数を増減中 = false }
+            .sheet(isPresented: self.$手駒の数を増減中) {
+                手駒調整シート(self.陣営)
+                    .onDisappear { self.手駒の数を増減中 = false }
             }
         }
     }
-    init(_ ｼﾞﾝｴｲ: 王側か玉側か) { 陣営 = ｼﾞﾝｴｲ }
+    init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
 
 struct 手駒調整シート: View {
     @EnvironmentObject var 📱: 📱AppModel
-    @Environment(\.dismiss) var 🔙: DismissAction
+    @Environment(\.dismiss) var 🔙dismissAction: DismissAction
     var 陣営: 王側か玉側か
     var タイトル: String {
-        switch (陣営,📱.🚩English表記) {
+        switch (self.陣営, 📱.🚩English表記) {
             case (.王側, false): return "王側の手駒"
             case (.王側, true): return "↑ Pieces"
             case (.玉側, false): return "玉側の手駒"
@@ -130,27 +130,27 @@ struct 手駒調整シート: View {
                     Stepper {
                         HStack {
                             Spacer()
-                            Text(📱.この持ち駒のメタデータ(陣営, 職名).駒の表記)
+                            Text(📱.この持ち駒のメタデータ(self.陣営, 職名).駒の表記)
                                 .font(.title)
                             Spacer()
-                            Text(📱.この持ち駒のメタデータ(陣営, 職名).数.description)
+                            Text(📱.この持ち駒のメタデータ(self.陣営, 職名).数.description)
                                 .font(.title3)
                                 .monospacedDigit()
                         }
                         .padding()
                     } onIncrement: {
-                        📱.局面.手駒[陣営]?.一個増やす(職名)
+                        📱.局面.手駒[self.陣営]?.一個増やす(職名)
                     } onDecrement: {
-                        📱.局面.手駒[陣営]?.一個減らす(職名)
+                        📱.局面.手駒[self.陣営]?.一個減らす(職名)
                     }
                 }
             }
             .listStyle(.plain)
-            .navigationTitle(タイトル)
+            .navigationTitle(self.タイトル)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        🔙.callAsFunction()
+                        self.🔙dismissAction.callAsFunction()
                     } label: {
                         Image(systemName: "chevron.down")
                             .foregroundColor(.secondary)
@@ -161,7 +161,7 @@ struct 手駒調整シート: View {
             }
         }
     }
-    init(_ ｼﾞﾝｴｲ: 王側か玉側か) { 陣営 = ｼﾞﾝｴｲ }
+    init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
 
 

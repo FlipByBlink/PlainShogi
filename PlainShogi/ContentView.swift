@@ -36,22 +36,22 @@ struct 盤上のコマもしくはマス: View {
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.局面.盤駒[位置] {
-                コマ(📱.この盤上の駒の表記(駒, 位置), $ドラッグ中)
+                コマ(📱.この盤上の駒の表記(駒, self.位置), self.$ドラッグ中)
                     .rotationEffect(下向き(駒.陣営 == .玉側))
-                    .overlay { 駒を消すボタン(位置) }
-                    .onTapGesture(count: 2) { 📱.この駒を裏返す(位置) }
+                    .overlay { 駒を消すボタン(self.位置) }
+                    .onTapGesture(count: 2) { 📱.この駒を裏返す(self.位置) }
                     .accessibilityHidden(true)
                     .onDrag {
                         振動フィードバック()
-                        ドラッグ中 = true
-                        return 📱.この盤上の駒をドラッグし始める(位置)
+                        self.ドラッグ中 = true
+                        return 📱.この盤上の駒をドラッグし始める(self.位置)
                     }
             } else { // ==== マス ====
                 Rectangle()
                     .foregroundStyle(.background)
             }
         }
-        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, 位置))
+        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, self.位置))
     }
 }
 
@@ -60,27 +60,27 @@ struct 盤外: View {
     var 陣営: 王側か玉側か
     var コマの大きさ: CGFloat
     var 駒の並び順: [駒の種類] {
-        陣営 == .王側 ? 駒の種類.allCases : 駒の種類.allCases.reversed()
+        self.陣営 == .王側 ? 駒の種類.allCases : 駒の種類.allCases.reversed()
     }
     var body: some View {
         ZStack {
             Rectangle()
                 .foregroundStyle(.background)
             HStack(spacing: 0) {
-                ForEach(駒の並び順) { 職名 in
-                    盤外のコマ(陣営, 職名)
+                ForEach(self.駒の並び順) { 職名 in
+                    盤外のコマ(self.陣営, 職名)
                 }
             }
-            .frame(height: コマの大きさ)
+            .frame(height: self.コマの大きさ)
         }
-        .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, 陣営))
-        .overlay(alignment: 陣営 == .王側 ? .bottomLeading : .topTrailing) {
-            手駒調整ボタン(陣営)
-                .rotationEffect(下向き(陣営 == .玉側))
+        .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, self.陣営))
+        .overlay(alignment: self.陣営 == .王側 ? .bottomLeading : .topTrailing) {
+            手駒調整ボタン(self.陣営)
+                .rotationEffect(下向き(self.陣営 == .玉側))
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｵｵｷｻ: CGFloat) {
-        (陣営, コマの大きさ) = (ｼﾞﾝｴｲ, ｵｵｷｻ)
+        (self.陣営, self.コマの大きさ) = (ｼﾞﾝｴｲ, ｵｵｷｻ)
     }
 }
 
@@ -93,28 +93,28 @@ struct 盤外のコマ: View {
         📱.この持ち駒のメタデータ(self.陣営, self.職名)
     }
     var body: some View {
-        if メタデータ.数 == 0 {
+        if self.メタデータ.数 == 0 {
             EmptyView()
         } else {
             GeometryReader { 📐 in
                 HStack {
                     Spacer(minLength: 0)
-                    コマ(メタデータ.駒の表記 + メタデータ.数の表記, $ドラッグ中)
-                        .frame(maxWidth: 📐.size.height * (メタデータ.数>=2 ? 1.5:1))
-                        .rotationEffect(下向き(陣営 == .玉側))
+                    コマ(self.メタデータ.駒の表記 + self.メタデータ.数の表記, self.$ドラッグ中)
+                        .frame(maxWidth: 📐.size.height * (self.メタデータ.数>=2 ? 1.5:1))
+                        .rotationEffect(下向き(self.陣営 == .玉側))
                         .onDrag{
                             振動フィードバック()
-                            ドラッグ中 = true
-                            return 📱.この持ち駒をドラッグし始める(陣営, 職名)
+                            self.ドラッグ中 = true
+                            return 📱.この持ち駒をドラッグし始める(self.陣営, self.職名)
                         } preview: {
                             ZStack {
                                 Rectangle()
                                     .foregroundStyle(.background)
-                                Text(メタデータ.駒の表記)
+                                Text(self.メタデータ.駒の表記)
                                     .minimumScaleFactor(0.1)
                             }
                             .frame(width: 📐.size.height, height: 📐.size.height)
-                            .rotationEffect(下向き(陣営 == .玉側))
+                            .rotationEffect(下向き(self.陣営 == .玉側))
                         }
                     Spacer(minLength: 0)
                 }
@@ -122,7 +122,7 @@ struct 盤外のコマ: View {
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼｮｸﾒｲ: 駒の種類) {
-        (陣営, 職名) = (ｼﾞﾝｴｲ, ｼｮｸﾒｲ)
+        (self.陣営, self.職名) = (ｼﾞﾝｴｲ, ｼｮｸﾒｲ)
     }
 }
 
@@ -134,15 +134,15 @@ struct コマ: View {
         ZStack {
             Rectangle()
                 .foregroundStyle(.background)
-            Text(表記)
+            Text(self.表記)
                 .minimumScaleFactor(0.1)
-                .opacity(ドラッグ中 ? 0.25 : 1.0)
+                .opacity(self.ドラッグ中 ? 0.25 : 1.0)
                 .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
-                .onChange(of: ドラッグ中) { ⓝewValue in
+                .onChange(of: self.ドラッグ中) { ⓝewValue in
                     if ⓝewValue {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             withAnimation(.easeIn(duration: 1.5)) {
-                                ドラッグ中 = false
+                                self.ドラッグ中 = false
                             }
                         }
                     }
@@ -150,7 +150,7 @@ struct コマ: View {
         }
     }
     init(_ ﾋｮｳｷ: String, _ ドラッグ中: Binding<Bool>) {
-        (表記, _ドラッグ中) = (ﾋｮｳｷ, ドラッグ中)
+        (self.表記, self._ドラッグ中) = (ﾋｮｳｷ, ドラッグ中)
     }
 }
 
