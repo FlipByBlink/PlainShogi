@@ -15,6 +15,8 @@ class 📱AppModel: ObservableObject {
     var ドラッグした盤上の駒の元々の位置: Int? = nil
     var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
     
+    @Published var 動作直後の駒: (盤上の位置: Int, 取った持ち駒: (陣営: 王側か玉側か, 職種: 駒の種類)?)? = nil
+    
     var 現状: 状況 = .何もドラッグしてない {
         didSet {
             switch 現状 {
@@ -29,43 +31,43 @@ class 📱AppModel: ObservableObject {
         }
     }
     
-    func この盤上の駒の表記(_ 駒: 盤上の駒) -> String {
+    func この盤上の駒の表記(_ 駒: 盤上の駒, _ 位置: Int) -> String {
+        let シンボル: String
         if 駒.成り {
             if 🚩English表記 {
-                let en成駒表記 = 駒.職名.English成駒表記 ?? "🐛"
-                if 駒.陣営 == .玉側 {
-                    return en成駒表記 + "′" // U+2032 PRIME
-                } else {
-                    return en成駒表記
-                }
+                シンボル = 駒.職名.English成駒表記 ?? "🐛"
             } else {
-                return 駒.職名.成駒表記 ?? "🐛"
+                シンボル = 駒.職名.成駒表記 ?? "🐛"
             }
         } else {
-            if 駒.陣営 == .玉側 && 駒.職名 == .王 && !self.🚩English表記 {
-                return "玉"
+            if !self.🚩English表記 && (駒.陣営 == .玉側) && (駒.職名 == .王) {
+                シンボル = "玉"
             } else {
                 if 🚩English表記 {
-                    let en生駒表記 = 駒.職名.English生駒表記
-                    if 駒.陣営 == .玉側 {
-                        switch 駒.職名 {
-                            case .桂, .銀:
-                                return en生駒表記 + "′"
-                            default:
-                                return en生駒表記
-                        }
-                    } else {
-                        return en生駒表記
-                    }
+                    シンボル = 駒.職名.English生駒表記
                 } else {
-                    return 駒.職名.rawValue
+                    シンボル = 駒.職名.rawValue
                 }
+            }
+        }
+        let 🚩動作直後: Bool = (位置 == self.動作直後の駒?.盤上の位置)
+        if 🚩English表記 && (駒.陣営 == .玉側) && (駒.職名 == .銀 || 駒.職名 == .桂) {
+            if 🚩動作直後 {
+                return シンボル + "︭" + "′" // U+2032 PRIME
+            } else {
+                return シンボル + "′"
+            }
+        } else {
+            if 🚩動作直後 {
+                return シンボル + "︭"
+            } else {
+                return シンボル
             }
         }
     }
     
     func この持ち駒のメタデータ(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> (駒の表記: String, 数: Int, 数の表記: String) {
-        let 駒の表記: String
+        var 駒の表記: String
         if 陣営 == .玉側 && 職名 == .王 && !self.🚩English表記 {
             駒の表記 = "玉"
         } else {
@@ -73,7 +75,16 @@ class 📱AppModel: ObservableObject {
         }
         let 数: Int = 局面.手駒[陣営]?.個数(職名) ?? 0
         let 数の表記: String = 数 >= 2 ? 数.description : ""
+        if let 強調する持ち駒 = self.動作直後の駒?.取った持ち駒 {
+            if (陣営, 職名) == 強調する持ち駒 {
+                駒の表記 += "︭"
+            }
+        }
         return (駒の表記, 数, 数の表記)
+    }
+    
+    func 動作直後の強調表示をクリアする() {
+        self.動作直後の駒 = nil
     }
     
     func この駒を裏返す(_ 位置: Int) {
@@ -117,14 +128,19 @@ class 📱AppModel: ObservableObject {
                 
                 let 動かした駒 = 局面.盤駒[出発地点]!
                 
+                var 取った駒: (王側か玉側か, 駒の種類)? = nil
+                
                 if let 先客 = 局面.盤駒[置いた位置] {
                     if 先客.陣営 == 動かした駒.陣営 { return false }
                     
                     局面.手駒[動かした駒.陣営]?.一個増やす(先客.職名)
+                    取った駒 = (動かした駒.陣営, 先客.職名)
                 }
                 
                 局面.盤駒.removeValue(forKey: 出発地点)
                 局面.盤駒.updateValue(動かした駒, forKey: 置いた位置)
+                
+                self.動作直後の駒 = (置いた位置, 取った駒)
                 
                 駒を移動し終わったらログを更新してフィードバックを発生させる()
                 
@@ -135,6 +151,8 @@ class 📱AppModel: ObservableObject {
                 局面.盤駒.updateValue(盤上の駒(駒.陣営, 駒.職名), forKey: 置いた位置)
                 
                 局面.手駒[駒.陣営]?.一個減らす(駒.職名)
+                
+                self.動作直後の駒 = (置いた位置, nil)
                 
                 駒を移動し終わったらログを更新してフィードバックを発生させる()
                 

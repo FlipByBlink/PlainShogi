@@ -12,6 +12,19 @@ struct 🛠盤面初期化ボタン: View {
     }
 }
 
+struct 🛠移動直後強調表示クリアボタン: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    var body: some View {
+        Button {
+            withAnimation { 📱.動作直後の強調表示をクリアする() }
+            振動フィードバック()
+        } label: {
+            Label("動作直後の強調表示をクリアする", systemImage: "eraser.line.dashed")
+        }
+        .disabled(📱.動作直後の駒 == nil)
+    }
+}
+
 struct 🛠盤面整理開始ボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
