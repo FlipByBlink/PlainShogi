@@ -32,7 +32,12 @@ class 📱AppModel: ObservableObject {
     func この盤上の駒の表記(_ 駒: 盤上の駒) -> String {
         if 駒.成り {
             if 🚩English表記 {
-                return 駒.職名.English成駒表記 ?? "🐛"
+                let en成駒表記 = 駒.職名.English成駒表記 ?? "🐛"
+                if 駒.陣営 == .玉側 {
+                    return en成駒表記 + "′" // U+2032 PRIME
+                } else {
+                    return en成駒表記
+                }
             } else {
                 return 駒.職名.成駒表記 ?? "🐛"
             }
@@ -40,7 +45,21 @@ class 📱AppModel: ObservableObject {
             if 駒.陣営 == .玉側 && 駒.職名 == .王 && !self.🚩English表記 {
                 return "玉"
             } else {
-                return 🚩English表記 ? 駒.職名.English生駒表記 : 駒.職名.rawValue
+                if 🚩English表記 {
+                    let en生駒表記 = 駒.職名.English生駒表記
+                    if 駒.陣営 == .玉側 {
+                        switch 駒.職名 {
+                            case .桂, .銀:
+                                return en生駒表記 + "′"
+                            default:
+                                return en生駒表記
+                        }
+                    } else {
+                        return en生駒表記
+                    }
+                } else {
+                    return 駒.職名.rawValue
+                }
             }
         }
     }
