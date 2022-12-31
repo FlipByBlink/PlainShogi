@@ -40,7 +40,7 @@ struct 盤上のコマもしくはマス: View {
             if let 駒 = 📱.局面.盤駒[位置] {
                 let 表記 = 📱.この盤上の駒の表記(駒, self.位置)
                 コマ(表記, self.$ドラッグ中)
-                    .rotationEffect(下向き((駒.陣営 == .玉側) != 📱.🚩上下反転))
+                    .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
                     .overlay { 駒を消すボタン(self.位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.位置) }
                     .accessibilityHidden(true)
@@ -56,7 +56,7 @@ struct 盤上のコマもしくはマス: View {
                                 .minimumScaleFactor(0.1)
                         }
                         .frame(width: 📐.size.height, height: 📐.size.height)
-                        .rotationEffect(下向き((駒.陣営 == .玉側) != 📱.🚩上下反転))
+                        .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
                     }
             } else { // ==== マス ====
                 Rectangle()
@@ -89,7 +89,7 @@ struct 盤外: View {
         .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, self.陣営))
         .overlay(alignment: self.陣営 == .王側 ? .bottomLeading : .topTrailing) {
             手駒調整ボタン(self.陣営)
-                .rotationEffect(下向き(self.陣営 == .玉側))
+                .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｵｵｷｻ: CGFloat) {
@@ -114,7 +114,7 @@ struct 盤外のコマ: View {
                     Spacer(minLength: 0)
                     コマ(self.メタデータ.駒の表記 + self.メタデータ.数の表記, self.$ドラッグ中)
                         .frame(maxWidth: 📐.size.height * (self.メタデータ.数>=2 ? 1.5:1))
-                        .rotationEffect(下向き((self.陣営 == .玉側) != 📱.🚩上下反転))
+                        .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
                         .onDrag{
                             振動フィードバック()
                             self.ドラッグ中 = true
@@ -127,7 +127,7 @@ struct 盤外のコマ: View {
                                     .minimumScaleFactor(0.1)
                             }
                             .frame(width: 📐.size.height, height: 📐.size.height)
-                            .rotationEffect(下向き((self.陣営 == .玉側) != 📱.🚩上下反転))
+                            .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
                         }
                     Spacer(minLength: 0)
                 }
@@ -167,8 +167,19 @@ struct コマ: View {
     }
 }
 
-func 下向き(_ 玉側かどうか: Bool) -> Angle {
-    玉側かどうか ? .degrees(180) : .zero
+struct 下向きに変える: ViewModifier {
+    var 陣営: 王側か玉側か
+    var 上下反転: Bool
+    var 🚩条件: Bool {
+        (self.陣営 == .玉側) != 上下反転
+    }
+    func body(content: Content) -> some View {
+        content
+            .rotationEffect(self.🚩条件 ? .degrees(180) : .zero)
+    }
+    init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼﾞｮｳｹﾞﾊﾝﾃﾝ: Bool) {
+        (self.陣営, self.上下反転) = (ｼﾞﾝｴｲ, ｼﾞｮｳｹﾞﾊﾝﾃﾝ)
+    }
 }
 
 func 振動フィードバック() {
