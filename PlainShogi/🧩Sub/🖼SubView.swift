@@ -16,12 +16,12 @@ struct 🛠移動直後強調表示クリアボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
         Button {
-            withAnimation { 📱.動作直後の強調表示をクリアする() }
+            withAnimation { 📱.一般的な動作直後の強調表示をクリアする() }
             振動フィードバック()
         } label: {
             Label("動作直後の強調表示をクリアする", systemImage: "eraser.line.dashed")
         }
-        .disabled(📱.動作直後の強調表示されている駒は無い)
+        .disabled(📱.一般的な動作直後の強調表示されている駒は無い)
     }
 }
 
