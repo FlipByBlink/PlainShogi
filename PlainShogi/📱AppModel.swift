@@ -15,7 +15,7 @@ class 📱AppModel: ObservableObject {
     @Published var ドラッグした盤上の駒の元々の位置: Int? = nil
     var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
     
-    @Published private var 一般的な動作直後の駒: (盤上の位置: Int, 取った持ち駒: 駒の種類?)? = nil
+    @Published private(set) var 一般的な動作直後の駒: (盤上の位置: Int, 取った持ち駒: 駒の種類?)? = nil
     
     var 現状: 状況 = .何もドラッグしてない {
         didSet {
@@ -52,8 +52,9 @@ class 📱AppModel: ObservableObject {
         }
         let 🚩一般的な動作直後: Bool = (位置 == self.一般的な動作直後の駒?.盤上の位置)
         if 🚩English表記 && (駒.陣営 == .玉側) && (駒.職名 == .銀 || 駒.職名 == .桂) {
+            // ′ U+2032 PRIME
             if 🚩一般的な動作直後 {
-                return シンボル + "︭" + "′" // U+2032 PRIME
+                return シンボル + "︭" + "′"
             } else {
                 return シンボル + "′"
             }
@@ -90,10 +91,6 @@ class 📱AppModel: ObservableObject {
     func 一般的な動作直後の強調表示をクリアする() {
         self.一般的な動作直後の駒 = nil
         振動フィードバック()
-    }
-    
-    var 一般的な動作直後の強調表示されている駒は無い: Bool {
-        self.一般的な動作直後の駒 == nil
     }
     
     func この駒を裏返す(_ 位置: Int) {

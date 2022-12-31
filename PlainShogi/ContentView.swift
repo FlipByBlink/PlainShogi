@@ -126,7 +126,6 @@ struct 盤外のコマ: View {
     }
 }
 
-
 struct コマ: View {
     @EnvironmentObject var 📱: 📱AppModel
     var 表記: String
