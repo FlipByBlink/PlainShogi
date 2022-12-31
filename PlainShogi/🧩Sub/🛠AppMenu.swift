@@ -46,13 +46,13 @@ struct 🛠AppMenu: View {
                 .foregroundStyle(.primary)
                 Section {
                     Toggle(isOn: 📱.$🚩English表記) {
-                        Label("English表記に変更する", systemImage: "p.square")
+                        Label("English表記", systemImage: "p.square")
                     }
                     Toggle(isOn: 📱.$🚩動作直後強調表示機能オフ) {
                         Label("動作直後の強調表示機能をオフにする", systemImage: "underline")
                     }
                     Toggle(isOn: 📱.$🚩上下反転) {
-                        Label("上下を反転する", systemImage: "arrow.up.arrow.down")
+                        Label("上下反転", systemImage: "arrow.up.arrow.down")
                     }
                 } header: {
                     Text("オプション")

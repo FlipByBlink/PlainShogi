@@ -16,10 +16,10 @@ struct 🛠移動直後強調表示クリアボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
         Button {
-            withAnimation { 📱.一般的な動作直後の強調表示をクリアする() }
+            withAnimation { 📱.一般的な動作直後の強調表示をクリア() }
             振動フィードバック()
         } label: {
-            Label("動作直後の強調表示をクリアする", systemImage: "eraser.line.dashed")
+            Label("動作直後の強調表示をクリア", systemImage: "eraser.line.dashed")
         }
         .disabled(📱.一般的な動作直後の駒 == nil)
         .disabled(📱.🚩動作直後強調表示機能オフ)
@@ -118,9 +118,8 @@ struct 手駒調整シート: View {
     var タイトル: String {
         switch (self.陣営, 📱.🚩English表記) {
             case (.王側, false): return "王側の手駒"
-            case (.王側, true): return "↑ Pieces"
             case (.玉側, false): return "玉側の手駒"
-            case (.玉側, true): return "↓ Pieces"
+            case (_, true): return "Pieces"
         }
     }
     var body: some View {
@@ -128,21 +127,21 @@ struct 手駒調整シート: View {
             List {
                 ForEach(駒の種類.allCases) { 職名 in
                     Stepper {
-                        HStack {
-                            Spacer()
+                        HStack(spacing: 16) {
                             Text(📱.この持ち駒のメタデータ(self.陣営, 職名).駒の表記)
                                 .font(.title)
-                            Spacer()
                             Text(📱.この持ち駒のメタデータ(self.陣営, 職名).数.description)
                                 .font(.title3)
                                 .monospacedDigit()
                         }
-                        .padding()
+                        .padding(.leading)
+                        .padding(.vertical, 8)
                     } onIncrement: {
                         📱.局面.手駒[self.陣営]?.一個増やす(職名)
                     } onDecrement: {
                         📱.局面.手駒[self.陣営]?.一個減らす(職名)
                     }
+                    .padding(.trailing)
                 }
             }
             .listStyle(.plain)
