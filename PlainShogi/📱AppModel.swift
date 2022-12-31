@@ -12,10 +12,10 @@ class 📱AppModel: ObservableObject {
     @Published var 🚩メニューを表示: Bool = false
     @Published var 🚩駒を整理中: Bool = false
     
-    var ドラッグした盤上の駒の元々の位置: Int? = nil
+    @Published var ドラッグした盤上の駒の元々の位置: Int? = nil
     var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
     
-    @Published var 動作直後の駒: (盤上の位置: Int, 取った持ち駒: (陣営: 王側か玉側か, 職種: 駒の種類)?)? = nil
+    @Published private var 動作直後の駒: (盤上の位置: Int, 取った持ち駒: (陣営: 王側か玉側か, 職種: 駒の種類)?)? = nil
     
     var 現状: 状況 = .何もドラッグしてない {
         didSet {
@@ -68,7 +68,7 @@ class 📱AppModel: ObservableObject {
     
     func この持ち駒のメタデータ(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> (駒の表記: String, 数: Int, 数の表記: String) {
         var 駒の表記: String
-        if 陣営 == .玉側 && 職名 == .王 && !self.🚩English表記 {
+        if !self.🚩English表記 && (陣営 == .玉側) && (職名 == .王) {
             駒の表記 = "玉"
         } else {
             駒の表記 = 🚩English表記 ? 職名.English生駒表記 : 職名.rawValue
@@ -85,6 +85,11 @@ class 📱AppModel: ObservableObject {
     
     func 動作直後の強調表示をクリアする() {
         self.動作直後の駒 = nil
+        振動フィードバック()
+    }
+    
+    var 動作直後の強調表示されている駒は無い: Bool {
+        self.動作直後の駒 == nil
     }
     
     func この駒を裏返す(_ 位置: Int) {

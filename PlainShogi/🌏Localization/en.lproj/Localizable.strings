@@ -7,6 +7,7 @@
 "盤面を初期化する" = "Initialize";
 "駒を消したり増やしたりする" = "Edit pieces";
 "手駒を整理する" = "Edit captured pieces";
+"動作直後の強調表示をクリアする" = "Clear shift sign";
 "オプション" = "Option";
 "English表記に変更する" = "English term";
 "細かな使い方" = "More how to";
