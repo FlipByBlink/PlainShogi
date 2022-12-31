@@ -10,8 +10,11 @@ struct 🛠メニューボタン: View {
                 🛠盤面初期化ボタン()
                 🛠盤面整理開始ボタン()
                 🛠移動直後強調表示クリアボタン()
-                Toggle(isOn: 📱.$🚩上下反転) {
-                    Label("上下を反転する", systemImage: "arrow.up.arrow.down")
+                Button {
+                    withAnimation { 📱.🚩上下反転.toggle() }
+                } label: {
+                    Label(📱.🚩上下反転 ? "上下反転を元に戻す" : "上下反転させる",
+                          systemImage: "arrow.up.arrow.down")
                 }
             } label: {
                 Text("…")
