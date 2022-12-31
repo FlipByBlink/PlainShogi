@@ -87,7 +87,7 @@ struct 盤外: View {
     }
     var コマの大きさ: CGFloat
     var 駒の並び順: [駒の種類] {
-        self.陣営 == .王側 ? 駒の種類.allCases : 駒の種類.allCases.reversed()
+        self.立場 == .手前 ? 駒の種類.allCases : 駒の種類.allCases.reversed()
     }
     var body: some View {
         ZStack {
@@ -101,7 +101,7 @@ struct 盤外: View {
             .frame(height: self.コマの大きさ)
         }
         .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, self.陣営))
-        .overlay(alignment: self.陣営 == .王側 ? .bottomLeading : .topTrailing) {
+        .overlay(alignment: self.立場 == .手前 ? .bottomLeading : .topTrailing) {
             手駒調整ボタン(self.陣営)
                 .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
         }
