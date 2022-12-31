@@ -2,18 +2,20 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct ContentView: View {
+    @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
         GeometryReader { 画面 in
             let マスの大きさ = min(画面.size.width / 9, 画面.size.height / 11)
             VStack(spacing: 0) {
-                盤外(.玉側, マスの大きさ)
+                盤外(📱.🚩上下反転 ? .王側 : .玉側, マスの大きさ)
                 VStack(spacing: 0) {
                     Divider()
                     ForEach( 0 ..< 9 ) { 行 in
                         HStack(spacing: 0) {
                             Divider()
                             ForEach( 0 ..< 9 ) { 列 in
-                                盤上のコマもしくはマス(位置: 行 * 9 + 列)
+                                let 位置 = 📱.🚩上下反転 ? 80 - (行 * 9 + 列) : 行 * 9 + 列
+                                盤上のコマもしくはマス(位置)
                                 Divider()
                             }
                         }
@@ -22,7 +24,7 @@ struct ContentView: View {
                 }
                 .border(.primary)
                 .frame(width: マスの大きさ * 9, height: マスの大きさ * 9)
-                盤外(.王側, マスの大きさ)
+                盤外(📱.🚩上下反転 ? .玉側 : .王側, マスの大きさ)
             }
         }
         .padding()
@@ -36,8 +38,9 @@ struct 盤上のコマもしくはマス: View {
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.局面.盤駒[位置] {
-                コマ(📱.この盤上の駒の表記(駒, self.位置), self.$ドラッグ中)
-                    .rotationEffect(下向き(駒.陣営 == .玉側))
+                let 表記 = 📱.この盤上の駒の表記(駒, self.位置)
+                コマ(表記, self.$ドラッグ中)
+                    .rotationEffect(下向き((駒.陣営 == .玉側) != 📱.🚩上下反転))
                     .overlay { 駒を消すボタン(self.位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.位置) }
                     .accessibilityHidden(true)
@@ -45,6 +48,15 @@ struct 盤上のコマもしくはマス: View {
                         振動フィードバック()
                         self.ドラッグ中 = true
                         return 📱.この盤上の駒をドラッグし始める(self.位置)
+                    } preview: {
+                        ZStack {
+                            Rectangle()
+                                .foregroundStyle(.background)
+                            Text(表記)
+                                .minimumScaleFactor(0.1)
+                        }
+                        .frame(width: 📐.size.height, height: 📐.size.height)
+                        .rotationEffect(下向き((駒.陣営 == .玉側) != 📱.🚩上下反転))
                     }
             } else { // ==== マス ====
                 Rectangle()
@@ -53,6 +65,7 @@ struct 盤上のコマもしくはマス: View {
         }
         .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, self.位置))
     }
+    init(_ ｲﾁ: Int) { self.位置 = ｲﾁ }
 }
 
 struct 盤外: View {
@@ -101,7 +114,7 @@ struct 盤外のコマ: View {
                     Spacer(minLength: 0)
                     コマ(self.メタデータ.駒の表記 + self.メタデータ.数の表記, self.$ドラッグ中)
                         .frame(maxWidth: 📐.size.height * (self.メタデータ.数>=2 ? 1.5:1))
-                        .rotationEffect(下向き(self.陣営 == .玉側))
+                        .rotationEffect(下向き((self.陣営 == .玉側) != 📱.🚩上下反転))
                         .onDrag{
                             振動フィードバック()
                             self.ドラッグ中 = true
@@ -114,7 +127,7 @@ struct 盤外のコマ: View {
                                     .minimumScaleFactor(0.1)
                             }
                             .frame(width: 📐.size.height, height: 📐.size.height)
-                            .rotationEffect(下向き(self.陣営 == .玉側))
+                            .rotationEffect(下向き((self.陣営 == .玉側) != 📱.🚩上下反転))
                         }
                     Spacer(minLength: 0)
                 }
