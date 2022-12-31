@@ -8,6 +8,7 @@ class 📱AppModel: ObservableObject {
     @Published var 局面: 局面モデル
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
+    @AppStorage("動作直後強調表示機能オフ") var 🚩動作直後強調表示機能オフ: Bool = false
     
     @Published var 🚩メニューを表示: Bool = false
     @Published var 🚩駒を整理中: Bool = false
@@ -53,13 +54,13 @@ class 📱AppModel: ObservableObject {
         let 🚩一般的な動作直後: Bool = (位置 == self.一般的な動作直後の駒?.盤上の位置)
         if 🚩English表記 && (駒.陣営 == .玉側) && (駒.職名 == .銀 || 駒.職名 == .桂) {
             // ′ U+2032 PRIME
-            if 🚩一般的な動作直後 {
+            if !🚩動作直後強調表示機能オフ && 🚩一般的な動作直後 {
                 return シンボル + "︭" + "′"
             } else {
                 return シンボル + "′"
             }
         } else {
-            if 🚩一般的な動作直後 {
+            if !🚩動作直後強調表示機能オフ && 🚩一般的な動作直後 {
                 return シンボル + "︭"
             } else {
                 return シンボル
@@ -76,11 +77,13 @@ class 📱AppModel: ObservableObject {
         }
         let 数: Int = 局面.手駒[陣営]?.個数(職名) ?? 0
         let 数の表記: String = 数 >= 2 ? 数.description : ""
-        if let 強調する持ち駒 = self.一般的な動作直後の駒?.取った持ち駒 {
-            if let 動作直後の位置 = self.一般的な動作直後の駒?.盤上の位置 {
-                if 陣営 == self.局面.盤駒[動作直後の位置]?.陣営 {
-                    if 職名 == 強調する持ち駒 {
-                        駒の表記 += "︭"
+        if !self.🚩動作直後強調表示機能オフ {
+            if let 強調する持ち駒 = self.一般的な動作直後の駒?.取った持ち駒 {
+                if let 動作直後の位置 = self.一般的な動作直後の駒?.盤上の位置 {
+                    if 陣営 == self.局面.盤駒[動作直後の位置]?.陣営 {
+                        if 職名 == 強調する持ち駒 {
+                            駒の表記 += "︭"
+                        }
                     }
                 }
             }

@@ -42,6 +42,9 @@ struct 🛠AppMenu: View {
                     Toggle(isOn: 📱.$🚩English表記) {
                         Label("English表記に変更する", systemImage: "p.square")
                     }
+                    Toggle(isOn: 📱.$🚩動作直後強調表示機能オフ) {
+                        Label("動作直後の強調表示機能をオフにする", systemImage: "underline")
+                    }
                 } header: {
                     Text("オプション")
                 }
