@@ -45,13 +45,13 @@ struct 🛠AppMenu: View {
                 }
                 .foregroundStyle(.primary)
                 Section {
-                    Toggle(isOn: 📱.$🚩English表記) {
+                    Toggle(isOn: $📱.🚩English表記) {
                         Label("English表記", systemImage: "p.square")
                     }
-                    Toggle(isOn: 📱.$🚩動作直後強調表示機能オフ) {
+                    Toggle(isOn: $📱.🚩動作直後強調表示機能オフ) {
                         Label("動作直後の強調表示機能を無効にする", systemImage: "underline")
                     }
-                    Toggle(isOn: 📱.$🚩上下反転) {
+                    Toggle(isOn: $📱.🚩上下反転) {
                         Label("上下反転", systemImage: "arrow.up.arrow.down")
                     }
                 } header: {

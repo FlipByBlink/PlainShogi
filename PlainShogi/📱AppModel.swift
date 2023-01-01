@@ -98,6 +98,22 @@ class 📱AppModel: ObservableObject {
         振動フィードバック()
     }
     
+    func この駒は成れる(_ 位置: Int) -> Bool {
+        if let 駒 = self.局面.盤駒[位置] {
+            if 駒.成り == false {
+                if 駒.職名.成駒表記 != nil {
+                    switch 駒.陣営 {
+                        case .王側:
+                            if 位置 < 27 { return true }
+                        case .玉側:
+                            if 53 < 位置 { return true }
+                    }
+                }
+            }
+        }
+        return false
+    }
+    
     func この駒を裏返す(_ 位置: Int) {
         self.局面.盤駒[位置]?.裏返す()
         self.局面.保存する()

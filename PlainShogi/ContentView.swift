@@ -35,6 +35,7 @@ struct ContentView: View {
 struct 盤上のコマもしくはマス: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var ドラッグ中 = false
+    @State private var 🚩成り駒アラートを表示: Bool = false
     var 画面上での左上からの位置: Int
     var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
@@ -62,12 +63,21 @@ struct 盤上のコマもしくはマス: View {
                         .frame(width: 📐.size.height, height: 📐.size.height)
                         .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
                     }
+                    .confirmationDialog("この駒を成り駒にしますか？",
+                                        isPresented: self.$🚩成り駒アラートを表示,
+                                        titleVisibility: .visible) {
+                        Button(role: .destructive) {
+                            📱.この駒を裏返す(self.元々の位置)
+                        } label: {
+                            Text("成り駒にする")
+                        }
+                    }
             } else { // ==== マス ====
                 Rectangle()
                     .foregroundStyle(.background)
             }
         }
-        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, self.元々の位置))
+        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, self.元々の位置, self.$🚩成り駒アラートを表示))
     }
     init(_ 画面上での左上からの位置: Int) {
         self.画面上での左上からの位置 = 画面上での左上からの位置
