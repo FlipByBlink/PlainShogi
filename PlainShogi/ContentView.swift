@@ -54,14 +54,7 @@ struct 盤上のコマもしくはマス: View {
                         self.ドラッグ中 = true
                         return 📱.この盤上の駒をドラッグし始める(self.元々の位置)
                     } preview: {
-                        ZStack {
-                            Rectangle()
-                                .foregroundStyle(.background)
-                            Text(表記)
-                                .minimumScaleFactor(0.1)
-                        }
-                        .frame(width: 📐.size.height, height: 📐.size.height)
-                        .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
+                        ドラッグプレビュー用コマ(self.表記, 📐.size, 駒.陣営, 📱.🚩上下反転)
                     }
                     .confirmationDialog("この駒を成り駒にしますか？",
                                         isPresented: self.$🚩成り駒アラートを表示,
@@ -147,14 +140,7 @@ struct 盤外のコマ: View {
                             self.ドラッグ中 = true
                             return 📱.この持ち駒をドラッグし始める(self.陣営, self.職名)
                         } preview: {
-                            ZStack {
-                                Rectangle()
-                                    .foregroundStyle(.background)
-                                Text(self.メタデータ.駒の表記)
-                                    .minimumScaleFactor(0.1)
-                            }
-                            .frame(width: 📐.size.height, height: 📐.size.height)
-                            .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
+                            ドラッグプレビュー用コマ(self.メタデータ.駒の表記, 📐.size, self.陣営, 📱.🚩上下反転)
                         }
                     Spacer(minLength: 0)
                 }
@@ -206,6 +192,26 @@ struct 下向きに変える: ViewModifier {
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼﾞｮｳｹﾞﾊﾝﾃﾝ: Bool) {
         (self.陣営, self.上下反転) = (ｼﾞﾝｴｲ, ｼﾞｮｳｹﾞﾊﾝﾃﾝ)
+    }
+}
+
+struct ドラッグプレビュー用コマ: View {
+    var 表記: String
+    var サイズ: CGSize
+    var 陣営: 王側か玉側か
+    var 上下反転: Bool
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .foregroundStyle(.background)
+            Text(self.表記)
+                .minimumScaleFactor(0.1)
+        }
+        .frame(width: self.サイズ.height, height: self.サイズ.height)
+        .modifier(下向きに変える(self.陣営, self.上下反転))
+    }
+    init(_ ﾋｮｳｷ: String, _ ｻｲｽﾞ: CGSize, _ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼﾞｮｳｹﾞﾊﾝﾃﾝ: Bool) {
+        (self.表記, self.サイズ, self.陣営, self.上下反転) = (ﾋｮｳｷ, ｻｲｽﾞ, ｼﾞﾝｴｲ, ｼﾞｮｳｹﾞﾊﾝﾃﾝ)
     }
 }
 
