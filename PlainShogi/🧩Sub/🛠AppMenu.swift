@@ -36,14 +36,17 @@ struct 🛠AppMenu: View {
         NavigationView {
             List {
                 Section {
-                    Label("長押しで駒を持ち上げ、そのままスライドさせて移動する", systemImage: "hand.draw")
-                        .padding(.vertical, 8)
-                    Label("ダブルタップで盤上の駒を裏返す", systemImage: "rotate.right")
+                    Label("長押しで駒を持ち上げ、そのままスライドして移動させる", systemImage: "hand.draw")
                         .padding(.vertical, 8)
                 } header: {
                     Text("あそび方")
                 }
                 .foregroundStyle(.primary)
+                Section {
+                    🛠盤面初期化ボタン()
+                    🛠盤面整理開始ボタン()
+                    🛠移動直後強調表示クリアボタン()
+                }
                 Section {
                     Toggle(isOn: $📱.🚩English表記) {
                         Label("English表記", systemImage: "p.square")
@@ -56,11 +59,6 @@ struct 🛠AppMenu: View {
                     }
                 } header: {
                     Text("オプション")
-                }
-                Section {
-                    🛠盤面初期化ボタン()
-                    🛠盤面整理開始ボタン()
-                    🛠移動直後強調表示クリアボタン()
                 }
                 細かな使い方セクション()
                 テキスト書き出し読み込みセクション()
@@ -91,17 +89,21 @@ struct 細かな使い方セクション: View {
     var body: some View {
         NavigationLink {
             List {
-                VStack {
-                    Text("メニューボタンを長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
-                        .minimumScaleFactor(0.1)
-                    Image("MenuLongPress")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 240)
-                        .border(.primary)
-                        .padding()
+                Label("ダブルタップで盤上の駒を裏返す", systemImage: "rotate.right")
+                    .padding(8)
+                Section {
+                    VStack {
+                        Text("メニューボタンを長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
+                            .minimumScaleFactor(0.1)
+                        Image("MenuLongPress")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 240)
+                            .border(.primary)
+                            .padding()
+                    }
+                    .padding()
                 }
-                .padding()
                 Section {
                     HStack {
                         Text("Dynamic Type に対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")

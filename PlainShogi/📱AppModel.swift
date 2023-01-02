@@ -152,9 +152,7 @@ class 📱AppModel: ObservableObject {
             case .盤上の駒をドラッグしている:
                 guard let 出発地点 = self.ドラッグした盤上の駒の元々の位置 else { return false }
                 if 置いた位置 == 出発地点 { return false }
-                
-                let 動かした駒 = self.局面.盤駒[出発地点]!
-                
+                guard let 動かした駒 = self.局面.盤駒[出発地点] else { return false }
                 var 取った駒: 駒の種類? = nil
                 
                 if let 先客 = self.局面.盤駒[置いた位置] {
@@ -170,7 +168,6 @@ class 📱AppModel: ObservableObject {
                 self.一般的な動作直後の駒 = (置いた位置, 取った駒)
                 
                 self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-                
             case .持ち駒をドラッグしている:
                 guard let 駒 = self.ドラッグした持ち駒 else { return false }
                 if self.局面.盤駒[置いた位置] != nil { return false }
@@ -182,15 +179,12 @@ class 📱AppModel: ObservableObject {
                 self.一般的な動作直後の駒 = (置いた位置, nil)
                 
                 self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-                
             case .アプリ外部からドラッグしている:
                 let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
                 self.このアイテムを盤面に反映する(ⓘtemProviders)
-                
             case .何もドラッグしてない:
                 return false
         }
-        
         return true
     }
     
@@ -198,13 +192,12 @@ class 📱AppModel: ObservableObject {
         switch self.現状 {
             case .盤上の駒をドラッグしている:
                 guard let 出発地点 = self.ドラッグした盤上の駒の元々の位置 else { return false }
-                let 動かした駒 = self.局面.盤駒[出発地点]!
+                guard let 動かした駒 = self.局面.盤駒[出発地点] else { return false }
                 
                 self.局面.盤駒.removeValue(forKey: 出発地点)
                 self.局面.手駒[ドロップされた陣営]?.一個増やす(動かした駒.職名)
                 
                 self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-                
             case .持ち駒をドラッグしている:
                 guard let 駒 = self.ドラッグした持ち駒 else { return false }
                 
@@ -212,15 +205,12 @@ class 📱AppModel: ObservableObject {
                 self.局面.手駒[ドロップされた陣営]?.一個増やす(駒.職名)
                 
                 self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-                
             case .アプリ外部からドラッグしている:
                 let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
                 self.このアイテムを盤面に反映する(ⓘtemProviders)
-                
             case .何もドラッグしてない:
                 return false
         }
-        
         return true
     }
     
@@ -242,16 +232,13 @@ class 📱AppModel: ObservableObject {
                         return DropProposal(operation: .cancel)
                     }
                 }
-                
             case .持ち駒をドラッグしている:
                 if self.局面.盤駒[位置] != nil {
                     return .init(operation: .cancel)
                 }
-                
             case .アプリ外部からドラッグしている, .何もドラッグしてない:
                 return nil
         }
-        
         return nil
     }
     
