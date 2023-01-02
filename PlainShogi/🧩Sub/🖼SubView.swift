@@ -166,6 +166,75 @@ struct 手駒調整シート: View {
 
 
 
+//MARK: WIP 作業中 未適用
+struct ContentView_段筋付き: View {
+    var body: some View {
+        GeometryReader { 画面 in
+            let マスの大きさ = min(画面.size.width / (9 + 0.5), 画面.size.height / (11 + 0.5))
+            VStack(spacing: 0) {
+                盤外(.対面, マスの大きさ)
+                HStack(spacing: 0) {
+                    self.筋表記(マスの大きさ)
+                    Spacer()
+                        .frame(width: マスの大きさ/2)
+                }
+                HStack(spacing: 0) {
+                    self.盤面(マスの大きさ)
+                    self.段表記(マスの大きさ)
+                }
+                盤外(.手前, マスの大きさ)
+            }
+        }
+        .padding()
+    }
+    func 盤面(_ マスの大きさ: CGFloat) -> some View {
+        VStack(spacing: 0) {
+            Divider()
+            ForEach(0 ..< 9) { 行 in
+                HStack(spacing: 0) {
+                    Divider()
+                    ForEach(0 ..< 9) { 列 in
+                        盤上のコマもしくはマス(行 * 9 + 列)
+                        Divider()
+                    }
+                }
+                Divider()
+            }
+        }
+        .border(.primary)
+        .frame(width: マスの大きさ * 9, height: マスの大きさ * 9)
+    }
+    func 筋表記(_ マスの大きさ: CGFloat) -> some View {
+        //ForEach(1 ..< 10) { 列 in
+        ForEach(["９","８","７","６","５","４","３","２","１"], id: \.self) { 列 in
+            ZStack {
+                Color.clear
+                    .frame(width: マスの大きさ, height: マスの大きさ/2)
+                Text(列)
+                    .minimumScaleFactor(0.1)
+                    .padding(.bottom, 3)
+                    .font(.caption)
+                    .frame(width: マスの大きさ/2, height: マスの大きさ/2)
+            }
+        }
+    }
+    func 段表記(_ マスの大きさ: CGFloat) -> some View {
+        VStack(spacing: 0) {
+            ForEach(["一","二","三","四","五","六","七","八","九"], id: \.self) { 行 in
+                ZStack {
+                    Color.clear
+                        .frame(width: マスの大きさ/2, height: マスの大きさ)
+                    Text(行.description)
+                        .minimumScaleFactor(0.1)
+                        .padding(.leading, 3)
+                        .font(.caption)
+                        .frame(width: マスの大きさ/2, height: マスの大きさ/2)
+                }
+            }
+        }
+    }
+}
+
 //==== 一度実装したがリリース保留にした「移動直後の駒にマークを付ける機能」 ====
 //struct 移動直後マーク: View {
 //    @EnvironmentObject var 📱: 📱AppModel
