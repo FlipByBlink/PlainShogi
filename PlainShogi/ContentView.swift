@@ -12,10 +12,10 @@ struct ContentView: View {
                 盤外(.対面, マスの大きさ)
                 VStack(spacing: 0) {
                     Divider()
-                    ForEach( 0 ..< 9 ) { 行 in
+                    ForEach(0 ..< 9) { 行 in
                         HStack(spacing: 0) {
                             Divider()
-                            ForEach( 0 ..< 9 ) { 列 in
+                            ForEach(0 ..< 9) { 列 in
                                 盤上のコマもしくはマス(行 * 9 + 列)
                                 Divider()
                             }
@@ -35,7 +35,7 @@ struct ContentView: View {
 struct 盤上のコマもしくはマス: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var ドラッグ中 = false
-    @State private var 🚩成り駒アラートを表示: Bool = false
+    @State private var 🚩成り駒ダイアログを表示: Bool = false
     var 画面上での左上からの位置: Int
     var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
@@ -44,7 +44,7 @@ struct 盤上のコマもしくはマス: View {
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.局面.盤駒[元々の位置] {
-                コマ(表記, self.$ドラッグ中)
+                コマ(self.表記, self.$ドラッグ中)
                     .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
@@ -57,7 +57,7 @@ struct 盤上のコマもしくはマス: View {
                         ドラッグプレビュー用コマ(self.表記, 📐.size, 駒.陣営, 📱.🚩上下反転)
                     }
                     .confirmationDialog("この駒を成り駒にしますか？",
-                                        isPresented: self.$🚩成り駒アラートを表示,
+                                        isPresented: self.$🚩成り駒ダイアログを表示,
                                         titleVisibility: .visible) {
                         Button(role: .destructive) {
                             📱.この駒を裏返す(self.元々の位置)
@@ -70,7 +70,7 @@ struct 盤上のコマもしくはマス: View {
                     .foregroundStyle(.background)
             }
         }
-        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, self.元々の位置, self.$🚩成り駒アラートを表示))
+        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, self.元々の位置, self.$🚩成り駒ダイアログを表示))
     }
     init(_ 画面上での左上からの位置: Int) {
         self.画面上での左上からの位置 = 画面上での左上からの位置
