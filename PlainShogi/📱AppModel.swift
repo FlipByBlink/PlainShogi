@@ -122,6 +122,7 @@ class 📱AppModel: ObservableObject {
     
     func 盤面を初期化する() {
         self.局面.初期化する()
+        self.一般的な動作直後の駒 = nil
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
     

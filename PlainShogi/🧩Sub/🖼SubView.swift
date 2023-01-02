@@ -4,7 +4,7 @@ struct 🛠盤面初期化ボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
         Button {
-            📱.盤面を初期化する()
+            withAnimation { 📱.盤面を初期化する() }
             📱.🚩メニューを表示 = false
         } label: {
             Label("盤面を初期化", systemImage: "arrow.counterclockwise")
