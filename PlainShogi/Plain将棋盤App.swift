@@ -10,6 +10,7 @@ struct Plain将棋盤App: App {
                 .statusBar(hidden: true)
                 .overlay(alignment: .bottomTrailing) { 🛠メニューボタン() }
                 .sheet(isPresented: $📱.🚩メニューを表示) { 🛠AppMenu() }
+                .modifier(初回起動時に駒の動かし方の説明アラート())
                 .overlay(alignment: .bottom) { 📣ADBanner() }
                 .task { UIApplication.shared.isIdleTimerDisabled = true }
                 .environmentObject(📱)

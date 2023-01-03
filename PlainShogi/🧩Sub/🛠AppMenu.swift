@@ -36,7 +36,7 @@ struct 🛠AppMenu: View {
         NavigationView {
             List {
                 Section {
-                    Label("長押しで駒を持ち上げ、そのままスライドして移動させる", systemImage: "hand.draw")
+                    Label("長押しして駒を持ち上げ、そのままスライドして移動させる", systemImage: "hand.draw")
                         .padding(.vertical, 8)
                 } header: {
                     Text("あそび方")
