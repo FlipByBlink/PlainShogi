@@ -17,16 +17,16 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { 画面 in
             let マスの大きさ = self.マスの大きさを計算(画面.size)
-            VStack(spacing: 盤上と盤外の隙間) {
+            VStack(spacing: self.盤上と盤外の隙間) {
                 盤外(.対面, マスの大きさ)
                 VStack(spacing: 0) {
-                    if !self.上下反転 { self.筋表記(幅: マスの大きさ * マスに対する段筋の大きさ) }
+                    if !self.上下反転 { self.筋表記(幅: マスの大きさ * self.マスに対する段筋の大きさ) }
                     HStack(spacing: 0) {
-                        if self.上下反転 { self.段表記(高さ: マスの大きさ * マスに対する段筋の大きさ) }
+                        if self.上下反転 { self.段表記(高さ: マスの大きさ * self.マスに対する段筋の大きさ) }
                         self.盤面(マスの大きさ)
-                        if !self.上下反転 { self.段表記(高さ: マスの大きさ * マスに対する段筋の大きさ) }
+                        if !self.上下反転 { self.段表記(高さ: マスの大きさ * self.マスに対する段筋の大きさ) }
                     }
-                    if self.上下反転 { self.筋表記(幅: マスの大きさ * マスに対する段筋の大きさ) }
+                    if self.上下反転 { self.筋表記(幅: マスの大きさ * self.マスに対する段筋の大きさ) }
                 }
                 盤外(.手前, マスの大きさ)
             }
