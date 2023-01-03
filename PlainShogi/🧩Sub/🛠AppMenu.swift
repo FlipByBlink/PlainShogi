@@ -52,7 +52,7 @@ struct 🛠AppMenu: View {
                         Label("English表記", systemImage: "p.square")
                     }
                     Toggle(isOn: $📱.🚩動作直後強調表示機能オフ) {
-                        Label("動作直後の強調表示機能を無効にする", systemImage: "underline")
+                        Label("移動直後の強調表示機能を無効にする", systemImage: "underline")
                     }
                     Toggle(isOn: $📱.🚩上下反転) {
                         Label("上下反転", systemImage: "arrow.up.arrow.down")
@@ -65,7 +65,7 @@ struct 🛠AppMenu: View {
                 📣ADMenuLink()
                 📄InformationMenuLink()
             }
-            .navigationTitle("Plain将棋盤")
+            .navigationTitle("メニュー")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
