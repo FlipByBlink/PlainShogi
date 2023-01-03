@@ -30,7 +30,7 @@ struct 🛠メニューボタン: View {
     }
 }
 
-struct 🛠AppMenu: View {
+struct 🛠アプリメニュー: View {
     @EnvironmentObject var 📱: 📱AppModel
     var body: some View {
         NavigationView {
@@ -135,7 +135,8 @@ struct テキスト書き出し読み込みセクション: View {
                 }
                 .listRowSeparator(.hidden)
                 Section {
-                    Label("他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。", systemImage: "square.and.arrow.down")
+                    Label("他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。",
+                          systemImage: "square.and.arrow.down")
                     テキスト変換プレビュー(フォルダー名: "TextImport", 枚数: 5)
                 }
                 .listRowSeparator(.hidden)
