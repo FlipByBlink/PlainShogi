@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct 🛠メニューボタン: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     var body: some View {
         if 📱.🚩駒を整理中 {
             整理完了ボタン()
@@ -31,7 +31,7 @@ struct 🛠メニューボタン: View {
 }
 
 struct 🛠アプリメニュー: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     var body: some View {
         NavigationView {
             List {
@@ -125,7 +125,7 @@ struct 細かな使い方セクション: View {
 }
 
 struct テキスト書き出し読み込みセクション: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     var body: some View {
         NavigationLink {
             List {

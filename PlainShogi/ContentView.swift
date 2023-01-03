@@ -5,7 +5,7 @@ import UniformTypeIdentifiers
 // 手前が「王」、対面が「玉」。
 
 struct ContentView: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     private var 上下反転: Bool { 📱.🚩上下反転 }
     private let マスに対する段筋の大きさ: Double = 0.5
     private let 盤上と盤外の隙間: CGFloat = 4
@@ -80,7 +80,7 @@ struct ContentView: View {
 }
 
 struct 盤上のコマもしくはマス: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     @State private var ドラッグ中 = false
     @State private var 🚩成り駒ダイアログを表示: Bool = false
     private var 画面上での左上からの位置: Int
@@ -125,7 +125,7 @@ struct 盤上のコマもしくはマス: View {
 }
 
 struct 盤外: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     private var 立場: 手前か対面か
     private var 陣営: 王側か玉側か {
         switch (self.立場, 📱.🚩上下反転) {
@@ -167,7 +167,7 @@ struct 盤外: View {
 }
 
 struct 盤外のコマ: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     @State private var ドラッグ中 = false
     private var 陣営: 王側か玉側か
     private var 職名: 駒の種類
@@ -202,7 +202,7 @@ struct 盤外のコマ: View {
 }
 
 struct コマ: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     private var 表記: String
     @Binding private var ドラッグ中: Bool
     var body: some View {
@@ -272,7 +272,7 @@ func 振動フィードバック() {
 
 
 struct ContentView_Previews: PreviewProvider {
-    static let 📱 = 📱AppModel()
+    static let 📱 = 📱アプリモデル()
     static var previews: some View {
         ContentView()
             .previewLayout(.fixed(width: 400, height: 400))

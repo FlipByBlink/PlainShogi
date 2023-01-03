@@ -2,7 +2,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct 📬盤上ドロップ: DropDelegate {
-    private var 📱: 📱AppModel
+    private var 📱: 📱アプリモデル
     private var 位置: Int
     @Binding private var 🚩成り駒ダイアログを表示: Bool
     
@@ -29,13 +29,13 @@ struct 📬盤上ドロップ: DropDelegate {
         📱.有効なドロップかチェックする(info)
     }
     
-    init(_ ⓐppModel: 📱AppModel, _ ｲﾁ: Int, _ 成り駒ダイアログを表示: Binding<Bool>) {
+    init(_ ⓐppModel: 📱アプリモデル, _ ｲﾁ: Int, _ 成り駒ダイアログを表示: Binding<Bool>) {
         (📱, self.位置, self._🚩成り駒ダイアログを表示) = (ⓐppModel, ｲﾁ, 成り駒ダイアログを表示)
     }
 }
 
 struct 📬盤外ドロップ: DropDelegate {
-    private var 📱: 📱AppModel
+    private var 📱: 📱アプリモデル
     private var 陣営: 王側か玉側か
     
     func performDrop(info: DropInfo) -> Bool {
@@ -50,7 +50,7 @@ struct 📬盤外ドロップ: DropDelegate {
         📱.有効なドロップかチェックする(info)
     }
     
-    init(_ ⓐppModel: 📱AppModel, _ ｼﾞﾝｴｲ: 王側か玉側か) {
+    init(_ ⓐppModel: 📱アプリモデル, _ ｼﾞﾝｴｲ: 王側か玉側か) {
         (📱, self.陣営) = (ⓐppModel, ｼﾞﾝｴｲ)
     }
 }

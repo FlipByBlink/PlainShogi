@@ -3,7 +3,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 @MainActor
-class 📱AppModel: ObservableObject {
+class 📱アプリモデル: ObservableObject {
     
     @Published var 局面: 局面モデル
     

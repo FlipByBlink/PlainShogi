@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct 🛠盤面初期化ボタン: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     var body: some View {
         Button {
             withAnimation { 📱.盤面を初期化する() }
@@ -13,7 +13,7 @@ struct 🛠盤面初期化ボタン: View {
 }
 
 struct 🛠移動直後強調表示クリアボタン: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     var body: some View {
         Button {
             withAnimation { 📱.盤駒の通常移動直後の強調表示をクリア() }
@@ -27,7 +27,7 @@ struct 🛠移動直後強調表示クリアボタン: View {
 }
 
 struct 🛠盤面整理開始ボタン: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     var body: some View {
         Button {
             withAnimation { 📱.🚩駒を整理中 = true }
@@ -40,7 +40,7 @@ struct 🛠盤面整理開始ボタン: View {
 }
 
 struct 駒を消すボタン: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     private var 位置: Int
     var body: some View {
         if 📱.🚩駒を整理中 {
@@ -69,7 +69,7 @@ struct 駒を消すボタン: View {
 }
 
 struct 整理完了ボタン: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     var body: some View {
         Button {
             withAnimation {
@@ -87,7 +87,7 @@ struct 整理完了ボタン: View {
 }
 
 struct 手駒調整ボタン: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     private var 陣営: 王側か玉側か
     @State private var 手駒の数を増減中: Bool = false
     var body: some View {
@@ -112,7 +112,7 @@ struct 手駒調整ボタン: View {
 }
 
 struct 手駒調整シート: View {
-    @EnvironmentObject var 📱: 📱AppModel
+    @EnvironmentObject var 📱: 📱アプリモデル
     @Environment(\.dismiss) var 🔙dismissAction: DismissAction
     private var 陣営: 王側か玉側か
     private var タイトル: String {
