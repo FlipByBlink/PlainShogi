@@ -259,10 +259,10 @@ class 📱AppModel: ObservableObject {
         let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
         guard let ⓘtemProvider = ⓘtemProviders.first else { return false }
         
-        if let 🏷 = ⓘtemProvider.suggestedName {
-            if 🏷 != "アプリ内でのコマ移動" {
+        if let ⓢuggestedName = ⓘtemProvider.suggestedName {
+            if ⓢuggestedName != "アプリ内でのコマ移動" {
                 print("アプリ外部からのアイテムです")
-                print("itemProvider.suggestedName: ", 🏷)
+                print("itemProvider.suggestedName: ", ⓢuggestedName)
                 self.現状 = .アプリ外部からドラッグしている
             }
         } else {

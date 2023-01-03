@@ -2,8 +2,8 @@ import SwiftUI
 
 @main
 struct Plain将棋盤App: App {
-    @ObservedObject var 📱 = 📱AppModel()
-    let 🛒 = 🛒StoreModel()
+    @StateObject var 📱 = 📱AppModel()
+    @StateObject var 🛒 = 🛒StoreModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
