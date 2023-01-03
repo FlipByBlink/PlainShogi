@@ -6,25 +6,30 @@ import UniformTypeIdentifiers
 
 struct ContentView: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 上下反転: Bool { 📱.🚩上下反転 }
+    private var 上下反転: Bool { 📱.🚩上下反転 }
+    private let コマの大きさに対する段筋の大きさ: Double = 0.5
+    private let 盤上と盤外の隙間: CGFloat = 4
     var body: some View {
         GeometryReader { 画面 in
-            let マスの大きさ = min(画面.size.width / (9 + 0.5), 画面.size.height / (11 + 0.5))
-            VStack(spacing: 0) {
+            let マスの大きさ = min(画面.size.width / (9 + コマの大きさに対する段筋の大きさ),
+                             (画面.size.height - 盤上と盤外の隙間 * 2) / (11 + コマの大きさに対する段筋の大きさ))
+            VStack(spacing: 盤上と盤外の隙間) {
                 盤外(.対面, マスの大きさ)
-                if !self.上下反転 { self.筋表記(幅: マスの大きさ / 2) }
-                HStack(spacing: 0) {
-                    if self.上下反転 { self.段表記(高さ: マスの大きさ / 2) }
-                    self.盤面(マスの大きさ)
-                    if !self.上下反転 { self.段表記(高さ: マスの大きさ / 2) }
+                VStack(spacing: 0) {
+                    if !self.上下反転 { self.筋表記(幅: マスの大きさ / 2) }
+                    HStack(spacing: 0) {
+                        if self.上下反転 { self.段表記(高さ: マスの大きさ / 2) }
+                        self.盤面(マスの大きさ)
+                        if !self.上下反転 { self.段表記(高さ: マスの大きさ / 2) }
+                    }
+                    if self.上下反転 { self.筋表記(幅: マスの大きさ / 2) }
                 }
-                if self.上下反転 { self.筋表記(幅: マスの大きさ / 2) }
                 盤外(.手前, マスの大きさ)
             }
         }
         .padding()
     }
-    func 盤面(_ マスの大きさ: CGFloat) -> some View {
+    private func 盤面(_ マスの大きさ: CGFloat) -> some View {
         VStack(spacing: 0) {
             Divider()
             ForEach(0 ..< 9) { 行 in
@@ -41,7 +46,7 @@ struct ContentView: View {
         .border(.primary)
         .frame(width: マスの大きさ * 9, height: マスの大きさ * 9)
     }
-    func 筋表記(幅: CGFloat) -> some View {
+    private func 筋表記(幅: CGFloat) -> some View {
         HStack(spacing: 0) {
             let 字 = ["９","８","７","６","５","４","３","２","１"]
             ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 列 in
@@ -55,7 +60,7 @@ struct ContentView: View {
         }
         .padding(self.上下反転 ? .leading : .trailing, 幅)
     }
-    func 段表記(高さ: CGFloat) -> some View {
+    private func 段表記(高さ: CGFloat) -> some View {
         VStack(spacing: 0) {
             let 字 = ["一","二","三","四","五","六","七","八","九"]
             ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 行 in
@@ -74,11 +79,11 @@ struct 盤上のコマもしくはマス: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var ドラッグ中 = false
     @State private var 🚩成り駒ダイアログを表示: Bool = false
-    var 画面上での左上からの位置: Int
-    var 元々の位置: Int {
+    private var 画面上での左上からの位置: Int
+    private var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
     }
-    var 表記: String { 📱.この盤上の駒の表記(self.元々の位置) }
+    private var 表記: String { 📱.この盤上の駒の表記(self.元々の位置) }
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.局面.盤駒[元々の位置] {
@@ -117,8 +122,8 @@ struct 盤上のコマもしくはマス: View {
 
 struct 盤外: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 立場: 手前か対面か
-    var 陣営: 王側か玉側か {
+    private var 立場: 手前か対面か
+    private var 陣営: 王側か玉側か {
         switch (self.立場, 📱.🚩上下反転) {
             case (.手前, false): return .王側
             case (.対面, false): return .玉側
@@ -126,8 +131,8 @@ struct 盤外: View {
             case (.対面, true): return .王側
         }
     }
-    var コマの大きさ: CGFloat
-    var 駒の並び順: [駒の種類] {
+    private var コマの大きさ: CGFloat
+    private var 駒の並び順: [駒の種類] {
         self.立場 == .手前 ? 駒の種類.allCases : 駒の種類.allCases.reversed()
     }
     var body: some View {
@@ -160,9 +165,9 @@ struct 盤外: View {
 struct 盤外のコマ: View {
     @EnvironmentObject var 📱: 📱AppModel
     @State private var ドラッグ中 = false
-    var 陣営: 王側か玉側か
-    var 職名: 駒の種類
-    var メタデータ: (駒の表記: String, 数: Int, 数の表記: String) {
+    private var 陣営: 王側か玉側か
+    private var 職名: 駒の種類
+    private var メタデータ: (駒の表記: String, 数: Int, 数の表記: String) {
         📱.この持ち駒のメタデータ(self.陣営, self.職名)
     }
     var body: some View {
@@ -194,7 +199,7 @@ struct 盤外のコマ: View {
 
 struct コマ: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 表記: String
+    private var 表記: String
     @Binding var ドラッグ中: Bool
     var body: some View {
         ZStack {
@@ -221,9 +226,9 @@ struct コマ: View {
 }
 
 struct 下向きに変える: ViewModifier {
-    var 陣営: 王側か玉側か
-    var 上下反転: Bool
-    var 🚩条件: Bool {
+    private var 陣営: 王側か玉側か
+    private var 上下反転: Bool
+    private var 🚩条件: Bool {
         (self.陣営 == .玉側) != 上下反転
     }
     func body(content: Content) -> some View {
@@ -236,10 +241,10 @@ struct 下向きに変える: ViewModifier {
 }
 
 struct ドラッグプレビュー用コマ: View {
-    var 表記: String
-    var サイズ: CGSize
-    var 陣営: 王側か玉側か
-    var 上下反転: Bool
+    private var 表記: String
+    private var サイズ: CGSize
+    private var 陣営: 王側か玉側か
+    private var 上下反転: Bool
     var body: some View {
         ZStack {
             Rectangle()
