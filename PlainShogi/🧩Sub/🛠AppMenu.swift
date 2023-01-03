@@ -158,7 +158,7 @@ struct テキスト書き出し読み込みセクション: View {
 struct テキスト変換プレビュー: View {
     var フォルダー名: String
     var 枚数: Int
-    let 🕒timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
+    private let 🕒timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
     @State private var 表示中の画像: Int = 0
     var body: some View {
         VStack(spacing: 4) {

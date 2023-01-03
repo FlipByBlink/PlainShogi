@@ -2,9 +2,9 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct 📬盤上ドロップ: DropDelegate {
-    var 📱: 📱AppModel
-    var 位置: Int
-    @Binding var 🚩成り駒ダイアログを表示: Bool
+    private var 📱: 📱AppModel
+    private var 位置: Int
+    @Binding private var 🚩成り駒ダイアログを表示: Bool
     
     func performDrop(info: DropInfo) -> Bool {
         let 状態 = 📱.現状
@@ -35,8 +35,8 @@ struct 📬盤上ドロップ: DropDelegate {
 }
 
 struct 📬盤外ドロップ: DropDelegate {
-    var 📱: 📱AppModel
-    var 陣営: 王側か玉側か
+    private var 📱: 📱AppModel
+    private var 陣営: 王側か玉側か
     
     func performDrop(info: DropInfo) -> Bool {
         📱.盤外のこちら側にドロップする(self.陣営, info)

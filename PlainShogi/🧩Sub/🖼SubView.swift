@@ -41,7 +41,7 @@ struct 🛠盤面整理開始ボタン: View {
 
 struct 駒を消すボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 位置: Int
+    private var 位置: Int
     var body: some View {
         if 📱.🚩駒を整理中 {
             GeometryReader { 📐 in
@@ -88,7 +88,7 @@ struct 整理完了ボタン: View {
 
 struct 手駒調整ボタン: View {
     @EnvironmentObject var 📱: 📱AppModel
-    var 陣営: 王側か玉側か
+    private var 陣営: 王側か玉側か
     @State private var 手駒の数を増減中: Bool = false
     var body: some View {
         if 📱.🚩駒を整理中 {
@@ -114,8 +114,8 @@ struct 手駒調整ボタン: View {
 struct 手駒調整シート: View {
     @EnvironmentObject var 📱: 📱AppModel
     @Environment(\.dismiss) var 🔙dismissAction: DismissAction
-    var 陣営: 王側か玉側か
-    var タイトル: String {
+    private var 陣営: 王側か玉側か
+    private var タイトル: String {
         switch (self.陣営, 📱.🚩English表記) {
             case (.王側, false): return "王側の手駒"
             case (.玉側, false): return "玉側の手駒"
