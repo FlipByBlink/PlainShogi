@@ -137,9 +137,11 @@ struct 盤外: View {
             HStack(spacing: 0) {
                 ForEach(self.駒の並び順) { 職名 in
                     盤外のコマ(self.陣営, 職名)
+                        .frame(maxWidth: self.コマの大きさ * 3)
                 }
             }
             .frame(height: self.コマの大きさ)
+            .frame(maxWidth: self.コマの大きさ * 16)
         }
         .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, self.陣営))
         .overlay(alignment: self.立場 == .手前 ? .bottomLeading : .topTrailing) {
