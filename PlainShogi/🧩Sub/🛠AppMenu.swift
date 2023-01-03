@@ -98,23 +98,23 @@ struct 細かな使い方セクション: View {
                         Image("MenuLongPress")
                             .resizable()
                             .scaledToFit()
-                            .frame(maxHeight: 240)
+                            .frame(maxHeight: 160)
                             .border(.primary)
-                            .padding()
+                            .padding(8)
                     }
                     .padding()
                 }
                 Section {
-                    HStack {
+                    VStack {
                         Text("Dynamic Type に対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
-                        VStack {
-                            ForEach(DynamicTypeSize.allCases, id: \.self) { 📏 in
-                                Text("歩")
-                                    .dynamicTypeSize(📏)
-                            }
-                        }
-                        .padding()
+                        Image("DynamicType")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 120)
+                            .border(.primary)
+                            .padding(8)
                     }
+                    .padding()
                 }
             }
             .navigationTitle("細かな使い方")
