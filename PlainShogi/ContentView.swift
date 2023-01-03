@@ -9,11 +9,6 @@ struct ContentView: View {
     private var 上下反転: Bool { 📱.🚩上下反転 }
     private let マスに対する段筋の大きさ: Double = 0.5
     private let 盤上と盤外の隙間: CGFloat = 4
-    private func マスの大きさを計算(_ 画面サイズ: CGSize) -> CGFloat {
-        let 横基準 = 画面サイズ.width / (9 + マスに対する段筋の大きさ)
-        let 縦基準 = (画面サイズ.height - 盤上と盤外の隙間 * 2) / (11 + マスに対する段筋の大きさ)
-        return min(横基準, 縦基準)
-    }
     var body: some View {
         GeometryReader { 画面 in
             let マスの大きさ = self.マスの大きさを計算(画面.size)
@@ -32,6 +27,11 @@ struct ContentView: View {
             }
         }
         .padding()
+    }
+    private func マスの大きさを計算(_ 画面サイズ: CGSize) -> CGFloat {
+        let 横基準 = 画面サイズ.width / (9 + マスに対する段筋の大きさ)
+        let 縦基準 = (画面サイズ.height - 盤上と盤外の隙間 * 2) / (11 + マスに対する段筋の大きさ)
+        return min(横基準, 縦基準)
     }
     private func 盤面(_ マスの大きさ: CGFloat) -> some View {
         VStack(spacing: 0) {
@@ -182,7 +182,7 @@ struct 盤外のコマ: View {
                 HStack {
                     Spacer(minLength: 0)
                     コマ(self.メタデータ.駒の表記 + self.メタデータ.数の表記, self.$ドラッグ中)
-                        .frame(maxWidth: 📐.size.height * (self.メタデータ.数>=2 ? 1.5:1))
+                        .frame(maxWidth: 📐.size.height * (self.メタデータ.数 >= 2 ? 1.5 : 1))
                         .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
                         .onDrag{
                             振動フィードバック()

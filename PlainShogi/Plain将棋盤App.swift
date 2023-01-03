@@ -19,5 +19,8 @@ struct Plain将棋盤App: App {
     }
 }
 
+
+
+
 typealias 🛒Storeモデル = 🛒StoreModel
 typealias 📣広告バナー = 📣ADBanner

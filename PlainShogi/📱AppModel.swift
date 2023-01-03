@@ -15,7 +15,7 @@ class 📱アプリモデル: ObservableObject {
     @Published var 🚩駒を整理中: Bool = false
     
     @Published var ドラッグした盤上の駒の元々の位置: Int? = nil
-    var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
+    private var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
     
     @Published private(set) var 盤駒の通常移動直後の駒: (盤上の位置: Int, 取った持ち駒: 駒の種類?)? = nil
     
@@ -139,7 +139,7 @@ class 📱アプリモデル: ObservableObject {
         return self.ドラッグ対象となるアイテムを用意する()
     }
     
-    func ドラッグ対象となるアイテムを用意する() -> NSItemProvider {
+    private func ドラッグ対象となるアイテムを用意する() -> NSItemProvider {
         let テキスト = self.現在の盤面をテキストに変換する()
         let ⓘtemProvider = NSItemProvider(object: テキスト as NSItemProviderWriting)
         ⓘtemProvider.suggestedName = "アプリ内でのコマ移動"
@@ -215,7 +215,7 @@ class 📱アプリモデル: ObservableObject {
         return true
     }
     
-    func 駒を移動し終わったらログを更新してフィードバックを発生させる() {
+    private func 駒を移動し終わったらログを更新してフィードバックを発生させる() {
         self.現状 = .何もドラッグしてない
         self.ログを更新する()
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
@@ -288,7 +288,7 @@ class 📱アプリモデル: ObservableObject {
         }
     }
     
-    func ログを更新する() {
+    private func ログを更新する() {
         self.局面.保存する()
     }
     
@@ -298,7 +298,7 @@ class 📱アプリモデル: ObservableObject {
         📃テキスト連携機能.テキストに変換する(self.局面)
     }
     
-    func このアイテムを盤面に反映する(_ ⓘtemProviders: [NSItemProvider]) {
+    private func このアイテムを盤面に反映する(_ ⓘtemProviders: [NSItemProvider]) {
         Task { @MainActor in
             do {
                 guard let ⓘtemProvider = ⓘtemProviders.first else { return }
