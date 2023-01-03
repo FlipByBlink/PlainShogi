@@ -6,7 +6,7 @@ struct Plain将棋盤App: App {
     let 🛒 = 🛒StoreModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView_段筋付き()
                 .statusBar(hidden: true)
                 .overlay(alignment: .bottomTrailing) { 🛠メニューボタン() }
                 .sheet(isPresented: $📱.🚩メニューを表示) { 🛠AppMenu() }
