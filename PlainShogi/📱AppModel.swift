@@ -8,7 +8,7 @@ class 📱AppModel: ObservableObject {
     @Published var 局面: 局面モデル
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
-    @AppStorage("動作直後強調表示機能オフ") var 🚩動作直後強調表示機能オフ: Bool = false
+    @AppStorage("移動直後強調表示機能オフ") var 🚩移動直後強調表示機能オフ: Bool = false
     @AppStorage("上下反転") var 🚩上下反転: Bool = false
     
     @Published var 🚩メニューを表示: Bool = false
@@ -17,7 +17,7 @@ class 📱AppModel: ObservableObject {
     @Published var ドラッグした盤上の駒の元々の位置: Int? = nil
     var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
     
-    @Published private(set) var 一般的な動作直後の駒: (盤上の位置: Int, 取った持ち駒: 駒の種類?)? = nil
+    @Published private(set) var 盤駒の通常移動直後の駒: (盤上の位置: Int, 取った持ち駒: 駒の種類?)? = nil
     
     var 現状: 状況 = .何もドラッグしてない {
         didSet {
@@ -53,16 +53,16 @@ class 📱AppModel: ObservableObject {
                 }
             }
         }
-        let 🚩一般的な動作直後: Bool = (位置 == self.一般的な動作直後の駒?.盤上の位置)
+        let 🚩通常移動直後: Bool = (位置 == self.盤駒の通常移動直後の駒?.盤上の位置)
         if self.🚩English表記 && (駒.陣営 == .玉側) && (駒.職名 == .銀 || 駒.職名 == .桂) {
             // ′ U+2032 PRIME
-            if !self.🚩動作直後強調表示機能オフ && 🚩一般的な動作直後 {
+            if !self.🚩移動直後強調表示機能オフ && 🚩通常移動直後 {
                 return シンボル + "︭" + "′"
             } else {
                 return シンボル + "′"
             }
         } else {
-            if !self.🚩動作直後強調表示機能オフ && 🚩一般的な動作直後 {
+            if !self.🚩移動直後強調表示機能オフ && 🚩通常移動直後 {
                 return シンボル + "︭"
             } else {
                 return シンボル
@@ -79,10 +79,10 @@ class 📱AppModel: ObservableObject {
         }
         let 数: Int = self.局面.手駒[陣営]?.個数(職名) ?? 0
         let 数の表記: String = 数 >= 2 ? 数.description : ""
-        if !self.🚩動作直後強調表示機能オフ {
-            if let 強調する持ち駒 = self.一般的な動作直後の駒?.取った持ち駒 {
-                if let 動作直後の位置 = self.一般的な動作直後の駒?.盤上の位置 {
-                    if 陣営 == self.局面.盤駒[動作直後の位置]?.陣営 {
+        if !self.🚩移動直後強調表示機能オフ {
+            if let 強調する持ち駒 = self.盤駒の通常移動直後の駒?.取った持ち駒 {
+                if let 移動直後の位置 = self.盤駒の通常移動直後の駒?.盤上の位置 {
+                    if 陣営 == self.局面.盤駒[移動直後の位置]?.陣営 {
                         if 職名 == 強調する持ち駒 {
                             駒の表記 += "︭"
                         }
@@ -93,8 +93,8 @@ class 📱AppModel: ObservableObject {
         return (駒の表記, 数, 数の表記)
     }
     
-    func 一般的な動作直後の強調表示をクリア() {
-        self.一般的な動作直後の駒 = nil
+    func 盤駒の通常移動直後の強調表示をクリア() {
+        self.盤駒の通常移動直後の駒 = nil
         振動フィードバック()
     }
     
@@ -122,7 +122,7 @@ class 📱AppModel: ObservableObject {
     
     func 盤面を初期化する() {
         self.局面.初期化する()
-        self.一般的な動作直後の駒 = nil
+        self.盤駒の通常移動直後の駒 = nil
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
     
@@ -166,7 +166,7 @@ class 📱AppModel: ObservableObject {
                 self.局面.盤駒.removeValue(forKey: 出発地点)
                 self.局面.盤駒.updateValue(動かした駒, forKey: 置いた位置)
                 
-                self.一般的な動作直後の駒 = (置いた位置, 取った駒)
+                self.盤駒の通常移動直後の駒 = (置いた位置, 取った駒)
                 
                 self.駒を移動し終わったらログを更新してフィードバックを発生させる()
             case .持ち駒をドラッグしている:
@@ -177,7 +177,7 @@ class 📱AppModel: ObservableObject {
                 
                 self.局面.手駒[駒.陣営]?.一個減らす(駒.職名)
                 
-                self.一般的な動作直後の駒 = (置いた位置, nil)
+                self.盤駒の通常移動直後の駒 = (置いた位置, nil)
                 
                 self.駒を移動し終わったらログを更新してフィードバックを発生させる()
             case .アプリ外部からドラッグしている:

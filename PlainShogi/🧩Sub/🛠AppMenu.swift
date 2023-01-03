@@ -51,7 +51,7 @@ struct 🛠AppMenu: View {
                     Toggle(isOn: $📱.🚩English表記) {
                         Label("English表記", systemImage: "p.square")
                     }
-                    Toggle(isOn: $📱.🚩動作直後強調表示機能オフ) {
+                    Toggle(isOn: $📱.🚩移動直後強調表示機能オフ) {
                         Label("移動直後の強調表示機能を無効にする", systemImage: "underline")
                     }
                     Toggle(isOn: $📱.🚩上下反転) {
