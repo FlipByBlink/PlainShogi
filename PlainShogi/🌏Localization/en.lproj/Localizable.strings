@@ -2,6 +2,8 @@
 // ======== Japanese key ========
 "Plain将棋盤" = "PlainShogiBoard";
 "あそび方" = "How to";
+"駒の動かし方" = "How to";
+"はじめる" = "OK";
 "長押しして駒を持ち上げ、そのままスライドして移動させる" = "Long press a piece, move it";
 "長押しして駒を持ち上げ、そのままスライドして移動させる。" = "Long press a piece, move it.";
 "ダブルタップで盤上の駒を裏返す" = " Turn a piece on the board by double tap";
