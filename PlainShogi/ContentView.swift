@@ -5,30 +5,68 @@ import UniformTypeIdentifiers
 // 手前が「王」、対面が「玉」。
 
 struct ContentView: View {
+    @EnvironmentObject var 📱: 📱AppModel
+    var 上下反転: Bool { 📱.🚩上下反転 }
     var body: some View {
         GeometryReader { 画面 in
-            let マスの大きさ = min(画面.size.width / 9, 画面.size.height / 11)
+            let マスの大きさ = min(画面.size.width / (9 + 0.5), 画面.size.height / (11 + 0.5))
             VStack(spacing: 0) {
                 盤外(.対面, マスの大きさ)
-                VStack(spacing: 0) {
-                    Divider()
-                    ForEach(0 ..< 9) { 行 in
-                        HStack(spacing: 0) {
-                            Divider()
-                            ForEach(0 ..< 9) { 列 in
-                                盤上のコマもしくはマス(行 * 9 + 列)
-                                Divider()
-                            }
-                        }
-                        Divider()
-                    }
+                if !self.上下反転 { self.筋表記(幅: マスの大きさ / 2) }
+                HStack(spacing: 0) {
+                    if self.上下反転 { self.段表記(高さ: マスの大きさ / 2) }
+                    self.盤面(マスの大きさ)
+                    if !self.上下反転 { self.段表記(高さ: マスの大きさ / 2) }
                 }
-                .border(.primary)
-                .frame(width: マスの大きさ * 9, height: マスの大きさ * 9)
+                if self.上下反転 { self.筋表記(幅: マスの大きさ / 2) }
                 盤外(.手前, マスの大きさ)
             }
         }
         .padding()
+    }
+    func 盤面(_ マスの大きさ: CGFloat) -> some View {
+        VStack(spacing: 0) {
+            Divider()
+            ForEach(0 ..< 9) { 行 in
+                HStack(spacing: 0) {
+                    Divider()
+                    ForEach(0 ..< 9) { 列 in
+                        盤上のコマもしくはマス(行 * 9 + 列)
+                        Divider()
+                    }
+                }
+                Divider()
+            }
+        }
+        .border(.primary)
+        .frame(width: マスの大きさ * 9, height: マスの大きさ * 9)
+    }
+    func 筋表記(幅: CGFloat) -> some View {
+        HStack(spacing: 0) {
+            let 字 = ["９","８","７","６","５","４","３","２","１"]
+            ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 列 in
+                Text(列)
+                    .minimumScaleFactor(0.1)
+                    .font(.caption)
+                    .padding(self.上下反転 ? .top : .bottom, 4)
+                    .frame(width: 幅, height: 幅)
+                    .padding(.horizontal, 幅/2)
+            }
+        }
+        .padding(self.上下反転 ? .leading : .trailing, 幅)
+    }
+    func 段表記(高さ: CGFloat) -> some View {
+        VStack(spacing: 0) {
+            let 字 = ["一","二","三","四","五","六","七","八","九"]
+            ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 行 in
+                Text(行.description)
+                    .minimumScaleFactor(0.1)
+                    .font(.caption)
+                    .padding(self.上下反転 ? .trailing : .leading, 4)
+                    .frame(width: 高さ, height: 高さ)
+                    .padding(.vertical, 高さ/2)
+            }
+        }
     }
 }
 
