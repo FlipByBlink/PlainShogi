@@ -175,13 +175,13 @@ struct ContentView_段筋付き: View {
             let マスの大きさ = min(画面.size.width / (9 + 0.5), 画面.size.height / (11 + 0.5))
             VStack(spacing: 0) {
                 盤外(.対面, マスの大きさ)
-                if !self.上下反転 { self.筋表記(マスの大きさ) }
+                if !self.上下反転 { self.筋表記(幅: マスの大きさ / 2) }
                 HStack(spacing: 0) {
-                    if self.上下反転 { self.段表記(マスの大きさ) }
+                    if self.上下反転 { self.段表記(高さ: マスの大きさ / 2) }
                     self.盤面(マスの大きさ)
-                    if !self.上下反転 { self.段表記(マスの大きさ) }
+                    if !self.上下反転 { self.段表記(高さ: マスの大きさ / 2) }
                 }
-                if self.上下反転 { self.筋表記(マスの大きさ) }
+                if self.上下反転 { self.筋表記(幅: マスの大きさ / 2) }
                 盤外(.手前, マスの大きさ)
             }
         }
@@ -204,22 +204,21 @@ struct ContentView_段筋付き: View {
         .border(.primary)
         .frame(width: マスの大きさ * 9, height: マスの大きさ * 9)
     }
-    func 筋表記(_ 盤のマスの大きさ: CGFloat) -> some View {
+    func 筋表記(幅: CGFloat) -> some View {
         HStack(spacing: 0) {
             let 字 = ["９","８","７","６","５","４","３","２","１"]
-            //ForEach(1 ..< 10) { 列 in
             ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 列 in
                 Text(列)
                     .minimumScaleFactor(0.1)
                     .font(.caption)
                     .padding(self.上下反転 ? .top : .bottom, 4)
-                    .frame(width: 盤のマスの大きさ/2, height: 盤のマスの大きさ/2)
-                    .padding(.horizontal, (盤のマスの大きさ/2)/2)
+                    .frame(width: 幅, height: 幅)
+                    .padding(.horizontal, 幅/2)
             }
         }
-        .padding(self.上下反転 ? .leading : .trailing, 盤のマスの大きさ/2)
+        .padding(self.上下反転 ? .leading : .trailing, 幅)
     }
-    func 段表記(_ 盤のマスの大きさ: CGFloat) -> some View {
+    func 段表記(高さ: CGFloat) -> some View {
         VStack(spacing: 0) {
             let 字 = ["一","二","三","四","五","六","七","八","九"]
             ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 行 in
@@ -227,8 +226,8 @@ struct ContentView_段筋付き: View {
                     .minimumScaleFactor(0.1)
                     .font(.caption)
                     .padding(self.上下反転 ? .trailing : .leading, 4)
-                    .frame(width: 盤のマスの大きさ/2, height: 盤のマスの大きさ/2)
-                    .padding(.vertical, (盤のマスの大きさ/2)/2)
+                    .frame(width: 高さ, height: 高さ)
+                    .padding(.vertical, 高さ/2)
             }
         }
     }
