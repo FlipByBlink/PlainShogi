@@ -187,22 +187,26 @@ struct 初回起動時に駒の動かし方の説明アラート: ViewModifier {
 
 struct 移動直後の強調表示のためにこのマスを優先表示: ViewModifier {
     @EnvironmentObject var 📱: 📱アプリモデル
-    let 位置: Int
+    let 表示上の位置: Int
     let マスの大きさ: CGFloat
+    var 🚩条件: Bool {
+        let 元々の位置 = 📱.🚩上下反転 ? (80 - 表示上の位置) : 表示上の位置
+        return 📱.盤駒の通常移動直後の駒?.盤上の位置 == 元々の位置
+    }
     func body(content: Content) -> some View {
         content
             .overlay {
-                if 📱.盤駒の通常移動直後の駒?.盤上の位置 == 位置 {
+                if self.🚩条件 {
                     Rectangle()
                         .frame(width: マスの大きさ + 1, height: マスの大きさ + 1)
                         .foregroundColor(.clear)
                         .border(.primary, width: 1)
                 }
             }
-            .zIndex(📱.盤駒の通常移動直後の駒?.盤上の位置 == 位置 ? 1 : 0)
+            .zIndex(self.🚩条件 ? 1 : 0)
     }
     init(_ ｲﾁ: Int, _ ﾏｽﾉｵｵｷｻ: CGFloat) {
-        (self.位置, self.マスの大きさ) = (ｲﾁ, ﾏｽﾉｵｵｷｻ)
+        (self.表示上の位置, self.マスの大きさ) = (ｲﾁ, ﾏｽﾉｵｵｷｻ)
     }
 }
 
@@ -211,7 +215,8 @@ struct 移動直後の強調表示のためにこの行を優先表示: ViewModi
     let 行: Int
     var 🚩条件: Bool {
         if let 駒 = 📱.盤駒の通常移動直後の駒 {
-            return 行 == Int(駒.盤上の位置 / 9)
+            let 表示上の位置 = 📱.🚩上下反転 ? (80 - 駒.盤上の位置) : 駒.盤上の位置
+            return 行 == Int(表示上の位置 / 9)
         } else {
             return false
         }
