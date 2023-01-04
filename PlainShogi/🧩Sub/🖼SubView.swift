@@ -185,6 +185,45 @@ struct 初回起動時に駒の動かし方の説明アラート: ViewModifier {
     }
 }
 
+struct 移動直後の強調表示のためにこのマスを優先表示: ViewModifier {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    let 位置: Int
+    let マスの大きさ: CGFloat
+    func body(content: Content) -> some View {
+        content
+            .overlay {
+                if 📱.盤駒の通常移動直後の駒?.盤上の位置 == 位置 {
+                    Rectangle()
+                        .frame(width: マスの大きさ + 1, height: マスの大きさ + 1)
+                        .foregroundColor(.clear)
+                        .border(.primary, width: 1)
+                }
+            }
+            .zIndex(📱.盤駒の通常移動直後の駒?.盤上の位置 == 位置 ? 1 : 0)
+    }
+    init(_ ｲﾁ: Int, _ ﾏｽﾉｵｵｷｻ: CGFloat) {
+        (self.位置, self.マスの大きさ) = (ｲﾁ, ﾏｽﾉｵｵｷｻ)
+    }
+}
+
+struct 移動直後の強調表示のためにこの行を優先表示: ViewModifier {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    let 行: Int
+    var 🚩条件: Bool {
+        if let 駒 = 📱.盤駒の通常移動直後の駒 {
+            return 行 == Int(駒.盤上の位置 / 9)
+        } else {
+            return false
+        }
+    }
+    func body(content: Content) -> some View {
+        content
+            .zIndex(self.🚩条件 ? 1 : 0)
+    }
+    init(_ ｷﾞｮｳ: Int) {
+        self.行 = ｷﾞｮｳ
+    }
+}
 
 //==== 一度実装したがリリース保留にした「移動直後の駒にマークを付ける機能」 ====
 //struct 移動直後マーク: View {

@@ -41,14 +41,17 @@ struct ContentView: View {
                     Divider()
                     ForEach(0 ..< 9) { 列 in
                         盤上のコマもしくはマス(行 * 9 + 列)
+                            .modifier(移動直後の強調表示のためにこのマスを優先表示(行 * 9 + 列, マスの大きさ))
                         Divider()
                     }
                 }
+                .modifier(移動直後の強調表示のためにこの行を優先表示(行))
                 Divider()
             }
         }
         .border(.primary)
         .frame(width: マスの大きさ * 9, height: マスの大きさ * 9)
+        .clipped()
     }
     private func 筋表記(幅: CGFloat) -> some View {
         HStack(spacing: 0) {
