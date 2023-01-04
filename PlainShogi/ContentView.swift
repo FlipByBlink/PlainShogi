@@ -40,8 +40,9 @@ struct ContentView: View {
                 HStack(spacing: 0) {
                     Divider()
                     ForEach(0 ..< 9) { 列 in
-                        盤上のコマもしくはマス(行 * 9 + 列)
-                            .modifier(移動直後の強調表示のためにこのマスを優先表示(行 * 9 + 列, マスの大きさ))
+                        let 位置 = 行 * 9 + 列
+                        盤上のコマもしくはマス(位置)
+                            .modifier(移動直後の強調表示のためにこのマスを優先表示(位置, マスの大きさ))
                         Divider()
                     }
                 }

@@ -187,9 +187,9 @@ struct 初回起動時に駒の動かし方の説明アラート: ViewModifier {
 
 struct 移動直後の強調表示のためにこのマスを優先表示: ViewModifier {
     @EnvironmentObject var 📱: 📱アプリモデル
-    let 表示上の位置: Int
-    let マスの大きさ: CGFloat
-    var 🚩条件: Bool {
+    private let 表示上の位置: Int
+    private let マスの大きさ: CGFloat
+    private var 🚩条件: Bool {
         let 元々の位置 = 📱.🚩上下反転 ? (80 - 表示上の位置) : 表示上の位置
         return 📱.盤駒の通常移動直後の駒?.盤上の位置 == 元々の位置
     }
@@ -212,8 +212,8 @@ struct 移動直後の強調表示のためにこのマスを優先表示: ViewM
 
 struct 移動直後の強調表示のためにこの行を優先表示: ViewModifier {
     @EnvironmentObject var 📱: 📱アプリモデル
-    let 行: Int
-    var 🚩条件: Bool {
+    private let 行: Int
+    private var 🚩条件: Bool {
         if let 駒 = 📱.盤駒の通常移動直後の駒 {
             let 表示上の位置 = 📱.🚩上下反転 ? (80 - 駒.盤上の位置) : 駒.盤上の位置
             return 行 == Int(表示上の位置 / 9)
