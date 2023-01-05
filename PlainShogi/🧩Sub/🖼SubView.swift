@@ -224,7 +224,7 @@ struct 筋表示: View {
                 Text(列)
                     .minimumScaleFactor(0.1)
                     .font(.caption)
-                    .padding(self.上下反転 ? .top : .bottom, 4)
+                    .padding(self.上下反転 ? .top : .bottom, 1)
                     .frame(width: 幅, height: 幅)
                     .padding(.horizontal, 幅 / 2)
             }
