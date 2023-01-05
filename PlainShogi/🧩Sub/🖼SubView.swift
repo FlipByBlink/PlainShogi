@@ -58,8 +58,8 @@ struct 駒を消すボタン: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(.tint, .background)
                             .tint(.primary)
-                            .frame(width: 📐.size.width * 2/5,
-                                   height: 📐.size.height * 2/5)
+                            .frame(width: 📐.size.width * 2 / 5,
+                                   height: 📐.size.height * 2 / 5)
                     }
                 }
             }
