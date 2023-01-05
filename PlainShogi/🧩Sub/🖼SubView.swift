@@ -185,48 +185,31 @@ struct 初回起動時に駒の動かし方の説明アラート: ViewModifier {
     }
 }
 
-struct 移動直後の強調表示のためにこのマスを優先表示: ViewModifier {
+struct このコマが移動直後なら強調表示: ViewModifier {
     @EnvironmentObject var 📱: 📱アプリモデル
-    private let 表示上の位置: Int
-    private let マスの大きさ: CGFloat
-    private var 🚩条件: Bool {
-        let 元々の位置 = 📱.🚩上下反転 ? (80 - 表示上の位置) : 表示上の位置
-        return 📱.盤駒の通常移動直後の駒?.盤上の位置 == 元々の位置
-    }
+    private let 画面上での左上からの位置: Int
+    private let 実際のマスの大きさ: CGSize
     func body(content: Content) -> some View {
         content
             .overlay {
-                if self.🚩条件 {
+                if 📱.このコマは通常移動直後(self.画面上での左上からの位置) {
                     Rectangle()
-                        .frame(width: マスの大きさ + 1, height: マスの大きさ + 1)
-                        .foregroundColor(.clear)
-                        .border(.primary, width: 1)
+                        .strokeBorder(.primary, lineWidth: 枠線の太さ)
+                        .frame(width: 実際のマスの大きさ.width + 枠線の太さ,
+                               height: 実際のマスの大きさ.height + 枠線の太さ)
                 }
             }
-            .zIndex(self.🚩条件 ? 1 : 0)
     }
-    init(_ ｲﾁ: Int, _ ﾏｽﾉｵｵｷｻ: CGFloat) {
-        (self.表示上の位置, self.マスの大きさ) = (ｲﾁ, ﾏｽﾉｵｵｷｻ)
+    init(_ ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ: Int, _ ﾏｽﾉｵｵｷｻ: CGSize) {
+        (self.画面上での左上からの位置, self.実際のマスの大きさ) = (ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ, ﾏｽﾉｵｵｷｻ)
     }
 }
 
-struct 移動直後の強調表示のためにこの行を優先表示: ViewModifier {
-    @EnvironmentObject var 📱: 📱アプリモデル
-    private let 行: Int
-    private var 🚩条件: Bool {
-        if let 駒 = 📱.盤駒の通常移動直後の駒 {
-            let 表示上の位置 = 📱.🚩上下反転 ? (80 - 駒.盤上の位置) : 駒.盤上の位置
-            return 行 == 表示上の位置 / 9
-        } else {
-            return false
-        }
-    }
-    func body(content: Content) -> some View {
-        content
-            .zIndex(self.🚩条件 ? 1 : 0)
-    }
-    init(_ ｷﾞｮｳ: Int) {
-        self.行 = ｷﾞｮｳ
+var 枠線の太さ: CGFloat {
+    switch UIDevice.current.userInterfaceIdiom {
+        case .phone: return 1.0
+        case .pad: return 1.33
+        default: return 1.0
     }
 }
 
