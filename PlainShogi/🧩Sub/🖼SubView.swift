@@ -213,6 +213,45 @@ var 枠線の太さ: CGFloat {
     }
 }
 
+struct 筋表示: View {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    let 幅: CGFloat
+    var 上下反転: Bool { 📱.🚩上下反転 }
+    var body: some View {
+        HStack(spacing: 0) {
+            let 字 = ["９","８","７","６","５","４","３","２","１"]
+            ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 列 in
+                Text(列)
+                    .minimumScaleFactor(0.1)
+                    .font(.caption)
+                    .padding(self.上下反転 ? .top : .bottom, 4)
+                    .frame(width: 幅, height: 幅)
+                    .padding(.horizontal, 幅 / 2)
+            }
+        }
+        .padding(self.上下反転 ? .leading : .trailing, 幅)
+    }
+}
+
+struct 段表示: View {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    let 高さ: CGFloat
+    var 上下反転: Bool { 📱.🚩上下反転 }
+    var body: some View {
+        VStack(spacing: 0) {
+            let 字 = ["一","二","三","四","五","六","七","八","九"]
+            ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 行 in
+                Text(行.description)
+                    .minimumScaleFactor(0.1)
+                    .font(.caption)
+                    .padding(self.上下反転 ? .trailing : .leading, 4)
+                    .frame(width: 高さ, height: 高さ)
+                    .padding(.vertical, 高さ / 2)
+            }
+        }
+    }
+}
+
 //==== 一度実装したがリリース保留にした「移動直後の駒にマークを付ける機能」 ====
 //struct 移動直後マーク: View {
 //    @EnvironmentObject var 📱: 📱AppModel

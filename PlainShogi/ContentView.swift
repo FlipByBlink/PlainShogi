@@ -6,25 +6,23 @@ import UniformTypeIdentifiers
 
 struct ContentView: View {
     @EnvironmentObject var 📱: 📱アプリモデル
-    private var 通常の向き: Bool { 📱.🚩上下反転 == false }
-    private var 上下反転: Bool { 📱.🚩上下反転 }
     private let マスに対する段筋の大きさ: Double = 0.5
     private let 盤上と盤外の隙間: CGFloat = 4
     var body: some View {
         GeometryReader { 画面 in
             let マスの大きさ = self.マスの大きさを計算(画面.size)
-            let 筋 = self.筋表示(幅: マスの大きさ * self.マスに対する段筋の大きさ)
-            let 段 = self.段表示(高さ: マスの大きさ * self.マスに対する段筋の大きさ)
+            let 筋 = 筋表示(幅: マスの大きさ * self.マスに対する段筋の大きさ)
+            let 段 = 段表示(高さ: マスの大きさ * self.マスに対する段筋の大きさ)
             VStack(spacing: self.盤上と盤外の隙間) {
                 盤外(.対面, マスの大きさ)
                 VStack(spacing: 0) {
-                    if self.通常の向き { 筋 }
+                    if 📱.🚩通常の向き { 筋 }
                     HStack(spacing: 0) {
-                        if self.上下反転 { 段 }
-                        self.盤面(マスの大きさ)
-                        if self.通常の向き { 段 }
+                        if 📱.🚩上下反転 { 段 }
+                        盤面(マスの大きさ)
+                        if 📱.🚩通常の向き { 段 }
                     }
-                    if self.上下反転 { 筋 }
+                    if 📱.🚩上下反転 { 筋 }
                 }
                 盤外(.手前, マスの大きさ)
             }
@@ -36,7 +34,12 @@ struct ContentView: View {
         let 縦基準 = (画面サイズ.height - 盤上と盤外の隙間 * 2) / (11 + マスに対する段筋の大きさ)
         return min(横基準, 縦基準)
     }
-    private func 盤面(_ マスの大きさ: CGFloat) -> some View {
+}
+
+struct 盤面: View {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    private let マスの大きさ: CGFloat
+    var body: some View {
         VStack(spacing: 0) {
             Divider()
             ForEach(0 ..< 9) { 行 in
@@ -54,35 +57,11 @@ struct ContentView: View {
             }
         }
         .border(.primary, width: 枠線の太さ)
-        .frame(width: マスの大きさ * 9, height: マスの大きさ * 9)
+        .frame(width: self.マスの大きさ * 9, height: self.マスの大きさ * 9)
         .clipped()
     }
-    private func 筋表示(幅: CGFloat) -> some View {
-        HStack(spacing: 0) {
-            let 字 = ["９","８","７","６","５","４","３","２","１"]
-            ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 列 in
-                Text(列)
-                    .minimumScaleFactor(0.1)
-                    .font(.caption)
-                    .padding(self.上下反転 ? .top : .bottom, 4)
-                    .frame(width: 幅, height: 幅)
-                    .padding(.horizontal, 幅/2)
-            }
-        }
-        .padding(self.上下反転 ? .leading : .trailing, 幅)
-    }
-    private func 段表示(高さ: CGFloat) -> some View {
-        VStack(spacing: 0) {
-            let 字 = ["一","二","三","四","五","六","七","八","九"]
-            ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 行 in
-                Text(行.description)
-                    .minimumScaleFactor(0.1)
-                    .font(.caption)
-                    .padding(self.上下反転 ? .trailing : .leading, 4)
-                    .frame(width: 高さ, height: 高さ)
-                    .padding(.vertical, 高さ/2)
-            }
-        }
+    init(_ ﾏｽﾉｵｵｷｻ: CGFloat) {
+        self.マスの大きさ = ﾏｽﾉｵｵｷｻ
     }
 }
 
