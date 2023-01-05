@@ -16,13 +16,13 @@ struct ContentView: View {
             VStack(spacing: self.盤上と盤外の隙間) {
                 盤外(.対面, マスの大きさ)
                 VStack(spacing: 0) {
-                    if 📱.🚩通常の向き { 筋 }
+                    if !上下反転 { 筋 }
                     HStack(spacing: 0) {
-                        if 📱.🚩上下反転 { 段 }
+                        if 上下反転 { 段 }
                         盤面(マスの大きさ)
-                        if 📱.🚩通常の向き { 段 }
+                        if !上下反転 { 段 }
                     }
-                    if 📱.🚩上下反転 { 筋 }
+                    if 上下反転 { 筋 }
                 }
                 盤外(.手前, マスの大きさ)
             }
@@ -34,6 +34,7 @@ struct ContentView: View {
         let 縦基準 = (画面サイズ.height - 盤上と盤外の隙間 * 2) / (11 + マスに対する段筋の大きさ)
         return min(横基準, 縦基準)
     }
+    private var 上下反転: Bool { 📱.🚩上下反転 }
 }
 
 struct 盤面: View {

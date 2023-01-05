@@ -9,9 +9,7 @@ class 📱アプリモデル: ObservableObject {
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
     @AppStorage("移動直後強調表示機能オフ") var 🚩移動直後強調表示機能オフ: Bool = false
-    
     @AppStorage("上下反転") var 🚩上下反転: Bool = false
-    var 🚩通常の向き: Bool { !self.🚩上下反転 }
     
     @Published var 🚩メニューを表示: Bool = false
     @Published var 🚩駒を整理中: Bool = false
