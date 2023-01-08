@@ -139,6 +139,13 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
     }
 }
 
+struct 通常移動直後情報: Codable {
+    var 盤上の位置: Int
+    var 取った持ち駒: 駒の種類?
+    init(_ ｲﾁ: Int, _ ﾓﾁｺﾞﾏ: 駒の種類?) {
+        (self.盤上の位置, self.取った持ち駒) = (ｲﾁ, ﾓﾁｺﾞﾏ)
+    }
+}
 
 let 空の手駒: [王側か玉側か: 持ち駒] = [.王側: 持ち駒.空, .玉側: 持ち駒.空]
 

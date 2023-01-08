@@ -17,7 +17,7 @@ class 📱アプリモデル: ObservableObject {
     @Published var ドラッグした盤上の駒の元々の位置: Int? = nil
     private var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
     
-    @Published private(set) var 盤駒の通常移動直後の駒: (盤上の位置: Int, 取った持ち駒: 駒の種類?)? = nil
+    @Published private(set) var 盤駒の通常移動直後の駒: 通常移動直後情報? = nil
     
     var 現状: 状況 = .何もドラッグしてない {
         didSet {
@@ -170,7 +170,7 @@ class 📱アプリモデル: ObservableObject {
                 self.局面.盤駒.removeValue(forKey: 出発地点)
                 self.局面.盤駒.updateValue(動かした駒, forKey: 置いた位置)
                 
-                self.盤駒の通常移動直後の駒 = (置いた位置, 取った駒)
+                self.盤駒の通常移動直後の駒 = 通常移動直後情報(置いた位置, 取った駒)
                 
                 self.駒を移動し終わったらログを更新してフィードバックを発生させる()
             case .持ち駒をドラッグしている:
@@ -181,7 +181,7 @@ class 📱アプリモデル: ObservableObject {
                 
                 self.局面.手駒[駒.陣営]?.一個減らす(駒.職名)
                 
-                self.盤駒の通常移動直後の駒 = (置いた位置, nil)
+                self.盤駒の通常移動直後の駒 = 通常移動直後情報(置いた位置, nil)
                 
                 self.駒を移動し終わったらログを更新してフィードバックを発生させる()
             case .アプリ外部からドラッグしている:
