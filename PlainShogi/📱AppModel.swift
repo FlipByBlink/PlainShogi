@@ -120,7 +120,7 @@ class 📱アプリモデル: ObservableObject {
     
     func この駒を裏返す(_ 位置: Int) {
         self.局面.盤駒[位置]?.裏返す()
-        self.局面.保存する()
+        self.ログを更新する()
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
     }
     
