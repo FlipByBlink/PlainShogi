@@ -231,7 +231,6 @@ class 📱アプリモデル: ObservableObject {
                 if 位置 == self.ドラッグした盤上の駒の元々の位置 {
                     return DropProposal(operation: .cancel)
                 }
-                
                 if let 元々の位置 = self.ドラッグした盤上の駒の元々の位置 {
                     if self.局面.盤駒[位置]?.陣営 == self.局面.盤駒[元々の位置]?.陣営 {
                         return DropProposal(operation: .cancel)
@@ -255,14 +254,12 @@ class 📱アプリモデル: ObservableObject {
                 }
             }
         }
-        
         return nil
     }
         
     func 有効なドロップかチェックする(_ ⓘnfo: DropInfo) -> Bool {
         let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
         guard let ⓘtemProvider = ⓘtemProviders.first else { return false }
-        
         if let ⓢuggestedName = ⓘtemProvider.suggestedName {
             if ⓢuggestedName != "アプリ内でのコマ移動" {
                 print("アプリ外部からのアイテムです")
@@ -273,7 +270,6 @@ class 📱アプリモデル: ObservableObject {
             print("アプリ外部からのアイテムです")
             self.現状 = .アプリ外部からドラッグしている
         }
-        
         return true
     }
     
