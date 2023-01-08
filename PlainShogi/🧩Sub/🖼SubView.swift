@@ -17,9 +17,8 @@ struct 🛠移動直後強調表示クリアボタン: View {
     var body: some View {
         Button {
             withAnimation { 📱.盤駒の通常移動直後の強調表示をクリア() }
-            振動フィードバック()
         } label: {
-            Label("移動直後の強調表示をクリア", systemImage: "eraser.line.dashed")
+            Label("移動直後の強調表示をクリア", systemImage: "square.dotted")
         }
         .disabled(📱.盤駒の通常移動直後の駒 == nil)
         .disabled(📱.🚩移動直後強調表示機能オフ)
@@ -46,10 +45,7 @@ struct 駒を消すボタン: View {
         if 📱.🚩駒を整理中 {
             GeometryReader { 📐 in
                 Button {
-                    withAnimation {
-                        📱.局面.盤駒.removeValue(forKey: self.位置)
-                        振動フィードバック()
-                    }
+                    withAnimation { 📱.この盤駒を消す(self.位置) }
                 } label: {
                     ZStack(alignment: .topLeading) {
                         Color.clear
@@ -58,6 +54,7 @@ struct 駒を消すボタン: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(.tint, .background)
                             .tint(.primary)
+                            .font(.body.weight(.light))
                             .frame(width: 📐.size.width * 2 / 5,
                                    height: 📐.size.height * 2 / 5)
                     }
@@ -137,9 +134,9 @@ struct 手駒調整シート: View {
                         .padding(.leading)
                         .padding(.vertical, 8)
                     } onIncrement: {
-                        📱.局面.手駒[self.陣営]?.一個増やす(職名)
+                        📱.この手駒を一個増やす(self.陣営, 職名)
                     } onDecrement: {
-                        📱.局面.手駒[self.陣営]?.一個減らす(職名)
+                        📱.この手駒を一個減らす(self.陣営, 職名)
                     }
                     .padding(.trailing)
                 }

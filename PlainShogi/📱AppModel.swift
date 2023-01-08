@@ -5,7 +5,7 @@ import UniformTypeIdentifiers
 @MainActor
 class 📱アプリモデル: ObservableObject {
     
-    @Published var 局面: 局面モデル
+    @Published private(set) var 局面: 局面モデル
     
     @AppStorage("English表記") var 🚩English表記: Bool = false
     @AppStorage("移動直後強調表示機能オフ") var 🚩移動直後強調表示機能オフ: Bool = false
@@ -128,6 +128,21 @@ class 📱アプリモデル: ObservableObject {
         self.局面.初期化する()
         self.盤駒の通常移動直後の駒 = nil
         UINotificationFeedbackGenerator().notificationOccurred(.error)
+    }
+    
+    func この手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
+        self.局面.手駒[陣営]?.一個増やす(職名)
+        振動フィードバック()
+    }
+    
+    func この手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
+        self.局面.手駒[陣営]?.一個増やす(職名)
+        振動フィードバック()
+    }
+    
+    func この盤駒を消す(_ 位置: Int) {
+        self.局面.盤駒.removeValue(forKey: 位置)
+        振動フィードバック()
     }
     
     // ======== ドラッグ処理 ========

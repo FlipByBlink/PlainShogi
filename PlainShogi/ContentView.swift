@@ -266,8 +266,12 @@ struct ContentView_Previews: PreviewProvider {
             .previewLayout(.fixed(width: 400, height: 400))
             .environmentObject(📱)
             .task {
-                📱.局面.手駒[.王側]?.配分 = [.歩: 2, .角: 1]
-                📱.局面.手駒[.玉側]?.配分 = [.歩: 1, .角: 1, .香: 1]
+                📱.この手駒を一個増やす(.王側, .歩)
+                📱.この手駒を一個増やす(.王側, .歩)
+                📱.この手駒を一個増やす(.王側, .角)
+                📱.この手駒を一個増やす(.玉側, .歩)
+                📱.この手駒を一個増やす(.玉側, .角)
+                📱.この手駒を一個増やす(.玉側, .香)
             }
         ContentView()
             .previewLayout(.fixed(width: 200, height: 300))
