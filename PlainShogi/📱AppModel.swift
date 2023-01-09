@@ -17,8 +17,6 @@ class 📱アプリモデル: ObservableObject {
     @Published var ドラッグした盤上の駒の元々の位置: Int? = nil
     private var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
     
-    @Published private(set) var 盤駒の通常移動直後の駒: 通常移動直後情報? = nil
-    
     var 現状: 状況 = .何もドラッグしてない {
         didSet {
             switch 現状 {
@@ -70,8 +68,8 @@ class 📱アプリモデル: ObservableObject {
         let 数: Int = self.局面.手駒[陣営]?.個数(職名) ?? 0
         let 数の表記: String = 数 >= 2 ? 数.description : ""
         if !self.🚩移動直後強調表示機能オフ {
-            if let 強調する持ち駒 = self.盤駒の通常移動直後の駒?.取った持ち駒 {
-                if let 移動直後の位置 = self.盤駒の通常移動直後の駒?.盤上の位置 {
+            if let 強調する持ち駒 = self.局面.盤駒の通常移動直後の駒?.取った持ち駒 {
+                if let 移動直後の位置 = self.局面.盤駒の通常移動直後の駒?.盤上の位置 {
                     if 陣営 == self.局面.盤駒[移動直後の位置]?.陣営 {
                         if 職名 == 強調する持ち駒 {
                             駒の表記 += "︭"
@@ -85,11 +83,11 @@ class 📱アプリモデル: ObservableObject {
     
     func このコマは通常移動直後(_ 画面上での左上からの位置: Int) -> Bool {
         let 元々の位置 = self.🚩上下反転 ? (80 - 画面上での左上からの位置) : 画面上での左上からの位置
-        return self.盤駒の通常移動直後の駒?.盤上の位置 == 元々の位置
+        return self.局面.盤駒の通常移動直後の駒?.盤上の位置 == 元々の位置
     }
     
     func この行のコマは通常移動直後(_ 行: Int) -> Bool {
-        if let 駒 = self.盤駒の通常移動直後の駒 {
+        if let 駒 = self.局面.盤駒の通常移動直後の駒 {
             let 画面上の位置 = self.🚩上下反転 ? (80 - 駒.盤上の位置) : 駒.盤上の位置
             return 行 == 画面上の位置 / 9
         } else {
@@ -98,50 +96,33 @@ class 📱アプリモデル: ObservableObject {
     }
     
     func 盤駒の通常移動直後の強調表示をクリア() {
-        self.盤駒の通常移動直後の駒 = nil
+        self.局面.盤駒通常移動直後情報を消す()
         振動フィードバック()
-    }
-    
-    func この駒は成れる(_ 位置: Int) -> Bool {
-        if let 駒 = self.局面.盤駒[位置] {
-            if 駒.成り == false {
-                if 駒.職名.成駒表記 != nil {
-                    switch 駒.陣営 {
-                        case .王側:
-                            if 位置 < 27 { return true }
-                        case .玉側:
-                            if 53 < 位置 { return true }
-                    }
-                }
-            }
-        }
-        return false
     }
     
     func この駒を裏返す(_ 位置: Int) {
-        self.局面.盤駒[位置]?.裏返す()
+        self.局面.この駒を裏返す(位置)
         self.ログを更新する()
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
     }
-    
+
     func 盤面を初期化する() {
         self.局面.初期化する()
-        self.盤駒の通常移動直後の駒 = nil
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
-    
+
     func この手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
-        self.局面.手駒[陣営]?.一個増やす(職名)
+        self.局面.この手駒を一個増やす(陣営, 職名)
         振動フィードバック()
     }
-    
+
     func この手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
-        self.局面.手駒[陣営]?.一個増やす(職名)
+        self.局面.この手駒を一個減らす(陣営, 職名)
         振動フィードバック()
     }
-    
+
     func この盤駒を消す(_ 位置: Int) {
-        self.局面.盤駒.removeValue(forKey: 位置)
+        self.局面.この盤駒を消す(位置)
         振動フィードバック()
     }
     
@@ -168,70 +149,55 @@ class 📱アプリモデル: ObservableObject {
     // ================================================================================
     // ============================= 以下、ドロップDelegate =============================
     func 盤上のここにドロップする(_ 置いた位置: Int, _ ⓘnfo: DropInfo) -> Bool {
-        switch self.現状 {
-            case .盤上の駒をドラッグしている:
-                guard let 出発地点 = self.ドラッグした盤上の駒の元々の位置 else { return false }
-                if 置いた位置 == 出発地点 { return false }
-                guard let 動かした駒 = self.局面.盤駒[出発地点] else { return false }
-                var 取った駒: 駒の種類? = nil
-                
-                if let 先客 = self.局面.盤駒[置いた位置] {
-                    if 先客.陣営 == 動かした駒.陣営 { return false }
-                    
-                    self.局面.手駒[動かした駒.陣営]?.一個増やす(先客.職名)
-                    取った駒 = 先客.職名
-                }
-                
-                self.局面.盤駒.removeValue(forKey: 出発地点)
-                self.局面.盤駒.updateValue(動かした駒, forKey: 置いた位置)
-                
-                self.盤駒の通常移動直後の駒 = 通常移動直後情報(置いた位置, 取った駒)
-                
-                self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-            case .持ち駒をドラッグしている:
-                guard let 駒 = self.ドラッグした持ち駒 else { return false }
-                if self.局面.盤駒[置いた位置] != nil { return false }
-                
-                self.局面.盤駒.updateValue(盤上の駒(駒.陣営, 駒.職名), forKey: 置いた位置)
-                
-                self.局面.手駒[駒.陣営]?.一個減らす(駒.職名)
-                
-                self.盤駒の通常移動直後の駒 = 通常移動直後情報(置いた位置, nil)
-                
-                self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-            case .アプリ外部からドラッグしている:
-                let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
-                self.このアイテムを盤面に反映する(ⓘtemProviders)
-            case .何もドラッグしてない:
-                return false
+        do {
+            switch self.現状 {
+                case .盤上の駒をドラッグしている:
+                    guard let 出発地点 = self.ドラッグした盤上の駒の元々の位置 else { throw 🚨エラー.要修正 }
+                    try self.局面.盤駒を移動させる(出発地点, 置いた位置)
+                    self.駒を移動し終わったらログを更新してフィードバックを発生させる()
+                case .持ち駒をドラッグしている:
+                    guard let 駒 = self.ドラッグした持ち駒 else { throw 🚨エラー.要修正 }
+                    try self.局面.持ち駒を盤上へ移動させる(駒, 置いた位置)
+                    self.駒を移動し終わったらログを更新してフィードバックを発生させる()
+                case .アプリ外部からドラッグしている:
+                    let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
+                    self.このアイテムを盤面に反映する(ⓘtemProviders)
+                case .何もドラッグしてない:
+                    return false
+            }
+            return true
+        } catch 局面モデル.🚨駒移動エラー.無効 {
+            return false
+        } catch {
+            print("🚨", error.localizedDescription)
+            assertionFailure()
+            return false
         }
-        return true
     }
     
     func 盤外のこちら側にドロップする(_ ドロップされた陣営: 王側か玉側か, _ ⓘnfo: DropInfo) -> Bool {
-        switch self.現状 {
-            case .盤上の駒をドラッグしている:
-                guard let 出発地点 = self.ドラッグした盤上の駒の元々の位置 else { return false }
-                guard let 動かした駒 = self.局面.盤駒[出発地点] else { return false }
-                
-                self.局面.盤駒.removeValue(forKey: 出発地点)
-                self.局面.手駒[ドロップされた陣営]?.一個増やす(動かした駒.職名)
-                
-                self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-            case .持ち駒をドラッグしている:
-                guard let 駒 = self.ドラッグした持ち駒 else { return false }
-                
-                self.局面.手駒[駒.陣営]?.一個減らす(駒.職名)
-                self.局面.手駒[ドロップされた陣営]?.一個増やす(駒.職名)
-                
-                self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-            case .アプリ外部からドラッグしている:
-                let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
-                self.このアイテムを盤面に反映する(ⓘtemProviders)
-            case .何もドラッグしてない:
-                return false
+        do {
+            switch self.現状 {
+                case .盤上の駒をドラッグしている:
+                    guard let 出発地点 = self.ドラッグした盤上の駒の元々の位置 else { throw 🚨エラー.要修正 }
+                    try self.局面.盤駒を盤外へ移動させる(出発地点, ドロップされた陣営)
+                    self.駒を移動し終わったらログを更新してフィードバックを発生させる()
+                case .持ち駒をドラッグしている:
+                    guard let 駒 = self.ドラッグした持ち駒 else { throw 🚨エラー.要修正 }
+                    self.局面.持ち駒を敵の持ち駒に移動させる(駒, ドロップされた陣営)
+                    self.駒を移動し終わったらログを更新してフィードバックを発生させる()
+                case .アプリ外部からドラッグしている:
+                    let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
+                    self.このアイテムを盤面に反映する(ⓘtemProviders)
+                case .何もドラッグしてない:
+                    return false
+            }
+            return true
+        } catch {
+            print("🚨", error.localizedDescription)
+            assertionFailure()
+            return false
         }
-        return true
     }
     
     private func 駒を移動し終わったらログを更新してフィードバックを発生させる() {
@@ -330,4 +296,8 @@ class 📱アプリモデル: ObservableObject {
             }
         }
     }
+}
+
+enum 🚨エラー: Error {
+    case 要修正
 }
