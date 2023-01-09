@@ -88,6 +88,7 @@ struct 🛠アプリメニュー: View {
 
 struct 履歴List: View {//MARK: WIP
     @EnvironmentObject var 📱: 📱アプリモデル
+    @State private var 🚩履歴削除完了: Bool = false
     let コマのサイズ: CGFloat = 20
     var body: some View {
         List {
@@ -120,8 +121,32 @@ struct 履歴List: View {//MARK: WIP
                 }
                 .padding()
             }
+            if 🚩履歴削除完了 {
+                Text("これまでの履歴を削除しました。")
+                    .font(.headline)
+            }
+            if 局面モデル.履歴.isEmpty {
+                Text("現在、履歴はありません。")
+                    .foregroundStyle(.secondary)
+            }
         }
+        .animation(.default, value: self.🚩履歴削除完了)
         .navigationTitle("履歴")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    局面モデル.履歴を全て削除する()
+                    self.🚩履歴削除完了 = true
+                    UINotificationFeedbackGenerator().notificationOccurred(.warning)
+                } label: {
+                    Image(systemName: "trash")
+                        .imageScale(.small)
+                        .grayscale(1.0)
+                }
+                .accessibilityLabel("Remove")
+                .disabled(局面モデル.履歴.isEmpty)
+            }
+        }
     }
     func 盤面プレビュー(_ 局面: 局面モデル) -> some View {
         VStack(spacing: 0) {

@@ -39,11 +39,13 @@ struct 局面モデル: Codable {
         guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
         self.盤駒.removeValue(forKey: 出発地点)
         self.手駒[移動先の陣営]?.一個増やす(動かした駒.職名)
+        self.盤駒通常移動直後情報を消す()
     }
     
     mutating func 持ち駒を敵の持ち駒に移動させる(_ 元の駒: 盤外の駒, _ 移動先の陣営: 王側か玉側か) {
         self.手駒[元の駒.陣営]?.一個減らす(元の駒.職名)
         self.手駒[移動先の陣営]?.一個増やす(元の駒.職名)
+        self.盤駒通常移動直後情報を消す()
     }
     
     enum 🚨駒移動エラー: Error {
@@ -71,18 +73,24 @@ struct 局面モデル: Codable {
     
     mutating func この駒を裏返す(_ 位置: Int) {
         self.盤駒[位置]?.裏返す()
+        if self.盤駒の通常移動直後の駒?.盤上の位置 != 位置 {
+            self.盤駒通常移動直後情報を消す()
+        }
     }
     
     mutating func この手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.手駒[陣営]?.一個増やす(職名)
+        self.盤駒通常移動直後情報を消す()
     }
     
     mutating func この手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.手駒[陣営]?.一個減らす(職名)
+        self.盤駒通常移動直後情報を消す()
     }
     
     mutating func この盤駒を消す(_ 位置: Int) {
         self.盤駒.removeValue(forKey: 位置)
+        self.盤駒通常移動直後情報を消す()
     }
     
     mutating func 盤駒通常移動直後情報を消す() {
@@ -116,6 +124,10 @@ struct 局面モデル: Codable {
         } else {
             return []
         }
+    }
+    
+    static func 履歴を全て削除する() {
+        UserDefaults.standard.removeObject(forKey: "履歴")
     }
     
     static var 初期セット: Self {
