@@ -65,6 +65,18 @@ struct 局面モデル: Codable {
         }
     }
     
+    func この手駒の表記(_ 陣営: 王側か玉側か, _ 職名: 駒の種類, _ English表記: Bool) -> String {
+        if !English表記 && (陣営 == .玉側) && (職名 == .王) {
+            return "玉"
+        } else {
+            return English表記 ? 職名.English生駒表記 : 職名.rawValue
+        }
+    }
+    
+    func この手駒の数(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> Int {
+        self.手駒[陣営]?.個数(職名) ?? 0
+    }
+    
     func この駒の成りについて判断すべき(_ 移動先: Int, _ 元々の位置: Int?) -> Bool {
         guard let 元々の位置 else { return false }
         if let 移動後の駒 = self.盤駒[移動先] {

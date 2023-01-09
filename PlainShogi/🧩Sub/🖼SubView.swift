@@ -125,9 +125,9 @@ struct 手駒調整シート: View {
                 ForEach(駒の種類.allCases) { 職名 in
                     Stepper {
                         HStack(spacing: 16) {
-                            Text(📱.この持ち駒のメタデータ(self.陣営, 職名).駒の表記)
+                            Text(📱.この手駒の表記(self.陣営, 職名))
                                 .font(.title)
-                            Text(📱.この持ち駒のメタデータ(self.陣営, 職名).数.description)
+                            Text(📱.局面.この手駒の数(self.陣営, 職名).description)
                                 .font(.title3)
                                 .monospacedDigit()
                         }

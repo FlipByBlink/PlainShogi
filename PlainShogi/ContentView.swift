@@ -159,25 +159,30 @@ struct 盤外のコマ: View {
     @State private var ドラッグ中 = false
     private var 陣営: 王側か玉側か
     private var 職名: 駒の種類
-    private var メタデータ: (駒の表記: String, 数: Int, 数の表記: String) {
-        📱.この持ち駒のメタデータ(self.陣営, self.職名)
+    private var 駒の表記: String { 📱.この手駒の表記(self.陣営, self.職名) }
+    private var 数: Int { 📱.局面.この手駒の数(self.陣営, self.職名) }
+    private var 盤外上での表記: String? {
+        switch self.数 {
+            case 1: return self.駒の表記
+            case 2...: return self.駒の表記 + self.数.description
+            default: return nil
+        }
     }
+    private var 取った駒として強調表示: Bool { 📱.取った駒として強調表示(self.陣営, self.職名) }
     var body: some View {
-        if self.メタデータ.数 == 0 {
-            EmptyView()
-        } else {
+        if let 盤外上での表記 {
             GeometryReader { 📐 in
                 HStack {
                     Spacer(minLength: 0)
-                    コマ(self.メタデータ.駒の表記 + self.メタデータ.数の表記, self.$ドラッグ中)
-                        .frame(maxWidth: 📐.size.height * (self.メタデータ.数 >= 2 ? 1.5 : 1))
+                    コマ(盤外上での表記, self.$ドラッグ中, 取った駒として強調表示)
+                        .frame(maxWidth: 📐.size.height * (self.数 >= 2 ? 1.5 : 1))
                         .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
                         .onDrag{
                             振動フィードバック()
                             self.ドラッグ中 = true
                             return 📱.この持ち駒をドラッグし始める(self.陣営, self.職名)
                         } preview: {
-                            ドラッグプレビュー用コマ(self.メタデータ.駒の表記, 📐.size, self.陣営, 📱.🚩上下反転)
+                            ドラッグプレビュー用コマ(self.駒の表記, 📐.size, self.陣営, 📱.🚩上下反転)
                         }
                     Spacer(minLength: 0)
                 }
@@ -193,13 +198,13 @@ struct コマ: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     private var 表記: String
     @Binding private var ドラッグ中: Bool
-    private var 陣営: 王側か玉側か?
+    private var アンダーライン: Bool = false
     var body: some View {
         ZStack {
             Rectangle()
                 .foregroundStyle(.background)
             Text(self.表記)
-                .underline((self.陣営 == .玉側) && (self.表記 == "S" || self.表記 == "N"))
+                .underline(self.アンダーライン)
                 .minimumScaleFactor(0.1)
                 .opacity(self.ドラッグ中 ? 0.25 : 1.0)
                 .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
@@ -214,8 +219,12 @@ struct コマ: View {
                 }
         }
     }
-    init(_ ﾋｮｳｷ: String, _ ﾄﾞﾗｯｸﾞﾁｭｳ: Binding<Bool>, _ ｼﾞﾝｴｲ: 王側か玉側か? = nil) {
-        (self.表記, self._ドラッグ中, self.陣営) = (ﾋｮｳｷ, ﾄﾞﾗｯｸﾞﾁｭｳ, ｼﾞﾝｴｲ)
+    init(_ ﾋｮｳｷ: String, _ ﾄﾞﾗｯｸﾞﾁｭｳ: Binding<Bool>, _ 陣営: 王側か玉側か? = nil) {
+        (self.表記, self._ドラッグ中) = (ﾋｮｳｷ, ﾄﾞﾗｯｸﾞﾁｭｳ)
+        self.アンダーライン = (陣営 == .玉側) && (self.表記 == "S" || self.表記 == "N")
+    }
+    init(_ ﾋｮｳｷ: String, _ ﾄﾞﾗｯｸﾞﾁｭｳ: Binding<Bool>, _ 取った駒として強調表示: Bool) {
+        (self.表記, self._ドラッグ中, self.アンダーライン) = (ﾋｮｳｷ, ﾄﾞﾗｯｸﾞﾁｭｳ, 取った駒として強調表示)
     }
 }
 
