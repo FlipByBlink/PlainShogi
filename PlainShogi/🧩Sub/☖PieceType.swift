@@ -50,7 +50,7 @@ struct 局面モデル: Codable {
         case 無効
     }
     
-    func この駒は成れる(_ 位置: Int) -> Bool {
+    func この駒の成りについて判断すべき(_ 位置: Int) -> Bool {
         if let 駒 = self.盤駒[位置] {
             if 駒.成り == false {
                 if 駒.職名.成駒表記 != nil {
