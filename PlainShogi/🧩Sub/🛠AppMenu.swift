@@ -95,35 +95,36 @@ struct 🛠アプリメニュー: View {
 struct 履歴List: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     @State private var 🚩履歴削除完了: Bool = false
-    private let コマのサイズ: CGFloat = 24
+    private let コマのサイズ: CGFloat = 20
     var body: some View {
         List {
             ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
                 HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(局面.更新日時?.formatted(.dateTime.day().month()) ?? "🐛")
-                            .font(.title3)
-                        Text(局面.更新日時?.formatted(.dateTime.hour().minute()) ?? "🐛")
-                            .font(.caption)
-                    }
-                    .foregroundStyle(.secondary)
-                    .minimumScaleFactor(0.1)
-                    Spacer()
                     VStack {
                         手駒プレビュー(局面, .玉側)
                         盤面プレビュー(局面)
                         手駒プレビュー(局面, .王側)
                     }
                     Spacer()
-                    Button {
-                        📱.履歴を復元する(局面)
-                    } label: {
-                        HStack {
-                            Image(systemName: "square.and.arrow.down")
-                            Text("復元")
+                    VStack(alignment: .trailing, spacing: 4) {
+                        Text(局面.更新日時?.formatted(.dateTime.day().month()) ?? "🐛")
+                            .font(.title3)
+                        Text(局面.更新日時?.formatted(.dateTime.hour().minute()) ?? "🐛")
+                            .font(.subheadline)
+                        Spacer()
+                        Button {
+                            📱.履歴を復元する(局面)
+                        } label: {
+                            HStack {
+                                Image(systemName: "square.and.arrow.down")
+                                Text("復元")
+                            }
                         }
+                        .buttonStyle(.bordered)
                     }
-                    .buttonStyle(.bordered)
+                    .foregroundStyle(.secondary)
+                    .minimumScaleFactor(0.1)
+                    .padding(.vertical, 20)
                 }
                 .padding()
             }
