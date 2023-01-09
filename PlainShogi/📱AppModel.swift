@@ -15,18 +15,18 @@ class 📱アプリモデル: ObservableObject {
     @Published var 🚩駒を整理中: Bool = false
     
     @Published var ドラッグした盤上の駒の元々の位置: Int? = nil
-    private var ドラッグした持ち駒: 盤外の駒? = nil
+    private var ドラッグした手駒: 盤外の駒? = nil
     
     var 現状: ドラッグ状況 = .何もドラッグしてない {
         didSet {
             switch 現状 {
                 case .盤上の駒をドラッグしている:
-                    ドラッグした持ち駒 = nil
-                case .持ち駒をドラッグしている:
+                    ドラッグした手駒 = nil
+                case .手駒をドラッグしている:
                     ドラッグした盤上の駒の元々の位置 = nil
                 case .アプリ外部からドラッグしている, .何もドラッグしてない:
                     ドラッグした盤上の駒の元々の位置 = nil
-                    ドラッグした持ち駒 = nil
+                    ドラッグした手駒 = nil
             }
         }
     }
@@ -41,10 +41,10 @@ class 📱アプリモデル: ObservableObject {
     
     func 取った駒として強調表示(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> Bool {
         if !self.🚩移動直後強調表示機能オフ {
-            if let 強調する持ち駒 = self.局面.盤駒の通常移動直後の駒?.取った持ち駒 {
+            if let 強調する手駒 = self.局面.盤駒の通常移動直後の駒?.取った手駒 {
                 if let 移動直後の位置 = self.局面.盤駒の通常移動直後の駒?.盤上の位置 {
                     if 陣営 == self.局面.盤駒[移動直後の位置]?.陣営 {
-                        if 職名 == 強調する持ち駒 {
+                        if 職名 == 強調する手駒 {
                             return true
                         }
                     }
@@ -108,9 +108,9 @@ class 📱アプリモデル: ObservableObject {
         return self.ドラッグ対象となるアイテムを用意する()
     }
     
-    func この持ち駒をドラッグし始める(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> NSItemProvider {
-        self.ドラッグした持ち駒 = 盤外の駒(陣営, 職名)
-        self.現状 = .持ち駒をドラッグしている
+    func この手駒をドラッグし始める(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> NSItemProvider {
+        self.ドラッグした手駒 = 盤外の駒(陣営, 職名)
+        self.現状 = .手駒をドラッグしている
         return self.ドラッグ対象となるアイテムを用意する()
     }
     
@@ -130,9 +130,9 @@ class 📱アプリモデル: ObservableObject {
                     guard let 出発地点 = self.ドラッグした盤上の駒の元々の位置 else { throw 🚨エラー.要修正 }
                     try self.局面.盤駒を移動させる(出発地点, 置いた位置)
                     self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-                case .持ち駒をドラッグしている:
-                    guard let 駒 = self.ドラッグした持ち駒 else { throw 🚨エラー.要修正 }
-                    try self.局面.持ち駒を盤上へ移動させる(駒, 置いた位置)
+                case .手駒をドラッグしている:
+                    guard let 駒 = self.ドラッグした手駒 else { throw 🚨エラー.要修正 }
+                    try self.局面.手駒を盤上へ移動させる(駒, 置いた位置)
                     self.駒を移動し終わったらログを更新してフィードバックを発生させる()
                 case .アプリ外部からドラッグしている:
                     let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
@@ -157,9 +157,9 @@ class 📱アプリモデル: ObservableObject {
                     guard let 出発地点 = self.ドラッグした盤上の駒の元々の位置 else { throw 🚨エラー.要修正 }
                     try self.局面.盤駒を盤外へ移動させる(出発地点, ドロップされた陣営)
                     self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-                case .持ち駒をドラッグしている:
-                    guard let 駒 = self.ドラッグした持ち駒 else { throw 🚨エラー.要修正 }
-                    self.局面.持ち駒を敵の持ち駒に移動させる(駒, ドロップされた陣営)
+                case .手駒をドラッグしている:
+                    guard let 駒 = self.ドラッグした手駒 else { throw 🚨エラー.要修正 }
+                    self.局面.自分の手駒を敵の手駒側に移動させる(駒, ドロップされた陣営)
                     self.駒を移動し終わったらログを更新してフィードバックを発生させる()
                 case .アプリ外部からドラッグしている:
                     let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
@@ -192,7 +192,7 @@ class 📱アプリモデル: ObservableObject {
                         return DropProposal(operation: .cancel)
                     }
                 }
-            case .持ち駒をドラッグしている:
+            case .手駒をドラッグしている:
                 if self.局面.盤駒[位置] != nil {
                     return .init(operation: .cancel)
                 }
@@ -203,8 +203,8 @@ class 📱アプリモデル: ObservableObject {
     }
     
     func 盤外のここはドロップ可能か確認する(_ ドロップしようとしている陣営: 王側か玉側か) -> DropProposal? {
-        if self.現状 == .持ち駒をドラッグしている {
-            if let 駒 = self.ドラッグした持ち駒 {
+        if self.現状 == .手駒をドラッグしている {
+            if let 駒 = self.ドラッグした手駒 {
                 if ドロップしようとしている陣営 == 駒.陣営 {
                     return DropProposal(operation: .cancel)
                 }
@@ -281,7 +281,7 @@ class 📱アプリモデル: ObservableObject {
 
 enum ドラッグ状況 {
     case 盤上の駒をドラッグしている
-    case 持ち駒をドラッグしている
+    case 手駒をドラッグしている
     case アプリ外部からドラッグしている
     case 何もドラッグしてない
 }

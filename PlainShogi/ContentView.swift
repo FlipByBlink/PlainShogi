@@ -184,7 +184,7 @@ struct 盤外のコマ: View {
                         .onDrag{
                             振動フィードバック()
                             self.ドラッグ中 = true
-                            return 📱.この持ち駒をドラッグし始める(self.陣営, self.職名)
+                            return 📱.この手駒をドラッグし始める(self.陣営, self.職名)
                         } preview: {
                             ドラッグプレビュー用コマ(self.駒の表記, 📐.size, self.陣営, 📱.🚩上下反転)
                         }

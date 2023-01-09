@@ -28,7 +28,7 @@ struct 局面モデル: Codable {
         self.盤駒の通常移動直後の駒 = 通常移動直後情報(置いた位置, 取った駒)
     }
     
-    mutating func 持ち駒を盤上へ移動させる(_ 元の駒: 盤外の駒, _ 置いた位置: Int) throws {
+    mutating func 手駒を盤上へ移動させる(_ 元の駒: 盤外の駒, _ 置いた位置: Int) throws {
         if self.盤駒[置いた位置] != nil { throw 🚨駒移動エラー.無効 }
         self.盤駒.updateValue(盤上の駒(元の駒.陣営, 元の駒.職名), forKey: 置いた位置)
         self.手駒[元の駒.陣営]?.一個減らす(元の駒.職名)
@@ -42,7 +42,7 @@ struct 局面モデル: Codable {
         self.盤駒通常移動直後情報を消す()
     }
     
-    mutating func 持ち駒を敵の持ち駒に移動させる(_ 元の駒: 盤外の駒, _ 移動先の陣営: 王側か玉側か) {
+    mutating func 自分の手駒を敵の手駒側に移動させる(_ 元の駒: 盤外の駒, _ 移動先の陣営: 王側か玉側か) {
         self.手駒[元の駒.陣営]?.一個減らす(元の駒.職名)
         self.手駒[移動先の陣営]?.一個増やす(元の駒.職名)
         self.盤駒通常移動直後情報を消す()
@@ -256,9 +256,9 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
 
 struct 通常移動直後情報: Codable {
     var 盤上の位置: Int
-    var 取った持ち駒: 駒の種類?
-    init(_ ｲﾁ: Int, _ ﾓﾁｺﾞﾏ: 駒の種類?) {
-        (self.盤上の位置, self.取った持ち駒) = (ｲﾁ, ﾓﾁｺﾞﾏ)
+    var 取った手駒: 駒の種類?
+    init(_ ｲﾁ: Int, _ ﾃｺﾞﾏ: 駒の種類?) {
+        (self.盤上の位置, self.取った手駒) = (ｲﾁ, ﾃｺﾞﾏ)
     }
 }
 
