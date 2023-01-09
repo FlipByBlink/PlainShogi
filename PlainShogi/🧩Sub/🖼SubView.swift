@@ -184,21 +184,21 @@ struct 初回起動時に駒の動かし方の説明アラート: ViewModifier {
 
 struct このコマが移動直後なら強調表示: ViewModifier {
     @EnvironmentObject var 📱: 📱アプリモデル
+    @Environment(\.legibilityWeight) var ⓛegibilityWeight
     private let 画面上での左上からの位置: Int
-    private let 実際のマスの大きさ: CGSize
+    private var 🚩太字で強調: Bool {
+        📱.この駒は通常移動直後(self.画面上での左上からの位置) && ⓛegibilityWeight == .regular
+    }
+    private var 🚩枠線で強調: Bool {
+        📱.この駒は通常移動直後(self.画面上での左上からの位置) && ⓛegibilityWeight == .bold
+    }
     func body(content: Content) -> some View {
         content
-            .overlay {
-                if 📱.この駒は通常移動直後(self.画面上での左上からの位置) {
-                    Rectangle()
-                        .strokeBorder(.primary, lineWidth: 枠線の太さ)
-                        .frame(width: 実際のマスの大きさ.width + 枠線の太さ,
-                               height: 実際のマスの大きさ.height + 枠線の太さ)
-                }
-            }
+            .font(self.🚩太字で強調 ? .body.bold() : .body)
+            .border(.primary, width: self.🚩枠線で強調 ? 枠線の太さ : 0)
     }
-    init(_ ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ: Int, _ ﾏｽﾉｵｵｷｻ: CGSize) {
-        (self.画面上での左上からの位置, self.実際のマスの大きさ) = (ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ, ﾏｽﾉｵｵｷｻ)
+    init(_ ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ: Int) {
+        self.画面上での左上からの位置 = ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ
     }
 }
 

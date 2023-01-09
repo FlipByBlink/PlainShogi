@@ -59,15 +59,6 @@ class 📱アプリモデル: ObservableObject {
         return self.局面.盤駒の通常移動直後の駒?.盤上の位置 == 元々の位置
     }
     
-    func この行の駒は通常移動直後(_ 行: Int) -> Bool {
-        if let 駒 = self.局面.盤駒の通常移動直後の駒 {
-            let 画面上の位置 = self.🚩上下反転 ? (80 - 駒.盤上の位置) : 駒.盤上の位置
-            return 行 == 画面上の位置 / 9
-        } else {
-            return false
-        }
-    }
-    
     func 盤駒の通常移動直後の強調表示をクリア() {
         self.局面.盤駒通常移動直後情報を消す()
         振動フィードバック()
