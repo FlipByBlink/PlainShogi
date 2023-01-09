@@ -18,6 +18,7 @@ struct 🛠メニューボタン: View {
                 }
             } label: {
                 Text("…")
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility3)
                     .padding()
             } primaryAction: {
                 📱.🚩メニューを表示 = true
@@ -109,24 +110,26 @@ struct 履歴List: View {
                     VStack(alignment: .trailing, spacing: 4) {
                         Text(局面.更新日時?.formatted(.dateTime.day().month()) ?? "🐛")
                             .font(.title3)
-                        Text(局面.更新日時?.formatted(.dateTime.hour().minute()) ?? "🐛")
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.1)
+                        Text(局面.更新日時?.formatted(.dateTime.hour().minute().second()) ?? "🐛")
                             .font(.subheadline)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.1)
                         Spacer()
                         Button {
                             📱.履歴を復元する(局面)
                         } label: {
                             HStack {
                                 Image(systemName: "square.and.arrow.down")
-                                    .imageScale(.small)
                                 Text("復元")
                             }
                         }
                         .buttonStyle(.bordered)
+                        .dynamicTypeSize(...DynamicTypeSize.xLarge)
                     }
-                    .lineLimit(1)
                     .foregroundStyle(.secondary)
-                    .minimumScaleFactor(0.1)
-                    .padding(.vertical, 20)
+                    .padding(.vertical)
                 }
                 .padding()
             }
