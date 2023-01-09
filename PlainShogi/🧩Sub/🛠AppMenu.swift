@@ -117,11 +117,13 @@ struct 履歴List: View {
                         } label: {
                             HStack {
                                 Image(systemName: "square.and.arrow.down")
+                                    .imageScale(.small)
                                 Text("復元")
                             }
                         }
                         .buttonStyle(.bordered)
                     }
+                    .lineLimit(1)
                     .foregroundStyle(.secondary)
                     .minimumScaleFactor(0.1)
                     .padding(.vertical, 20)
@@ -147,7 +149,7 @@ struct 履歴List: View {
                 } label: {
                     Image(systemName: "trash")
                         .imageScale(.small)
-                        .grayscale(1.0)
+                        .foregroundColor(.secondary)
                 }
                 .accessibilityLabel("削除")
                 .disabled(局面モデル.履歴.isEmpty)
