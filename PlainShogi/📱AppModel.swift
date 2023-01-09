@@ -277,6 +277,8 @@ class 📱アプリモデル: ObservableObject {
     
     func 履歴を復元する(_ 過去の局面: 局面モデル) {
         self.局面 = 過去の局面
+        self.🚩メニューを表示 = false
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
     
     // ==============================================================================
