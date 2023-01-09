@@ -50,13 +50,11 @@ struct 駒を消すボタン: View {
                     ZStack(alignment: .topLeading) {
                         Color.clear
                         Image(systemName: "xmark.circle.fill")
-                            .resizable()
                             .symbolRenderingMode(.palette)
-                            .foregroundStyle(.tint, .background)
+                            .foregroundStyle(.tint, .background.opacity(0.66))
                             .tint(.primary)
                             .font(.body.weight(.light))
-                            .frame(width: 📐.size.width * 2 / 5,
-                                   height: 📐.size.height * 2 / 5)
+                            .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                     }
                 }
             }

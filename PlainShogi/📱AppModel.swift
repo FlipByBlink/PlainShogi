@@ -76,7 +76,7 @@ class 📱アプリモデル: ObservableObject {
     func この駒を裏返す(_ 位置: Int) {
         if self.局面.盤駒[位置]?.成り != nil {
             self.局面.この駒を裏返す(位置)
-            self.ログを更新する()
+            self.現在の局面を履歴に追加する()
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
     }
@@ -177,7 +177,7 @@ class 📱アプリモデル: ObservableObject {
     
     private func 駒を移動し終わったらログを更新してフィードバックを発生させる() {
         self.現状 = .何もドラッグしてない
-        self.ログを更新する()
+        self.現在の局面を履歴に追加する()
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
     }
     
@@ -244,7 +244,7 @@ class 📱アプリモデル: ObservableObject {
         }
     }
     
-    private func ログを更新する() {//MARK: WIP
+    private func 現在の局面を履歴に追加する() {
         self.局面.現在の局面を履歴に追加する()
     }
     
