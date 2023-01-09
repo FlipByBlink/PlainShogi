@@ -15,7 +15,7 @@ class 📱アプリモデル: ObservableObject {
     @Published var 🚩駒を整理中: Bool = false
     
     @Published var ドラッグした盤上の駒の元々の位置: Int? = nil
-    private var ドラッグした持ち駒: (陣営: 王側か玉側か, 職名: 駒の種類)? = nil
+    private var ドラッグした持ち駒: 盤外の駒? = nil
     
     var 現状: 状況 = .何もドラッグしてない {
         didSet {
@@ -136,7 +136,7 @@ class 📱アプリモデル: ObservableObject {
     }
     
     func この持ち駒をドラッグし始める(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> NSItemProvider {
-        self.ドラッグした持ち駒 = (陣営, 職名)
+        self.ドラッグした持ち駒 = 盤外の駒(陣営, 職名)
         self.現状 = .持ち駒をドラッグしている
         return self.ドラッグ対象となるアイテムを用意する()
     }
