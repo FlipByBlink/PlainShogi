@@ -56,13 +56,12 @@ struct 📃テキスト連携機能 {
         return 📃
     }
     
-    static func 局面モデルに変換する(_ テキスト: String) -> 局面モデル? {//TODO: 動作テスト
+    static func 局面モデルに変換する(_ テキスト: String) -> 局面モデル? {
         guard テキスト.first == "☗" else {
             print("先頭の文字が「☗」ではありません。")
             return nil
         }
         
-//        var 局面 = 局面モデル(盤駒: [:], 手駒: 空の手駒)
         var 盤駒: [Int: 盤上の駒] = [:]
         var 手駒: [王側か玉側か: 持ち駒] = 空の手駒
         var 改行数: Int = 0
