@@ -92,8 +92,8 @@ struct 盤上のコマもしくはマス: View {
                         振動フィードバック()
                         self.ドラッグ中 = true
                         return 📱.この盤上の駒をドラッグし始める(self.元々の位置)
-                    } preview: {
-                        ドラッグプレビュー用コマ(self.表記, 📐.size, 駒.陣営, 📱.🚩上下反転)
+                    //} preview: {
+                    //    ドラッグプレビュー用コマ(self.表記, 📐.size, 駒.陣営, 📱.🚩上下反転)
                     }
                     .confirmationDialog("この駒を成り駒にしますか？",
                                         isPresented: self.$🚩成り駒ダイアログを表示,
