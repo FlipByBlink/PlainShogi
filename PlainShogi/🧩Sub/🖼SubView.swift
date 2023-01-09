@@ -234,9 +234,11 @@ struct 段表示: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     let 高さ: CGFloat
     var 上下反転: Bool { 📱.🚩上下反転 }
+    var 字: [String] {
+        📱.🚩English表記 ? ["１","２","３","４","５","６","７","８","９"] : ["一","二","三","四","五","六","七","八","九"]
+    }
     var body: some View {
         VStack(spacing: 0) {
-            let 字 = ["一","二","三","四","五","六","七","八","九"]
             ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 行 in
                 Text(行.description)
                     .minimumScaleFactor(0.1)
