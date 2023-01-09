@@ -139,7 +139,6 @@ struct 盤上の駒: Codable {
     mutating func 裏返す() {
         if self.職名.成駒表記 != nil {
             self.成り.toggle()
-            振動フィードバック()
         }
     }
     

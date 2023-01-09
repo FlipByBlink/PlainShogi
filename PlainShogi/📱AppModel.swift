@@ -101,9 +101,11 @@ class 📱アプリモデル: ObservableObject {
     }
     
     func この駒を裏返す(_ 位置: Int) {
-        self.局面.この駒を裏返す(位置)
-        self.ログを更新する()
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        if self.局面.盤駒[位置]?.成り != nil {
+            self.局面.この駒を裏返す(位置)
+            self.ログを更新する()
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        }
     }
 
     func 盤面を初期化する() {
