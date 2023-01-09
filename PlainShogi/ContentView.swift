@@ -74,11 +74,15 @@ struct 盤上のコマもしくはマス: View {
     private var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
     }
+    private var 駒: 盤上の駒? { 📱.局面.盤駒[元々の位置] }
     private var 表記: String { 📱.盤上のこの駒の表記(self.元々の位置) }
+    private var SとNを見分けるためのアンダーライン: Bool {
+        (self.駒?.陣営 == .玉側) && (self.表記 == "S" || self.表記 == "N")
+    }
     var body: some View {
         GeometryReader { 📐 in
-            if let 駒 = 📱.局面.盤駒[元々の位置] {
-                コマ(self.表記, self.$ドラッグ中, 駒.陣営)
+            if let 駒 {
+                コマ(self.表記, self.$ドラッグ中, self.SとNを見分けるためのアンダーライン)
                     .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
@@ -219,12 +223,8 @@ struct コマ: View {
                 }
         }
     }
-    init(_ ﾋｮｳｷ: String, _ ﾄﾞﾗｯｸﾞﾁｭｳ: Binding<Bool>, _ 陣営: 王側か玉側か? = nil) {
-        (self.表記, self._ドラッグ中) = (ﾋｮｳｷ, ﾄﾞﾗｯｸﾞﾁｭｳ)
-        self.アンダーライン = (陣営 == .玉側) && (self.表記 == "S" || self.表記 == "N")
-    }
-    init(_ ﾋｮｳｷ: String, _ ﾄﾞﾗｯｸﾞﾁｭｳ: Binding<Bool>, _ 取った駒として強調表示: Bool) {
-        (self.表記, self._ドラッグ中, self.アンダーライン) = (ﾋｮｳｷ, ﾄﾞﾗｯｸﾞﾁｭｳ, 取った駒として強調表示)
+    init(_ ﾋｮｳｷ: String, _ ﾄﾞﾗｯｸﾞﾁｭｳ: Binding<Bool>, _ ｱﾝﾀﾞｰﾗｲﾝ: Bool = false) {
+        (self.表記, self._ドラッグ中, self.アンダーライン) = (ﾋｮｳｷ, ﾄﾞﾗｯｸﾞﾁｭｳ, ｱﾝﾀﾞｰﾗｲﾝ)
     }
 }
 
