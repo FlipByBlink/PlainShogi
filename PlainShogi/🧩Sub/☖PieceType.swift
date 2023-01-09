@@ -12,7 +12,7 @@ struct 局面モデル: Codable {
     private(set) var 盤駒: [Int: 盤上の駒]
     private(set) var 手駒: [王側か玉側か: 持ち駒]
     private(set) var 盤駒の通常移動直後の駒: 通常移動直後情報?
-    private(set) var 更新日時: Date? //TODO: 実装
+    private(set) var 更新日時: Date?
     
     mutating func 盤駒を移動させる(_ 出発地点: Int, _ 置いた位置: Int) throws {
         if 置いた位置 == 出発地点 { throw 🚨駒移動エラー.無効 }
@@ -114,7 +114,7 @@ struct 局面モデル: Codable {
         self = .初期セット
     }
     
-    mutating func 現在の局面を履歴に追加する() {//MARK: WIP
+    mutating func 現在の局面を履歴に追加する() {
         self.更新日時 = .now
         do {
             let ⓔncoder = JSONEncoder()
@@ -125,7 +125,7 @@ struct 局面モデル: Codable {
         }
     }
     
-    static var 履歴: [Self] {//MARK: WIP
+    static var 履歴: [Self] {
         if let ⓓata = UserDefaults.standard.data(forKey: "履歴") {
             do {
                 let ⓓecoder = JSONDecoder()

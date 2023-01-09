@@ -193,7 +193,7 @@ struct コマ: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     private var 表記: String
     @Binding private var ドラッグ中: Bool
-    var 陣営: 王側か玉側か?
+    private var 陣営: 王側か玉側か?
     var body: some View {
         ZStack {
             Rectangle()

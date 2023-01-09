@@ -95,7 +95,7 @@ struct 🛠アプリメニュー: View {
 struct 履歴List: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     @State private var 🚩履歴削除完了: Bool = false
-    let コマのサイズ: CGFloat = 24
+    private let コマのサイズ: CGFloat = 24
     var body: some View {
         List {
             ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
@@ -153,7 +153,7 @@ struct 履歴List: View {
             }
         }
     }
-    func 盤面プレビュー(_ 局面: 局面モデル) -> some View {
+    private func 盤面プレビュー(_ 局面: 局面モデル) -> some View {
         VStack(spacing: 0) {
             ForEach(0 ..< 9) { 行 in
                 HStack(spacing: 0) {
@@ -179,7 +179,7 @@ struct 履歴List: View {
         .padding(2)
         .border(.primary, width: 0.66)
     }
-    func 手駒プレビュー(_ 局面: 局面モデル, _ 陣営: 王側か玉側か) -> some View {
+    private func 手駒プレビュー(_ 局面: 局面モデル, _ 陣営: 王側か玉側か) -> some View {
         HStack {
             ForEach(駒の種類.allCases) { 駒 in
                 if let 数 = 局面.手駒[陣営]?.配分[駒] {
