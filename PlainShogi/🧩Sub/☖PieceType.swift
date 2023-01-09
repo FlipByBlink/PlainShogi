@@ -55,11 +55,7 @@ struct 局面モデル: Codable {
     func 盤上のこの駒の表記(_ 位置: Int, _ English表記: Bool) -> String? {
         guard let 駒 = self.盤駒[位置] else { return nil }
         if English表記 {
-            if (駒.陣営 == .玉側) && (駒.職名 == .銀 || 駒.職名 == .桂) {
-                return 駒.成り ? 駒.職名.English成駒表記 : 駒.職名.English生駒表記 + "′" // U+2032 PRIME
-            } else {
-                return 駒.成り ? 駒.職名.English成駒表記 : 駒.職名.English生駒表記
-            }
+            return 駒.成り ? 駒.職名.English成駒表記 : 駒.職名.English生駒表記
         } else {
             if (駒.陣営 == .玉側) && (駒.職名 == .王) {
                 return "玉"

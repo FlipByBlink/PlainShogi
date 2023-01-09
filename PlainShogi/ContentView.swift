@@ -78,7 +78,7 @@ struct 盤上のコマもしくはマス: View {
     var body: some View {
         GeometryReader { 📐 in
             if let 駒 = 📱.局面.盤駒[元々の位置] {
-                コマ(self.表記, self.$ドラッグ中)
+                コマ(self.表記, self.$ドラッグ中, 駒.陣営)
                     .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
@@ -193,11 +193,13 @@ struct コマ: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     private var 表記: String
     @Binding private var ドラッグ中: Bool
+    var 陣営: 王側か玉側か?
     var body: some View {
         ZStack {
             Rectangle()
                 .foregroundStyle(.background)
             Text(self.表記)
+                .underline((self.陣営 == .玉側) && (self.表記 == "S" || self.表記 == "N"))
                 .minimumScaleFactor(0.1)
                 .opacity(self.ドラッグ中 ? 0.25 : 1.0)
                 .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
@@ -212,8 +214,8 @@ struct コマ: View {
                 }
         }
     }
-    init(_ ﾋｮｳｷ: String, _ ドラッグ中: Binding<Bool>) {
-        (self.表記, self._ドラッグ中) = (ﾋｮｳｷ, ドラッグ中)
+    init(_ ﾋｮｳｷ: String, _ ﾄﾞﾗｯｸﾞﾁｭｳ: Binding<Bool>, _ ｼﾞﾝｴｲ: 王側か玉側か? = nil) {
+        (self.表記, self._ドラッグ中, self.陣営) = (ﾋｮｳｷ, ﾄﾞﾗｯｸﾞﾁｭｳ, ｼﾞﾝｴｲ)
     }
 }
 

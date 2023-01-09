@@ -14,6 +14,8 @@
 "履歴" = "History";
 "復元" = "Restore";
 "削除" = "Remove";
+"これまでの履歴を削除しました。" = "Removed history.";
+"現在、履歴はありません。" = "Nothing.";
 "" = "";
 "オプション" = "Option";
 "English表記" = "English term";
