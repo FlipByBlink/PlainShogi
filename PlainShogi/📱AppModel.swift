@@ -54,12 +54,12 @@ class 📱アプリモデル: ObservableObject {
         return false
     }
     
-    func このコマは通常移動直後(_ 画面上での左上からの位置: Int) -> Bool {
+    func この駒は通常移動直後(_ 画面上での左上からの位置: Int) -> Bool {
         let 元々の位置 = self.🚩上下反転 ? (80 - 画面上での左上からの位置) : 画面上での左上からの位置
         return self.局面.盤駒の通常移動直後の駒?.盤上の位置 == 元々の位置
     }
     
-    func この行のコマは通常移動直後(_ 行: Int) -> Bool {
+    func この行の駒は通常移動直後(_ 行: Int) -> Bool {
         if let 駒 = self.局面.盤駒の通常移動直後の駒 {
             let 画面上の位置 = self.🚩上下反転 ? (80 - 駒.盤上の位置) : 駒.盤上の位置
             return 行 == 画面上の位置 / 9

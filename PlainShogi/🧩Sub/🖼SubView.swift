@@ -189,7 +189,7 @@ struct このコマが移動直後なら強調表示: ViewModifier {
     func body(content: Content) -> some View {
         content
             .overlay {
-                if 📱.このコマは通常移動直後(self.画面上での左上からの位置) {
+                if 📱.この駒は通常移動直後(self.画面上での左上からの位置) {
                     Rectangle()
                         .strokeBorder(.primary, lineWidth: 枠線の太さ)
                         .frame(width: 実際のマスの大きさ.width + 枠線の太さ,
