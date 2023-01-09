@@ -1,6 +1,6 @@
 import Foundation
 
-struct データ管理_ver_3_0_2 {
+struct データ管理_ver_1_2_2 {
     static var 以前のデータがあるか: Bool {
         UserDefaults.standard.dictionary(forKey: "駒の配置") != nil
         &&
