@@ -31,31 +31,8 @@ class 📱アプリモデル: ObservableObject {
         }
     }
     
-    func この盤上の駒の表記(_ 位置: Int) -> String {
-        guard let 駒 = self.局面.盤駒[位置] else { return "🐛" }
-        let シンボル: String
-        if 駒.成り {
-            if self.🚩English表記 {
-                シンボル = 駒.職名.English成駒表記 ?? "🐛"
-            } else {
-                シンボル = 駒.職名.成駒表記 ?? "🐛"
-            }
-        } else {
-            if !self.🚩English表記 && (駒.陣営 == .玉側) && (駒.職名 == .王) {
-                シンボル = "玉"
-            } else {
-                if self.🚩English表記 {
-                    シンボル = 駒.職名.English生駒表記
-                } else {
-                    シンボル = 駒.職名.rawValue
-                }
-            }
-        }
-        if self.🚩English表記 && (駒.陣営 == .玉側) && (駒.職名 == .銀 || 駒.職名 == .桂) {
-            return シンボル + "′" // U+2032 PRIME
-        } else {
-            return シンボル
-        }
+    func 盤上のこの駒の表記(_ 位置: Int) -> String {
+        self.局面.盤上のこの駒の表記(位置, self.🚩English表記) ?? "🐛"
     }
     
     func この持ち駒のメタデータ(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> (駒の表記: String, 数: Int, 数の表記: String) {

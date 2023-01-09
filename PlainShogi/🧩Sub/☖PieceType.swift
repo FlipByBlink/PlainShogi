@@ -52,6 +52,23 @@ struct 局面モデル: Codable {
         case 無効
     }
     
+    func 盤上のこの駒の表記(_ 位置: Int, _ English表記: Bool) -> String? {
+        guard let 駒 = self.盤駒[位置] else { return nil }
+        if English表記 {
+            if (駒.陣営 == .玉側) && (駒.職名 == .銀 || 駒.職名 == .桂) {
+                return 駒.成り ? 駒.職名.English成駒表記 : 駒.職名.English生駒表記 + "′" // U+2032 PRIME
+            } else {
+                return 駒.成り ? 駒.職名.English成駒表記 : 駒.職名.English生駒表記
+            }
+        } else {
+            if (駒.陣営 == .玉側) && (駒.職名 == .王) {
+                return "玉"
+            } else {
+                return 駒.成り ? 駒.職名.成駒表記 : 駒.職名.rawValue
+            }
+        }
+    }
+    
     func この駒の成りについて判断すべき(_ 移動先: Int, _ 元々の位置: Int?) -> Bool {
         guard let 元々の位置 else { return false }
         if let 移動後の駒 = self.盤駒[移動先] {

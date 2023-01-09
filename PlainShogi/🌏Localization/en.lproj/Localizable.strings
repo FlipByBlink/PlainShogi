@@ -11,6 +11,10 @@
 "駒を消したり増やしたりする" = "Edit pieces";
 "手駒を整理する" = "Edit captured pieces";
 "移動直後の強調表示をクリア" = "Clear shift sign";
+"履歴" = "History";
+"復元" = "Restore";
+"削除" = "Remove";
+"" = "";
 "オプション" = "Option";
 "English表記" = "English term";
 "細かな使い方" = "More how to";

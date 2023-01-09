@@ -35,7 +35,6 @@ struct 🛠アプリメニュー: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink("履歴") { 履歴List() }
                 Section {
                     Label("長押しして駒を持ち上げ、そのままスライドして移動させる", systemImage: "hand.draw")
                         .padding(.vertical, 8)
@@ -47,6 +46,13 @@ struct 🛠アプリメニュー: View {
                     🛠盤面初期化ボタン()
                     🛠盤面整理開始ボタン()
                     🛠移動直後強調表示クリアボタン()
+                }
+                Section {
+                    NavigationLink {
+                        履歴List()
+                    } label: {
+                        Label("履歴", systemImage: "clock")
+                    }
                 }
                 Section {
                     Toggle(isOn: $📱.🚩English表記) {
@@ -86,17 +92,17 @@ struct 🛠アプリメニュー: View {
     }
 }
 
-struct 履歴List: View {//MARK: WIP
+struct 履歴List: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     @State private var 🚩履歴削除完了: Bool = false
-    let コマのサイズ: CGFloat = 20
+    let コマのサイズ: CGFloat = 24
     var body: some View {
         List {
             ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
                 HStack {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 4) {
                         Text(局面.更新日時?.formatted(.dateTime.day().month()) ?? "🐛")
-                            .font(.headline)
+                            .font(.title3)
                         Text(局面.更新日時?.formatted(.dateTime.hour().minute()) ?? "🐛")
                             .font(.caption)
                     }
@@ -123,7 +129,6 @@ struct 履歴List: View {//MARK: WIP
             }
             if 🚩履歴削除完了 {
                 Text("これまでの履歴を削除しました。")
-                    .font(.headline)
             }
             if 局面モデル.履歴.isEmpty {
                 Text("現在、履歴はありません。")
@@ -143,7 +148,7 @@ struct 履歴List: View {//MARK: WIP
                         .imageScale(.small)
                         .grayscale(1.0)
                 }
-                .accessibilityLabel("Remove")
+                .accessibilityLabel("削除")
                 .disabled(局面モデル.履歴.isEmpty)
             }
         }
@@ -155,32 +160,7 @@ struct 履歴List: View {//MARK: WIP
                     ForEach(0 ..< 9) { 列 in
                         let 位置 = 行 * 9 + 列
                         if let 駒 = 局面.盤駒[位置] {
-                            let 表記: String = {
-                                let シンボル: String
-                                if 駒.成り {
-                                    if 📱.🚩English表記 {
-                                        シンボル = 駒.職名.English成駒表記 ?? "🐛"
-                                    } else {
-                                        シンボル = 駒.職名.成駒表記 ?? "🐛"
-                                    }
-                                } else {
-                                    if !📱.🚩English表記 && (駒.陣営 == .玉側) && (駒.職名 == .王) {
-                                        シンボル = "玉"
-                                    } else {
-                                        if 📱.🚩English表記 {
-                                            シンボル = 駒.職名.English生駒表記
-                                        } else {
-                                            シンボル = 駒.職名.rawValue
-                                        }
-                                    }
-                                }
-                                if 📱.🚩English表記 && (駒.陣営 == .玉側) && (駒.職名 == .銀 || 駒.職名 == .桂) {
-                                    return シンボル + "′" // U+2032 PRIME
-                                } else {
-                                    return シンボル
-                                }
-                            }()
-                            Text(表記)
+                            Text(局面.盤上のこの駒の表記(位置, 📱.🚩English表記) ?? "🐛")
                                 .fontWeight(局面.盤駒の通常移動直後の駒?.盤上の位置 == 位置 ? .bold : .light)
                                 .rotationEffect(駒.陣営 == .玉側 ? .degrees(180) : .zero)
                                 .minimumScaleFactor(0.1)
@@ -193,8 +173,9 @@ struct 履歴List: View {//MARK: WIP
                 }
             }
         }
-        .border(.primary, width: 0.66)
         .frame(width: コマのサイズ * 9, height: コマのサイズ * 9)
+        .padding(2)
+        .border(.primary, width: 0.66)
     }
     func 手駒プレビュー(_ 局面: 局面モデル, _ 陣営: 王側か玉側か) -> some View {
         HStack {
