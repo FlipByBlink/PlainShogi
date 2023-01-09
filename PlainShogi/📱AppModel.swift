@@ -17,7 +17,7 @@ class 📱アプリモデル: ObservableObject {
     @Published var ドラッグした盤上の駒の元々の位置: Int? = nil
     private var ドラッグした持ち駒: 盤外の駒? = nil
     
-    var 現状: 状況 = .何もドラッグしてない {
+    var 現状: ドラッグ状況 = .何もドラッグしてない {
         didSet {
             switch 現状 {
                 case .盤上の駒をドラッグしている:

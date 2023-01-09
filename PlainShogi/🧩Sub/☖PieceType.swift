@@ -50,15 +50,18 @@ struct 局面モデル: Codable {
         case 無効
     }
     
-    func この駒の成りについて判断すべき(_ 位置: Int) -> Bool {
-        if let 駒 = self.盤駒[位置] {
-            if 駒.成り == false {
-                if 駒.職名.成駒表記 != nil {
-                    switch 駒.陣営 {
+    func この駒の成りについて判断すべき(_ 移動先: Int, _ 元々の位置: Int?) -> Bool {
+        guard let 元々の位置 else { return false }
+        if let 移動後の駒 = self.盤駒[移動先] {
+            if 移動後の駒.成り == false {
+                if 移動後の駒.職名.成駒表記 != nil {
+                    switch 移動後の駒.陣営 {
                         case .王側:
-                            if 位置 < 27 { return true }
+                            if 移動先 < 27 { return true }
+                            if 元々の位置 < 27 { return true }
                         case .玉側:
-                            if 53 < 位置 { return true }
+                            if 53 < 移動先 { return true }
+                            if 53 < 元々の位置 { return true }
                     }
                 }
             }
@@ -124,7 +127,7 @@ enum 王側か玉側か: String, CaseIterable, Codable {
     case 玉側
 }
 
-enum 状況 {
+enum ドラッグ状況 {
     case 盤上の駒をドラッグしている
     case 持ち駒をドラッグしている
     case アプリ外部からドラッグしている
