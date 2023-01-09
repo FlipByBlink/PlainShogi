@@ -35,6 +35,7 @@ struct 🛠アプリメニュー: View {
     var body: some View {
         NavigationView {
             List {
+                NavigationLink("履歴") { 履歴List() }
                 Section {
                     Label("長押しして駒を持ち上げ、そのままスライドして移動させる", systemImage: "hand.draw")
                         .padding(.vertical, 8)
@@ -82,6 +83,42 @@ struct 🛠アプリメニュー: View {
             }
         }
         .onDisappear { 📱.🚩メニューを表示 = false }
+    }
+}
+
+struct 履歴List: View {//MARK: WIP
+    @EnvironmentObject var 📱: 📱アプリモデル
+    var body: some View {
+        List {
+            ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
+                HStack {
+                    Text(局面.更新日時?.formatted() ?? "🐛")
+                    プレビュー(局面)
+                }
+            }
+        }
+    }
+    func プレビュー(_ 局面: 局面モデル) -> some View {
+        VStack(spacing: 0) {
+            ForEach(0 ..< 9) { 行 in
+                HStack(spacing: 0) {
+                    ForEach(0 ..< 9) { 列 in
+                        let 位置 = 行 * 9 + 列
+                        if 📱.局面.盤駒[位置] != nil {
+                            Text(📱.この盤上の駒の表記(位置))
+                                .fontWeight(局面.盤駒の通常移動直後の駒?.盤上の位置 == 位置 ? .bold : .light)
+                                .minimumScaleFactor(0.1)
+                                .frame(width: 20, height: 20)
+                        } else {
+                            Color.clear
+                                .frame(width: 20, height: 20)
+                        }
+                    }
+                }
+            }
+        }
+        .border(.primary, width: 0.66)
+        .frame(width: 20 * 9, height: 20 * 9)
     }
 }
 

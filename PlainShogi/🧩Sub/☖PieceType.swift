@@ -89,36 +89,37 @@ struct 局面モデル: Codable {
         self.盤駒の通常移動直後の駒 = nil
     }
     
-    func 保存する() {
+    mutating func 初期化する() {
+        self = .初期セット
+    }
+    
+    mutating func 現在の局面を履歴に追加する() {//MARK: WIP
+        self.更新日時 = .now
         do {
             let ⓔncoder = JSONEncoder()
-            let ⓓata = try ⓔncoder.encode(self)
-            UserDefaults.standard.set(ⓓata, forKey: "局面")
+            let ⓓata = try ⓔncoder.encode(Self.履歴 + [self])
+            UserDefaults.standard.set(ⓓata, forKey: "履歴")
         } catch {
             print("🚨", error.localizedDescription)
         }
     }
     
-    static func 読み込む() -> Self? {
-        if let ⓓata = UserDefaults.standard.data(forKey: "局面") {
+    static var 履歴: [Self] {//MARK: WIP
+        if let ⓓata = UserDefaults.standard.data(forKey: "履歴") {
             do {
                 let ⓓecoder = JSONDecoder()
-                return try ⓓecoder.decode(Self.self, from: ⓓata)
+                return try ⓓecoder.decode([Self].self, from: ⓓata)
             } catch {
                 print("🚨", error.localizedDescription)
-                return nil
+                return []
             }
         } else {
-            return nil
+            return []
         }
     }
     
     static var 初期セット: Self {
         Self(盤駒: 初期配置, 手駒: 空の手駒, 盤駒の通常移動直後の駒: nil)
-    }
-    
-    mutating func 初期化する() {
-        self = .初期セット
     }
 }
 
