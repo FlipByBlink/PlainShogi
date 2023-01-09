@@ -48,24 +48,24 @@ struct 🛠アプリメニュー: View {
                     🛠移動直後強調表示クリアボタン()
                 }
                 Section {
+                    Toggle(isOn: $📱.🚩上下反転) {
+                        Label("上下反転", systemImage: "arrow.up.arrow.down")
+                    }
+                    Toggle(isOn: $📱.🚩English表記) {
+                        Label("English表記", systemImage: "p.circle")
+                    }
+                    Toggle(isOn: $📱.🚩移動直後強調表示機能オフ) {
+                        Label("移動直後の強調表示機能を無効にする", systemImage: "square.slash")
+                    }
+                } header: {
+                    Text("オプション")
+                }
+                Section {
                     NavigationLink {
                         履歴List()
                     } label: {
                         Label("履歴", systemImage: "clock")
                     }
-                }
-                Section {
-                    Toggle(isOn: $📱.🚩English表記) {
-                        Label("English表記", systemImage: "p.square")
-                    }
-                    Toggle(isOn: $📱.🚩移動直後強調表示機能オフ) {
-                        Label("移動直後の強調表示機能を無効にする", systemImage: "underline")
-                    }
-                    Toggle(isOn: $📱.🚩上下反転) {
-                        Label("上下反転", systemImage: "arrow.up.arrow.down")
-                    }
-                } header: {
-                    Text("オプション")
                 }
                 細かな使い方セクション()
                 テキスト書き出し読み込みセクション()
