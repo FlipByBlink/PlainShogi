@@ -12,16 +12,16 @@ struct 🛠盤面初期化ボタン: View {
     }
 }
 
-struct 🛠移動直後強調表示クリアボタン: View {
+struct 🛠直近操作強調表示クリアボタン: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     var body: some View {
         Button {
-            withAnimation { 📱.盤駒の通常移動直後の強調表示をクリア() }
+            withAnimation { 📱.直近操作の強調表示をクリア() }
         } label: {
-            Label("移動直後の強調表示をクリア", systemImage: "square.dashed")
+            Label("操作直後の強調表示をクリア", systemImage: "square.dashed")
         }
-        .disabled(📱.局面.盤駒の通常移動直後の駒 == nil)
-        .disabled(📱.🚩移動直後強調表示機能オフ)
+        .disabled(📱.局面.直近の操作 == nil)
+        .disabled(📱.🚩直近操作強調表示機能オフ)
     }
 }
 
@@ -45,7 +45,7 @@ struct 駒を消すボタン: View {
         if 📱.🚩駒を整理中 {
             GeometryReader { 📐 in
                 Button {
-                    withAnimation { 📱.この盤駒を消す(self.位置) }
+                    withAnimation { 📱.編集モードでこの盤駒を消す(self.位置) }
                 } label: {
                     ZStack(alignment: .topLeading) {
                         Color.clear
@@ -83,14 +83,14 @@ struct 整理完了ボタン: View {
     }
 }
 
-struct 手駒調整ボタン: View {
+struct 手駒編集ボタン: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     private var 陣営: 王側か玉側か
-    @State private var 手駒の数を増減中: Bool = false
+    @State private var 手駒の数を編集中: Bool = false
     var body: some View {
         if 📱.🚩駒を整理中 {
             Button {
-                self.手駒の数を増減中 = true
+                self.手駒の数を編集中 = true
                 振動フィードバック()
             } label: {
                 Image(systemName: "plusminus")
@@ -99,16 +99,16 @@ struct 手駒調整ボタン: View {
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
-            .sheet(isPresented: self.$手駒の数を増減中) {
-                手駒調整シート(self.陣営)
-                    .onDisappear { self.手駒の数を増減中 = false }
+            .sheet(isPresented: self.$手駒の数を編集中) {
+                手駒編集シート(self.陣営)
+                    .onDisappear { self.手駒の数を編集中 = false }
             }
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
 
-struct 手駒調整シート: View {
+struct 手駒編集シート: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     @Environment(\.dismiss) var 🔙dismissAction: DismissAction
     private var 陣営: 王側か玉側か
@@ -134,9 +134,9 @@ struct 手駒調整シート: View {
                         .padding(.leading)
                         .padding(.vertical, 8)
                     } onIncrement: {
-                        📱.この手駒を一個増やす(self.陣営, 職名)
+                        📱.編集モードでこの手駒を一個増やす(self.陣営, 職名)
                     } onDecrement: {
-                        📱.この手駒を一個減らす(self.陣営, 職名)
+                        📱.編集モードでこの手駒を一個減らす(self.陣営, 職名)
                     }
                     .padding(.trailing)
                 }
@@ -182,20 +182,26 @@ struct 初回起動時に駒の動かし方の説明アラート: ViewModifier {
     }
 }
 
-struct このコマが移動直後なら強調表示: ViewModifier {
+struct このコマが操作直後なら強調表示: ViewModifier {
     @EnvironmentObject var 📱: 📱アプリモデル
     @Environment(\.legibilityWeight) var ⓛegibilityWeight
     private let 画面上での左上からの位置: Int
-    private var 🚩太字で強調: Bool {
-        📱.この駒は通常移動直後(self.画面上での左上からの位置) && ⓛegibilityWeight == .regular
-    }
-    private var 🚩枠線で強調: Bool {
-        📱.この駒は通常移動直後(self.画面上での左上からの位置) && ⓛegibilityWeight == .bold
+    private var 🚩条件: Bool {
+        📱.この盤駒は操作直後(self.画面上での左上からの位置)
+        &&
+        📱.🚩直近操作強調表示機能オフ == false
     }
     func body(content: Content) -> some View {
-        content
-            .font(self.🚩太字で強調 ? .body.bold() : .body)
-            .border(.primary, width: self.🚩枠線で強調 ? 枠線の太さ : 0)
+        if self.🚩条件 {
+            switch self.ⓛegibilityWeight {
+                case .bold:
+                    content.border(.primary, width: 枠線の太さ)
+                default:
+                    content.font(.body.bold())
+            }
+        } else {
+            content
+        }
     }
     init(_ ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ: Int) {
         self.画面上での左上からの位置 = ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ

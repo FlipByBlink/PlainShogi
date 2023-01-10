@@ -11,41 +11,39 @@ import Foundation
 struct 局面モデル: Codable {
     private(set) var 盤駒: [Int: 盤上の駒]
     private(set) var 手駒: [王側か玉側か: 持ち駒]
-    private(set) var 盤駒の通常移動直後の駒: 通常移動直後情報?
+    private(set) var 直近の操作: 操作結果パターン?
     private(set) var 更新日時: Date?
     
     mutating func 盤駒を移動させる(_ 出発地点: Int, _ 置いた位置: Int) throws {
         if 置いた位置 == 出発地点 { throw 🚨駒移動エラー.無効 }
         guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
-        var 取った駒: 駒の種類? = nil
         if let 先客 = self.盤駒[置いた位置] {
             if 先客.陣営 == 動かした駒.陣営 { throw 🚨駒移動エラー.無効 }
             self.手駒[動かした駒.陣営]?.一個増やす(先客.職名)
-            取った駒 = 先客.職名
         }
         self.盤駒.removeValue(forKey: 出発地点)
         self.盤駒.updateValue(動かした駒, forKey: 置いた位置)
-        self.盤駒の通常移動直後の駒 = 通常移動直後情報(置いた位置, 取った駒)
+        self.直近の操作 = .盤駒の移動や成り(置いた位置)
     }
     
     mutating func 手駒を盤上へ移動させる(_ 元の駒: 盤外の駒, _ 置いた位置: Int) throws {
         if self.盤駒[置いた位置] != nil { throw 🚨駒移動エラー.無効 }
         self.盤駒.updateValue(盤上の駒(元の駒.陣営, 元の駒.職名), forKey: 置いた位置)
         self.手駒[元の駒.陣営]?.一個減らす(元の駒.職名)
-        self.盤駒の通常移動直後の駒 = 通常移動直後情報(置いた位置, nil)
+        self.直近の操作 = .盤駒の移動や成り(置いた位置)
     }
     
     mutating func 盤駒を盤外へ移動させる(_ 出発地点: Int, _ 移動先の陣営: 王側か玉側か) throws {
         guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
         self.盤駒.removeValue(forKey: 出発地点)
         self.手駒[移動先の陣営]?.一個増やす(動かした駒.職名)
-        self.盤駒通常移動直後情報を消す()
+        self.直近の操作 = .手駒の増減(移動先の陣営, 動かした駒.職名)
     }
     
     mutating func 自分の手駒を敵の手駒側に移動させる(_ 元の駒: 盤外の駒, _ 移動先の陣営: 王側か玉側か) {
         self.手駒[元の駒.陣営]?.一個減らす(元の駒.職名)
         self.手駒[移動先の陣営]?.一個増やす(元の駒.職名)
-        self.盤駒通常移動直後情報を消す()
+        self.直近の操作 = .手駒の増減(移動先の陣営, 元の駒.職名)
     }
     
     enum 🚨駒移動エラー: Error {
@@ -98,28 +96,26 @@ struct 局面モデル: Codable {
     
     mutating func この駒を裏返す(_ 位置: Int) {
         self.盤駒[位置]?.裏返す()
-        if self.盤駒の通常移動直後の駒?.盤上の位置 != 位置 {
-            self.盤駒通常移動直後情報を消す()
-        }
+        self.直近の操作 = .盤駒の移動や成り(位置)
     }
     
-    mutating func この手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
+    mutating func 編集モードでこの手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.手駒[陣営]?.一個増やす(職名)
-        self.盤駒通常移動直後情報を消す()
+        self.直近の操作 = .手駒の増減(陣営, 職名)
     }
     
-    mutating func この手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
+    mutating func 編集モードでこの手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.手駒[陣営]?.一個減らす(職名)
-        self.盤駒通常移動直後情報を消す()
+        self.直近の操作 = .手駒の増減(陣営, 職名)
     }
     
-    mutating func この盤駒を消す(_ 位置: Int) {
+    mutating func 編集モードでこの盤駒を消す(_ 位置: Int) {
         self.盤駒.removeValue(forKey: 位置)
-        self.盤駒通常移動直後情報を消す()
+        self.直近の操作 = .盤駒の移動や成り(位置)
     }
     
-    mutating func 盤駒通常移動直後情報を消す() {
-        self.盤駒の通常移動直後の駒 = nil
+    mutating func 直近操作情報を消す() {
+        self.直近の操作 = nil
     }
     
     mutating func 初期化する() {
@@ -161,6 +157,11 @@ struct 局面モデル: Codable {
     
     static var 初期セット: Self {
         Self(盤駒: 初期配置, 手駒: 空の手駒)
+    }
+    
+    enum 操作結果パターン: Codable, Equatable {
+        case 盤駒の移動や成り(_ 位置: Int)
+        case 手駒の増減(_ 陣営: 王側か玉側か, _ 職名: 駒の種類)
     }
 }
 
@@ -258,13 +259,8 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
     }
 }
 
-struct 通常移動直後情報: Codable {
-    var 盤上の位置: Int
-    var 取った手駒: 駒の種類?
-    init(_ ｲﾁ: Int, _ ﾃｺﾞﾏ: 駒の種類?) {
-        (self.盤上の位置, self.取った手駒) = (ｲﾁ, ﾃｺﾞﾏ)
-    }
-}
+
+
 
 let 空の手駒: [王側か玉側か: 持ち駒] = [.王側: 持ち駒.空, .玉側: 持ち駒.空]
 
