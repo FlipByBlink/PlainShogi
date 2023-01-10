@@ -16,8 +16,11 @@
 "削除" = "Remove";
 "これまでの履歴を削除しました。" = "Removed history.";
 "現在、履歴はありません。" = "Nothing.";
-"" = "";
 "オプション" = "Option";
+"上下反転" = "Reverse vertically";
+"上下反転させる" = "Reverse vertically";
+"上下反転を元に戻す" = "Restore reverse";
+"移動直後の強調表示機能を無効にする" = "Disable shift sign";
 "English表記" = "English term";
 "細かな使い方" = "More how to";
 "メニューボタンを長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。" = "Launch \"Initialize Button\" / \"Edit Button\" by long press Menu button.";
