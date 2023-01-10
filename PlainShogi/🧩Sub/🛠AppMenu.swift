@@ -189,10 +189,12 @@ struct 履歴List: View {
         HStack {
             ForEach(駒の種類.allCases) { 駒 in
                 if let 数 = 局面.手駒[陣営]?.配分[駒] {
-                    let 表記 = 📱.🚩English表記 ? 駒.English生駒表記 : 駒.rawValue
-                    Text(表記 + 数.description)
-                        .fontWeight(.light)
-                        .minimumScaleFactor(0.1)
+                    if 数 > 0 {
+                        let 表記 = 📱.🚩English表記 ? 駒.English生駒表記 : 駒.rawValue
+                        Text(表記 + 数.description)
+                            .fontWeight(.light)
+                            .minimumScaleFactor(0.1)
+                    }
                 }
             }
         }
