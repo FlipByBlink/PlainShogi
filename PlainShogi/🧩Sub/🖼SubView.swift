@@ -52,7 +52,7 @@ struct 駒を消すボタン: View {
                         Image(systemName: "xmark.circle.fill")
                             .resizable()
                             .symbolRenderingMode(.palette)
-                            .foregroundStyle(.tint, .background.opacity(0.8))
+                            .foregroundStyle(.tint, .background)
                             .tint(.primary)
                             .font(.body.weight(.light))
                             .frame(width: 📐.size.width * 4 / 9,
