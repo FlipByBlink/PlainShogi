@@ -51,7 +51,7 @@
 		F54C93D7295D2DE6008D1D60 /* 📃TextImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */; };
 		F5951A2028ADEEBC00516538 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */; };
 		F5C9FAFF296CF7BB00B513D8 /* 📜History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */; };
-		F5C9FB02296D0A3100B513D8 /* SharePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlay.swift */; };
+		F5C9FB02296D0A3100B513D8 /* 👥SharePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -153,7 +153,7 @@
 		F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📜History.swift"; sourceTree = "<group>"; };
 		F5C9FB00296CFF7A00B513D8 /* PlainShogi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlainShogi.entitlements; sourceTree = "<group>"; };
-		F5C9FB01296D0A3100B513D8 /* SharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlay.swift; sourceTree = "<group>"; };
+		F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👥SharePlay.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,7 +255,7 @@
 				127132E72873CDF20008AE46 /* 🖼SubView.swift */,
 				12F4444D286D4B580008A663 /* 🛠AppMenu.swift */,
 				F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */,
-				F5C9FB01296D0A3100B513D8 /* SharePlay.swift */,
+				F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */,
 				F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */,
 				F5019FD0296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift */,
 				F5C9FB00296CFF7A00B513D8 /* PlainShogi.entitlements */,
@@ -381,7 +381,7 @@
 				12D424422871893D002D3E80 /* 📬DropDelegate.swift in Sources */,
 				12D436A32865CD8400B707F5 /* 🛒PurchaseSection.swift in Sources */,
 				F5C9FAFF296CF7BB00B513D8 /* 📜History.swift in Sources */,
-				F5C9FB02296D0A3100B513D8 /* SharePlay.swift in Sources */,
+				F5C9FB02296D0A3100B513D8 /* 👥SharePlay.swift in Sources */,
 				12D436942865CD5E00B707F5 /* 📓SourceCodeMenu.swift in Sources */,
 				127132E82873CDF20008AE46 /* 🖼SubView.swift in Sources */,
 				12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */,

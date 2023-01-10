@@ -284,7 +284,7 @@ class 📱アプリモデル: ObservableObject {
                 .store(in: &ⓢubscriptions)
             let ⓡeceiveDataTask = Task {
                 for await (ⓜessage, _) in ⓝewMessenger.messages(of: 局面モデル.self) {
-                    if let 受信データの更新日時 = ⓜessage.更新日時 {
+                    if let 受信データの更新日時 = ⓜessage.更新日時 {//FIXME: これだと上書きされる可能性がある
                         if let 現在の局面の更新日時 = self.局面.更新日時 {
                             if 受信データの更新日時 > 現在の局面の更新日時 {
                                 withAnimation { self.局面 = ⓜessage }

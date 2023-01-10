@@ -6,8 +6,7 @@ import SwiftUI
 struct 🄶roupActivity: GroupActivity {
     var metadata: GroupActivityMetadata {
         var ⓜetadata = GroupActivityMetadata()
-        ⓜetadata.title = NSLocalizedString("将棋盤を共有。", comment: "Title of group activity")
-        //ⓜetadata.subtitle = "SUBTITLE"
+        ⓜetadata.title = NSLocalizedString("Plain将棋盤", comment: "アクティビティタイトル")
         ⓜetadata.type = .generic
         ⓜetadata.previewImage = UIImage(systemName: "questionmark.square.dashed")!.cgImage
         return ⓜetadata
