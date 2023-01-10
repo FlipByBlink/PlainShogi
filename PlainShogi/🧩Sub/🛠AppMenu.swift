@@ -12,6 +12,7 @@ struct 🛠メニューボタン: View {
                 🛠盤面整理開始ボタン()
                 🛠移動直後強調表示クリアボタン()
                 self.上下反転ボタン()
+                self.履歴ボタン()
             } label: {
                 Text("…")
                     .dynamicTypeSize(...DynamicTypeSize.accessibility3)
@@ -23,6 +24,9 @@ struct 🛠メニューボタン: View {
             .padding()
             .tint(.primary)
             .accessibilityLabel("Open menu")
+            .sheet(isPresented: $📱.🚩履歴を表示) {
+                NavigationView { 履歴List() }
+            }
         }
     }
     func 上下反転ボタン() -> some View {
@@ -30,6 +34,13 @@ struct 🛠メニューボタン: View {
             withAnimation { 📱.🚩上下反転.toggle() }
         } label: {
             Label(📱.🚩上下反転 ? "上下反転を元に戻す" : "上下反転させる", systemImage: "arrow.up.arrow.down")
+        }
+    }
+    func 履歴ボタン() -> some View {
+        Button {
+            📱.🚩履歴を表示 = true
+        } label: {
+            Label("履歴", systemImage: "clock")
         }
     }
 }

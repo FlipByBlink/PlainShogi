@@ -137,6 +137,10 @@ struct 局面モデル: Codable {
         }
     }
     
+    mutating func 現時刻を更新日時として設定する() {
+        self.更新日時 = .now
+    }
+    
     static var 履歴: [Self] {
         if let ⓓata = UserDefaults.standard.data(forKey: "履歴") {
             do {
@@ -156,7 +160,7 @@ struct 局面モデル: Codable {
     }
     
     static var 初期セット: Self {
-        Self(盤駒: 初期配置, 手駒: 空の手駒, 盤駒の通常移動直後の駒: nil)
+        Self(盤駒: 初期配置, 手駒: 空の手駒)
     }
 }
 

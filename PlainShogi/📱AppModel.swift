@@ -13,6 +13,7 @@ class 📱アプリモデル: ObservableObject {
     @AppStorage("上下反転") var 🚩上下反転: Bool = false
     
     @Published var 🚩メニューを表示: Bool = false
+    @Published var 🚩履歴を表示: Bool = false
     @Published var 🚩駒を整理中: Bool = false
     
     @Published var ドラッグした盤上の駒の元々の位置: Int? = nil
@@ -249,8 +250,10 @@ class 📱アプリモデル: ObservableObject {
     
     func 履歴を復元する(_ 過去の局面: 局面モデル) {
         self.局面 = 過去の局面
+        self.局面.現時刻を更新日時として設定する()
         self.SharePlay中なら現在の局面を参加者に送信する()
         self.🚩メニューを表示 = false
+        self.🚩履歴を表示 = false
         UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
     
@@ -263,6 +266,7 @@ class 📱アプリモデル: ObservableObject {
     
     func 新規GroupSessionを受信したら設定する() async {
         for await ⓝewSession in 🄶roupActivity.sessions() {
+            self.局面.初期化する()
             self.ⓖroupSession = ⓝewSession
             let ⓝewMessenger = GroupSessionMessenger(session: ⓝewSession)
             self.ⓜessenger = ⓝewMessenger
@@ -284,7 +288,7 @@ class 📱アプリモデル: ObservableObject {
                 .store(in: &ⓢubscriptions)
             let ⓡeceiveDataTask = Task {
                 for await (ⓜessage, _) in ⓝewMessenger.messages(of: 局面モデル.self) {
-                    if let 受信データの更新日時 = ⓜessage.更新日時 {//FIXME: これだと上書きされる可能性がある
+                    if let 受信データの更新日時 = ⓜessage.更新日時 {
                         if let 現在の局面の更新日時 = self.局面.更新日時 {
                             if 受信データの更新日時 > 現在の局面の更新日時 {
                                 withAnimation { self.局面 = ⓜessage }
