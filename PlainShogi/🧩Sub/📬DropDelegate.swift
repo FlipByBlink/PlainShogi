@@ -7,15 +7,17 @@ struct 📬盤上ドロップ: DropDelegate {
     @Binding private var 🚩成り駒ダイアログを表示: Bool
     
     func performDrop(info: DropInfo) -> Bool {
-        let 直前: (状況: ドラッグ状況, 元々の位置: Int?)  = (📱.現状, 📱.ドラッグした盤駒の元々の位置)
+        let 直前までドラッグしていた対象: ドラッグ対象  = 📱.ドラッグ中の駒
         let 結果 = 📱.盤上のここにドロップする(self.位置, info)
         if 結果 {
-            if 直前.状況 == .盤駒をドラッグしている {
-                if 📱.局面.この駒の成りについて判断すべき(self.位置, 直前.元々の位置) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                        self.🚩成り駒ダイアログを表示 = true
+            switch 直前までドラッグしていた対象 {
+                case .盤駒(let 出発地点):
+                    if 📱.局面.この駒の成りについて判断すべき(self.位置, 出発地点) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                            self.🚩成り駒ダイアログを表示 = true
+                        }
                     }
-                }
+                default: break
             }
         }
         return 結果
