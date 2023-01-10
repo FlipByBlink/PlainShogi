@@ -6,7 +6,15 @@ struct Plain将棋盤App: App {
     @StateObject var 🛒 = 🛒Storeモデル()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            VStack {
+                ContentView()
+                Group {
+                    SharePlayアクティビティ開始ボタン()
+                    🅂haringControllerボタン()
+                }
+                .buttonStyle(.borderedProminent)
+                .padding()
+            }
                 //.statusBar(hidden: true)
                 .overlay(alignment: .bottomTrailing) { 🛠メニューボタン() }
                 .sheet(isPresented: $📱.🚩メニューを表示) { 🛠アプリメニュー() }
