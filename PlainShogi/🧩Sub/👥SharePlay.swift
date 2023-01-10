@@ -74,8 +74,21 @@ struct SharePlay紹介リンク: View {
     var body: some View {
         NavigationLink {
             List {
-                SharePlay開始誘導ボタン()
+                Section {
+                    SharePlay開始誘導ボタン()
+                }
+                Section {
+                    Text("SharePlayとは、、、")
+                } header: {
+                    Text("SharePlayとは")
+                        .textCase(.none)
+                }
                 🅂haringControllerボタン()
+                Section {
+                    Text("placeholder")
+                } header: {
+                    Text("注意事項")
+                }
             }
             .navigationTitle("SharePlayについて")
         } label: {
@@ -89,12 +102,16 @@ struct 🅂haringControllerボタン: View {
     @State private var 🚩GroupActivity準備完了: Bool = false
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
-        Button {
-            🚩SharingControllerを表示 = true
-        } label: {
-            Label("SharePlayを始めるために友達を招待する", systemImage: "person.badge.plus")
+        Section {
+            Button {
+                🚩SharingControllerを表示 = true
+            } label: {
+                Label("友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する", systemImage: "person.badge.plus")
+            }
+            .disabled(self.ⓖroupStateObserver.isEligibleForGroupSession)
+        } header: {
+            Text("SharePlayの準備をする")
         }
-        .disabled(self.ⓖroupStateObserver.isEligibleForGroupSession)
         .sheet(isPresented: $🚩SharingControllerを表示) {
             🅂haringControllerView($🚩GroupActivity準備完了)
         }
