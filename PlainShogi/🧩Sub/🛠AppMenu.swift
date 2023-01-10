@@ -116,7 +116,7 @@ struct 細かな使い方リンク: View {
                     .padding(8)
                 Section {
                     VStack {
-                        Text("メニューボタンを長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。")
+                        Text("メニューボタンを長押しすると「初期化ボタン」や「編集ボタン」を呼び出せます。")
                             .minimumScaleFactor(0.1)
                         Image("MenuLongPress")
                             .resizable()

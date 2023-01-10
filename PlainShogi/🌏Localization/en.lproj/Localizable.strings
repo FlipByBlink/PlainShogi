@@ -10,7 +10,7 @@
 "盤面を初期化" = "Initialize";
 "駒を消したり増やしたりする" = "Edit pieces";
 "手駒を整理する" = "Edit captured pieces";
-"移動直後の強調表示をクリア" = "Clear shift sign";
+"操作直後の強調表示をクリア" = "Clear shift sign";
 "履歴" = "History";
 "復元" = "Restore";
 "削除" = "Remove";
@@ -20,10 +20,10 @@
 "上下反転" = "Reverse vertically";
 "上下反転させる" = "Reverse vertically";
 "上下反転を元に戻す" = "Restore reverse";
-"移動直後の強調表示機能を無効にする" = "Disable shift sign";
+"操作した直後の駒を強調表示する機能を無効にする" = "Disable shift sign";
 "English表記" = "English term";
 "細かな使い方" = "More how to";
-"メニューボタンを長押しすると「初期化ボタン」や「整理ボタン」を呼び出せます。" = "Launch \"Initialize Button\" / \"Edit Button\" by long press Menu button.";
+"メニューボタンを長押しすると「初期化ボタン」や「編集ボタン」を呼び出せます。" = "Launch \"Initialize Button\" / \"Edit Button\" by long press Menu button.";
 "Dynamic Type に対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。" = "Character adapts font size and weight by OS option.";
 "テキスト機能" = "Plain text";
 "テキスト書き出し/読み込み機能" = "Text Export / Import";

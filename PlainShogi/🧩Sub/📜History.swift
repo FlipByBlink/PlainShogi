@@ -25,14 +25,12 @@ struct 履歴List: View {
                     }
                     Spacer()
                     VStack(alignment: .trailing, spacing: 4) {
-                        Text(局面.更新日時?.formatted(.dateTime.day().month()) ?? "🐛")
-                            .font(.title3)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.1)
-                        Text(局面.更新日時?.formatted(.dateTime.hour().minute().second()) ?? "🐛")
-                            .font(.subheadline)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.1)
+                        if let 更新日時 = 局面.更新日時 {
+                            Text(更新日時.formatted(.dateTime.day().month()))
+                                .font(.title3)
+                            Text(更新日時.formatted(.dateTime.hour().minute().second()))
+                                .font(.subheadline)
+                        }
                         Spacer()
                         Button {
                             📱.履歴を復元する(局面)
@@ -46,6 +44,8 @@ struct 履歴List: View {
                         .dynamicTypeSize(...DynamicTypeSize.xLarge)
                     }
                     .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.1)
                     .padding(.vertical)
                 }
                 .padding()
