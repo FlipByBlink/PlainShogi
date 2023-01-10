@@ -10,14 +10,12 @@ struct 📬盤上ドロップ: DropDelegate {
         let 直前までドラッグしていた対象: ドラッグ対象  = 📱.ドラッグ中の駒
         let 結果 = 📱.盤上のここにドロップする(self.位置, info)
         if 結果 {
-            switch 直前までドラッグしていた対象 {
-                case .盤駒(let 出発地点):
-                    if 📱.局面.この駒の成りについて判断すべき(self.位置, 出発地点) {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-                            self.🚩成り駒ダイアログを表示 = true
-                        }
+            if case .盤駒(let 出発地点) = 直前までドラッグしていた対象 {
+                if 📱.局面.この駒の成りについて判断すべき(self.位置, 出発地点) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                        self.🚩成り駒ダイアログを表示 = true
                     }
-                default: break
+                }
             }
         }
         return 結果
