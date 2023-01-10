@@ -1,4 +1,5 @@
 import SwiftUI
+import GroupActivities
 
 struct 🛠メニューボタン: View {
     @EnvironmentObject var 📱: 📱アプリモデル
@@ -38,6 +39,7 @@ struct 🛠アプリメニュー: View {
     var body: some View {
         NavigationView {
             List {
+                SharePlay開始ボタン()
                 Section {
                     Label("長押しして駒を持ち上げ、そのままスライドして移動させる", systemImage: "hand.draw")
                         .padding(.vertical, 8)
@@ -87,6 +89,20 @@ struct 🛠アプリメニュー: View {
             }
             .accessibilityLabel("Dismiss")
         }
+    }
+}
+
+struct SharePlay開始ボタン: View {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    var body: some View {
+        Button {
+            🄶roupActivity.アクティビティを開始する()
+        } label: {
+            Label("SharePlayのアクティビティを開始する", systemImage: "shareplay")
+        }
+        .disabled(📱.ⓖroupSession != nil)
+        .disabled(!self.ⓖroupStateObserver.isEligibleForGroupSession)
     }
 }
 

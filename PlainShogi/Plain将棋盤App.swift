@@ -13,6 +13,7 @@ struct Plain将棋盤App: App {
                 .modifier(初回起動時に駒の動かし方の説明アラート())
                 .overlay(alignment: .bottom) { 📣広告バナー() }
                 .task { UIApplication.shared.isIdleTimerDisabled = true }
+                .task { await 📱.新規GroupSessionを受信したら設定する() }
                 .environmentObject(📱)
                 .environmentObject(🛒)
         }

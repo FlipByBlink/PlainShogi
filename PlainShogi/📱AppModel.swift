@@ -1,6 +1,7 @@
 import Combine
 import SwiftUI
 import UniformTypeIdentifiers
+import GroupActivities
 
 @MainActor
 class 📱アプリモデル: ObservableObject {
@@ -61,6 +62,7 @@ class 📱アプリモデル: ObservableObject {
     
     func 盤駒の通常移動直後の強調表示をクリア() {
         self.局面.盤駒通常移動直後情報を消す()
+        self.SharePlay中なら現在の局面を参加者に送信する()
         振動フィードバック()
     }
     
@@ -68,27 +70,32 @@ class 📱アプリモデル: ObservableObject {
         if self.局面.盤駒[位置]?.成り != nil {
             self.局面.この駒を裏返す(位置)
             self.現在の局面を履歴に追加する()
+            self.SharePlay中なら現在の局面を参加者に送信する()
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
     }
 
     func 盤面を初期化する() {
         self.局面.初期化する()
+        self.SharePlay中なら現在の局面を参加者に送信する()
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
 
     func この手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.局面.この手駒を一個増やす(陣営, 職名)
+        self.SharePlay中なら現在の局面を参加者に送信する()
         振動フィードバック()
     }
 
     func この手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.局面.この手駒を一個減らす(陣営, 職名)
+        self.SharePlay中なら現在の局面を参加者に送信する()
         振動フィードバック()
     }
 
     func この盤駒を消す(_ 位置: Int) {
         self.局面.この盤駒を消す(位置)
+        self.SharePlay中なら現在の局面を参加者に送信する()
         振動フィードバック()
     }
     
@@ -168,6 +175,7 @@ class 📱アプリモデル: ObservableObject {
     
     private func 駒を移動し終わったらログを更新してフィードバックを発生させる() {
         self.現状 = .何もドラッグしてない
+        self.SharePlay中なら現在の局面を参加者に送信する()
         self.現在の局面を履歴に追加する()
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
     }
@@ -241,8 +249,83 @@ class 📱アプリモデル: ObservableObject {
     
     func 履歴を復元する(_ 過去の局面: 局面モデル) {
         self.局面 = 過去の局面
+        self.SharePlay中なら現在の局面を参加者に送信する()
         self.🚩メニューを表示 = false
         UINotificationFeedbackGenerator().notificationOccurred(.success)
+    }
+    
+    // ================================================================
+    // ======================== 以下、SharePlay ========================
+    private var ⓢubscriptions = Set<AnyCancellable>()
+    private var ⓣasks = Set<Task<Void, Never>>()
+    @Published var ⓖroupSession: GroupSession<🄶roupActivity>?
+    private var ⓜessenger: GroupSessionMessenger?
+    
+    func 新規GroupSessionを受信したら設定する() async {
+        for await ⓝewSession in 🄶roupActivity.sessions() {
+            self.ⓖroupSession = ⓝewSession
+            let ⓝewMessenger = GroupSessionMessenger(session: ⓝewSession)
+            self.ⓜessenger = ⓝewMessenger
+            ⓝewSession.$state
+                .sink { ⓢtate in
+                    if case .invalidated = ⓢtate {
+                        self.ⓖroupSession = nil
+                        self.リセットする()
+                    }
+                }
+                .store(in: &ⓢubscriptions)
+            ⓝewSession.$activeParticipants
+                .sink { ⓐctiveParticipants in
+                    let ⓝewParticipant = ⓐctiveParticipants.subtracting(ⓝewSession.activeParticipants)
+                    Task {
+                        try? await ⓝewMessenger.send(self.局面, to: .only(ⓝewParticipant))
+                    }
+                }
+                .store(in: &ⓢubscriptions)
+            let ⓡeceiveDataTask = Task {
+                for await (ⓜessage, _) in ⓝewMessenger.messages(of: 局面モデル.self) {
+                    if let 受信データの更新日時 = ⓜessage.更新日時 {
+                        if let 現在の局面の更新日時 = self.局面.更新日時 {
+                            if 受信データの更新日時 > 現在の局面の更新日時 {
+                                withAnimation { self.局面 = ⓜessage }
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                self.現在の局面を履歴に追加する()
+                            }
+                        } else {
+                            withAnimation { self.局面 = ⓜessage }
+                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            self.現在の局面を履歴に追加する()
+                        }
+                    }
+                }
+            }
+            ⓣasks.insert(ⓡeceiveDataTask)
+            ⓝewSession.join()
+        }
+    }
+    
+    func リセットする() {
+        self.ⓜessenger = nil
+        self.ⓣasks.forEach { $0.cancel() }
+        self.ⓣasks = []
+        self.ⓢubscriptions = []
+        if self.ⓖroupSession != nil {
+            self.ⓖroupSession?.leave()
+            self.ⓖroupSession = nil
+            🄶roupActivity.アクティビティを開始する()
+        }
+    }
+    
+    func SharePlay中なら現在の局面を参加者に送信する() {
+        if let ⓜessenger {
+            Task {
+                do {
+                    try await ⓜessenger.send(self.局面)
+                } catch {
+                    print("🚨", #function, #line, error.localizedDescription)
+                }
+            }
+        }
     }
     
     // ==============================================================================
@@ -263,6 +346,7 @@ class 📱アプリモデル: ObservableObject {
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
                 }
                 self.現状 = .何もドラッグしてない
+                self.SharePlay中なら現在の局面を参加者に送信する()
             } catch {
                 print(#function, error)
             }
@@ -279,4 +363,43 @@ enum ドラッグ状況 {
 
 enum 🚨エラー: Error {
     case 要修正
+}
+
+struct 🄶roupActivity: GroupActivity {
+    var metadata: GroupActivityMetadata {
+        var ⓜetadata = GroupActivityMetadata()
+        ⓜetadata.title = NSLocalizedString("将棋盤を共有。", comment: "Title of group activity")
+        //ⓜetadata.subtitle = "SUBTITLE"
+        ⓜetadata.type = .generic
+        ⓜetadata.previewImage = UIImage(systemName: "questionmark.square.dashed")!.cgImage
+        return ⓜetadata
+    }
+    
+    static func アクティビティを開始する() {
+        Task {
+            do {
+                let ⓐctivity = Self()
+                switch await ⓐctivity.prepareForActivation() {
+                    case .activationPreferred:
+                        print("🖨️.prepareForActivation: activationPreferred")
+                        let ⓐctivationResult = try await ⓐctivity.activate()
+                        if !ⓐctivationResult {
+                            throw 🚨Error.activationFailed
+                        }
+                    case .activationDisabled:
+                        print("🖨️.prepareForActivation: activationDisabled")
+                    case .cancelled:
+                        print("🖨️.prepareForActivation: cancelled")
+                    @unknown default:
+                        throw 🚨Error.unknown
+                }
+            } catch {
+                print("🚨Failed to activate: \(error)")
+                assertionFailure()
+            }
+            enum 🚨Error: Error {
+                case activationFailed, unknown
+            }
+        }
+    }
 }

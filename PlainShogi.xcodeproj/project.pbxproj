@@ -151,6 +151,7 @@
 		F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📃TextImportExport.swift"; sourceTree = "<group>"; };
 		F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📜History.swift"; sourceTree = "<group>"; };
+		F5C9FB00296CFF7A00B513D8 /* PlainShogi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlainShogi.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +188,7 @@
 		128D1569280FE47E003FF480 /* PlainShogi */ = {
 			isa = PBXGroup;
 			children = (
+				F5C9FB00296CFF7A00B513D8 /* PlainShogi.entitlements */,
 				128D156A280FE47E003FF480 /* Plain将棋盤App.swift */,
 				128D156C280FE47E003FF480 /* ContentView.swift */,
 				128D1578280FE4E4003FF480 /* 📱AppModel.swift */,
@@ -529,6 +531,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlainShogi/PlainShogi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "PlainShogi/🧩Sub/Preview\\ Content";
@@ -560,6 +563,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlainShogi/PlainShogi.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "PlainShogi/🧩Sub/Preview\\ Content";
