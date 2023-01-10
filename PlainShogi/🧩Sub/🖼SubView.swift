@@ -213,7 +213,7 @@ var 枠線の太さ: CGFloat {
 struct 筋表示: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     let 幅: CGFloat
-    var 上下反転: Bool { 📱.🚩上下反転 }
+    private var 上下反転: Bool { 📱.🚩上下反転 }
     var body: some View {
         HStack(spacing: 0) {
             let 字 = ["９","８","７","６","５","４","３","２","１"]
@@ -233,8 +233,8 @@ struct 筋表示: View {
 struct 段表示: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     let 高さ: CGFloat
-    var 上下反転: Bool { 📱.🚩上下反転 }
-    var 字: [String] {
+    private var 上下反転: Bool { 📱.🚩上下反転 }
+    private var 字: [String] {
         📱.🚩English表記 ? ["１","２","３","４","５","６","７","８","９"] : ["一","二","三","四","五","六","七","八","九"]
     }
     var body: some View {

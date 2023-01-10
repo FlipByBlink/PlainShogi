@@ -29,14 +29,14 @@ struct 🛠メニューボタン: View {
             }
         }
     }
-    func 上下反転ボタン() -> some View {
+    private func 上下反転ボタン() -> some View {
         Button {
             withAnimation { 📱.🚩上下反転.toggle() }
         } label: {
             Label(📱.🚩上下反転 ? "上下反転を元に戻す" : "上下反転させる", systemImage: "arrow.up.arrow.down")
         }
     }
-    func 履歴ボタン() -> some View {
+    private func 履歴ボタン() -> some View {
         Button {
             📱.🚩履歴を表示 = true
         } label: {
@@ -86,7 +86,7 @@ struct 🛠アプリメニュー: View {
         }
         .onDisappear { 📱.🚩メニューを表示 = false }
     }
-    func 閉じるボタン() -> some ToolbarContent {
+    private func 閉じるボタン() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button {
                 📱.🚩メニューを表示 = false

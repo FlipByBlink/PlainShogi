@@ -58,7 +58,7 @@ struct SharePlayアクティビティ開始ボタン: View {
 struct 🅂haringControllerボタン: View {
     @State private var 🚩SharingControllerを表示: Bool = false
     @State private var 🚩GroupActivity準備完了: Bool = false
-    @StateObject var ⓖroupStateObserver = GroupStateObserver()
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
         Button {
             🚩SharingControllerを表示 = true
@@ -79,7 +79,7 @@ struct 🅂haringControllerボタン: View {
         }
     }
     struct 🅂haringControllerView: UIViewControllerRepresentable {
-        let ⓖroupActivitySharingController: GroupActivitySharingController
+        private let ⓖroupActivitySharingController: GroupActivitySharingController
         @Binding var 🚩GroupActivity準備完了: Bool
         func makeUIViewController(context: Context) -> GroupActivitySharingController {
             Task {

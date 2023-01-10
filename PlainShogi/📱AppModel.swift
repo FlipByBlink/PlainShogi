@@ -320,7 +320,7 @@ class 📱アプリモデル: ObservableObject {
         }
     }
     
-    func SharePlay中なら現在の局面を参加者に送信する() {
+    private func SharePlay中なら現在の局面を参加者に送信する() {
         if let ⓜessenger {
             Task {
                 do {
