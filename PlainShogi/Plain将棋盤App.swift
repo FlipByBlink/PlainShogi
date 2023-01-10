@@ -9,7 +9,7 @@ struct Plain将棋盤App: App {
             VStack {
                 ContentView()
                 Group {
-                    SharePlayアクティビティ開始ボタン()
+                    SharePlay開始誘導ボタン()
                     🅂haringControllerボタン()
                 }
                 .buttonStyle(.borderedProminent)

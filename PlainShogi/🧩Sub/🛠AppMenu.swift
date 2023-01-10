@@ -8,6 +8,7 @@ struct 🛠メニューボタン: View {
             整理完了ボタン()
         } else {
             Menu {
+                SharePlay開始誘導ボタン()
                 🛠盤面初期化ボタン()
                 🛠盤面整理開始ボタン()
                 🛠移動直後強調表示クリアボタン()
@@ -50,6 +51,8 @@ struct 🛠アプリメニュー: View {
     var body: some View {
         NavigationView {
             List {
+                SharePlay紹介リンク()
+                SharePlay開始誘導ボタン()
                 Section {
                     Label("長押しして駒を持ち上げ、そのままスライドして移動させる", systemImage: "hand.draw")
                         .padding(.vertical, 8)
@@ -76,8 +79,11 @@ struct 🛠アプリメニュー: View {
                     Text("オプション")
                 }
                 Section { 履歴リンク() }
-                細かな使い方リンク()
-                テキスト書き出し読み込み紹介リンク()
+                Section {
+                    SharePlay紹介リンク()
+                    細かな使い方リンク()
+                    テキスト書き出し読み込み紹介リンク()
+                }
                 📣ADMenuLink()
                 📄InformationMenuLink()
             }

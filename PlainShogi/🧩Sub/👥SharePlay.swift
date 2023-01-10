@@ -6,7 +6,7 @@ import SwiftUI
 struct 🄶roupActivity: GroupActivity {
     var metadata: GroupActivityMetadata {
         var ⓜetadata = GroupActivityMetadata()
-        ⓜetadata.title = NSLocalizedString("Plain将棋盤", comment: "アクティビティタイトル")
+        ⓜetadata.title = NSLocalizedString("共有将棋盤", comment: "アクティビティタイトル")
         ⓜetadata.type = .generic
         ⓜetadata.previewImage = UIImage(systemName: "questionmark.square.dashed")!.cgImage
         return ⓜetadata
@@ -41,17 +41,46 @@ struct 🄶roupActivity: GroupActivity {
     }
 }
 
-struct SharePlayアクティビティ開始ボタン: View {
+struct SharePlay開始誘導ボタン: View {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    private var 🚩表示条件: Bool {
+        self.ⓖroupStateObserver.isEligibleForGroupSession
+        &&
+        📱.ⓖroupSession == nil
+    }
+    var body: some View {
+        if self.🚩表示条件 {
+            Section {
+                Button {
+                    🄶roupActivity.アクティビティを開始する()
+                } label: {
+                    Label("SharePlayを開始する", systemImage: "shareplay")
+                        .font(.body.weight(.semibold))
+                        .padding(.vertical, 8)
+                }
+            } header: {
+                Text("SharePlay")
+            } footer: {
+                Text("現在、友達と繋がっているようです。アクティビティを作成して、将棋盤を共有することができます。")
+            }
+        }
+    }
+}
+
+struct SharePlay紹介リンク: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
-        Button {
-            🄶roupActivity.アクティビティを開始する()
+        NavigationLink {
+            List {
+                SharePlay開始誘導ボタン()
+                🅂haringControllerボタン()
+            }
+            .navigationTitle("SharePlayについて")
         } label: {
-            Label("SharePlayのアクティビティを開始する", systemImage: "shareplay")
+            Label("SharePlayについて", systemImage: "shareplay")
         }
-        .disabled(📱.ⓖroupSession != nil)
-        .disabled(!self.ⓖroupStateObserver.isEligibleForGroupSession)
     }
 }
 
