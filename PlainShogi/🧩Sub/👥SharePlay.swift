@@ -155,3 +155,41 @@ struct 🅂haringControllerボタン: View {
         }
     }
 }
+
+struct SharePlay環境構築: ViewModifier {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    func body(content: Content) -> some View {
+        content
+            .animation(.default, value: self.ⓖroupStateObserver.isEligibleForGroupSession)
+            .animation(.default, value: 📱.ⓖroupSession?.state)
+            .task { await 📱.新規GroupSessionを受信したら設定する() }
+    }
+}
+
+struct SharePlayインジケーター: View {//TODO: WIP
+    @EnvironmentObject var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    private var 🚩SharePlay中: Bool {
+        📱.ⓖroupSession != nil
+        &&
+        📱.ⓖroupSession?.state == .joined
+    }
+    var body: some View {
+        if self.ⓖroupStateObserver.isEligibleForGroupSession {
+            Group {
+                if self.🚩SharePlay中 {
+                    Label("SharePlay中", systemImage: "shareplay")
+                } else {
+                    Label("SharePlayしていません", systemImage: "shareplay.slash")
+                }
+            }
+            .font(.footnote)
+            .minimumScaleFactor(0.1)
+            .foregroundStyle(self.🚩SharePlay中 ? .primary : .tertiary)
+            .padding(.bottom, 8)
+            .frame(maxHeight: 36)
+            .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+        }
+    }
+}
