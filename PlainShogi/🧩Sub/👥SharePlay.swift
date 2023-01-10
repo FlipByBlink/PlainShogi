@@ -11,7 +11,6 @@ struct 🄶roupActivity: GroupActivity {
         ⓜetadata.previewImage = UIImage(systemName: "questionmark.square.dashed")!.cgImage
         return ⓜetadata
     }
-    
     static func アクティビティを開始する() {
         Task {
             do {
@@ -167,11 +166,11 @@ struct SharePlay環境構築: ViewModifier {
     }
 }
 
-struct SharePlayインジケーター: View {//TODO: WIP
+struct SharePlayインジケーター: View { //TODO: WIP
     @EnvironmentObject var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
-        📱.ⓖroupSession != nil
+        📱.ⓖroupSession?.state == .waiting
         &&
         📱.ⓖroupSession?.state == .joined
     }
@@ -184,7 +183,7 @@ struct SharePlayインジケーター: View {//TODO: WIP
                     Label("SharePlayしていません", systemImage: "shareplay.slash")
                 }
             }
-            .font(.footnote)
+            .font(.footnote.weight(.light))
             .minimumScaleFactor(0.1)
             .foregroundStyle(self.🚩SharePlay中 ? .primary : .tertiary)
             .padding(.bottom, 8)
