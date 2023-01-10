@@ -220,6 +220,15 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
     
     var id: Self { self }
     
+    func 生駒表記(_ 陣営: 王側か玉側か) -> String {
+        if 陣営 == .玉側 {
+            if case .王 = self {
+                return "玉"
+            }
+        }
+        return self.rawValue
+    }
+    
     var 成駒表記: String? {
         switch self {
             case .歩: return "と"
