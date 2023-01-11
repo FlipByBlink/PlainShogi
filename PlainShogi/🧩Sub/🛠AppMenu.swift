@@ -49,6 +49,32 @@ struct 🛠メニューボタン: View {
     }
 }
 
+struct 🛠非SharePlay時のメニューボタン: View {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    var body: some View {
+        if !self.ⓖroupStateObserver.isEligibleForGroupSession {
+            🛠メニューボタン()
+        }
+    }
+}
+
+struct SharePlayインジケーターやメニューボタン: View {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    var body: some View {
+        if self.ⓖroupStateObserver.isEligibleForGroupSession {
+            HStack {
+                SharePlayインジケーター()
+                    .padding(.leading, 24)
+                Spacer()
+                🛠メニューボタン()
+            }
+            .padding(.bottom, 8)
+        }
+    }
+}
+
 struct 🛠アプリメニュー: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     var body: some View {

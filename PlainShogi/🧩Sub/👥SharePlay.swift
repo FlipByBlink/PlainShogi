@@ -87,8 +87,6 @@ struct SharePlayインジケーター: View {
                         .toolbar { self.閉じるボタン() }
                 }
             }
-            .padding(.horizontal, 48)
-            .padding(.bottom, 18)
         }
     }
     private func 閉じるボタン() -> some ToolbarContent {

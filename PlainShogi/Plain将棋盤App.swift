@@ -8,9 +8,9 @@ struct Plain将棋盤App: App {
         WindowGroup {
             VStack(spacing: 0) {
                 ContentView()
-                SharePlayインジケーター()
+                SharePlayインジケーターやメニューボタン()
             }
-            .overlay(alignment: .bottomTrailing) { 🛠メニューボタン() }
+            .overlay(alignment: .bottomTrailing) { 🛠非SharePlay時のメニューボタン() }
             .sheet(isPresented: $📱.🚩メニューを表示) { 🛠アプリメニュー() }
             .modifier(初回起動時に駒の動かし方の説明アラート())
             .overlay(alignment: .bottom) { 📣広告バナー() }
