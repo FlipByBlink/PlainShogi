@@ -118,12 +118,12 @@ struct 🛠アプリメニュー: View {
                     Button {
                         🄶roupActivity.アクティビティを起動する()
                     } label: {
-                        Label("「共有将棋盤」アクティビティを起動する", systemImage: "shareplay")
+                        Label("「共有将棋盤」アクティビティを起動する", systemImage: "power")
                             .font(.body.weight(.semibold))
                             .padding(.vertical, 8)
                     }
                 } header: {
-                    Text("自分からSharePlayを開始する")
+                    Label("自分からSharePlayを開始する", systemImage: "shareplay")
                 } footer: {
                     Text("現在、友達と繋がっているようです。アクティビティを作成して、将棋盤を共有することができます。")
                 }

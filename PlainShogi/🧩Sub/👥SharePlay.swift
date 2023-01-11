@@ -123,6 +123,7 @@ struct SharePlayインジケーター: View { //TODO: WIP
         if self.ⓖroupStateObserver.isEligibleForGroupSession {
             Button {
                 self.🚩メニューを表示 = true
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
             } label: {
                 Group {
                     if self.🚩SharePlay中 {
@@ -198,6 +199,7 @@ struct SharePlayインジケーター: View { //TODO: WIP
                     Menu {
                         Button {
                             📱.ⓖroupSession?.leave()
+                            UINotificationFeedbackGenerator().notificationOccurred(.error)
                         } label: {
                             Label("はい、アクティビティから離脱します", systemImage: "escape")
                         }
@@ -211,11 +213,12 @@ struct SharePlayインジケーター: View { //TODO: WIP
                     Menu {
                         Button(role: .destructive) {
                             📱.ⓖroupSession?.end()
+                            UINotificationFeedbackGenerator().notificationOccurred(.error)
                         } label: {
-                            Label("はい、アクティビティを終了します", systemImage: "trash.fill")
+                            Label("はい、アクティビティを終了します", systemImage: "power.dotted")
                         }
                     } label: {
-                        Label("アクティビティを終了する", systemImage: "trash.fill")
+                        Label("アクティビティを終了する", systemImage: "power.dotted")
                     }
                 } footer: {
                     Text("アクティビティを終了すると、全員がアクティビティから離脱します。")
