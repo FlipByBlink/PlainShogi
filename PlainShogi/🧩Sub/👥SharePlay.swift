@@ -73,7 +73,6 @@ struct SharePlayインジケーター: View {
                         Label("現在、SharePlayしていません", systemImage: "shareplay.slash")
                     }
                 }
-                .font(.caption.weight(.light))
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
             }
@@ -93,9 +92,13 @@ struct SharePlayインジケーター: View {
         @EnvironmentObject var 📱: 📱アプリモデル
         func body(content: Content) -> some View {
             if 📱.ⓖroupSession != nil {
-                content.buttonStyle(.automatic)
+                content
+                    .buttonStyle(.automatic)
+                    .font(.subheadline.weight(.light))
             } else {
-                content.buttonStyle(.bordered)
+                content
+                    .buttonStyle(.bordered)
+                    .font(.caption.weight(.light))
             }
         }
     }
