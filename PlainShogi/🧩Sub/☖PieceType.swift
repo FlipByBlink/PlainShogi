@@ -126,7 +126,11 @@ struct 局面モデル: Codable {
         self.更新日時 = .now
         do {
             let ⓔncoder = JSONEncoder()
-            let ⓓata = try ⓔncoder.encode(Self.履歴 + [self])
+            var 新しい履歴: [Self]
+            新しい履歴 = Self.履歴
+            if 新しい履歴.count > 30 { 新しい履歴.removeFirst() }
+            新しい履歴 += [self]
+            let ⓓata = try ⓔncoder.encode(新しい履歴)
             UserDefaults.standard.set(ⓓata, forKey: "履歴")
         } catch {
             print("🚨", error.localizedDescription)

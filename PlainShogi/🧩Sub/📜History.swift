@@ -16,6 +16,10 @@ struct 履歴List: View {
     private let コマのサイズ: CGFloat = 20
     var body: some View {
         List {
+            Section {
+                Text("直近の約30局面を履歴として保存しています。")
+                    .padding(8)
+            }
             ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
                 HStack {
                     VStack {
