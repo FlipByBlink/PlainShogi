@@ -73,14 +73,15 @@ struct SharePlayインジケーター: View {
                         Label("現在、SharePlayしていません", systemImage: "shareplay.slash")
                     }
                 }
-                .font(.caption.weight(.light))
-                .foregroundColor(self.🚩SharePlay中 ? .primary : .secondary)
             }
+            .font(.caption.weight(.light))
+            .lineLimit(1)
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.capsule)
+            .font(.caption.weight(.light))
+            .lineLimit(1)
+            .foregroundStyle(🚩SharePlay中 ? .primary : .secondary)
             .sheet(isPresented: self.$🚩メニューを表示) { self.メニュー() }
-            .minimumScaleFactor(0.1)
-            .padding(.bottom, 8)
-            .frame(maxHeight: 36)
-            .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         }
     }
     private func メニュー() -> some View {
@@ -234,7 +235,7 @@ struct SharePlay紹介リンク: View {
                 RoundedRectangle(cornerRadius: 1)
                     .foregroundStyle(.quaternary)
                     .frame(width: 4)
-                VStack(spacing: 10) {
+                VStack(spacing: 8) {
                     Text(#""FaceTime App でSharePlayを使用すると、友達や家族とのFaceTime通話中にテレビ番組、映画、ミュージックを同期した状態でストリーム再生することができます。通話に参加しているほかの人とリアルタイムにつながって楽しみましょう。再生が同期され、コントロールが共有されるため、同時に同じ瞬間を見たり聞いたりできます。""#)
                     Text(#""SharePlayは、FaceTime通話中にほかのAppでも使用できます。""#)
                 }
