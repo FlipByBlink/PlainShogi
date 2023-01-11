@@ -167,7 +167,7 @@ struct SharePlayインジケーター: View { //TODO: WIP
         Section {
             Text("友達が既に「共有将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。")
             if #available(iOS 16, *) {
-                Text("「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
+                Text("iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
             }
         } header: {
             Text("SharePlayに参加する")
@@ -196,13 +196,9 @@ struct SharePlayインジケーター: View { //TODO: WIP
         Group {
             if self.🚩SharePlay中 {
                 Section {
-                    Menu {
-                        Button {
-                            📱.ⓖroupSession?.leave()
-                            UINotificationFeedbackGenerator().notificationOccurred(.error)
-                        } label: {
-                            Label("はい、アクティビティから離脱します", systemImage: "escape")
-                        }
+                    Button {
+                        📱.ⓖroupSession?.leave()
+                        UINotificationFeedbackGenerator().notificationOccurred(.error)
                     } label: {
                         Label("アクティビティから離脱する", systemImage: "escape")
                     }
@@ -213,7 +209,7 @@ struct SharePlayインジケーター: View { //TODO: WIP
                     Menu {
                         Button(role: .destructive) {
                             📱.ⓖroupSession?.end()
-                            UINotificationFeedbackGenerator().notificationOccurred(.error)
+                            UINotificationFeedbackGenerator().notificationOccurred(.warning)
                         } label: {
                             Label("はい、アクティビティを終了します", systemImage: "power.dotted")
                         }
@@ -266,8 +262,11 @@ struct SharePlay紹介リンク: View {
             List {
                 Section {
                     Text("SharePlayとは、、、")
+                    Link(destination: URL(string: "https://support.apple.com/ja-jp/guide/iphone/iphb657eb791/ios")!) {
+                        Label("Apple Support Site", systemImage: "link")
+                    }
                 } header: {
-                    Text("SharePlayとは")
+                    Text("概要")
                         .textCase(.none)
                 }
                 🅂haringControllerボタン()
