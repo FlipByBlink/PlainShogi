@@ -14,14 +14,13 @@ struct 🛠メニューボタン: View {
                 self.上下反転ボタン()
                 self.履歴ボタン()
             } label: {
-                Image(systemName: "gear")
-                    .font(.body.weight(.light))
+                Image(systemName: "gearshape")
                     .dynamicTypeSize(...DynamicTypeSize.accessibility3)
                     .padding(2)
                     .background {
                         Circle().foregroundStyle(.background)
                     }
-                    .padding(10)
+                    .padding(8)
             } primaryAction: {
                 📱.🚩メニューを表示 = true
                 振動フィードバック()
