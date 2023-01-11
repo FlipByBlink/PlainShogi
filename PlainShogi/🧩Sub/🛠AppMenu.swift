@@ -50,14 +50,8 @@ struct 🛠アプリメニュー: View {
     var body: some View {
         NavigationView {
             List {
-                SharePlay開始誘導ボタン()
-                Section {
-                    Label("長押しして駒を持ち上げ、そのままスライドして移動させる", systemImage: "hand.draw")
-                        .padding(.vertical, 8)
-                } header: {
-                    Text("あそび方")
-                }
-                .foregroundStyle(.primary)
+                Self.SharePlay開始誘導ボタン()
+                self.あそび方セクション()
                 Section {
                     🛠盤面初期化ボタン()
                     🛠盤面整理開始ボタン()
@@ -89,6 +83,15 @@ struct 🛠アプリメニュー: View {
             .toolbar { 閉じるボタン() }
         }
         .onDisappear { 📱.🚩メニューを表示 = false }
+    }
+    private func あそび方セクション() -> some View {
+        Section {
+            Label("長押しして駒を持ち上げ、そのままスライドして移動させる", systemImage: "hand.draw")
+                .padding(.vertical, 8)
+        } header: {
+            Text("あそび方")
+        }
+        .foregroundStyle(.primary)
     }
     private func 閉じるボタン() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
@@ -139,35 +142,41 @@ struct 細かな使い方リンク: View {
             List {
                 Label("ダブルタップで盤上の駒を裏返す", systemImage: "rotate.right")
                     .padding(8)
-                Section {
-                    VStack {
-                        Text("メニューボタンを長押しすると「初期化ボタン」や「編集ボタン」を呼び出せます。")
-                            .minimumScaleFactor(0.1)
-                        Image("MenuLongPress")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 160)
-                            .border(.primary)
-                            .padding(8)
-                    }
-                    .padding()
-                }
-                Section {
-                    VStack {
-                        Text("Dynamic Type に対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
-                        Image("DynamicType")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 120)
-                            .border(.primary)
-                            .padding(8)
-                    }
-                    .padding()
-                }
+                self.メニューショートカットセクション()
+                self.DynamicTypeセクション()
             }
             .navigationTitle("細かな使い方")
         } label: {
             Label("細かな使い方", systemImage: "magazine")
+        }
+    }
+    private func メニューショートカットセクション() -> some View {
+        Section {
+            VStack {
+                Text("メニューボタンを長押しすると「初期化ボタン」や「編集ボタン」を呼び出せます。")
+                    .minimumScaleFactor(0.1)
+                Image("MenuLongPress")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 160)
+                    .border(.primary)
+                    .padding(8)
+            }
+            .padding()
+        }
+    }
+    private func DynamicTypeセクション() -> some View {
+        Section {
+            VStack {
+                Text("Dynamic Type に対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
+                Image("DynamicType")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 120)
+                    .border(.primary)
+                    .padding(8)
+            }
+            .padding()
         }
     }
 }

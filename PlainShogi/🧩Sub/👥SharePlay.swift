@@ -40,65 +40,6 @@ struct 🄶roupActivity: GroupActivity {
     }
 }
 
-struct 🅂haringControllerボタン: View {
-    @State private var 🚩SharingControllerを表示: Bool = false
-    @State private var 🚩GroupActivity準備完了: Bool = false
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-    var body: some View {
-        Section {
-            Button {
-                🚩SharingControllerを表示 = true
-            } label: {
-                Label("友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する", systemImage: "person.badge.plus")
-            }
-            .disabled(self.ⓖroupStateObserver.isEligibleForGroupSession)
-        } header: {
-            Text("SharePlayの準備をする")
-        }
-        .sheet(isPresented: $🚩SharingControllerを表示) {
-            🅂haringControllerView($🚩GroupActivity準備完了)
-        }
-        .onChange(of: ⓖroupStateObserver.isEligibleForGroupSession) { ⓝewValue in
-            if ⓝewValue {
-                if 🚩GroupActivity準備完了 {
-                    🄶roupActivity.アクティビティを起動する()
-                    🚩GroupActivity準備完了 = false
-                }
-            }
-        }
-    }
-    struct 🅂haringControllerView: UIViewControllerRepresentable {
-        private let ⓖroupActivitySharingController: GroupActivitySharingController
-        @Binding var 🚩GroupActivity準備完了: Bool
-        func makeUIViewController(context: Context) -> GroupActivitySharingController {
-            Task {
-                switch await self.ⓖroupActivitySharingController.result {
-                    case .success:
-                        print("🖨️ groupActivitySharingController.result: success")
-                        self.🚩GroupActivity準備完了 = true
-                    case .cancelled:
-                        print("🖨️ groupActivitySharingController.result: cancelled")
-                    @unknown default:
-                        assertionFailure()
-                }
-            }
-            return ⓖroupActivitySharingController
-        }
-        func updateUIViewController(_ ⓒontroller: GroupActivitySharingController, context: Context) {
-            print("🖨️ updateUIViewController/context", context)
-        }
-        init?(_ 🚩GroupActivity準備完了: Binding<Bool>) {
-            do {
-                self.ⓖroupActivitySharingController = try GroupActivitySharingController(🄶roupActivity())
-            } catch {
-                print("🚨", #line, error.localizedDescription)
-                return nil
-            }
-            self._🚩GroupActivity準備完了 = 🚩GroupActivity準備完了
-        }
-    }
-}
-
 struct SharePlay環境構築: ViewModifier {
     @EnvironmentObject var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
@@ -110,7 +51,7 @@ struct SharePlay環境構築: ViewModifier {
     }
 }
 
-struct SharePlayインジケーター: View { //TODO: WIP
+struct SharePlayインジケーター: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
@@ -146,12 +87,7 @@ struct SharePlayインジケーター: View { //TODO: WIP
         NavigationView {
             List {
                 if !self.🚩SharePlay中 {
-                    Section {
-                        Text("現在、友達と繋がっているようです。友達が立ち上げたアクティビティに参加するか、もしくは自分でアクティビティを起動しましょう。")
-                            .padding(.vertical, 12)
-                    } header: {
-                        Text("事前準備完了")
-                    }
+                    self.事前準備完セクション()
                     self.アクティビティ参加誘導セクション()
                     self.アクティビティ起動誘導セクション()
                 }
@@ -161,6 +97,14 @@ struct SharePlayインジケーター: View { //TODO: WIP
             }
             .navigationTitle("共有将棋盤")
             .toolbar { self.閉じるボタン() }
+        }
+    }
+    private func 事前準備完セクション() -> some View {
+        Section {
+            Text("現在、友達と繋がっているようです。友達が立ち上げたアクティビティに参加するか、もしくは自分でアクティビティを起動しましょう。")
+                .padding(.vertical, 12)
+        } header: {
+            Text("事前準備完了")
         }
     }
     private func アクティビティ参加誘導セクション() -> some View {
@@ -318,6 +262,65 @@ struct SharePlay紹介リンク: View {
                 .padding(8)
         } header: {
             Text("データ管理")
+        }
+    }
+}
+
+struct 🅂haringControllerボタン: View {
+    @State private var 🚩SharingControllerを表示: Bool = false
+    @State private var 🚩GroupActivity準備完了: Bool = false
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    var body: some View {
+        Section {
+            Button {
+                🚩SharingControllerを表示 = true
+            } label: {
+                Label("友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する", systemImage: "person.badge.plus")
+            }
+            .disabled(self.ⓖroupStateObserver.isEligibleForGroupSession)
+        } header: {
+            Text("SharePlayの準備をする")
+        }
+        .sheet(isPresented: $🚩SharingControllerを表示) {
+            🅂haringControllerView($🚩GroupActivity準備完了)
+        }
+        .onChange(of: ⓖroupStateObserver.isEligibleForGroupSession) { ⓝewValue in
+            if ⓝewValue {
+                if 🚩GroupActivity準備完了 {
+                    🄶roupActivity.アクティビティを起動する()
+                    🚩GroupActivity準備完了 = false
+                }
+            }
+        }
+    }
+    struct 🅂haringControllerView: UIViewControllerRepresentable {
+        private let ⓖroupActivitySharingController: GroupActivitySharingController
+        @Binding var 🚩GroupActivity準備完了: Bool
+        func makeUIViewController(context: Context) -> GroupActivitySharingController {
+            Task {
+                switch await self.ⓖroupActivitySharingController.result {
+                    case .success:
+                        print("🖨️ groupActivitySharingController.result: success")
+                        self.🚩GroupActivity準備完了 = true
+                    case .cancelled:
+                        print("🖨️ groupActivitySharingController.result: cancelled")
+                    @unknown default:
+                        assertionFailure()
+                }
+            }
+            return ⓖroupActivitySharingController
+        }
+        func updateUIViewController(_ ⓒontroller: GroupActivitySharingController, context: Context) {
+            print("🖨️ updateUIViewController/context", context)
+        }
+        init?(_ 🚩GroupActivity準備完了: Binding<Bool>) {
+            do {
+                self.ⓖroupActivitySharingController = try GroupActivitySharingController(🄶roupActivity())
+            } catch {
+                print("🚨", #line, error.localizedDescription)
+                return nil
+            }
+            self._🚩GroupActivity準備完了 = 🚩GroupActivity準備完了
         }
     }
 }
