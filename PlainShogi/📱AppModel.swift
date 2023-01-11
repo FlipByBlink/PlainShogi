@@ -42,7 +42,7 @@ class 📱アプリモデル: ObservableObject {
     }
     
     func この駒を裏返す(_ 位置: Int) {
-        if self.局面.盤駒[位置]?.成り != nil {
+        if self.局面.盤駒[位置]?.職名.成駒表記 != nil {
             self.局面.この駒を裏返す(位置)
             self.履歴追加やSharePlay同期を行う()
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
