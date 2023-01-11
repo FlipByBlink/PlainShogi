@@ -155,6 +155,7 @@ struct SharePlayインジケーター: View { //TODO: WIP
                     self.アクティビティ起動誘導セクション()
                 }
                 self.ステータスセクション()
+                self.離脱ボタンや終了ボタン()
                 Section { SharePlay紹介リンク() }
             }
             .navigationTitle("共有将棋盤")
@@ -181,7 +182,6 @@ struct SharePlayインジケーター: View { //TODO: WIP
                 self.🚩メニューを表示 = false
             } label: {
                 Label("「共有将棋盤」アクティビティを起動する", systemImage: "power")
-                    .font(.body.weight(.medium))
                     .padding(.vertical, 6)
             }
             .disabled(📱.ⓖroupSession != nil)
@@ -190,6 +190,38 @@ struct SharePlayインジケーター: View { //TODO: WIP
                 .textCase(.none)
         }
         .font(.subheadline)
+    }
+    private func 離脱ボタンや終了ボタン() -> some View {
+        Group {
+            if self.🚩SharePlay中 {
+                Section {
+                    Menu {
+                        Button {
+                            📱.ⓖroupSession?.leave()
+                        } label: {
+                            Label("はい、アクティビティから離脱します", systemImage: "escape")
+                        }
+                    } label: {
+                        Label("アクティビティから離脱する", systemImage: "escape")
+                    }
+                } footer: {
+                    Text("アクティビティから離脱しても、自分以外はアクティビティに参加したままです。")
+                }
+                Section {
+                    Menu {
+                        Button(role: .destructive) {
+                            📱.ⓖroupSession?.end()
+                        } label: {
+                            Label("はい、アクティビティを終了します", systemImage: "trash.fill")
+                        }
+                    } label: {
+                        Label("アクティビティを終了する", systemImage: "trash.fill")
+                    }
+                } footer: {
+                    Text("アクティビティを終了すると、全員がアクティビティから離脱します。")
+                }
+            }
+        }
     }
     private func ステータスセクション() -> some View {
         Group {
