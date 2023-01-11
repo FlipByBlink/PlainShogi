@@ -216,11 +216,11 @@ class 📱アプリモデル: ObservableObject {
     }
     
     func 履歴を復元する(_ 過去の局面: 局面モデル) {
+        self.🚩メニューを表示 = false
+        self.🚩履歴を表示 = false
         self.局面 = 過去の局面
         self.局面.現時刻を更新日時として設定する()
         self.履歴追加やSharePlay同期を行う()
-        self.🚩メニューを表示 = false
-        self.🚩履歴を表示 = false
         UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
     

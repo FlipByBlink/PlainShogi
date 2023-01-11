@@ -17,7 +17,7 @@ struct 履歴List: View {
     var body: some View {
         List {
             Section {
-                Text("直近の約30局面を履歴として保存しています。")
+                Text("直近の約30局面を履歴として保存します。")
                     .padding(8)
             }
             ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
@@ -77,6 +77,7 @@ struct 履歴List: View {
                 }
                 .accessibilityLabel("削除")
                 .disabled(局面モデル.履歴.isEmpty)
+                .opacity(局面モデル.履歴.isEmpty ? 0.33 : 1)
             }
         }
     }
