@@ -73,15 +73,17 @@ struct SharePlayインジケーター: View {
                         Label("現在、SharePlayしていません", systemImage: "shareplay.slash")
                     }
                 }
+                .font(.caption.weight(.light))
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
             }
-            .font(.caption.weight(.light))
-            .lineLimit(1)
             .buttonStyle(.bordered)
             .buttonBorderShape(.capsule)
-            .font(.caption.weight(.light))
-            .lineLimit(1)
+            .frame(maxHeight: 48)
             .foregroundStyle(🚩SharePlay中 ? .primary : .secondary)
             .sheet(isPresented: self.$🚩メニューを表示) { self.メニュー() }
+            .padding(.horizontal, 48)
+            .padding(.bottom, 18)
         }
     }
     private func メニュー() -> some View {
