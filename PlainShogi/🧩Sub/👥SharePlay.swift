@@ -77,7 +77,7 @@ struct SharePlayインジケーター: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
             }
-            .buttonStyle(.bordered)
+            .modifier(ボタンスタイル())
             .buttonBorderShape(.capsule)
             .frame(maxHeight: 48)
             .foregroundStyle(🚩SharePlay中 ? .primary : .secondary)
@@ -86,6 +86,16 @@ struct SharePlayインジケーター: View {
                     SharePlayガイド(self.$🚩ガイドを表示)
                         .toolbar { self.閉じるボタン() }
                 }
+            }
+        }
+    }
+    struct ボタンスタイル: ViewModifier {
+        @EnvironmentObject var 📱: 📱アプリモデル
+        func body(content: Content) -> some View {
+            if 📱.ⓖroupSession != nil {
+                content.buttonStyle(.automatic)
+            } else {
+                content.buttonStyle(.bordered)
             }
         }
     }
