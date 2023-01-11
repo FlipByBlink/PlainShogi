@@ -115,16 +115,11 @@ struct 🛠アプリメニュー: View {
     struct SharePlay誘導セクション: View {
         @EnvironmentObject var 📱: 📱アプリモデル
         @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-        private var 🚩表示条件: Bool {
-            self.ⓖroupStateObserver.isEligibleForGroupSession
-            &&
-            📱.ⓖroupSession == nil
-        }
         var body: some View {
-            if self.🚩表示条件 {
+            if self.ⓖroupStateObserver.isEligibleForGroupSession {
                 Section {
                     NavigationLink {
-                        SharePlayガイド()
+                        SharePlayガイド($📱.🚩メニューを表示)
                     } label: {
                         Label("アクティビティ「共有将棋盤」", systemImage: "shareplay")
                     }

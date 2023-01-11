@@ -59,11 +59,11 @@ struct SharePlayインジケーター: View {
         ||
         📱.ⓖroupSession?.state == .joined
     }
-    @State private var 🚩メニューを表示: Bool = false
+    @State private var 🚩ガイドを表示: Bool = false
     var body: some View {
         if self.ⓖroupStateObserver.isEligibleForGroupSession {
             Button {
-                self.🚩メニューを表示 = true
+                self.🚩ガイドを表示 = true
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             } label: {
                 Group {
@@ -81,9 +81,9 @@ struct SharePlayインジケーター: View {
             .buttonBorderShape(.capsule)
             .frame(maxHeight: 48)
             .foregroundStyle(🚩SharePlay中 ? .primary : .secondary)
-            .sheet(isPresented: self.$🚩メニューを表示) {
+            .sheet(isPresented: self.$🚩ガイドを表示) {
                 NavigationView {
-                    SharePlayガイド()
+                    SharePlayガイド(self.$🚩ガイドを表示)
                         .toolbar { self.閉じるボタン() }
                 }
             }
@@ -94,7 +94,7 @@ struct SharePlayインジケーター: View {
     private func 閉じるボタン() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button {
-                self.🚩メニューを表示 = false
+                self.🚩ガイドを表示 = false
                 振動フィードバック()
             } label: {
                 Image(systemName: "chevron.down")
@@ -109,13 +109,13 @@ struct SharePlayインジケーター: View {
 
 struct SharePlayガイド: View {
     @EnvironmentObject var 📱: 📱アプリモデル
+    @Binding var 🚩シートを表示: Bool
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
         📱.ⓖroupSession?.state == .waiting
         ||
         📱.ⓖroupSession?.state == .joined
     }
-    @State private var 🚩メニューを表示: Bool = false
     var body: some View {
         List {
             if !self.🚩SharePlay中 {
@@ -127,6 +127,7 @@ struct SharePlayガイド: View {
             self.離脱ボタンや終了ボタン()
             Section { SharePlay紹介リンク() }
         }
+        .animation(.default, value: self.🚩SharePlay中)
         .navigationTitle("共有将棋盤")
     }
     private func 事前準備完セクション() -> some View {
@@ -153,7 +154,7 @@ struct SharePlayガイド: View {
                 .padding(8)
             Button {
                 🄶roupActivity.アクティビティを起動する()
-                self.🚩メニューを表示 = false
+                self.🚩シートを表示 = false
             } label: {
                 Label("アクティビティ「共有将棋盤」を起動する", systemImage: "power")
                     .font(.body.weight(.medium))
@@ -172,6 +173,7 @@ struct SharePlayガイド: View {
                     Button {
                         📱.ⓖroupSession?.leave()
                         UINotificationFeedbackGenerator().notificationOccurred(.warning)
+                        self.🚩シートを表示 = false
                     } label: {
                         Label("アクティビティから離脱する", systemImage: "escape")
                     }
@@ -183,6 +185,7 @@ struct SharePlayガイド: View {
                         Button(role: .destructive) {
                             📱.ⓖroupSession?.end()
                             UINotificationFeedbackGenerator().notificationOccurred(.error)
+                            self.🚩シートを表示 = false
                         } label: {
                             Label("はい、アクティビティを終了します", systemImage: "power.dotted")
                         }
@@ -210,6 +213,9 @@ struct SharePlayガイド: View {
                 }
             }
         }
+    }
+    init(_ シートを表示: Binding<Bool>) {
+        self._🚩シートを表示 = シートを表示
     }
 }
 
