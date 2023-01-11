@@ -216,7 +216,7 @@ struct SharePlay紹介リンク: View {
     }
     private func 概要セクション() -> some View {
         Section {
-            HStack {
+            HStack(spacing: 12) {
                 RoundedRectangle(cornerRadius: 1)
                     .foregroundStyle(.quaternary)
                     .frame(width: 4)
@@ -249,6 +249,7 @@ struct SharePlay紹介リンク: View {
                 ・ドラッグしている最中の駒の様子(ドラッグを完了させたタイミングで操作結果が同期されます)
                 ・編集モードに移行しているかどうか
                 """)
+            .lineSpacing(6)
             .font(.subheadline)
             .padding(8)
         } header: {
@@ -275,11 +276,16 @@ struct 🅂haringControllerボタン: View {
             Button {
                 🚩SharingControllerを表示 = true
             } label: {
-                Label("友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する", systemImage: "person.badge.plus")
+                if #available(iOS 16, *) {
+                    Label("友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する", systemImage: "person.badge.plus")
+                } else {
+                    Label("友達に「FaceTime」通話をかける", systemImage: "person.badge.plus")
+                }
             }
             .disabled(self.ⓖroupStateObserver.isEligibleForGroupSession)
         } header: {
             Text("SharePlayの準備をする")
+                .textCase(.none)
         }
         .sheet(isPresented: $🚩SharingControllerを表示) {
             🅂haringControllerView($🚩GroupActivity準備完了)
