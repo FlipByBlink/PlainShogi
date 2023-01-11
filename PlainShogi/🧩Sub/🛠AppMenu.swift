@@ -8,7 +8,6 @@ struct 🛠メニューボタン: View {
             整理完了ボタン()
         } else {
             Menu {
-                SharePlay開始誘導ボタン()
                 🛠盤面初期化ボタン()
                 🛠盤面整理開始ボタン()
                 🛠直近操作強調表示クリアボタン()
@@ -51,7 +50,6 @@ struct 🛠アプリメニュー: View {
     var body: some View {
         NavigationView {
             List {
-                SharePlay紹介リンク()
                 SharePlay開始誘導ボタン()
                 Section {
                     Label("長押しして駒を持ち上げ、そのままスライドして移動させる", systemImage: "hand.draw")
@@ -104,6 +102,32 @@ struct 🛠アプリメニュー: View {
                     .padding(8)
             }
             .accessibilityLabel("Dismiss")
+        }
+    }
+    struct SharePlay開始誘導ボタン: View {
+        @EnvironmentObject var 📱: 📱アプリモデル
+        @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+        private var 🚩表示条件: Bool {
+            self.ⓖroupStateObserver.isEligibleForGroupSession
+            &&
+            📱.ⓖroupSession == nil
+        }
+        var body: some View {
+            if self.🚩表示条件 {
+                Section {
+                    Button {
+                        🄶roupActivity.アクティビティを起動する()
+                    } label: {
+                        Label("「共有将棋盤」アクティビティを起動する", systemImage: "shareplay")
+                            .font(.body.weight(.semibold))
+                            .padding(.vertical, 8)
+                    }
+                } header: {
+                    Text("自分からSharePlayを開始する")
+                } footer: {
+                    Text("現在、友達と繋がっているようです。アクティビティを作成して、将棋盤を共有することができます。")
+                }
+            }
         }
     }
 }

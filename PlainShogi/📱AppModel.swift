@@ -258,12 +258,12 @@ class 📱アプリモデル: ObservableObject {
                     if let 受信データの更新日時 = ⓜessage.更新日時 {
                         if let 現在の局面の更新日時 = self.局面.更新日時 {
                             if 受信データの更新日時 > 現在の局面の更新日時 {
-                                withAnimation { self.局面 = ⓜessage }
+                                withAnimation(.default.speed(2.0)) { self.局面 = ⓜessage }
                                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                 self.履歴追加やSharePlay同期を行う(SharePlay同期: false)
                             }
                         } else {
-                            withAnimation { self.局面 = ⓜessage }
+                            withAnimation(.default.speed(2.0)) { self.局面 = ⓜessage }
                             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                             self.履歴追加やSharePlay同期を行う(SharePlay同期: false)
                         }
@@ -283,7 +283,7 @@ class 📱アプリモデル: ObservableObject {
         if self.ⓖroupSession != nil {
             self.ⓖroupSession?.leave()
             self.ⓖroupSession = nil
-            🄶roupActivity.アクティビティを開始する()
+            🄶roupActivity.アクティビティを起動する()
         }
     }
     
@@ -304,7 +304,7 @@ class 📱アプリモデル: ObservableObject {
             case .waiting: return "待機中"
             case .joined: return "参加中"
             case .invalidated(_): return "無効"
-            case .none: return "🐛セッションはありません"
+            case .none: return "なし"
             @unknown default:
                 assertionFailure()
                 return "🐛想定外"

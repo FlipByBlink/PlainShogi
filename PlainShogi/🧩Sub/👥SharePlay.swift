@@ -11,7 +11,7 @@ struct 🄶roupActivity: GroupActivity {
         ⓜetadata.previewImage = UIImage(systemName: "questionmark.square.dashed")!.cgImage
         return ⓜetadata
     }
-    static func アクティビティを開始する() {
+    static func アクティビティを起動する() {
         Task {
             do {
                 let ⓐctivity = Self()
@@ -40,62 +40,6 @@ struct 🄶roupActivity: GroupActivity {
     }
 }
 
-struct SharePlay開始誘導ボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-    private var 🚩表示条件: Bool {
-        self.ⓖroupStateObserver.isEligibleForGroupSession
-        &&
-        📱.ⓖroupSession == nil
-    }
-    var body: some View {
-        if self.🚩表示条件 {
-            Section {
-                Button {
-                    🄶roupActivity.アクティビティを開始する()
-                } label: {
-                    Label("SharePlayを開始する", systemImage: "shareplay")
-                        .font(.body.weight(.semibold))
-                        .padding(.vertical, 8)
-                }
-            } header: {
-                Text("SharePlay")
-            } footer: {
-                Text("現在、友達と繋がっているようです。アクティビティを作成して、将棋盤を共有することができます。")
-            }
-        }
-    }
-}
-
-struct SharePlay紹介リンク: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-    var body: some View {
-        NavigationLink {
-            List {
-                Section {
-                    SharePlay開始誘導ボタン()
-                }
-                Section {
-                    Text("SharePlayとは、、、")
-                } header: {
-                    Text("SharePlayとは")
-                        .textCase(.none)
-                }
-                🅂haringControllerボタン()
-                Section {
-                    Text("placeholder")
-                } header: {
-                    Text("注意事項")
-                }
-            }
-            .navigationTitle("SharePlayについて")
-        } label: {
-            Label("SharePlayについて", systemImage: "shareplay")
-        }
-    }
-}
-
 struct 🅂haringControllerボタン: View {
     @State private var 🚩SharingControllerを表示: Bool = false
     @State private var 🚩GroupActivity準備完了: Bool = false
@@ -117,7 +61,7 @@ struct 🅂haringControllerボタン: View {
         .onChange(of: ⓖroupStateObserver.isEligibleForGroupSession) { ⓝewValue in
             if ⓝewValue {
                 if 🚩GroupActivity準備完了 {
-                    🄶roupActivity.アクティビティを開始する()
+                    🄶roupActivity.アクティビティを起動する()
                     🚩GroupActivity準備完了 = false
                 }
             }
@@ -188,36 +132,79 @@ struct SharePlayインジケーター: View { //TODO: WIP
                     }
                 }
                 .font(.caption.weight(.light))
-                .foregroundColor(.primary)
+                .foregroundColor(self.🚩SharePlay中 ? .primary : .secondary)
             }
-            .foregroundStyle(self.🚩SharePlay中 ? .primary : .tertiary)
-            .sheet(isPresented: self.$🚩メニューを表示) {
-                NavigationView {
-                    List {
-                        SharePlay開始誘導ボタン()
-                        ステータスセクション()
-                        Section { SharePlay紹介リンク() }
-                    }
-                    .navigationTitle("SharePlay")
-                    .toolbar { self.閉じるボタン() }
-                }
-            }
+            .sheet(isPresented: self.$🚩メニューを表示) { self.メニュー() }
             .minimumScaleFactor(0.1)
             .padding(.bottom, 8)
             .frame(maxHeight: 36)
             .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         }
     }
-    private func ステータスセクション() -> some View {
+    private func メニュー() -> some View {
+        NavigationView {
+            List {
+                if !self.🚩SharePlay中 {
+                    Section {
+                        Text("現在、友達と繋がっているようです。友達が立ち上げたアクティビティに参加するか、もしくは自分でアクティビティを起動しましょう。")
+                            .padding(.vertical, 12)
+                    } header: {
+                        Text("事前準備完了")
+                    }
+                    self.アクティビティ参加誘導セクション()
+                    self.アクティビティ起動誘導セクション()
+                }
+                self.ステータスセクション()
+                Section { SharePlay紹介リンク() }
+            }
+            .navigationTitle("共有将棋盤")
+            .toolbar { self.閉じるボタン() }
+        }
+    }
+    private func アクティビティ参加誘導セクション() -> some View {
         Section {
-            Label("セッション", systemImage: "power")
-                .badge(📱.セッション状態表記)
-            if let アクティブ参加者数 = 📱.ⓖroupSession?.activeParticipants.count {
-                Label("アクティブ参加者数", systemImage: "person.3")
-                    .badge(アクティブ参加者数)
+            Text("友達が既に「共有将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。")
+            if #available(iOS 16, *) {
+                Text("「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
             }
         } header: {
-            Text("状況")
+            Text("SharePlayに参加する")
+                .textCase(.none)
+        }
+        .font(.subheadline)
+    }
+    private func アクティビティ起動誘導セクション() -> some View {
+        Section {
+            Text("自分からSharePlayを開始する事もできます。アクティビティを起動したら友達にSharePlay参加を促しましょう。")
+            Button {
+                🄶roupActivity.アクティビティを起動する()
+                self.🚩メニューを表示 = false
+            } label: {
+                Label("「共有将棋盤」アクティビティを起動する", systemImage: "power")
+                    .font(.body.weight(.medium))
+                    .padding(.vertical, 6)
+            }
+            .disabled(📱.ⓖroupSession != nil)
+        } header: {
+            Text("自分からSharePlayを開始する")
+                .textCase(.none)
+        }
+        .font(.subheadline)
+    }
+    private func ステータスセクション() -> some View {
+        Group {
+            if 📱.ⓖroupSession != nil {
+                Section {
+                    Label("セッション", systemImage: "power")
+                        .badge(📱.セッション状態表記)
+                    if let アクティブ参加者数 = 📱.ⓖroupSession?.activeParticipants.count {
+                        Label("アクティブ参加者数", systemImage: "person.3")
+                            .badge(アクティブ参加者数)
+                    }
+                } header: {
+                    Text("状況")
+                }
+            }
         }
     }
     private func 閉じるボタン() -> some ToolbarContent {
@@ -232,6 +219,40 @@ struct SharePlayインジケーター: View { //TODO: WIP
                     .padding(8)
             }
             .accessibilityLabel("Dismiss")
+        }
+    }
+}
+
+struct SharePlay紹介リンク: View {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    var body: some View {
+        NavigationLink {
+            List {
+                Section {
+                    Text("SharePlayとは、、、")
+                } header: {
+                    Text("SharePlayとは")
+                        .textCase(.none)
+                }
+                🅂haringControllerボタン()
+                Section {
+                    Text("placeholder")
+                } header: {
+                    Text("注意事項")
+                }
+                self.データ管理説明セクション()
+            }
+            .navigationTitle("SharePlayについて")
+        } label: {
+            Label("SharePlayについて", systemImage: "shareplay")
+        }
+    }
+    private func データ管理説明セクション() -> some View {
+        Section {
+            Text("SharePlayではユーザーのデバイス間で同期するすべてのセッションデータに対してエンドツーエンド暗号化が用いられます。アプリ開発者やAppleは、このデータの復号鍵を保持していません。つまり、SharePlay中に通信されるデータを第三者が確認する事はありません。")
+        } header: {
+            Text("データ管理")
         }
     }
 }
