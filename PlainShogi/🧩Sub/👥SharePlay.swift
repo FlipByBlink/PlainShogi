@@ -109,9 +109,15 @@ struct SharePlayインジケーター: View {
     }
     private func アクティビティ参加誘導セクション() -> some View {
         Section {
-            Text("友達が既に「共有将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。")
+            VStack {
+                Text("友達が既に「共有将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。")
+                プレースホルダーView()
+            }
             if #available(iOS 16, *) {
-                Text("iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
+                VStack {
+                    Text("iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
+                    プレースホルダーView()
+                }
             }
         } header: {
             Text("SharePlayに参加する")
@@ -206,6 +212,14 @@ struct SharePlay紹介リンク: View {
             List {
                 self.概要セクション()
                 🅂haringControllerボタン()
+                Section {
+                    VStack {
+                        Text("FaceTime中にこのアプリを立ち上げると、アクティビティを起動するためのボタンが出現します。このボタンを押すとSharePlayが開始され、通話相手のデバイスではSharePlay参加を促す通知が表示されます。")
+                        プレースホルダーView()
+                    }
+                } header: {
+                    Text("はじめ方")
+                }
                 self.注意事項セクション()
                 self.データ管理説明セクション()
             }
@@ -220,7 +234,7 @@ struct SharePlay紹介リンク: View {
                 RoundedRectangle(cornerRadius: 1)
                     .foregroundStyle(.quaternary)
                     .frame(width: 4)
-                VStack(spacing: 12) {
+                VStack(spacing: 10) {
                     Text(#""FaceTime App でSharePlayを使用すると、友達や家族とのFaceTime通話中にテレビ番組、映画、ミュージックを同期した状態でストリーム再生することができます。通話に参加しているほかの人とリアルタイムにつながって楽しみましょう。再生が同期され、コントロールが共有されるため、同時に同じ瞬間を見たり聞いたりできます。""#)
                     Text(#""SharePlayは、FaceTime通話中にほかのAppでも使用できます。""#)
                 }

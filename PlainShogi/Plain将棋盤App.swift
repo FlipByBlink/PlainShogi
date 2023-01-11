@@ -22,6 +22,14 @@ struct Plain将棋盤App: App {
     }
 }
 
+struct プレースホルダーView: View {
+    var body: some View {
+        Image(systemName: "rectangle.dashed")
+            .resizable()
+            .frame(width: 200, height: 120)
+            .foregroundStyle(.tertiary)
+    }
+}
 
 
 
