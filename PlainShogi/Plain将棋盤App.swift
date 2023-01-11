@@ -26,7 +26,7 @@ struct プレースホルダーView: View {
     var body: some View {
         Image(systemName: "rectangle.dashed")
             .resizable()
-            .frame(width: 200, height: 120)
+            .frame(width: 100, height: 60)
             .foregroundStyle(.tertiary)
     }
 }

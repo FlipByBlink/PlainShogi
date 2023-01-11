@@ -54,7 +54,8 @@ struct 🛠アプリメニュー: View {
     var body: some View {
         NavigationView {
             List {
-                Self.SharePlay開始誘導ボタン()
+                Self.SharePlay誘導セクション()
+                
                 self.あそび方セクション()
                 Section {
                     🛠盤面初期化ボタン()
@@ -111,7 +112,7 @@ struct 🛠アプリメニュー: View {
             .accessibilityLabel("Dismiss")
         }
     }
-    struct SharePlay開始誘導ボタン: View {
+    struct SharePlay誘導セクション: View {
         @EnvironmentObject var 📱: 📱アプリモデル
         @StateObject private var ⓖroupStateObserver = GroupStateObserver()
         private var 🚩表示条件: Bool {
@@ -122,20 +123,14 @@ struct 🛠アプリメニュー: View {
         var body: some View {
             if self.🚩表示条件 {
                 Section {
-                    Button {
-                        📱.🚩メニューを表示 = false
-                        🄶roupActivity.アクティビティを起動する()
+                    NavigationLink {
+                        SharePlayガイド()
                     } label: {
-                        Label("「共有将棋盤」アクティビティを起動する", systemImage: "power")
-                            .font(.body.weight(.medium))
-                            .padding(.vertical, 6)
+                        Label("アクティビティ「共有将棋盤」", systemImage: "shareplay")
                     }
-                    SharePlay紹介リンク()
                 } header: {
-                    Text("自分からSharePlayを開始する")
+                    Text("SharePlay")
                         .textCase(.none)
-                } footer: {
-                    Text("現在、友達と繋がっているようです。アクティビティを作成して、将棋盤を共有することができます。")
                 }
             }
         }

@@ -81,69 +81,89 @@ struct SharePlayインジケーター: View {
             .buttonBorderShape(.capsule)
             .frame(maxHeight: 48)
             .foregroundStyle(🚩SharePlay中 ? .primary : .secondary)
-            .sheet(isPresented: self.$🚩メニューを表示) { self.メニュー() }
+            .sheet(isPresented: self.$🚩メニューを表示) {
+                NavigationView {
+                    SharePlayガイド()
+                        .toolbar { self.閉じるボタン() }
+                }
+            }
             .padding(.horizontal, 48)
             .padding(.bottom, 18)
         }
     }
-    private func メニュー() -> some View {
-        NavigationView {
-            List {
-                if !self.🚩SharePlay中 {
-                    self.事前準備完セクション()
-                    self.アクティビティ参加誘導セクション()
-                    self.アクティビティ起動誘導セクション()
-                }
-                self.ステータスセクション()
-                self.離脱ボタンや終了ボタン()
-                Section { SharePlay紹介リンク() }
+    private func 閉じるボタン() -> some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Button {
+                self.🚩メニューを表示 = false
+                振動フィードバック()
+            } label: {
+                Image(systemName: "chevron.down")
+                    .foregroundStyle(.secondary)
+                    .grayscale(1.0)
+                    .padding(8)
             }
-            .navigationTitle("共有将棋盤")
-            .toolbar { self.閉じるボタン() }
+            .accessibilityLabel("Dismiss")
         }
+    }
+}
+
+struct SharePlayガイド: View {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    private var 🚩SharePlay中: Bool {
+        📱.ⓖroupSession?.state == .waiting
+        ||
+        📱.ⓖroupSession?.state == .joined
+    }
+    @State private var 🚩メニューを表示: Bool = false
+    var body: some View {
+        List {
+            if !self.🚩SharePlay中 {
+                self.事前準備完セクション()
+                self.アクティビティ参加誘導セクション()
+                self.アクティビティ起動誘導セクション()
+            }
+            self.ステータスセクション()
+            self.離脱ボタンや終了ボタン()
+            Section { SharePlay紹介リンク() }
+        }
+        .navigationTitle("共有将棋盤")
     }
     private func 事前準備完セクション() -> some View {
         Section {
             Text("現在、友達と繋がっているようです。友達が立ち上げたアクティビティに参加するか、もしくは自分でアクティビティを起動しましょう。")
-                .padding(.vertical, 12)
+                .padding(8)
         } header: {
             Text("事前準備完了")
         }
     }
     private func アクティビティ参加誘導セクション() -> some View {
         Section {
-            VStack {
-                Text("友達が既に「共有将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。")
-                プレースホルダーView()
-            }
-            if #available(iOS 16, *) {
-                VStack {
-                    Text("iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
-                    プレースホルダーView()
-                }
-            }
+            Text("友達が既に「共有将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。")
+                .padding(8)
+            プレースホルダーView()
         } header: {
             Text("SharePlayに参加する")
                 .textCase(.none)
         }
-        .font(.subheadline)
     }
     private func アクティビティ起動誘導セクション() -> some View {
         Section {
             Text("自分からSharePlayを開始する事もできます。アクティビティを起動したら友達にSharePlay参加を促しましょう。")
+                .padding(8)
             Button {
                 🄶roupActivity.アクティビティを起動する()
                 self.🚩メニューを表示 = false
             } label: {
-                Label("「共有将棋盤」アクティビティを起動する", systemImage: "power")
-                    .padding(.vertical, 6)
+                Label("アクティビティ「共有将棋盤」を起動する", systemImage: "power")
+                    .font(.body.weight(.medium))
+                    .padding(.vertical, 4)
             }
             .disabled(📱.ⓖroupSession != nil)
         } header: {
             Text("自分からSharePlayを開始する")
                 .textCase(.none)
         }
-        .font(.subheadline)
     }
     private func 離脱ボタンや終了ボタン() -> some View {
         Group {
@@ -191,20 +211,6 @@ struct SharePlayインジケーター: View {
             }
         }
     }
-    private func 閉じるボタン() -> some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
-            Button {
-                self.🚩メニューを表示 = false
-                振動フィードバック()
-            } label: {
-                Image(systemName: "chevron.down")
-                    .foregroundStyle(.secondary)
-                    .grayscale(1.0)
-                    .padding(8)
-            }
-            .accessibilityLabel("Dismiss")
-        }
-    }
 }
 
 struct SharePlay紹介リンク: View {
@@ -216,13 +222,13 @@ struct SharePlay紹介リンク: View {
                 self.概要セクション()
                 🅂haringControllerボタン()
                 Section {
-                    VStack {
-                        Text("FaceTime中にこのアプリを立ち上げると、アクティビティを起動するためのボタンが出現します。このボタンを押すとSharePlayが開始され、通話相手のデバイスではSharePlay参加を促す通知が表示されます。")
-                        プレースホルダーView()
-                    }
+                    Text("FaceTime中にこのアプリを立ち上げると、アクティビティを起動するためのボタンが出現します。このボタンを押すとSharePlayが開始され、通話相手のデバイスではSharePlay参加を促す通知が表示されます。")
+                        .padding(8)
+                    プレースホルダーView()
                 } header: {
                     Text("はじめ方")
                 }
+                if #available(iOS 16, *) { self.メッセージアプリ説明セクション() }
                 self.注意事項セクション()
                 self.データ管理説明セクション()
             }
@@ -254,6 +260,13 @@ struct SharePlay紹介リンク: View {
                 .textCase(.none)
         } footer: {
             Text("https://support.apple.com/guide/iphone/shareplay-watch-listen-play-iphb657eb791/ios")
+        }
+    }
+    private func メッセージアプリ説明セクション() -> some View {
+        Section {
+            Text("iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
+                .padding(8)
+            プレースホルダーView()
         }
     }
     private func 注意事項セクション() -> some View {
