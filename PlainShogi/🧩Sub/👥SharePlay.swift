@@ -198,7 +198,7 @@ struct SharePlayインジケーター: View { //TODO: WIP
                 Section {
                     Button {
                         📱.ⓖroupSession?.leave()
-                        UINotificationFeedbackGenerator().notificationOccurred(.error)
+                        UINotificationFeedbackGenerator().notificationOccurred(.warning)
                     } label: {
                         Label("アクティビティから離脱する", systemImage: "escape")
                     }
@@ -209,7 +209,7 @@ struct SharePlayインジケーター: View { //TODO: WIP
                     Menu {
                         Button(role: .destructive) {
                             📱.ⓖroupSession?.end()
-                            UINotificationFeedbackGenerator().notificationOccurred(.warning)
+                            UINotificationFeedbackGenerator().notificationOccurred(.error)
                         } label: {
                             Label("はい、アクティビティを終了します", systemImage: "power.dotted")
                         }
@@ -260,21 +260,9 @@ struct SharePlay紹介リンク: View {
     var body: some View {
         NavigationLink {
             List {
-                Section {
-                    Text("SharePlayとは、、、")
-                    Link(destination: URL(string: "https://support.apple.com/ja-jp/guide/iphone/iphb657eb791/ios")!) {
-                        Label("Apple Support Site", systemImage: "link")
-                    }
-                } header: {
-                    Text("概要")
-                        .textCase(.none)
-                }
+                self.概要セクション()
                 🅂haringControllerボタン()
-                Section {
-                    Text("placeholder")
-                } header: {
-                    Text("注意事項")
-                }
+                self.注意事項セクション()
                 self.データ管理説明セクション()
             }
             .navigationTitle("SharePlayについて")
@@ -282,9 +270,52 @@ struct SharePlay紹介リンク: View {
             Label("SharePlayについて", systemImage: "shareplay")
         }
     }
+    private func 概要セクション() -> some View {
+        Section {
+            HStack {
+                RoundedRectangle(cornerRadius: 1)
+                    .foregroundStyle(.quaternary)
+                    .frame(width: 4)
+                Text(#"""
+                "FaceTime App でSharePlayを使用すると、友達や家族とのFaceTime通話中にテレビ番組、映画、ミュージックを同期した状態でストリーム再生することができます。通話に参加しているほかの人とリアルタイムにつながって楽しみましょう。再生が同期され、コントロールが共有されるため、同時に同じ瞬間を見たり聞いたりできます。"
+                "SharePlayは、FaceTime通話中にほかのAppでも使用できます。"
+                """#)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+            }
+            .padding(6)
+            Link(destination: URL(string: "https://support.apple.com/guide/iphone/shareplay-watch-listen-play-iphb657eb791/ios")!) {
+                Label("引用: Apple サポートサイト", systemImage: "link")
+                    .font(.subheadline)
+            }
+        } header: {
+            Text("概要")
+                .textCase(.none)
+        } footer: {
+            Text("https://support.apple.com/guide/iphone/shareplay-watch-listen-play-iphb657eb791/ios")
+        }
+    }
+    private func 注意事項セクション() -> some View {
+        Section {
+            Text("""
+                以下の項目はユーザー間で同期されません
+                ・「上下反転」オプション
+                ・「English表記」オプション
+                ・「常時強調表示オフ」オプション
+                ・ドラッグしている最中の駒の様子(ドラッグを完了させたタイミングで操作結果が同期されます)
+                ・編集モードに移行しているかどうか
+                """)
+            .font(.subheadline)
+            .padding(8)
+        } header: {
+            Label("注意事項", systemImage: "exclamationmark.triangle")
+        }
+    }
     private func データ管理説明セクション() -> some View {
         Section {
             Text("SharePlayではユーザーのデバイス間で同期するすべてのセッションデータに対してエンドツーエンド暗号化が用いられます。アプリ開発者やAppleは、このデータの復号鍵を保持していません。つまり、SharePlay中に通信されるデータを第三者が確認する事はありません。")
+                .font(.subheadline)
+                .padding(8)
         } header: {
             Text("データ管理")
         }
