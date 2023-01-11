@@ -119,14 +119,16 @@ struct 🛠アプリメニュー: View {
             if self.🚩表示条件 {
                 Section {
                     Button {
+                        📱.🚩メニューを表示 = false
                         🄶roupActivity.アクティビティを起動する()
                     } label: {
                         Label("「共有将棋盤」アクティビティを起動する", systemImage: "power")
                             .font(.body.weight(.medium))
-                            .padding(.vertical, 8)
+                            .padding(.vertical, 6)
                     }
+                    SharePlay紹介リンク()
                 } header: {
-                    Label("自分からSharePlayを開始する", systemImage: "shareplay")
+                    Text("自分からSharePlayを開始する")
                         .textCase(.none)
                 } footer: {
                     Text("現在、友達と繋がっているようです。アクティビティを作成して、将棋盤を共有することができます。")
