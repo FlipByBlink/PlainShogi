@@ -171,24 +171,67 @@ struct SharePlayインジケーター: View { //TODO: WIP
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
         📱.ⓖroupSession?.state == .waiting
-        &&
+        ||
         📱.ⓖroupSession?.state == .joined
     }
+    @State private var 🚩メニューを表示: Bool = false
     var body: some View {
         if self.ⓖroupStateObserver.isEligibleForGroupSession {
-            Group {
-                if self.🚩SharePlay中 {
-                    Label("SharePlay中", systemImage: "shareplay")
-                } else {
-                    Label("SharePlayしていません", systemImage: "shareplay.slash")
+            Button {
+                self.🚩メニューを表示 = true
+            } label: {
+                Group {
+                    if self.🚩SharePlay中 {
+                        Label("現在、SharePlay中", systemImage: "shareplay")
+                    } else {
+                        Label("現在、SharePlayしていません", systemImage: "shareplay.slash")
+                    }
+                }
+                .font(.caption.weight(.light))
+                .foregroundColor(.primary)
+            }
+            .foregroundStyle(self.🚩SharePlay中 ? .primary : .tertiary)
+            .sheet(isPresented: self.$🚩メニューを表示) {
+                NavigationView {
+                    List {
+                        SharePlay開始誘導ボタン()
+                        ステータスセクション()
+                        Section { SharePlay紹介リンク() }
+                    }
+                    .navigationTitle("SharePlay")
+                    .toolbar { self.閉じるボタン() }
                 }
             }
-            .font(.footnote.weight(.light))
             .minimumScaleFactor(0.1)
-            .foregroundStyle(self.🚩SharePlay中 ? .primary : .tertiary)
             .padding(.bottom, 8)
             .frame(maxHeight: 36)
             .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+        }
+    }
+    private func ステータスセクション() -> some View {
+        Section {
+            Label("セッション", systemImage: "power")
+                .badge(📱.セッション状態表記)
+            if let アクティブ参加者数 = 📱.ⓖroupSession?.activeParticipants.count {
+                Label("アクティブ参加者数", systemImage: "person.3")
+                    .badge(アクティブ参加者数)
+            }
+        } header: {
+            Text("状況")
+        }
+    }
+    private func 閉じるボタン() -> some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Button {
+                self.🚩メニューを表示 = false
+                振動フィードバック()
+            } label: {
+                Image(systemName: "chevron.down")
+                    .foregroundStyle(.secondary)
+                    .grayscale(1.0)
+                    .padding(8)
+            }
+            .accessibilityLabel("Dismiss")
         }
     }
 }
