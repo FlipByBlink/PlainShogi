@@ -180,6 +180,7 @@ struct SharePlayガイド: View {
                 .textCase(.none)
         }
     }
+    @State private var 🚩終了確認ダイアログ表示: Bool = false
     private func 離脱ボタンや終了ボタン() -> some View {
         Group {
             if self.🚩SharePlay中 {
@@ -195,18 +196,26 @@ struct SharePlayガイド: View {
                     Text("アクティビティから離脱しても、自分以外はアクティビティに参加したままです。")
                 }
                 Section {
-                    Menu {
-                        Button(role: .destructive) {
-                            📱.ⓖroupSession?.end()
-                            UINotificationFeedbackGenerator().notificationOccurred(.error)
-                            self.🚩シートを表示 = false
-                        } label: {
-                            Label("はい、アクティビティを終了します", systemImage: "power.dotted")
-                        }
+                    Button {
+                        self.🚩終了確認ダイアログ表示 = true
+                        振動フィードバック()
                     } label: {
                         Label("アクティビティを終了する", systemImage: "power.dotted")
                     }
                 } footer: {
+                    Text("アクティビティを終了すると、全員がアクティビティから離脱します。")
+                }
+                .confirmationDialog("アクティビティを終了しますか？",
+                                    isPresented: self.$🚩終了確認ダイアログ表示,
+                                    titleVisibility: .visible) {
+                    Button(role: .destructive) {
+                        📱.ⓖroupSession?.end()
+                        UINotificationFeedbackGenerator().notificationOccurred(.error)
+                        self.🚩シートを表示 = false
+                    } label: {
+                        Label("はい、アクティビティを終了します", systemImage: "power.dotted")
+                    }
+                } message: {
                     Text("アクティビティを終了すると、全員がアクティビティから離脱します。")
                 }
             }
