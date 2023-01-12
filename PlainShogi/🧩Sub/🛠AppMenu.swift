@@ -81,7 +81,6 @@ struct 🛠アプリメニュー: View {
         NavigationView {
             List {
                 Self.SharePlay誘導セクション()
-                
                 self.あそび方セクション()
                 Section {
                     🛠盤面初期化ボタン()
@@ -147,7 +146,8 @@ struct 🛠アプリメニュー: View {
                     NavigationLink {
                         SharePlayガイド($📱.🚩メニューを表示)
                     } label: {
-                        Label("アクティビティ「共有将棋盤」", systemImage: "shareplay")
+                        Label("アクティビティ", systemImage: "shareplay")
+                            .badge("共有将棋盤")
                     }
                 } header: {
                     Text("SharePlay")

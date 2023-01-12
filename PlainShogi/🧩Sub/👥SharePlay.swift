@@ -213,10 +213,10 @@ struct SharePlayガイド: View {
         Group {
             if 📱.ⓖroupSession != nil {
                 Section {
-                    Label("セッション", systemImage: "power")
-                        .badge(📱.セッション状態表記)
+                    Label("アクティビティ", systemImage: "power")
+                        .badge(📱.セッションステート表記)
                     if let アクティブ参加者数 = 📱.ⓖroupSession?.activeParticipants.count {
-                        Label("アクティブ参加者数", systemImage: "person.3")
+                        Label("現在の参加者数", systemImage: "person.3")
                             .badge(アクティブ参加者数)
                     }
                 } header: {
@@ -260,7 +260,7 @@ struct SharePlay紹介リンク: View {
                 RoundedRectangle(cornerRadius: 1)
                     .foregroundStyle(.quaternary)
                     .frame(width: 4)
-                VStack(spacing: 8) {
+                VStack(alignment: .leading, spacing: 8) {
                     Text(#""FaceTime App でSharePlayを使用すると、友達や家族とのFaceTime通話中にテレビ番組、映画、ミュージックを同期した状態でストリーム再生することができます。通話に参加しているほかの人とリアルタイムにつながって楽しみましょう。再生が同期され、コントロールが共有されるため、同時に同じ瞬間を見たり聞いたりできます。""#)
                     Text(#""SharePlayは、FaceTime通話中にほかのAppでも使用できます。""#)
                 }
@@ -289,7 +289,7 @@ struct SharePlay紹介リンク: View {
     private func 注意事項セクション() -> some View {
         Section {
             Text("""
-                以下の項目はユーザー間で同期されません
+                **以下の項目はユーザー間で同期されません**
                 ・「上下反転」オプション
                 ・「English表記」オプション
                 ・「常時強調表示オフ」オプション

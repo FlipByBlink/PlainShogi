@@ -299,7 +299,7 @@ class 📱アプリモデル: ObservableObject {
         }
     }
     
-    var セッション状態表記: String {
+    var セッションステート表記: String {
         switch self.ⓖroupSession?.state {
             case .waiting: return "待機中"
             case .joined: return "参加中"
