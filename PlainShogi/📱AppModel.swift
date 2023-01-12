@@ -231,6 +231,8 @@ class 📱アプリモデル: ObservableObject {
     @Published var ⓖroupSession: GroupSession<🄶roupActivity>?
     private var ⓜessenger: GroupSessionMessenger?
     
+    @Published var 🚩参加アラート表示: Bool = false
+    
     func 新規GroupSessionを受信したら設定する() async {
         for await ⓝewSession in 🄶roupActivity.sessions() {
             self.局面.初期化する()
@@ -272,6 +274,7 @@ class 📱アプリモデル: ObservableObject {
             }
             ⓣasks.insert(ⓡeceiveDataTask)
             ⓝewSession.join()
+            self.🚩参加アラート表示 = true
         }
     }
     

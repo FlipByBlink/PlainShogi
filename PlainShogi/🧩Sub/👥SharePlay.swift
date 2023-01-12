@@ -49,10 +49,7 @@ struct SharePlay環境構築: ViewModifier {
             .animation(.default, value: self.ⓖroupStateObserver.isEligibleForGroupSession)
             .animation(.default, value: 📱.ⓖroupSession?.state)
             .task { await 📱.新規GroupSessionを受信したら設定する() }
-            .alert("アクティビティに参加しました", isPresented: self.$🚩参加アラート表示) { EmptyView() }
-            .onChange(of: 📱.ⓖroupSession?.state) {
-                if $0 == .joined { self.🚩参加アラート表示 = true }
-            }
+            .alert("アクティビティに参加しました", isPresented: $📱.🚩参加アラート表示) { EmptyView() }
         
     }
 }
