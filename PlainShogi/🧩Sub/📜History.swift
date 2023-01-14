@@ -37,7 +37,7 @@ struct 履歴List: View {
                         }
                         Spacer()
                         Button {
-                            📱.履歴を復元する(局面)
+                            withAnimation { 📱.履歴を復元する(局面) }
                         } label: {
                             HStack {
                                 Image(systemName: "square.and.arrow.down")
