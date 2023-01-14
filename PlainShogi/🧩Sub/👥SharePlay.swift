@@ -8,7 +8,7 @@ struct 🄶roupActivity: GroupActivity {
         var ⓜetadata = GroupActivityMetadata()
         ⓜetadata.title = NSLocalizedString("共有将棋盤", comment: "アクティビティタイトル")
         ⓜetadata.type = .generic
-        ⓜetadata.previewImage = UIImage(systemName: "questionmark.square.dashed")!.cgImage
+        ⓜetadata.previewImage = UIImage(named: "previewImage")!.cgImage
         return ⓜetadata
     }
     static func アクティビティを起動する() {
