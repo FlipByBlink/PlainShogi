@@ -43,13 +43,15 @@ struct 🄶roupActivity: GroupActivity {
 struct SharePlay環境構築: ViewModifier {
     @EnvironmentObject var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-    @State private var 🚩参加アラート表示: Bool = false //TODO: 動作チェックする
+    @State private var 🚩参加アラート表示: Bool = false
     func body(content: Content) -> some View {
         content
             .animation(.default, value: self.ⓖroupStateObserver.isEligibleForGroupSession)
             .animation(.default, value: 📱.ⓖroupSession?.state)
             .task { await 📱.新規GroupSessionを受信したら設定する() }
-            .alert("アクティビティに参加しました", isPresented: $📱.🚩参加アラート表示) { EmptyView() }
+            .alert("アクティビティに参加しました", isPresented: $📱.🚩参加アラート表示) {
+                Button("はじめる") { print("参加アラートボタンを押しました") }
+            }
         
     }
 }
