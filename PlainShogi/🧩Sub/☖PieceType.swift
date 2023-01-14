@@ -79,7 +79,7 @@ struct 局面モデル: Codable {
         guard let 元々の位置 else { return false }
         if let 移動後の駒 = self.盤駒[移動先] {
             if 移動後の駒.成り == false {
-                if 移動後の駒.職名.成駒表記 != nil {
+                if 移動後の駒.職名.成駒あり {
                     switch 移動後の駒.陣営 {
                         case .王側:
                             if 移動先 < 27 { return true }
@@ -180,7 +180,7 @@ struct 盤上の駒: Codable {
     var 成り: Bool
     
     mutating func 裏返す() {
-        if self.職名.成駒表記 != nil {
+        if self.職名.成駒あり {
             self.成り.toggle()
         }
     }
@@ -245,14 +245,18 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
         }
     }
     
+    var 成駒あり: Bool {
+        self.成駒表記 != nil
+    }
+    
     var English生駒表記: String {
         switch self {
             case .歩: return "P"
             case .角: return "B"
             case .飛: return "R"
             case .香: return "L"
-            case .桂: return "N"
-            case .銀: return "S"
+            case .桂: return "N"//見分けるために目印を付ける必要あり
+            case .銀: return "S"//見分けるために目印を付ける必要あり
             case .金: return "G"
             case .王: return "K"
         }
