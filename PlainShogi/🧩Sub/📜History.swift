@@ -19,6 +19,8 @@ struct 履歴List: View {
             Section {
                 Text("直近の約30局面を履歴として保存します")
                     .padding(8)
+                    .contextMenu { self.削除ボタン() }
+                    .accessibilityHidden(true)
             }
             ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
                 HStack {
@@ -54,11 +56,11 @@ struct 履歴List: View {
                 }
                 .padding()
             }
+            if 🚩履歴削除完了 { Text("これまでの履歴を削除しました") }
             if 局面モデル.履歴.isEmpty {
                 Text("現在、履歴はありません")
                     .foregroundStyle(.secondary)
             }
-            self.削除ボタン()
         }
         .animation(.default, value: self.🚩履歴削除完了)
         .navigationTitle("履歴")
@@ -105,21 +107,14 @@ struct 履歴List: View {
         .frame(width: コマのサイズ * 9, height: コマのサイズ)
     }
     private func 削除ボタン() -> some View {
-        Group {
-            if 🚩履歴削除完了 {
-                Text("これまでの履歴を削除しました")
-            }
-            if !局面モデル.履歴.isEmpty {
-                Button {
-                    局面モデル.履歴を全て削除する()
-                    self.🚩履歴削除完了 = true
-                    UINotificationFeedbackGenerator().notificationOccurred(.warning)
-                } label: {
-                    Label("履歴を全て削除する", systemImage: "trash")
-                }
-                .font(.subheadline)
-                .accessibilityLabel("削除")
-            }
+        Button {
+            局面モデル.履歴を全て削除する()
+            self.🚩履歴削除完了 = true
+            UINotificationFeedbackGenerator().notificationOccurred(.warning)
+        } label: {
+            Label("履歴を全て削除する", systemImage: "trash")
         }
+        .accessibilityLabel("削除")
+        .disabled(局面モデル.履歴.isEmpty)
     }
 }
