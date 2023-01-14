@@ -64,22 +64,7 @@ struct 履歴List: View {
         }
         .animation(.default, value: self.🚩履歴削除完了)
         .navigationTitle("履歴")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    局面モデル.履歴を全て削除する()
-                    self.🚩履歴削除完了 = true
-                    UINotificationFeedbackGenerator().notificationOccurred(.warning)
-                } label: {
-                    Image(systemName: "trash")
-                        .imageScale(.small)
-                        .foregroundColor(.secondary)
-                }
-                .accessibilityLabel("削除")
-                .disabled(局面モデル.履歴.isEmpty)
-                .opacity(局面モデル.履歴.isEmpty ? 0.33 : 1)
-            }
-        }
+        .toolbar { self.削除ボタン() }
     }
     private func 盤面プレビュー(_ 局面: 局面モデル) -> some View {
         VStack(spacing: 0) {
@@ -121,5 +106,18 @@ struct 履歴List: View {
             }
         }
         .frame(width: コマのサイズ * 9, height: コマのサイズ)
+    }
+    private func 削除ボタン() -> some View {
+        Button {
+            局面モデル.履歴を全て削除する()
+            self.🚩履歴削除完了 = true
+            UINotificationFeedbackGenerator().notificationOccurred(.warning)
+        } label: {
+            Image(systemName: "trash")
+                .foregroundColor(.secondary)
+        }
+        .accessibilityLabel("削除")
+        .disabled(局面モデル.履歴.isEmpty)
+        .opacity(局面モデル.履歴.isEmpty ? 0.33 : 1)
     }
 }

@@ -93,7 +93,7 @@ struct SharePlayインジケーター: View {
             }
         }
     }
-    struct ボタンスタイル: ViewModifier {
+    private struct ボタンスタイル: ViewModifier {
         @EnvironmentObject var 📱: 📱アプリモデル
         func body(content: Content) -> some View {
             if 📱.ⓖroupSession != nil {
@@ -360,7 +360,7 @@ struct 🅂haringControllerボタン: View {
             }
         }
     }
-    struct 🅂haringControllerView: UIViewControllerRepresentable {
+    private struct 🅂haringControllerView: UIViewControllerRepresentable {
         private let ⓖroupActivitySharingController: GroupActivitySharingController
         @Binding var 🚩GroupActivity準備完了: Bool
         func makeUIViewController(context: Context) -> GroupActivitySharingController {

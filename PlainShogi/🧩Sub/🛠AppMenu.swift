@@ -137,7 +137,7 @@ struct 🛠アプリメニュー: View {
             .accessibilityLabel("Dismiss")
         }
     }
-    struct SharePlay誘導セクション: View {
+    private struct SharePlay誘導セクション: View {
         @EnvironmentObject var 📱: 📱アプリモデル
         @StateObject private var ⓖroupStateObserver = GroupStateObserver()
         var body: some View {
