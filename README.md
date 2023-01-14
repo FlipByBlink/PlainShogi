@@ -1,6 +1,6 @@
-☖ Plain将棋盤
-=============
-![App icon](PlainShogi/Assets.xcassets/LaunchIcon.imageset/LaunchIcon.png)
+☖ Plain将棋盤 / Plain Shogi Board
+=================================
+![App icon](PlainShogi/Assets.xcassets/RoundedIcon.imageset/RoundedIcon.png)
 
 🔗 AppStore link
 ------------------
@@ -38,7 +38,7 @@ English term option.
 Output/Input function to/from plain text.
 
 
-==== Localization: All ====
+### Localization: All
 
 Japanese(native)
 
