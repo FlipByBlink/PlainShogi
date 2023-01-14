@@ -22,16 +22,6 @@ struct Plain将棋盤App: App {
     }
 }
 
-struct プレースホルダーView: View {
-    var body: some View {
-        Image(systemName: "rectangle.dashed")
-            .resizable()
-            .frame(width: 100, height: 60)
-            .foregroundStyle(.tertiary)
-    }
-}
-
-
 
 typealias 🛒Storeモデル = 🛒StoreModel
 typealias 📣広告バナー = 📣ADBanner
