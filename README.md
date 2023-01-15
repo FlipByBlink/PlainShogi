@@ -1,13 +1,15 @@
-☖ Plain将棋盤 / Plain Shogi Board
-=================================
-![App icon](PlainShogi/Assets.xcassets/RoundedIcon.imageset/RoundedIcon.png)
+iPhone, iPad App: Plain将棋盤 / Plain Shogi Board
+================================================
+_最もプレーンな将棋盤アプリ。 Most plainly shogi board app._
 
-🔗 AppStore link
-------------------
-[apps.apple.com/app/id1620268476](https://apps.apple.com/app/id1620268476)
+<img src="PlainShogi/Assets.xcassets/RoundedIcon.imageset/RoundedIcon.png" width="64">
 
-📄 Description
------------------
+<a href="https://apps.apple.com/app/id1620268476" target="blank">
+    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
+</a>
+
+概要 Description
+---------------------
 駒を自由に動かせるただの将棋盤です。
 
 iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
@@ -39,10 +41,9 @@ Output/Input function to/from plain text.
 
 
 ### Localization: All
+- Japanese(native)
 
-Japanese(native)
-
-English
+- English
 
 <br>
 
@@ -83,3 +84,7 @@ This application don't collect user infomation.
 <!-- https://flipbyblink.github.io/PlainShogi/ -->
 <!-- URL "Privacy Policy for AppStore" -->
 <!-- https://flipbyblink.github.io/PlainShogi/#privacy-policy-for-appstore -->
+
+🔗 AppStore link
+------------------
+[apps.apple.com/app/id1620268476](https://apps.apple.com/app/id1620268476)
