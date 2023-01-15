@@ -1,12 +1,20 @@
 {
   "images" : [
     {
-      "filename" : "joinFromMessage.jpg",
+      "filename" : "IMG_0091のコピー.heic",
       "idiom" : "universal"
+    },
+    {
+      "filename" : "joinFromMessage.jpg",
+      "idiom" : "universal",
+      "locale" : "ja"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
   }
 }

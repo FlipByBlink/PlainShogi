@@ -1,12 +1,20 @@
 {
   "images" : [
     {
-      "filename" : "DynamicType.heic",
+      "filename" : "IMG_0093.heic",
       "idiom" : "universal"
+    },
+    {
+      "filename" : "DynamicType.heic",
+      "idiom" : "universal",
+      "locale" : "ja"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
   }
 }

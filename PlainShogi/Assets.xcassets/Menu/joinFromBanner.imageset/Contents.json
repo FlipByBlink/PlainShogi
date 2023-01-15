@@ -1,12 +1,20 @@
 {
   "images" : [
     {
-      "filename" : "joinFromBanner.png",
+      "filename" : "IMG_0089のコピー.heic",
       "idiom" : "universal"
+    },
+    {
+      "filename" : "joinFromBanner.png",
+      "idiom" : "universal",
+      "locale" : "ja"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
   }
 }
