@@ -10,4 +10,10 @@ You can reduce / increase pieces.
 
 English term option.
 
-Output/Input function to/from plain text.";
+Output/Input function to/from plain text.
+
+Support SharePlay.
+
+Play Shogi board with FaceTime.
+
+Usecase: \"\Play game with a friend\", \"Discuss shogi problem with many people\", etc.";
