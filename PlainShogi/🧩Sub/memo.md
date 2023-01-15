@@ -1,21 +1,37 @@
+一般的な将棋慣習
+=====================
+- 「玉」が手前で「王」が対面のことが多い。逆が珍しいわけではない。
+
+- 図示する際は「先手」が手前で「後手」が対面のことがほとんど。
+
+- 図示する際に両方「玉」のことがたまにある。
+
+- 「先手(手前?)」を黒い駒 ☗ 、「後手(対面?)」を白い駒 ☖ で表すことが多い(っぽい)。
+
+- プレーンテキストでの局面図表現のデファクトスタンダードとしてBOD形式というのがあるらしい。
+
+
+🚨エラーメモ
+==============
 
 Error: 📦.loadItem
 ---------------------------------------------
 > [Pasteboard] Could not retrieve data representation of type public.utf8-plain-text. Error: Error Domain=NSCocoaErrorDomain Code=4099 "The connection to service created from an endpoint was invalidated from this process." UserInfo={NSDebugDescription=The connection to service created from an endpoint was invalidated from this process.}
 > Error Domain=NSItemProviderErrorDomain Code=-1000 "Data transfer has been cancelled." UserInfo={NSLocalizedDescription=Data transfer has been cancelled.}
 
-
 Error: 📦.loadItem
 ---------------------------
 > Error Domain=NSItemProviderErrorDomain Code=-1000 "Cannot load representation of type public.text" UserInfo={NSLocalizedDescription=Cannot load representation of type public.text, NSUnderlyingError=0x283f97de0 {Error Domain=PBErrorDomain Code=0 "Cannot load representation of type public.utf8-plain-text" UserInfo={NSLocalizedDescription=Cannot load representation of type public.utf8-plain-text, NSUnderlyingError=0x283f945a0 {Error Domain=NSCocoaErrorDomain Code=4097 "connection to service with pid 68717 created from an endpoint" UserInfo={NSDebugDescription=connection to service with pid 68717 created from an endpoint}}}}}
- 
- 
+
 MacOS(Desiened for iPad)で駒移動ができない不具合
 --------------------------------------------------
 > 2022-07-04 19:41:05.721240+0900 将棋盤[11108:591202] Cannot find representation conforming to type com.apple.UIKit.private.drag-suggested-name
 > 2022-07-04 19:41:05.723046+0900 将棋盤[11108:591259] [DragAndDrop] UIDragging: dataForItemIndex:0 type:com.apple.UIKit.private.drag-suggested-name got error: Error Domain=NSItemProviderErrorDomain Code=-1000 "Cannot load representation of type com.apple.UIKit.private.drag-suggested-name" UserInfo={NSLocalizedDescription=Cannot load representation of type com.apple.UIKit.private.drag-suggested-name}
 > アプリ外部からのアイテムです
 
+
+その他
+============
 
 以前の駒の種類の実装。参考資料として一応残している
 -------------------------------------------
