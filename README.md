@@ -22,8 +22,12 @@ iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 
 盤面をテキストデータとして書き出したり読み込んだり出来ます。
 
+SharePlayに対応しています。
 
-<!--==== English description ====-->
+FaceTimeしながら友達と将棋盤を囲むことが出来ます。
+
+SharePlay機能では「2人でシンプルに対局する」だけでなく、「大人数で詰将棋を解く」などの様々なユースケースを想定しています。
+
 
 Simple Shogi board.
 
@@ -38,6 +42,12 @@ You can reduce / increase pieces.
 English term option.
 
 Output/Input function to/from plain text.
+
+Support SharePlay.
+
+Play shogi board with FaceTime.
+
+Use-case: \"\Play game with a friend\", \"Discuss shogi problem with many people\", etc.
 
 
 ### Localization: All
