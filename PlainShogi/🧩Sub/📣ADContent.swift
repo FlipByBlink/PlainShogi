@@ -2,7 +2,7 @@ import SwiftUI
 
 struct 📣ADContent: ViewModifier {
     @EnvironmentObject var 🛒: 🛒StoreModel
-    @State private var ⓐpp: 📣MyApp = .pickUpAppWithout(.Plain将棋盤)
+    @State private var ⓐpp: 📣MyApp = .pickUpAppWithout(.PlainShogiBoard)
     func body(content: Content) -> some View {
         content
             .sheet(isPresented: $🛒.🚩showADSheet) {
