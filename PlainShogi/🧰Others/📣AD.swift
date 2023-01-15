@@ -65,6 +65,7 @@ struct 📣ADSheet: View {
                 .scaledToFit()
         }
         .accessibilityHidden(true)
+        .disabled(🛒.🚩purchased)
     }
     private func ⓘcon() -> some View {
         Link(destination: self.ⓐpp.url) {
@@ -73,6 +74,7 @@ struct 📣ADSheet: View {
                 .frame(width: 60, height: 60)
         }
         .accessibilityHidden(true)
+        .disabled(🛒.🚩purchased)
     }
     private func ⓝame() -> some View {
         Link(destination: self.ⓐpp.url) {
@@ -81,6 +83,7 @@ struct 📣ADSheet: View {
         }
         .buttonStyle(.plain)
         .accessibilityHidden(true)
+        .disabled(🛒.🚩purchased)
     }
     private func ⓓescription() -> some View {
         Text(self.ⓐpp.description)
@@ -96,6 +99,7 @@ struct 📣ADSheet: View {
             }
             .foregroundColor(.primary)
         }
+        .disabled(🛒.🚩purchased)
     }
     private func ⓐdMenuLink() -> some View {
         NavigationLink {
@@ -126,7 +130,8 @@ struct 📣ADSheet: View {
                     .overlay {
                         Image(systemName: "trash.square.fill")
                             .resizable()
-                            .symbolRenderingMode(.multicolor)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.white, .red)
                             .frame(width: 160, height: 160)
                             .rotationEffect(.degrees(5))
                             .shadow(radius: 12)
