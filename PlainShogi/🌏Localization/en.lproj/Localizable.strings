@@ -36,8 +36,8 @@
 
 // ==== SharePlay ====
 "概要" = "Description";
-"現在、SharePlay中" = "SharePlaying now";
-"現在、SharePlayしていません" = "Not SharePlaying";
+"現在、SharePlay中" = "SharePlay is active.";
+"現在、SharePlayしていません" = "SharePlay is inactive.";
 "アクティビティに参加しました" = "Joined activity";
 "共有将棋盤" = "SharedShogi";
 "事前準備完了" = "Prepared";
