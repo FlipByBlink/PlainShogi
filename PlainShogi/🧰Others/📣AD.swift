@@ -146,7 +146,7 @@ struct 📣ADMenu: View {
     var body: some View {
         List {
             Section {
-                Text("This App shows banner advertisement about applications on AppStore. These are several Apps by this app's developer. It is activated after you launch this app 5 times.")
+                Text("This App shows advertisement about applications on AppStore. These are several Apps by this app's developer. It is activated after you launch this app 5 times.")
                     .padding()
                     .textSelection(.enabled)
             } header: {
