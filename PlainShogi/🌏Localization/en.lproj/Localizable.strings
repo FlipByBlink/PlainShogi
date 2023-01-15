@@ -14,6 +14,7 @@
 "履歴" = "History";
 "復元" = "Restore";
 "削除" = "Remove";
+"直近の約30局面を履歴として保存します" = "Save 30 stages.";
 "これまでの履歴を削除しました。" = "Removed history.";
 "現在、履歴はありません。" = "Nothing.";
 "オプション" = "Option";
@@ -31,6 +32,52 @@
 "他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。" = "Import shogi board by dropping export-text into shogi board. The text head is 「☗」. ";
 "テキスト書き出し例" = "Example";
 "テキスト" = "Text";
+
+// ==== SharePlay ====
+"現在、SharePlay中" = "SharePlaying now";
+"現在、SharePlayしていません" = "Not SharePlaying";
+"アクティビティに参加しました" = "Joined activity";
+"共有将棋盤" = "SharedShogi";
+"事前準備完了" = "Prepared";
+"現在、友達と繋がっているようです。友達が立ち上げたアクティビティに参加するか、もしくは自分でアクティビティを起動しましょう。" = "You are currently connected to a friend. Join an activity launched by your friend OR launch an activity by yourself.";
+"友達が既に「共有将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。" = "If your friend has already started a \"SharedShogi\" activity, you can join the activity by manipulating the system-side UI.";
+"SharePlayに参加する" = "Join SharePlay";
+"自分からSharePlayを開始する事もできます。アクティビティを起動したら友達にSharePlay参加を促しましょう。" = "You can also start SharePlay yourself. Once you have started an activity, encourage your friends to join SharePlay.";
+"アクティビティ「共有将棋盤」を起動する" = "Activate \"SharedShogi\" activity";
+"自分からSharePlayを開始する" = "Start SharePlay by oneself";
+"アクティビティから離脱する" = "Leave the activity";
+"アクティビティから離脱しても、自分以外はアクティビティに参加したままです。" = "Even if you leave the activity, everyone remains in the activity except you.";
+"アクティビティを終了する" = "Close the activity";
+"アクティビティを終了すると、全員がアクティビティから離脱します。" = "When you end the activity, everyone will leave the activity.";
+"アクティビティを終了しますか？" = "Close the activity?";
+"はい、アクティビティを終了します" = "Yes, close the activity.";
+"アクティビティ" = "Activity";
+"現在の参加者数" = "Active participant";
+"状況" = "State";
+"FaceTime中にこのアプリを立ち上げると、アクティビティを起動することが出来ます。アクティビティを起動すると、通話相手のデバイスではSharePlay参加を促す通知が表示されます。" = "If you launch this application during FaceTime, you can start an activity. When you launch an activity, the caller's device will show a notification asking them to join SharePlay.";
+"はじめ方" = "How to start";
+"SharePlayについて" = "About SharePlay";
+"\"FaceTime App でSharePlayを使用すると、友達や家族とのFaceTime通話中にテレビ番組、映画、ミュージックを同期した状態でストリーム再生することができます。通話に参加しているほかの人とリアルタイムにつながって楽しみましょう。再生が同期され、コントロールが共有されるため、同時に同じ瞬間を見たり聞いたりできます。\"" = "\"With SharePlay in the FaceTime app, you can stream TV shows, movies, and music in sync with friends and family while on a FaceTime call together. Enjoy a real-time connection with others on the call—with synced playback and shared controls, you see and hear the same moments at the same time.\"";
+"\"SharePlayは、FaceTime通話中にほかのAppでも使用できます。\"" = "\"SharePlay can also be used in other apps during a FaceTime call.\"";
+"引用: Apple サポートサイト" = "Cite: Apple support site";
+"iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。" = "On devices running iOS 16 or later, SharePlay is also available in \"Messages\" app. If you are invited to \"SharedShogi\" activity in \"Messages\" app, please join the activity in \"Messages\" app.";
+"**以下の項目はユーザー間で同期されません**
+・「上下反転」オプション
+・「English表記」オプション
+・「強調表示を常時オフ」オプション
+・編集モードに移行しているかどうか
+・ドラッグしている最中の駒の様子(ドラッグを完了させたタイミングで操作結果が同期されます)" = "**Not sync between users**
+・Reverse vertically option
+・English term option
+・Disable shift sign option
+・On edit mode
+・Dragging state";
+"注意事項" = "Notice";
+"SharePlayではユーザーのデバイス間で同期するすべてのセッションデータに対してエンドツーエンド暗号化が用いられます。アプリ開発者やAppleは、このデータの復号鍵を保持していません。つまり、SharePlay中に通信されるデータを第三者が確認する事はありません。" = "The Group Activities framework uses end-to-end encryption on all session data. Developer and Apple doesn’t have the keys to decrypt this data.";
+"データ管理" = "Data management";
+"友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する" = "Call FaceTime, or Contact on \"Message\"";
+"友達に「FaceTime」通話をかける" = "Call FaceTime";
+"SharePlayの準備をする" = "Prepare SharePlay";
 
 // ==== AppStore Description ====
 "🌏AppStoreDescription" = "Simple Shogi board.

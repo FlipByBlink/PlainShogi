@@ -289,8 +289,8 @@ struct SharePlay紹介リンク: View {
                     .foregroundStyle(.quaternary)
                     .frame(width: 4)
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(#""FaceTime App でSharePlayを使用すると、友達や家族とのFaceTime通話中にテレビ番組、映画、ミュージックを同期した状態でストリーム再生することができます。通話に参加しているほかの人とリアルタイムにつながって楽しみましょう。再生が同期され、コントロールが共有されるため、同時に同じ瞬間を見たり聞いたりできます。""#)
-                    Text(#""SharePlayは、FaceTime通話中にほかのAppでも使用できます。""#)
+                    Text("\"FaceTime App でSharePlayを使用すると、友達や家族とのFaceTime通話中にテレビ番組、映画、ミュージックを同期した状態でストリーム再生することができます。通話に参加しているほかの人とリアルタイムにつながって楽しみましょう。再生が同期され、コントロールが共有されるため、同時に同じ瞬間を見たり聞いたりできます。\"")
+                    Text("\"SharePlayは、FaceTime通話中にほかのAppでも使用できます。\"")
                 }
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
