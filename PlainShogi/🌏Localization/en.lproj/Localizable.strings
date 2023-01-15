@@ -54,6 +54,10 @@
 "アクティビティ" = "Activity";
 "現在の参加者数" = "Active participant";
 "状況" = "State";
+"待機中" = "waiting";
+"参加中" = "joined";
+"無効" = "invalidated";
+"なし" = "nothing";
 "FaceTime中にこのアプリを立ち上げると、アクティビティを起動することが出来ます。アクティビティを起動すると、通話相手のデバイスではSharePlay参加を促す通知が表示されます。" = "If you launch this application during FaceTime, you can start an activity. When you launch an activity, the caller's device will show a notification asking them to join SharePlay.";
 "はじめ方" = "How to start";
 "SharePlayについて" = "About SharePlay";

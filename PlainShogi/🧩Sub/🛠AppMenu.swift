@@ -181,7 +181,7 @@ struct 細かな使い方リンク: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: 160)
-                    .border(.primary)
+                    .border(.black)
                     .padding(8)
             }
             .padding()
@@ -195,7 +195,7 @@ struct 細かな使い方リンク: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: 120)
-                    .border(.primary)
+                    .border(.black)
                     .padding(8)
             }
             .padding()

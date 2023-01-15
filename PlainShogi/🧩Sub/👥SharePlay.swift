@@ -164,7 +164,7 @@ struct SharePlayガイド: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: 180)
-                    .border(.primary)
+                    .border(.black)
             }
         } header: {
             Text("SharePlayに参加する")
@@ -268,7 +268,7 @@ struct SharePlay紹介リンク: View {
                             .resizable()
                             .scaledToFit()
                             .frame(maxHeight: 180)
-                            .border(.primary)
+                            .border(.black)
                     }
                 } header: {
                     Text("はじめ方")
@@ -317,7 +317,7 @@ struct SharePlay紹介リンク: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: 120)
-                    .border(.primary)
+                    .border(.black)
             }
         }
     }
