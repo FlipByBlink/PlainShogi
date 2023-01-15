@@ -1,0 +1,24 @@
+"1.3" = "SharePlay";
+
+"1.2.2" = "Adjust the look on draging a piece
+small bug fix";
+
+"1.2.1" = "small bug fix";
+
+"1.2" = "- Directly move a piece to out-of-board
+- Add Edit Mode
+- Add shortcut function by long press menu button
+- Delete function to delete a piece by 3 tapping
+- Add In-App Purchase to hide AD
+- Change frequency in AD (\"1 in 3\" → \"after 5, every\")
+- Widely refactoring
+- Various bugfixes and improvements";
+
+"1.1" = "Add english term option
+Add plain text export/import function
+Add function to check source code in app
+Add self-AD banner
+Delete option to hide edge line
+Small fix/improve";
+
+"1.0" = "Initial release";

@@ -1,32 +1,25 @@
+// Nothing
 
-// ==== AppStore Description ====
-"🌏AppStoreDescription" = "駒を自由に動かせるただの将棋盤です。
-
-iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
-
-文字のサイズや太さなどはOSシステム設定に適応して変わります。
-
-任意の駒を消したり増やしたりことも出来ます。
-
-駒を英語表記に変えられます。
-
-盤面をテキストデータとして書き出したり読み込んだり出来ます。
-";
-
-// ==========================================
-// ================ Template ================
+// =======================================================
+// ====================== Template =======================
+"Menu" = "メニュー";
 "Open menu" = "メニューを開く";
 "Option" = "オプション";
+"Done" = "完了";
 "Dismiss" = "閉じる";
 "Cancel" = "取り消す";
+"Error" = "エラー";
+"OK" = "了解しました";
+"Description" = "概要";
 
-// ======== Information =========
-"Information" = "情報";
+// ======== About App =========
+"About App" = "アプリについて";
 "Version" = "バージョン";
 "builded on %@" = "%@ にビルドしました";
+"released on %@" = "%@ にリリースしました";
 "Version History" = "バージョン履歴";
-"About" = "概要";
 "Open AppStore page" = "AppStoreページを開く";
+"Review on AppStore" = "AppStoreでレビューを書く";
 "Privacy Policy" = "プライバシーポリシー";
 "Source code" = "ソースコード";
 "Web Repository" = "Web リポジトリー";
@@ -35,29 +28,27 @@ iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 // ======== AD / In-App Purchase =========
 "AD" = "広告";
 "AD / Purchase" = "広告/課金";
-"Description" = "概要";
 "About AD / Purchase" = "広告/課金について";
+"About AD" = "広告について";
 "In-App Purchase" = "アプリ内課金";
+"Purchase" = "アプリ内課金";
 "Hide AD banner" = "広告を非表示にする";
 "Restore Purchases" = "購入情報を復元する";
 "Restored transactions" = "購入情報を確認しました";
-"Done" = "完了";
-"Error" = "エラー";
 "Open AD link" = "広告のリンクを開く";
-"OK" = "了解しました";
-
 "This App shows banner advertisement about applications on AppStore. These are several Apps by this app's developer. It is activated after you launch this app 5 times." = "広告としてAppStoreアプリケーションに関するバナーを表示します。本アプリのデベロッパーによるアプリ群が表示対象となります。広告バナーはアプリを5回起動すると有効になります。";
-
 "Simple and normal ebook reader (for fixed-layout). Only a special feature. Turn a page with slightly longish voluntary blink." = "シンプルで一般的な電子書籍リーダー(固定レイアウト向け)。特殊な機能は1つだけ。目を閉じる時間を意識的にわずかに長くさせた瞬きでページめくりができます。";
-
 "Alarm clock with taking a long time from small volume to max volume." = "時間をかけて少しずつ音量が大きくなるアラームアプリ。";
-
+"Simple Shogi board App. Based on iOS system UI design." = "ただの将棋盤。iOSの標準デザインに沿ったシンプルなアプリです。";
 "Register weight data to the Apple \"Health\" application pre-installed on iPhone in the fastest possible way (as manual)." = "「ヘルスケア」アプリに体重データを(手動としては)最速で登録するためのアプリ。";
-
 "Register body temperature data to the \"Health\" app pre-installed on iPhone in the fastest possible way (as manual)." = "「ヘルスケア」アプリに体温データを(手動としては)最速で登録するためのアプリ。";
+"Flashcard on widget. Memorize a note in everyday life." = "ウィジェットを暗記帳にしよう。日常の中で知識を脳に染み込ませるアプリです。";
+"Notes widget on lock screen." = "ロック画面ウィジェットをメモ帳にしよう。";
 
 // ======== Transparency Report ========
+"Transparency Report" = "透明性レポート";
 "Developer / Publisher" = "開発 / パブリッシャー";
+"AppStore Release" = "AppStore リリース";
 "Individual" = "個人系";
 "The System" = "構成";
 "Name" = "名前";
@@ -69,6 +60,7 @@ iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 "Japan" = "日本";
 "native language" = "ネイティブ言語";
 "Japanese" = "日本語";
+"income" = "収入";
 "As of 2021" = "2021年時点";
 "Image" = "写真";
 "Taken on 2021-11" = "2021年11月に撮影";
@@ -85,3 +77,4 @@ iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 "Released body weight registration app \"TapWeight\" ver 1.0." = "体重登録アプリ「TapWeight」ver1.0をリリース。";
 "Released body temperature registration app \"TapTemperature\" ver 1.0." = "体温登録アプリ「TapTemperature」ver1.0をリリース。";
 "Adopted In-App Purchase model for the first time on TapWeight ver 1.1.1" = "TapWeight、有料課金モデルを初めて採用したver1.1.1をリリース。";
+"Released LockInNote and MemorizeWidget on iOS16 release occasion." = "iOS16のリリースに合わせて「ロックノート」と「暗記ウィジェット」をリリース。";

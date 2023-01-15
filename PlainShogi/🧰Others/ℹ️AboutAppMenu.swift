@@ -1,11 +1,12 @@
 typealias 🛒Storeモデル = 🛒StoreModel
 typealias 📣広告コンテンツ = 📣ADContent
 
-let 📜versionInfos = 📜VersionInfo.history(("1.2.2", ""),
+let 📜versionInfos = 📜VersionInfo.history(("1.3", "2023-01-16"),
+                                           ("1.2.2", "2022-08-18"),
                                            ("1.2.1", "2022-07-21"),
                                            ("1.2", "2022-07-09"),
                                            ("1.1", "2022-05-07"),
-                                           ("1.0", "2022-04-21"))//TODO: Edit
+                                           ("1.0", "2022-04-21"))
 
 let 🔗appStoreProductURL = URL(string: "https://apps.apple.com/app/id1620268476")!
 

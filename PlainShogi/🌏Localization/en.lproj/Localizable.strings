@@ -4,6 +4,7 @@
 "あそび方" = "How to";
 "駒の動かし方" = "How to";
 "はじめる" = "OK";
+"メニュー" = "Menu";
 "長押しして駒を持ち上げ、そのままスライドして移動させる" = "Long press a piece, move it";
 "長押しして駒を持ち上げ、そのままスライドして移動させる。" = "Long press a piece, move it.";
 "ダブルタップで盤上の駒を裏返す" = " Turn a piece on the board by double tap";
@@ -34,6 +35,7 @@
 "テキスト" = "Text";
 
 // ==== SharePlay ====
+"概要" = "Description";
 "現在、SharePlay中" = "SharePlaying now";
 "現在、SharePlayしていません" = "Not SharePlaying";
 "アクティビティに参加しました" = "Joined activity";
@@ -82,19 +84,3 @@
 "友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する" = "Call FaceTime, or Contact on \"Message\"";
 "友達に「FaceTime」通話をかける" = "Call FaceTime";
 "SharePlayの準備をする" = "Prepare SharePlay";
-
-// ==== AppStore Description ====
-"🌏AppStoreDescription" = "Simple Shogi board.
-
-You can move a piece freely.
-
-This app based on iOS system UI design.
-
-Character adapts font size and weight by OS option.
-
-You can reduce / increase pieces.
-
-English term option.
-
-Output/Input function to/from plain text.
-";
