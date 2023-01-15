@@ -151,6 +151,7 @@
 		F5019FD2296ABBBD007CB14D /* memo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = memo.md; sourceTree = "<group>"; };
 		F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📃TextImportExport.swift"; sourceTree = "<group>"; };
 		F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F5BBEB662973A4040064F0EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📜History.swift"; sourceTree = "<group>"; };
 		F5C9FB00296CFF7A00B513D8 /* PlainShogi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlainShogi.entitlements; sourceTree = "<group>"; };
 		F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👥SharePlay.swift"; sourceTree = "<group>"; };
@@ -258,6 +259,7 @@
 				F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */,
 				F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */,
 				F5019FD0296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift */,
+				F5BBEB662973A4040064F0EF /* Info.plist */,
 				F5C9FB00296CFF7A00B513D8 /* PlainShogi.entitlements */,
 				F5019FD2296ABBBD007CB14D /* memo.md */,
 				128D1570280FE47F003FF480 /* Preview Content */,
@@ -542,6 +544,7 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PlainShogi/🧩Sub/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -574,6 +577,7 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PlainShogi/🧩Sub/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
