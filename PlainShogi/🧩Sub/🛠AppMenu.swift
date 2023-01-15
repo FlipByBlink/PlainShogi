@@ -18,13 +18,16 @@ struct 🛠メニューボタン: View {
                     .dynamicTypeSize(...DynamicTypeSize.accessibility3)
                     .padding(2)
                     .background {
-                        Circle().foregroundStyle(.background)
+                        Circle()
+                            .foregroundStyle(.background)
+                            .opacity(0.8)
                     }
-                    .padding(8)
             } primaryAction: {
                 📱.🚩メニューを表示 = true
                 振動フィードバック()
             }
+            .padding(.trailing, 8)
+            .padding(.bottom, 8)
             .padding()
             .tint(.primary)
             .accessibilityLabel("Open menu")
