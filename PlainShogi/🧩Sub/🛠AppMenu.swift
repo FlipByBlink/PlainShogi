@@ -93,6 +93,7 @@ struct SharePlayインジケーターやメニューボタン: View {
 
 struct 🛠アプリメニュー: View {
     @EnvironmentObject var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
         Group {
             if #available(iOS 16.0, *) {
@@ -124,7 +125,11 @@ struct 🛠アプリメニュー: View {
                     Label("操作した直後の駒を強調表示する機能を無効にする", systemImage: "square.slash")
                 }
             } header: {
-                Text("オプション")
+                if self.ⓖroupStateObserver.isEligibleForGroupSession {
+                    Text("オプション(共有相手との同期なし)")
+                } else {
+                    Text("オプション")
+                }
             }
             Section { 履歴リンク() }
             Section {

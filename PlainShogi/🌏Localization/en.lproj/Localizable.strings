@@ -19,6 +19,7 @@
 "これまでの履歴を削除しました。" = "Removed history.";
 "現在、履歴はありません。" = "Nothing.";
 "オプション" = "Option";
+"オプション(共有相手との同期無し)" = "Option(No sync between users)";
 "上下反転" = "Reverse vertically";
 "上下反転させる" = "Reverse vertically";
 "上下反転を元に戻す" = "Restore reverse";
@@ -72,7 +73,7 @@
 ・「English表記」オプション
 ・「強調表示を常時オフ」オプション
 ・編集モードに移行しているかどうか
-・ドラッグしている最中の駒の様子(ドラッグを完了させたタイミングで操作結果が同期されます)" = "**Not sync between users**
+・ドラッグしている最中の駒の様子(ドラッグを完了させたタイミングで操作結果が同期されます)" = "**No sync between users**
 ・Reverse vertically option
 ・English term option
 ・Disable shift sign option
