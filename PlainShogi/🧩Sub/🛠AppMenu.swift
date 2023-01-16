@@ -307,7 +307,7 @@ struct ℹ️AboutAppLink: View {
                             .opacity(0.75)
                             .lineLimit(1)
                             .minimumScaleFactor(0.1)
-                        Text("Application for iPhone / iPad")
+                        Text("App for iPhone / iPad")
                             .font(.footnote)
                             .fontWeight(.medium)
                             .foregroundStyle(.secondary)
@@ -320,9 +320,7 @@ struct ℹ️AboutAppLink: View {
                 .frame(width: 📐.size.width)
             }
             .frame(height: 200)
-            
             🔗AppStoreLink()
-            
             NavigationLink  {
                 ℹ️AboutAppMenu()
             } label: {
