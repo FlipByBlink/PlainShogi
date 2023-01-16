@@ -208,7 +208,7 @@ struct コマ: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundStyle(.background)
+                .foregroundColor(Color(.systemBackground))
             Text(self.表記)
                 .fontWeight(self.強調表示 ? .bold : nil)
                 .underline(self.アンダーライン)

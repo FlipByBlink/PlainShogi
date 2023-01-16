@@ -6,26 +6,32 @@ struct 📣ADSheet: View {
     @EnvironmentObject var 🛒: 🛒StoreModel
     private var ⓐpp: 📣MyApp
     var body: some View {
-        NavigationView {
-            Group {
-                if self.verticalSizeClass == .regular {
-                    self.ⓥerticalLayout()
-                } else {
-                    self.ⓗorizontalLayout()
-                }
-            }
-            .modifier(Self.ⓟurchasedEffect())
-            .navigationTitle("AD")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    self.ⓓismissButton()
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    self.ⓐdMenuLink()
-                }
-            }
-            .navigationBarTitleDisplayMode(.inline)
+        if #available(iOS 16.0, *) {
+            NavigationStack { self.ⓒontent() }
+        } else {
+            NavigationView { self.ⓒontent() }
+                .navigationViewStyle(.stack)
         }
+    }
+    private func ⓒontent() -> some View {
+        Group {
+            if self.verticalSizeClass == .regular {
+                self.ⓥerticalLayout()
+            } else {
+                self.ⓗorizontalLayout()
+            }
+        }
+        .modifier(Self.ⓟurchasedEffect())
+        .navigationTitle("AD")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                self.ⓓismissButton()
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                self.ⓐdMenuLink()
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
     private func ⓥerticalLayout() -> some View {
         VStack(spacing: 16) {
