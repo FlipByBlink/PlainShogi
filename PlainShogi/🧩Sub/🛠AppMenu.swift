@@ -31,9 +31,7 @@ struct 🛠メニューボタン: View {
             .padding()
             .tint(.primary)
             .accessibilityLabel("Open menu")
-            .sheet(isPresented: $📱.🚩履歴を表示) {
-                NavigationView { 履歴List() }
-            }
+            .sheet(isPresented: $📱.🚩履歴を表示) { self.履歴単体メニュー() }
         }
     }
     private func 上下反転ボタン() -> some View {
@@ -48,6 +46,20 @@ struct 🛠メニューボタン: View {
             📱.🚩履歴を表示 = true
         } label: {
             Label("履歴", systemImage: "clock")
+        }
+    }
+    private func 履歴単体メニュー() -> some View {
+        NavigationView {
+            履歴List()
+                .toolbar {
+                    Button {
+                        📱.🚩履歴を表示 = false
+                        振動フィードバック()
+                    } label: {
+                        Image(systemName: "chevron.down")
+                            .grayscale(1.0)
+                    }
+                }
         }
     }
 }
@@ -81,41 +93,49 @@ struct SharePlayインジケーターやメニューボタン: View {
 struct 🛠アプリメニュー: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     var body: some View {
-        NavigationView {
-            List {
-                Self.SharePlay誘導セクション()
-                self.あそび方セクション()
-                Section {
-                    🛠盤面初期化ボタン()
-                    🛠盤面整理開始ボタン()
-                    🛠直近操作強調表示クリアボタン()
-                }
-                Section {
-                    Toggle(isOn: $📱.🚩上下反転) {
-                        Label("上下反転", systemImage: "arrow.up.arrow.down")
-                    }
-                    Toggle(isOn: $📱.🚩English表記) {
-                        Label("English表記", systemImage: "p.circle")
-                    }
-                    Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
-                        Label("操作した直後の駒を強調表示する機能を無効にする", systemImage: "square.slash")
-                    }
-                } header: {
-                    Text("オプション")
-                }
-                Section { 履歴リンク() }
-                Section {
-                    SharePlay紹介リンク()
-                    細かな使い方リンク()
-                    テキスト書き出し読み込み紹介リンク()
-                }
-                📣ADMenuLink()
-                ℹ️AboutAppLink()
+        Group {
+            if #available(iOS 16.0, *) {
+                NavigationStack { self.ⓒontent() }
+            } else {
+                NavigationView { self.ⓒontent() }
+                    .navigationViewStyle(.stack)
             }
-            .navigationTitle("メニュー")
-            .toolbar { 閉じるボタン() }
         }
-        .onDisappear { 📱.🚩メニューを表示 = false }
+        //.onDisappear { 📱.🚩メニューを表示 = false } //TODO: 再検討
+    }
+    private func ⓒontent() -> some View {
+        List {
+            Self.SharePlay誘導セクション()
+            self.あそび方セクション()
+            Section {
+                🛠盤面初期化ボタン()
+                🛠盤面整理開始ボタン()
+                🛠直近操作強調表示クリアボタン()
+            }
+            Section {
+                Toggle(isOn: $📱.🚩上下反転) {
+                    Label("上下反転", systemImage: "arrow.up.arrow.down")
+                }
+                Toggle(isOn: $📱.🚩English表記) {
+                    Label("English表記", systemImage: "p.circle")
+                }
+                Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
+                    Label("操作した直後の駒を強調表示する機能を無効にする", systemImage: "square.slash")
+                }
+            } header: {
+                Text("オプション")
+            }
+            Section { 履歴リンク() }
+            Section {
+                SharePlay紹介リンク()
+                細かな使い方リンク()
+                テキスト書き出し読み込み紹介リンク()
+            }
+            📣ADMenuLink()
+            ℹ️AboutAppLink()
+        }
+        .navigationTitle("メニュー")
+        .toolbar { self.閉じるボタン() }
     }
     private func あそび方セクション() -> some View {
         Section {
