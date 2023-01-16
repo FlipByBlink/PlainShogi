@@ -90,6 +90,7 @@ struct SharePlayインジケーター: View {
                     SharePlayガイド(self.$🚩ガイドを表示)
                         .toolbar { self.閉じるボタン() }
                 }
+                .navigationViewStyle(.stack)
             }
         }
     }

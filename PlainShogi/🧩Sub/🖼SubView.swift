@@ -156,6 +156,7 @@ struct 手駒編集シート: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }

@@ -61,6 +61,7 @@ struct 🛠メニューボタン: View {
                     }
                 }
         }
+        .navigationViewStyle(.stack)
     }
 }
 
