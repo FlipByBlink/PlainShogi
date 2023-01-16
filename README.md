@@ -22,6 +22,7 @@ iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 
 盤面をテキストデータとして書き出したり読み込んだり出来ます。
 
+
 SharePlayに対応しています。
 
 FaceTimeしながら友達と将棋盤を囲むことが出来ます。
@@ -42,6 +43,7 @@ You can reduce / increase pieces.
 English term option.
 
 Output/Input function to/from plain text.
+
 
 Support SharePlay.
 

@@ -10,12 +10,12 @@
       "internalID" : "4D4A3592",
       "localizations" : [
         {
-          "description" : "Option to hide self-AD banner.",
-          "displayName" : "Hide AD banner(Xcode)",
+          "description" : "Option to hide self-AD.",
+          "displayName" : "Hide AD(Xcode)",
           "locale" : "en_US"
         },
         {
-          "description" : "広告バナーを非表示にするオプション",
+          "description" : "広告を非表示にするオプション",
           "displayName" : "広告を非表示にする(Xcode)",
           "locale" : "ja"
         }
@@ -32,7 +32,7 @@
 
   ],
   "version" : {
-    "major" : 1,
-    "minor" : 2
+    "major" : 2,
+    "minor" : 0
   }
 }
