@@ -9,9 +9,7 @@ struct 📣ADContent: ViewModifier {
                 📣ADSheet(self.ⓐpp)
             }
             .onAppear {
-                if 🛒.🚩adIsActive {
-                    🛒.🚩showADSheet = true
-                }
+                🛒.checkToShowADSheet()
             }
     }
 }
