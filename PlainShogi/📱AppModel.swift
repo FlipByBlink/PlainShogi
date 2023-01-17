@@ -345,3 +345,6 @@ class 📱アプリモデル: ObservableObject {
 enum 🚨エラー: Error {
     case 要修正
 }
+
+//MARK: SharePlay sample code
+//https://developer.apple.com/documentation/groupactivities/drawing_content_in_a_group_session
