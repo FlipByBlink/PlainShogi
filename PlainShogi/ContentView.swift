@@ -103,8 +103,7 @@ struct 盤上のコマもしくはマス: View {
                         }
                     }
             } else { // ==== マス ====
-                Rectangle()
-                    .foregroundStyle(.background)
+                Color(.systemBackground)
             }
         }
         .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, self.元々の位置, self.$🚩成り駒ダイアログを表示))
@@ -131,8 +130,7 @@ struct 盤外: View {
     }
     var body: some View {
         ZStack {
-            Rectangle()
-                .foregroundStyle(.background)
+            Color(.systemBackground)
             HStack(spacing: 0) {
                 ForEach(self.駒の並び順) { 職名 in
                     盤外のコマ(self.陣営, 職名)
@@ -207,8 +205,7 @@ struct コマ: View {
     private var アンダーライン: Bool
     var body: some View {
         ZStack {
-            Rectangle()
-                .foregroundColor(Color(.systemBackground))
+            Color(.systemBackground)
             Text(self.表記)
                 .fontWeight(self.強調表示 ? .bold : nil)
                 .underline(self.アンダーライン)
@@ -253,8 +250,7 @@ struct ドラッグプレビュー用コマ: View {
     private var 上下反転: Bool
     var body: some View {
         ZStack {
-            Rectangle()
-                .foregroundStyle(.background)
+            Color(.systemBackground)
             Text(self.表記)
                 .minimumScaleFactor(0.1)
         }
