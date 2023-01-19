@@ -127,13 +127,19 @@ struct 局面モデル: Codable {
         self.操作完了後の記録処理(.操作なし)
     }
     
-    mutating func 入れ替える(_ 新規局面: Self) {
-        self = 新規局面
-        self.操作完了後の記録処理(新規局面.直近の操作)
-    }
-    
     private mutating func 操作完了後の記録処理(_ パターン: 操作結果パターン) {
         self.直近の操作 = パターン
+        self.更新日時 = .now
+        self.現在の局面を履歴に追加する()
+    }
+    
+    mutating func SharePlayで受け取ったモデルを適用する(_ 新規局面: Self) {
+        self = 新規局面
+        self.現在の局面を履歴に追加する()
+    }
+    
+    mutating func 現在の局面として復元する(_ 過去の局面: Self) {
+        self = 過去の局面
         self.更新日時 = .now
         self.現在の局面を履歴に追加する()
     }

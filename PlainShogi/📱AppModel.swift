@@ -215,7 +215,7 @@ class 📱アプリモデル: ObservableObject {
     func 履歴を復元する(_ 過去の局面: 局面モデル) {
         self.🚩メニューを表示 = false
         self.🚩履歴を表示 = false
-        self.局面.入れ替える(過去の局面)
+        self.局面.現在の局面として復元する(過去の局面)
         self.SharePlay中なら現在の局面を参加者に送信する()
         UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
@@ -256,11 +256,11 @@ class 📱アプリモデル: ObservableObject {
                     if let 受信データの更新日時 = ⓜessage.更新日時 {
                         if let 現在の局面の更新日時 = self.局面.更新日時 {
                             if 受信データの更新日時 > 現在の局面の更新日時 {
-                                withAnimation(.default.speed(2.0)) { self.局面.入れ替える(ⓜessage) }
+                                withAnimation(.default.speed(2.0)) { self.局面.SharePlayで受け取ったモデルを適用する(ⓜessage) }
                                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                             }
                         } else {
-                            withAnimation(.default.speed(2.0)) { self.局面.入れ替える(ⓜessage) }
+                            withAnimation(.default.speed(2.0)) { self.局面.SharePlayで受け取ったモデルを適用する(ⓜessage) }
                             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                         }
                     }
@@ -322,7 +322,7 @@ class 📱アプリモデル: ObservableObject {
                 guard let データ = ⓢecureCodingObject as? Data else { return }
                 guard let テキスト = String(data: データ, encoding: .utf8) else { return }
                 if let インポートした局面 = 📃テキスト連携機能.局面モデルに変換する(テキスト) {
-                    self.局面.入れ替える(インポートした局面)
+                    self.局面.現在の局面として復元する(インポートした局面)
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
                 }
                 self.ドラッグ中の駒 = .無し
