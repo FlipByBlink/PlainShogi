@@ -124,7 +124,6 @@ struct 局面モデル: Codable {
     
     mutating func 初期化する() {
         self = .初期セット
-        self.操作完了後の記録処理(.操作なし)
     }
     
     private mutating func 操作完了後の記録処理(_ パターン: 操作結果パターン) {
