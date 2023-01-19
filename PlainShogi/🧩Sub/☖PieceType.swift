@@ -143,7 +143,7 @@ struct 局面モデル: Codable {
         self.現在の局面を履歴に追加する()
     }
     
-    private mutating func 現在の局面を履歴に追加する() {
+    private func 現在の局面を履歴に追加する() {
         do {
             let ⓔncoder = JSONEncoder()
             var 新しい履歴: [Self]
