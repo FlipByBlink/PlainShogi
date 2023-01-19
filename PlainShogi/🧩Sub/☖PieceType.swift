@@ -137,7 +137,7 @@ struct 局面モデル: Codable {
         self.現在の局面を履歴に追加する()
     }
     
-    mutating func 現在の局面として復元する(_ 過去の局面: Self) {
+    mutating func 現在の局面として適用する(_ 過去の局面: Self) {
         self = 過去の局面
         self.更新日時 = .now
         self.現在の局面を履歴に追加する()
