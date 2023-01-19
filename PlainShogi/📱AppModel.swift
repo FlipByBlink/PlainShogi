@@ -37,7 +37,7 @@ class 📱アプリモデル: ObservableObject {
     
     func 直近操作の強調表示をクリア() {
         self.局面.直近操作情報を消す()
-        self.履歴追加やSharePlay同期を行う()
+        self.SharePlay中なら現在の局面を参加者に送信する()
         振動フィードバック()
     }
     
@@ -45,7 +45,7 @@ class 📱アプリモデル: ObservableObject {
         if let 駒 = self.局面.盤駒[位置] {
             if 駒.職名.成駒あり {
                 self.局面.この駒を裏返す(位置)
-                self.履歴追加やSharePlay同期を行う()
+                self.SharePlay中なら現在の局面を参加者に送信する()
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             }
         }
@@ -53,25 +53,25 @@ class 📱アプリモデル: ObservableObject {
 
     func 盤面を初期化する() {
         self.局面.初期化する()
-        self.履歴追加やSharePlay同期を行う()
+        self.SharePlay中なら現在の局面を参加者に送信する()
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
 
     func 編集モードでこの手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.局面.編集モードでこの手駒を一個増やす(陣営, 職名)
-        self.履歴追加やSharePlay同期を行う()
+        self.SharePlay中なら現在の局面を参加者に送信する()
         振動フィードバック()
     }
 
     func 編集モードでこの手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.局面.編集モードでこの手駒を一個減らす(陣営, 職名)
-        self.履歴追加やSharePlay同期を行う()
+        self.SharePlay中なら現在の局面を参加者に送信する()
         振動フィードバック()
     }
 
     func 編集モードでこの盤駒を消す(_ 位置: Int) {
         self.局面.編集モードでこの盤駒を消す(位置)
-        self.履歴追加やSharePlay同期を行う()
+        self.SharePlay中なら現在の局面を参加者に送信する()
         振動フィードバック()
     }
     
@@ -145,7 +145,7 @@ class 📱アプリモデル: ObservableObject {
     
     private func 駒を移動し終わったらログを更新してフィードバックを発生させる() {
         self.ドラッグ中の駒 = .無し
-        self.履歴追加やSharePlay同期を行う()
+        self.SharePlay中なら現在の局面を参加者に送信する()
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
     }
     
@@ -212,17 +212,11 @@ class 📱アプリモデル: ObservableObject {
         }
     }
     
-    private func 履歴追加やSharePlay同期を行う(履歴追加: Bool = true, SharePlay同期: Bool = true) {
-        if 履歴追加 { self.局面.現在の局面を履歴に追加する() }
-        if SharePlay同期 { self.SharePlay中なら現在の局面を参加者に送信する() }
-    }
-    
     func 履歴を復元する(_ 過去の局面: 局面モデル) {
         self.🚩メニューを表示 = false
         self.🚩履歴を表示 = false
-        self.局面 = 過去の局面
-        self.局面.現時刻を更新日時として設定する()
-        self.履歴追加やSharePlay同期を行う()
+        self.局面.入れ替える(過去の局面)
+        self.SharePlay中なら現在の局面を参加者に送信する()
         UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
     
@@ -262,14 +256,12 @@ class 📱アプリモデル: ObservableObject {
                     if let 受信データの更新日時 = ⓜessage.更新日時 {
                         if let 現在の局面の更新日時 = self.局面.更新日時 {
                             if 受信データの更新日時 > 現在の局面の更新日時 {
-                                withAnimation(.default.speed(2.0)) { self.局面 = ⓜessage }
+                                withAnimation(.default.speed(2.0)) { self.局面.入れ替える(ⓜessage) }
                                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                self.履歴追加やSharePlay同期を行う(SharePlay同期: false)
                             }
                         } else {
-                            withAnimation(.default.speed(2.0)) { self.局面 = ⓜessage }
+                            withAnimation(.default.speed(2.0)) { self.局面.入れ替える(ⓜessage) }
                             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                            self.履歴追加やSharePlay同期を行う(SharePlay同期: false)
                         }
                     }
                 }
@@ -330,11 +322,10 @@ class 📱アプリモデル: ObservableObject {
                 guard let データ = ⓢecureCodingObject as? Data else { return }
                 guard let テキスト = String(data: データ, encoding: .utf8) else { return }
                 if let インポートした局面 = 📃テキスト連携機能.局面モデルに変換する(テキスト) {
-                    self.局面 = インポートした局面
+                    self.局面.入れ替える(インポートした局面)
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
                 }
                 self.ドラッグ中の駒 = .無し
-                self.履歴追加やSharePlay同期を行う()
             } catch {
                 print(#function, error)
             }
