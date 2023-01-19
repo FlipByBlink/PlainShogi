@@ -123,7 +123,7 @@ struct 局面モデル: Codable {
     }
     
     mutating func 現在の局面を履歴に追加する() {
-        self.更新日時 = .now
+        self.更新日時 = .now//FIXME: ここが怪しい
         do {
             let ⓔncoder = JSONEncoder()
             var 新しい履歴: [Self]
