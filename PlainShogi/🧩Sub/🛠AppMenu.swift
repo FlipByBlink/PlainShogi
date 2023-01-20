@@ -286,13 +286,14 @@ struct テキスト変換プレビュー: View {
                 .accessibilityHidden(true)
         }
         .onReceive(🕒timer) { _ in
-            if self.表示中の画像 == self.枚数 - 1 {
-                self.表示中の画像 = 0
-            } else {
-                self.表示中の画像 += 1
+            withAnimation(.default.speed(0.5)) {
+                if self.表示中の画像 == self.枚数 - 1 {
+                    self.表示中の画像 = 0
+                } else {
+                    self.表示中の画像 += 1
+                }
             }
         }
-        .animation(.default.speed(0.5), value: self.表示中の画像)
         .padding(8)
     }
 }
