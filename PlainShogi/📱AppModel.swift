@@ -50,25 +50,25 @@ class 📱アプリモデル: ObservableObject {
             }
         }
     }
-
+    
     func 盤面を初期化する() {
         self.局面.初期化する()
         self.SharePlay中なら現在の局面を参加者に送信する()
         UINotificationFeedbackGenerator().notificationOccurred(.error)
     }
-
+    
     func 編集モードでこの手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.局面.編集モードでこの手駒を一個増やす(陣営, 職名)
         self.SharePlay中なら現在の局面を参加者に送信する()
         振動フィードバック()
     }
-
+    
     func 編集モードでこの手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.局面.編集モードでこの手駒を一個減らす(陣営, 職名)
         self.SharePlay中なら現在の局面を参加者に送信する()
         振動フィードバック()
     }
-
+    
     func 編集モードでこの盤駒を消す(_ 位置: Int) {
         self.局面.編集モードでこの盤駒を消す(位置)
         self.SharePlay中なら現在の局面を参加者に送信する()
@@ -180,7 +180,7 @@ class 📱アプリモデル: ObservableObject {
                 return nil
         }
     }
-        
+    
     func 有効なドロップかチェックする(_ ⓘnfo: DropInfo) -> Bool {
         let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
         guard let ⓘtemProvider = ⓘtemProviders.first else { return false }
@@ -245,9 +245,9 @@ class 📱アプリモデル: ObservableObject {
                 .store(in: &ⓢubscriptions)
             ⓝewSession.$activeParticipants
                 .sink { ⓐctiveParticipants in
-                    let ⓝewParticipant = ⓐctiveParticipants.subtracting(ⓝewSession.activeParticipants)
+                    let ⓝewParticipants = ⓐctiveParticipants.subtracting(ⓝewSession.activeParticipants)
                     Task {
-                        try? await ⓝewMessenger.send(self.局面, to: .only(ⓝewParticipant))
+                        try? await ⓝewMessenger.send(self.局面, to: .only(ⓝewParticipants))
                     }
                 }
                 .store(in: &ⓢubscriptions)
@@ -256,12 +256,10 @@ class 📱アプリモデル: ObservableObject {
                     if let 受信データの更新日時 = ⓜessage.更新日時 {
                         if let 現在の局面の更新日時 = self.局面.更新日時 {
                             if 受信データの更新日時 > 現在の局面の更新日時 {
-                                withAnimation(.default.speed(2.0)) { self.局面.SharePlayで受け取ったモデルを適用する(ⓜessage) }
-                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                self.SharePlay中に共有相手から送信されたモデルを適用する(ⓜessage)
                             }
                         } else {
-                            withAnimation(.default.speed(2.0)) { self.局面.SharePlayで受け取ったモデルを適用する(ⓜessage) }
-                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            self.SharePlay中に共有相手から送信されたモデルを適用する(ⓜessage)
                         }
                     }
                 }
@@ -270,6 +268,13 @@ class 📱アプリモデル: ObservableObject {
             ⓝewSession.join()
             self.🚩参加アラート表示 = true
         }
+    }
+    
+    private func SharePlay中に共有相手から送信されたモデルを適用する(_ 新規局面: 局面モデル) {
+        withAnimation(.default.speed(2.5)) {
+            self.局面.更新日時を変更せずにモデルを適用する(新規局面)
+        }
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
     }
     
     private func リセットする() {

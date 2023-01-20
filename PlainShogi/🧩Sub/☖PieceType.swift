@@ -133,7 +133,8 @@ struct 局面モデル: Codable {
         self.現在の局面を履歴に追加する()
     }
     
-    mutating func SharePlayで受け取ったモデルを適用する(_ 新規局面: Self) {
+    //SharePlayデータ受け取り時
+    mutating func 更新日時を変更せずにモデルを適用する(_ 新規局面: Self) {
         self = 新規局面
         self.現在の局面を履歴に追加する()
     }
