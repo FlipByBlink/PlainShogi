@@ -323,6 +323,7 @@ class 📱アプリモデル: ObservableObject {
                 guard let テキスト = String(data: データ, encoding: .utf8) else { return }
                 if let インポートした局面 = 📃テキスト連携機能.局面モデルに変換する(テキスト) {
                     self.局面.現在の局面として適用する(インポートした局面)
+                    self.SharePlay中なら現在の局面を参加者に送信する()
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
                 }
                 self.ドラッグ中の駒 = .無し
