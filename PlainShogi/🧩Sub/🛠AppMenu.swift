@@ -109,6 +109,7 @@ struct 🛠アプリメニュー: View {
         List {
             Self.SharePlay誘導セクション()
             self.あそび方セクション()
+            Section { 履歴リンク() }
             Section {
                 🛠盤面初期化ボタン()
                 🛠盤面整理開始ボタン()
@@ -131,7 +132,6 @@ struct 🛠アプリメニュー: View {
                     Text("オプション")
                 }
             }
-            Section { 履歴リンク() }
             Section {
                 SharePlay紹介リンク()
                 細かな使い方リンク()
