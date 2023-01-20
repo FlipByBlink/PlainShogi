@@ -79,6 +79,7 @@ class 📱アプリモデル: ObservableObject {
     func 一手戻す(_ 一手前の局面: 局面モデル) {
         self.🚩メニューを表示 = false
         self.局面.現在の局面として適用する(一手前の局面)
+        self.SharePlay中なら現在の局面を参加者に送信する()
         UINotificationFeedbackGenerator().notificationOccurred(.success)
     }
     
