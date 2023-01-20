@@ -231,7 +231,7 @@ class 📱アプリモデル: ObservableObject {
     
     func 新規GroupSessionを受信したら設定する() async {
         for await ⓝewSession in 🄶roupActivity.sessions() {
-            self.局面.初期化する()
+            self.局面 = .初期セット
             self.ⓖroupSession = ⓝewSession
             let ⓝewMessenger = GroupSessionMessenger(session: ⓝewSession)
             self.ⓜessenger = ⓝewMessenger
