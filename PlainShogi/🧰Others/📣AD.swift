@@ -105,6 +105,7 @@ struct 📣ADSheet: View {
             }
             .foregroundColor(.primary)
         }
+        .accessibilityLabel("Open AppStore page")
         .disabled(🛒.🚩purchased)
     }
     private func ⓐdMenuLink() -> some View {
@@ -115,7 +116,7 @@ struct 📣ADSheet: View {
             Image(systemName: "questionmark.circle")
                 .foregroundColor(.primary)
         }
-        .accessibilityLabel("about AD")
+        .accessibilityLabel("About AD")
     }
     private func ⓓismissButton() -> some View {
         Button {
@@ -125,7 +126,7 @@ struct 📣ADSheet: View {
             Image(systemName: "chevron.down")
         }
         .foregroundStyle(.primary)
-        .accessibilityLabel("dismiss")
+        .accessibilityLabel("Dismiss")
     }
     struct ⓟurchasedEffect: ViewModifier {
         @EnvironmentObject var 🛒: 🛒StoreModel
@@ -159,7 +160,6 @@ struct 📣ADMenu: View {
             Section {
                 Text("This App shows advertisement about applications on AppStore. These are several Apps by this app's developer. It is activated after you launch this app 5 times.")
                     .padding()
-                    .textSelection(.enabled)
             } header: {
                 Text("Description")
             }

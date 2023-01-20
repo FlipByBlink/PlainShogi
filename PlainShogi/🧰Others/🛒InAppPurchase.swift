@@ -33,6 +33,7 @@ struct 🛒PurchaseView: View {
                     self.🚩buyingNow = false
                 }
             }
+            .accessibilityLabel("Buy")
             .disabled(self.🚩buyingNow)
             .buttonStyle(.borderedProminent)
             .overlay {
