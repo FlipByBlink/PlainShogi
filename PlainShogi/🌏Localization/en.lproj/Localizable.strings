@@ -6,6 +6,7 @@
 "はじめる" = "OK";
 "成り駒にしますか？" = "Promotion?";
 "成る" = "Yes";
+"キャンセル" = "Cancel";
 "メニュー" = "Menu";
 "長押しして駒を持ち上げ、そのままスライドして移動させる" = "Long press a piece, move it";
 "長押しして駒を持ち上げ、そのままスライドして移動させる。" = "Long press a piece, move it.";
@@ -17,9 +18,10 @@
 "履歴" = "History";
 "復元" = "Restore";
 "削除" = "Remove";
-"直近の約30局面を履歴として保存します" = "Save 30 stages.";
-"これまでの履歴を削除しました。" = "Removed history.";
-"現在、履歴はありません。" = "Nothing.";
+"直近の約30局面を履歴として保存します" = "Save 30 stages";
+"これまでの履歴を削除しました" = "Removed history";
+"現在、履歴はありません" = "Nothing";
+"履歴を全て削除する" = "Erase history";
 "オプション" = "Option";
 "オプション(共有相手との同期無し)" = "Option(No sync between users)";
 "上下反転" = "Reverse vertically";
