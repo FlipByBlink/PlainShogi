@@ -162,17 +162,17 @@ struct 手駒編集シート: View {
 }
 
 struct 初回起動時に駒の動かし方の説明アラート: ViewModifier {
-    @EnvironmentObject var 📱: 📱アプリモデル
     @AppStorage("起動回数") var 起動回数: Int = 0
+    @State private var 🚩駒操作説明アラートを表示: Bool = false
     func body(content: Content) -> some View {
         content
             .onAppear {
                 self.起動回数 += 1
                 if self.起動回数 == 1 {
-                    📱.🚩駒操作説明アラートを表示 = true
+                    self.🚩駒操作説明アラートを表示 = true
                 }
             }
-            .alert("駒の動かし方", isPresented: $📱.🚩駒操作説明アラートを表示) {
+            .alert("駒の動かし方", isPresented: self.$🚩駒操作説明アラートを表示) {
                 Button("はじめる") { 振動フィードバック() }
             } message: {
                 Text("長押しして駒を持ち上げ、そのままスライドして移動させる。")
