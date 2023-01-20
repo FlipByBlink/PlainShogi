@@ -139,14 +139,14 @@ class 🛒StoreModel: ObservableObject {
     
     @Published var 🚩showADSheet: Bool = false
     
-    func checkToShowADSheet() {
+    func checkToShowADSheetOnLaunch() {
         if !self.🚩purchased && (self.ⓛaunchCount > 5) {
             self.🚩showADSheet = true
         }
     }
     
     @Published private(set) var 🎫product: Product?
-    @AppStorage("Purchased") var 🚩purchased: Bool = false
+    @AppStorage("Purchased") private(set) var 🚩purchased: Bool = false
     @AppStorage("launchCount") private var ⓛaunchCount: Int = 0
     var 🚩unconnected: Bool { self.🎫product == nil }
     private var 🤖updateListenerTask: Task<Void, Error>? = nil

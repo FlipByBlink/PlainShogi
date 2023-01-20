@@ -9,7 +9,7 @@ struct 📣ADContent: ViewModifier {
                 📣ADSheet(self.ⓐpp)
             }
             .onAppear {
-                🛒.checkToShowADSheet()
+                🛒.checkToShowADSheetOnLaunch()
             }
     }
 }
