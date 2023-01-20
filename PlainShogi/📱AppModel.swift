@@ -109,7 +109,9 @@ class 📱アプリモデル: ObservableObject {
                 case .盤駒(let 出発地点):
                     try self.局面.盤駒を移動させる(出発地点, 置いた位置)
                     if self.局面.この駒の成りについて判断すべき(置いた位置, 出発地点) {
-                        self.🚩成駒確認アラートを表示 = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                            self.🚩成駒確認アラートを表示 = true
+                        }
                     }
                     self.駒を移動し終わったらログを更新してフィードバックを発生させる()
                 case .手駒(let 陣営, let 職名):
