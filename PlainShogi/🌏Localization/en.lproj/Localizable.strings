@@ -4,6 +4,8 @@
 "あそび方" = "How to";
 "駒の動かし方" = "How to";
 "はじめる" = "OK";
+"成り駒にしますか？" = "Promotion?";
+"成る" = "Yes";
 "メニュー" = "Menu";
 "長押しして駒を持ち上げ、そのままスライドして移動させる" = "Long press a piece, move it";
 "長押しして駒を持ち上げ、そのままスライドして移動させる。" = "Long press a piece, move it.";

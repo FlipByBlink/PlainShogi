@@ -17,6 +17,7 @@ class 📱アプリモデル: ObservableObject {
     @Published var 🚩駒を整理中: Bool = false
     
     @Published var ドラッグ中の駒: ドラッグ対象 = .無し
+    @Published var 🚩成駒確認アラートを表示: Bool = false
     
     func この盤駒の表記(_ 位置: Int) -> String {
         self.局面.盤上のこの駒の表記(位置, self.🚩English表記) ?? "🐛"
@@ -100,6 +101,9 @@ class 📱アプリモデル: ObservableObject {
             switch self.ドラッグ中の駒 {
                 case .盤駒(let 出発地点):
                     try self.局面.盤駒を移動させる(出発地点, 置いた位置)
+                    if self.局面.この駒の成りについて判断すべき(置いた位置, 出発地点) {
+                        self.🚩成駒確認アラートを表示 = true
+                    }
                     self.駒を移動し終わったらログを更新してフィードバックを発生させる()
                 case .手駒(let 陣営, let 職名):
                     try self.局面.手駒を盤上へ移動させる(陣営, 職名, 置いた位置)
