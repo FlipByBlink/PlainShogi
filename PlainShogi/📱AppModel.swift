@@ -232,8 +232,6 @@ class 📱アプリモデル: ObservableObject {
     @Published var ⓖroupSession: GroupSession<🄶roupActivity>?
     private var ⓜessenger: GroupSessionMessenger?
     
-    @Published var 🚩SharePlay参加完了アラートを表示: Bool = false
-    
     func 新規GroupSessionを受信したら設定する() async {
         for await ⓝewSession in 🄶roupActivity.sessions() {
             self.局面 = .初期セット
@@ -271,7 +269,6 @@ class 📱アプリモデル: ObservableObject {
             }
             ⓣasks.insert(ⓡeceiveDataTask)
             ⓝewSession.join()
-            self.🚩SharePlay参加完了アラートを表示 = true
         }
     }
     

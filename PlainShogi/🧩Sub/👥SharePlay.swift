@@ -48,10 +48,38 @@ struct SharePlay環境構築: ViewModifier {
             .animation(.default, value: self.ⓖroupStateObserver.isEligibleForGroupSession)
             .animation(.default, value: 📱.ⓖroupSession?.state)
             .task { await 📱.新規GroupSessionを受信したら設定する() }
-            .alert("アクティビティに参加しました", isPresented: $📱.🚩SharePlay参加完了アラートを表示) {
-                Button("はじめる") { print("参加アラートボタンを押しました") }
+            .modifier(参加完了通知バナー())
+    }
+}
+
+struct 参加完了通知バナー: ViewModifier {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    @State private var 🚩SharePlay参加完了アラートを表示: Bool = false
+    func body(content: Content) -> some View {
+        content
+            .onChange(of: 📱.ⓖroupSession?.state) {
+                if $0 == .joined {
+                    withAnimation(.default.speed(2)) {
+                        self.🚩SharePlay参加完了アラートを表示 = true
+                    }
+                }
             }
-        
+            .overlay {
+                if self.🚩SharePlay参加完了アラートを表示 {
+                    Label("アクティビティに参加しました", systemImage: "checkmark")
+                        .font(.headline)
+                        .padding(12)
+                        .border(.primary)
+                        .background(.background)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                withAnimation(.default.speed(0.33)) {
+                                    self.🚩SharePlay参加完了アラートを表示 = false
+                                }
+                            }
+                        }
+                }
+            }
     }
 }
 
