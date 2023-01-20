@@ -186,7 +186,7 @@ struct 初回起動時に駒の動かし方の説明バナー: ViewModifier {
                 self.起動回数 += 1
                 if self.起動回数 == 1 {
                     self.🚩駒操作説明バナーを表示 = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                         self.🚩駒操作説明バナーを表示 = false
                     }
                 }
