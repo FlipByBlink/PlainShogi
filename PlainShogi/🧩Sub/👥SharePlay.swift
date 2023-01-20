@@ -54,18 +54,18 @@ struct SharePlay環境構築: ViewModifier {
 
 struct 参加完了通知バナー: ViewModifier {
     @EnvironmentObject var 📱: 📱アプリモデル
-    @State private var 🚩SharePlay参加完了アラートを表示: Bool = false
+    @State private var 🚩SharePlay参加完了バナーを表示: Bool = false
     func body(content: Content) -> some View {
         content
             .onChange(of: 📱.ⓖroupSession != nil) {
                 if $0 {
                     withAnimation(.default.speed(2)) {
-                        self.🚩SharePlay参加完了アラートを表示 = true
+                        self.🚩SharePlay参加完了バナーを表示 = true
                     }
                 }
             }
             .overlay {
-                if self.🚩SharePlay参加完了アラートを表示 {
+                if self.🚩SharePlay参加完了バナーを表示 {
                     Label("アクティビティに参加しました", systemImage: "checkmark")
                         .font(.headline)
                         .padding(12)
@@ -74,7 +74,7 @@ struct 参加完了通知バナー: ViewModifier {
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 withAnimation(.default.speed(0.33)) {
-                                    self.🚩SharePlay参加完了アラートを表示 = false
+                                    self.🚩SharePlay参加完了バナーを表示 = false
                                 }
                             }
                         }
