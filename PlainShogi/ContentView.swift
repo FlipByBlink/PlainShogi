@@ -236,18 +236,20 @@ struct 下向きに変える: ViewModifier {
 struct 成駒確認アラート: ViewModifier {
     @EnvironmentObject var 📱: 📱アプリモデル
     func body(content: Content) -> some View {
-        if case .盤駒(let 位置) = 📱.局面.直近の操作 {
-            content
-                .alert("成り駒にしますか？", isPresented: $📱.🚩成駒確認アラートを表示) {
-                    Button("成る") {
+        content
+            .alert("成り駒にしますか？", isPresented: $📱.🚩成駒確認アラートを表示) {
+                Button("成る") {
+                    if case .盤駒(let 位置) = 📱.局面.直近の操作 {
                         📱.この駒を裏返す(位置)
                     }
-                    Button(role: .cancel) {
-                        📱.🚩成駒確認アラートを表示 = false
-                    } label: {
-                        Text("キャンセル")
-                    }
-                } message: {
+                }
+                Button(role: .cancel) {
+                    📱.🚩成駒確認アラートを表示 = false
+                } label: {
+                    Text("キャンセル")
+                }
+            } message: {
+                if case .盤駒(let 位置) = 📱.局面.直近の操作 {
                     if let 駒 = 📱.局面.盤駒[位置]?.職名 {
                         if 📱.🚩English表記 {
                             Text(verbatim: 駒.English生駒表記 + " → " + (駒.English成駒表記 ?? "🐛"))
@@ -256,9 +258,7 @@ struct 成駒確認アラート: ViewModifier {
                         }
                     }
                 }
-        } else {
-            content
-        }
+            }
     }
 }
 
