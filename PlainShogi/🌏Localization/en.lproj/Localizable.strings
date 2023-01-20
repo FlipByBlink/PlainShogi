@@ -14,6 +14,8 @@
 "盤面を初期化" = "Initialize";
 "駒を消したり増やしたりする" = "Edit pieces";
 "手駒を整理する" = "Edit captured pieces";
+"王側の手駒" = "Piece in hand";
+"玉側の手駒" = "Piece in hand";
 "操作直後の強調表示をクリア" = "Clear shift sign";
 "一手戻す" = "Return 1 action";
 "履歴" = "History";
@@ -42,8 +44,8 @@
 
 // ==== SharePlay ====
 "概要" = "Description";
-"現在、SharePlay中" = "SharePlay is active.";
-"現在、SharePlayしていません" = "SharePlay is inactive.";
+"現在、SharePlay中" = "SharePlay is active";
+"現在、SharePlayしていません" = "SharePlay is inactive";
 "アクティビティに参加しました" = "Joined activity";
 "共有将棋盤" = "SharedShogi";
 "事前準備完了" = "Prepared";

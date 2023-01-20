@@ -128,13 +128,6 @@ struct 手駒編集シート: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     @Environment(\.dismiss) var 🔙dismissAction: DismissAction
     private var 陣営: 王側か玉側か
-    private var タイトル: String {
-        switch (self.陣営, 📱.🚩English表記) {
-            case (.王側, false): return "王側の手駒"
-            case (.玉側, false): return "玉側の手駒"
-            case (_, true): return "Pieces"
-        }
-    }
     var body: some View {
         NavigationView {
             List {
@@ -158,7 +151,7 @@ struct 手駒編集シート: View {
                 }
             }
             .listStyle(.plain)
-            .navigationTitle(self.タイトル)
+            .navigationTitle(self.陣営 == .王側 ? "王側の手駒" : "玉側の手駒")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
