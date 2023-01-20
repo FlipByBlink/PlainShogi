@@ -108,6 +108,7 @@ struct SharePlayインジケーター: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.1)
             }
+            .accessibilityLabel("SharePlayメニュー")
             .modifier(ボタンスタイル())
             .buttonBorderShape(.capsule)
             .frame(maxHeight: 48)
@@ -328,6 +329,7 @@ struct SharePlay紹介リンク: View {
                 Label("引用: Apple サポートサイト", systemImage: "link")
                     .font(.subheadline)
             }
+            .accessibilityLabel("Appleサポートサイトを開く")
         } header: {
             Text("概要")
                 .textCase(.none)
