@@ -221,7 +221,7 @@ struct このコマが操作直後なら強調表示: ViewModifier {
                 case .bold:
                     content.border(.primary, width: 枠線の太さ)
                 default:
-                    content.font(.body.bold())
+                    content.font(駒フォント.bold())
             }
         } else {
             content
@@ -250,7 +250,7 @@ struct 筋表示: View {
             ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 列 in
                 Text(列)
                     .minimumScaleFactor(0.1)
-                    .font(.caption)
+                    .font(段筋フォント)
                     .padding(self.上下反転 ? .top : .bottom, 1)
                     .frame(width: 幅, height: 幅)
                     .padding(.horizontal, 幅 / 2)
@@ -272,7 +272,7 @@ struct 段表示: View {
             ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 行 in
                 Text(行.description)
                     .minimumScaleFactor(0.1)
-                    .font(.caption)
+                    .font(段筋フォント)
                     .padding(self.上下反転 ? .trailing : .leading, 4)
                     .frame(width: 高さ, height: 高さ)
                     .padding(.vertical, 高さ / 2)

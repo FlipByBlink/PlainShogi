@@ -197,7 +197,7 @@ struct コマ: View {
         ZStack {
             Color(.systemBackground)
             Text(self.表記)
-                .font(コマフォント)
+                .font(駒フォント)
                 .fontWeight(self.強調表示 ? .bold : nil)
                 .underline(self.アンダーライン)
                 .minimumScaleFactor(0.1)
@@ -272,7 +272,7 @@ struct ドラッグプレビュー用コマ: View {
         ZStack {
             Color(.systemBackground)
             Text(self.表記)
-                .font(コマフォント)
+                .font(駒フォント)
                 .minimumScaleFactor(0.1)
         }
         .frame(width: self.サイズ.height, height: self.サイズ.height)
@@ -287,10 +287,18 @@ func 振動フィードバック() {
     UISelectionFeedbackGenerator().selectionChanged()
 }
 
-var コマフォント: Font {
+var 駒フォント: Font {
     switch UIDevice.current.userInterfaceIdiom {
         case .phone: return .title3
         case .pad: return .title
         default: return .title3
+    }
+}
+
+var 段筋フォント: Font {
+    switch UIDevice.current.userInterfaceIdiom {
+        case .phone: return .caption
+        case .pad: return .body
+        default: return .caption
     }
 }
