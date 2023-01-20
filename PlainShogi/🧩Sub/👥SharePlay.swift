@@ -57,8 +57,8 @@ struct 参加完了通知バナー: ViewModifier {
     @State private var 🚩SharePlay参加完了アラートを表示: Bool = false
     func body(content: Content) -> some View {
         content
-            .onChange(of: 📱.ⓖroupSession?.state) {
-                if $0 == .joined {
+            .onChange(of: 📱.ⓖroupSession != nil) {
+                if $0 {
                     withAnimation(.default.speed(2)) {
                         self.🚩SharePlay参加完了アラートを表示 = true
                     }
