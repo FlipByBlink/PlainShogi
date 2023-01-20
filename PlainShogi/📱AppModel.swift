@@ -76,6 +76,12 @@ class 📱アプリモデル: ObservableObject {
         振動フィードバック()
     }
     
+    func 一手戻す(_ 一手前の局面: 局面モデル) {
+        self.🚩メニューを表示 = false
+        self.局面.現在の局面として適用する(一手前の局面)
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+    }
+    
     // ======== ドラッグ処理 ========
     func この盤駒をドラッグし始める(_ 位置: Int) -> NSItemProvider {
         self.ドラッグ中の駒 = .盤駒(位置)

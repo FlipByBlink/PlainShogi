@@ -38,6 +38,22 @@ struct 🛠盤面整理開始ボタン: View {
     }
 }
 
+struct 🛠一手戻すボタン: View {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    private var 一手前の局面: 局面モデル? {
+        局面モデル.履歴.last(where: { $0.更新日時 != 📱.局面.更新日時 })
+    }
+    var body: some View {
+        if let 一手前の局面 {
+            Button {
+                📱.一手戻す(一手前の局面)
+            } label: {
+                Label("一手戻す", systemImage: "arrow.uturn.backward")
+            }
+        }
+    }
+}
+
 struct 駒を消すボタン: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     private var 位置: Int
