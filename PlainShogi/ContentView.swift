@@ -197,6 +197,7 @@ struct コマ: View {
         ZStack {
             Color(.systemBackground)
             Text(self.表記)
+                .font(コマフォント)
                 .fontWeight(self.強調表示 ? .bold : nil)
                 .underline(self.アンダーライン)
                 .minimumScaleFactor(0.1)
@@ -271,6 +272,7 @@ struct ドラッグプレビュー用コマ: View {
         ZStack {
             Color(.systemBackground)
             Text(self.表記)
+                .font(コマフォント)
                 .minimumScaleFactor(0.1)
         }
         .frame(width: self.サイズ.height, height: self.サイズ.height)
@@ -283,4 +285,12 @@ struct ドラッグプレビュー用コマ: View {
 
 func 振動フィードバック() {
     UISelectionFeedbackGenerator().selectionChanged()
+}
+
+var コマフォント: Font {
+    switch UIDevice.current.userInterfaceIdiom {
+        case .phone: return .title3
+        case .pad: return .title
+        default: return .title3
+    }
 }
