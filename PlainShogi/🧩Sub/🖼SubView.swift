@@ -161,22 +161,32 @@ struct 手駒編集シート: View {
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
 
-struct 初回起動時に駒の動かし方の説明アラート: ViewModifier {
+struct 初回起動時に駒の動かし方の説明バナー: ViewModifier {
     @AppStorage("起動回数") var 起動回数: Int = 0
-    @State private var 🚩駒操作説明アラートを表示: Bool = false
+    @State private var 🚩駒操作説明バナーを表示: Bool = false
     func body(content: Content) -> some View {
         content
             .onAppear {
                 self.起動回数 += 1
                 if self.起動回数 == 1 {
-                    self.🚩駒操作説明アラートを表示 = true
+                    self.🚩駒操作説明バナーを表示 = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+                        self.🚩駒操作説明バナーを表示 = false
+                    }
                 }
             }
-            .alert("駒の動かし方", isPresented: self.$🚩駒操作説明アラートを表示) {
-                Button("はじめる") { 振動フィードバック() }
-            } message: {
-                Text("長押しして駒を持ち上げ、そのままスライドして移動させる。")
+            .overlay(alignment: .top) {
+                if self.🚩駒操作説明バナーを表示 {
+                    Label("長押しして駒を持ち上げ、そのままスライドして移動させる。", systemImage: "hand.point.up.left")
+                        .font(.caption)
+                        .foregroundColor(.primary)
+                        .padding()
+                        .onTapGesture {
+                            self.🚩駒操作説明バナーを表示 = false
+                        }
+                }
             }
+            .animation(.default.speed(0.33), value: self.🚩駒操作説明バナーを表示)
     }
 }
 
