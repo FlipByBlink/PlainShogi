@@ -234,7 +234,7 @@ struct 成駒確認アラート: ViewModifier {
     @EnvironmentObject var 📱: 📱アプリモデル
     func body(content: Content) -> some View {
         content
-            .alert("成り駒にしますか？", isPresented: $📱.🚩成駒確認アラートを表示) {
+            .alert("成りますか？", isPresented: $📱.🚩成駒確認アラートを表示) {
                 Button("成る") {
                     if case .盤駒(let 位置) = 📱.局面.直近の操作 {
                         📱.この駒を裏返す(位置)
