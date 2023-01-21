@@ -112,6 +112,7 @@ struct 手駒編集ボタン: View {
                 Image(systemName: "plusminus")
                     .minimumScaleFactor(0.1)
                     .padding()
+                    .background(.background.opacity(0.7))
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)

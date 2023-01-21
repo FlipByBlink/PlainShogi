@@ -14,18 +14,21 @@ struct ContentView: View {
             let 筋 = 筋表示(幅: マスの大きさ * self.マスに対する段筋の大きさ)
             let 段 = 段表示(高さ: マスの大きさ * self.マスに対する段筋の大きさ)
             let 上下反転 = 📱.🚩上下反転
-            VStack(spacing: self.盤上と盤外の隙間) {
-                盤外(.対面, マスの大きさ)
-                VStack(spacing: 0) {
-                    if !上下反転 { 筋 }
-                    HStack(spacing: 0) {
-                        if 上下反転 { 段 }
-                        盤面(マスの大きさ)
-                        if !上下反転 { 段 }
+            ZStack {
+                Color.clear
+                VStack(spacing: self.盤上と盤外の隙間) {
+                    盤外(.対面, マスの大きさ)
+                    VStack(spacing: 0) {
+                        if !上下反転 { 筋 }
+                        HStack(spacing: 0) {
+                            if 上下反転 { 段 }
+                            盤面(マスの大きさ)
+                            if !上下反転 { 段 }
+                        }
+                        if 上下反転 { 筋 }
                     }
-                    if 上下反転 { 筋 }
+                    盤外(.手前, マスの大きさ)
                 }
-                盤外(.手前, マスの大きさ)
             }
         }
         .padding()
@@ -119,7 +122,7 @@ struct 盤外: View {
         self.立場 == .手前 ? 駒の種類.allCases : 駒の種類.allCases.reversed()
     }
     var body: some View {
-        ZStack {
+        ZStack(alignment: self.立場 == .手前 ? .leading : .trailing) {
             Color(.systemBackground)
             HStack(spacing: 0) {
                 ForEach(self.駒の並び順) { 職名 in
@@ -127,10 +130,11 @@ struct 盤外: View {
                 }
             }
             .frame(height: self.コマの大きさ)
-            .frame(maxWidth: self.コマの大きさ * 12)
+            .padding(.horizontal, 8)
         }
+        .frame(width: self.コマの大きさ * 9.5)
         .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, self.陣営))
-        .overlay(alignment: self.立場 == .手前 ? .bottomLeading : .topTrailing) {
+        .overlay(alignment: self.立場 == .手前 ? .trailing : .leading) {
             手駒編集ボタン(self.陣営)
                 .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
         }
@@ -161,21 +165,16 @@ struct 盤外のコマ: View {
     private var 直近の操作として強調表示: Bool { 📱.この手駒は操作直後(self.陣営, self.職名) }
     var body: some View {
         if let 盤外上での表記 {
-            HStack {
-                Spacer(minLength: 0)
-                コマ(盤外上での表記, self.$ドラッグ中, self.直近の操作として強調表示)
-                    .frame(maxWidth: self.コマの大きさ * (self.数 >= 2 ? 1.5 : 1))
-                    .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
-                    .onDrag {
-                        振動フィードバック()
-                        self.ドラッグ中 = true
-                        return 📱.この手駒をドラッグし始める(self.陣営, self.職名)
-                    } preview: {
-                        ドラッグプレビュー用コマ(self.駒の表記, self.コマの大きさ, self.陣営, 📱.🚩上下反転)
-                    }
-                Spacer(minLength: 0)
-            }
-            .frame(maxWidth: self.コマの大きさ * 3)
+            コマ(盤外上での表記, self.$ドラッグ中, self.直近の操作として強調表示)
+                .frame(width: self.コマの大きさ * (self.数 >= 2 ? 1.2 : 1))
+                .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
+                .onDrag {
+                    振動フィードバック()
+                    self.ドラッグ中 = true
+                    return 📱.この手駒をドラッグし始める(self.陣営, self.職名)
+                } preview: {
+                    ドラッグプレビュー用コマ(self.駒の表記, self.コマの大きさ, self.陣営, 📱.🚩上下反転)
+                }
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼｮｸﾒｲ: 駒の種類, _ ｺﾏﾉｵｵｷｻ: CGFloat) {
