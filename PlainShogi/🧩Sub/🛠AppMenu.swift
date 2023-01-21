@@ -23,13 +23,13 @@ struct 🛠メニューボタン: View {
                             .foregroundStyle(.background)
                             .opacity(0.8)
                     }
+                    .padding()
             } primaryAction: {
                 📱.🚩メニューを表示 = true
                 振動フィードバック()
             }
             .padding(.trailing, 8)
             .padding(.bottom, 8)
-            .padding()
             .tint(.primary)
             .accessibilityLabel("Open menu")
             .sheet(isPresented: $📱.🚩履歴を表示) { self.履歴単体メニュー() }

@@ -110,12 +110,12 @@ struct 手駒編集ボタン: View {
                 振動フィードバック()
             } label: {
                 Image(systemName: "plusminus")
-                    .minimumScaleFactor(0.1)
-                    .padding()
-                    .background(.background.opacity(0.7))
+                    .padding(8)
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility2)
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
+            .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
             .sheet(isPresented: self.$手駒の数を編集中) {
                 手駒編集シート(self.陣営)
                     .onDisappear { self.手駒の数を編集中 = false }

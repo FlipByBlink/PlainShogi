@@ -125,19 +125,17 @@ struct 盤外: View {
         ZStack(alignment: self.立場 == .手前 ? .leading : .trailing) {
             Color(.systemBackground)
             HStack(spacing: 0) {
+                if self.立場 == .手前 { 手駒編集ボタン(self.陣営) }
                 ForEach(self.駒の並び順) { 職名 in
                     盤外のコマ(self.陣営, 職名, self.コマの大きさ)
                 }
+                if self.立場 == .対面 { 手駒編集ボタン(self.陣営) }
             }
             .frame(height: self.コマの大きさ)
             .padding(.horizontal, 8)
         }
         .frame(width: self.コマの大きさ * 9.5)
         .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, self.陣営))
-        .overlay(alignment: self.立場 == .手前 ? .trailing : .leading) {
-            手駒編集ボタン(self.陣営)
-                .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
-        }
     }
     init(_ ﾀﾁﾊﾞ: 手前か対面か, _ ｵｵｷｻ: CGFloat) {
         (self.立場, self.コマの大きさ) = (ﾀﾁﾊﾞ, ｵｵｷｻ)
