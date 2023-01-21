@@ -49,7 +49,7 @@ Support SharePlay.
 
 Play shogi board with FaceTime.
 
-Use-case: \"\Play game with a friend\", \"Discuss shogi problem with many people\", etc.
+Use-case: "Play game with a friend", "Discuss shogi problem with many people", etc.
 
 
 ### Localization: All

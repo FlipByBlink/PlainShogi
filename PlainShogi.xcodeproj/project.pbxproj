@@ -22,25 +22,25 @@
 		12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
 		12D424422871893D002D3E80 /* 📬DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* 📬DropDelegate.swift */; };
 		12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D4369C2865CD8300B707F5 /* Configuration.storekit */; };
-		12DA3F422875C1F600F34701 /* 📬DropDelegate.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* 📬DropDelegate.swift */; };
-		12DA3F432875C1F600F34701 /* 🖼SubView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 🖼SubView.swift */; };
+		12DA3F422875C1F600F34701 /* 📬DropDelegate.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* 📬DropDelegate.swift */; };
+		12DA3F432875C1F600F34701 /* 🖼SubView.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 🖼SubView.swift */; };
 		12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
-		12F4444F286D4D250008A663 /* 🛠AppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
+		12F4444F286D4D250008A663 /* 🛠AppMenu.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
 		F5019FD1296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5019FD0296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift */; };
-		F504212C2973BAAB008EEB2F /* ☖PieceType.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* ☖PieceType.swift */; };
+		F504212C2973BAAB008EEB2F /* ☖PieceType.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* ☖PieceType.swift */; };
 		F54C93D7295D2DE6008D1D60 /* 📃TextImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */; };
 		F5951A2028ADEEBC00516538 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */; };
+		F598A11B297BDC15000AB37E /* 📜History.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */; };
+		F598A11C297BDC15000AB37E /* 📣ADContent.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 📣ADContent.swift */; };
+		F598A11D297BDC15000AB37E /* 📃TextImportExport.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */; };
+		F598A11E297BDC15000AB37E /* 💾DataManage_ver_1_2_2.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5019FD0296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift */; };
 		F5BBD85C2973A68E0034CCB8 /* 🛒InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD8592973A68E0034CCB8 /* 🛒InAppPurchase.swift */; };
 		F5BBD85D2973A68E0034CCB8 /* ℹ️AboutAppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutAppMenu.swift */; };
 		F5BBD85E2973A68E0034CCB8 /* 📣AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85B2973A68E0034CCB8 /* 📣AD.swift */; };
 		F5BBD8602973A7260034CCB8 /* 📣ADContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 📣ADContent.swift */; };
 		F5BBD8652973AA720034CCB8 /* 🌏AppStoreDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5BBD8672973AA720034CCB8 /* 🌏AppStoreDescription.strings */; };
 		F5BBD8692973AA7B0034CCB8 /* 🌏VersionDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5BBD86B2973AA7B0034CCB8 /* 🌏VersionDescription.strings */; };
-		F5BBD86E2973AD8D0034CCB8 /* 📜History.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */; };
-		F5BBD86F2973AD8D0034CCB8 /* 👥SharePlay.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */; };
-		F5BBD8702973AD8D0034CCB8 /* 📃TextImportExport.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */; };
-		F5BBD8712973AD8D0034CCB8 /* 💾DataManage_ver_1_2_2.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5019FD0296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift */; };
-		F5BBD8722973AD8D0034CCB8 /* 📣ADContent.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 📣ADContent.swift */; };
+		F5BBD86F2973AD8D0034CCB8 /* 👥SharePlay.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */; };
 		F5BBD8732973AD950034CCB8 /* ℹ️AboutAppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutAppMenu.swift */; };
 		F5BBD8742973AD950034CCB8 /* 📣AD.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85B2973A68E0034CCB8 /* 📣AD.swift */; };
 		F5BBD8752973AD950034CCB8 /* 🛒InAppPurchase.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD8592973A68E0034CCB8 /* 🛒InAppPurchase.swift */; };
@@ -61,22 +61,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1203630E2865E1B600636EBD /* CopyFiles */ = {
+		1203630E2865E1B600636EBD /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "🧩Sub";
+			dstPath = "🧩Sub1";
 			dstSubfolderSpec = 7;
 			files = (
-				F504212C2973BAAB008EEB2F /* ☖PieceType.swift in CopyFiles */,
-				F5BBD86E2973AD8D0034CCB8 /* 📜History.swift in CopyFiles */,
-				F5BBD86F2973AD8D0034CCB8 /* 👥SharePlay.swift in CopyFiles */,
-				F5BBD8702973AD8D0034CCB8 /* 📃TextImportExport.swift in CopyFiles */,
-				F5BBD8712973AD8D0034CCB8 /* 💾DataManage_ver_1_2_2.swift in CopyFiles */,
-				F5BBD8722973AD8D0034CCB8 /* 📣ADContent.swift in CopyFiles */,
-				12DA3F422875C1F600F34701 /* 📬DropDelegate.swift in CopyFiles */,
-				12DA3F432875C1F600F34701 /* 🖼SubView.swift in CopyFiles */,
-				12F4444F286D4D250008A663 /* 🛠AppMenu.swift in CopyFiles */,
+				F504212C2973BAAB008EEB2F /* ☖PieceType.swift in Copy Files */,
+				F5BBD86F2973AD8D0034CCB8 /* 👥SharePlay.swift in Copy Files */,
+				12DA3F422875C1F600F34701 /* 📬DropDelegate.swift in Copy Files */,
+				12DA3F432875C1F600F34701 /* 🖼SubView.swift in Copy Files */,
+				12F4444F286D4D250008A663 /* 🛠AppMenu.swift in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		120363122865E1CB00636EBD /* CopyFiles */ = {
@@ -88,6 +85,19 @@
 				F5BBD8732973AD950034CCB8 /* ℹ️AboutAppMenu.swift in CopyFiles */,
 				F5BBD8742973AD950034CCB8 /* 📣AD.swift in CopyFiles */,
 				F5BBD8752973AD950034CCB8 /* 🛒InAppPurchase.swift in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F598A11A297BDBED000AB37E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "🧩Sub2";
+			dstSubfolderSpec = 7;
+			files = (
+				F598A11B297BDC15000AB37E /* 📜History.swift in CopyFiles */,
+				F598A11C297BDC15000AB37E /* 📣ADContent.swift in CopyFiles */,
+				F598A11D297BDC15000AB37E /* 📃TextImportExport.swift in CopyFiles */,
+				F598A11E297BDC15000AB37E /* 💾DataManage_ver_1_2_2.swift in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +253,8 @@
 				128D1564280FE47E003FF480 /* Frameworks */,
 				128D1565280FE47E003FF480 /* Resources */,
 				1203630D2865E1B400636EBD /* CopyFiles */,
-				1203630E2865E1B600636EBD /* CopyFiles */,
+				1203630E2865E1B600636EBD /* Copy Files */,
+				F598A11A297BDBED000AB37E /* CopyFiles */,
 				120363122865E1CB00636EBD /* CopyFiles */,
 			);
 			buildRules = (

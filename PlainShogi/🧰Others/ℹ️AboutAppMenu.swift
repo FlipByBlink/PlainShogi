@@ -25,7 +25,8 @@ let 🔗webRepositoryURL_Mirror = URL(string: "https://gitlab.com/FlipByBlink/Pl
 
 enum 📁SourceFolder: String, CaseIterable, Identifiable {
     case main
-    case 🧩Sub
+    case 🧩Sub1
+    case 🧩Sub2
     case 🧰Others
     var id: Self { self }
 }

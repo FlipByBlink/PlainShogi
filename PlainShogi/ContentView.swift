@@ -166,7 +166,7 @@ struct 盤外のコマ: View {
                 コマ(盤外上での表記, self.$ドラッグ中, self.直近の操作として強調表示)
                     .frame(maxWidth: self.コマの大きさ * (self.数 >= 2 ? 1.5 : 1))
                     .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
-                    .onDrag{
+                    .onDrag {
                         振動フィードバック()
                         self.ドラッグ中 = true
                         return 📱.この手駒をドラッグし始める(self.陣営, self.職名)
