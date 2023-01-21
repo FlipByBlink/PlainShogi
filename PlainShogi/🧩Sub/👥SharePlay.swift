@@ -143,9 +143,7 @@ struct SharePlayインジケーター: View {
                 振動フィードバック()
             } label: {
                 Image(systemName: "chevron.down")
-                    .foregroundStyle(.secondary)
                     .grayscale(1.0)
-                    .padding(8)
             }
             .accessibilityLabel("Dismiss")
         }

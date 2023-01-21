@@ -159,8 +159,7 @@ struct 手駒編集シート: View {
                         self.🔙dismissAction.callAsFunction()
                     } label: {
                         Image(systemName: "chevron.down")
-                            .foregroundColor(.secondary)
-                            .padding(8)
+                            .grayscale(1)
                     }
                     .accessibilityLabel("Dismiss")
                 }
