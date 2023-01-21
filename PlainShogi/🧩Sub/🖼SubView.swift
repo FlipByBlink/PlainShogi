@@ -48,7 +48,7 @@ struct 🛠一手戻すボタン: View {
             Button {
                 📱.一手戻す(一手前の局面)
             } label: {
-                Label("一手戻す", systemImage: "arrow.backward.to.line")
+                Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
             }
         }
     }
