@@ -1,7 +1,7 @@
 typealias 🛒Storeモデル = 🛒StoreModel
 typealias 📣広告コンテンツ = 📣ADContent
 
-let 📜versionInfos = 📜VersionInfo.history(("1.3", "2023-01-20"),
+let 📜versionInfos = 📜VersionInfo.history(("1.3", "2023-01-22"),
                                            ("1.2.2", "2022-08-18"),
                                            ("1.2.1", "2022-07-21"),
                                            ("1.2", "2022-07-09"),
