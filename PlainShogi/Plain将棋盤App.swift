@@ -10,6 +10,7 @@ struct Plain将棋盤App: App {
                 ContentView()
                 SharePlayインジケーターやメニューボタン()
             }
+            .padding()
             .overlay(alignment: .bottomTrailing) { 🛠非SharePlay時のメニューボタン() }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .sheet(isPresented: $📱.🚩メニューを表示) { 🛠アプリメニュー() }

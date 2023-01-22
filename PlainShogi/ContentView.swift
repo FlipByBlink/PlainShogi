@@ -31,7 +31,6 @@ struct ContentView: View {
                 }
             }
         }
-        .padding()
     }
     private func マスの大きさを計算(_ 画面サイズ: CGSize) -> CGFloat {
         let 横基準 = 画面サイズ.width / (9 + self.マスに対する段筋の大きさ)
