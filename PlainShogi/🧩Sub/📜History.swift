@@ -45,6 +45,7 @@ struct 履歴List: View {
                                 Image(systemName: "square.and.arrow.down")
                                 Text("復元")
                             }
+                            .font(.body.weight(.medium))
                         }
                         .buttonStyle(.bordered)
                         .dynamicTypeSize(...DynamicTypeSize.xLarge)
@@ -52,7 +53,7 @@ struct 履歴List: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
                     .minimumScaleFactor(0.1)
-                    .padding(.vertical)
+                    .padding(.vertical, 8)
                 }
                 .padding()
             }
