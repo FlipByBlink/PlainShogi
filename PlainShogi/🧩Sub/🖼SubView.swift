@@ -91,8 +91,9 @@ struct 整理完了ボタン: View {
             }
         } label: {
             Image(systemName: "checkmark.circle.fill")
-                .font(.title2)
-                .padding(24)
+                .font(.title3)
+                .dynamicTypeSize(...DynamicTypeSize.accessibility3)
+                .padding(10)
         }
         .tint(.secondary)
         .accessibilityLabel("Done")
