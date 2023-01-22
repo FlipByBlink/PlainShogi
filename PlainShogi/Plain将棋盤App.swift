@@ -11,6 +11,7 @@ struct Plain将棋盤App: App {
                 SharePlayインジケーターやメニューボタン()
             }
             .overlay(alignment: .bottomTrailing) { 🛠非SharePlay時のメニューボタン() }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
             .sheet(isPresented: $📱.🚩メニューを表示) { 🛠アプリメニュー() }
             .modifier(成駒確認アラート())
             .modifier(初回起動時に駒の動かし方の説明バナー())
