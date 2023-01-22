@@ -112,7 +112,7 @@ struct SharePlayインジケーター: View {
             .accessibilityLabel("SharePlayメニュー")
             .modifier(ボタンスタイル())
             .buttonBorderShape(.capsule)
-            .frame(maxHeight: 48)
+            .dynamicTypeSize(...DynamicTypeSize.accessibility1)
             .foregroundStyle(🚩SharePlay中 ? .primary : .secondary)
             .sheet(isPresented: self.$🚩ガイドを表示) {
                 NavigationView {

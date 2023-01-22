@@ -23,13 +23,11 @@ struct 🛠メニューボタン: View {
                             .foregroundStyle(.background)
                             .opacity(0.8)
                     }
-                    .padding()
+                    .padding(8)
             } primaryAction: {
                 📱.🚩メニューを表示 = true
                 振動フィードバック()
             }
-            .padding(.trailing, 8)
-            .padding(.bottom, 8)
             .tint(.primary)
             .accessibilityLabel("Open menu")
             .sheet(isPresented: $📱.🚩履歴を表示) { self.履歴単体メニュー() }
@@ -72,6 +70,7 @@ struct 🛠非SharePlay時のメニューボタン: View {
     var body: some View {
         if !self.ⓖroupStateObserver.isEligibleForGroupSession {
             🛠メニューボタン()
+                .padding()
         }
     }
 }
@@ -83,11 +82,10 @@ struct SharePlayインジケーターやメニューボタン: View {
         if self.ⓖroupStateObserver.isEligibleForGroupSession {
             HStack {
                 SharePlayインジケーター()
-                    .padding(.leading, 24)
+                    .padding(.leading, 12)
                 Spacer()
                 🛠メニューボタン()
             }
-            .padding(.bottom, 8)
         }
     }
 }
