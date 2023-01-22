@@ -1,59 +1,5 @@
 import SwiftUI
 
-struct 🛠盤面初期化ボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
-    var body: some View {
-        Button {
-            withAnimation { 📱.盤面を初期化する() }
-            📱.🚩メニューを表示 = false
-        } label: {
-            Label("盤面を初期化", systemImage: "arrow.counterclockwise")
-        }
-    }
-}
-
-struct 🛠直近操作強調表示クリアボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
-    var body: some View {
-        Button {
-            withAnimation { 📱.直近操作の強調表示をクリア() }
-        } label: {
-            Label("操作直後の強調表示をクリア", systemImage: "square.dashed")
-        }
-        .disabled(📱.局面.直近の操作 == .なし)
-        .disabled(📱.🚩直近操作強調表示機能オフ)
-    }
-}
-
-struct 🛠盤面整理開始ボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
-    var body: some View {
-        Button {
-            withAnimation { 📱.🚩駒を整理中 = true }
-            📱.🚩メニューを表示 = false
-            振動フィードバック()
-        } label: {
-            Label("駒を消したり増やしたりする", systemImage: "wand.and.rays")
-        }
-    }
-}
-
-struct 🛠一手戻すボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
-    private var 一手前の局面: 局面モデル? {
-        局面モデル.履歴.last(where: { $0.更新日時 != 📱.局面.更新日時 })
-    }
-    var body: some View {
-        if let 一手前の局面 {
-            Button {
-                📱.一手戻す(一手前の局面)
-            } label: {
-                Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
-            }
-        }
-    }
-}
-
 struct 駒を消すボタン: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     private var 位置: Int
