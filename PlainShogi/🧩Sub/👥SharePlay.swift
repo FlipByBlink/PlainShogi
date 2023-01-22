@@ -87,8 +87,7 @@ struct SharePlayインジケーター: View {
     @EnvironmentObject var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
-        📱.ⓖroupSession?.state == .waiting
-        ||
+        📱.ⓖroupSession?.state == .waiting ||
         📱.ⓖroupSession?.state == .joined
     }
     @State private var 🚩ガイドを表示: Bool = false
@@ -155,8 +154,7 @@ struct SharePlayガイド: View {
     @Binding var 🚩シートを表示: Bool
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
-        📱.ⓖroupSession?.state == .waiting
-        ||
+        📱.ⓖroupSession?.state == .waiting ||
         📱.ⓖroupSession?.state == .joined
     }
     var body: some View {
