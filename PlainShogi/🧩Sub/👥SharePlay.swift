@@ -91,6 +91,7 @@ struct SharePlayインジケーター: View {
         📱.ⓖroupSession?.state == .joined
     }
     @State private var 🚩ガイドを表示: Bool = false
+    private var 参加人数: String { 📱.参加人数?.description ?? "0" }
     var body: some View {
         if self.ⓖroupStateObserver.isEligibleForGroupSession {
             Button {
@@ -99,7 +100,8 @@ struct SharePlayインジケーター: View {
             } label: {
                 Group {
                     if self.🚩SharePlay中 {
-                        Label("現在、SharePlay中", systemImage: "shareplay")
+                        Label("現在、\(self.参加人数)人でSharePlay中", systemImage: "shareplay")
+                            .animation(.default, value: self.参加人数)
                     } else {
                         Label("現在、SharePlayしていません", systemImage: "shareplay.slash")
                     }

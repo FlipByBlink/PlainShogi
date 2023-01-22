@@ -239,6 +239,7 @@ class 📱アプリモデル: ObservableObject {
     private var ⓣasks = Set<Task<Void, Never>>()
     @Published var ⓖroupSession: GroupSession<🄶roupActivity>?
     private var ⓜessenger: GroupSessionMessenger?
+    @Published var 参加人数: Int?
     
     func 新規GroupSessionを受信したら設定する() async {
         for await ⓝewSession in 🄶roupActivity.sessions() {
@@ -260,6 +261,7 @@ class 📱アプリモデル: ObservableObject {
                     Task {
                         try? await ⓝewMessenger.send(self.局面, to: .only(ⓝewParticipants))
                     }
+                    self.参加人数 = ⓐctiveParticipants.count
                 }
                 .store(in: &ⓢubscriptions)
             let ⓡeceiveDataTask = Task {
@@ -292,6 +294,7 @@ class 📱アプリモデル: ObservableObject {
         self.ⓣasks.forEach { $0.cancel() }
         self.ⓣasks = []
         self.ⓢubscriptions = []
+        self.参加人数 = nil
         if self.ⓖroupSession != nil {
             self.ⓖroupSession?.leave()
             self.ⓖroupSession = nil

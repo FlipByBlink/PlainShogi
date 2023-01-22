@@ -44,7 +44,7 @@
 
 // ==== SharePlay ====
 "概要" = "Description";
-"現在、SharePlay中" = "SharePlay is active";
+"現在、%@人でSharePlay中" = "SharePlay is active (Number: %@)";
 "現在、SharePlayしていません" = "SharePlay is inactive";
 "SharePlayメニュー" = "SharePlay menu";
 "アクティビティに参加しました" = "Joined activity";
