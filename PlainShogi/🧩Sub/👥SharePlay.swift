@@ -113,7 +113,7 @@ struct SharePlayインジケーター: View {
             .modifier(ボタンスタイル())
             .buttonBorderShape(.capsule)
             .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-            .foregroundStyle(🚩SharePlay中 ? .primary : .secondary)
+            .foregroundStyle(self.🚩SharePlay中 ? .primary : .secondary)
             .sheet(isPresented: self.$🚩ガイドを表示) {
                 NavigationView {
                     SharePlayガイド(self.$🚩ガイドを表示)
