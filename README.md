@@ -1,5 +1,5 @@
-iPhone, iPad App: Plain将棋盤 / Plain Shogi Board
-================================================
+Plain将棋盤/Plain Shogi Board: iPhone, iPad, Apple Watch, Mac
+------------------------------------------------------------
 _最もプレーンな将棋盤アプリ。 Most plainly shogi board app._
 
 <img src="PlainShogi/Assets.xcassets/RoundedIcon.imageset/RoundedIcon.png" width="64">

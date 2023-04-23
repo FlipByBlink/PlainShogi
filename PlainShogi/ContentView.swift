@@ -5,7 +5,7 @@ import UniformTypeIdentifiers
 // 手前が「王」、対面が「玉」。
 
 struct ContentView: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     private let マスに対する段筋の大きさ: Double = 0.5
     private let 盤上と盤外の隙間: CGFloat = 4
     var body: some View {
@@ -40,7 +40,7 @@ struct ContentView: View {
 }
 
 struct 盤面: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     private let マスの大きさ: CGFloat
     var body: some View {
         VStack(spacing: 0) {
@@ -66,7 +66,7 @@ struct 盤面: View {
 }
 
 struct 盤上のコマもしくはマス: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     @State private var ドラッグ中 = false
     private var 画面上での左上からの位置: Int
     private var 元々の位置: Int {
@@ -106,7 +106,7 @@ struct 盤上のコマもしくはマス: View {
 }
 
 struct 盤外: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     private var 立場: 手前か対面か
     private var 陣営: 王側か玉側か {
         switch (self.立場, 📱.🚩上下反転) {
@@ -145,7 +145,7 @@ struct 盤外: View {
 }
 
 struct 盤外のコマ: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     @State private var ドラッグ中 = false
     private var 陣営: 王側か玉側か
     private var 職名: 駒の種類
@@ -180,7 +180,7 @@ struct 盤外のコマ: View {
 }
 
 struct コマ: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     private var 表記: String
     @Binding private var ドラッグ中: Bool
     private var 操作直後: Bool
@@ -230,7 +230,7 @@ struct 下向きに変える: ViewModifier {
 }
 
 struct 成駒確認アラート: ViewModifier {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     func body(content: Content) -> some View {
         content
             .alert("成りますか？", isPresented: $📱.🚩成駒確認アラートを表示) {
@@ -247,7 +247,7 @@ struct 成駒確認アラート: ViewModifier {
             } message: {
                 if case .盤駒(let 位置) = 📱.局面.直近の操作 {
                     if let 駒 = 📱.局面.盤駒[位置]?.職名 {
-                        if 📱.🚩English表記 {
+                        if 📱.🚩english表記 {
                             Text(verbatim: 駒.English生駒表記 + " → " + (駒.English成駒表記 ?? "🐛"))
                         } else {
                             Text(verbatim: 駒.rawValue + " → " + (駒.成駒表記 ?? "🐛"))

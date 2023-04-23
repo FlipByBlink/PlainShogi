@@ -8,7 +8,7 @@ class 📱アプリモデル: ObservableObject {
     
     @Published private(set) var 局面: 局面モデル
     
-    @AppStorage("English表記") var 🚩English表記: Bool = false
+    @AppStorage("English表記") var 🚩english表記: Bool = false
     @AppStorage("直近操作強調表示機能オフ") var 🚩直近操作強調表示機能オフ: Bool = false
     @AppStorage("上下反転") var 🚩上下反転: Bool = false
     
@@ -20,11 +20,11 @@ class 📱アプリモデル: ObservableObject {
     @Published var 🚩成駒確認アラートを表示: Bool = false
     
     func この盤駒の表記(_ 位置: Int) -> String {
-        self.局面.盤上のこの駒の表記(位置, self.🚩English表記) ?? "🐛"
+        self.局面.盤上のこの駒の表記(位置, self.🚩english表記) ?? "🐛"
     }
     
     func この手駒の表記(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> String {
-        self.局面.この手駒の表記(陣営, 職名, self.🚩English表記)
+        self.局面.この手駒の表記(陣営, 職名, self.🚩english表記)
     }
     
     func この盤駒は操作直後(_ 画面上での左上からの位置: Int) -> Bool {

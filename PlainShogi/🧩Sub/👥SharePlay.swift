@@ -41,7 +41,7 @@ struct 🄶roupActivity: GroupActivity {
 }
 
 struct SharePlay環境構築: ViewModifier {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     func body(content: Content) -> some View {
         content
@@ -53,7 +53,7 @@ struct SharePlay環境構築: ViewModifier {
 }
 
 struct 参加完了通知バナー: ViewModifier {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     @State private var 🚩SharePlay参加完了バナーを表示: Bool = false
     func body(content: Content) -> some View {
         content
@@ -84,7 +84,7 @@ struct 参加完了通知バナー: ViewModifier {
 }
 
 struct SharePlayインジケーター: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
         📱.ⓖroupSession?.state == .waiting ||
@@ -152,8 +152,8 @@ struct SharePlayインジケーター: View {
 }
 
 struct SharePlayガイド: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
-    @Binding var 🚩シートを表示: Bool
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @Binding private var 🚩シートを表示: Bool
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
         📱.ⓖroupSession?.state == .waiting ||
@@ -279,7 +279,7 @@ struct SharePlayガイド: View {
 }
 
 struct SharePlay紹介リンク: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
         NavigationLink {

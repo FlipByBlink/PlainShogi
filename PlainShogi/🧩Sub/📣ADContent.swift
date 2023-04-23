@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct 📣ADContent: ViewModifier {
-    @EnvironmentObject var 🛒: 🛒StoreModel
+    @EnvironmentObject private var 🛒: 🛒StoreModel
     @State private var ⓐpp: 📣MyApp = .pickUpAppWithout(.PlainShogiBoard)
     func body(content: Content) -> some View {
         content

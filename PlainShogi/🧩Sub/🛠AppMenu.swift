@@ -2,7 +2,7 @@ import SwiftUI
 import GroupActivities
 
 struct 🛠メニューボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         if 📱.🚩駒を整理中 {
             整理完了ボタン()
@@ -65,7 +65,7 @@ struct 🛠メニューボタン: View {
 }
 
 struct 🛠非SharePlay時のメニューボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
         if !self.ⓖroupStateObserver.isEligibleForGroupSession {
@@ -76,7 +76,7 @@ struct 🛠非SharePlay時のメニューボタン: View {
 }
 
 struct SharePlayインジケーターやメニューボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
         if self.ⓖroupStateObserver.isEligibleForGroupSession {
@@ -91,7 +91,7 @@ struct SharePlayインジケーターやメニューボタン: View {
 }
 
 struct 🛠アプリメニュー: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
         Group {
@@ -119,7 +119,7 @@ struct 🛠アプリメニュー: View {
                 Toggle(isOn: $📱.🚩上下反転) {
                     Label("上下反転", systemImage: "arrow.up.arrow.down")
                 }
-                Toggle(isOn: $📱.🚩English表記) {
+                Toggle(isOn: $📱.🚩english表記) {
                     Label("English表記", systemImage: "p.circle")
                 }
                 Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
@@ -186,7 +186,7 @@ struct 🛠アプリメニュー: View {
 }
 
 struct 🛠盤面初期化ボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
             withAnimation { 📱.盤面を初期化する() }
@@ -198,7 +198,7 @@ struct 🛠盤面初期化ボタン: View {
 }
 
 struct 🛠直近操作強調表示クリアボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
             withAnimation { 📱.直近操作の強調表示をクリア() }
@@ -211,7 +211,7 @@ struct 🛠直近操作強調表示クリアボタン: View {
 }
 
 struct 🛠盤面整理開始ボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
             withAnimation { 📱.🚩駒を整理中 = true }
@@ -224,7 +224,7 @@ struct 🛠盤面整理開始ボタン: View {
 }
 
 struct 🛠一手戻すボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     private var 一手前の局面: 局面モデル? {
         局面モデル.履歴.last(where: { $0.更新日時 != 📱.局面.更新日時 })
     }
@@ -285,7 +285,7 @@ struct 細かな使い方リンク: View {
 }
 
 struct テキスト書き出し読み込み紹介リンク: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         NavigationLink {
             List {

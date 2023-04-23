@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct 駒を消すボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     private var 位置: Int
     var body: some View {
         if 📱.🚩駒を整理中 {
@@ -28,7 +28,7 @@ struct 駒を消すボタン: View {
 }
 
 struct 整理完了ボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
             withAnimation {
@@ -47,7 +47,7 @@ struct 整理完了ボタン: View {
 }
 
 struct 手駒編集ボタン: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     private var 陣営: 王側か玉側か
     @State private var 手駒の数を編集中: Bool = false
     var body: some View {
@@ -73,8 +73,8 @@ struct 手駒編集ボタン: View {
 }
 
 struct 手駒編集シート: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
-    @Environment(\.dismiss) var 🔙dismissAction: DismissAction
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @Environment(\.dismiss) private var dismiss
     private var 陣営: 王側か玉側か
     var body: some View {
         NavigationView {
@@ -103,7 +103,7 @@ struct 手駒編集シート: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        self.🔙dismissAction.callAsFunction()
+                        self.dismiss.callAsFunction()
                     } label: {
                         Image(systemName: "chevron.down")
                             .grayscale(1)
@@ -118,7 +118,7 @@ struct 手駒編集シート: View {
 }
 
 struct 初回起動時に駒の動かし方の説明バナー: ViewModifier {
-    @AppStorage("起動回数") var 起動回数: Int = 0
+    @AppStorage("起動回数") private var 起動回数: Int = 0
     @State private var 🚩駒操作説明バナーを表示: Bool = false
     func body(content: Content) -> some View {
         content
@@ -147,8 +147,8 @@ struct 初回起動時に駒の動かし方の説明バナー: ViewModifier {
 }
 
 struct このコマが操作直後なら強調表示: ViewModifier {
-    @EnvironmentObject var 📱: 📱アプリモデル
-    @Environment(\.legibilityWeight) var ⓛegibilityWeight
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @Environment(\.legibilityWeight) private var legibilityWeight
     private let 画面上での左上からの位置: Int
     private var 🚩条件: Bool {
         📱.この盤駒は操作直後(self.画面上での左上からの位置)
@@ -157,7 +157,7 @@ struct このコマが操作直後なら強調表示: ViewModifier {
     }
     func body(content: Content) -> some View {
         if self.🚩条件 {
-            switch self.ⓛegibilityWeight {
+            switch self.legibilityWeight {
                 case .bold:
                     content.border(.primary, width: 枠線の太さ)
                 default:
@@ -181,7 +181,7 @@ var 枠線の太さ: CGFloat {
 }
 
 struct 筋表示: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     let 幅: CGFloat
     private var 上下反転: Bool { 📱.🚩上下反転 }
     var body: some View {
@@ -201,11 +201,11 @@ struct 筋表示: View {
 }
 
 struct 段表示: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
+    @EnvironmentObject private var 📱: 📱アプリモデル
     let 高さ: CGFloat
     private var 上下反転: Bool { 📱.🚩上下反転 }
     private var 字: [String] {
-        📱.🚩English表記 ? ["１","２","３","４","５","６","７","８","９"] : ["一","二","三","四","五","六","七","八","九"]
+        📱.🚩english表記 ? ["１","２","３","４","５","６","７","８","９"] : ["一","二","三","四","五","六","七","八","九"]
     }
     var body: some View {
         VStack(spacing: 0) {
