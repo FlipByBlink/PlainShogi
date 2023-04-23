@@ -6,6 +6,20 @@ import UniformTypeIdentifiers
 
 struct ContentView: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    var body: some View {
+        VStack(spacing: 0) {
+            将棋View()
+            SharePlayインジケーターやメニューボタン()
+        }
+        .padding()
+        .overlay(alignment: .bottomTrailing) { 🛠非SharePlay時のメニューボタン() }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+        .sheet(isPresented: $📱.🚩メニューを表示) { 🛠アプリメニュー() }
+    }
+}
+
+struct 将棋View: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
     private let マスに対する段筋の大きさ: Double = 0.5
     private let 盤上と盤外の隙間: CGFloat = 4
     var body: some View {
