@@ -73,7 +73,7 @@ struct 履歴List: View {
                     ForEach(0 ..< 9) { 列 in
                         let 位置 = 行 * 9 + 列
                         if let 駒 = 局面.盤駒[位置] {
-                            let 表記 = 局面.盤上のこの駒の表記(位置, 📱.🚩english表記) ?? "🐛"
+                            let 表記 = 局面.盤上のこの駒の表記(位置, 📱.🚩English表記) ?? "🐛"
                             Text(表記)
                                 .underline((駒.陣営 == .玉側) && (表記 == "S" || 表記 == "N"))
                                 .fontWeight(局面.直近の操作 == .盤駒(位置) ? .bold : .light)
@@ -97,7 +97,7 @@ struct 履歴List: View {
             ForEach(駒の種類.allCases) { 駒 in
                 if let 数 = 局面.手駒[陣営]?.配分[駒] {
                     if 数 > 0 {
-                        let 表記 = 📱.🚩english表記 ? 駒.English生駒表記 : 駒.rawValue
+                        let 表記 = 📱.🚩English表記 ? 駒.English生駒表記 : 駒.rawValue
                         Text(表記 + 数.description)
                             .fontWeight(.light)
                             .minimumScaleFactor(0.1)

@@ -185,14 +185,11 @@ struct SharePlayガイド: View {
         Section {
             Text("友達が既に「共有将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。")
                 .padding(8)
-            ZStack {
-                Color.clear
-                Image("joinFromBanner")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 180)
-                    .border(.black)
-            }
+            Image("joinFromBanner")
+                .resizable()
+                .scaledToFit()
+                .border(.black)
+                .frame(maxWidth: .infinity, maxHeight: 180)
         } header: {
             Text("SharePlayに参加する")
                 .textCase(.none)
@@ -279,8 +276,6 @@ struct SharePlayガイド: View {
 }
 
 struct SharePlay紹介リンク: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
         NavigationLink {
             List {
@@ -289,14 +284,11 @@ struct SharePlay紹介リンク: View {
                 Section {
                     Text("FaceTime中にこのアプリを立ち上げると、アクティビティを起動することが出来ます。アクティビティを起動すると、通話相手のデバイスではSharePlay参加を促す通知が表示されます。")
                         .padding(8)
-                    ZStack {
-                        Color.clear
-                        Image("joinFromBanner")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 180)
-                            .border(.black)
-                    }
+                    Image("joinFromBanner")
+                        .resizable()
+                        .scaledToFit()
+                        .border(.black)
+                        .frame(maxWidth: .infinity, maxHeight: 180)
                 } header: {
                     Text("はじめ方")
                 }
@@ -339,14 +331,11 @@ struct SharePlay紹介リンク: View {
         Section {
             Text("iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
                 .padding(8)
-            ZStack {
-                Color.clear
-                Image("joinFromMessage")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 120)
-                    .border(.black)
-            }
+            Image("joinFromMessage")
+                .resizable()
+                .scaledToFit()
+                .border(.black)
+                .frame(maxWidth: .infinity, maxHeight: 120)
         }
     }
     private func 注意事項セクション() -> some View {
@@ -384,7 +373,7 @@ private struct SharingControllerボタン: View {
     var body: some View {
         Section {
             Button {
-                🚩SharingControllerを表示 = true
+                self.🚩SharingControllerを表示 = true
             } label: {
                 if #available(iOS 16, *) {
                     Label("友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する", systemImage: "person.badge.plus")
@@ -397,14 +386,14 @@ private struct SharingControllerボタン: View {
             Text("SharePlayの準備をする")
                 .textCase(.none)
         }
-        .sheet(isPresented: $🚩SharingControllerを表示) {
-            🅂haringControllerView($🚩GroupActivity準備完了)
+        .sheet(isPresented: self.$🚩SharingControllerを表示) {
+            Self.🅂haringControllerView(self.$🚩GroupActivity準備完了)
         }
         .onChange(of: ⓖroupStateObserver.isEligibleForGroupSession) { ⓝewValue in
             if ⓝewValue {
-                if 🚩GroupActivity準備完了 {
+                if self.🚩GroupActivity準備完了 {
                     🄶roupActivity.アクティビティを起動する()
-                    🚩GroupActivity準備完了 = false
+                    self.🚩GroupActivity準備完了 = false
                 }
             }
         }
@@ -424,19 +413,19 @@ private struct SharingControllerボタン: View {
                         assertionFailure()
                 }
             }
-            return ⓖroupActivitySharingController
+            return self.ⓖroupActivitySharingController
         }
         func updateUIViewController(_ ⓒontroller: GroupActivitySharingController, context: Context) {
             print("🖨️ updateUIViewController/context", context)
         }
-        init?(_ 🚩GroupActivity準備完了: Binding<Bool>) {
+        init?(_ GroupActivity準備完了: Binding<Bool>) {
             do {
                 self.ⓖroupActivitySharingController = try GroupActivitySharingController(🄶roupActivity())
             } catch {
                 print("🚨", #line, error.localizedDescription)
                 return nil
             }
-            self._🚩GroupActivity準備完了 = 🚩GroupActivity準備完了
+            self._🚩GroupActivity準備完了 = GroupActivity準備完了
         }
     }
 }
