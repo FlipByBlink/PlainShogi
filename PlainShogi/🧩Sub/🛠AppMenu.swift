@@ -1,17 +1,17 @@
 import SwiftUI
 import GroupActivities
 
-struct 🛠メニューボタン: View {
+private struct メニューボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         if 📱.🚩駒を整理中 {
             整理完了ボタン()
         } else {
             Menu {
-                🛠直近操作強調表示クリアボタン()
-                🛠盤面初期化ボタン()
-                🛠盤面整理開始ボタン()
-                🛠一手戻すボタン()
+                直近操作強調表示クリアボタン()
+                盤面初期化ボタン()
+                盤面整理開始ボタン()
+                一手戻すボタン()
                 self.上下反転ボタン()
                 self.履歴ボタン()
             } label: {
@@ -69,13 +69,13 @@ struct 🛠非SharePlay時のメニューボタン: View {
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
         if !self.ⓖroupStateObserver.isEligibleForGroupSession {
-            🛠メニューボタン()
+            メニューボタン()
                 .padding()
         }
     }
 }
 
-struct SharePlayインジケーターやメニューボタン: View {
+struct 🛠SharePlayインジケーターやメニューボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
@@ -84,7 +84,7 @@ struct SharePlayインジケーターやメニューボタン: View {
                 SharePlayインジケーター()
                     .padding(.leading, 12)
                 Spacer()
-                🛠メニューボタン()
+                メニューボタン()
             }
         }
     }
@@ -110,10 +110,10 @@ struct 🛠アプリメニュー: View {
             self.あそび方セクション()
             Section { 履歴リンク() }
             Section {
-                🛠盤面初期化ボタン()
-                🛠盤面整理開始ボタン()
-                🛠一手戻すボタン()
-                🛠直近操作強調表示クリアボタン()
+                盤面初期化ボタン()
+                盤面整理開始ボタン()
+                一手戻すボタン()
+                直近操作強調表示クリアボタン()
             }
             Section {
                 Toggle(isOn: $📱.🚩上下反転) {
@@ -185,7 +185,7 @@ struct 🛠アプリメニュー: View {
     }
 }
 
-struct 🛠盤面初期化ボタン: View {
+private struct 盤面初期化ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
@@ -197,7 +197,7 @@ struct 🛠盤面初期化ボタン: View {
     }
 }
 
-struct 🛠直近操作強調表示クリアボタン: View {
+private struct 直近操作強調表示クリアボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
@@ -210,7 +210,7 @@ struct 🛠直近操作強調表示クリアボタン: View {
     }
 }
 
-struct 🛠盤面整理開始ボタン: View {
+private struct 盤面整理開始ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
@@ -223,7 +223,7 @@ struct 🛠盤面整理開始ボタン: View {
     }
 }
 
-struct 🛠一手戻すボタン: View {
+private struct 一手戻すボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 一手前の局面: 局面モデル? {
         局面モデル.履歴.last(where: { $0.更新日時 != 📱.局面.更新日時 })
@@ -239,7 +239,7 @@ struct 🛠一手戻すボタン: View {
     }
 }
 
-struct 細かな使い方リンク: View {
+private struct 細かな使い方リンク: View {
     var body: some View {
         NavigationLink {
             List {
@@ -284,7 +284,7 @@ struct 細かな使い方リンク: View {
     }
 }
 
-struct テキスト書き出し読み込み紹介リンク: View {
+private struct テキスト書き出し読み込み紹介リンク: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         NavigationLink {
@@ -316,7 +316,7 @@ struct テキスト書き出し読み込み紹介リンク: View {
     }
 }
 
-struct テキスト変換プレビュー: View {
+private struct テキスト変換プレビュー: View {
     var フォルダー名: String
     var 枚数: Int
     private let 🕒timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
@@ -350,7 +350,7 @@ struct テキスト変換プレビュー: View {
     }
 }
 
-struct ℹ️AboutAppLink: View {
+private struct ℹ️AboutAppLink: View {
     var body: some View {
         Section {
             GeometryReader { 📐 in

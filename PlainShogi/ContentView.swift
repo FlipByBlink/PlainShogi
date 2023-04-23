@@ -9,7 +9,7 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
             将棋View()
-            SharePlayインジケーターやメニューボタン()
+            🛠SharePlayインジケーターやメニューボタン()
         }
         .padding()
         .overlay(alignment: .bottomTrailing) { 🛠非SharePlay時のメニューボタン() }
@@ -18,7 +18,7 @@ struct ContentView: View {
     }
 }
 
-struct 将棋View: View {
+private struct 将棋View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private let マスに対する段筋の大きさ: Double = 0.5
     private let 盤上と盤外の隙間: CGFloat = 4
@@ -53,7 +53,7 @@ struct 将棋View: View {
     }
 }
 
-struct 盤面: View {
+private struct 盤面: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private let マスの大きさ: CGFloat
     var body: some View {
@@ -79,7 +79,7 @@ struct 盤面: View {
     }
 }
 
-struct 盤上のコマもしくはマス: View {
+private struct 盤上のコマもしくはマス: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @State private var ドラッグ中 = false
     private var 画面上での左上からの位置: Int
@@ -119,7 +119,7 @@ struct 盤上のコマもしくはマス: View {
     }
 }
 
-struct 盤外: View {
+private struct 盤外: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 立場: 手前か対面か
     private var 陣営: 王側か玉側か {
@@ -158,7 +158,7 @@ struct 盤外: View {
     }
 }
 
-struct 盤外のコマ: View {
+private struct 盤外のコマ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @State private var ドラッグ中 = false
     private var 陣営: 王側か玉側か
@@ -193,7 +193,7 @@ struct 盤外のコマ: View {
     }
 }
 
-struct コマ: View {
+private struct コマ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 表記: String
     @Binding private var ドラッグ中: Bool
@@ -272,7 +272,7 @@ struct 成駒確認アラート: ViewModifier {
     }
 }
 
-struct ドラッグプレビュー用コマ: View {
+private struct ドラッグプレビュー用コマ: View {
     private var 表記: String
     private var コマの大きさ: CGFloat
     private var 陣営: 王側か玉側か

@@ -52,7 +52,7 @@ struct SharePlay環境構築: ViewModifier {
     }
 }
 
-struct 参加完了通知バナー: ViewModifier {
+private struct 参加完了通知バナー: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @State private var 🚩SharePlay参加完了バナーを表示: Bool = false
     func body(content: Content) -> some View {
@@ -285,7 +285,7 @@ struct SharePlay紹介リンク: View {
         NavigationLink {
             List {
                 self.概要セクション()
-                🅂haringControllerボタン()
+                SharingControllerボタン()
                 Section {
                     Text("FaceTime中にこのアプリを立ち上げると、アクティビティを起動することが出来ます。アクティビティを起動すると、通話相手のデバイスではSharePlay参加を促す通知が表示されます。")
                         .padding(8)
@@ -377,7 +377,7 @@ struct SharePlay紹介リンク: View {
     }
 }
 
-struct 🅂haringControllerボタン: View {
+private struct SharingControllerボタン: View {
     @State private var 🚩SharingControllerを表示: Bool = false
     @State private var 🚩GroupActivity準備完了: Bool = false
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()

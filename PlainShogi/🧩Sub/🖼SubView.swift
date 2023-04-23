@@ -72,7 +72,7 @@ struct 手駒編集ボタン: View {
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
 
-struct 手駒編集シート: View {
+private struct 手駒編集シート: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.dismiss) private var dismiss
     private var 陣営: 王側か玉側か
