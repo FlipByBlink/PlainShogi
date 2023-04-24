@@ -15,6 +15,7 @@ struct ContentView: View {
         .overlay(alignment: .bottomTrailing) { 🛠非SharePlay時のメニューボタン() }
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .modifier(🛠メニューシート())
+        .modifier(成駒確認アラート())
     }
 }
 
@@ -227,22 +228,7 @@ private struct コマ: View {
     }
 }
 
-struct コマの向きを調整: ViewModifier {
-    private var 陣営: 王側か玉側か
-    private var 上下反転: Bool
-    private var 🚩条件: Bool {
-        (self.陣営 == .玉側) != self.上下反転
-    }
-    func body(content: Content) -> some View {
-        content
-            .rotationEffect(self.🚩条件 ? .degrees(180) : .zero)
-    }
-    init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼﾞｮｳｹﾞﾊﾝﾃﾝ: Bool) {
-        (self.陣営, self.上下反転) = (ｼﾞﾝｴｲ, ｼﾞｮｳｹﾞﾊﾝﾃﾝ)
-    }
-}
-
-struct 成駒確認アラート: ViewModifier {
+private struct 成駒確認アラート: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     func body(content: Content) -> some View {
         content

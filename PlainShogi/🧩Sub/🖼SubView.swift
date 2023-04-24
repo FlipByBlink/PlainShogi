@@ -1,5 +1,24 @@
 import SwiftUI
 
+struct コマの向きを調整: ViewModifier {
+    private var 陣営: 王側か玉側か
+    private var 上下反転オプション: Bool
+    private var 🚩下向き: Bool {
+        (self.陣営 == .玉側) != self.上下反転オプション
+    }
+    func body(content: Content) -> some View {
+        if self.🚩下向き {
+            content
+                .rotationEffect(.degrees(180))
+        } else {
+            content
+        }
+    }
+    init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼﾞｮｳｹﾞﾊﾝﾃﾝ: Bool) {
+        (self.陣営, self.上下反転オプション) = (ｼﾞﾝｴｲ, ｼﾞｮｳｹﾞﾊﾝﾃﾝ)
+    }
+}
+
 struct 駒を消すボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 位置: Int
