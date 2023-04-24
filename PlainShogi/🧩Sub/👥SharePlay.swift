@@ -3,7 +3,7 @@ import GroupActivities
 import UIKit
 import SwiftUI
 
-struct 🄶roupActivity: GroupActivity {
+struct 👥GroupActivity: GroupActivity {
     var metadata: GroupActivityMetadata {
         var ⓜetadata = GroupActivityMetadata()
         ⓜetadata.title = NSLocalizedString("共有将棋盤", comment: "アクティビティタイトル")
@@ -48,38 +48,37 @@ struct 👥SharePlay環境構築: ViewModifier {
             .animation(.default, value: self.ⓖroupStateObserver.isEligibleForGroupSession)
             .animation(.default, value: 📱.ⓖroupSession?.state)
             .task { await 📱.新規GroupSessionを受信したら設定する() }
-            .modifier(参加完了通知バナー())
+            .modifier(Self.参加完了通知バナー())
     }
-}
-
-private struct 参加完了通知バナー: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @State private var 🚩SharePlay参加完了バナーを表示: Bool = false
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: 📱.ⓖroupSession != nil) {
-                if $0 {
-                    withAnimation(.default.speed(2)) {
-                        self.🚩SharePlay参加完了バナーを表示 = true
+    private struct 参加完了通知バナー: ViewModifier {
+        @EnvironmentObject private var 📱: 📱アプリモデル
+        @State private var 🚩SharePlay参加完了バナーを表示: Bool = false
+        func body(content: Content) -> some View {
+            content
+                .onChange(of: 📱.ⓖroupSession != nil) {
+                    if $0 {
+                        withAnimation(.default.speed(2)) {
+                            self.🚩SharePlay参加完了バナーを表示 = true
+                        }
                     }
                 }
-            }
-            .overlay {
-                if self.🚩SharePlay参加完了バナーを表示 {
-                    Label("アクティビティに参加しました", systemImage: "checkmark")
-                        .font(.headline)
-                        .padding(12)
-                        .border(.primary)
-                        .background(.background)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                withAnimation(.default.speed(0.33)) {
-                                    self.🚩SharePlay参加完了バナーを表示 = false
+                .overlay {
+                    if self.🚩SharePlay参加完了バナーを表示 {
+                        Label("アクティビティに参加しました", systemImage: "checkmark")
+                            .font(.headline)
+                            .padding(12)
+                            .border(.primary)
+                            .background(.background)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    withAnimation(.default.speed(0.33)) {
+                                        self.🚩SharePlay参加完了バナーを表示 = false
+                                    }
                                 }
                             }
-                        }
+                    }
                 }
-            }
+        }
     }
 }
 
@@ -87,8 +86,7 @@ struct 👥SharePlayインジケーター: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
-        📱.ⓖroupSession?.state == .waiting ||
-        📱.ⓖroupSession?.state == .joined
+        [.waiting, .joined].contains(📱.ⓖroupSession?.state)
     }
     @State private var 🚩ガイドを表示: Bool = false
     private var 参加人数: String { 📱.参加人数?.description ?? "0" }
@@ -156,8 +154,7 @@ struct 👥SharePlayガイド: View {
     @Binding private var 🚩シートを表示: Bool
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
-        📱.ⓖroupSession?.state == .waiting ||
-        📱.ⓖroupSession?.state == .joined
+        [.waiting, .joined].contains(📱.ⓖroupSession?.state)
     }
     var body: some View {
         List {
@@ -200,7 +197,7 @@ struct 👥SharePlayガイド: View {
             Text("自分からSharePlayを開始する事もできます。アクティビティを起動したら友達にSharePlay参加を促しましょう。")
                 .padding(8)
             Button {
-                🄶roupActivity.アクティビティを起動する()
+                👥GroupActivity.アクティビティを起動する()
                 self.🚩シートを表示 = false
             } label: {
                 Label("アクティビティ「共有将棋盤」を起動する", systemImage: "power")
@@ -392,7 +389,7 @@ private struct SharingControllerボタン: View {
         .onChange(of: ⓖroupStateObserver.isEligibleForGroupSession) { ⓝewValue in
             if ⓝewValue {
                 if self.🚩GroupActivity準備完了 {
-                    🄶roupActivity.アクティビティを起動する()
+                    👥GroupActivity.アクティビティを起動する()
                     self.🚩GroupActivity準備完了 = false
                 }
             }
@@ -420,7 +417,7 @@ private struct SharingControllerボタン: View {
         }
         init?(_ GroupActivity準備完了: Binding<Bool>) {
             do {
-                self.ⓖroupActivitySharingController = try GroupActivitySharingController(🄶roupActivity())
+                self.ⓖroupActivitySharingController = try GroupActivitySharingController(👥GroupActivity())
             } catch {
                 print("🚨", #line, error.localizedDescription)
                 return nil

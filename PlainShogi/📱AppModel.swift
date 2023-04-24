@@ -235,12 +235,12 @@ class 📱アプリモデル: ObservableObject {
     //MARK: - ==== SharePlay ====
     private var ⓢubscriptions = Set<AnyCancellable>()
     private var ⓣasks = Set<Task<Void, Never>>()
-    @Published var ⓖroupSession: GroupSession<🄶roupActivity>?
+    @Published var ⓖroupSession: GroupSession<👥GroupActivity>?
     private var ⓜessenger: GroupSessionMessenger?
     @Published var 参加人数: Int?
     
     func 新規GroupSessionを受信したら設定する() async {
-        for await ⓝewSession in 🄶roupActivity.sessions() {
+        for await ⓝewSession in 👥GroupActivity.sessions() {
             self.局面 = .初期セット
             self.ⓖroupSession = ⓝewSession
             let ⓝewMessenger = GroupSessionMessenger(session: ⓝewSession)
@@ -296,7 +296,7 @@ class 📱アプリモデル: ObservableObject {
         if self.ⓖroupSession != nil {
             self.ⓖroupSession?.leave()
             self.ⓖroupSession = nil
-            🄶roupActivity.アクティビティを起動する()
+            👥GroupActivity.アクティビティを起動する()
         }
     }
     
