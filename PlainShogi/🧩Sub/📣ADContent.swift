@@ -1,16 +1,16 @@
 import SwiftUI
 
-struct 📣ADContent: ViewModifier {
+struct 📣広告コンテンツ: ViewModifier {
     @EnvironmentObject private var 🛒: 🛒StoreModel
     @State private var ⓐpp: 📣MyApp = .pickUpAppWithout(.PlainShogiBoard)
     func body(content: Content) -> some View {
         content
             .sheet(isPresented: $🛒.🚩showADSheet) {
-                📣ADSheet(self.ⓐpp)
+                📣ADView(self.ⓐpp, second: 15)
                     .environmentObject(🛒)
             }
             .onAppear {
-                🛒.checkToShowADSheetOnLaunch()
+                🛒.checkToShowADSheet()
             }
     }
 }

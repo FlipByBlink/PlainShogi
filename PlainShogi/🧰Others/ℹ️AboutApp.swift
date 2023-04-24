@@ -1,45 +1,24 @@
-typealias 🛒Storeモデル = 🛒StoreModel
-typealias 📣広告コンテンツ = 📣ADContent
-
-let 📜versionInfos = 📜VersionInfo.history(("1.3", "2023-01-22"),
-                                           ("1.2.2", "2022-08-18"),
-                                           ("1.2.1", "2022-07-21"),
-                                           ("1.2", "2022-07-09"),
-                                           ("1.1", "2022-05-07"),
-                                           ("1.0", "2022-04-21"))
-
-let 🔗appStoreProductURL = URL(string: "https://apps.apple.com/app/id1620268476")!
-
-let 👤privacyPolicy = """
-2022-04-21
-
-### Japanese
-このアプリ自身において、ユーザーの情報を一切収集しません。
-
-### English
-This application don't collect user infomation.
-"""
-
-let 🔗webRepositoryURL = URL(string: "https://github.com/FlipByBlink/PlainShogi")!
-let 🔗webRepositoryURL_Mirror = URL(string: "https://gitlab.com/FlipByBlink/PlainShogi_Mirror")!
-
-enum 📁SourceFolder: String, CaseIterable, Identifiable {
-    case main
-    case 🧩Sub1
-    case 🧩Sub2
-    case 🧰Others
-    var id: Self { self }
-}
-
-
-
-
-//MARK: - ============ Template ============
 import SwiftUI
 
+struct ℹ️AboutAppLink: View {
+    var body: some View {
+        Section {
+            🖼️IconAndName()
+            🔗AppStoreLink()
+            NavigationLink {
+                ℹ️AboutAppMenu()
+            } label: {
+                Label("About App", systemImage: "doc")
+            }
+        }
+    }
+}
+
 struct ℹ️AboutAppMenu: View {
+    var withSidebarLayout: Bool = false
     var body: some View {
         List {
+            if self.withSidebarLayout { 🖼️IconAndName() }
             📰AppStoreDescriptionSection()
             📜VersionHistoryLink()
             👤PrivacyPolicySection()
@@ -51,20 +30,48 @@ struct ℹ️AboutAppMenu: View {
     }
 }
 
-struct 📰AppStoreDescriptionSection: View {
+private struct 🖼️IconAndName: View {
+    var body: some View {
+        GeometryReader { 📐 in
+            VStack(spacing: 8) {
+                Image("RoundedIcon")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                VStack(spacing: 6) {
+                    Text(ℹ️appName)
+                        .font(.system(.headline, design: .rounded))
+                        .tracking(1.5)
+                        .opacity(0.75)
+                    Text(ℹ️appSubTitle)
+                        .font(.footnote)
+                        .fontWeight(.medium)
+                        .foregroundStyle(.secondary)
+                }
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
+            }
+            .padding(20)
+            .frame(width: 📐.size.width)
+        }
+        .frame(height: 200)
+    }
+}
+
+private struct 📰AppStoreDescriptionSection: View {
     var body: some View {
         Section {
             NavigationLink {
                 ScrollView {
                     Text("AppStoreDescription", tableName: "🌏AppStoreDescription")
                         .padding()
+                        .frame(maxWidth: .infinity)
                 }
                 .navigationBarTitle("Description")
-                .navigationBarTitleDisplayMode(.inline)
                 .textSelection(.enabled)
             } label: {
-                Text("AppStoreDescription", tableName: "🌏AppStoreDescription")
+                Text(self.ⓛabelString)
                     .font(.subheadline)
+                    .lineSpacing(5)
                     .lineLimit(7)
                     .padding(8)
                     .accessibilityLabel("Description")
@@ -73,33 +80,38 @@ struct 📰AppStoreDescriptionSection: View {
             Text("Description")
         }
     }
+    private var ⓛabelString: String {
+        String(localized: "AppStoreDescription", table: "🌏AppStoreDescription")
+            .replacingOccurrences(of: "\n\n", with: "\n")
+            .replacingOccurrences(of: "\n\n", with: "\n")
+    }
 }
 
-struct 🔗AppStoreLink: View {
-    @Environment(\.openURL) var openURL: OpenURLAction
+private struct 🔗AppStoreLink: View {
+    @Environment(\.openURL) private var openURL
     var body: some View {
         Button {
-            self.openURL.callAsFunction(🔗appStoreProductURL)
+            self.openURL(🔗appStoreProductURL)
         } label: {
             HStack {
                 Label("Open AppStore page", systemImage: "link")
                 Spacer()
                 Image(systemName: "arrow.up.forward.app")
+                    .font(.body.weight(.light))
                     .imageScale(.small)
-                    .foregroundStyle(.secondary)
             }
         }
     }
 }
 
-struct 🏬AppStoreSection: View {
-    @Environment(\.openURL) var openURL: OpenURLAction
+private struct 🏬AppStoreSection: View {
+    @Environment(\.openURL) private var openURL
     var body: some View {
         Section {
             🔗AppStoreLink()
             Button {
-                let 🔗 = URL(string: 🔗appStoreProductURL.description + "?action=write-review")!
-                self.openURL.callAsFunction(🔗)
+                let ⓤrl = URL(string: 🔗appStoreProductURL.description + "?action=write-review")!
+                self.openURL(ⓤrl)
             } label: {
                 HStack {
                     Label("Review on AppStore", systemImage: "star.bubble")
@@ -115,14 +127,17 @@ struct 🏬AppStoreSection: View {
     }
 }
 
-struct 👤PrivacyPolicySection: View {
+private struct 👤PrivacyPolicySection: View {
     var body: some View {
         Section {
             NavigationLink {
-                Text(👤privacyPolicy)
-                    .padding(32)
-                    .textSelection(.enabled)
-                    .navigationTitle("Privacy Policy")
+                ScrollView {
+                    Text(👤privacyPolicyDescription)
+                        .padding(24)
+                        .textSelection(.enabled)
+                        .frame(maxWidth: .infinity)
+                }
+                .navigationTitle("Privacy Policy")
             } label: {
                 Label("Privacy Policy", systemImage: "person.text.rectangle")
             }
@@ -130,16 +145,7 @@ struct 👤PrivacyPolicySection: View {
     }
 }
 
-struct 📜VersionInfo: Identifiable {
-    var number: String
-    var date: String
-    var id: String { self.number }
-    static func history(_ ⓘnfos: (ⓝumber: String, ⓓate: String) ...) -> [Self] {
-        ⓘnfos.map { Self(number: $0.ⓝumber, date: $0.ⓓate) }
-    }
-}
-
-struct 📜VersionHistoryLink: View {
+private struct 📜VersionHistoryLink: View {
     var body: some View {
         Section {
             NavigationLink {
@@ -172,7 +178,7 @@ struct 📜VersionHistoryLink: View {
     }
 }
 
-struct 📓SourceCodeLink: View {
+private struct 📓SourceCodeLink: View {
     var body: some View {
         NavigationLink {
             self.ⓢourceCodeMenu()
@@ -182,8 +188,8 @@ struct 📓SourceCodeLink: View {
     }
     private func ⓢourceCodeMenu() -> some View {
         List {
-            ForEach(📁SourceFolder.allCases) { ⓟath in
-                Self.📓CodeSection(ⓟath.rawValue)
+            ForEach(📁SourceCodeCategory.allCases) {
+                Self.📓CodeSection($0)
             }
             self.📑bundleMainInfoDictionary()
             self.🔗repositoryLinks()
@@ -191,29 +197,33 @@ struct 📓SourceCodeLink: View {
         .navigationTitle("Source code")
     }
     private struct 📓CodeSection: View {
-        private var ⓓirectoryPath: String
-        private var 📁url: URL { Bundle.main.bundleURL.appendingPathComponent(self.ⓓirectoryPath) }
-        private var 🏷fileNames: [String]? {
-            try? FileManager.default.contentsOfDirectory(atPath: self.📁url.path)
+        private var ⓒategory: 📁SourceCodeCategory
+        private var 🔗url: URL {
+#if targetEnvironment(macCatalyst)
+            Bundle.main.bundleURL.appendingPathComponent("Contents/Resources/📁SourceCode")
+#else
+            Bundle.main.bundleURL.appendingPathComponent("📁SourceCode")
+#endif
         }
         var body: some View {
             Section {
-                if let 🏷fileNames {
-                    ForEach(🏷fileNames, id: \.self) { 🏷 in
-                        NavigationLink(🏷) {
-                            let 📃 = try? String(contentsOf: self.📁url.appendingPathComponent(🏷))
-                            self.📰sourceCodeView(📃 ?? "🐛Bug", 🏷)
+                ForEach(self.ⓒategory.fileNames, id: \.self) { ⓝame in
+                    if let ⓒode = try? String(contentsOf: self.🔗url.appendingPathComponent(ⓝame)) {
+                        NavigationLink(ⓝame) {
+                            self.📰sourceCodeView(ⓒode, ⓝame)
                         }
+                    } else {
+                        Text("🐛")
                     }
-                    if 🏷fileNames.isEmpty { Text("🐛Bug") }
                 }
+                if self.ⓒategory.fileNames.isEmpty { Text("🐛") }
             } header: {
-                Text(ⓓirectoryPath)
+                Text(self.ⓒategory.rawValue)
                     .textCase(.none)
             }
         }
-        init(_ ⓓirectoryPath: String) {
-            self.ⓓirectoryPath = ⓓirectoryPath
+        init(_ category: 📁SourceCodeCategory) {
+            self.ⓒategory = category
         }
         private func 📰sourceCodeView(_ ⓣext: String, _ ⓣitle: String) -> some View {
             ScrollView {
@@ -223,7 +233,6 @@ struct 📓SourceCodeLink: View {
                 }
             }
             .navigationBarTitle(LocalizedStringKey(ⓣitle))
-            .navigationBarTitleDisplayMode(.inline)
             .font(.caption.monospaced())
             .textSelection(.enabled)
         }
@@ -236,7 +245,6 @@ struct 📓SourceCodeLink: View {
                         .padding()
                 }
                 .navigationBarTitle("Bundle.main.infoDictionary")
-                .navigationBarTitleDisplayMode(.inline)
                 .textSelection(.enabled)
             }
         }
@@ -257,7 +265,7 @@ struct 📓SourceCodeLink: View {
                 Text(🔗webRepositoryURL.description)
             }
             Section {
-                Link(destination: 🔗webRepositoryURL_Mirror) {
+                Link(destination: 🔗webMirrorRepositoryURL) {
                     HStack {
                         Label("Web Repository", systemImage: "link")
                         Text("(Mirror)")
@@ -270,13 +278,13 @@ struct 📓SourceCodeLink: View {
                     }
                 }
             } footer: {
-                Text(🔗webRepositoryURL_Mirror.description)
+                Text(🔗webMirrorRepositoryURL.description)
             }
         }
     }
 }
 
-struct 🧑‍💻AboutDeveloperPublisherLink: View {
+private struct 🧑‍💻AboutDeveloperPublisherLink: View {
     var body: some View {
         NavigationLink {
             self.ⓐboutDeveloperPublisherMenu()
@@ -361,6 +369,41 @@ struct 🧑‍💻AboutDeveloperPublisherLink: View {
             } header: {
                 Text("Timeline")
             }
+        }
+    }
+}
+
+struct 💬PrepareToRequestUserReview: ViewModifier {
+    @Binding private var ⓒheckToRequest: Bool
+    func body(content: Content) -> some View {
+        if #available(iOS 16.0, *) {
+            content
+                .modifier(ⓜodifier(self.$ⓒheckToRequest))
+        } else {
+            content
+        }
+    }
+    init(_ checkToRequest: Binding<Bool>) {
+        self._ⓒheckToRequest = checkToRequest
+    }
+    @available(iOS 16, *)
+    private struct ⓜodifier: ViewModifier {
+        @Environment(\.requestReview) private var requestReview
+        @AppStorage("launchCount") private var ⓛaunchCount: Int = 0
+        @Binding private var ⓒheckToRequest: Bool
+        func body(content: Content) -> some View {
+            content
+                .task { self.ⓛaunchCount += 1 }
+                .onChange(of: self.ⓒheckToRequest) {
+                    if $0 == true {
+                        if [10, 30, 50, 70, 90].contains(self.ⓛaunchCount) {
+                            self.requestReview()
+                        }
+                    }
+                }
+        }
+        init(_ checkToRequest: Binding<Bool>) {
+            self._ⓒheckToRequest = checkToRequest
         }
     }
 }
