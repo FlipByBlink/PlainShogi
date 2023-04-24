@@ -96,13 +96,12 @@ private struct 盤上のコマもしくはマス: View {
         Group {
             if let 駒 {
                 コマ(self.表記, self.$ドラッグ中, self.操作直後, self.SとNを見分けるためのアンダーライン)
-                    .modifier(コマの向きを調整(駒.陣営, 📱.🚩上下反転))
+                    .modifier(向きを調整(駒.陣営, 📱.🚩上下反転))
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
                     .modifier(このコマが操作直後なら強調表示(self.画面上での左上からの位置))
                     .accessibilityHidden(true)
                     .onDrag {
-                        💥フィードバック.軽め()
                         self.ドラッグ中 = true
                         return 📱.この盤駒をドラッグし始める(self.元々の位置)
                     //} preview: {
@@ -178,9 +177,8 @@ private struct 盤外のコマ: View {
         if let 盤外上での表記 {
             コマ(盤外上での表記, self.$ドラッグ中, self.直近の操作として強調表示)
                 .frame(width: self.コマの大きさ * (self.数 >= 2 ? 1.2 : 1))
-                .modifier(コマの向きを調整(self.陣営, 📱.🚩上下反転))
+                .modifier(向きを調整(self.陣営, 📱.🚩上下反転))
                 .onDrag {
-                    💥フィードバック.軽め()
                     self.ドラッグ中 = true
                     return 📱.この手駒をドラッグし始める(self.陣営, self.職名)
                 } preview: {
@@ -268,7 +266,7 @@ private struct ドラッグプレビュー用コマ: View {
                 .minimumScaleFactor(0.1)
         }
         .frame(width: self.コマの大きさ, height: self.コマの大きさ)
-        .modifier(コマの向きを調整(self.陣営, self.上下反転))
+        .modifier(向きを調整(self.陣営, self.上下反転))
     }
     init(_ ﾋｮｳｷ: String, _ ｺﾏﾉｵｵｷｻ: CGFloat, _ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼﾞｮｳｹﾞﾊﾝﾃﾝ: Bool) {
         (self.表記, self.コマの大きさ, self.陣営, self.上下反転) = (ﾋｮｳｷ, ｺﾏﾉｵｵｷｻ, ｼﾞﾝｴｲ, ｼﾞｮｳｹﾞﾊﾝﾃﾝ)

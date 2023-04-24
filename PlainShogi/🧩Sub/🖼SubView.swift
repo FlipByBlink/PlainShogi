@@ -1,21 +1,16 @@
 import SwiftUI
 
-struct コマの向きを調整: ViewModifier {
-    private var 陣営: 王側か玉側か
-    private var 上下反転オプション: Bool
-    private var 🚩下向き: Bool {
-        (self.陣営 == .玉側) != self.上下反転オプション
-    }
+struct 向きを調整: ViewModifier {
+    private var 🚩下向きに変更: Bool
     func body(content: Content) -> some View {
-        if self.🚩下向き {
-            content
-                .rotationEffect(.degrees(180))
+        if self.🚩下向きに変更 {
+            content.rotationEffect(.degrees(180))
         } else {
             content
         }
     }
-    init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼﾞｮｳｹﾞﾊﾝﾃﾝ: Bool) {
-        (self.陣営, self.上下反転オプション) = (ｼﾞﾝｴｲ, ｼﾞｮｳｹﾞﾊﾝﾃﾝ)
+    init(_ 陣営: 王側か玉側か, _ 上下反転: Bool) {
+        self.🚩下向きに変更 = ((陣営 == .玉側) != 上下反転)
     }
 }
 
@@ -81,7 +76,7 @@ struct 手駒編集ボタン: View {
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
-            .modifier(コマの向きを調整(self.陣営, 📱.🚩上下反転))
+            .modifier(向きを調整(self.陣営, 📱.🚩上下反転))
             .sheet(isPresented: self.$手駒の数を編集中) {
                 手駒編集シート(self.陣営)
                     .onDisappear { self.手駒の数を編集中 = false }
