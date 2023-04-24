@@ -62,7 +62,7 @@ struct 手駒編集ボタン: View {
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
-            .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
+            .modifier(コマの向きを調整(self.陣営, 📱.🚩上下反転))
             .sheet(isPresented: self.$手駒の数を編集中) {
                 手駒編集シート(self.陣営)
                     .onDisappear { self.手駒の数を編集中 = false }
@@ -147,11 +147,11 @@ struct 筋View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     let 幅: CGFloat
     private var 上下反転: Bool { 📱.🚩上下反転 }
+    private let 字 = ["９","８","７","６","５","４","３","２","１"]
     var body: some View {
         HStack(spacing: 0) {
-            let 字 = ["９","８","７","６","５","４","３","２","１"]
-            ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 列 in
-                Text(列)
+            ForEach(self.上下反転 ? self.字.reversed() : self.字, id: \.self) {
+                Text($0)
                     .minimumScaleFactor(0.1)
                     .font(🗄️固定値.段筋フォント)
                     .padding(self.上下反転 ? .top : .bottom, 1)
@@ -172,8 +172,8 @@ struct 段View: View {
     }
     var body: some View {
         VStack(spacing: 0) {
-            ForEach(self.上下反転 ? self.字.reversed() : self.字, id: \.self) { 行 in
-                Text(行.description)
+            ForEach(self.上下反転 ? self.字.reversed() : self.字, id: \.self) {
+                Text($0)
                     .minimumScaleFactor(0.1)
                     .font(🗄️固定値.段筋フォント)
                     .padding(self.上下反転 ? .trailing : .leading, 4)

@@ -22,22 +22,23 @@ private struct 将棋全体View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private let マスに対する段筋の大きさ: Double = 0.5
     private let 盤上と盤外の隙間: CGFloat = 4
+    private var 上下反転: Bool { 📱.🚩上下反転 }
+    private var 通常の向き: Bool { !self.上下反転 }
     var body: some View {
         GeometryReader { 画面 in
             let マスの大きさ = self.マスの大きさを計算(画面.size)
             let 筋 = 筋View(幅: マスの大きさ * self.マスに対する段筋の大きさ)
             let 段 = 段View(高さ: マスの大きさ * self.マスに対する段筋の大きさ)
-            let 上下反転 = 📱.🚩上下反転
             VStack(spacing: self.盤上と盤外の隙間) {
                 盤外(.対面, マスの大きさ)
                 VStack(spacing: 0) {
-                    if !上下反転 { 筋 }
+                    if self.通常の向き { 筋 }
                     HStack(spacing: 0) {
-                        if 上下反転 { 段 }
+                        if self.上下反転 { 段 }
                         盤面(マスの大きさ)
-                        if !上下反転 { 段 }
+                        if self.通常の向き { 段 }
                     }
-                    if 上下反転 { 筋 }
+                    if self.上下反転 { 筋 }
                 }
                 盤外(.手前, マスの大きさ)
             }
@@ -94,7 +95,7 @@ private struct 盤上のコマもしくはマス: View {
         Group {
             if let 駒 {
                 コマ(self.表記, self.$ドラッグ中, self.操作直後, self.SとNを見分けるためのアンダーライン)
-                    .modifier(下向きに変える(駒.陣営, 📱.🚩上下反転))
+                    .modifier(コマの向きを調整(駒.陣営, 📱.🚩上下反転))
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
                     .modifier(このコマが操作直後なら強調表示(self.画面上での左上からの位置))
@@ -176,7 +177,7 @@ private struct 盤外のコマ: View {
         if let 盤外上での表記 {
             コマ(盤外上での表記, self.$ドラッグ中, self.直近の操作として強調表示)
                 .frame(width: self.コマの大きさ * (self.数 >= 2 ? 1.2 : 1))
-                .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
+                .modifier(コマの向きを調整(self.陣営, 📱.🚩上下反転))
                 .onDrag {
                     💥フィードバック.軽め()
                     self.ドラッグ中 = true
@@ -226,7 +227,7 @@ private struct コマ: View {
     }
 }
 
-struct 下向きに変える: ViewModifier {
+struct コマの向きを調整: ViewModifier {
     private var 陣営: 王側か玉側か
     private var 上下反転: Bool
     private var 🚩条件: Bool {
@@ -281,7 +282,7 @@ private struct ドラッグプレビュー用コマ: View {
                 .minimumScaleFactor(0.1)
         }
         .frame(width: self.コマの大きさ, height: self.コマの大きさ)
-        .modifier(下向きに変える(self.陣営, self.上下反転))
+        .modifier(コマの向きを調整(self.陣営, self.上下反転))
     }
     init(_ ﾋｮｳｷ: String, _ ｺﾏﾉｵｵｷｻ: CGFloat, _ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼﾞｮｳｹﾞﾊﾝﾃﾝ: Bool) {
         (self.表記, self.コマの大きさ, self.陣営, self.上下反転) = (ﾋｮｳｷ, ｺﾏﾉｵｵｷｻ, ｼﾞﾝｴｲ, ｼﾞｮｳｹﾞﾊﾝﾃﾝ)
