@@ -14,7 +14,7 @@ struct ContentView: View {
         .padding()
         .overlay(alignment: .bottomTrailing) { 🛠非SharePlay時のメニューボタン() }
         .ignoresSafeArea(.keyboard, edges: .bottom)
-        .sheet(isPresented: $📱.🚩メニューを表示) { 🛠アプリメニュー() }
+        .modifier(🛠メニューシート())
     }
 }
 

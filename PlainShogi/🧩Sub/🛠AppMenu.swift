@@ -1,6 +1,43 @@
 import SwiftUI
 import GroupActivities
 
+struct 🛠メニューシート: ViewModifier {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    func body(content: Content) -> some View {
+        content
+            .sheet(isPresented: $📱.🚩メニューを表示) {
+                メニューコンテンツ()
+                    .environmentObject(📱)
+            }
+    }
+}
+
+struct 🛠非SharePlay時のメニューボタン: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    var body: some View {
+        if !self.ⓖroupStateObserver.isEligibleForGroupSession {
+            メニューボタン()
+                .padding()
+        }
+    }
+}
+
+struct 🛠SharePlayインジケーターやメニューボタン: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    var body: some View {
+        if self.ⓖroupStateObserver.isEligibleForGroupSession {
+            HStack {
+                SharePlayインジケーター()
+                    .padding(.leading, 12)
+                Spacer()
+                メニューボタン()
+            }
+        }
+    }
+}
+
 private struct メニューボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
@@ -49,7 +86,7 @@ private struct メニューボタン: View {
     }
     private func 履歴単体メニュー() -> some View {
         NavigationView {
-            履歴List()
+            履歴メニュー()
                 .toolbar {
                     Button {
                         📱.🚩履歴を表示 = false
@@ -65,33 +102,7 @@ private struct メニューボタン: View {
     }
 }
 
-struct 🛠非SharePlay時のメニューボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-    var body: some View {
-        if !self.ⓖroupStateObserver.isEligibleForGroupSession {
-            メニューボタン()
-                .padding()
-        }
-    }
-}
-
-struct 🛠SharePlayインジケーターやメニューボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-    var body: some View {
-        if self.ⓖroupStateObserver.isEligibleForGroupSession {
-            HStack {
-                SharePlayインジケーター()
-                    .padding(.leading, 12)
-                Spacer()
-                メニューボタン()
-            }
-        }
-    }
-}
-
-struct 🛠アプリメニュー: View {
+private struct メニューコンテンツ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {

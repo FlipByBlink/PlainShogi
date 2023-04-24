@@ -3,14 +3,14 @@ import SwiftUI
 struct 履歴リンク: View {
     var body: some View {
         NavigationLink {
-            履歴List()
+            履歴メニュー()
         } label: {
             Label("履歴", systemImage: "clock")
         }
     }
 }
 
-struct 履歴List: View {
+struct 履歴メニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @State private var 🚩履歴削除完了: Bool = false
     private let コマのサイズ: CGFloat = 20
