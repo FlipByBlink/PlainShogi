@@ -95,7 +95,6 @@ private struct 盤上のコマもしくはマス: View {
         Group {
             if let 駒 {
                 コマ(.盤駒(self.元々の位置), self.表記, self.操作直後, self.SとNを見分けるためのアンダーライン)
-                    .modifier(向きを調整(駒.陣営, 📱.🚩上下反転))
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
                     .modifier(このコマが操作直後なら強調表示(self.画面上での左上からの位置))
@@ -170,7 +169,6 @@ private struct 盤外のコマ: View {
         if let 盤外上での表記 {
             コマ(.手駒(self.陣営, self.職名), 盤外上での表記, self.直近の操作として強調表示)
                 .frame(width: self.コマの大きさ * (self.数 >= 2 ? 1.2 : 1))
-                .modifier(向きを調整(self.陣営, 📱.🚩上下反転))
                 .onDrag {
                     📱.この手駒をドラッグし始める(self.陣営, self.職名)
                 } preview: {
@@ -183,13 +181,23 @@ private struct 盤外のコマ: View {
     }
 }
 
-private struct コマ: View {
+private struct コマ: View { //FrameやDrag処理などは呼び出し側で実装する
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 場所: 駒の場所
     private var 表記: String
     private var 操作直後: Bool
     private var アンダーライン: Bool
-    @State private var ドラッグした直後: Bool = false
+    private var 陣営: 王側か玉側か {
+        switch self.場所 {
+            case .盤駒(let 位置):
+                if let ｼﾞﾝｴｲ = 📱.局面.盤駒[位置]?.陣営 {
+                    return ｼﾞﾝｴｲ
+                } else {
+                    assertionFailure(); return .王側
+                }
+            case .手駒(let ｼﾞﾝｴｲ, _): return ｼﾞﾝｴｲ
+        }
+    }
     private var 強調表示: Bool {
         self.操作直後 && !📱.🚩直近操作強調表示機能オフ
     }
@@ -201,8 +209,21 @@ private struct コマ: View {
                 .fontWeight(self.強調表示 ? .bold : nil)
                 .underline(self.アンダーライン)
                 .minimumScaleFactor(0.1)
-                .opacity(self.ドラッグした直後 ? 0.25 : 1.0)
+                .modifier(向きを調整(self.陣営, 📱.🚩上下反転))
                 .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
+                .modifier(Self.ドラッグ直後の効果(self.場所))
+        }
+    }
+    init(_ ﾊﾞｼｮ: 駒の場所, _ ﾋｮｳｷ: String, _ ｿｳｻﾁｮｸｺﾞ: Bool = false, _ ｱﾝﾀﾞｰﾗｲﾝ: Bool = false) {
+        (self.場所, self.表記, self.操作直後, self.アンダーライン) = (ﾊﾞｼｮ, ﾋｮｳｷ, ｿｳｻﾁｮｸｺﾞ, ｱﾝﾀﾞｰﾗｲﾝ)
+    }
+    private struct ドラッグ直後の効果: ViewModifier {
+        @EnvironmentObject private var 📱: 📱アプリモデル
+        private var 場所: 駒の場所
+        @State private var ドラッグした直後: Bool = false
+        func body(content: Content) -> some View {
+            content
+                .opacity(self.ドラッグした直後 ? 0.25 : 1.0)
                 .onChange(of: 📱.ドラッグ中の駒) {
                     switch $0 {
                         case .アプリ内の駒(let 出発地点):
@@ -219,9 +240,7 @@ private struct コマ: View {
                     }
                 }
         }
-    }
-    init(_ ﾊﾞｼｮ: 駒の場所, _ ﾋｮｳｷ: String, _ ｿｳｻﾁｮｸｺﾞ: Bool = false, _ ｱﾝﾀﾞｰﾗｲﾝ: Bool = false) {
-        (self.場所, self.表記, self.操作直後, self.アンダーライン) = (ﾊﾞｼｮ, ﾋｮｳｷ, ｿｳｻﾁｮｸｺﾞ, ｱﾝﾀﾞｰﾗｲﾝ)
+        init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
     }
 }
 
