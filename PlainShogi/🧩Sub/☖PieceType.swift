@@ -300,7 +300,7 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
 
 let 空の手駒: [王側か玉側か: 持ち駒] = [.王側: 持ち駒.空, .玉側: 持ち駒.空]
 
-let 初期配置: [Int: 盤上の駒] = {
+private let 初期配置: [Int: 盤上の駒] = {
     var 配置: [Int: 盤上の駒] = [:]
     
     let テンプレ: [Int: (王側か玉側か, 駒の種類)] =

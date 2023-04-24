@@ -8,7 +8,7 @@ struct ContentView: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         VStack(spacing: 0) {
-            将棋View()
+            将棋全体View()
             🛠SharePlayインジケーターやメニューボタン()
         }
         .padding()
@@ -18,15 +18,15 @@ struct ContentView: View {
     }
 }
 
-private struct 将棋View: View {
+private struct 将棋全体View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private let マスに対する段筋の大きさ: Double = 0.5
     private let 盤上と盤外の隙間: CGFloat = 4
     var body: some View {
         GeometryReader { 画面 in
             let マスの大きさ = self.マスの大きさを計算(画面.size)
-            let 筋 = 筋表示(幅: マスの大きさ * self.マスに対する段筋の大きさ)
-            let 段 = 段表示(高さ: マスの大きさ * self.マスに対する段筋の大きさ)
+            let 筋 = 筋View(幅: マスの大きさ * self.マスに対する段筋の大きさ)
+            let 段 = 段View(高さ: マスの大きさ * self.マスに対する段筋の大きさ)
             let 上下反転 = 📱.🚩上下反転
             VStack(spacing: self.盤上と盤外の隙間) {
                 盤外(.対面, マスの大きさ)

@@ -36,26 +36,25 @@ struct 🗄️初回起動時に駒の動かし方の説明バナー: ViewModifi
     @State private var 🚩駒操作説明バナーを表示: Bool = false
     func body(content: Content) -> some View {
         content
-            .onAppear {
-                self.起動回数 += 1
-                if self.起動回数 == 1 {
-                    self.🚩駒操作説明バナーを表示 = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                        self.🚩駒操作説明バナーを表示 = false
-                    }
-                }
-            }
+            .onAppear(perform: self.起動直後の確認作業)
             .overlay(alignment: .top) {
                 if self.🚩駒操作説明バナーを表示 {
                     Label("長押しして駒を持ち上げ、そのままスライドして移動させる。", systemImage: "hand.point.up.left")
                         .font(.caption)
                         .foregroundColor(.primary)
                         .padding()
-                        .onTapGesture {
-                            self.🚩駒操作説明バナーを表示 = false
-                        }
+                        .onTapGesture { self.🚩駒操作説明バナーを表示 = false }
                 }
             }
             .animation(.default.speed(0.33), value: self.🚩駒操作説明バナーを表示)
+    }
+    private func 起動直後の確認作業() {
+        self.起動回数 += 1
+        if self.起動回数 == 1 {
+            self.🚩駒操作説明バナーを表示 = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                self.🚩駒操作説明バナーを表示 = false
+            }
+        }
     }
 }

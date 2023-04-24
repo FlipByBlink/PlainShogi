@@ -29,7 +29,7 @@ struct 🛠SharePlayインジケーターやメニューボタン: View {
     var body: some View {
         if self.ⓖroupStateObserver.isEligibleForGroupSession {
             HStack {
-                SharePlayインジケーター()
+                👥SharePlayインジケーター()
                     .padding(.leading, 12)
                 Spacer()
                 メニューボタン()
@@ -145,7 +145,7 @@ private struct メニューコンテンツ: View {
                 }
             }
             Section {
-                SharePlay紹介リンク()
+                👥SharePlay紹介リンク()
                 細かな使い方リンク()
                 テキスト書き出し読み込み紹介リンク()
             }
@@ -183,7 +183,7 @@ private struct メニューコンテンツ: View {
             if self.ⓖroupStateObserver.isEligibleForGroupSession {
                 Section {
                     NavigationLink {
-                        SharePlayガイド($📱.🚩メニューを表示)
+                        👥SharePlayガイド($📱.🚩メニューを表示)
                     } label: {
                         Label("アクティビティ", systemImage: "shareplay")
                             .badge("共有将棋盤")

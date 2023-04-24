@@ -11,7 +11,7 @@ struct Plain将棋盤App: App {
                 .modifier(🗄️初回起動時に駒の動かし方の説明バナー())
                 .modifier(🗄️自動スリープオフ())
                 .modifier(📣広告コンテンツ())
-                .modifier(SharePlay環境構築())
+                .modifier(👥SharePlay環境構築())
                 .environmentObject(📱)
                 .environmentObject(🛒)
         }

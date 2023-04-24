@@ -143,7 +143,7 @@ struct このコマが操作直後なら強調表示: ViewModifier {
     }
 }
 
-struct 筋表示: View {
+struct 筋View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     let 幅: CGFloat
     private var 上下反転: Bool { 📱.🚩上下反転 }
@@ -163,7 +163,7 @@ struct 筋表示: View {
     }
 }
 
-struct 段表示: View {
+struct 段View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     let 高さ: CGFloat
     private var 上下反転: Bool { 📱.🚩上下反転 }

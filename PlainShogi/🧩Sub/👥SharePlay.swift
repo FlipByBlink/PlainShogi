@@ -40,7 +40,7 @@ struct 🄶roupActivity: GroupActivity {
     }
 }
 
-struct SharePlay環境構築: ViewModifier {
+struct 👥SharePlay環境構築: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     func body(content: Content) -> some View {
@@ -83,7 +83,7 @@ private struct 参加完了通知バナー: ViewModifier {
     }
 }
 
-struct SharePlayインジケーター: View {
+struct 👥SharePlayインジケーター: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
@@ -110,13 +110,13 @@ struct SharePlayインジケーター: View {
                 .minimumScaleFactor(0.1)
             }
             .accessibilityLabel("SharePlayメニュー")
-            .modifier(ボタンスタイル())
+            .modifier(Self.ボタンスタイル())
             .buttonBorderShape(.capsule)
             .dynamicTypeSize(...DynamicTypeSize.accessibility1)
             .foregroundStyle(self.🚩SharePlay中 ? .primary : .secondary)
             .sheet(isPresented: self.$🚩ガイドを表示) {
                 NavigationView {
-                    SharePlayガイド(self.$🚩ガイドを表示)
+                    👥SharePlayガイド(self.$🚩ガイドを表示)
                         .toolbar { self.閉じるボタン() }
                 }
                 .navigationViewStyle(.stack)
@@ -151,7 +151,7 @@ struct SharePlayインジケーター: View {
     }
 }
 
-struct SharePlayガイド: View {
+struct 👥SharePlayガイド: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Binding private var 🚩シートを表示: Bool
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
@@ -168,7 +168,7 @@ struct SharePlayガイド: View {
             }
             self.ステータスセクション()
             self.離脱ボタンや終了ボタン()
-            Section { SharePlay紹介リンク() }
+            Section { 👥SharePlay紹介リンク() }
         }
         .animation(.default, value: self.🚩SharePlay中)
         .navigationTitle("共有将棋盤")
@@ -275,7 +275,7 @@ struct SharePlayガイド: View {
     }
 }
 
-struct SharePlay紹介リンク: View {
+struct 👥SharePlay紹介リンク: View {
     var body: some View {
         NavigationLink {
             List {
