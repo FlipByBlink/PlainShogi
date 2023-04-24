@@ -30,6 +30,7 @@ class 📱アプリモデル: ObservableObject {
     @Published var 参加人数: Int?
 }
 
+//MARK: - ==== 局面関連 ====
 extension 📱アプリモデル {
     func この盤駒の表記(_ 位置: Int) -> String {
         self.局面.盤上のこの駒の表記(位置, self.🚩English表記) ?? "🐛"
@@ -214,9 +215,9 @@ extension 📱アプリモデル {
 extension 📱アプリモデル {
     static func 起動時の局面を読み込む() -> 局面モデル {
         if データ管理_ver_1_2_2.以前のデータがあるか {
-            let 局面 = データ管理_ver_1_2_2.以前アプリ起動した際のログを読み込む()
+            let 前回の局面 = データ管理_ver_1_2_2.以前アプリ起動した際のログを読み込む()
             データ管理_ver_1_2_2.以前のデータを削除する()
-            return 局面
+            return 前回の局面
         } else {
             if let 前回の局面 = 局面モデル.履歴.last {
                 return 前回の局面
@@ -249,7 +250,7 @@ extension 📱アプリモデル {
                         self.リセットする()
                     }
                 }
-                .store(in: &ⓢubscriptions)
+                .store(in: &self.ⓢubscriptions)
             ⓝewSession.$activeParticipants
                 .sink { ⓐctiveParticipants in
                     let ⓝewParticipants = ⓐctiveParticipants.subtracting(ⓝewSession.activeParticipants)
@@ -258,7 +259,7 @@ extension 📱アプリモデル {
                     }
                     self.参加人数 = ⓐctiveParticipants.count
                 }
-                .store(in: &ⓢubscriptions)
+                .store(in: &self.ⓢubscriptions)
             let ⓡeceiveDataTask = Task {
                 for await (ⓜessage, _) in ⓝewMessenger.messages(of: 局面モデル.self) {
                     if let 受信データの更新日時 = ⓜessage.更新日時 {
@@ -272,7 +273,7 @@ extension 📱アプリモデル {
                     }
                 }
             }
-            ⓣasks.insert(ⓡeceiveDataTask)
+            self.ⓣasks.insert(ⓡeceiveDataTask)
             ⓝewSession.join()
         }
     }
