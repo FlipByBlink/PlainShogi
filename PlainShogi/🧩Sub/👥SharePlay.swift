@@ -96,7 +96,7 @@ struct SharePlayインジケーター: View {
         if self.ⓖroupStateObserver.isEligibleForGroupSession {
             Button {
                 self.🚩ガイドを表示 = true
-                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                💥フィードバック.軽め()
             } label: {
                 Group {
                     if self.🚩SharePlay中 {
@@ -141,7 +141,7 @@ struct SharePlayインジケーター: View {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button {
                 self.🚩ガイドを表示 = false
-                振動フィードバック()
+                💥フィードバック.軽め()
             } label: {
                 Image(systemName: "chevron.down")
                     .grayscale(1.0)
@@ -220,7 +220,7 @@ struct SharePlayガイド: View {
                 Section {
                     Button {
                         📱.ⓖroupSession?.leave()
-                        UINotificationFeedbackGenerator().notificationOccurred(.warning)
+                        💥フィードバック.警告()
                         self.🚩シートを表示 = false
                     } label: {
                         Label("アクティビティから離脱する", systemImage: "escape")
@@ -231,7 +231,7 @@ struct SharePlayガイド: View {
                 Section {
                     Button {
                         self.🚩終了確認ダイアログ表示 = true
-                        振動フィードバック()
+                        💥フィードバック.軽め()
                     } label: {
                         Label("アクティビティを終了する", systemImage: "power.dotted")
                     }
@@ -243,7 +243,7 @@ struct SharePlayガイド: View {
                                     titleVisibility: .visible) {
                     Button(role: .destructive) {
                         📱.ⓖroupSession?.end()
-                        UINotificationFeedbackGenerator().notificationOccurred(.error)
+                        💥フィードバック.エラー()
                         self.🚩シートを表示 = false
                     } label: {
                         Label("はい、アクティビティを終了します", systemImage: "power.dotted")

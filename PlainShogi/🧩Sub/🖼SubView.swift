@@ -33,7 +33,7 @@ struct 整理完了ボタン: View {
         Button {
             withAnimation {
                 📱.🚩駒を整理中 = false
-                UINotificationFeedbackGenerator().notificationOccurred(.success)
+                💥フィードバック.成功()
             }
         } label: {
             Image(systemName: "checkmark.circle.fill")
@@ -54,7 +54,7 @@ struct 手駒編集ボタン: View {
         if 📱.🚩駒を整理中 {
             Button {
                 self.手駒の数を編集中 = true
-                振動フィードバック()
+                💥フィードバック.軽め()
             } label: {
                 Image(systemName: "plusminus")
                     .padding(8)
@@ -117,35 +117,6 @@ private struct 手駒編集シート: View {
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
 
-struct 初回起動時に駒の動かし方の説明バナー: ViewModifier {
-    @AppStorage("起動回数") private var 起動回数: Int = 0
-    @State private var 🚩駒操作説明バナーを表示: Bool = false
-    func body(content: Content) -> some View {
-        content
-            .onAppear {
-                self.起動回数 += 1
-                if self.起動回数 == 1 {
-                    self.🚩駒操作説明バナーを表示 = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                        self.🚩駒操作説明バナーを表示 = false
-                    }
-                }
-            }
-            .overlay(alignment: .top) {
-                if self.🚩駒操作説明バナーを表示 {
-                    Label("長押しして駒を持ち上げ、そのままスライドして移動させる。", systemImage: "hand.point.up.left")
-                        .font(.caption)
-                        .foregroundColor(.primary)
-                        .padding()
-                        .onTapGesture {
-                            self.🚩駒操作説明バナーを表示 = false
-                        }
-                }
-            }
-            .animation(.default.speed(0.33), value: self.🚩駒操作説明バナーを表示)
-    }
-}
-
 struct このコマが操作直後なら強調表示: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.legibilityWeight) private var legibilityWeight
@@ -159,9 +130,9 @@ struct このコマが操作直後なら強調表示: ViewModifier {
         if self.🚩条件 {
             switch self.legibilityWeight {
                 case .bold:
-                    content.border(.primary, width: 枠線の太さ)
+                    content.border(.primary, width: 🗄️固定値.枠線の太さ)
                 default:
-                    content.font(駒フォント.bold())
+                    content.font(🗄️固定値.駒フォント.bold())
             }
         } else {
             content
@@ -169,14 +140,6 @@ struct このコマが操作直後なら強調表示: ViewModifier {
     }
     init(_ ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ: Int) {
         self.画面上での左上からの位置 = ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ
-    }
-}
-
-var 枠線の太さ: CGFloat {
-    switch UIDevice.current.userInterfaceIdiom {
-        case .phone: return 1.0
-        case .pad: return 1.33
-        default: return 1.0
     }
 }
 
@@ -190,7 +153,7 @@ struct 筋表示: View {
             ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 列 in
                 Text(列)
                     .minimumScaleFactor(0.1)
-                    .font(段筋フォント)
+                    .font(🗄️固定値.段筋フォント)
                     .padding(self.上下反転 ? .top : .bottom, 1)
                     .frame(width: self.幅, height: self.幅)
                     .padding(.horizontal, self.幅 / 2)
@@ -212,7 +175,7 @@ struct 段表示: View {
             ForEach(self.上下反転 ? self.字.reversed() : self.字, id: \.self) { 行 in
                 Text(行.description)
                     .minimumScaleFactor(0.1)
-                    .font(段筋フォント)
+                    .font(🗄️固定値.段筋フォント)
                     .padding(self.上下反転 ? .trailing : .leading, 4)
                     .frame(width: self.高さ, height: self.高さ)
                     .padding(.vertical, self.高さ / 2)

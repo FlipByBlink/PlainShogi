@@ -68,7 +68,7 @@ private struct 盤面: View {
                 Divider()
             }
         }
-        .border(.primary, width: 枠線の太さ)
+        .border(.primary, width: 🗄️固定値.枠線の太さ)
         .frame(width: self.マスの大きさ * 9, height: self.マスの大きさ * 9)
         .clipped()
     }
@@ -100,7 +100,7 @@ private struct 盤上のコマもしくはマス: View {
                     .modifier(このコマが操作直後なら強調表示(self.画面上での左上からの位置))
                     .accessibilityHidden(true)
                     .onDrag {
-                        振動フィードバック()
+                        💥フィードバック.軽め()
                         self.ドラッグ中 = true
                         return 📱.この盤駒をドラッグし始める(self.元々の位置)
                     //} preview: {
@@ -178,7 +178,7 @@ private struct 盤外のコマ: View {
                 .frame(width: self.コマの大きさ * (self.数 >= 2 ? 1.2 : 1))
                 .modifier(下向きに変える(self.陣営, 📱.🚩上下反転))
                 .onDrag {
-                    振動フィードバック()
+                    💥フィードバック.軽め()
                     self.ドラッグ中 = true
                     return 📱.この手駒をドラッグし始める(self.陣営, self.職名)
                 } preview: {
@@ -204,7 +204,7 @@ private struct コマ: View {
         ZStack {
             Color(.systemBackground)
             Text(self.表記)
-                .font(駒フォント)
+                .font(🗄️固定値.駒フォント)
                 .fontWeight(self.強調表示 ? .bold : nil)
                 .underline(self.アンダーライン)
                 .minimumScaleFactor(0.1)
@@ -277,7 +277,7 @@ private struct ドラッグプレビュー用コマ: View {
         ZStack {
             Color(.systemBackground)
             Text(self.表記)
-                .font(駒フォント)
+                .font(🗄️固定値.駒フォント)
                 .minimumScaleFactor(0.1)
         }
         .frame(width: self.コマの大きさ, height: self.コマの大きさ)
@@ -285,25 +285,5 @@ private struct ドラッグプレビュー用コマ: View {
     }
     init(_ ﾋｮｳｷ: String, _ ｺﾏﾉｵｵｷｻ: CGFloat, _ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼﾞｮｳｹﾞﾊﾝﾃﾝ: Bool) {
         (self.表記, self.コマの大きさ, self.陣営, self.上下反転) = (ﾋｮｳｷ, ｺﾏﾉｵｵｷｻ, ｼﾞﾝｴｲ, ｼﾞｮｳｹﾞﾊﾝﾃﾝ)
-    }
-}
-
-func 振動フィードバック() {
-    UISelectionFeedbackGenerator().selectionChanged()
-}
-
-var 駒フォント: Font {
-    switch UIDevice.current.userInterfaceIdiom {
-        case .phone: return .title3
-        case .pad: return .title
-        default: return .title3
-    }
-}
-
-var 段筋フォント: Font {
-    switch UIDevice.current.userInterfaceIdiom {
-        case .phone: return .caption
-        case .pad: return .body
-        default: return .caption
     }
 }

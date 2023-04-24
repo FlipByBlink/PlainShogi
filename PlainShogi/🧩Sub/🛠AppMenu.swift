@@ -63,7 +63,7 @@ private struct メニューボタン: View {
                     .padding(8)
             } primaryAction: {
                 📱.🚩メニューを表示 = true
-                振動フィードバック()
+                💥フィードバック.軽め()
             }
             .tint(.primary)
             .accessibilityLabel("Open menu")
@@ -90,7 +90,7 @@ private struct メニューボタン: View {
                 .toolbar {
                     Button {
                         📱.🚩履歴を表示 = false
-                        振動フィードバック()
+                        💥フィードバック.軽め()
                     } label: {
                         Image(systemName: "chevron.down")
                             .grayscale(1.0)
@@ -168,7 +168,7 @@ private struct メニューコンテンツ: View {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button {
                 📱.🚩メニューを表示 = false
-                振動フィードバック()
+                💥フィードバック.軽め()
             } label: {
                 Image(systemName: "chevron.down")
                     .grayscale(1.0)
@@ -228,7 +228,7 @@ private struct 盤面整理開始ボタン: View {
         Button {
             withAnimation { 📱.🚩駒を整理中 = true }
             📱.🚩メニューを表示 = false
-            振動フィードバック()
+            💥フィードバック.軽め()
         } label: {
             Label("駒を消したり増やしたりする", systemImage: "wand.and.rays")
         }
