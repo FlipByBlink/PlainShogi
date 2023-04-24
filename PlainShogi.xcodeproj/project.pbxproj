@@ -16,7 +16,6 @@
 		128D156B280FE47E003FF480 /* Plain将棋盤App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156A280FE47E003FF480 /* Plain将棋盤App.swift */; };
 		128D156D280FE47E003FF480 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
 		128D156F280FE47F003FF480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
-		128D1572280FE47F003FF480 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D1571280FE47F003FF480 /* Preview Assets.xcassets */; };
 		128D1579280FE4E4003FF480 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 📱AppModel.swift */; };
 		12A9251E2866A8960035DC83 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A9251D2866A8960035DC83 /* StoreKit.framework */; };
 		12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
@@ -93,7 +92,6 @@
 		128D156A280FE47E003FF480 /* Plain将棋盤App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plain将棋盤App.swift"; sourceTree = "<group>"; };
 		128D156C280FE47E003FF480 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		128D156E280FE47F003FF480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PlainShogi/Assets.xcassets; sourceTree = "<group>"; };
-		128D1571280FE47F003FF480 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		128D1578280FE4E4003FF480 /* 📱AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📱AppModel.swift"; sourceTree = "<group>"; };
 		12A9251D2866A8960035DC83 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		12A925222866AA6C0035DC83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -167,14 +165,6 @@
 			path = PlainShogi;
 			sourceTree = "<group>";
 		};
-		128D1570280FE47F003FF480 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				128D1571280FE47F003FF480 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		12A9251C2866A8960035DC83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,7 +214,6 @@
 				F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */,
 				12D4369C2865CD8300B707F5 /* Configuration.storekit */,
 				F5019FD2296ABBBD007CB14D /* memo.md */,
-				128D1570280FE47F003FF480 /* Preview Content */,
 			);
 			path = "🧩Sub";
 			sourceTree = "<group>";
@@ -290,7 +279,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5951A2028ADEEBC00516538 /* Launch Screen.storyboard in Resources */,
-				128D1572280FE47F003FF480 /* Preview Assets.xcassets in Resources */,
 				F5BBD8652973AA720034CCB8 /* 🌏AppStoreDescription.strings in Resources */,
 				12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */,
 				124B75552810CD6D00027DCA /* Localizable.strings in Resources */,
@@ -494,7 +482,7 @@
 				CODE_SIGN_ENTITLEMENTS = "PlainShogi/🧩Sub/PlainShogi.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_ASSET_PATHS = "PlainShogi/🧩Sub/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -526,7 +514,7 @@
 				CODE_SIGN_ENTITLEMENTS = "PlainShogi/🧩Sub/PlainShogi.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_ASSET_PATHS = "PlainShogi/🧩Sub/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
