@@ -232,9 +232,13 @@ struct 持ち駒: Codable {
     }
 }
 
-enum ドラッグ対象 {
+enum 駒の場所: Equatable {
     case 盤駒(_ 位置: Int)
     case 手駒(_ 陣営: 王側か玉側か, _ 職名: 駒の種類)
+}
+
+enum ドラッグ対象: Equatable {
+    case アプリ内の駒(駒の場所)
     case アプリ外のコンテンツ
     case 無し
 }

@@ -81,7 +81,6 @@ private struct 盤面: View {
 
 private struct 盤上のコマもしくはマス: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @State private var ドラッグ中 = false
     private var 画面上での左上からの位置: Int
     private var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
@@ -95,18 +94,13 @@ private struct 盤上のコマもしくはマス: View {
     var body: some View {
         Group {
             if let 駒 {
-                コマ(self.表記, self.$ドラッグ中, self.操作直後, self.SとNを見分けるためのアンダーライン)
+                コマ(.盤駒(self.元々の位置), self.表記, self.操作直後, self.SとNを見分けるためのアンダーライン)
                     .modifier(向きを調整(駒.陣営, 📱.🚩上下反転))
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
                     .modifier(このコマが操作直後なら強調表示(self.画面上での左上からの位置))
                     .accessibilityHidden(true)
-                    .onDrag {
-                        self.ドラッグ中 = true
-                        return 📱.この盤駒をドラッグし始める(self.元々の位置)
-                    //} preview: {
-                    //    ドラッグプレビュー用コマ(self.表記, ⓖeometryProxy.size, 駒.陣営, 📱.🚩上下反転)
-                    }
+                    .onDrag { 📱.この盤駒をドラッグし始める(self.元々の位置) }
             } else { // ==== マス ====
                 Color(.systemBackground)
             }
@@ -159,7 +153,6 @@ private struct 盤外: View {
 
 private struct 盤外のコマ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @State private var ドラッグ中 = false
     private var 陣営: 王側か玉側か
     private var 職名: 駒の種類
     private var コマの大きさ: CGFloat
@@ -175,12 +168,11 @@ private struct 盤外のコマ: View {
     private var 直近の操作として強調表示: Bool { 📱.この手駒は操作直後(self.陣営, self.職名) }
     var body: some View {
         if let 盤外上での表記 {
-            コマ(盤外上での表記, self.$ドラッグ中, self.直近の操作として強調表示)
+            コマ(.手駒(self.陣営, self.職名), 盤外上での表記, self.直近の操作として強調表示)
                 .frame(width: self.コマの大きさ * (self.数 >= 2 ? 1.2 : 1))
                 .modifier(向きを調整(self.陣営, 📱.🚩上下反転))
                 .onDrag {
-                    self.ドラッグ中 = true
-                    return 📱.この手駒をドラッグし始める(self.陣営, self.職名)
+                    📱.この手駒をドラッグし始める(self.陣営, self.職名)
                 } preview: {
                     ドラッグプレビュー用コマ(self.駒の表記, self.コマの大きさ, self.陣営, 📱.🚩上下反転)
                 }
@@ -193,13 +185,14 @@ private struct 盤外のコマ: View {
 
 private struct コマ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    private var 場所: 駒の場所
     private var 表記: String
-    @Binding private var ドラッグ中: Bool
     private var 操作直後: Bool
+    private var アンダーライン: Bool
+    @State private var ドラッグした直後: Bool = false
     private var 強調表示: Bool {
         self.操作直後 && !📱.🚩直近操作強調表示機能オフ
     }
-    private var アンダーライン: Bool
     var body: some View {
         ZStack {
             Color(.systemBackground)
@@ -208,21 +201,27 @@ private struct コマ: View {
                 .fontWeight(self.強調表示 ? .bold : nil)
                 .underline(self.アンダーライン)
                 .minimumScaleFactor(0.1)
-                .opacity(self.ドラッグ中 ? 0.25 : 1.0)
+                .opacity(self.ドラッグした直後 ? 0.25 : 1.0)
                 .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
-                .onChange(of: self.ドラッグ中) { ⓝewValue in
-                    if ⓝewValue {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            withAnimation(.easeIn(duration: 1.5)) {
-                                self.ドラッグ中 = false
+                .onChange(of: 📱.ドラッグ中の駒) {
+                    switch $0 {
+                        case .アプリ内の駒(let 出発地点):
+                            if 出発地点 == self.場所 {
+                                self.ドラッグした直後 = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    withAnimation(.easeIn(duration: 1.5)) {
+                                        self.ドラッグした直後 = false
+                                    }
+                                }
                             }
-                        }
+                        default:
+                            break
                     }
                 }
         }
     }
-    init(_ ﾋｮｳｷ: String, _ ﾄﾞﾗｯｸﾞﾁｭｳ: Binding<Bool>, _ ｿｳｻﾁｮｸｺﾞ: Bool = false, _ ｱﾝﾀﾞｰﾗｲﾝ: Bool = false) {
-        (self.表記, self._ドラッグ中, self.操作直後, self.アンダーライン) = (ﾋｮｳｷ, ﾄﾞﾗｯｸﾞﾁｭｳ, ｿｳｻﾁｮｸｺﾞ, ｱﾝﾀﾞｰﾗｲﾝ)
+    init(_ ﾊﾞｼｮ: 駒の場所, _ ﾋｮｳｷ: String, _ ｿｳｻﾁｮｸｺﾞ: Bool = false, _ ｱﾝﾀﾞｰﾗｲﾝ: Bool = false) {
+        (self.場所, self.表記, self.操作直後, self.アンダーライン) = (ﾊﾞｼｮ, ﾋｮｳｷ, ｿｳｻﾁｮｸｺﾞ, ｱﾝﾀﾞｰﾗｲﾝ)
     }
 }
 
