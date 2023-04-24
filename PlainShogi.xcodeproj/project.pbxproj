@@ -228,9 +228,9 @@
 			isa = PBXGroup;
 			children = (
 				126C18F22816460F002CD046 /* ☖PieceType.swift */,
-				12D424412871893D002D3E80 /* 📬DropDelegate.swift */,
 				127132E72873CDF20008AE46 /* 🖼SubView.swift */,
 				12F4444D286D4B580008A663 /* 🛠AppMenu.swift */,
+				12D424412871893D002D3E80 /* 📬DropDelegate.swift */,
 				F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */,
 				F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */,
 				F5BBD85F2973A7260034CCB8 /* 📣ADContent.swift */,
