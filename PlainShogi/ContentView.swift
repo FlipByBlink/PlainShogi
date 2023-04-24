@@ -93,7 +93,7 @@ private struct 盤上のコマもしくはマス: View {
     }
     var body: some View {
         Group {
-            if let 駒 {
+            if self.駒 != nil {
                 コマ(.盤駒(self.元々の位置), self.表記, self.操作直後, self.SとNを見分けるためのアンダーライン)
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
@@ -187,14 +187,9 @@ private struct コマ: View { //FrameやDrag処理などは呼び出し側で実
     private var 表記: String
     private var 操作直後: Bool
     private var アンダーライン: Bool
-    private var 陣営: 王側か玉側か {
+    private var 陣営: 王側か玉側か? {
         switch self.場所 {
-            case .盤駒(let 位置):
-                if let ｼﾞﾝｴｲ = 📱.局面.盤駒[位置]?.陣営 {
-                    return ｼﾞﾝｴｲ
-                } else {
-                    assertionFailure(); return .王側
-                }
+            case .盤駒(let 位置): return 📱.局面.盤駒[位置]?.陣営
             case .手駒(let ｼﾞﾝｴｲ, _): return ｼﾞﾝｴｲ
         }
     }

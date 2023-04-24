@@ -9,7 +9,7 @@ struct 向きを調整: ViewModifier {
             content
         }
     }
-    init(_ 陣営: 王側か玉側か, _ 上下反転: Bool) {
+    init(_ 陣営: 王側か玉側か?, _ 上下反転: Bool) {
         self.🚩下向きに変更 = ((陣営 == .玉側) != 上下反転)
     }
 }
