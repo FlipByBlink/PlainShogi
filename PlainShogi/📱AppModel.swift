@@ -172,7 +172,7 @@ class 📱アプリモデル: ObservableObject {
                 }
             case .手駒(_, _):
                 if self.局面.盤駒[検証位置] != nil {
-                    return .init(operation: .cancel)
+                    return DropProposal(operation: .cancel)
                 }
             case .アプリ外のコンテンツ, .無し:
                 return nil
@@ -204,6 +204,7 @@ class 📱アプリモデル: ObservableObject {
             }
         } else {
             print("アプリ外部からのアイテムです")
+            print("itemProvider.suggestedNameがありません")
             self.ドラッグ中の駒 = .アプリ外のコンテンツ
         }
         return true

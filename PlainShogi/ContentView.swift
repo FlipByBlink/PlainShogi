@@ -84,9 +84,9 @@ private struct 盤上のコマもしくはマス: View {
     private var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
     }
-    private var 駒: 盤上の駒? { 📱.局面.盤駒[元々の位置] }
+    private var 駒: 盤上の駒? { 📱.局面.盤駒[self.元々の位置] }
     private var 表記: String { 📱.この盤駒の表記(self.元々の位置) }
-    private var 操作直後: Bool { 📱.この盤駒は操作直後(画面上での左上からの位置) }
+    private var 操作直後: Bool { 📱.この盤駒は操作直後(self.画面上での左上からの位置) }
     private var SとNを見分けるためのアンダーライン: Bool {
         (self.駒?.陣営 == .玉側) && (self.表記 == "S" || self.表記 == "N")
     }
@@ -130,7 +130,7 @@ private struct 盤外: View {
     }
     private var コマの大きさ: CGFloat
     private var 駒の並び順: [駒の種類] {
-        self.立場 == .手前 ? 駒の種類.allCases : 駒の種類.allCases.reversed()
+        self.立場 == .手前 ? .Element.allCases : .Element.allCases.reversed()
     }
     var body: some View {
         ZStack(alignment: self.立場 == .手前 ? .leading : .trailing) {
@@ -230,7 +230,7 @@ struct 下向きに変える: ViewModifier {
     private var 陣営: 王側か玉側か
     private var 上下反転: Bool
     private var 🚩条件: Bool {
-        (self.陣営 == .玉側) != 上下反転
+        (self.陣営 == .玉側) != self.上下反転
     }
     func body(content: Content) -> some View {
         content
@@ -251,10 +251,8 @@ struct 成駒確認アラート: ViewModifier {
                         📱.この駒を裏返す(位置)
                     }
                 }
-                Button(role: .cancel) {
+                Button("キャンセル", role: .cancel) {
                     📱.🚩成駒確認アラートを表示 = false
-                } label: {
-                    Text("キャンセル")
                 }
             } message: {
                 if case .盤駒(let 位置) = 📱.局面.直近の操作 {

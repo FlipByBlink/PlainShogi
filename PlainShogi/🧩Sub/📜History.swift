@@ -25,9 +25,9 @@ struct 履歴List: View {
             ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
                 HStack {
                     VStack {
-                        手駒プレビュー(局面, .玉側)
-                        盤面プレビュー(局面)
-                        手駒プレビュー(局面, .王側)
+                        self.手駒プレビュー(局面, .玉側)
+                        self.盤面プレビュー(局面)
+                        self.手駒プレビュー(局面, .王側)
                     }
                     Spacer()
                     VStack(alignment: .trailing, spacing: 4) {
@@ -57,7 +57,7 @@ struct 履歴List: View {
                 }
                 .padding()
             }
-            if 🚩履歴削除完了 { Text("これまでの履歴を削除しました") }
+            if self.🚩履歴削除完了 { Text("これまでの履歴を削除しました") }
             if 局面モデル.履歴.isEmpty {
                 Text("現在、履歴はありません")
                     .foregroundStyle(.secondary)
@@ -79,16 +79,16 @@ struct 履歴List: View {
                                 .fontWeight(局面.直近の操作 == .盤駒(位置) ? .bold : .light)
                                 .rotationEffect(駒.陣営 == .玉側 ? .degrees(180) : .zero)
                                 .minimumScaleFactor(0.1)
-                                .frame(width: コマのサイズ, height: コマのサイズ)
+                                .frame(width: self.コマのサイズ, height: self.コマのサイズ)
                         } else {
                             Color.clear
-                                .frame(width: コマのサイズ, height: コマのサイズ)
+                                .frame(width: self.コマのサイズ, height: self.コマのサイズ)
                         }
                     }
                 }
             }
         }
-        .frame(width: コマのサイズ * 9, height: コマのサイズ * 9)
+        .frame(width: self.コマのサイズ * 9, height: self.コマのサイズ * 9)
         .padding(2)
         .border(.primary, width: 0.66)
     }
@@ -105,7 +105,7 @@ struct 履歴List: View {
                 }
             }
         }
-        .frame(width: コマのサイズ * 9, height: コマのサイズ)
+        .frame(width: self.コマのサイズ * 9, height: self.コマのサイズ)
     }
     private func 削除ボタン() -> some View {
         Button {

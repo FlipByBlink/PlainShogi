@@ -103,7 +103,7 @@ private struct 手駒編集シート: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        self.dismiss.callAsFunction()
+                        self.dismiss()
                     } label: {
                         Image(systemName: "chevron.down")
                             .grayscale(1)
@@ -192,11 +192,11 @@ struct 筋表示: View {
                     .minimumScaleFactor(0.1)
                     .font(段筋フォント)
                     .padding(self.上下反転 ? .top : .bottom, 1)
-                    .frame(width: 幅, height: 幅)
-                    .padding(.horizontal, 幅 / 2)
+                    .frame(width: self.幅, height: self.幅)
+                    .padding(.horizontal, self.幅 / 2)
             }
         }
-        .padding(self.上下反転 ? .leading : .trailing, 幅)
+        .padding(self.上下反転 ? .leading : .trailing, self.幅)
     }
 }
 
@@ -209,13 +209,13 @@ struct 段表示: View {
     }
     var body: some View {
         VStack(spacing: 0) {
-            ForEach(self.上下反転 ? 字.reversed() : 字, id: \.self) { 行 in
+            ForEach(self.上下反転 ? self.字.reversed() : self.字, id: \.self) { 行 in
                 Text(行.description)
                     .minimumScaleFactor(0.1)
                     .font(段筋フォント)
                     .padding(self.上下反転 ? .trailing : .leading, 4)
-                    .frame(width: 高さ, height: 高さ)
-                    .padding(.vertical, 高さ / 2)
+                    .frame(width: self.高さ, height: self.高さ)
+                    .padding(.vertical, self.高さ / 2)
             }
         }
     }
