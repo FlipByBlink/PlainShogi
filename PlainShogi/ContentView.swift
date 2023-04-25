@@ -179,7 +179,7 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
             Text(self.📱.この駒の表記(self.場所))
                 .font(🗄️固定値.駒フォント)
                 .fontWeight(self.📱.この駒は操作直後(self.場所) ? .bold : nil)
-                .underline(self.📱.この駒にアンダーラインが必要(self.場所))
+                .underline(self.📱.この駒にはアンダーラインが必要(self.場所))
                 .minimumScaleFactor(0.1)
                 .rotationEffect(📱.下向きに変更(self.場所) ? .degrees(180) : .zero)
                 .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
@@ -220,24 +220,10 @@ private struct 成駒確認アラート: ViewModifier {
     func body(content: Content) -> some View {
         content
             .alert("成りますか？", isPresented: $📱.🚩成駒確認アラートを表示) {
-                Button("成る") {
-                    if case .盤駒(let 位置) = 📱.局面.直近の操作 {
-                        📱.この駒を裏返す(位置)
-                    }
-                }
-                Button("キャンセル", role: .cancel) {
-                    📱.🚩成駒確認アラートを表示 = false
-                }
+                Button("成る") { 📱.今移動した駒を成る() }
+                Button("キャンセル", role: .cancel) { 📱.🚩成駒確認アラートを表示 = false }
             } message: {
-                if case .盤駒(let 位置) = 📱.局面.直近の操作 {
-                    if let 駒 = 📱.局面.盤駒[位置]?.職名 {
-                        if 📱.🚩English表記 {
-                            Text(verbatim: 駒.English生駒表記 + " → " + (駒.English成駒表記 ?? "🐛"))
-                        } else {
-                            Text(verbatim: 駒.rawValue + " → " + (駒.成駒表記 ?? "🐛"))
-                        }
-                    }
-                }
+                Text(📱.成駒確認メッセージ)
             }
     }
 }

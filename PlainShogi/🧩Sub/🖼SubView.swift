@@ -82,7 +82,7 @@ private struct 手駒編集シート: View {
                 ForEach(駒の種類.allCases) { 職名 in
                     Stepper {
                         HStack(spacing: 16) {
-                            Text(📱.この駒の表記(職名, self.陣営))
+                            Text(📱.手駒編集シートの駒の表記(職名, self.陣営))
                                 .font(.title)
                             Text(📱.局面.この手駒の数(self.陣営, 職名).description)
                                 .font(.title3)

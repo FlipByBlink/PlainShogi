@@ -59,6 +59,35 @@ extension 局面モデル {
         case 無効
     }
     
+    func ここからここへは移動不可(_ 移動し始めた場所: 駒の場所, _ 移動先: 駒の移動先パターン) -> Bool {
+        switch 移動先 {
+            case .盤上(let 検証位置):
+                switch 移動し始めた場所 {
+                    case .盤駒(let 盤駒の元々の位置):
+                        if 検証位置 == 盤駒の元々の位置 {
+                            return true
+                        }
+                        if self.盤駒[検証位置]?.陣営 == self.盤駒[盤駒の元々の位置]?.陣営 {
+                            return true
+                        }
+                        return false
+                    case .手駒(_, _):
+                        return self.盤駒[検証位置] != nil
+                    case .なし:
+                        assertionFailure(); return false
+                }
+            case .盤外(let 移動した先の陣営):
+                switch 移動し始めた場所 {
+                    case .盤駒(_):
+                        return false
+                    case .手駒(let 元々の陣営, _):
+                        return 移動した先の陣営 == 元々の陣営
+                    case .なし:
+                        assertionFailure(); return false
+                }
+        }
+    }
+    
     func この駒の職名表記(_ 場所: 駒の場所, _ English表記: Bool) -> String? {
         switch 場所 {
             case .盤駒(let 位置):
@@ -66,20 +95,24 @@ extension 局面モデル {
                 if English表記 {
                     return 駒.成り ? 駒.職名.English成駒表記 : 駒.職名.English生駒表記
                 } else {
-                    if (駒.陣営 == .玉側) && (駒.職名 == .王) {
-                        return "玉"
-                    } else {
-                        return 駒.成り ? 駒.職名.成駒表記 : 駒.職名.rawValue
-                    }
+                    return 駒.成り ? 駒.職名.成駒表記 : 駒.職名.生駒表記(駒.陣営)
                 }
             case .手駒(let 陣営, let 職名):
-                if !English表記 && (陣営 == .玉側) && (職名 == .王) {
+                if !English表記, 陣営 == .玉側, 職名 == .王 {
                     return "玉"
                 } else {
                     return English表記 ? 職名.English生駒表記 : 職名.rawValue
                 }
             case .なし:
                 return nil
+        }
+    }
+    
+    func この駒の陣営(_ 場所: 駒の場所) -> 王側か玉側か? {
+        switch 場所 {
+            case .盤駒(let 位置): return self.盤駒[位置]?.陣営
+            case .手駒(let ｼﾞﾝｴｲ, _): return ｼﾞﾝｴｲ
+            case .なし: return nil
         }
     }
     
@@ -92,6 +125,16 @@ extension 局面モデル {
             case .手駒(let 陣営, let 職名): return self.この手駒の数(陣営, 職名)
             default: assertionFailure(); return 0
         }
+    }
+    
+    func この駒にはアンダーラインが必要(_ 場所: 駒の場所, _ English表記: Bool) -> Bool {
+        guard English表記,
+              case .盤駒(let 位置) = 場所,
+              let 駒 = self.盤駒[位置],
+              駒.陣営 == .玉側,
+              !駒.成り,
+              [.銀, .桂].contains(駒.職名) else { return false }
+        return true
     }
     
     func この駒の成りについて判断すべき(_ 移動後の場所: 駒の場所, _ 元々の場所: 駒の場所) -> Bool {
@@ -262,12 +305,11 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
     var id: Self { self }
     
     func 生駒表記(_ 陣営: 王側か玉側か) -> String {
-        if 陣営 == .玉側 {
-            if case .王 = self {
-                return "玉"
-            }
+        if 陣営 == .玉側, self == .王 {
+            return "玉"
+        } else {
+            return self.rawValue
         }
-        return self.rawValue
     }
     
     var 成駒表記: String? {
