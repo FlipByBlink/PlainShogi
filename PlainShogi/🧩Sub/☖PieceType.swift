@@ -13,61 +13,72 @@ struct 局面モデル: Codable {
     private(set) var 手駒: [王側か玉側か: 持ち駒]
     private(set) var 直近の操作: 駒の場所 = .なし
     private(set) var 更新日時: Date?
-    
-    mutating func 盤駒を移動させる(_ 出発地点: Int, _ 置いた位置: Int) throws {
-        if 置いた位置 == 出発地点 { throw 🚨駒移動エラー.無効 }
-        guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
-        if let 先客 = self.盤駒[置いた位置] {
-            if 先客.陣営 == 動かした駒.陣営 { throw 🚨駒移動エラー.無効 }
-            self.手駒[動かした駒.陣営]?.一個増やす(先客.職名)
+}
+
+extension 局面モデル {
+    mutating func 盤上に駒を移動させる(_ 出発した場所: 駒の場所, _ 移動させようとした場所: 駒の場所) throws {
+        switch (出発した場所, 移動させようとした場所) {
+            case (.盤駒(let 出発地点), .盤駒(let 置いた位置)):
+                if 置いた位置 == 出発地点 { throw 🚨駒移動エラー.無効 }
+                guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
+                if let 先客 = self.盤駒[置いた位置] {
+                    if 先客.陣営 == 動かした駒.陣営 { throw 🚨駒移動エラー.無効 }
+                    self.手駒[動かした駒.陣営]?.一個増やす(先客.職名)
+                }
+                self.盤駒.removeValue(forKey: 出発地点)
+                self.盤駒.updateValue(動かした駒, forKey: 置いた位置)
+                self.ユーザー操作時の雑多処理(強調対象: .盤駒(置いた位置))
+            case (.手駒(let 陣営, let 職名), .盤駒(let 置いた位置)):
+                if self.盤駒[置いた位置] != nil { throw 🚨駒移動エラー.無効 }
+                self.盤駒.updateValue(盤上の駒(陣営, 職名), forKey: 置いた位置)
+                self.手駒[陣営]?.一個減らす(職名)
+                self.ユーザー操作時の雑多処理(強調対象: .盤駒(置いた位置))
+            default:
+                assertionFailure()
         }
-        self.盤駒.removeValue(forKey: 出発地点)
-        self.盤駒.updateValue(動かした駒, forKey: 置いた位置)
-        self.ユーザー操作時の雑多処理(強調対象: .盤駒(置いた位置))
     }
     
-    mutating func 手駒を盤上へ移動させる(_ 陣営: 王側か玉側か, _ 職名: 駒の種類, _ 置いた位置: Int) throws {
-        if self.盤駒[置いた位置] != nil { throw 🚨駒移動エラー.無効 }
-        self.盤駒.updateValue(盤上の駒(陣営, 職名), forKey: 置いた位置)
-        self.手駒[陣営]?.一個減らす(職名)
-        self.ユーザー操作時の雑多処理(強調対象: .盤駒(置いた位置))
-    }
-    
-    mutating func 盤駒を盤外へ移動させる(_ 出発地点: Int, _ 移動先の陣営: 王側か玉側か) throws {
-        guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
-        self.盤駒.removeValue(forKey: 出発地点)
-        self.手駒[移動先の陣営]?.一個増やす(動かした駒.職名)
-        self.ユーザー操作時の雑多処理(強調対象: .手駒(移動先の陣営, 動かした駒.職名))
-    }
-    
-    mutating func 自分の手駒を敵の手駒側に移動させる(_ 移動元の陣営: 王側か玉側か, _ 職名: 駒の種類, _ 移動先の陣営: 王側か玉側か) {
-        self.手駒[移動元の陣営]?.一個減らす(職名)
-        self.手駒[移動先の陣営]?.一個増やす(職名)
-        self.ユーザー操作時の雑多処理(強調対象: .手駒(移動先の陣営, 職名))
+    mutating func 盤外に駒を移動させる(_ 出発した場所: 駒の場所, _ 移動先の陣営: 王側か玉側か) throws {
+        switch 出発した場所 {
+            case .盤駒(let 出発地点):
+                guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
+                self.盤駒.removeValue(forKey: 出発地点)
+                self.手駒[移動先の陣営]?.一個増やす(動かした駒.職名)
+                self.ユーザー操作時の雑多処理(強調対象: .手駒(移動先の陣営, 動かした駒.職名))
+            case .手駒(let 移動元の陣営, let 職名):
+                self.手駒[移動元の陣営]?.一個減らす(職名)
+                self.手駒[移動先の陣営]?.一個増やす(職名)
+                self.ユーザー操作時の雑多処理(強調対象: .手駒(移動先の陣営, 職名))
+            default:
+                assertionFailure()
+        }
     }
     
     enum 🚨駒移動エラー: Error {
         case 無効
     }
     
-    func 盤上のこの駒の表記(_ 位置: Int, _ English表記: Bool) -> String? {
-        guard let 駒 = self.盤駒[位置] else { return nil }
-        if English表記 {
-            return 駒.成り ? 駒.職名.English成駒表記 : 駒.職名.English生駒表記
-        } else {
-            if (駒.陣営 == .玉側) && (駒.職名 == .王) {
-                return "玉"
-            } else {
-                return 駒.成り ? 駒.職名.成駒表記 : 駒.職名.rawValue
-            }
-        }
-    }
-    
-    func この手駒の表記(_ 陣営: 王側か玉側か, _ 職名: 駒の種類, _ English表記: Bool) -> String {
-        if !English表記 && (陣営 == .玉側) && (職名 == .王) {
-            return "玉"
-        } else {
-            return English表記 ? 職名.English生駒表記 : 職名.rawValue
+    func この駒の職名表記(_ 場所: 駒の場所, _ English表記: Bool) -> String? {
+        switch 場所 {
+            case .盤駒(let 位置):
+                guard let 駒 = self.盤駒[位置] else { return nil }
+                if English表記 {
+                    return 駒.成り ? 駒.職名.English成駒表記 : 駒.職名.English生駒表記
+                } else {
+                    if (駒.陣営 == .玉側) && (駒.職名 == .王) {
+                        return "玉"
+                    } else {
+                        return 駒.成り ? 駒.職名.成駒表記 : 駒.職名.rawValue
+                    }
+                }
+            case .手駒(let 陣営, let 職名):
+                if !English表記 && (陣営 == .玉側) && (職名 == .王) {
+                    return "玉"
+                } else {
+                    return English表記 ? 職名.English生駒表記 : 職名.rawValue
+                }
+            case .なし:
+                return nil
         }
     }
     
@@ -75,21 +86,32 @@ struct 局面モデル: Codable {
         self.手駒[陣営]?.個数(職名) ?? 0
     }
     
-    func この駒の成りについて判断すべき(_ 移動先: Int, _ 元々の位置: Int?) -> Bool {
-        guard let 元々の位置 else { return false }
-        if let 移動後の駒 = self.盤駒[移動先] {
-            if 移動後の駒.成り == false {
-                if 移動後の駒.職名.成駒あり {
-                    switch 移動後の駒.陣営 {
-                        case .王側:
-                            if 移動先 < 27 { return true }
-                            if 元々の位置 < 27 { return true }
-                        case .玉側:
-                            if 53 < 移動先 { return true }
-                            if 53 < 元々の位置 { return true }
+    func この手駒の数(_ 場所: 駒の場所) -> Int {
+        switch 場所 {
+            case .手駒(let 陣営, let 職名): return self.この手駒の数(陣営, 職名)
+            default: assertionFailure(); return 0
+        }
+    }
+    
+    func この駒の成りについて判断すべき(_ 移動後の場所: 駒の場所, _ 元々の場所: 駒の場所) -> Bool {
+        switch (移動後の場所, 元々の場所) {
+            case (.盤駒(let 移動先), .盤駒(let 元々の位置)):
+                if let 移動後の駒 = self.盤駒[移動先] {
+                    if 移動後の駒.成り == false {
+                        if 移動後の駒.職名.成駒あり {
+                            switch 移動後の駒.陣営 {
+                                case .王側:
+                                    if 移動先 < 27 { return true }
+                                    if 元々の位置 < 27 { return true }
+                                case .玉側:
+                                    if 53 < 移動先 { return true }
+                                    if 53 < 元々の位置 { return true }
+                            }
+                        }
                     }
                 }
-            }
+            default:
+                return false
         }
         return false
     }
@@ -107,7 +129,7 @@ struct 局面モデル: Codable {
     }
     
     mutating func 編集モードでこの手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
-        if self.この手駒の数(陣営, 職名) >= 0 {
+        if self.この手駒の数(.手駒(陣営, 職名)) >= 0 {
             self.手駒[陣営]?.一個減らす(職名)
             self.ユーザー操作時の雑多処理(強調対象: .手駒(陣営, 職名))
         }

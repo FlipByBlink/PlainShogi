@@ -32,18 +32,44 @@ class 📱アプリモデル: ObservableObject {
 
 //MARK: - ==== 局面関連 ====
 extension 📱アプリモデル {
-    func この盤駒の表記(_ 位置: Int) -> String {
-        self.局面.盤上のこの駒の表記(位置, self.🚩English表記) ?? "🐛"
+    func この駒の表記(_ 場所: 駒の場所) -> String {
+        let 職名表記 = self.局面.この駒の職名表記(場所, self.🚩English表記) ?? "🐛"
+        switch 場所 {
+            case .盤駒(_):
+                return 職名表記
+            case .手駒(_, _):
+                let 数 = self.局面.この手駒の数(場所)
+                switch 数 {
+                    case 1: return 職名表記
+                    case 2...: return 職名表記 + 数.description
+                    default: return 職名表記
+                }
+            case .なし:
+                return "🐛"
+        }
     }
-    func この手駒の表記(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> String {
-        self.局面.この手駒の表記(陣営, 職名, self.🚩English表記)
+    func この駒の表記(_ 職名: 駒の種類, _ 陣営: 王側か玉側か) -> String {
+        self.🚩English表記 ? 職名.English生駒表記 : 職名.生駒表記(陣営)
     }
-    func この盤駒は操作直後(_ 画面上での左上からの位置: Int) -> Bool {
-        let 元々の位置 = self.🚩上下反転 ? (80 - 画面上での左上からの位置) : 画面上での左上からの位置
-        return self.局面.直近の操作 == .盤駒(元々の位置)
+    func この駒は操作直後(_ 場所: 駒の場所) -> Bool {
+        self.局面.直近の操作 == 場所
     }
-    func この手駒は操作直後(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> Bool {
-        self.局面.直近の操作 == .手駒(陣営, 職名)
+    func この駒にアンダーラインが必要(_ 場所: 駒の場所) -> Bool {
+        guard self.🚩English表記 else { return false }
+        switch 場所 {
+            case .盤駒(let 位置):
+                guard let 駒 = self.局面.盤駒[位置] else { return false }
+                guard 駒.陣営 == .玉側, !駒.成り else { return false }
+                return [.銀, .桂].contains(駒.職名)
+            default:
+                return false
+        }
+    }
+    func 下向きに変更(_ 場所: 駒の場所) -> Bool {
+        (self.この駒の陣営(場所) == .玉側) != self.🚩上下反転
+    }
+    func 下向きに変更(_ 陣営: 王側か玉側か) -> Bool {
+        (陣営 == .玉側) != self.🚩上下反転
     }
     func この駒の陣営(_ 場所: 駒の場所) -> 王側か玉側か? {
         switch 場所 {
@@ -96,14 +122,9 @@ extension 📱アプリモデル {
 
 //MARK: - ==== ドラッグ関連 ====
 extension 📱アプリモデル {
-    func この盤駒をドラッグし始める(_ 位置: Int) -> NSItemProvider {
+    func この駒をドラッグし始める(_ 場所: 駒の場所) -> NSItemProvider {
         💥フィードバック.軽め()
-        self.ドラッグ中の駒 = .アプリ内の駒(.盤駒(位置))
-        return self.ドラッグ対象となるアイテムを用意する()
-    }
-    func この手駒をドラッグし始める(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> NSItemProvider {
-        💥フィードバック.軽め()
-        self.ドラッグ中の駒 = .アプリ内の駒(.手駒(陣営, 職名))
+        self.ドラッグ中の駒 = .アプリ内の駒(場所)
         return self.ドラッグ対象となるアイテムを用意する()
     }
     private func ドラッグ対象となるアイテムを用意する() -> NSItemProvider {
@@ -116,25 +137,27 @@ extension 📱アプリモデル {
 
 //MARK: - ==== ドロップ関連 ====
 extension 📱アプリモデル {
-    func 盤上のここにドロップする(_ 置いた位置: Int, _ ⓘnfo: DropInfo) -> Bool {
+    enum ドロップ領域 {
+        case 盤上(Int), 盤外(王側か玉側か)
+    }
+    func ここにドロップする(_ 置いた場所: ドロップ領域, _ ⓘnfo: DropInfo) -> Bool {
         do {
             switch self.ドラッグ中の駒 {
-                case .アプリ内の駒(let 場所):
-                    switch 場所 {
-                        case .盤駒(let 出発地点):
-                            try self.局面.盤駒を移動させる(出発地点, 置いた位置)
-                            if self.局面.この駒の成りについて判断すべき(置いた位置, 出発地点) {
+                case .アプリ内の駒(let 出発場所):
+                    switch 置いた場所 {
+                        case .盤上(let 位置):
+                            try self.局面.盤上に駒を移動させる(出発場所, .盤駒(位置))
+                            if self.局面.この駒の成りについて判断すべき(.盤駒(位置), 出発場所) {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                                     self.🚩成駒確認アラートを表示 = true
                                 }
                             }
-                            self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-                        case .手駒(let 陣営, let 職名):
-                            try self.局面.手駒を盤上へ移動させる(陣営, 職名, 置いた位置)
-                            self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-                        case .なし:
-                            assertionFailure()
+                        case .盤外(let 陣営):
+                            try self.局面.盤外に駒を移動させる(出発場所, 陣営)
                     }
+                    self.ドラッグ中の駒 = .無し
+                    self.SharePlay中なら現在の局面を参加者に送信する()
+                    💥フィードバック.軽め()
                 case .アプリ外のコンテンツ:
                     let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
                     self.このアイテムを盤面に反映する(ⓘtemProviders)
@@ -149,38 +172,6 @@ extension 📱アプリモデル {
             assertionFailure()
             return false
         }
-    }
-    func 盤外のこちら側にドロップする(_ ドロップされた陣営: 王側か玉側か, _ ⓘnfo: DropInfo) -> Bool {
-        do {
-            switch self.ドラッグ中の駒 {
-                case .アプリ内の駒(let 場所):
-                    switch 場所 {
-                        case .盤駒(let 出発地点):
-                            try self.局面.盤駒を盤外へ移動させる(出発地点, ドロップされた陣営)
-                            self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-                        case .手駒(let 陣営, let 職名):
-                            self.局面.自分の手駒を敵の手駒側に移動させる(陣営, 職名, ドロップされた陣営)
-                            self.駒を移動し終わったらログを更新してフィードバックを発生させる()
-                        case .なし:
-                            assertionFailure()
-                    }
-                case .アプリ外のコンテンツ:
-                    let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
-                    self.このアイテムを盤面に反映する(ⓘtemProviders)
-                case .無し:
-                    return false
-            }
-            return true
-        } catch {
-            print("🚨", error.localizedDescription)
-            assertionFailure()
-            return false
-        }
-    }
-    private func 駒を移動し終わったらログを更新してフィードバックを発生させる() {
-        self.ドラッグ中の駒 = .無し
-        self.SharePlay中なら現在の局面を参加者に送信する()
-        💥フィードバック.軽め()
     }
     func 盤上のここはドロップ可能か確認する(_ 検証位置: Int) -> DropProposal? {
         switch self.ドラッグ中の駒 {

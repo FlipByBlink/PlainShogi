@@ -1,19 +1,5 @@
 import SwiftUI
 
-struct 向きを調整: ViewModifier {
-    private var 🚩下向きに変更: Bool
-    func body(content: Content) -> some View {
-        if self.🚩下向きに変更 {
-            content.rotationEffect(.degrees(180))
-        } else {
-            content
-        }
-    }
-    init(_ 陣営: 王側か玉側か?, _ 上下反転: Bool) {
-        self.🚩下向きに変更 = ((陣営 == .玉側) != 上下反転)
-    }
-}
-
 struct 駒を消すボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 位置: Int
@@ -76,7 +62,7 @@ struct 手駒編集ボタン: View {
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
-            .modifier(向きを調整(self.陣営, 📱.🚩上下反転))
+            .rotationEffect(📱.下向きに変更(self.陣営) ? .degrees(180) : .zero)
             .sheet(isPresented: self.$手駒の数を編集中) {
                 手駒編集シート(self.陣営)
                     .onDisappear { self.手駒の数を編集中 = false }
@@ -96,7 +82,7 @@ private struct 手駒編集シート: View {
                 ForEach(駒の種類.allCases) { 職名 in
                     Stepper {
                         HStack(spacing: 16) {
-                            Text(📱.この手駒の表記(self.陣営, 職名))
+                            Text(📱.この駒の表記(職名, self.陣営))
                                 .font(.title)
                             Text(📱.局面.この手駒の数(self.陣営, 職名).description)
                                 .font(.title3)
@@ -131,12 +117,12 @@ private struct 手駒編集シート: View {
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
 
-struct このコマが操作直後なら強調表示: ViewModifier {
+struct 太文字システムオプションの際にこのコマが操作直後なら強調表示: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.legibilityWeight) private var legibilityWeight
-    private let 画面上での左上からの位置: Int
+    private let 場所: 駒の場所
     private var 🚩条件: Bool {
-        📱.この盤駒は操作直後(self.画面上での左上からの位置)
+        📱.この駒は操作直後(self.場所)
         &&
         📱.🚩直近操作強調表示機能オフ == false
     }
@@ -152,9 +138,7 @@ struct このコマが操作直後なら強調表示: ViewModifier {
             content
         }
     }
-    init(_ ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ: Int) {
-        self.画面上での左上からの位置 = ｶﾞﾒﾝｼﾞｮｳﾉｲﾁ
-    }
+    init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
 }
 
 struct 筋View: View {

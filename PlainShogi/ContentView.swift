@@ -85,21 +85,16 @@ private struct 盤上のコマもしくはマス: View {
     private var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
     }
-    private var 駒: 盤上の駒? { 📱.局面.盤駒[self.元々の位置] }
-    private var 表記: String { 📱.この盤駒の表記(self.元々の位置) }
-    private var 操作直後: Bool { 📱.この盤駒は操作直後(self.画面上での左上からの位置) }
-    private var SとNを見分けるためのアンダーライン: Bool {
-        (self.駒?.陣営 == .玉側) && "SN".contains(self.表記)
-    }
+    private var 元々の場所: 駒の場所 { .盤駒(self.元々の位置) }
+    private var 駒がある: Bool { 📱.局面.盤駒[self.元々の位置] != nil }
     var body: some View {
         Group {
-            if self.駒 != nil {
-                コマ(.盤駒(self.元々の位置), self.表記, self.操作直後, self.SとNを見分けるためのアンダーライン)
+            if self.駒がある {
+                コマの見た目(.盤駒(self.元々の位置))
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
-                    .modifier(このコマが操作直後なら強調表示(self.画面上での左上からの位置))
                     .accessibilityHidden(true)
-                    .onDrag { 📱.この盤駒をドラッグし始める(self.元々の位置) }
+                    .onDrag { 📱.この駒をドラッグし始める(self.元々の場所) }
             } else { // ==== マス ====
                 Color(.systemBackground)
             }
@@ -152,61 +147,45 @@ private struct 盤外: View {
 
 private struct 盤外のコマ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    private var 陣営: 王側か玉側か
-    private var 職名: 駒の種類
+    private var 場所: 駒の場所
     private var コマの大きさ: CGFloat
-    private var 駒の表記: String { 📱.この手駒の表記(self.陣営, self.職名) }
-    private var 数: Int { 📱.局面.この手駒の数(self.陣営, self.職名) }
-    private var 盤外上での表記: String? {
-        switch self.数 {
-            case 1: return self.駒の表記
-            case 2...: return self.駒の表記 + self.数.description
-            default: return nil
-        }
-    }
-    private var 直近の操作として強調表示: Bool { 📱.この手駒は操作直後(self.陣営, self.職名) }
+    private var 数: Int { 📱.局面.この手駒の数(self.場所) }
     var body: some View {
-        if let 盤外上での表記 {
-            コマ(.手駒(self.陣営, self.職名), 盤外上での表記, self.直近の操作として強調表示)
+        if self.数 > 0 {
+            コマの見た目(self.場所)
                 .frame(width: self.コマの大きさ * (self.数 >= 2 ? 1.2 : 1))
                 .onDrag {
-                    📱.この手駒をドラッグし始める(self.陣営, self.職名)
+                    📱.この駒をドラッグし始める(self.場所)
                 } preview: {
-                    ドラッグプレビュー用コマ(self.駒の表記, self.コマの大きさ, self.陣営, 📱.🚩上下反転)
+                    ドラッグプレビュー用コマ(📱.この駒の表記(self.場所),
+                                 self.コマの大きさ,
+                                 📱.下向きに変更(self.場所))
                 }
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼｮｸﾒｲ: 駒の種類, _ ｺﾏﾉｵｵｷｻ: CGFloat) {
-        (self.陣営, self.職名, self.コマの大きさ) = (ｼﾞﾝｴｲ, ｼｮｸﾒｲ, ｺﾏﾉｵｵｷｻ)
+        (self.場所, self.コマの大きさ) = (.手駒(ｼﾞﾝｴｲ, ｼｮｸﾒｲ), ｺﾏﾉｵｵｷｻ)
     }
 }
 
-private struct コマ: View { //FrameやDrag処理などは呼び出し側で実装する
+private struct コマの見た目: View { //FrameやDrag処理などは呼び出し側で実装する
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 場所: 駒の場所
-    private var 表記: String
-    private var 操作直後: Bool
-    private var アンダーライン: Bool
-    private var 陣営: 王側か玉側か? { 📱.この駒の陣営(self.場所) }
-    private var 強調表示: Bool {
-        self.操作直後 && !📱.🚩直近操作強調表示機能オフ
-    }
     var body: some View {
         ZStack {
             Color(.systemBackground)
-            Text(self.表記)
+            Text(self.📱.この駒の表記(self.場所))
                 .font(🗄️固定値.駒フォント)
-                .fontWeight(self.強調表示 ? .bold : nil)
-                .underline(self.アンダーライン)
+                .fontWeight(self.📱.この駒は操作直後(self.場所) ? .bold : nil)
+                .underline(self.📱.この駒にアンダーラインが必要(self.場所))
                 .minimumScaleFactor(0.1)
-                .modifier(向きを調整(self.陣営, 📱.🚩上下反転))
+                .rotationEffect(📱.下向きに変更(self.場所) ? .degrees(180) : .zero)
                 .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
                 .modifier(Self.ドラッグ直後の効果(self.場所))
+                .modifier(太文字システムオプションの際にこのコマが操作直後なら強調表示(self.場所))
         }
     }
-    init(_ ﾊﾞｼｮ: 駒の場所, _ ﾋｮｳｷ: String, _ ｿｳｻﾁｮｸｺﾞ: Bool = false, _ ｱﾝﾀﾞｰﾗｲﾝ: Bool = false) {
-        (self.場所, self.表記, self.操作直後, self.アンダーライン) = (ﾊﾞｼｮ, ﾋｮｳｷ, ｿｳｻﾁｮｸｺﾞ, ｱﾝﾀﾞｰﾗｲﾝ)
-    }
+    init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
     private struct ドラッグ直後の効果: ViewModifier {
         @EnvironmentObject private var 📱: 📱アプリモデル
         private var 場所: 駒の場所
@@ -264,7 +243,6 @@ private struct 成駒確認アラート: ViewModifier {
 private struct ドラッグプレビュー用コマ: View {
     private var 表記: String
     private var コマの大きさ: CGFloat
-    private var 陣営: 王側か玉側か
     private var 上下反転: Bool
     var body: some View {
         ZStack {
@@ -274,9 +252,9 @@ private struct ドラッグプレビュー用コマ: View {
                 .minimumScaleFactor(0.1)
         }
         .frame(width: self.コマの大きさ, height: self.コマの大きさ)
-        .modifier(向きを調整(self.陣営, self.上下反転))
+        .rotationEffect(self.上下反転 ? .degrees(180) : .zero)
     }
-    init(_ ﾋｮｳｷ: String, _ ｺﾏﾉｵｵｷｻ: CGFloat, _ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼﾞｮｳｹﾞﾊﾝﾃﾝ: Bool) {
-        (self.表記, self.コマの大きさ, self.陣営, self.上下反転) = (ﾋｮｳｷ, ｺﾏﾉｵｵｷｻ, ｼﾞﾝｴｲ, ｼﾞｮｳｹﾞﾊﾝﾃﾝ)
+    init(_ ﾋｮｳｷ: String, _ ｺﾏﾉｵｵｷｻ: CGFloat, _ ｼﾞｮｳｹﾞﾊﾝﾃﾝ: Bool) {
+        (self.表記, self.コマの大きさ, self.上下反転) = (ﾋｮｳｷ, ｺﾏﾉｵｵｷｻ, ｼﾞｮｳｹﾞﾊﾝﾃﾝ)
     }
 }

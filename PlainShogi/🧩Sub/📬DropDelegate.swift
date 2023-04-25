@@ -6,7 +6,7 @@ struct 📬盤上ドロップ: DropDelegate {
     private var 位置: Int
     
     func performDrop(info: DropInfo) -> Bool {
-        📱.盤上のここにドロップする(self.位置, info)
+        📱.ここにドロップする(.盤上(self.位置), info)
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
@@ -27,7 +27,7 @@ struct 📬盤外ドロップ: DropDelegate {
     private var 陣営: 王側か玉側か
     
     func performDrop(info: DropInfo) -> Bool {
-        📱.盤外のこちら側にドロップする(self.陣営, info)
+        📱.ここにドロップする(.盤外(self.陣営), info)
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
