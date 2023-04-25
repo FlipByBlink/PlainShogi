@@ -173,18 +173,21 @@ private struct 盤外のコマ: View {
 private struct コマの見た目: View { //FrameやDrag処理などは呼び出し側で実装する
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 場所: 駒の場所
+    private var 表記: String? { 📱.この駒の表記(self.場所) }
     var body: some View {
         ZStack {
             Color(.systemBackground)
-            Text(self.📱.この駒の表記(self.場所))
-                .font(🗄️固定値.駒フォント)
-                .fontWeight(self.📱.この駒は操作直後(self.場所) ? .bold : nil)
-                .underline(self.📱.この駒にはアンダーラインが必要(self.場所))
-                .minimumScaleFactor(0.1)
-                .rotationEffect(📱.下向きに変更(self.場所) ? .degrees(180) : .zero)
-                .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
-                .modifier(Self.ドラッグ直後の効果(self.場所))
-                //.modifier(太文字システムオプションの際にこのコマが操作直後なら強調表示(self.場所))
+            if let 表記 {
+                Text(表記)
+                    .font(🗄️固定値.駒フォント)
+                    .fontWeight(self.📱.この駒は操作直後(self.場所) ? .bold : nil)
+                    .underline(self.📱.この駒にはアンダーラインが必要(self.場所))
+                    .minimumScaleFactor(0.1)
+                    .rotationEffect(📱.下向きに変更(self.場所) ? .degrees(180) : .zero)
+                    .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
+                    .modifier(Self.ドラッグ直後の効果(self.場所))
+                    //.modifier(太文字システムオプションの際にこのコマが操作直後なら強調表示(self.場所))
+            }
         }
     }
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }

@@ -88,6 +88,19 @@ extension 局面モデル {
         }
     }
     
+    func この駒の表記(_ 場所: 駒の場所, _ English表記: Bool) -> String? {
+        guard let 職名表記 = self.この駒の職名表記(場所, English表記) else { return nil }
+        if case .手駒(_, _) = 場所 {
+            switch self.この手駒の数(場所) {
+                case 1: return 職名表記
+                case 2...: return 職名表記 + self.この手駒の数(場所).description
+                default: return nil
+            }
+        } else {
+            return 職名表記
+        }
+    }
+    
     func この駒の職名表記(_ 場所: 駒の場所, _ English表記: Bool) -> String? {
         switch 場所 {
             case .盤駒(let 位置):
@@ -244,12 +257,6 @@ extension 局面モデル {
     }
 }
 
-enum 駒の場所: Codable, Equatable {
-    case 盤駒(_ 位置: Int)
-    case 手駒(_ 陣営: 王側か玉側か, _ 職名: 駒の種類)
-    case なし
-}
-
 enum 王側か玉側か: String, CaseIterable, Codable {
     case 王側
     case 玉側
@@ -291,6 +298,12 @@ struct 持ち駒: Codable {
             self.配分[職名] = self.個数(職名) - 1
         }
     }
+}
+
+enum 駒の場所: Codable, Equatable {
+    case 盤駒(_ 位置: Int)
+    case 手駒(_ 陣営: 王側か玉側か, _ 職名: 駒の種類)
+    case なし
 }
 
 enum ドラッグ対象: Equatable {

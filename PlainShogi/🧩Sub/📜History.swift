@@ -73,9 +73,8 @@ struct 履歴メニュー: View {
                     ForEach(0 ..< 9) { 列 in
                         let 位置 = 行 * 9 + 列
                         if let 駒 = 局面.盤駒[位置] {
-                            let 表記 = 局面.この駒の職名表記(.盤駒(位置), 📱.🚩English表記) ?? "🐛"
-                            Text(表記)
-                                .underline((駒.陣営 == .玉側) && "SN".contains(表記))
+                            Text(局面.この駒の表記(.盤駒(位置), 📱.🚩English表記) ?? "🐛")
+                                .underline(局面.この駒にはアンダーラインが必要(.盤駒(位置), 📱.🚩English表記))
                                 .fontWeight(局面.直近の操作 == .盤駒(位置) ? .bold : .light)
                                 .rotationEffect(駒.陣営 == .玉側 ? .degrees(180) : .zero)
                                 .minimumScaleFactor(0.1)
@@ -94,17 +93,15 @@ struct 履歴メニュー: View {
     }
     private func 手駒プレビュー(_ 局面: 局面モデル, _ 陣営: 王側か玉側か) -> some View {
         HStack {
-            ForEach(駒の種類.allCases) { 駒 in
-                if let 数 = 局面.手駒[陣営]?.配分[駒] {
-                    if 数 > 0 {
-                        let 表記 = 📱.🚩English表記 ? 駒.English生駒表記 : 駒.rawValue
-                        Text(表記 + 数.description)
-                            .fontWeight(.light)
-                            .minimumScaleFactor(0.1)
-                    }
+            ForEach(駒の種類.allCases) {
+                if let 表記 = 局面.この駒の表記(.手駒(陣営, $0), 📱.🚩English表記) {
+                    Text(表記)
+                        .fontWeight(.light)
+                        .minimumScaleFactor(0.1)
                 }
             }
         }
+        .rotationEffect(陣営 == .玉側 ? .degrees(180) : .zero)
         .frame(width: self.コマのサイズ * 9, height: self.コマのサイズ)
     }
     private func 削除ボタン() -> some View {
