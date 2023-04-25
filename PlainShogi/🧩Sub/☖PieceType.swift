@@ -1,5 +1,6 @@
 import Foundation
 
+//MARK: 駒の「位置」
 //             玉
 // 00,01,02,03,04,05,06,07,08
 // 09,10,11,12,13,14,15,16,17
@@ -54,11 +55,9 @@ extension 局面モデル {
                 }
         }
     }
-    
     enum 🚨駒移動エラー: Error {
         case 無効
     }
-    
     func ここからここへは移動不可(_ 移動し始めた場所: 駒の場所, _ 移動先: 駒の移動先パターン) -> Bool {
         switch 移動先 {
             case .盤上(let 検証位置):
@@ -87,7 +86,6 @@ extension 局面モデル {
                 }
         }
     }
-    
     func この駒の表記(_ 場所: 駒の場所, _ English表記: Bool) -> String? {
         guard let 職名表記 = self.この駒の職名表記(場所, English表記) else { return nil }
         if case .手駒(_, _) = 場所 {
@@ -100,7 +98,6 @@ extension 局面モデル {
             return 職名表記
         }
     }
-    
     func この駒の職名表記(_ 場所: 駒の場所, _ English表記: Bool) -> String? {
         switch 場所 {
             case .盤駒(let 位置):
@@ -120,7 +117,6 @@ extension 局面モデル {
                 return nil
         }
     }
-    
     func この駒の陣営(_ 場所: 駒の場所) -> 王側か玉側か? {
         switch 場所 {
             case .盤駒(let 位置): return self.盤駒[位置]?.陣営
@@ -128,18 +124,15 @@ extension 局面モデル {
             case .なし: return nil
         }
     }
-    
     func この手駒の数(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> Int {
         self.手駒[陣営]?.個数(職名) ?? 0
     }
-    
     func この手駒の数(_ 場所: 駒の場所) -> Int {
         switch 場所 {
             case .手駒(let 陣営, let 職名): return self.この手駒の数(陣営, 職名)
             default: assertionFailure(); return 0
         }
     }
-    
     func この駒にはアンダーラインが必要(_ 場所: 駒の場所, _ English表記: Bool) -> Bool {
         guard English表記,
               case .盤駒(let 位置) = 場所,
@@ -149,7 +142,6 @@ extension 局面モデル {
               [.銀, .桂].contains(駒.職名) else { return false }
         return true
     }
-    
     func この駒の成りについて判断すべき(_ 移動後の場所: 駒の場所, _ 元々の場所: 駒の場所) -> Bool {
         if case (.盤駒(let 移動先), .盤駒(let 元々の位置)) = (移動後の場所, 元々の場所) {
             if let 移動後の駒 = self.盤駒[移動先] {
@@ -169,59 +161,49 @@ extension 局面モデル {
         }
         return false
     }
-    
     mutating func この駒を裏返す(_ 位置: Int) {
         if self.盤駒[位置]?.職名.成駒あり == true {
             self.盤駒[位置]?.裏返す()
             self.ユーザー操作時の雑多処理(強調対象: .盤駒(位置))
         }
     }
-    
     mutating func 編集モードでこの手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.手駒[陣営]?.一個増やす(職名)
         self.ユーザー操作時の雑多処理(強調対象: .手駒(陣営, 職名))
     }
-    
     mutating func 編集モードでこの手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         if self.この手駒の数(.手駒(陣営, 職名)) >= 0 {
             self.手駒[陣営]?.一個減らす(職名)
             self.ユーザー操作時の雑多処理(強調対象: .手駒(陣営, 職名))
         }
     }
-    
     mutating func 編集モードでこの盤駒を消す(_ 位置: Int) {
         self.盤駒.removeValue(forKey: 位置)
         self.ユーザー操作時の雑多処理(強調対象: .盤駒(位置))
     }
-    
     mutating func 直近操作情報を消す() {
         self.ユーザー操作時の雑多処理(強調対象: .なし)
     }
-    
     mutating func 初期化する() {
         self = .初期セット
         self.ユーザー操作時の雑多処理(強調対象: .なし)
     }
-    
     private mutating func ユーザー操作時の雑多処理(強調対象: 駒の場所) {
         self.直近の操作 = 強調対象
         self.更新日時 = .now
         self.現在の局面を履歴に追加する()
     }
-    
     //SharePlayデータ受け取り時
     mutating func 更新日時を変更せずにモデルを適用する(_ 新規局面: Self) {
         self = 新規局面
         self.現在の局面を履歴に追加する()
     }
-    
     //履歴復元や、インポートデータ適用
     mutating func 現在の局面として適用する(_ 新規局面: Self) {
         self = 新規局面
         self.更新日時 = .now
         self.現在の局面を履歴に追加する()
     }
-    
     private func 現在の局面を履歴に追加する() {
         do {
             var 新しい履歴: [Self]
@@ -231,48 +213,42 @@ extension 局面モデル {
             let ⓓata = try JSONEncoder().encode(新しい履歴)
             UserDefaults.standard.set(ⓓata, forKey: "履歴")
         } catch {
-            print("🚨", error.localizedDescription)
+            assertionFailure()
         }
     }
-    
     static var 履歴: [Self] {
-        if let ⓓata = UserDefaults.standard.data(forKey: "履歴") {
-            do {
-                return try JSONDecoder().decode([Self].self, from: ⓓata)
-            } catch {
-                print("🚨", error.localizedDescription)
-                return []
-            }
-        } else {
+        guard let ⓓata = UserDefaults.standard.data(forKey: "履歴") else {
             return []
         }
+        do {
+            return try JSONDecoder().decode([Self].self, from: ⓓata)
+        } catch {
+            assertionFailure(); return []
+        }
     }
-    
+    var 一手前の局面: Self? {
+        Self.履歴.last { $0.更新日時 != self.更新日時 }
+        
+    }
     static func 履歴を全て削除する() {
         UserDefaults.standard.removeObject(forKey: "履歴")
     }
-    
     static var 初期セット: Self {
         Self(盤駒: 初期配置, 手駒: 空の手駒)
     }
 }
 
 enum 王側か玉側か: String, CaseIterable, Codable {
-    case 王側
-    case 玉側
+    case 王側, 玉側
 }
 
 struct 盤上の駒: Codable {
     let 陣営: 王側か玉側か
     let 職名: 駒の種類
     var 成り: Bool
-    
     mutating func 裏返す() {
-        if self.職名.成駒あり {
-            self.成り.toggle()
-        }
+        if self.職名.成駒あり { self.成り.toggle() }
     }
-    
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼｮｸﾒｲ: 駒の種類, _ ﾅﾘ: Bool = false) {
         (self.陣営, self.職名, self.成り) = (ｼﾞﾝｴｲ, ｼｮｸﾒｲ, ﾅﾘ)
     }
@@ -280,19 +256,11 @@ struct 盤上の駒: Codable {
 
 struct 持ち駒: Codable {
     var 配分: [駒の種類: Int] = [:]
-    
-    func 個数(_ 職名: 駒の種類) -> Int {
-        self.配分[職名] ?? 0
-    }
-    
-    static var 空: Self {
-        Self(配分: [:])
-    }
-    
+    func 個数(_ 職名: 駒の種類) -> Int { self.配分[職名] ?? 0 }
+    static var 空: Self { Self(配分: [:]) }
     mutating func 一個増やす(_ 職名: 駒の種類) {
         self.配分[職名] = self.個数(職名) + 1
     }
-    
     mutating func 一個減らす(_ 職名: 駒の種類) {
         if self.個数(職名) >= 1 {
             self.配分[職名] = self.個数(職名) - 1
@@ -314,9 +282,7 @@ enum ドラッグ対象: Equatable {
 
 enum 駒の種類: String, CaseIterable, Identifiable, Codable {
     case 歩, 角, 飛, 香, 桂, 銀, 金, 王
-    
     var id: Self { self }
-    
     func 生駒表記(_ 陣営: 王側か玉側か) -> String {
         if 陣営 == .玉側, self == .王 {
             return "玉"
@@ -324,7 +290,6 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
             return self.rawValue
         }
     }
-    
     var 成駒表記: String? {
         switch self {
             case .歩: return "と"
@@ -336,11 +301,7 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
             default: return nil
         }
     }
-    
-    var 成駒あり: Bool {
-        self.成駒表記 != nil
-    }
-    
+    var 成駒あり: Bool { self.成駒表記 != nil }
     var English生駒表記: String {
         switch self {
             case .歩: return "P"
@@ -353,7 +314,6 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
             case .王: return "K"
         }
     }
-    
     var English成駒表記: String? {
         switch self {
             case .歩: return "+P"

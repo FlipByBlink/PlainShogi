@@ -1,9 +1,6 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-// MARK: 仕様
-// 手前が「王」、対面が「玉」。
-
 struct ContentView: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
@@ -85,16 +82,15 @@ private struct 盤上のコマもしくはマス: View {
     private var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
     }
-    private var 元々の場所: 駒の場所 { .盤駒(self.元々の位置) }
-    private var 駒がある: Bool { 📱.局面.盤駒[self.元々の位置] != nil }
+    private var 駒が存在: Bool { 📱.局面.盤駒[self.元々の位置] != nil }
     var body: some View {
         Group {
-            if self.駒がある {
-                コマの見た目(self.元々の場所)
+            if self.駒が存在 {
+                コマの見た目(.盤駒(self.元々の位置))
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
                     .accessibilityHidden(true)
-                    .onDrag { 📱.この駒をドラッグし始める(self.元々の場所) }
+                    .onDrag { 📱.この駒をドラッグし始める(.盤駒(self.元々の位置)) }
             } else { // ==== マス ====
                 Color(.systemBackground)
             }
@@ -110,25 +106,15 @@ private struct 盤上のコマもしくはマス: View {
 private struct 盤外: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 立場: 手前か対面か
-    private var 陣営: 王側か玉側か {
-        switch (self.立場, 📱.🚩上下反転) {
-            case (.手前, false): return .王側
-            case (.対面, false): return .玉側
-            case (.手前, true): return .玉側
-            case (.対面, true): return .王側
-        }
-    }
+    private var 陣営: 王側か玉側か { 📱.こちら側の陣営(self.立場) }
     private var コマの大きさ: CGFloat
-    private var 駒の並び順: [駒の種類] {
-        self.立場 == .手前 ? .Element.allCases : .Element.allCases.reversed()
-    }
     var body: some View {
         ZStack(alignment: self.立場 == .手前 ? .leading : .trailing) {
             Color(.systemBackground)
             HStack(spacing: 0) {
                 if self.立場 == .手前 { 手駒編集ボタン(self.陣営) }
-                ForEach(self.駒の並び順) { 職名 in
-                    盤外のコマ(self.陣営, 職名, self.コマの大きさ)
+                ForEach(self.立場 == .手前 ? 駒の種類.allCases : 駒の種類.allCases.reversed()) {
+                    盤外のコマ(self.陣営, $0, self.コマの大きさ)
                 }
                 if self.立場 == .対面 { 手駒編集ボタン(self.陣営) }
             }
@@ -142,9 +128,10 @@ private struct 盤外: View {
     init(_ ﾀﾁﾊﾞ: 手前か対面か, _ ｵｵｷｻ: CGFloat) {
         (self.立場, self.コマの大きさ) = (ﾀﾁﾊﾞ, ｵｵｷｻ)
     }
-    enum 手前か対面か {
-        case 手前, 対面
-    }
+}
+
+enum 手前か対面か {
+    case 手前, 対面
 }
 
 private struct 盤外のコマ: View {
@@ -199,18 +186,13 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
             content
                 .opacity(self.ドラッグした直後 ? 0.25 : 1.0)
                 .onChange(of: 📱.ドラッグ中の駒) {
-                    switch $0 {
-                        case .アプリ内の駒(let 出発地点):
-                            if 出発地点 == self.場所 {
-                                self.ドラッグした直後 = true
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                    withAnimation(.easeIn(duration: 1.5)) {
-                                        self.ドラッグした直後 = false
-                                    }
-                                }
+                    if case .アプリ内の駒(let 出発地点) = $0, 出発地点 == self.場所 {
+                        self.ドラッグした直後 = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            withAnimation(.easeIn(duration: 1.5)) {
+                                self.ドラッグした直後 = false
                             }
-                        default:
-                            break
+                        }
                     }
                 }
         }

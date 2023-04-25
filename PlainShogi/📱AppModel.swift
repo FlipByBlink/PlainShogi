@@ -53,6 +53,14 @@ extension 📱アプリモデル {
     func 下向きに変更(_ 陣営: 王側か玉側か) -> Bool {
         (陣営 == .玉側) != self.🚩上下反転
     }
+    func こちら側の陣営(_ 立場: 手前か対面か) -> 王側か玉側か {
+        switch (立場, self.🚩上下反転) {
+            case (.手前, false): return .王側
+            case (.対面, false): return .玉側
+            case (.手前, true): return .玉側
+            case (.対面, true): return .王側
+        }
+    }
     func 直近操作の強調表示をクリア() {
         self.局面.直近操作情報を消す()
         self.SharePlay中なら現在の局面を参加者に送信する()
@@ -99,7 +107,8 @@ extension 📱アプリモデル {
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.軽め()
     }
-    func 一手戻す(_ 一手前の局面: 局面モデル) {
+    func 一手戻す() {
+        guard let 一手前の局面 = self.局面.一手前の局面 else { return }
         self.🚩メニューを表示 = false
         self.局面.現在の局面として適用する(一手前の局面)
         self.SharePlay中なら現在の局面を参加者に送信する()

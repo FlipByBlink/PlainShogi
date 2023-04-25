@@ -24,7 +24,6 @@ struct 🛠非SharePlay時のメニューボタン: View {
 }
 
 struct 🛠SharePlayインジケーターやメニューボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
         if self.ⓖroupStateObserver.isEligibleForGroupSession {
@@ -74,7 +73,8 @@ private struct メニューボタン: View {
         Button {
             withAnimation { 📱.🚩上下反転.toggle() }
         } label: {
-            Label(📱.🚩上下反転 ? "上下反転を元に戻す" : "上下反転させる", systemImage: "arrow.up.arrow.down")
+            Label(📱.🚩上下反転 ? "上下反転を元に戻す" : "上下反転させる",
+                  systemImage: "arrow.up.arrow.down")
         }
     }
     private func 履歴ボタン() -> some View {
@@ -135,7 +135,8 @@ private struct メニューコンテンツ: View {
                     Label("English表記", systemImage: "p.circle")
                 }
                 Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
-                    Label("操作した直後の駒を強調表示する機能を無効にする", systemImage: "square.slash")
+                    Label("操作した直後の駒を強調表示する機能を無効にする",
+                          systemImage: "square.slash")
                 }
             } header: {
                 if self.ⓖroupStateObserver.isEligibleForGroupSession {
@@ -157,7 +158,8 @@ private struct メニューコンテンツ: View {
     }
     private func あそび方セクション() -> some View {
         Section {
-            Label("長押しして駒を持ち上げ、そのままスライドして移動させる", systemImage: "hand.draw")
+            Label("長押しして駒を持ち上げ、そのままスライドして移動させる",
+                  systemImage: "hand.draw")
                 .padding(.vertical, 8)
         } header: {
             Text("あそび方")
@@ -237,13 +239,10 @@ private struct 盤面整理開始ボタン: View {
 
 private struct 一手戻すボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    private var 一手前の局面: 局面モデル? {
-        局面モデル.履歴.last(where: { $0.更新日時 != 📱.局面.更新日時 })
-    }
     var body: some View {
-        if let 一手前の局面 {
+        if 📱.局面.一手前の局面 != nil {
             Button {
-                📱.一手戻す(一手前の局面)
+                📱.一手戻す()
             } label: {
                 Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
             }
@@ -302,7 +301,8 @@ private struct テキスト書き出し読み込み紹介リンク: View {
         NavigationLink {
             List {
                 Section {
-                    Label("駒を他のアプリへドラッグして盤面をテキストとして書き出せます。", systemImage: "square.and.arrow.up")
+                    Label("駒を他のアプリへドラッグして盤面をテキストとして書き出せます。",
+                          systemImage: "square.and.arrow.up")
                     テキスト変換プレビュー(フォルダー名: "TextExport", 枚数: 4)
                 }
                 .listRowSeparator(.hidden)
