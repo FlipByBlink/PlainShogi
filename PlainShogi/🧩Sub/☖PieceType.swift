@@ -11,7 +11,7 @@ import Foundation
 struct 局面モデル: Codable {
     private(set) var 盤駒: [Int: 盤上の駒]
     private(set) var 手駒: [王側か玉側か: 持ち駒]
-    private(set) var 直近の操作: 操作結果として強調する対象 = .なし
+    private(set) var 直近の操作: 駒の場所 = .なし
     private(set) var 更新日時: Date?
     
     mutating func 盤駒を移動させる(_ 出発地点: Int, _ 置いた位置: Int) throws {
@@ -127,7 +127,7 @@ struct 局面モデル: Codable {
         self.ユーザー操作時の雑多処理(強調対象: .なし)
     }
     
-    private mutating func ユーザー操作時の雑多処理(強調対象: 操作結果として強調する対象) {
+    private mutating func ユーザー操作時の雑多処理(強調対象: 駒の場所) {
         self.直近の操作 = 強調対象
         self.更新日時 = .now
         self.現在の局面を履歴に追加する()
@@ -181,12 +181,12 @@ struct 局面モデル: Codable {
     static var 初期セット: Self {
         Self(盤駒: 初期配置, 手駒: 空の手駒)
     }
-    
-    enum 操作結果として強調する対象: Codable, Equatable {
-        case 盤駒(_ 位置: Int)
-        case 手駒(_ 陣営: 王側か玉側か, _ 職名: 駒の種類)
-        case なし
-    }
+}
+
+enum 駒の場所: Codable, Equatable {
+    case 盤駒(_ 位置: Int)
+    case 手駒(_ 陣営: 王側か玉側か, _ 職名: 駒の種類)
+    case なし
 }
 
 enum 王側か玉側か: String, CaseIterable, Codable {
@@ -230,11 +230,6 @@ struct 持ち駒: Codable {
             self.配分[職名] = self.個数(職名) - 1
         }
     }
-}
-
-enum 駒の場所: Equatable {
-    case 盤駒(_ 位置: Int)
-    case 手駒(_ 陣営: 王側か玉側か, _ 職名: 駒の種類)
 }
 
 enum ドラッグ対象: Equatable {

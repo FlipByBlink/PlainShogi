@@ -187,12 +187,7 @@ private struct コマ: View { //FrameやDrag処理などは呼び出し側で実
     private var 表記: String
     private var 操作直後: Bool
     private var アンダーライン: Bool
-    private var 陣営: 王側か玉側か? {
-        switch self.場所 {
-            case .盤駒(let 位置): return 📱.局面.盤駒[位置]?.陣営
-            case .手駒(let ｼﾞﾝｴｲ, _): return ｼﾞﾝｴｲ
-        }
-    }
+    private var 陣営: 王側か玉側か? { 📱.この駒の陣営(self.場所) }
     private var 強調表示: Bool {
         self.操作直後 && !📱.🚩直近操作強調表示機能オフ
     }
