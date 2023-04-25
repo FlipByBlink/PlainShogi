@@ -159,7 +159,7 @@ private struct 盤外のコマ: View {
                 .onDrag {
                     📱.この駒をドラッグし始める(self.場所)
                 } preview: {
-                    ドラッグプレビュー用コマ(📱.この駒の表記(self.場所),
+                    ドラッグプレビュー用コマ(📱.この手駒のプレビュー表記(self.場所),
                                  self.コマの大きさ,
                                  📱.下向きに変更(self.場所))
                 }
@@ -184,7 +184,7 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
                 .rotationEffect(📱.下向きに変更(self.場所) ? .degrees(180) : .zero)
                 .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
                 .modifier(Self.ドラッグ直後の効果(self.場所))
-                .modifier(太文字システムオプションの際にこのコマが操作直後なら強調表示(self.場所))
+                //.modifier(太文字システムオプションの際にこのコマが操作直後なら強調表示(self.場所))
         }
     }
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }

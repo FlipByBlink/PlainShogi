@@ -95,24 +95,21 @@ extension 局面モデル {
     }
     
     func この駒の成りについて判断すべき(_ 移動後の場所: 駒の場所, _ 元々の場所: 駒の場所) -> Bool {
-        switch (移動後の場所, 元々の場所) {
-            case (.盤駒(let 移動先), .盤駒(let 元々の位置)):
-                if let 移動後の駒 = self.盤駒[移動先] {
-                    if 移動後の駒.成り == false {
-                        if 移動後の駒.職名.成駒あり {
-                            switch 移動後の駒.陣営 {
-                                case .王側:
-                                    if 移動先 < 27 { return true }
-                                    if 元々の位置 < 27 { return true }
-                                case .玉側:
-                                    if 53 < 移動先 { return true }
-                                    if 53 < 元々の位置 { return true }
-                            }
+        if case (.盤駒(let 移動先), .盤駒(let 元々の位置)) = (移動後の場所, 元々の場所) {
+            if let 移動後の駒 = self.盤駒[移動先] {
+                if 移動後の駒.成り == false {
+                    if 移動後の駒.職名.成駒あり {
+                        switch 移動後の駒.陣営 {
+                            case .王側:
+                                if 移動先 < 27 { return true }
+                                if 元々の位置 < 27 { return true }
+                            case .玉側:
+                                if 53 < 移動先 { return true }
+                                if 53 < 元々の位置 { return true }
                         }
                     }
                 }
-            default:
-                return false
+            }
         }
         return false
     }
@@ -171,12 +168,11 @@ extension 局面モデル {
     
     private func 現在の局面を履歴に追加する() {
         do {
-            let ⓔncoder = JSONEncoder()
             var 新しい履歴: [Self]
             新しい履歴 = Self.履歴
             if 新しい履歴.count > 30 { 新しい履歴.removeFirst() }
             新しい履歴 += [self]
-            let ⓓata = try ⓔncoder.encode(新しい履歴)
+            let ⓓata = try JSONEncoder().encode(新しい履歴)
             UserDefaults.standard.set(ⓓata, forKey: "履歴")
         } catch {
             print("🚨", error.localizedDescription)
@@ -186,8 +182,7 @@ extension 局面モデル {
     static var 履歴: [Self] {
         if let ⓓata = UserDefaults.standard.data(forKey: "履歴") {
             do {
-                let ⓓecoder = JSONDecoder()
-                return try ⓓecoder.decode([Self].self, from: ⓓata)
+                return try JSONDecoder().decode([Self].self, from: ⓓata)
             } catch {
                 print("🚨", error.localizedDescription)
                 return []

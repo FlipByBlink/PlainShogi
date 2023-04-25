@@ -117,29 +117,29 @@ private struct 手駒編集シート: View {
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
 
-struct 太文字システムオプションの際にこのコマが操作直後なら強調表示: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.legibilityWeight) private var legibilityWeight
-    private let 場所: 駒の場所
-    private var 🚩条件: Bool {
-        📱.この駒は操作直後(self.場所)
-        &&
-        📱.🚩直近操作強調表示機能オフ == false
-    }
-    func body(content: Content) -> some View {
-        if self.🚩条件 {
-            switch self.legibilityWeight {
-                case .bold:
-                    content.border(.primary, width: 🗄️固定値.枠線の太さ)
-                default:
-                    content.font(🗄️固定値.駒フォント.bold())
-            }
-        } else {
-            content
-        }
-    }
-    init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
-}
+//struct 太文字システムオプションの際にこのコマが操作直後なら強調表示: ViewModifier {
+//    @EnvironmentObject private var 📱: 📱アプリモデル
+//    @Environment(\.legibilityWeight) private var legibilityWeight
+//    private let 場所: 駒の場所
+//    private var 🚩条件: Bool {
+//        📱.この駒は操作直後(self.場所)
+//        &&
+//        📱.🚩直近操作強調表示機能オフ == false
+//    }
+//    func body(content: Content) -> some View {
+//        if self.🚩条件 {
+//            switch self.legibilityWeight {
+//                case .bold:
+//                    content.border(.primary, width: 🗄️固定値.枠線の太さ)
+//                default:
+//                    content.font(🗄️固定値.駒フォント.bold())
+//            }
+//        } else {
+//            content
+//        }
+//    }
+//    init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
+//}
 
 struct 筋View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル

@@ -50,19 +50,19 @@ extension 📱アプリモデル {
     func この駒の表記(_ 職名: 駒の種類, _ 陣営: 王側か玉側か) -> String {
         self.🚩English表記 ? 職名.English生駒表記 : 職名.生駒表記(陣営)
     }
+    func この手駒のプレビュー表記(_ 場所: 駒の場所) -> String {
+        guard case .手駒(let 陣営, let 職名) = 場所 else { return "🐛" }
+        return self.🚩English表記 ? 職名.English生駒表記 : 職名.生駒表記(陣営)
+    }
     func この駒は操作直後(_ 場所: 駒の場所) -> Bool {
         self.局面.直近の操作 == 場所
     }
     func この駒にアンダーラインが必要(_ 場所: 駒の場所) -> Bool {
         guard self.🚩English表記 else { return false }
-        switch 場所 {
-            case .盤駒(let 位置):
-                guard let 駒 = self.局面.盤駒[位置] else { return false }
-                guard 駒.陣営 == .玉側, !駒.成り else { return false }
-                return [.銀, .桂].contains(駒.職名)
-            default:
-                return false
-        }
+        guard case .盤駒(let 位置) = 場所 else { return false }
+        guard let 駒 = self.局面.盤駒[位置] else { return false }
+        guard 駒.陣営 == .玉側, !駒.成り else { return false }
+        return [.銀, .桂].contains(駒.職名)
     }
     func 下向きに変更(_ 場所: 駒の場所) -> Bool {
         (self.この駒の陣営(場所) == .玉側) != self.🚩上下反転
