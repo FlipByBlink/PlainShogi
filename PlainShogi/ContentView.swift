@@ -90,7 +90,7 @@ private struct 盤上のコマもしくはマス: View {
     var body: some View {
         Group {
             if self.駒がある {
-                コマの見た目(.盤駒(self.元々の位置))
+                コマの見た目(self.元々の場所)
                     .overlay { 駒を消すボタン(self.元々の位置) }
                     .onTapGesture(count: 2) { 📱.この駒を裏返す(self.元々の位置) }
                     .accessibilityHidden(true)
@@ -99,7 +99,8 @@ private struct 盤上のコマもしくはマス: View {
                 Color(.systemBackground)
             }
         }
-        .onDrop(of: [.utf8PlainText], delegate: 📬盤上ドロップ(📱, self.元々の位置))
+        .onDrop(of: [.utf8PlainText],
+                delegate: 📬DropDelegate(📱, .盤上(self.元々の位置)))
     }
     init(_ 画面上での左上からの位置: Int) {
         self.画面上での左上からの位置 = 画面上での左上からの位置
@@ -135,7 +136,8 @@ private struct 盤外: View {
             .padding(.horizontal, 8)
         }
         .frame(width: self.コマの大きさ * 9.5)
-        .onDrop(of: [UTType.utf8PlainText], delegate: 📬盤外ドロップ(📱, self.陣営))
+        .onDrop(of: [UTType.utf8PlainText],
+                delegate: 📬DropDelegate(📱, .盤外(self.陣営)))
     }
     init(_ ﾀﾁﾊﾞ: 手前か対面か, _ ｵｵｷｻ: CGFloat) {
         (self.立場, self.コマの大きさ) = (ﾀﾁﾊﾞ, ｵｵｷｻ)

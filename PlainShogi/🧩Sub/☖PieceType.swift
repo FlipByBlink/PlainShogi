@@ -16,41 +16,42 @@ struct 局面モデル: Codable {
 }
 
 extension 局面モデル {
-    mutating func 盤上に駒を移動させる(_ 出発した場所: 駒の場所, _ 移動させようとした場所: 駒の場所) throws {
-        switch (出発した場所, 移動させようとした場所) {
-            case (.盤駒(let 出発地点), .盤駒(let 置いた位置)):
-                if 置いた位置 == 出発地点 { throw 🚨駒移動エラー.無効 }
-                guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
-                if let 先客 = self.盤駒[置いた位置] {
-                    if 先客.陣営 == 動かした駒.陣営 { throw 🚨駒移動エラー.無効 }
-                    self.手駒[動かした駒.陣営]?.一個増やす(先客.職名)
+    mutating func 駒を移動させる(_ 出発した場所: 駒の場所, _ 移動先: 駒の移動先パターン) throws {
+        switch 移動先 {
+            case .盤上(let 置いた位置):
+                switch 出発した場所 {
+                    case .盤駒(let 出発地点):
+                        if 置いた位置 == 出発地点 { throw 🚨駒移動エラー.無効 }
+                        guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
+                        if let 先客 = self.盤駒[置いた位置] {
+                            if 先客.陣営 == 動かした駒.陣営 { throw 🚨駒移動エラー.無効 }
+                            self.手駒[動かした駒.陣営]?.一個増やす(先客.職名)
+                        }
+                        self.盤駒.removeValue(forKey: 出発地点)
+                        self.盤駒.updateValue(動かした駒, forKey: 置いた位置)
+                        self.ユーザー操作時の雑多処理(強調対象: .盤駒(置いた位置))
+                    case .手駒(let 陣営, let 職名):
+                        if self.盤駒[置いた位置] != nil { throw 🚨駒移動エラー.無効 }
+                        self.盤駒.updateValue(盤上の駒(陣営, 職名), forKey: 置いた位置)
+                        self.手駒[陣営]?.一個減らす(職名)
+                        self.ユーザー操作時の雑多処理(強調対象: .盤駒(置いた位置))
+                    default:
+                        throw 🚨エラー.要修正
                 }
-                self.盤駒.removeValue(forKey: 出発地点)
-                self.盤駒.updateValue(動かした駒, forKey: 置いた位置)
-                self.ユーザー操作時の雑多処理(強調対象: .盤駒(置いた位置))
-            case (.手駒(let 陣営, let 職名), .盤駒(let 置いた位置)):
-                if self.盤駒[置いた位置] != nil { throw 🚨駒移動エラー.無効 }
-                self.盤駒.updateValue(盤上の駒(陣営, 職名), forKey: 置いた位置)
-                self.手駒[陣営]?.一個減らす(職名)
-                self.ユーザー操作時の雑多処理(強調対象: .盤駒(置いた位置))
-            default:
-                assertionFailure()
-        }
-    }
-    
-    mutating func 盤外に駒を移動させる(_ 出発した場所: 駒の場所, _ 移動先の陣営: 王側か玉側か) throws {
-        switch 出発した場所 {
-            case .盤駒(let 出発地点):
-                guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
-                self.盤駒.removeValue(forKey: 出発地点)
-                self.手駒[移動先の陣営]?.一個増やす(動かした駒.職名)
-                self.ユーザー操作時の雑多処理(強調対象: .手駒(移動先の陣営, 動かした駒.職名))
-            case .手駒(let 移動元の陣営, let 職名):
-                self.手駒[移動元の陣営]?.一個減らす(職名)
-                self.手駒[移動先の陣営]?.一個増やす(職名)
-                self.ユーザー操作時の雑多処理(強調対象: .手駒(移動先の陣営, 職名))
-            default:
-                assertionFailure()
+            case .盤外(let 移動先の陣営):
+                switch 出発した場所 {
+                    case .盤駒(let 出発地点):
+                        guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
+                        self.盤駒.removeValue(forKey: 出発地点)
+                        self.手駒[移動先の陣営]?.一個増やす(動かした駒.職名)
+                        self.ユーザー操作時の雑多処理(強調対象: .手駒(移動先の陣営, 動かした駒.職名))
+                    case .手駒(let 移動元の陣営, let 職名):
+                        self.手駒[移動元の陣営]?.一個減らす(職名)
+                        self.手駒[移動先の陣営]?.一個増やす(職名)
+                        self.ユーザー操作時の雑多処理(強調対象: .手駒(移動先の陣営, 職名))
+                    default:
+                        throw 🚨エラー.要修正
+                }
         }
     }
     
