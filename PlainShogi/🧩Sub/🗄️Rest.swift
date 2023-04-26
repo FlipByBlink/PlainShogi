@@ -1,5 +1,21 @@
 import SwiftUI
 
+struct 🗄️太字システムオプション用の強調表示: ViewModifier {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @Environment(\.legibilityWeight) private var legibilityWeight
+    private let 場所: 駒の場所
+    func body(content: Content) -> some View {
+        content
+            .overlay {
+                if 📱.この駒は操作直後なので強調表示(self.場所) && self.legibilityWeight == .bold {
+                    Rectangle()
+                        .fill(.quaternary)
+                }
+            }
+    }
+    init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
+}
+
 enum 🗄️固定値 {
     static var 枠線の太さ: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
@@ -8,19 +24,28 @@ enum 🗄️固定値 {
             default: return 1.0
         }
     }
-    static var 駒フォント: Font {
-        switch UIDevice.current.userInterfaceIdiom {
-            case .phone: return .title3
-            case .pad: return .title
-            default: return .title3
+}
+
+enum 🗄️フォント {
+    static func 駒(_ セリフ体: Bool) -> Font {
+        var スタイル: Font.TextStyle {
+            switch UIDevice.current.userInterfaceIdiom {
+                case .phone: return .title3
+                case .pad: return .title
+                default: return .title3
+            }
         }
+        return .system(スタイル, design: セリフ体 ? .serif : .default)
     }
-    static var 段筋フォント: Font {
-        switch UIDevice.current.userInterfaceIdiom {
-            case .phone: return .caption
-            case .pad: return .body
-            default: return .caption
+    static func 段と筋(_ セリフ体: Bool) -> Font {
+        var スタイル: Font.TextStyle {
+            switch UIDevice.current.userInterfaceIdiom {
+                case .phone: return .caption
+                case .pad: return .body
+                default: return .caption
+            }
         }
+        return .system(スタイル, design: セリフ体 ? .serif : .default)
     }
 }
 

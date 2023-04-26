@@ -40,10 +40,10 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
             case .Shared:
                 return []
             case .Sub:
-                return ["🖼SubView.swift",
-                        "☖PieceType.swift",
+                return ["☖PieceType.swift",
                         "🛠AppMenu.swift",
                         "📬DropDelegate.swift",
+                        "🚧EditModeView.swift",
                         "📜History.swift",
                         "👥SharePlay.swift",
                         "📣ADContent.swift",

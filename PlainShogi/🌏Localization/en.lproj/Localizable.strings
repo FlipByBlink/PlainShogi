@@ -17,6 +17,7 @@
 "王側の手駒" = "Piece in hand";
 "玉側の手駒" = "Piece in hand";
 "強調表示をクリア" = "Clear shift sign";
+"セリフ体" = "Serif font";
 "一手だけ戻す" = "Return 1 action";
 "履歴" = "History";
 "復元" = "Restore";

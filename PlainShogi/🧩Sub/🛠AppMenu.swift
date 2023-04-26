@@ -6,7 +6,7 @@ struct 🛠メニューシート: ViewModifier {
     func body(content: Content) -> some View {
         content
             .sheet(isPresented: $📱.🚩メニューを表示) {
-                メニューコンテンツ()
+                メニューシートコンテンツ()
                     .environmentObject(📱)
             }
     }
@@ -102,7 +102,7 @@ private struct メニューボタン: View {
     }
 }
 
-private struct メニューコンテンツ: View {
+private struct メニューシートコンテンツ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
@@ -138,6 +138,7 @@ private struct メニューコンテンツ: View {
                     Label("操作した直後の駒を強調表示する機能を無効にする",
                           systemImage: "square.slash")
                 }
+                セリフ体オプション()
             } header: {
                 if self.ⓖroupStateObserver.isEligibleForGroupSession {
                     Text("オプション(共有相手との同期なし)")
@@ -253,6 +254,42 @@ private struct 一手戻すボタン: View {
     }
 }
 
+private struct セリフ体オプション: View {
+    @AppStorage("セリフ体") private var 値: Bool = false
+    var body: some View {
+        Toggle(isOn: self.$値) {
+            Label("セリフ体", systemImage: "paintbrush.pointed")
+                .font(.system(.body, design: .serif))
+        }
+    }
+}
+
+private struct 見た目カスタマイズメニューリンク: View { // for Mac, Apple TV
+    var body: some View {
+        NavigationLink {
+            Self.コンテンツ()
+        } label: {
+            Label("見た目をカスタマイズ", systemImage: "paintpalette")
+        }
+    }
+    private struct コンテンツ: View {
+        @AppStorage("太字") private var 太字: Bool = false
+        var body: some View {
+            List {
+                Section {
+                    Toggle(isOn: self.$太字) { Label("太字", systemImage: "bold") }
+                } header: {
+                    Text("オプション")
+                }
+                Section {
+                    Text("駒の文字の大きさを調整するにはOS上の設定を変更してください。")
+                }
+            }
+            .navigationTitle("見た目をカスタマイズ")
+        }
+    }
+}
+
 private struct 細かな使い方リンク: View {
     var body: some View {
         NavigationLink {
@@ -287,6 +324,16 @@ private struct 細かな使い方リンク: View {
             VStack {
                 Text("Dynamic Type に対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
                 Image("DynamicType")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 120)
+                    .border(.black)
+                    .padding(8)
+            }
+            .padding()
+            VStack {
+                Text("「アクセシビリティ/Appごとの設定」にて本アプリのみを対象に設定を変更することもできます。")
+                Image(systemName: "photo")
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: 120)
