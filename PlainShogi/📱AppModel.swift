@@ -48,10 +48,10 @@ extension 📱アプリモデル {
     func この駒にはアンダーラインが必要(_ 場所: 駒の場所) -> Bool {
         self.局面.この駒にはアンダーラインが必要(場所, self.🚩English表記)
     }
-    func 下向きに変更(_ 場所: 駒の場所) -> Bool {
+    func この駒は下向き(_ 場所: 駒の場所) -> Bool {
         (self.局面.この駒の陣営(場所) == .玉側) != self.🚩上下反転
     }
-    func 下向きに変更(_ 陣営: 王側か玉側か) -> Bool {
+    func こちら側のボタンは下向き(_ 陣営: 王側か玉側か) -> Bool {
         (陣営 == .玉側) != self.🚩上下反転
     }
     func こちら側の陣営(_ 立場: 手前か対面か) -> 王側か玉側か {
@@ -69,7 +69,10 @@ extension 📱アプリモデル {
         💥フィードバック.軽め()
     }
     func この駒を選択する(_ 今選択した場所: 駒の場所) {
-        guard !self.🚩駒を整理中 else { return }
+        guard !self.🚩駒を整理中 else {
+            self.編集モードでこの盤駒を消す(今選択した場所)
+            return
+        }
         switch self.選択中の駒 {
             case .なし:
                 if self.局面.ここに駒がある(今選択した場所) {
@@ -93,6 +96,7 @@ extension 📱アプリモデル {
                             withAnimation {
                                 do {
                                     try self.局面.駒を移動させる(self.選択中の駒, .盤上(位置))
+                                    self.SharePlay中なら現在の局面を参加者に送信する()
                                     self.駒移動後の成駒について対応する(self.選択中の駒, .盤上(位置))
                                     self.選択中の駒 = .なし
                                     💥フィードバック.軽め()
@@ -116,6 +120,7 @@ extension 📱アプリモデル {
             do {
                 try self.局面.駒を移動させる(選択中の駒, .盤外(陣営))
                 self.選択中の駒 = .なし
+                self.SharePlay中なら現在の局面を参加者に送信する()
                 💥フィードバック.軽め()
             } catch {
                 assertionFailure()
@@ -169,8 +174,11 @@ extension 📱アプリモデル {
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.軽め()
     }
-    func 編集モードでこの盤駒を消す(_ 位置: Int) {
-        self.局面.編集モードでこの盤駒を消す(位置)
+    func 編集モードでこの盤駒を消す(_ 場所: 駒の場所) {
+        guard case .盤駒(let 位置) = 場所 else { return }
+        withAnimation {
+            self.局面.編集モードでこの盤駒を消す(位置)
+        }
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.軽め()
     }

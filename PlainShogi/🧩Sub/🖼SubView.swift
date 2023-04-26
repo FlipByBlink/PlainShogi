@@ -1,30 +1,27 @@
 import SwiftUI
 
-struct 駒を消すボタン: View {
+struct 編集モードの🅧バツマーク: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    private var 位置: Int
-    var body: some View {
-        if 📱.🚩駒を整理中 {
-            GeometryReader { 📐 in
-                Button {
-                    withAnimation { 📱.編集モードでこの盤駒を消す(self.位置) }
-                } label: {
-                    ZStack(alignment: .topLeading) {
-                        Color.clear
+    private var 場所: 駒の場所
+    func body(content: Content) -> some View {
+        content
+            .overlay(alignment: .topLeading) {
+                if 📱.🚩駒を整理中, case .盤駒(_) = 場所 {
+                    GeometryReader { 📐 in
                         Image(systemName: "xmark.circle.fill")
                             .resizable()
                             .symbolRenderingMode(.palette)
-                            .foregroundStyle(.tint, .background)
-                            .tint(.primary)
+                            .foregroundStyle(.primary, .background)
                             .font(.body.weight(.light))
-                            .frame(width: 📐.size.width * 4 / 9,
-                                   height: 📐.size.height * 4 / 9)
+                            .minimumScaleFactor(0.1)
+                            .padding(2)
+                            .frame(width: 📐.size.width / 2,
+                                   height: 📐.size.height / 2)
                     }
                 }
             }
-        }
     }
-    init(_ ｲﾁ: Int) { self.位置 = ｲﾁ }
+    init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
 }
 
 struct 整理完了ボタン: View {
@@ -57,12 +54,13 @@ struct 手駒編集ボタン: View {
                 💥フィードバック.軽め()
             } label: {
                 Image(systemName: "plusminus")
+                    .imageScale(.large)
                     .padding(8)
                     .dynamicTypeSize(...DynamicTypeSize.accessibility2)
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
-            .rotationEffect(📱.下向きに変更(self.陣営) ? .degrees(180) : .zero)
+            .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
             .sheet(isPresented: self.$手駒の数を編集中) {
                 手駒編集シート(self.陣営)
                     .onDisappear { self.手駒の数を編集中 = false }

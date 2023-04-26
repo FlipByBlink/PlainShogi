@@ -42,6 +42,10 @@ private struct 将棋全体View: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .background {
+            Color(uiColor: .systemBackground)
+                .onTapGesture { 📱.選択中の駒 = .なし }
+        }
     }
     private func マスの大きさを計算(_ 画面サイズ: CGSize) -> CGFloat {
         let 横基準 = 画面サイズ.width / (9 + self.マスに対する段筋の大きさ)
@@ -82,19 +86,18 @@ private struct 盤上のコマもしくはマス: View {
     private var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
     }
-    private var 駒が存在: Bool { 📱.局面.盤駒[self.元々の位置] != nil }
+    private var 元々の場所: 駒の場所 { .盤駒(self.元々の位置) }
     var body: some View {
         Group {
-            if 📱.局面.ここに駒がある(.盤駒(self.元々の位置)) {
-                コマの見た目(.盤駒(self.元々の位置))
-                    .overlay { 駒を消すボタン(self.元々の位置) }
+            if 📱.局面.ここに駒がある(self.元々の場所) {
+                コマの見た目(self.元々の場所)
                     .accessibilityHidden(true)
-                    .onDrag { 📱.この駒をドラッグし始める(.盤駒(self.元々の位置)) }
+                    .onDrag { 📱.この駒をドラッグし始める(self.元々の場所) }
             } else { // ==== マス ====
                 Color(.systemBackground)
             }
         }
-        .onTapGesture { 📱.この駒を選択する(.盤駒(self.元々の位置)) }
+        .onTapGesture { 📱.この駒を選択する(self.元々の場所) }
         .onDrop(of: [.utf8PlainText],
                 delegate: 📬DropDelegate(📱, .盤上(self.元々の位置)))
     }
@@ -150,7 +153,7 @@ private struct 盤外のコマ: View {
                 } preview: {
                     ドラッグプレビュー用コマ(📱.この手駒のプレビュー表記(self.場所),
                                  self.コマの大きさ,
-                                 📱.下向きに変更(self.場所))
+                                 📱.この駒は下向き(self.場所))
                 }
         }
     }
@@ -165,24 +168,25 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
     private var 表記: String? { 📱.この駒の表記(self.場所) }
     private var この駒を選択中: Bool { 📱.選択中の駒 == self.場所 }
     var body: some View {
-        ZStack {
-            Color(.systemBackground)
-            if let 表記 {
+        if let 表記 {
+            ZStack {
+                Color(.systemBackground)
                 Text(表記)
                     .font(🗄️固定値.駒フォント)
                     .fontWeight(self.📱.この駒は操作直後(self.場所) ? .bold : nil)
                     .underline(self.📱.この駒にはアンダーラインが必要(self.場所))
                     .minimumScaleFactor(0.1)
-                    .rotationEffect(📱.下向きに変更(self.場所) ? .degrees(180) : .zero)
+                    .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
                     .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
                     .onChange(of: 📱.🚩駒を整理中) { _ in 📱.選択中の駒 = .なし }
                     .modifier(Self.ドラッグ直後の効果(self.場所))
-                    //.modifier(太文字システムオプションの際にこのコマが操作直後なら強調表示(self.場所))
+                //.modifier(太文字システムオプションの際にこのコマが操作直後なら強調表示(self.場所))
             }
+            .padding(.horizontal, 4)
+            .border(.tint, width: self.この駒を選択中 ? 2 : 0)
+            .animation(.default.speed(2), value: self.この駒を選択中)
+            .modifier(編集モードの🅧バツマーク(self.場所))
         }
-        .padding(.horizontal, 4)
-        .border(.tint, width: self.この駒を選択中 ? 2 : 0)
-        .animation(.default.speed(2), value: self.この駒を選択中)
     }
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
     private struct ドラッグ直後の効果: ViewModifier {
