@@ -1,8 +1,6 @@
 import Foundation
 import SwiftUI
 
-typealias 🛒Storeモデル = 🛒StoreModel
-
 let ℹ️appName: LocalizedStringKey = "Plain将棋盤"
 let ℹ️appSubTitle: LocalizedStringKey = "iPhone / iPad / Apple Watch / Mac / Apple TV"
 

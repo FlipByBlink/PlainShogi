@@ -91,7 +91,6 @@ private struct 盤上のコマもしくはマス: View {
         Group {
             if 📱.局面.ここに駒がある(self.元々の場所) {
                 コマの見た目(self.元々の場所)
-                    .accessibilityHidden(true)
                     .onDrag { 📱.この駒をドラッグし始める(self.元々の場所) }
             } else { // ==== マス ====
                 Color(.systemBackground)
@@ -164,7 +163,6 @@ private struct 盤外のコマ: View {
 
 private struct コマの見た目: View { //FrameやDrag処理などは呼び出し側で実装する
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.legibilityWeight) var legibilityWeight
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     private var 場所: 駒の場所
     private var 表記: String? { 📱.この駒の表記(self.場所) }
@@ -181,36 +179,16 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
                     .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
                     .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
                     .onChange(of: 📱.🚩駒を整理中) { _ in 📱.選択中の駒 = .なし }
-                    .modifier(Self.ドラッグ直後の効果(self.場所))
             }
             .padding(.horizontal, 4)
             .border(.tint, width: self.この駒を選択中 ? 2 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
             .modifier(編集モード用ⓧマーク(self.場所))
+            .modifier(🗄️ドラッグ直後の効果(self.場所))
             .modifier(🗄️太字システムオプション用の強調表示(self.場所))
         }
     }
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
-    private struct ドラッグ直後の効果: ViewModifier {
-        @EnvironmentObject private var 📱: 📱アプリモデル
-        private var 場所: 駒の場所
-        @State private var ドラッグした直後: Bool = false
-        func body(content: Content) -> some View {
-            content
-                .opacity(self.ドラッグした直後 ? 0.25 : 1.0)
-                .onChange(of: 📱.ドラッグ中の駒) {
-                    if case .アプリ内の駒(let 出発地点) = $0, 出発地点 == self.場所 {
-                        self.ドラッグした直後 = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            withAnimation(.easeIn(duration: 1.5)) {
-                                self.ドラッグした直後 = false
-                            }
-                        }
-                    }
-                }
-        }
-        init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
-    }
 }
 
 private struct 成駒確認アラート: ViewModifier {

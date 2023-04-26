@@ -264,7 +264,7 @@ private struct セリフ体オプション: View {
     }
 }
 
-private struct 見た目カスタマイズメニューリンク: View { // for Mac, Apple TV
+private struct 見た目カスタマイズメニューリンク: View { // for Mac(Catalyst), Apple TV
     var body: some View {
         NavigationLink {
             Self.コンテンツ()
@@ -277,12 +277,17 @@ private struct 見た目カスタマイズメニューリンク: View { // for M
         var body: some View {
             List {
                 Section {
+                    Picker(selection: .constant(1)) {
+                        Text("標準").tag(1)
+                        Text("大").tag(2)
+                        Text("特大").tag(3)
+                    } label: {
+                        Text("サイズ")
+                    }
                     Toggle(isOn: self.$太字) { Label("太字", systemImage: "bold") }
+                    セリフ体オプション()
                 } header: {
                     Text("オプション")
-                }
-                Section {
-                    Text("駒の文字の大きさを調整するにはOS上の設定を変更してください。")
                 }
             }
             .navigationTitle("見た目をカスタマイズ")
