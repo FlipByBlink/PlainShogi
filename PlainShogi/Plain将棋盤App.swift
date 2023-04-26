@@ -7,10 +7,6 @@ struct Plain将棋盤App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modifier(🗄️初回起動時に駒の動かし方の説明バナー())
-                .modifier(🗄️自動スリープ無効化())
-                .modifier(📣広告コンテンツ())
-                .modifier(👥SharePlay環境構築())
                 .environmentObject(📱)
                 .environmentObject(🛒)
         }
