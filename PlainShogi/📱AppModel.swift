@@ -16,6 +16,7 @@ class 📱アプリモデル: ObservableObject {
     @Published var 🚩駒を整理中: Bool = false
     
     @Published var ドラッグ中の駒: ドラッグ対象 = .無し
+    @Published var 選択中の駒: 駒の場所 = .なし
     @Published var 🚩成駒確認アラートを表示: Bool = false
     
     init() {
@@ -64,10 +65,75 @@ extension 📱アプリモデル {
     func 直近操作の強調表示をクリア() {
         self.局面.直近操作情報を消す()
         self.SharePlay中なら現在の局面を参加者に送信する()
+        self.選択中の駒 = .なし
         💥フィードバック.軽め()
     }
+    func この駒を選択する(_ 今選択した場所: 駒の場所) {
+        guard !self.🚩駒を整理中 else { return }
+        switch self.選択中の駒 {
+            case .なし:
+                if self.局面.ここに駒がある(今選択した場所) {
+                    self.選択中の駒 = 今選択した場所
+                    💥フィードバック.軽め()
+                }
+            case .盤駒(let 位置) where self.選択中の駒 == 今選択した場所:
+                if self.局面.この駒は成る事ができる(位置) {
+                    self.この駒を裏返す(位置)
+                }
+                self.選択中の駒 = .なし
+            default:
+                switch 今選択した場所 {
+                    case .盤駒(let 位置):
+                        if self.局面.ここからここへは移動不可(self.選択中の駒, .盤上(位置)) {
+                            if self.局面.これとこれは同じ陣営(self.選択中の駒, 今選択した場所) {
+                                self.選択中の駒 = 今選択した場所
+                                💥フィードバック.軽め()
+                            }
+                        } else {
+                            withAnimation {
+                                do {
+                                    try self.局面.駒を移動させる(self.選択中の駒, .盤上(位置))
+                                    self.駒移動後の成駒について対応する(self.選択中の駒, .盤上(位置))
+                                    self.選択中の駒 = .なし
+                                    💥フィードバック.軽め()
+                                } catch {
+                                    assertionFailure()
+                                }
+                            }
+                        }
+                    case .手駒(let 陣営, _):
+                        withAnimation { self.こちらの手駒エリアを選択する(陣営) }
+                    default:
+                        break
+                }
+        }
+    }
+    func こちらの手駒エリアを選択する(_ 陣営: 王側か玉側か) {
+        guard self.選択中の駒 != .なし else { return }
+        if self.局面.ここからここへは移動不可(選択中の駒, .盤外(陣営)) {
+            self.選択中の駒 = .なし
+        } else {
+            do {
+                try self.局面.駒を移動させる(選択中の駒, .盤外(陣営))
+                self.選択中の駒 = .なし
+                💥フィードバック.軽め()
+            } catch {
+                assertionFailure()
+            }
+        }
+        return
+    }
+    func 駒移動後の成駒について対応する(_ 出発場所: 駒の場所, _ 置いた場所: 駒の移動先パターン) {
+        if case .盤上(let 位置) = 置いた場所 {
+            if self.局面.この駒移動で成る事が可能(.盤駒(位置), 出発場所) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    self.🚩成駒確認アラートを表示 = true
+                }
+            }
+        }
+    }
     func この駒を裏返す(_ 位置: Int) {
-        if self.局面.盤駒[位置]?.職名.成駒あり == true {
+        if self.局面.この駒は成る事ができる(位置) {
             self.局面.この駒を裏返す(位置)
             self.SharePlay中なら現在の局面を参加者に送信する()
             💥フィードバック.軽め()
@@ -89,6 +155,7 @@ extension 📱アプリモデル {
     }
     func 盤面を初期化する() {
         self.局面.初期化する()
+        self.選択中の駒 = .なし
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.エラー()
     }
@@ -110,6 +177,7 @@ extension 📱アプリモデル {
     func 一手戻す() {
         guard let 一手前の局面 = self.局面.一手前の局面 else { return }
         self.🚩メニューを表示 = false
+        self.選択中の駒 = .なし
         self.局面.現在の局面として適用する(一手前の局面)
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.成功()
@@ -119,6 +187,7 @@ extension 📱アプリモデル {
 //MARK: - ==== ドラッグ関連 ====
 extension 📱アプリモデル {
     func この駒をドラッグし始める(_ 場所: 駒の場所) -> NSItemProvider {
+        self.選択中の駒 = .なし
         💥フィードバック.軽め()
         self.ドラッグ中の駒 = .アプリ内の駒(場所)
         return self.ドラッグ対象となるアイテムを用意する()
@@ -132,22 +201,13 @@ extension 📱アプリモデル {
 }
 
 //MARK: - ==== ドロップ関連 ====
-enum 駒の移動先パターン {
-    case 盤上(Int), 盤外(王側か玉側か)
-}
 extension 📱アプリモデル {
     func ここにドロップする(_ 置いた場所: 駒の移動先パターン, _ ⓘnfo: DropInfo) -> Bool {
         do {
             switch self.ドラッグ中の駒 {
                 case .アプリ内の駒(let 出発場所):
                     try self.局面.駒を移動させる(出発場所, 置いた場所)
-                    if case .盤上(let 位置) = 置いた場所 {
-                        if self.局面.この駒の成りについて判断すべき(.盤駒(位置), 出発場所) {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                                self.🚩成駒確認アラートを表示 = true
-                            }
-                        }
-                    }
+                    self.駒移動後の成駒について対応する(出発場所, 置いた場所)
                     self.ドラッグ中の駒 = .無し
                     self.SharePlay中なら現在の局面を参加者に送信する()
                     💥フィードバック.軽め()

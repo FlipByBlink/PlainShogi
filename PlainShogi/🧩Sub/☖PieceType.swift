@@ -21,14 +21,14 @@ extension 局面モデル {
         switch 移動先 {
             case .盤上(let 置いた位置):
                 switch 出発した場所 {
-                    case .盤駒(let 出発地点):
-                        if 置いた位置 == 出発地点 { throw 🚨駒移動エラー.無効 }
-                        guard let 動かした駒 = self.盤駒[出発地点] else { throw 🚨エラー.要修正 }
+                    case .盤駒(let 出発位置):
+                        if 置いた位置 == 出発位置 { throw 🚨駒移動エラー.無効 }
+                        guard let 動かした駒 = self.盤駒[出発位置] else { throw 🚨エラー.要修正 }
                         if let 先客 = self.盤駒[置いた位置] {
                             if 先客.陣営 == 動かした駒.陣営 { throw 🚨駒移動エラー.無効 }
                             self.手駒[動かした駒.陣営]?.一個増やす(先客.職名)
                         }
-                        self.盤駒.removeValue(forKey: 出発地点)
+                        self.盤駒.removeValue(forKey: 出発位置)
                         self.盤駒.updateValue(動かした駒, forKey: 置いた位置)
                         self.ユーザー操作時の雑多処理(強調対象: .盤駒(置いた位置))
                     case .手駒(let 陣営, let 職名):
@@ -59,6 +59,7 @@ extension 局面モデル {
         case 無効
     }
     func ここからここへは移動不可(_ 移動し始めた場所: 駒の場所, _ 移動先: 駒の移動先パターン) -> Bool {
+        guard 移動し始めた場所 != .なし else { return true }
         switch 移動先 {
             case .盤上(let 検証位置):
                 switch 移動し始めた場所 {
@@ -84,6 +85,13 @@ extension 局面モデル {
                     case .なし:
                         assertionFailure(); return false
                 }
+        }
+    }
+    func ここに駒がある(_ 場所: 駒の場所) -> Bool {
+        switch 場所 {
+            case .盤駒(let 位置): return self.盤駒[位置] != nil
+            case .手駒(_, _): return self.この手駒の数(場所) > 0
+            default: return false
         }
     }
     func この駒の表記(_ 場所: 駒の場所, _ English表記: Bool) -> String? {
@@ -124,6 +132,9 @@ extension 局面モデル {
             case .なし: return nil
         }
     }
+    func これとこれは同じ陣営(_ 場所1: 駒の場所, _ 場所2: 駒の場所) -> Bool {
+        self.この駒の陣営(場所1) == self.この駒の陣営(場所2)
+    }
     func この手駒の数(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) -> Int {
         self.手駒[陣営]?.個数(職名) ?? 0
     }
@@ -142,7 +153,7 @@ extension 局面モデル {
               [.銀, .桂].contains(駒.職名) else { return false }
         return true
     }
-    func この駒の成りについて判断すべき(_ 移動後の場所: 駒の場所, _ 元々の場所: 駒の場所) -> Bool {
+    func この駒移動で成る事が可能(_ 移動後の場所: 駒の場所, _ 元々の場所: 駒の場所) -> Bool {
         if case (.盤駒(let 移動先), .盤駒(let 元々の位置)) = (移動後の場所, 元々の場所) {
             if let 移動後の駒 = self.盤駒[移動先] {
                 if 移動後の駒.成り == false {
@@ -161,8 +172,11 @@ extension 局面モデル {
         }
         return false
     }
+    func この駒は成る事ができる(_ 位置: Int) -> Bool {
+        self.盤駒[位置]?.職名.成駒あり == true
+    }
     mutating func この駒を裏返す(_ 位置: Int) {
-        if self.盤駒[位置]?.職名.成駒あり == true {
+        if self.この駒は成る事ができる(位置) {
             self.盤駒[位置]?.裏返す()
             self.ユーザー操作時の雑多処理(強調対象: .盤駒(位置))
         }
@@ -272,6 +286,10 @@ enum 駒の場所: Codable, Equatable {
     case 盤駒(_ 位置: Int)
     case 手駒(_ 陣営: 王側か玉側か, _ 職名: 駒の種類)
     case なし
+}
+
+enum 駒の移動先パターン {
+    case 盤上(Int), 盤外(王側か玉側か)
 }
 
 enum ドラッグ対象: Equatable {
