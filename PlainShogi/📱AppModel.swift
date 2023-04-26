@@ -106,7 +106,7 @@ extension 📱アプリモデル {
     }
     func こちらの手駒エリアを選択する(_ 陣営: 王側か玉側か) {
         guard self.選択中の駒 != .なし else { return }
-        withAnimation {
+        withAnimation(.default.speed(2)) {
             if self.局面.ここからここへは移動不可(選択中の駒, .盤外(陣営)) {
                 self.選択中の駒 = .なし
             } else {
@@ -161,7 +161,7 @@ extension 📱アプリモデル {
     }
     // ==== private ====
     private func 盤上に駒を移動させる(_ 移動先: 駒の移動先パターン) {
-        withAnimation {
+        withAnimation(.default.speed(2)) {
             do {
                 try self.局面.駒を移動させる(self.選択中の駒, 移動先)
                 self.SharePlay中なら現在の局面を参加者に送信する()
@@ -191,7 +191,7 @@ extension 📱アプリモデル {
     }
     private func 編集モードでこの盤駒を消す(_ 場所: 駒の場所) {
         guard case .盤駒(let 位置) = 場所 else { return }
-        withAnimation {
+        withAnimation(.default.speed(2)) {
             self.局面.編集モードでこの盤駒を消す(位置)
         }
         self.SharePlay中なら現在の局面を参加者に送信する()

@@ -10,19 +10,9 @@ struct 将棋全体View: View {
     var body: some View {
         GeometryReader { 画面 in
             let マスの大きさ = self.マスの大きさを計算(画面.size)
-            let 筋 = 筋ラベル(幅: マスの大きさ * Self.マスに対する段筋の大きさ)
-            let 段 = 段ラベル(高さ: マスの大きさ * Self.マスに対する段筋の大きさ)
             VStack(spacing: Self.盤上と盤外の隙間) {
                 盤外(.対面, マスの大きさ)
-                VStack(spacing: 0) {
-                    if self.通常の向き { 筋 }
-                    HStack(spacing: 0) {
-                        if self.上下反転 { 段 }
-                        盤面(マスの大きさ)
-                        if self.通常の向き { 段 }
-                    }
-                    if self.上下反転 { 筋 }
-                }
+                盤面と段と筋(マスの大きさ)
                 盤外(.手前, マスの大きさ)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -40,7 +30,42 @@ struct 将棋全体View: View {
     }
 }
 
-private struct 盤面: View {
+private struct 盤面と段と筋: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    private let マスの大きさ: CGFloat
+    private static let マスに対する段筋の大きさ: Double = 0.5
+    private var 通常の向き: Bool { !📱.🚩上下反転 }
+    var body: some View {
+        if self.通常の向き {
+            VStack(spacing: 0) {
+                self.筋()
+                HStack(spacing: 0) {
+                    盤面のみ(マスの大きさ)
+                    self.段()
+                }
+            }
+        } else {
+            VStack(spacing: 0) {
+                HStack(spacing: 0) {
+                    self.段()
+                    盤面のみ(マスの大きさ)
+                }
+                self.筋()
+            }
+        }
+    }
+    private func 筋() -> some View {
+        筋ラベル(幅: マスの大きさ * Self.マスに対する段筋の大きさ)
+    }
+    private func 段() -> some View {
+        段ラベル(高さ: マスの大きさ * Self.マスに対する段筋の大きさ)
+    }
+    init(_ ﾏｽﾉｵｵｷｻ: CGFloat) {
+        self.マスの大きさ = ﾏｽﾉｵｵｷｻ
+    }
+}
+
+private struct 盤面のみ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private let マスの大きさ: CGFloat
     var body: some View {
