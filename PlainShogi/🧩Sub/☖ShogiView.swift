@@ -22,6 +22,7 @@ struct 将棋全体View: View {
                 .onTapGesture { 📱.選択中の駒 = .なし }
         }
         .modifier(成駒確認アラート())
+        .modifier(マス1個分の大きさを計算())
     }
     private func マスの大きさを計算(_ 画面サイズ: CGSize) -> CGFloat {
         let 横基準 = 画面サイズ.width / (9 + Self.マスに対する段筋の大きさ)
@@ -30,8 +31,35 @@ struct 将棋全体View: View {
     }
 }
 
+private struct マス1個分の大きさを計算: ViewModifier {
+    private static let マスに対する段筋の大きさ: Double = 0.5
+    private static let 盤上と盤外の隙間: CGFloat = 4
+    func body(content: Content) -> some View {
+        GeometryReader {
+            content
+                .environment(\.マスの大きさ, self.計算($0.size))
+        }
+    }
+    private func 計算(_ 全体サイズ: CGSize) -> CGFloat {
+        let 横基準 = 全体サイズ.width / (9 + Self.マスに対する段筋の大きさ)
+        let 縦基準 = (全体サイズ.height - Self.盤上と盤外の隙間 * 2) / (11 + Self.マスに対する段筋の大きさ)
+        return min(横基準, 縦基準)
+    }
+}
+
+extension EnvironmentValues {
+    var マスの大きさ: CGFloat {
+        get { self[🄺ey.self] }
+        set { self[🄺ey.self] = newValue }
+    }
+    private struct 🄺ey: EnvironmentKey {
+        static let defaultValue: CGFloat = 100
+    }
+}
+
 private struct 盤面と段と筋: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    //@Environment(\.マスの大きさ) var マスの大きさ
     private let マスの大きさ: CGFloat
     private static let マスに対する段筋の大きさ: Double = 0.5
     private var 通常の向き: Bool { !📱.🚩上下反転 }
