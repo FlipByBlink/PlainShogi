@@ -4,7 +4,7 @@ import UniformTypeIdentifiers
 struct 将棋全体View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
-        VStack(spacing: サイズ.盤上と盤外の隙間) {
+        VStack(spacing: サイズ.盤上と盤外の上下の隙間) {
             盤外(.対面)
             盤面と段と筋()
             盤外(.手前)
@@ -12,27 +12,27 @@ struct 将棋全体View: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .modifier(操作エリア外で駒選択を解除())
         .modifier(成駒確認アラート())
-        .modifier(サイズ.マス1個分の大きさを計算())
+        .modifier(サイズ.マス1個分の大きさを設定())
     }
 }
 
 private enum サイズ {
-    struct マス1個分の大きさを計算: ViewModifier {
+    struct マス1個分の大きさを設定: ViewModifier {
         func body(content: Content) -> some View {
-            GeometryReader {
+            GeometryReader { 対象範囲 in
                 content
-                    .environment(\.マスの大きさ, サイズ.計算($0.size))
+                    .environment(\.マスの大きさ, サイズ.マス1個分の大きさを計算(対象範囲.size))
             }
         }
     }
-    private static func 計算(_ 全体サイズ: CGSize) -> CGFloat {
-        let 横基準 = 全体サイズ.width / (9 + Self.マスに対する段筋の大きさ)
-        let 縦基準 = (全体サイズ.height - Self.盤上と盤外の隙間 * 2) / (11 + Self.マスに対する段筋の大きさ)
+    private static func マス1個分の大きさを計算(_ 全体サイズ: CGSize) -> CGFloat {
+        let 横基準 = 全体サイズ.width / (9 + Self.マスに対する段筋の大きさの比率)
+        let 縦基準 = (全体サイズ.height - Self.盤上と盤外の上下の隙間 * 2) / (11 + Self.マスに対する段筋の大きさの比率)
         return min(横基準, 縦基準)
     }
-    static let 盤上と盤外の隙間: CGFloat = 4
-    static let マスに対する段筋の大きさ: Double = 0.5
-    static let バッファ: CGFloat = 10.0
+    static let 盤上と盤外の上下の隙間: CGFloat = 4
+    static let マスに対する段筋の大きさの比率: Double = 0.5
+    //static let 枠線と仕切り線のためのバッファ: CGFloat = 10.0
 }
 
 extension EnvironmentValues {
@@ -89,7 +89,7 @@ private struct 盤面のみ: View {
         }
         .border(.primary, width: 🗄️固定値.枠線の太さ)
         .frame(width: self.マスの大きさ * 9, height: self.マスの大きさ * 9)
-        .clipped()
+        //.clipped()
     }
 }
 
@@ -191,7 +191,6 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
                     .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
                     .onChange(of: 📱.🚩駒を整理中) { _ in 📱.選択中の駒 = .なし }
             }
-            .padding(.horizontal, 4)
             .border(.tint, width: self.この駒を選択中 ? 2 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
             .modifier(編集モード用ⓧマーク(self.場所))
@@ -239,7 +238,7 @@ private struct 筋: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
     @AppStorage("セリフ体") private var セリフ体: Bool = false
-    private var 幅: CGFloat { self.マスの大きさ * サイズ.マスに対する段筋の大きさ}
+    private var 幅: CGFloat { self.マスの大きさ * サイズ.マスに対する段筋の大きさの比率 }
     private var 上下反転: Bool { 📱.🚩上下反転 }
     private static let 字 = ["９","８","７","６","５","４","３","２","１"]
     var body: some View {
@@ -261,7 +260,7 @@ private struct 段: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
     @AppStorage("セリフ体") private var セリフ体: Bool = false
-    private var 高さ: CGFloat { self.マスの大きさ * サイズ.マスに対する段筋の大きさ}
+    private var 高さ: CGFloat { self.マスの大きさ * サイズ.マスに対する段筋の大きさの比率 }
     private var 上下反転: Bool { 📱.🚩上下反転 }
     private var 字: [String] {
         📱.🚩English表記 ? ["１","２","３","４","５","６","７","８","９"] : ["一","二","三","四","五","六","七","八","九"]
