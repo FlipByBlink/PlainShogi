@@ -18,16 +18,16 @@ struct ContentView: View {
 
 private struct 将棋全体View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    private let マスに対する段筋の大きさ: Double = 0.5
-    private let 盤上と盤外の隙間: CGFloat = 4
+    private static let マスに対する段筋の大きさ: Double = 0.5
+    private static let 盤上と盤外の隙間: CGFloat = 4
     private var 上下反転: Bool { 📱.🚩上下反転 }
     private var 通常の向き: Bool { !self.上下反転 }
     var body: some View {
         GeometryReader { 画面 in
             let マスの大きさ = self.マスの大きさを計算(画面.size)
-            let 筋 = 筋View(幅: マスの大きさ * self.マスに対する段筋の大きさ)
-            let 段 = 段View(高さ: マスの大きさ * self.マスに対する段筋の大きさ)
-            VStack(spacing: self.盤上と盤外の隙間) {
+            let 筋 = 筋ラベル(幅: マスの大きさ * Self.マスに対する段筋の大きさ)
+            let 段 = 段ラベル(高さ: マスの大きさ * Self.マスに対する段筋の大きさ)
+            VStack(spacing: Self.盤上と盤外の隙間) {
                 盤外(.対面, マスの大きさ)
                 VStack(spacing: 0) {
                     if self.通常の向き { 筋 }
@@ -48,8 +48,8 @@ private struct 将棋全体View: View {
         }
     }
     private func マスの大きさを計算(_ 画面サイズ: CGSize) -> CGFloat {
-        let 横基準 = 画面サイズ.width / (9 + self.マスに対する段筋の大きさ)
-        let 縦基準 = (画面サイズ.height - self.盤上と盤外の隙間 * 2) / (11 + self.マスに対する段筋の大きさ)
+        let 横基準 = 画面サイズ.width / (9 + Self.マスに対する段筋の大きさ)
+        let 縦基準 = (画面サイズ.height - Self.盤上と盤外の隙間 * 2) / (11 + Self.マスに対する段筋の大きさ)
         return min(横基準, 縦基準)
     }
 }
@@ -224,15 +224,15 @@ private struct ドラッグプレビュー用コマ: View {
     }
 }
 
-private struct 筋View: View {
+private struct 筋ラベル: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     let 幅: CGFloat
     private var 上下反転: Bool { 📱.🚩上下反転 }
-    private let 字 = ["９","８","７","６","５","４","３","２","１"]
+    private static let 字 = ["９","８","７","６","５","４","３","２","１"]
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(self.上下反転 ? self.字.reversed() : self.字, id: \.self) {
+            ForEach(self.上下反転 ? Self.字.reversed() : Self.字, id: \.self) {
                 Text($0)
                     .minimumScaleFactor(0.1)
                     .font(🗄️フォント.段と筋(self.セリフ体))
@@ -245,7 +245,7 @@ private struct 筋View: View {
     }
 }
 
-private struct 段View: View {
+private struct 段ラベル: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     let 高さ: CGFloat
