@@ -3,21 +3,14 @@ import UniformTypeIdentifiers
 
 struct 将棋全体View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    private static let マスに対する段筋の大きさ: Double = 0.5
-    private static let 盤上と盤外の隙間: CGFloat = 4
-    private var 上下反転: Bool { 📱.🚩上下反転 }
-    private var 通常の向き: Bool { !self.上下反転 }
     var body: some View {
-        VStack(spacing: Self.盤上と盤外の隙間) {
+        VStack(spacing: サイズ.盤上と盤外の隙間) {
             盤外(.対面)
             盤面と段と筋()
             盤外(.手前)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background {
-            Color(uiColor: .systemBackground)
-                .onTapGesture { 📱.選択中の駒 = .なし }
-        }
+        .modifier(操作エリア外で駒選択を解除())
         .modifier(成駒確認アラート())
         .modifier(サイズ.マス1個分の大きさを計算())
     }
@@ -25,20 +18,21 @@ struct 将棋全体View: View {
 
 private enum サイズ {
     struct マス1個分の大きさを計算: ViewModifier {
-        private static let 盤上と盤外の隙間: CGFloat = 4
         func body(content: Content) -> some View {
             GeometryReader {
                 content
-                    .environment(\.マスの大きさ, self.計算($0.size))
+                    .environment(\.マスの大きさ, サイズ.計算($0.size))
             }
         }
-        private func 計算(_ 全体サイズ: CGSize) -> CGFloat {
-            let 横基準 = 全体サイズ.width / (9 + サイズ.マスに対する段筋の大きさ)
-            let 縦基準 = (全体サイズ.height - Self.盤上と盤外の隙間 * 2) / (11 + サイズ.マスに対する段筋の大きさ)
-            return min(横基準, 縦基準)
-        }
     }
+    private static func 計算(_ 全体サイズ: CGSize) -> CGFloat {
+        let 横基準 = 全体サイズ.width / (9 + Self.マスに対する段筋の大きさ)
+        let 縦基準 = (全体サイズ.height - Self.盤上と盤外の隙間 * 2) / (11 + Self.マスに対する段筋の大きさ)
+        return min(横基準, 縦基準)
+    }
+    static let 盤上と盤外の隙間: CGFloat = 4
     static let マスに対する段筋の大きさ: Double = 0.5
+    static let バッファ: CGFloat = 10.0
 }
 
 extension EnvironmentValues {
@@ -283,5 +277,16 @@ private struct 段: View {
                     .padding(.vertical, self.高さ / 2)
             }
         }
+    }
+}
+
+private struct 操作エリア外で駒選択を解除: ViewModifier {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    func body(content: Content) -> some View {
+        content
+            .background {
+                Color(uiColor: .systemBackground)
+                    .onTapGesture { 📱.選択中の駒 = .なし }
+            }
     }
 }
