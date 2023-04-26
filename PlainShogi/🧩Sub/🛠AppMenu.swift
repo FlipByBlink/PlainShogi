@@ -52,7 +52,7 @@ private struct メニューボタン: View {
                 self.履歴ボタン()
             } label: {
                 Image(systemName: "gearshape")
-                    .dynamicTypeSize(...DynamicTypeSize.accessibility3)
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility2)
                     .padding(2)
                     .background {
                         Circle()

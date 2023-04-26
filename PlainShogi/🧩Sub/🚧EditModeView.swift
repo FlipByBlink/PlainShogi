@@ -29,22 +29,21 @@ struct 手駒編集ボタン: View {
 
 struct 編集モード用ⓧマーク: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     private var 場所: 駒の場所
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .topLeading) {
                 if 📱.🚩駒を整理中, case .盤駒(_) = 場所 {
-                    GeometryReader { 📐 in
-                        Image(systemName: "xmark.circle.fill")
-                            .resizable()
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(.primary, .background)
-                            .font(.body.weight(.light))
-                            .minimumScaleFactor(0.1)
-                            .padding(2)
-                            .frame(width: 📐.size.width / 2,
-                                   height: 📐.size.height / 2)
-                    }
+                    Image(systemName: "xmark.circle.fill")
+                        .resizable()
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(.primary, .background)
+                        .font(.body.weight(.light))
+                        .minimumScaleFactor(0.1)
+                        .padding(2)
+                        .frame(width: self.マスの大きさ / 2,
+                               height: self.マスの大きさ / 2)
                 }
             }
     }
