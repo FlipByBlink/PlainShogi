@@ -31,8 +31,7 @@ private enum サイズ {
         return min(横基準, 縦基準)
     }
     static let 盤上と盤外の上下の隙間: CGFloat = 4
-    static let マスに対する段筋の大きさの比率: Double = 0.5
-    //static let 枠線と仕切り線のためのバッファ: CGFloat = 10.0
+    static let マスに対する段筋の大きさの比率: Double = 1 / 2
 }
 
 extension EnvironmentValues {
@@ -41,7 +40,7 @@ extension EnvironmentValues {
         set { self[🄺ey.self] = newValue }
     }
     private struct 🄺ey: EnvironmentKey {
-        static let defaultValue: CGFloat = 100
+        static let defaultValue: CGFloat = 80
     }
 }
 
@@ -75,21 +74,19 @@ private struct 盤面のみ: View {
     @Environment(\.マスの大きさ) var マスの大きさ
     var body: some View {
         VStack(spacing: 0) {
-            Divider()
             ForEach(0 ..< 9) { 行 in
+                if 行 != 0 { Divider() }
                 HStack(spacing: 0) {
-                    Divider()
                     ForEach(0 ..< 9) { 列 in
+                        if 列 != 0 { Divider() }
                         盤上のコマもしくはマス(行 * 9 + 列)
-                        Divider()
                     }
                 }
-                Divider()
             }
         }
         .border(.primary, width: 🗄️固定値.枠線の太さ)
-        .frame(width: self.マスの大きさ * 9, height: self.マスの大きさ * 9)
-        //.clipped()
+        .frame(width: self.マスの大きさ * 9,
+               height: self.マスの大きさ * 9)
     }
 }
 
@@ -126,7 +123,7 @@ private struct 盤外: View {
     var body: some View {
         ZStack(alignment: self.立場 == .手前 ? .leading : .trailing) {
             Color(.systemBackground)
-            HStack(spacing: 0) {
+            HStack(spacing: 1.5) {
                 if self.立場 == .手前 { 手駒編集ボタン(self.陣営) }
                 ForEach(self.立場 == .手前 ? 駒の種類.allCases : 駒の種類.allCases.reversed()) {
                     盤外のコマ(self.陣営, $0)
