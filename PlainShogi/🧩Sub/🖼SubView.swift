@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 編集モードの🅧バツマーク: ViewModifier {
+struct 編集モード用ⓧマーク: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 場所: 駒の場所
     func body(content: Content) -> some View {
@@ -54,9 +54,9 @@ struct 手駒編集ボタン: View {
                 💥フィードバック.軽め()
             } label: {
                 Image(systemName: "plusminus")
-                    .imageScale(.large)
                     .padding(8)
                     .dynamicTypeSize(...DynamicTypeSize.accessibility2)
+                    .font(.body.weight(.medium))
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)

@@ -44,9 +44,9 @@ private struct メニューボタン: View {
             整理完了ボタン()
         } else {
             Menu {
-                直近操作強調表示クリアボタン()
+                強調表示クリアボタン()
                 盤面初期化ボタン()
-                盤面整理開始ボタン()
+                編集モード開始ボタン()
                 一手戻すボタン()
                 self.上下反転ボタン()
                 self.履歴ボタン()
@@ -123,9 +123,9 @@ private struct メニューコンテンツ: View {
             Section { 履歴リンク() }
             Section {
                 盤面初期化ボタン()
-                盤面整理開始ボタン()
+                編集モード開始ボタン()
                 一手戻すボタン()
-                直近操作強調表示クリアボタン()
+                強調表示クリアボタン()
             }
             Section {
                 Toggle(isOn: $📱.🚩上下反転) {
@@ -211,20 +211,23 @@ private struct 盤面初期化ボタン: View {
     }
 }
 
-private struct 直近操作強調表示クリアボタン: View {
+private struct 強調表示クリアボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    private var 何も強調表示されていない: Bool {
+        📱.局面.直近の操作 == .なし && 📱.選択中の駒 == .なし
+    }
     var body: some View {
         Button {
-            withAnimation { 📱.直近操作の強調表示をクリア() }
+            📱.強調表示をクリア()
         } label: {
-            Label("操作直後の強調表示をクリア", systemImage: "square.dashed")
+            Label("強調表示をクリア", systemImage: "square.dashed")
         }
-        .disabled(📱.局面.直近の操作 == .なし)
-        .disabled(📱.🚩直近操作強調表示機能オフ)
+        .disabled(self.何も強調表示されていない)
+        .disabled(📱.🚩直近操作強調表示機能オフ && (📱.選択中の駒 == .なし))
     }
 }
 
-private struct 盤面整理開始ボタン: View {
+private struct 編集モード開始ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {

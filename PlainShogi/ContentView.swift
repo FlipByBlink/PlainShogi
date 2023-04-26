@@ -167,25 +167,28 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
     private var 場所: 駒の場所
     private var 表記: String? { 📱.この駒の表記(self.場所) }
     private var この駒を選択中: Bool { 📱.選択中の駒 == self.場所 }
+    private var この駒は操作直後なので強調表示: Bool {
+        📱.この駒は操作直後(self.場所) && !📱.🚩直近操作強調表示機能オフ
+    }
     var body: some View {
         if let 表記 {
             ZStack {
                 Color(.systemBackground)
                 Text(表記)
                     .font(🗄️固定値.駒フォント)
-                    .fontWeight(self.📱.この駒は操作直後(self.場所) ? .bold : nil)
-                    .underline(self.📱.この駒にはアンダーラインが必要(self.場所))
+                    .fontWeight(self.この駒は操作直後なので強調表示 ? .bold : nil)
+                    .underline(📱.この駒にはアンダーラインが必要(self.場所))
                     .minimumScaleFactor(0.1)
                     .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
                     .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
                     .onChange(of: 📱.🚩駒を整理中) { _ in 📱.選択中の駒 = .なし }
                     .modifier(Self.ドラッグ直後の効果(self.場所))
-                //.modifier(太文字システムオプションの際にこのコマが操作直後なら強調表示(self.場所))
+                    //.modifier(太文字システムオプションの際にこのコマが操作直後なら強調表示(self.場所))
             }
             .padding(.horizontal, 4)
             .border(.tint, width: self.この駒を選択中 ? 2 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
-            .modifier(編集モードの🅧バツマーク(self.場所))
+            .modifier(編集モード用ⓧマーク(self.場所))
         }
     }
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
