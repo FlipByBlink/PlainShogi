@@ -57,8 +57,8 @@ private enum レイアウト {
         }
     }
     static let 盤と手駒の隙間: CGFloat = 4
-    static let マスに対する段筋の大きさの比率: Double = 1 / 2
-    static let 複数個の盤外コマの幅比率: Double = 1.4
+    static let マスに対する段筋の大きさの比率: Double = 0.5
+    static let 複数個の盤外コマの幅比率: Double = 1.3
     struct 縦並びKey: EnvironmentKey { static let defaultValue = false }
     struct マスの大きさKey: EnvironmentKey { static let defaultValue = 80.0 }
 }
@@ -153,6 +153,9 @@ private struct 盤外: View {
     private var 各駒: [駒の種類] {
         self.立場 == .手前 ? .Element.allCases : .Element.allCases.reversed()
     }
+    private var 最大の長さ: CGFloat {
+        self.マスの大きさ * (9 + レイアウト.マスに対する段筋の大きさの比率)
+    }
     private var 揃え方: Alignment {
         switch (self.縦並び, self.立場) {
             case (true, .手前): return .leading
@@ -164,29 +167,31 @@ private struct 盤外: View {
     var body: some View {
         ZStack(alignment: self.揃え方) {
             Color(.systemBackground)
-            if self.縦並び {
-                HStack(spacing: 1.5) {
-                    if self.立場 == .手前 { 手駒編集ボタン(self.陣営) }
-                    ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
-                    if self.立場 == .対面 { 手駒編集ボタン(self.陣営) }
-                }
-                .padding(.horizontal, 8)
-            } else {
-                VStack(spacing: 2) {
-                    if self.立場 == .手前 { 手駒編集ボタン(self.陣営) }
-                    ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
-                    if self.立場 == .対面 { 手駒編集ボタン(self.陣営) }
-                }
-                .padding(.vertical, 8)
+            Self.各種コマと編集ボタンの配置 {
+                if self.立場 == .手前 { 手駒編集ボタン(self.陣営) }
+                ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
+                if self.立場 == .対面 { 手駒編集ボタン(self.陣営) }
             }
         }
-        .frame(width: self.縦並び ? self.マスの大きさ * 9.5 : nil,
-               height: !self.縦並び ? self.マスの大きさ * 9.5 : nil)
+        .frame(maxWidth: self.最大の長さ, maxHeight: self.最大の長さ)
         .onTapGesture { 📱.こちらの手駒エリアを選択する(self.陣営) }
         .onDrop(of: [UTType.utf8PlainText],
                 delegate: 📬DropDelegate(📱, .盤外(self.陣営)))
     }
     init(_ ﾀﾁﾊﾞ: 手前か対面か) { self.立場 = ﾀﾁﾊﾞ }
+    private struct 各種コマと編集ボタンの配置<Content: View>: View {
+        @Environment(\.縦並び) private var 縦並び
+        @ViewBuilder var content: () -> Content
+        var body: some View {
+            if self.縦並び {
+                HStack(spacing: 1.5) { self.content() }
+                    .padding(.horizontal, 8)
+            } else {
+                VStack(spacing: 2) { self.content() }
+                    .padding(.vertical, 8)
+            }
+        }
+    }
 }
 
 enum 手前か対面か {
