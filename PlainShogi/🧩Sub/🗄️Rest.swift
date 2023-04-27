@@ -1,40 +1,5 @@
 import SwiftUI
 
-struct 🗄️太字システムオプション用の強調表示: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.legibilityWeight) private var legibilityWeight
-    private let 場所: 駒の場所
-    func body(content: Content) -> some View {
-        content
-            .overlay {
-                if 📱.この駒は操作直後なので強調表示(self.場所), self.legibilityWeight == .bold {
-                    Rectangle()
-                        .fill(.quaternary)
-                }
-            }
-    }
-    init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
-}
-
-struct 🗄️ドラッグ直後の効果: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    private var 場所: 駒の場所
-    @State private var ドラッグした直後: Bool = false
-    func body(content: Content) -> some View {
-        content
-            .opacity(self.ドラッグした直後 ? 0.25 : 1.0)
-            .onChange(of: 📱.ドラッグ中の駒) {
-                if case .アプリ内の駒(let 出発地点) = $0, 出発地点 == self.場所 {
-                    self.ドラッグした直後 = true
-                    withAnimation(.easeIn(duration: 1.25).delay(1)) {
-                        self.ドラッグした直後 = false
-                    }
-                }
-            }
-    }
-    init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
-}
-
 enum 🗄️固定値 {
     static var 枠線の太さ: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
@@ -51,29 +16,6 @@ enum 🗄️固定値 {
             case .tv: return 36
             default: return 16
         }
-    }
-}
-
-enum 🗄️フォント {
-    static func 駒(_ セリフ体: Bool) -> Font {
-        var スタイル: Font.TextStyle {
-            switch UIDevice.current.userInterfaceIdiom {
-                case .phone: return .title3
-                case .pad: return .title
-                default: return .title3
-            }
-        }
-        return .system(スタイル, design: セリフ体 ? .serif : .default)
-    }
-    static func 段と筋(_ セリフ体: Bool) -> Font {
-        var スタイル: Font.TextStyle {
-            switch UIDevice.current.userInterfaceIdiom {
-                case .phone: return .caption
-                case .pad: return .body
-                default: return .caption
-            }
-        }
-        return .system(スタイル, design: セリフ体 ? .serif : .default)
     }
 }
 

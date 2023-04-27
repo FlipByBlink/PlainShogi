@@ -7,6 +7,7 @@ struct 履歴リンク: View {
         } label: {
             Label("履歴", systemImage: "clock")
         }
+        .disabled(局面モデル.履歴.isEmpty)
     }
 }
 

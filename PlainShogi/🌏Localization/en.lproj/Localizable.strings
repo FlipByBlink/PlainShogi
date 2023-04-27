@@ -31,7 +31,7 @@
 "上下反転" = "Reverse vertically";
 "上下反転させる" = "Reverse vertically";
 "上下反転を元に戻す" = "Restore reverse";
-"操作した直後の駒を強調表示する機能を無効にする" = "Disable shift sign";
+"操作した直後の駒を強調表示する機能を常に無効にする" = "Always disable shift sign";
 "English表記" = "English term";
 "細かな使い方" = "More how to";
 "メニューボタンを長押しすると「初期化ボタン」や「編集ボタン」を呼び出せます。" = "Launch \"Initialize Button\" / \"Edit Button\" by long press Menu button.";

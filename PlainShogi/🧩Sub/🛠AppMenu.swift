@@ -128,26 +128,19 @@ private struct メニューシートコンテンツ: View {
     private func ⓒontent() -> some View {
         List {
             Self.SharePlay誘導セクション()
-            self.あそび方セクション()
-            Section { 履歴リンク() }
             Section {
                 盤面初期化ボタン()
-                編集モード開始ボタン()
                 一手戻すボタン()
-                強調表示クリアボタン()
+                編集モード開始ボタン()
+            } header: {
+                Text("編集")
             }
+            Section { 履歴リンク() }
             Section {
                 Toggle(isOn: $📱.🚩上下反転) {
                     Label("上下反転", systemImage: "arrow.up.arrow.down")
                 }
-                Toggle(isOn: $📱.🚩English表記) {
-                    Label("English表記", systemImage: "p.circle")
-                }
-                Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
-                    Label("操作した直後の駒を強調表示する機能を無効にする",
-                          systemImage: "square.slash")
-                }
-                セリフ体オプション()
+                見た目カスタマイズメニューリンク()
             } header: {
                 if self.ⓖroupStateObserver.isEligibleForGroupSession {
                     Text("オプション(共有相手との同期なし)")
@@ -165,16 +158,6 @@ private struct メニューシートコンテンツ: View {
         }
         .navigationTitle("メニュー")
         .toolbar { self.閉じるボタン() }
-    }
-    private func あそび方セクション() -> some View {
-        Section {
-            Label("長押しして駒を持ち上げ、そのままスライドして移動させる",
-                  systemImage: "hand.draw")
-                .padding(.vertical, 8)
-        } header: {
-            Text("あそび方")
-        }
-        .foregroundStyle(.primary)
     }
     private func 閉じるボタン() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
@@ -253,27 +236,16 @@ private struct 編集モード開始ボタン: View {
 private struct 一手戻すボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
-        if 📱.局面.一手前の局面 != nil {
-            Button {
-                📱.一手戻す()
-            } label: {
-                Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
-            }
+        Button {
+            📱.一手戻す()
+        } label: {
+            Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
         }
+        .disabled(📱.局面.一手前の局面 == nil)
     }
 }
 
-private struct セリフ体オプション: View {
-    @AppStorage("セリフ体") private var 値: Bool = false
-    var body: some View {
-        Toggle(isOn: self.$値) {
-            Label("セリフ体", systemImage: "paintbrush.pointed")
-                .font(.system(.body, design: .serif))
-        }
-    }
-}
-
-private struct 見た目カスタマイズメニューリンク: View { // for Mac(Catalyst), Apple TV
+private struct 見た目カスタマイズメニューリンク: View {
     var body: some View {
         NavigationLink {
             Self.コンテンツ()
@@ -282,21 +254,40 @@ private struct 見た目カスタマイズメニューリンク: View { // for M
         }
     }
     private struct コンテンツ: View {
+        @EnvironmentObject private var 📱: 📱アプリモデル
+        @AppStorage("セリフ体") private var セリフ体: Bool = false
         @AppStorage("太字") private var 太字: Bool = false
+        @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
         var body: some View {
             List {
                 Section {
-                    Picker(selection: .constant(1)) {
-                        Text("標準").tag(1)
-                        Text("大").tag(2)
-                        Text("特大").tag(3)
-                    } label: {
-                        Text("サイズ")
+                    Toggle(isOn: self.$セリフ体) {
+                        Label("セリフ体", systemImage: "paintbrush.pointed")
+                            .font(.system(.body, design: .serif))
                     }
-                    Toggle(isOn: self.$太字) { Label("太字", systemImage: "bold") }
-                    セリフ体オプション()
+                    Toggle(isOn: self.$太字) {
+                        Label("太字", systemImage: "bold")
+                            .font(.body.bold())
+                    }
+                    Picker(selection: self.$サイズ) {
+                        ForEach(フォント.サイズ.allCases) { Text($0.rawValue) }
+                    } label: {
+                        Label("サイズ", systemImage: "magnifyingglass")
+                    }
+                    Toggle(isOn: $📱.🚩English表記) {
+                        Label("English表記", systemImage: "p.circle")
+                    }
                 } header: {
                     Text("オプション")
+                }
+                Section {
+                    強調表示クリアボタン()
+                    Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
+                        Label("操作した直後の駒を強調表示する機能を常に無効にする",
+                              systemImage: "square.slash")
+                    }
+                } header: {
+                    Text("強調表示")
                 }
             }
             .navigationTitle("見た目をカスタマイズ")
@@ -308,6 +299,9 @@ private struct 細かな使い方リンク: View {
     var body: some View {
         NavigationLink {
             List {
+                Label("長押しして駒を持ち上げ、そのままスライドして移動させる",
+                      systemImage: "hand.draw")
+                .padding(.vertical, 8)
                 Label("ダブルタップで盤上の駒を裏返す", systemImage: "rotate.right")
                     .padding(8)
                 self.メニューショートカットセクション()
