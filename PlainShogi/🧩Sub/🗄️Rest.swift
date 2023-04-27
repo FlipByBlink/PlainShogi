@@ -1,7 +1,5 @@
 import SwiftUI
 
-typealias 🛒Storeモデル = 🛒StoreModel
-
 struct 🗄️太字システムオプション用の強調表示: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.legibilityWeight) private var legibilityWeight
@@ -42,7 +40,16 @@ enum 🗄️固定値 {
         switch UIDevice.current.userInterfaceIdiom {
             case .phone: return 1.0
             case .pad: return 1.33
+            case .tv: return 2
             default: return 1.0
+        }
+    }
+    static var 全体パディング: CGFloat {
+        switch UIDevice.current.userInterfaceIdiom {
+            case .phone: return 16
+            case .pad: return 24
+            case .tv: return 36
+            default: return 16
         }
     }
 }

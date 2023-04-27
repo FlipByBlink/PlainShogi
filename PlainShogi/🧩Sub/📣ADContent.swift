@@ -1,5 +1,7 @@
 import SwiftUI
 
+typealias 🛒Storeモデル = 🛒StoreModel
+
 struct 📣広告コンテンツ: ViewModifier {
     @EnvironmentObject private var 🛒: 🛒StoreModel
     @State private var ⓐpp: 📣MyApp = .pickUpAppWithout(.PlainShogiBoard)

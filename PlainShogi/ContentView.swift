@@ -3,11 +3,11 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
-            将棋全体View()
+            将棋View()
             🛠SharePlayインジケーターやメニューボタン()
         }
-        .padding()
-        .overlay(alignment: .bottomTrailing) { 🛠非SharePlay時のメニューボタン() }
+        .padding(🗄️固定値.全体パディング)
+        .modifier(🛠非SharePlay時のメニューボタン())
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .modifier(🛠メニューシート())
         .modifier(🗄️初回起動時に駒の動かし方の説明バナー())

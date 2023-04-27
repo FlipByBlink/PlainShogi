@@ -1,7 +1,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct 将棋全体View: View {
+struct 将棋View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         盤と手駒を配置 {
@@ -44,6 +44,9 @@ private enum レイアウト {
                     .environment(\.縦並び, self.縦並び)
             }
         }
+        //private func とても縦長(_ ジオメトリ: GeometryProxy) -> Bool {
+        //    ジオメトリ.size.height > ジオメトリ.size.width * 2
+        //}
     }
     private static func マスの大きさを算出(_ ジオメトリ: GeometryProxy, _ 縦並び: Bool) -> CGFloat {
         let 横換算 = 一辺を基準にした際の計算式(全体の長さ: ジオメトリ.size.width,

@@ -12,14 +12,22 @@ struct 🛠メニューシート: ViewModifier {
     }
 }
 
-struct 🛠非SharePlay時のメニューボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+struct 🛠非SharePlay時のメニューボタン: ViewModifier {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
+    private var 縦並び: Bool {
+        self.verticalSizeClass == .regular
+        && self.horizontalSizeClass == .compact
+    }
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-    var body: some View {
-        if !self.ⓖroupStateObserver.isEligibleForGroupSession {
-            メニューボタン()
-                .padding()
-        }
+    func body(content: Content) -> some View {
+        content
+            .overlay(alignment: self.縦並び ? .bottomTrailing : .topTrailing) {
+                if !self.ⓖroupStateObserver.isEligibleForGroupSession {
+                    メニューボタン()
+                        .padding()
+                }
+            }
     }
 }
 
@@ -39,6 +47,7 @@ struct 🛠SharePlayインジケーターやメニューボタン: View {
 
 private struct メニューボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    @AppStorage("セリフ体") private var セリフ体: Bool = false
     var body: some View {
         if 📱.🚩駒を整理中 {
             整理完了ボタン()
@@ -51,8 +60,8 @@ private struct メニューボタン: View {
                 self.上下反転ボタン()
                 self.履歴ボタン()
             } label: {
-                Image(systemName: "gearshape")
-                    .dynamicTypeSize(...DynamicTypeSize.accessibility2)
+                Image(systemName: self.セリフ体 ? "gear" : "gearshape")
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                     .padding(2)
                     .background {
                         Circle()
