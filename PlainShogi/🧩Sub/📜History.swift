@@ -82,7 +82,7 @@ struct ブックマークボタン: View { //TODO: Work in progress
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
-            📱.現在の局面をブックマークする()
+            withAnimation { 📱.局面.現在の局面をブックマークする() }
         } label: {
             Label("現在の局面をブックマーク", systemImage: "bookmark")
         }
@@ -99,30 +99,37 @@ private struct ブックマークメニューリンク: View { //TODO: Work in p
     }
     private struct コンテンツ: View {
         @EnvironmentObject private var 📱: 📱アプリモデル
-        private var 局面: 局面モデル?
+        @AppStorage("ブックマーク") var ブックマークデータ: Data?
+        private var 局面: 局面モデル? { 局面モデル.デコード(self.ブックマークデータ) }
         private var 更新日時: Date? { self.局面?.更新日時 }
         var body: some View {
             List {
-                Section {
-                    if let 局面, let 更新日時 {
-                        Section {
+                if let 局面, let 更新日時 {
+                    Section {
+                        HStack {
                             局面プレビュー(局面)
+                            Spacer()
                             Button {
                                 📱.履歴を復元する(局面)
                             } label: {
                                 Label("復元", systemImage: "square.and.arrow.down")
-                                    .font(.body.bold())
+                                    .font(.body.weight(.medium))
                             }
-                        } header: {
-                            Text(更新日時.formatted(.dateTime.day().month()))
-                        } footer: {
-                            Text(更新日時.formatted(.dateTime.hour().minute().second()))
+                            .buttonStyle(.bordered)
                         }
-                    } else {
-                        Label("ブックマークはありません", systemImage: "bookmark.slash")
-                            .foregroundStyle(.secondary)
+                        .padding(.vertical)
+                    } footer: {
+                        Text(更新日時.formatted(.dateTime.day().month()) + " ")
+                        +
+                        Text(更新日時.formatted(.dateTime.hour().minute().second()))
+                    }
+                    Section {
                         ブックマークボタン()
                     }
+                } else {
+                    Label("ブックマークはありません", systemImage: "bookmark.slash")
+                        .foregroundStyle(.secondary)
+                    ブックマークボタン()
                 }
                 Label("ブックマークに保存できる局面は1つだけです", systemImage: "1.circle")
             }

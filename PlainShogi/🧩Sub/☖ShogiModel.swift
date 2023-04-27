@@ -247,6 +247,33 @@ extension 局面モデル {
     static func 履歴を全て削除する() {
         UserDefaults.standard.removeObject(forKey: "履歴")
     }
+    func 現在の局面をブックマークする() {
+        do {
+            let ⓓata = try JSONEncoder().encode([self])
+            UserDefaults.standard.set(ⓓata, forKey: "ブックマーク")
+        } catch {
+            assertionFailure()
+        }
+        //将来的に複数個のブックマークに対応するかもしれないので配列扱いにする
+    }
+    static func デコード(_ データ: Data?) -> Self? {
+        guard let データ else { return nil }
+        do {
+            return try JSONDecoder().decode([Self].self, from: データ).first
+        } catch {
+            assertionFailure(); return nil
+        }
+    }
+    static var ブックマーク: [Self] {
+        guard let ⓓata = UserDefaults.standard.data(forKey: "ブックマーク") else {
+            return []
+        }
+        do {
+            return try JSONDecoder().decode([Self].self, from: ⓓata)
+        } catch {
+            assertionFailure(); return []
+        }
+    }
     static var 初期セット: Self {
         Self(盤駒: 初期配置, 手駒: 空の手駒)
     }

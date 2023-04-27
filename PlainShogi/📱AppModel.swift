@@ -301,9 +301,6 @@ extension 📱アプリモデル {
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.成功()
     }
-    func 現在の局面をブックマークする() {
-        //TODO: Work in progress
-    }
 }
 
 //MARK: - ==== SharePlay ====
