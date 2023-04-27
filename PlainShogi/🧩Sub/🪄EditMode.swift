@@ -9,6 +9,7 @@ struct 🪄手駒編集ボタン: View {
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 陣営: 王側か玉側か
     @State private var 手駒シートを表示: Bool = false
+    @AppStorage("太字") private var 太字: Bool = false
     var body: some View {
         if 📱.編集状態 != nil {
             Button {
@@ -16,8 +17,9 @@ struct 🪄手駒編集ボタン: View {
                 💥フィードバック.軽め()
             } label: {
                 Image(systemName: "plusminus")
-                    .font(.system(size: self.マスの大きさ * 0.4))
-                    .padding(8)
+                    .font(.system(size: self.マスの大きさ * 0.45,
+                                  weight: self.太字 ? .semibold : .light))
+                    .padding(.horizontal, 12)
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
@@ -43,6 +45,7 @@ struct 🪄編集モード用ⓧマーク: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
     private var 場所: 駒の場所
+    @AppStorage("太字") private var 太字: Bool = false
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .topLeading) {
@@ -51,7 +54,7 @@ struct 🪄編集モード用ⓧマーク: ViewModifier {
                         .resizable()
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(.primary, .background)
-                        .font(.body.weight(.light))
+                        .font(.body.weight(self.太字 ? .medium : .light))
                         .minimumScaleFactor(0.1)
                         .padding(2)
                         .frame(width: self.マスの大きさ / 2,

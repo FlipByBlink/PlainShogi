@@ -59,6 +59,7 @@ private struct メニューボタン: View {
                 一手戻すボタン()
                 self.上下反転ボタン()
                 self.履歴ボタン()
+                ブックマークボタン()
             } label: {
                 Image(systemName: self.セリフ体 ? "gear" : "gearshape")
                     .dynamicTypeSize(...DynamicTypeSize.accessibility1)
@@ -135,7 +136,7 @@ private struct メニューシートコンテンツ: View {
             } header: {
                 Text("編集")
             }
-            Section { 履歴リンク() }
+            履歴類セクション()
             Section {
                 Toggle(isOn: $📱.🚩上下反転) {
                     Label("上下反転", systemImage: "arrow.up.arrow.down")

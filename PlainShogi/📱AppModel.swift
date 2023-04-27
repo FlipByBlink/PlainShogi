@@ -295,9 +295,14 @@ extension 📱アプリモデル {
     func 履歴を復元する(_ 過去の局面: 局面モデル) {
         self.🚩メニューを表示 = false
         self.🚩履歴を表示 = false
-        self.局面.現在の局面として適用する(過去の局面)
+        withAnimation {
+            self.局面.現在の局面として適用する(過去の局面)
+        }
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.成功()
+    }
+    func 現在の局面をブックマークする() {
+        //TODO: Work in progress
     }
 }
 
