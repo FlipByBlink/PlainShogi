@@ -30,12 +30,10 @@ struct 履歴メニュー: View {
                     局面プレビュー(局面)
                     Spacer()
                     VStack(alignment: .trailing, spacing: 4) {
-                        if let 更新日時 = 局面.更新日時 {
-                            Text(更新日時.formatted(.dateTime.day().month()))
-                                .font(.title3)
-                            Text(更新日時.formatted(.dateTime.hour().minute().second()))
-                                .font(.subheadline)
-                        }
+                        Text(局面.更新日付表記)
+                            .font(.title3)
+                        Text(局面.更新時刻表記)
+                            .font(.subheadline)
                         Spacer()
                         Button {
                             📱.履歴を復元する(局面)
@@ -78,13 +76,29 @@ struct 履歴メニュー: View {
     }
 }
 
-struct ブックマークボタン: View { //TODO: Work in progress
+struct ブックマーク保存ボタン: View { //TODO: Work in progress
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
             withAnimation { 📱.局面.現在の局面をブックマークする() }
         } label: {
             Label("現在の局面をブックマーク", systemImage: "bookmark")
+        }
+    }
+}
+
+struct ブックマーク復元ボタン: View { //TODO: Work in progress
+    var タイトル: LocalizedStringKey
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @AppStorage("ブックマーク") private var ブックマークデータ: Data?
+    private var 局面: 局面モデル? { 局面モデル.デコード(self.ブックマークデータ) }
+    var body: some View {
+        if let 局面 {
+            Button {
+                📱.履歴を復元する(局面)
+            } label: {
+                Label(self.タイトル, systemImage: "square.and.arrow.down")
+            }
         }
     }
 }
@@ -99,37 +113,28 @@ private struct ブックマークメニューリンク: View { //TODO: Work in p
     }
     private struct コンテンツ: View {
         @EnvironmentObject private var 📱: 📱アプリモデル
-        @AppStorage("ブックマーク") var ブックマークデータ: Data?
+        @AppStorage("ブックマーク") private var ブックマークデータ: Data?
         private var 局面: 局面モデル? { 局面モデル.デコード(self.ブックマークデータ) }
-        private var 更新日時: Date? { self.局面?.更新日時 }
         var body: some View {
             List {
-                if let 局面, let 更新日時 {
+                if let 局面 {
                     Section {
                         HStack {
                             局面プレビュー(局面)
                             Spacer()
-                            Button {
-                                📱.履歴を復元する(局面)
-                            } label: {
-                                Label("復元", systemImage: "square.and.arrow.down")
-                                    .font(.body.weight(.medium))
-                            }
+                            ブックマーク復元ボタン(タイトル: "復元")
+                                .font(.body.weight(.medium))
                             .buttonStyle(.bordered)
                         }
-                        .padding(.vertical)
-                    } footer: {
-                        Text(更新日時.formatted(.dateTime.day().month()) + " ")
-                        +
-                        Text(更新日時.formatted(.dateTime.hour().minute().second()))
+                        .padding(.vertical, 32)
+                    } header: {
+                        Text(局面.更新日付表記 + " " + 局面.更新時刻表記)
                     }
-                    Section {
-                        ブックマークボタン()
-                    }
+                    Section { ブックマーク保存ボタン() }
                 } else {
                     Label("ブックマークはありません", systemImage: "bookmark.slash")
                         .foregroundStyle(.secondary)
-                    ブックマークボタン()
+                    Section { ブックマーク保存ボタン() }
                 }
                 Label("ブックマークに保存できる局面は1つだけです", systemImage: "1.circle")
             }
@@ -141,7 +146,7 @@ private struct ブックマークメニューリンク: View { //TODO: Work in p
 private struct 局面プレビュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 局面: 局面モデル
-    private let コマのサイズ: CGFloat = 20
+    private static let コマのサイズ: CGFloat = 20
     var body: some View {
         VStack {
             self.手駒プレビュー(局面, .玉側)
@@ -161,16 +166,16 @@ private struct 局面プレビュー: View {
                                 .fontWeight(局面.直近の操作 == .盤駒(位置) ? .bold : .light)
                                 .rotationEffect(駒.陣営 == .玉側 ? .degrees(180) : .zero)
                                 .minimumScaleFactor(0.1)
-                                .frame(width: self.コマのサイズ, height: self.コマのサイズ)
+                                .frame(width: Self.コマのサイズ, height: Self.コマのサイズ)
                         } else {
                             Color.clear
-                                .frame(width: self.コマのサイズ, height: self.コマのサイズ)
+                                .frame(width: Self.コマのサイズ, height: Self.コマのサイズ)
                         }
                     }
                 }
             }
         }
-        .frame(width: self.コマのサイズ * 9, height: self.コマのサイズ * 9)
+        .frame(width: Self.コマのサイズ * 9, height: Self.コマのサイズ * 9)
         .padding(2)
         .border(.primary, width: 0.66)
     }
@@ -185,7 +190,7 @@ private struct 局面プレビュー: View {
             }
         }
         .rotationEffect(陣営 == .玉側 ? .degrees(180) : .zero)
-        .frame(width: self.コマのサイズ * 9, height: self.コマのサイズ)
+        .frame(width: Self.コマのサイズ * 9, height: Self.コマのサイズ)
     }
     init(_ ｷｮｸﾒﾝ: 局面モデル) { self.局面 = ｷｮｸﾒﾝ }
 }

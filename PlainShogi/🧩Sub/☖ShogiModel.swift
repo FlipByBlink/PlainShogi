@@ -241,8 +241,7 @@ extension 局面モデル {
         }
     }
     var 一手前の局面: Self? {
-        Self.履歴.last { $0.更新日時 != self.更新日時 }
-        
+        Self.履歴.last { $0.更新日時 != self.更新日時 }   
     }
     static func 履歴を全て削除する() {
         UserDefaults.standard.removeObject(forKey: "履歴")
@@ -250,11 +249,11 @@ extension 局面モデル {
     func 現在の局面をブックマークする() {
         do {
             let ⓓata = try JSONEncoder().encode([self])
+            //将来的に複数個のブックマークに対応するかもしれないので配列扱い
             UserDefaults.standard.set(ⓓata, forKey: "ブックマーク")
         } catch {
             assertionFailure()
         }
-        //将来的に複数個のブックマークに対応するかもしれないので配列扱いにする
     }
     static func デコード(_ データ: Data?) -> Self? {
         guard let データ else { return nil }
@@ -274,6 +273,8 @@ extension 局面モデル {
             assertionFailure(); return []
         }
     }
+    var 更新日付表記: String { self.更新日時?.formatted(.dateTime.day().month()) ?? "🐛" }
+    var 更新時刻表記: String { self.更新日時?.formatted(.dateTime.hour().minute().second()) ?? "🐛" }
     static var 初期セット: Self {
         Self(盤駒: 初期配置, 手駒: 空の手駒)
     }

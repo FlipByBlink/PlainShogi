@@ -43,7 +43,7 @@ struct 🪄手駒編集ボタン: View {
 
 struct 🪄編集モード用ⓧマーク: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.マスの大きさ) var マスの大きさ
+    @Environment(\.マスの大きさ) private var マスの大きさ
     private var 場所: 駒の場所
     @AppStorage("太字") private var 太字: Bool = false
     func body(content: Content) -> some View {
