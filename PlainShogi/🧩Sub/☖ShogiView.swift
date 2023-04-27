@@ -3,30 +3,32 @@ import UniformTypeIdentifiers
 
 struct 将棋全体View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.縦並び) var 縦並び
     var body: some View {
-        Group {
-            if self.縦並び {
-                VStack(spacing: 将棋レイアウト.盤と手駒の隙間) {
-                    盤外(.対面)
-                    盤面と段と筋()
-                    盤外(.手前)
-                }
-            } else {
-                HStack(spacing: 将棋レイアウト.盤と手駒の隙間) {
-                    盤外(.対面)
-                    盤面と段と筋()
-                    盤外(.手前)
-                }
-            }
+        盤と手駒を配置 {
+            盤外(.対面)
+            盤面と段と筋()
+            盤外(.手前)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .modifier(操作エリア外で駒選択を解除())
         .modifier(成駒確認アラート())
+        .modifier(レイアウト.推定())
     }
 }
 
-enum 将棋レイアウト {
+private struct 盤と手駒を配置<Content: View>: View {
+    @Environment(\.縦並び) private var 縦並び
+    @ViewBuilder var content: () -> Content
+    var body: some View {
+        if self.縦並び {
+            VStack(spacing: レイアウト.盤と手駒の隙間) { self.content() }
+        } else {
+            HStack(spacing: レイアウト.盤と手駒の隙間) { self.content() }
+        }
+    }
+}
+
+private enum レイアウト {
     struct 推定: ViewModifier {
         @Environment(\.horizontalSizeClass) private var horizontalSizeClass
         @Environment(\.verticalSizeClass) private var verticalSizeClass
@@ -36,14 +38,14 @@ enum 将棋レイアウト {
             self.horizontalSizeClass == .compact
         }
         func body(content: Content) -> some View {
-            GeometryReader { 対象範囲 in
+            GeometryReader { 対象領域 in
                 content
-                    .environment(\.マスの大きさ, 将棋レイアウト.マスの大きさを算出(対象範囲, self.縦並び))
+                    .environment(\.マスの大きさ, レイアウト.マスの大きさを算出(対象領域, self.縦並び))
                     .environment(\.縦並び, self.縦並び)
             }
         }
     }
-    static func マスの大きさを算出(_ ジオメトリ: GeometryProxy, _ 縦並び: Bool) -> CGFloat {
+    private static func マスの大きさを算出(_ ジオメトリ: GeometryProxy, _ 縦並び: Bool) -> CGFloat {
         let 横換算 = 一辺を基準にした際の計算式(全体の長さ: ジオメトリ.size.width,
                                 盤外コマの比率: 縦並び ? 0 : Self.複数個の盤外コマの幅比率 * 2)
         let 縦換算 = 一辺を基準にした際の計算式(全体の長さ: ジオメトリ.size.height,
@@ -63,12 +65,12 @@ enum 将棋レイアウト {
 
 extension EnvironmentValues {
     var 縦並び: Bool {
-        get { self[将棋レイアウト.縦並びKey.self] }
-        set { self[将棋レイアウト.縦並びKey.self] = newValue }
+        get { self[レイアウト.縦並びKey.self] }
+        set { self[レイアウト.縦並びKey.self] = newValue }
     }
     var マスの大きさ: CGFloat {
-        get { self[将棋レイアウト.マスの大きさKey.self] }
-        set { self[将棋レイアウト.マスの大きさKey.self] = newValue }
+        get { self[レイアウト.マスの大きさKey.self] }
+        set { self[レイアウト.マスの大きさKey.self] = newValue }
     }
 }
 
@@ -98,7 +100,7 @@ private struct 盤面と段と筋: View {
 
 private struct 盤面のみ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.マスの大きさ) var マスの大きさ
+    @Environment(\.マスの大きさ) private var マスの大きさ
     var body: some View {
         VStack(spacing: 0) {
             ForEach(0 ..< 9) { 行 in
@@ -144,8 +146,8 @@ private struct 盤上のコマもしくはマス: View {
 
 private struct 盤外: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.マスの大きさ) var マスの大きさ
-    @Environment(\.縦並び) var 縦並び
+    @Environment(\.マスの大きさ) private var マスの大きさ
+    @Environment(\.縦並び) private var 縦並び
     private var 立場: 手前か対面か
     private var 陣営: 王側か玉側か { 📱.こちら側の陣営(self.立場) }
     private var 各駒: [駒の種類] {
@@ -193,11 +195,11 @@ enum 手前か対面か {
 
 private struct 盤外のコマ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.マスの大きさ) var マスの大きさ
+    @Environment(\.マスの大きさ) private var マスの大きさ
     private var 場所: 駒の場所
     private var 数: Int { 📱.局面.この手駒の数(self.場所) }
     private var 幅比率: Double {
-        self.数 >= 2 ? 将棋レイアウト.複数個の盤外コマの幅比率 : 1
+        self.数 >= 2 ? レイアウト.複数個の盤外コマの幅比率 : 1
     }
     var body: some View {
         if self.数 > 0 {
@@ -283,9 +285,9 @@ private struct ドラッグプレビュー用コマ: View {
 
 private struct 筋: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.マスの大きさ) var マスの大きさ
+    @Environment(\.マスの大きさ) private var マスの大きさ
     @AppStorage("セリフ体") private var セリフ体: Bool = false
-    private var 幅: CGFloat { self.マスの大きさ * 将棋レイアウト.マスに対する段筋の大きさの比率 }
+    private var 幅: CGFloat { self.マスの大きさ * レイアウト.マスに対する段筋の大きさの比率 }
     private var 上下反転: Bool { 📱.🚩上下反転 }
     private static let 字 = ["９","８","７","６","５","４","３","２","１"]
     var body: some View {
@@ -305,9 +307,9 @@ private struct 筋: View {
 
 private struct 段: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.マスの大きさ) var マスの大きさ
+    @Environment(\.マスの大きさ) private var マスの大きさ
     @AppStorage("セリフ体") private var セリフ体: Bool = false
-    private var 高さ: CGFloat { self.マスの大きさ * 将棋レイアウト.マスに対する段筋の大きさの比率 }
+    private var 高さ: CGFloat { self.マスの大きさ * レイアウト.マスに対する段筋の大きさの比率 }
     private var 上下反転: Bool { 📱.🚩上下反転 }
     private var 字: [String] {
         📱.🚩English表記 ? ["１","２","３","４","５","６","７","８","９"] : ["一","二","三","四","五","六","七","八","九"]
