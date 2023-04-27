@@ -4,7 +4,12 @@ enum 🗄️固定値 {
     static var 枠線の太さ: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
             case .phone: return 1.0
-            case .pad: return 1.33
+            case .pad:
+#if targetEnvironment(macCatalyst)
+                return 2
+#else
+                return 1.33
+#endif
             case .tv: return 2
             default: return 1.0
         }
@@ -12,7 +17,12 @@ enum 🗄️固定値 {
     static var 全体パディング: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
             case .phone: return 16
-            case .pad: return 24
+            case .pad:
+#if targetEnvironment(macCatalyst)
+                return 32
+#else
+                return 24
+#endif
             case .tv: return 36
             default: return 16
         }

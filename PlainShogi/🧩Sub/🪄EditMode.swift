@@ -1,26 +1,38 @@
 import SwiftUI
 
+enum 編集モード: Equatable {
+    case 盤面を編集中, 手駒を編集中(王側か玉側か)
+}
+
 struct 🪄手駒編集ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    @Environment(\.マスの大きさ) private var マスの大きさ
     private var 陣営: 王側か玉側か
-    @State private var 手駒の数を編集中: Bool = false
+    @State private var 手駒シートを表示: Bool = false
     var body: some View {
-        if 📱.🚩駒を編集中 {
+        if 📱.編集状態 != nil {
             Button {
-                self.手駒の数を編集中 = true
+                self.手駒シートを表示 = true
                 💥フィードバック.軽め()
             } label: {
                 Image(systemName: "plusminus")
+                    .font(.system(size: self.マスの大きさ * 0.4))
                     .padding(8)
-                    .dynamicTypeSize(...DynamicTypeSize.accessibility2)
-                    .font(.body.weight(.medium))
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
             .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
-            .sheet(isPresented: self.$手駒の数を編集中) {
+            .onChange(of: 📱.編集状態) {
+                guard case .手駒を編集中(let 選択された陣営) = $0,
+                      選択された陣営 == self.陣営 else { return }
+                self.手駒シートを表示 = true
+            }
+            .sheet(isPresented: self.$手駒シートを表示) {
                 手駒編集シート(self.陣営)
-                    .onDisappear { self.手駒の数を編集中 = false }
+                    .onDisappear {
+                        self.手駒シートを表示 = false
+                        📱.編集状態 = .盤面を編集中
+                    }
             }
         }
     }
@@ -34,7 +46,7 @@ struct 🪄編集モード用ⓧマーク: ViewModifier {
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .topLeading) {
-                if 📱.🚩駒を編集中, case .盤駒(_) = 場所 {
+                if 📱.編集状態 != nil , case .盤駒(_) = 場所 {
                     Image(systemName: "xmark.circle.fill")
                         .resizable()
                         .symbolRenderingMode(.palette)
@@ -55,12 +67,12 @@ struct 🪄編集完了ボタン: View {
     var body: some View {
         Button {
             withAnimation {
-                📱.🚩駒を編集中 = false
+                📱.編集状態 = nil
                 💥フィードバック.成功()
             }
         } label: {
             Image(systemName: "checkmark.circle.fill")
-                .font(.title3)
+                .font(.title)
                 .dynamicTypeSize(...DynamicTypeSize.accessibility3)
                 .padding(10)
         }

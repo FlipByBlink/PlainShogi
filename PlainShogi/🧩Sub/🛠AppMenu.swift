@@ -49,7 +49,7 @@ private struct メニューボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     var body: some View {
-        if 📱.🚩駒を編集中 {
+        if 📱.編集状態 != nil {
             🪄編集完了ボタン()
         } else {
             Menu {
@@ -224,7 +224,7 @@ private struct 編集モード開始ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
-            withAnimation { 📱.🚩駒を編集中 = true }
+            withAnimation { 📱.編集状態 = .盤面を編集中 }
             📱.🚩メニューを表示 = false
             💥フィードバック.軽め()
         } label: {

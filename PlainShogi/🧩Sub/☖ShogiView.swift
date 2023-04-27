@@ -164,9 +164,9 @@ private struct 盤外: View {
         ZStack(alignment: self.揃え方) {
             Color(.systemBackground)
             Self.各種コマと編集ボタンの配置 {
-                if self.立場 == .手前 { 🪄手駒編集ボタン(self.陣営) }
-                ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
                 if self.立場 == .対面 { 🪄手駒編集ボタン(self.陣営) }
+                ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
+                if self.立場 == .手前 { 🪄手駒編集ボタン(self.陣営) }
             }
         }
         .frame(maxWidth: self.最大の長さ, maxHeight: self.最大の長さ)
@@ -239,8 +239,8 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
                     .modifier(フォント(カテゴリ: .コマ,
                                    強調表示: self.この駒は操作直後))
                     .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
-                    .rotationEffect(.degrees(📱.🚩駒を編集中 ? 15 : 0))
-                    .onChange(of: 📱.🚩駒を編集中) { _ in 📱.選択中の駒 = .なし }
+                    .rotationEffect(.degrees(📱.編集状態 != nil ? 15 : 0))
+                    .onChange(of: 📱.編集状態) { _ in 📱.選択中の駒 = .なし }
             }
             .border(.tint, width: self.この駒を選択中 ? 2 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
