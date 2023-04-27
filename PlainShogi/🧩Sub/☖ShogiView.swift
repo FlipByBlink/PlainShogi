@@ -10,7 +10,6 @@ struct 将棋View: View {
             盤外(.手前)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .overlay(alignment: .top) { 🚧フォントデバッグメニュー() }
         .modifier(操作エリア外で駒選択を解除())
         .modifier(成駒確認アラート())
         .modifier(レイアウト.推定())
@@ -396,30 +395,5 @@ struct フォント: ViewModifier {
     }
     enum 対象カテゴリ {
         case コマ, 段筋
-    }
-}
-
-struct 🚧フォントデバッグメニュー: View {
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
-    @AppStorage("太字") private var 太字: Bool = false
-    @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
-    var body: some View {
-        HStack {
-            Toggle(isOn: self.$セリフ体) {
-                Label("セリフ体", systemImage: "paintbrush.pointed")
-            }
-            .toggleStyle(.button)
-            Toggle(isOn: self.$太字) {
-                Label("太字", systemImage: "bold")
-            }
-            .toggleStyle(.button)
-            Picker(selection: self.$サイズ) {
-                ForEach(フォント.サイズ.allCases) { Text($0.rawValue) }
-            } label: {
-                Label("サイズ", systemImage: "magnifyingglass")
-            }
-            .pickerStyle(.segmented)
-        }
-        .font(.system(size: 10))
     }
 }

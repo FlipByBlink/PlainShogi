@@ -11,8 +11,10 @@ struct ContentView: View {
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .modifier(🛠メニューシート())
         .modifier(🗄️初回起動時に駒の動かし方の説明バナー())
+        .modifier(🗄️MacCatalystでタイトルバー非表示())
         .modifier(🗄️自動スリープ無効化())
         .modifier(📣広告コンテンツ())
         .modifier(👥SharePlay環境構築())
+        .overlay(alignment: .top) { 🚧フォントデバッグメニュー() }
     }
 }

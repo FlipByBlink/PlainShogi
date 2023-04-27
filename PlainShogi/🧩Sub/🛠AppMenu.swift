@@ -272,7 +272,7 @@ private struct 見た目カスタマイズメニューリンク: View {
                     Picker(selection: self.$サイズ) {
                         ForEach(フォント.サイズ.allCases) { Text($0.rawValue) }
                     } label: {
-                        Label("サイズ", systemImage: "magnifyingglass")
+                        Label("駒のサイズ", systemImage: "magnifyingglass")
                     }
                     Toggle(isOn: $📱.🚩English表記) {
                         Label("English表記", systemImage: "p.circle")
@@ -302,10 +302,10 @@ private struct 細かな使い方リンク: View {
                 Label("長押しして駒を持ち上げ、そのままスライドして移動させる",
                       systemImage: "hand.draw")
                 .padding(.vertical, 8)
-                Label("ダブルタップで盤上の駒を裏返す", systemImage: "rotate.right")
-                    .padding(8)
+                //Label("ダブルタップで盤上の駒を裏返す", systemImage: "rotate.right")
+                //    .padding(8)
                 self.メニューショートカットセクション()
-                self.DynamicTypeセクション()
+                //self.DynamicTypeセクション()
             }
             .navigationTitle("細かな使い方")
         } label: {
@@ -327,30 +327,30 @@ private struct 細かな使い方リンク: View {
             .padding()
         }
     }
-    private func DynamicTypeセクション() -> some View {
-        Section {
-            VStack {
-                Text("Dynamic Type に対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
-                Image("DynamicType")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 120)
-                    .border(.black)
-                    .padding(8)
-            }
-            .padding()
-            VStack {
-                Text("「アクセシビリティ/Appごとの設定」にて本アプリのみを対象に設定を変更することもできます。")
-                Image(systemName: "photo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 120)
-                    .border(.black)
-                    .padding(8)
-            }
-            .padding()
-        }
-    }
+    //private func DynamicTypeセクション() -> some View {
+    //    Section {
+    //        VStack {
+    //            Text("Dynamic Type に対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。")
+    //            Image("DynamicType")
+    //                .resizable()
+    //                .scaledToFit()
+    //                .frame(maxHeight: 120)
+    //                .border(.black)
+    //                .padding(8)
+    //        }
+    //        .padding()
+    //        VStack {
+    //            Text("「アクセシビリティ/Appごとの設定」にて本アプリのみを対象に設定を変更することもできます。")
+    //            Image(systemName: "photo")
+    //                .resizable()
+    //                .scaledToFit()
+    //                .frame(maxHeight: 120)
+    //                .border(.black)
+    //                .padding(8)
+    //        }
+    //        .padding()
+    //    }
+    //}
 }
 
 private struct テキスト書き出し読み込み紹介リンク: View {

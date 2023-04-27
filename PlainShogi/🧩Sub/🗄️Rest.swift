@@ -1,5 +1,30 @@
 import SwiftUI
 
+struct 🚧フォントデバッグメニュー: View {
+    @AppStorage("セリフ体") private var セリフ体: Bool = false
+    @AppStorage("太字") private var 太字: Bool = false
+    @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
+    var body: some View {
+        HStack {
+            Toggle(isOn: self.$セリフ体) {
+                Label("セリフ体", systemImage: "paintbrush.pointed")
+            }
+            .toggleStyle(.button)
+            Toggle(isOn: self.$太字) {
+                Label("太字", systemImage: "bold")
+            }
+            .toggleStyle(.button)
+            Picker(selection: self.$サイズ) {
+                ForEach(フォント.サイズ.allCases) { Text($0.rawValue) }
+            } label: {
+                Label("サイズ", systemImage: "magnifyingglass")
+            }
+            .pickerStyle(.segmented)
+        }
+        .font(.system(size: 10))
+    }
+}
+
 enum 🗄️固定値 {
     static var 枠線の太さ: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
@@ -61,5 +86,30 @@ struct 🗄️初回起動時に駒の動かし方の説明バナー: ViewModifi
                 self.🚩バナーを表示 = false
             }
         }
+    }
+}
+
+struct 🗄️MacCatalystでタイトルバー非表示: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .onAppear {
+#if targetEnvironment(macCatalyst)
+                (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.titlebar?.titleVisibility = .hidden
+#endif
+            }
+    }
+}
+
+struct 💬RequestUserReview: ViewModifier {
+    //@EnvironmentObject var 📱: 📱AppModel
+    @State private var ⓒheckToRequest: Bool = false
+    func body(content: Content) -> some View {
+        content
+            .modifier(💬PrepareToRequestUserReview(self.$ⓒheckToRequest))
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
+                    self.ⓒheckToRequest = true
+                }
+            }
     }
 }
