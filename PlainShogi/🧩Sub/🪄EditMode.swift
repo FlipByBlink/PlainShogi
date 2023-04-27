@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct 手駒編集ボタン: View {
+struct 🪄手駒編集ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 陣営: 王側か玉側か
     @State private var 手駒の数を編集中: Bool = false
     var body: some View {
-        if 📱.🚩駒を整理中 {
+        if 📱.🚩駒を編集中 {
             Button {
                 self.手駒の数を編集中 = true
                 💥フィードバック.軽め()
@@ -27,14 +27,14 @@ struct 手駒編集ボタン: View {
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
 
-struct 編集モード用ⓧマーク: ViewModifier {
+struct 🪄編集モード用ⓧマーク: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
     private var 場所: 駒の場所
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .topLeading) {
-                if 📱.🚩駒を整理中, case .盤駒(_) = 場所 {
+                if 📱.🚩駒を編集中, case .盤駒(_) = 場所 {
                     Image(systemName: "xmark.circle.fill")
                         .resizable()
                         .symbolRenderingMode(.palette)
@@ -50,12 +50,12 @@ struct 編集モード用ⓧマーク: ViewModifier {
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
 }
 
-struct 整理完了ボタン: View {
+struct 🪄編集完了ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
             withAnimation {
-                📱.🚩駒を整理中 = false
+                📱.🚩駒を編集中 = false
                 💥フィードバック.成功()
             }
         } label: {

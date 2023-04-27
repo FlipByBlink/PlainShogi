@@ -12,7 +12,7 @@
 		120363152865E20200636EBD /* 📱AppModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 128D1578280FE4E4003FF480 /* 📱AppModel.swift */; };
 		124B75552810CD6D00027DCA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		126C18F32816460F002CD046 /* ☖ShogiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* ☖ShogiModel.swift */; };
-		127132E82873CDF20008AE46 /* 🚧EditModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 🚧EditModeView.swift */; };
+		127132E82873CDF20008AE46 /* 🪄EditMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 🪄EditMode.swift */; };
 		128D156B280FE47E003FF480 /* Plain将棋盤App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156A280FE47E003FF480 /* Plain将棋盤App.swift */; };
 		128D156D280FE47E003FF480 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
 		128D156F280FE47F003FF480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
@@ -27,7 +27,7 @@
 		F52437B329F613A600EA770E /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* 💥Feedback.swift */; };
 		F52437B529F6499100EA770E /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
 		F52437B629F64CB000EA770E /* ☖ShogiModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 126C18F22816460F002CD046 /* ☖ShogiModel.swift */; };
-		F52437B729F64CB000EA770E /* 🚧EditModeView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 🚧EditModeView.swift */; };
+		F52437B729F64CB000EA770E /* 🪄EditMode.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 🪄EditMode.swift */; };
 		F52437B829F64CB000EA770E /* 🛠AppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
 		F52437B929F64CB000EA770E /* 📬DropDelegate.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* 📬DropDelegate.swift */; };
 		F52437BA29F64CB000EA770E /* 📜History.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */; };
@@ -62,7 +62,7 @@
 			dstSubfolderSpec = 7;
 			files = (
 				F52437B629F64CB000EA770E /* ☖ShogiModel.swift in CopyFiles */,
-				F52437B729F64CB000EA770E /* 🚧EditModeView.swift in CopyFiles */,
+				F52437B729F64CB000EA770E /* 🪄EditMode.swift in CopyFiles */,
 				F52437B829F64CB000EA770E /* 🛠AppMenu.swift in CopyFiles */,
 				F52437B929F64CB000EA770E /* 📬DropDelegate.swift in CopyFiles */,
 				F52437BA29F64CB000EA770E /* 📜History.swift in CopyFiles */,
@@ -88,7 +88,7 @@
 		124B75562810CD6D00027DCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		124B75582810CD8100027DCA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		126C18F22816460F002CD046 /* ☖ShogiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "☖ShogiModel.swift"; sourceTree = "<group>"; };
-		127132E72873CDF20008AE46 /* 🚧EditModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🚧EditModeView.swift"; sourceTree = "<group>"; };
+		127132E72873CDF20008AE46 /* 🪄EditMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪄EditMode.swift"; sourceTree = "<group>"; };
 		128D1567280FE47E003FF480 /* 将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		128D156A280FE47E003FF480 /* Plain将棋盤App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plain将棋盤App.swift"; sourceTree = "<group>"; };
 		128D156C280FE47E003FF480 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 				126C18F22816460F002CD046 /* ☖ShogiModel.swift */,
 				12F4444D286D4B580008A663 /* 🛠AppMenu.swift */,
 				12D424412871893D002D3E80 /* 📬DropDelegate.swift */,
-				127132E72873CDF20008AE46 /* 🚧EditModeView.swift */,
+				127132E72873CDF20008AE46 /* 🪄EditMode.swift */,
 				F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */,
 				F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */,
 				F5BBD85F2973A7260034CCB8 /* 📣ADContent.swift */,
@@ -314,7 +314,7 @@
 				F5BBD85D2973A68E0034CCB8 /* ℹ️AboutApp.swift in Sources */,
 				F5C9FAFF296CF7BB00B513D8 /* 📜History.swift in Sources */,
 				F5C9FB02296D0A3100B513D8 /* 👥SharePlay.swift in Sources */,
-				127132E82873CDF20008AE46 /* 🚧EditModeView.swift in Sources */,
+				127132E82873CDF20008AE46 /* 🪄EditMode.swift in Sources */,
 				12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */,
 				F5019FD1296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift in Sources */,
 			);

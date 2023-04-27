@@ -10,7 +10,7 @@ struct 将棋View: View {
             盤外(.手前)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .overlay(alignment: .top) { 🧑‍💻フォントデバッグメニュー() }
+        .overlay(alignment: .top) { 🚧フォントデバッグメニュー() }
         .modifier(操作エリア外で駒選択を解除())
         .modifier(成駒確認アラート())
         .modifier(レイアウト.推定())
@@ -31,30 +31,22 @@ private struct 盤と手駒を配置<Content: View>: View {
 
 private enum レイアウト {
     struct 推定: ViewModifier {
-        @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-        @Environment(\.verticalSizeClass) private var verticalSizeClass
-        private var 縦並び: Bool {
-            self.verticalSizeClass == .regular
-            &&
-            self.horizontalSizeClass == .compact
-        }
         func body(content: Content) -> some View {
             GeometryReader { 対象領域 in
+                let 計算結果 = レイアウト.配置とマスの大きさを計算(対象領域)
                 content
-                    .environment(\.マスの大きさ, レイアウト.マスの大きさを算出(対象領域, self.縦並び))
-                    .environment(\.縦並び, self.縦並び)
+                    .environment(\.マスの大きさ, 計算結果.マスの大きさ)
+                    .environment(\.縦並び, 計算結果.縦並び)
             }
         }
-        //private func とても縦長(_ ジオメトリ: GeometryProxy) -> Bool {
-        //    ジオメトリ.size.height > ジオメトリ.size.width * 2
-        //}
     }
-    private static func マスの大きさを算出(_ ジオメトリ: GeometryProxy, _ 縦並び: Bool) -> CGFloat {
+    private static func 配置とマスの大きさを計算(_ ジオメトリ: GeometryProxy) -> (縦並び: Bool, マスの大きさ: CGFloat) {
+        let 縦並び = ジオメトリ.size.height + 100 > ジオメトリ.size.width
         let 横換算 = 一辺を基準にした際の計算式(全体の長さ: ジオメトリ.size.width,
                                 盤外コマの比率: 縦並び ? 0 : Self.複数個の盤外コマの幅比率 * 2)
         let 縦換算 = 一辺を基準にした際の計算式(全体の長さ: ジオメトリ.size.height,
                                 盤外コマの比率: 縦並び ? 2 : 0)
-        return min(横換算, 縦換算)
+        return (縦並び, min(横換算, 縦換算))
         func 一辺を基準にした際の計算式(全体の長さ: CGFloat, 盤外コマの比率: Double) -> CGFloat {
             (全体の長さ - Self.盤と手駒の隙間 * 2)
             / (9 + Self.マスに対する段筋の大きさの比率 + 盤外コマの比率)
@@ -172,9 +164,9 @@ private struct 盤外: View {
         ZStack(alignment: self.揃え方) {
             Color(.systemBackground)
             Self.各種コマと編集ボタンの配置 {
-                if self.立場 == .手前 { 手駒編集ボタン(self.陣営) }
+                if self.立場 == .手前 { 🪄手駒編集ボタン(self.陣営) }
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
-                if self.立場 == .対面 { 手駒編集ボタン(self.陣営) }
+                if self.立場 == .対面 { 🪄手駒編集ボタン(self.陣営) }
             }
         }
         .frame(maxWidth: self.最大の長さ, maxHeight: self.最大の長さ)
@@ -247,12 +239,12 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
                     .modifier(フォント(カテゴリ: .コマ,
                                    強調表示: self.この駒は操作直後))
                     .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
-                    .rotationEffect(.degrees(📱.🚩駒を整理中 ? 20 : 0))
-                    .onChange(of: 📱.🚩駒を整理中) { _ in 📱.選択中の駒 = .なし }
+                    .rotationEffect(.degrees(📱.🚩駒を編集中 ? 15 : 0))
+                    .onChange(of: 📱.🚩駒を編集中) { _ in 📱.選択中の駒 = .なし }
             }
             .border(.tint, width: self.この駒を選択中 ? 2 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
-            .modifier(編集モード用ⓧマーク(self.場所))
+            .modifier(🪄編集モード用ⓧマーク(self.場所))
             .modifier(ドラッグ直後の効果(self.場所))
             .overlay {
                 if self.太字オプション, self.この駒は操作直後 {
@@ -407,7 +399,7 @@ struct フォント: ViewModifier {
     }
 }
 
-struct 🧑‍💻フォントデバッグメニュー: View {
+struct 🚧フォントデバッグメニュー: View {
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字: Bool = false
     @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
@@ -429,6 +421,5 @@ struct 🧑‍💻フォントデバッグメニュー: View {
             .pickerStyle(.segmented)
         }
         .font(.system(size: 10))
-        .opacity(0.6)
     }
 }

@@ -42,7 +42,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "☖ShogiModel.swift",
                         "🛠AppMenu.swift",
                         "📬DropDelegate.swift",
-                        "🚧EditModeView.swift",
+                        "🪄EditMode.swift",
                         "📜History.swift",
                         "👥SharePlay.swift",
                         "📣ADContent.swift",
