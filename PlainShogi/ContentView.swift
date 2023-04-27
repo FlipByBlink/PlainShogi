@@ -4,6 +4,7 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
             将棋全体View()
+                .modifier(将棋レイアウト.推定())
             🛠SharePlayインジケーターやメニューボタン()
         }
         .padding()
