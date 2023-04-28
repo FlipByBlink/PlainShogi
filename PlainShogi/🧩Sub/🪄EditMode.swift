@@ -69,10 +69,8 @@ struct 🪄編集完了ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
-            withAnimation {
-                📱.編集状態 = nil
-                💥フィードバック.成功()
-            }
+            withAnimation { 📱.編集状態 = nil }
+            💥フィードバック.成功()
         } label: {
             Image(systemName: "checkmark.circle.fill")
                 .font(.title)
@@ -116,6 +114,7 @@ private struct 手駒編集シート: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         self.dismiss()
+                        💥フィードバック.軽め()
                     } label: {
                         Image(systemName: "chevron.down")
                             .grayscale(1)

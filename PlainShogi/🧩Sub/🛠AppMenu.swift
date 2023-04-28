@@ -83,6 +83,7 @@ private struct メニューボタン: View {
     private func 上下反転ボタン() -> some View {
         Button {
             withAnimation { 📱.🚩上下反転.toggle() }
+            💥フィードバック.成功()
         } label: {
             Label(📱.🚩上下反転 ? "上下反転を元に戻す" : "上下反転させる",
                   systemImage: "arrow.up.arrow.down")
@@ -91,6 +92,7 @@ private struct メニューボタン: View {
     private func 履歴ボタン() -> some View {
         Button {
             📱.🚩履歴を表示 = true
+            💥フィードバック.軽め()
         } label: {
             Label("履歴を表示", systemImage: "clock")
         }
@@ -276,6 +278,8 @@ private struct 見た目カスタマイズメニューリンク: View {
                         ForEach(フォント.サイズ.allCases) { Text($0.rawValue) }
                     } label: {
                         Label("駒のサイズ", systemImage: "magnifyingglass")
+                            .font(self.サイズ.ピッカーフォント)
+                            .animation(.default, value: self.サイズ)
                     }
                     Toggle(isOn: $📱.🚩English表記) {
                         Label("English表記", systemImage: "p.circle")

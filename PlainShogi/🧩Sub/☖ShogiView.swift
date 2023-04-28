@@ -392,6 +392,14 @@ struct フォント: ViewModifier {
                     }
             }
         }
+        var ピッカーフォント: Font {
+            switch self {
+                case .小: return .caption
+                case .標準: return .body
+                case .大: return .title3
+                case .最大: return .title
+            }
+        }
     }
     enum 対象カテゴリ {
         case コマ, 段筋

@@ -82,6 +82,7 @@ struct 📜ブックマーク保存ボタン: View {
     var body: some View {
         Button {
             withAnimation { 📱.局面.現在の局面をブックマークする() }
+            💥フィードバック.軽め()
         } label: {
             Label(self.タイトル, systemImage: "bookmark")
         }
