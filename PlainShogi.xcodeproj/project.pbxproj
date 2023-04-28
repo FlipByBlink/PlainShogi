@@ -22,7 +22,6 @@
 		12D424422871893D002D3E80 /* 📬DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* 📬DropDelegate.swift */; };
 		12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D4369C2865CD8300B707F5 /* Configuration.storekit */; };
 		12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
-		F5019FD1296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5019FD0296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift */; };
 		F52437AF29F6125A00EA770E /* 🗄️Rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437AE29F6125900EA770E /* 🗄️Rest.swift */; };
 		F52437B329F613A600EA770E /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* 💥Feedback.swift */; };
 		F52437B529F6499100EA770E /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
@@ -34,7 +33,6 @@
 		F52437BB29F64CB000EA770E /* 👥SharePlay.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */; };
 		F52437BC29F64CB000EA770E /* 📣ADContent.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 📣ADContent.swift */; };
 		F52437BD29F64CB000EA770E /* 📃TextImportExport.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */; };
-		F52437BE29F64CB000EA770E /* 💾DataManage_ver_1_2_2.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5019FD0296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift */; };
 		F52437BF29F64CB000EA770E /* 💥Feedback.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* 💥Feedback.swift */; };
 		F52437C029F64CB000EA770E /* 🗄️Rest.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437AE29F6125900EA770E /* 🗄️Rest.swift */; };
 		F52437C129F64CB000EA770E /* 🧰MetaData.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
@@ -74,7 +72,6 @@
 				F52437BB29F64CB000EA770E /* 👥SharePlay.swift in CopyFiles */,
 				F52437BC29F64CB000EA770E /* 📣ADContent.swift in CopyFiles */,
 				F52437BD29F64CB000EA770E /* 📃TextImportExport.swift in CopyFiles */,
-				F52437BE29F64CB000EA770E /* 💾DataManage_ver_1_2_2.swift in CopyFiles */,
 				F52437BF29F64CB000EA770E /* 💥Feedback.swift in CopyFiles */,
 				F52437C029F64CB000EA770E /* 🗄️Rest.swift in CopyFiles */,
 				F52437C129F64CB000EA770E /* 🧰MetaData.swift in CopyFiles */,
@@ -106,7 +103,6 @@
 		12D424412871893D002D3E80 /* 📬DropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📬DropDelegate.swift"; sourceTree = "<group>"; };
 		12D4369C2865CD8300B707F5 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		12F4444D286D4B580008A663 /* 🛠AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠AppMenu.swift"; sourceTree = "<group>"; };
-		F5019FD0296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💾DataManage_ver_1_2_2.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* memo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = memo.md; sourceTree = "<group>"; };
 		F52437AE29F6125900EA770E /* 🗄️Rest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗄️Rest.swift"; sourceTree = "<group>"; };
 		F52437B229F613A600EA770E /* 💥Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💥Feedback.swift"; sourceTree = "<group>"; };
@@ -216,7 +212,6 @@
 				F5E0549E29FB52A1004DC425 /* 💾Data.swift */,
 				F5BBD85F2973A7260034CCB8 /* 📣ADContent.swift */,
 				F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */,
-				F5019FD0296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift */,
 				F52437B229F613A600EA770E /* 💥Feedback.swift */,
 				F52437AE29F6125900EA770E /* 🗄️Rest.swift */,
 				F5BBEB662973A4040064F0EF /* Info.plist */,
@@ -324,7 +319,6 @@
 				F5C9FB02296D0A3100B513D8 /* 👥SharePlay.swift in Sources */,
 				127132E82873CDF20008AE46 /* 🪄EditMode.swift in Sources */,
 				12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */,
-				F5019FD1296ABB4E007CB14D /* 💾DataManage_ver_1_2_2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
