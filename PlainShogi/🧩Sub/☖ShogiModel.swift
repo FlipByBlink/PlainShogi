@@ -225,59 +225,41 @@ extension 局面モデル {
             if 新しい履歴.count > 30 { 新しい履歴.removeFirst() }
             新しい履歴 += [self]
             let ⓓata = try JSONEncoder().encode(新しい履歴)
-            UserDefaults.standard.set(ⓓata, forKey: "履歴")
+            💾ICloud.set(ⓓata, key: "履歴")
         } catch {
             assertionFailure()
         }
     }
     static var 履歴: [Self] {
-        guard let ⓓata = UserDefaults.standard.data(forKey: "履歴") else {
-            return []
-        }
+        guard let ⓓata = 💾ICloud.data(key: "履歴") else { return [] }
         do {
             return try JSONDecoder().decode([Self].self, from: ⓓata)
         } catch {
             assertionFailure(); return []
         }
     }
-    var 一手前の局面: Self? {
-        Self.履歴.last { $0.更新日時 != self.更新日時 }   
-    }
-    static func 履歴を全て削除する() {
-        UserDefaults.standard.removeObject(forKey: "履歴")
-    }
-    func 現在の局面をブックマークする() {
+    var 一手前の局面: Self? { Self.履歴.last { $0.更新日時 != self.更新日時 } }
+    static func 履歴を全て削除する() { 💾ICloud.remove(key: "履歴") }
+    func 現在の局面をブックマークする() { 💾ICloud.set(self.エンコード(), key: "ブックマーク") }
+    static var ブックマーク: Self? { .デコード(💾ICloud.data(key: "ブックマーク")) }
+    func エンコード() -> Data {
         do {
-            let ⓓata = try JSONEncoder().encode([self])
-            //将来的に複数個のブックマークに対応するかもしれないので配列扱い
-            UserDefaults.standard.set(ⓓata, forKey: "ブックマーク")
+            return try JSONEncoder().encode(self)
         } catch {
-            assertionFailure()
+            assertionFailure(); return Data()
         }
     }
     static func デコード(_ データ: Data?) -> Self? {
         guard let データ else { return nil }
         do {
-            return try JSONDecoder().decode([Self].self, from: データ).first
+            return try JSONDecoder().decode(Self.self, from: データ)
         } catch {
             assertionFailure(); return nil
         }
     }
-    static var ブックマーク: [Self] {
-        guard let ⓓata = UserDefaults.standard.data(forKey: "ブックマーク") else {
-            return []
-        }
-        do {
-            return try JSONDecoder().decode([Self].self, from: ⓓata)
-        } catch {
-            assertionFailure(); return []
-        }
-    }
     var 更新日付表記: String { self.更新日時?.formatted(.dateTime.day().month()) ?? "🐛" }
     var 更新時刻表記: String { self.更新日時?.formatted(.dateTime.hour().minute().second()) ?? "🐛" }
-    static var 初期セット: Self {
-        Self(盤駒: 初期配置, 手駒: 空の手駒)
-    }
+    static var 初期セット: Self { Self(盤駒: 初期配置, 手駒: 空の手駒) }
 }
 
 enum 王側か玉側か: String, CaseIterable, Codable {

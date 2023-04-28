@@ -21,6 +21,7 @@ class 📱アプリモデル: ObservableObject {
     
     init() {
         self.局面 = Self.起動時の局面を読み込む()
+        💾ICloud.addObserver(self, #selector(self.iCloudの外部変更を適用する(_:)))
     }
     
     //SharePlay
@@ -293,14 +294,24 @@ extension 📱アプリモデル {
             }
         }
     }
-    func 履歴を復元する(_ 過去の局面: 局面モデル) {
+    func 任意の局面を現在の局面として適用する(_ 局面: 局面モデル) {
         self.🚩メニューを表示 = false
         self.🚩履歴を表示 = false
-        withAnimation {
-            self.局面.現在の局面として適用する(過去の局面)
-        }
+        withAnimation { self.局面.現在の局面として適用する(局面) }
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.成功()
+    }
+    func 現在の局面をブックマークする() {
+        self.局面.現在の局面をブックマークする()
+        💥フィードバック.軽め()
+    }
+    @objc @MainActor
+    func iCloudの外部変更を適用する(_ notification: Notification) {
+        Task { @MainActor in
+            💾ICloud.synchronize()
+            guard let 外部で変更された局面 = 局面モデル.履歴.first else { return }
+            self.任意の局面を現在の局面として適用する(外部で変更された局面)
+        }
     }
 }
 

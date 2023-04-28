@@ -36,7 +36,7 @@ struct 📜履歴メニュー: View {
                             .font(.subheadline)
                         Spacer()
                         Button {
-                            📱.履歴を復元する(局面)
+                            📱.任意の局面を現在の局面として適用する(局面)
                         } label: {
                             HStack {
                                 Image(systemName: "square.and.arrow.down")
@@ -76,35 +76,6 @@ struct 📜履歴メニュー: View {
     }
 }
 
-struct 📜ブックマーク保存ボタン: View {
-    var タイトル: LocalizedStringKey
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    var body: some View {
-        Button {
-            withAnimation { 📱.局面.現在の局面をブックマークする() }
-            💥フィードバック.軽め()
-        } label: {
-            Label(self.タイトル, systemImage: "bookmark")
-        }
-    }
-}
-
-struct 📜ブックマーク復元ボタン: View {
-    var タイトル: LocalizedStringKey
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @AppStorage("ブックマーク") private var ブックマークデータ: Data?
-    private var 局面: 局面モデル? { 局面モデル.デコード(self.ブックマークデータ) }
-    var body: some View {
-        if let 局面 {
-            Button {
-                📱.履歴を復元する(局面)
-            } label: {
-                Label(self.タイトル, systemImage: "square.and.arrow.down")
-            }
-        }
-    }
-}
-
 private struct ブックマークメニューリンク: View {
     var body: some View {
         NavigationLink {
@@ -115,33 +86,46 @@ private struct ブックマークメニューリンク: View {
     }
     private struct コンテンツ: View {
         @EnvironmentObject private var 📱: 📱アプリモデル
-        @AppStorage("ブックマーク") private var ブックマークデータ: Data?
-        private var 局面: 局面モデル? { 局面モデル.デコード(self.ブックマークデータ) }
+        @State private var 局面: 局面モデル? = .ブックマーク
         var body: some View {
             List {
                 if let 局面 {
                     Section {
                         VStack(spacing: 20) {
                             局面プレビュー(局面)
-                            📜ブックマーク復元ボタン(タイトル: "復元")
-                                .font(.body.weight(.medium))
-                                .buttonStyle(.bordered)
+                            Button {
+                                📱.任意の局面を現在の局面として適用する(局面)
+                            } label: {
+                                Label("復元", systemImage: "square.and.arrow.down")
+                                
+                                    .font(.body.weight(.medium))
+                                    .buttonStyle(.bordered)
+                            }
                         }
                         .padding()
                         .frame(maxWidth: .infinity)
                     } header: {
                         Text(局面.更新日付表記 + " " + 局面.更新時刻表記)
                     }
-                    Section { 📜ブックマーク保存ボタン(タイトル: "現在の局面をブックマーク") }
+                    self.保存ボタン()
                 } else {
                     Label("ブックマークはありません", systemImage: "bookmark.slash")
                         .foregroundStyle(.secondary)
-                    Section { 📜ブックマーク保存ボタン(タイトル: "現在の局面をブックマーク") }
+                    self.保存ボタン()
                 }
                 Label("ブックマークに保存できる局面は1つだけです", systemImage: "1.circle")
             }
             .navigationTitle("ブックマーク")
-            .animation(.default, value: self.ブックマークデータ)
+        }
+        private func 保存ボタン() -> some View {
+            Section {
+                Button {
+                    📱.現在の局面をブックマークする()
+                    withAnimation { self.局面 = .ブックマーク }
+                } label: {
+                    Label("現在の局面をブックマーク", systemImage: "bookmark")
+                }
+            }
         }
     }
 }

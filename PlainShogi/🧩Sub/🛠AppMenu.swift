@@ -59,8 +59,8 @@ private struct メニューボタン: View {
                 一手戻すボタン()
                 self.上下反転ボタン()
                 self.履歴ボタン()
-                📜ブックマーク保存ボタン(タイトル: "この局面をブックマーク")
-                📜ブックマーク復元ボタン(タイトル: "ブックマークから復元")
+                self.ブックマーク保存ボタン()
+                self.ブックマーク復元ボタン()
             } label: {
                 Image(systemName: self.セリフ体 ? "gear" : "gearshape")
                     .dynamicTypeSize(...DynamicTypeSize.accessibility1)
@@ -112,6 +112,24 @@ private struct メニューボタン: View {
         }
         .navigationViewStyle(.stack)
         .environmentObject(📱)
+    }
+    private func ブックマーク保存ボタン() -> some View {
+        Button {
+            📱.現在の局面をブックマークする()
+        } label: {
+            Label("この局面をブックマーク", systemImage: "bookmark")
+        }
+    }
+    private func ブックマーク復元ボタン() -> some View {
+        Button {
+            guard let 局面 = 局面モデル.ブックマーク else { return }
+            📱.任意の局面を現在の局面として適用する(局面)
+        } label: {
+            Label("ブックマークから復元", systemImage: "square.and.arrow.down")
+            
+                .font(.body.weight(.medium))
+                .buttonStyle(.bordered)
+        }
     }
 }
 
