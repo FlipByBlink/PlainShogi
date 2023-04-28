@@ -6,14 +6,10 @@ struct 🚧フォントデバッグメニュー: View {
     @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
     var body: some View {
         HStack {
-            Toggle(isOn: self.$セリフ体) {
-                Label("セリフ体", systemImage: "paintbrush.pointed")
-            }
+            Toggle(isOn: self.$セリフ体) { Label("セリフ体", systemImage: "paintbrush.pointed") }
             .toggleStyle(.button)
-            Toggle(isOn: self.$太字) {
-                Label("太字", systemImage: "bold")
-            }
-            .toggleStyle(.button)
+            Toggle(isOn: self.$太字) { Label("太字", systemImage: "bold") }
+                .toggleStyle(.button)
             Picker(selection: self.$サイズ) {
                 ForEach(フォント.サイズ.allCases) { Text($0.rawValue) }
             } label: {
@@ -69,11 +65,12 @@ struct 🗄️初回起動時に駒の動かし方の説明バナー: ViewModifi
             .onAppear(perform: self.起動直後の確認作業)
             .overlay(alignment: .top) {
                 if self.🚩バナーを表示 {
-                    Label("長押しして駒を持ち上げ、そのままスライドして移動させる。", systemImage: "hand.point.up.left")
-                        .font(.caption)
-                        .foregroundColor(.primary)
-                        .padding()
-                        .onTapGesture { self.🚩バナーを表示 = false }
+                    Label("長押しして駒を持ち上げ、そのままスライドして移動させる。",
+                          systemImage: "hand.point.up.left")
+                    .font(.caption)
+                    .foregroundColor(.primary)
+                    .padding()
+                    .onTapGesture { self.🚩バナーを表示 = false }
                 }
             }
             .animation(.default.speed(0.33), value: self.🚩バナーを表示)
@@ -94,7 +91,9 @@ struct 🗄️MacCatalystでタイトルバー非表示: ViewModifier {
         content
             .onAppear {
 #if targetEnvironment(macCatalyst)
-                (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.titlebar?.titleVisibility = .hidden
+                UIApplication.shared.connectedScenes.first as? UIWindowScene
+                    .titlebar?
+                    .titleVisibility = .hidden
 #endif
             }
     }

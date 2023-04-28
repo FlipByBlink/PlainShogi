@@ -13,7 +13,7 @@ class 📱アプリモデル: ObservableObject {
     
     @Published var 🚩メニューを表示: Bool = false
     @Published var 🚩履歴を表示: Bool = false
-    @Published var 編集状態: 編集モード? = nil
+    @Published var 編集状態: 🪄編集モード? = nil
     
     @Published var ドラッグ中の駒: ドラッグ対象 = .無し
     @Published var 選択中の駒: 駒の場所 = .なし

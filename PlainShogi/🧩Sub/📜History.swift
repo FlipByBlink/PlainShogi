@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct 履歴類セクション: View {
+struct 📜履歴類セクション: View {
     var body: some View {
         Section {
             ブックマークメニューリンク()
             NavigationLink {
-                履歴メニュー()
+                📜履歴メニュー()
             } label: {
                 Label("履歴", systemImage: "clock")
             }
@@ -14,7 +14,7 @@ struct 履歴類セクション: View {
     }
 }
 
-struct 履歴メニュー: View {
+struct 📜履歴メニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @State private var 🚩履歴削除完了: Bool = false
     var body: some View {
@@ -76,18 +76,19 @@ struct 履歴メニュー: View {
     }
 }
 
-struct ブックマーク保存ボタン: View { //TODO: Work in progress
+struct 📜ブックマーク保存ボタン: View {
+    var タイトル: LocalizedStringKey
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
             withAnimation { 📱.局面.現在の局面をブックマークする() }
         } label: {
-            Label("現在の局面をブックマーク", systemImage: "bookmark")
+            Label(self.タイトル, systemImage: "bookmark")
         }
     }
 }
 
-struct ブックマーク復元ボタン: View { //TODO: Work in progress
+struct 📜ブックマーク復元ボタン: View {
     var タイトル: LocalizedStringKey
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("ブックマーク") private var ブックマークデータ: Data?
@@ -103,7 +104,7 @@ struct ブックマーク復元ボタン: View { //TODO: Work in progress
     }
 }
 
-private struct ブックマークメニューリンク: View { //TODO: Work in progress
+private struct ブックマークメニューリンク: View {
     var body: some View {
         NavigationLink {
             Self.コンテンツ()
@@ -119,26 +120,27 @@ private struct ブックマークメニューリンク: View { //TODO: Work in p
             List {
                 if let 局面 {
                     Section {
-                        HStack {
+                        VStack(spacing: 20) {
                             局面プレビュー(局面)
-                            Spacer()
-                            ブックマーク復元ボタン(タイトル: "復元")
+                            📜ブックマーク復元ボタン(タイトル: "復元")
                                 .font(.body.weight(.medium))
-                            .buttonStyle(.bordered)
+                                .buttonStyle(.bordered)
                         }
-                        .padding(.vertical, 32)
+                        .padding()
+                        .frame(maxWidth: .infinity)
                     } header: {
                         Text(局面.更新日付表記 + " " + 局面.更新時刻表記)
                     }
-                    Section { ブックマーク保存ボタン() }
+                    Section { 📜ブックマーク保存ボタン(タイトル: "現在の局面をブックマーク") }
                 } else {
                     Label("ブックマークはありません", systemImage: "bookmark.slash")
                         .foregroundStyle(.secondary)
-                    Section { ブックマーク保存ボタン() }
+                    Section { 📜ブックマーク保存ボタン(タイトル: "現在の局面をブックマーク") }
                 }
                 Label("ブックマークに保存できる局面は1つだけです", systemImage: "1.circle")
             }
             .navigationTitle("ブックマーク")
+            .animation(.default, value: self.ブックマークデータ)
         }
     }
 }

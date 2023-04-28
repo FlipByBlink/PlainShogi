@@ -59,8 +59,8 @@ private struct メニューボタン: View {
                 一手戻すボタン()
                 self.上下反転ボタン()
                 self.履歴ボタン()
-                ブックマーク保存ボタン()
-                ブックマーク復元ボタン(タイトル: "ブックマークから復元")
+                📜ブックマーク保存ボタン(タイトル: "この局面をブックマーク")
+                📜ブックマーク復元ボタン(タイトル: "ブックマークから復元")
             } label: {
                 Image(systemName: self.セリフ体 ? "gear" : "gearshape")
                     .dynamicTypeSize(...DynamicTypeSize.accessibility1)
@@ -97,7 +97,7 @@ private struct メニューボタン: View {
     }
     private func 履歴単体メニュー() -> some View {
         NavigationView {
-            履歴メニュー()
+            📜履歴メニュー()
                 .toolbar {
                     Button {
                         📱.🚩履歴を表示 = false
@@ -149,7 +149,7 @@ private struct メニューシートコンテンツ: View {
                     Text("オプション")
                 }
             }
-            履歴類セクション()
+            📜履歴類セクション()
             Section {
                 👥SharePlay紹介リンク()
                 細かな使い方リンク()
