@@ -307,10 +307,13 @@ extension 📱アプリモデル {
     }
     @objc @MainActor
     func iCloudの外部変更を適用する(_ notification: Notification) {
+        print("🖨️", notification.userInfo.debugDescription)
         Task { @MainActor in
             💾ICloud.synchronize()
-            guard let 外部で変更された局面 = 局面モデル.履歴.first else { return }
-            self.任意の局面を現在の局面として適用する(外部で変更された局面)
+            guard let 外部で変更された局面 = 局面モデル.履歴.last else { return }
+            self.局面 = 外部で変更された局面
+            self.SharePlay中なら現在の局面を参加者に送信する()
+            💥フィードバック.成功()
         }
     }
 }
