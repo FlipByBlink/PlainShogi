@@ -47,6 +47,8 @@ struct 🛠SharePlayインジケーターやメニューボタン: View {
 
 private struct メニューボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    @State private var 🚩履歴シートを表示: Bool = false
+    //@State private var 🚩ブックマークシートを表示: Bool = false
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     var body: some View {
         if 📱.編集状態 != nil {
@@ -77,7 +79,8 @@ private struct メニューボタン: View {
             }
             .tint(.primary)
             .accessibilityLabel("Open menu")
-            .sheet(isPresented: $📱.🚩履歴を表示) { self.履歴単体メニュー() }
+            .sheet(isPresented: self.$🚩履歴シートを表示) { self.履歴単体メニュー() }
+            //.sheet(isPresented: self.$🚩ブックマークシートを表示) { self.履歴単体メニュー() }
         }
     }
     private func 上下反転ボタン() -> some View {
@@ -91,7 +94,7 @@ private struct メニューボタン: View {
     }
     private func 履歴ボタン() -> some View {
         Button {
-            📱.🚩履歴を表示 = true
+            self.🚩履歴シートを表示 = true
             💥フィードバック.軽め()
         } label: {
             Label("履歴を表示", systemImage: "clock")
@@ -99,10 +102,10 @@ private struct メニューボタン: View {
     }
     private func 履歴単体メニュー() -> some View {
         NavigationView {
-            📜履歴メニュー()
+            📜履歴メニュー(self.$🚩履歴シートを表示)
                 .toolbar {
                     Button {
-                        📱.🚩履歴を表示 = false
+                        self.🚩履歴シートを表示 = false
                         💥フィードバック.軽め()
                     } label: {
                         Image(systemName: "chevron.down")
