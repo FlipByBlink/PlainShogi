@@ -11,11 +11,11 @@ class 📱アプリモデル: ObservableObject {
     @AppStorage("直近操作強調表示機能オフ") var 🚩直近操作強調表示機能オフ: Bool = false
     @AppStorage("上下反転") var 🚩上下反転: Bool = false
     
-    @Published var 🚩メニューを表示: Bool = false
+    @Published var シートを表示: シートカテゴリ? = nil
     @Published var 編集状態: 🪄編集モード? = nil
-    
     @Published var ドラッグ中の駒: ドラッグ対象 = .無し
     @Published var 選択中の駒: 駒の場所 = .なし
+    
     @Published var 🚩成駒確認アラートを表示: Bool = false
     
     init() {
@@ -165,7 +165,7 @@ extension 📱アプリモデル {
     }
     func 一手戻す() {
         guard let 一手前の局面 = self.局面.一手前の局面 else { return }
-        self.🚩メニューを表示 = false
+        self.シートを表示 = nil
         self.選択中の駒 = .なし
         self.局面.現在の局面として適用する(一手前の局面)
         self.SharePlay中なら現在の局面を参加者に送信する()
@@ -295,7 +295,7 @@ extension 📱アプリモデル {
         }
     }
     func 任意の局面を現在の局面として適用する(_ 局面: 局面モデル) {
-        self.🚩メニューを表示 = false
+        self.シートを表示 = nil
         withAnimation { self.局面.現在の局面として適用する(局面) }
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.成功()

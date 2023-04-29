@@ -1,17 +1,6 @@
 import SwiftUI
 import GroupActivities
 
-struct 🛠メニューシート: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    func body(content: Content) -> some View {
-        content
-            .sheet(isPresented: $📱.🚩メニューを表示) {
-                メニューシートコンテンツ()
-                    .environmentObject(📱)
-            }
-    }
-}
-
 struct 🛠非SharePlay時のメニューボタン: ViewModifier {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
@@ -45,114 +34,12 @@ struct 🛠SharePlayインジケーターやメニューボタン: View {
     }
 }
 
-private struct メニューボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @State private var 🚩履歴シートを表示: Bool = false
-    //@State private var 🚩ブックマークシートを表示: Bool = false
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
-    var body: some View {
-        if 📱.編集状態 != nil {
-            🪄編集完了ボタン()
-        } else {
-            Menu {
-                強調表示クリアボタン()
-                盤面初期化ボタン()
-                編集モード開始ボタン(タイトル: "編集モード")
-                一手戻すボタン()
-                self.上下反転ボタン()
-                self.履歴ボタン()
-                self.ブックマーク保存ボタン()
-                self.ブックマーク復元ボタン()
-            } label: {
-                Image(systemName: self.セリフ体 ? "gear" : "gearshape")
-                    .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                    .padding(2)
-                    .background {
-                        Circle()
-                            .foregroundStyle(.background)
-                            .opacity(0.8)
-                    }
-                    .padding(8)
-            } primaryAction: {
-                📱.🚩メニューを表示 = true
-                💥フィードバック.軽め()
-            }
-            .tint(.primary)
-            .accessibilityLabel("Open menu")
-            .sheet(isPresented: self.$🚩履歴シートを表示) { self.履歴単体メニュー() }
-            //.sheet(isPresented: self.$🚩ブックマークシートを表示) { self.履歴単体メニュー() }
-        }
-    }
-    private func 上下反転ボタン() -> some View {
-        Button {
-            withAnimation { 📱.🚩上下反転.toggle() }
-            💥フィードバック.成功()
-        } label: {
-            Label(📱.🚩上下反転 ? "上下反転を元に戻す" : "上下反転させる",
-                  systemImage: "arrow.up.arrow.down")
-        }
-    }
-    private func 履歴ボタン() -> some View {
-        Button {
-            self.🚩履歴シートを表示 = true
-            💥フィードバック.軽め()
-        } label: {
-            Label("履歴を表示", systemImage: "clock")
-        }
-    }
-    private func 履歴単体メニュー() -> some View {
-        NavigationView {
-            📜履歴メニュー(self.$🚩履歴シートを表示)
-                .toolbar {
-                    Button {
-                        self.🚩履歴シートを表示 = false
-                        💥フィードバック.軽め()
-                    } label: {
-                        Image(systemName: "chevron.down")
-                            .grayscale(1.0)
-                    }
-                }
-        }
-        .navigationViewStyle(.stack)
-        .environmentObject(📱)
-    }
-    private func ブックマーク保存ボタン() -> some View {
-        Button {
-            📱.現在の局面をブックマークする()
-        } label: {
-            Label("この局面をブックマーク", systemImage: "bookmark")
-        }
-    }
-    private func ブックマーク復元ボタン() -> some View {
-        Button {
-            guard let 局面 = 局面モデル.ブックマーク else { return }
-            📱.任意の局面を現在の局面として適用する(局面)
-        } label: {
-            Label("ブックマークから復元", systemImage: "square.and.arrow.down")
-            
-                .font(.body.weight(.medium))
-                .buttonStyle(.bordered)
-        }
-    }
-}
-
-private struct メニューシートコンテンツ: View {
+struct 🛠アプリメニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
-        Group {
-            if #available(iOS 16.0, *) {
-                NavigationStack { self.ⓒontent() }
-            } else {
-                NavigationView { self.ⓒontent() }
-                    .navigationViewStyle(.stack)
-            }
-        }
-        //.onDisappear { 📱.🚩メニューを表示 = false } //TODO: 再検討
-    }
-    private func ⓒontent() -> some View {
         List {
-            Self.SharePlay誘導セクション()
+            SharePlay誘導セクション()
             Section {
                 盤面初期化ボタン()
                 一手戻すボタン()
@@ -182,36 +69,93 @@ private struct メニューシートコンテンツ: View {
             ℹ️AboutAppLink()
         }
         .navigationTitle("メニュー")
-        .toolbar { self.閉じるボタン() }
     }
-    private func 閉じるボタン() -> some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
-            Button {
-                📱.🚩メニューを表示 = false
-                💥フィードバック.軽め()
+}
+
+private struct メニューボタン: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @AppStorage("セリフ体") private var セリフ体: Bool = false
+    var body: some View {
+        if 📱.編集状態 != nil {
+            🪄編集完了ボタン()
+        } else {
+            Menu {
+                強調表示クリアボタン()
+                盤面初期化ボタン()
+                編集モード開始ボタン(タイトル: "編集モード")
+                一手戻すボタン()
+                self.上下反転ボタン()
+                self.履歴ボタン()
+                self.ブックマーク保存ボタン()
+                self.ブックマーク復元ボタン()
             } label: {
-                Image(systemName: "chevron.down")
-                    .grayscale(1.0)
+                Image(systemName: self.セリフ体 ? "gear" : "gearshape")
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility1)
+                    .padding(2)
+                    .background {
+                        Circle()
+                            .foregroundStyle(.background)
+                            .opacity(0.8)
+                    }
+                    .padding(8)
+            } primaryAction: {
+                📱.シートを表示 = .メニュー
             }
-            .accessibilityLabel("Dismiss")
+            .tint(.primary)
+            .accessibilityLabel("Open menu")
         }
     }
-    private struct SharePlay誘導セクション: View {
-        @EnvironmentObject var 📱: 📱アプリモデル
-        @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-        var body: some View {
-            if self.ⓖroupStateObserver.isEligibleForGroupSession {
-                Section {
-                    NavigationLink {
-                        👥SharePlayガイド($📱.🚩メニューを表示)
-                    } label: {
-                        Label("アクティビティ", systemImage: "shareplay")
-                            .badge("共有将棋盤")
-                    }
-                } header: {
-                    Text("SharePlay")
-                        .textCase(.none)
+    private func 上下反転ボタン() -> some View {
+        Button {
+            withAnimation { 📱.🚩上下反転.toggle() }
+            💥フィードバック.成功()
+        } label: {
+            Label(📱.🚩上下反転 ? "上下反転を元に戻す" : "上下反転させる",
+                  systemImage: "arrow.up.arrow.down")
+        }
+    }
+    private func 履歴ボタン() -> some View {
+        Button {
+            📱.シートを表示 = .履歴
+        } label: {
+            Label("履歴を表示", systemImage: "clock")
+        }
+    }
+    private func ブックマーク保存ボタン() -> some View {
+        Button {
+            📱.現在の局面をブックマークする()
+        } label: {
+            Label("この局面をブックマーク", systemImage: "bookmark")
+        }
+    }
+    private func ブックマーク復元ボタン() -> some View {
+        Button {
+            guard let 局面 = 局面モデル.ブックマーク else { return }
+            📱.任意の局面を現在の局面として適用する(局面)
+        } label: {
+            Label("ブックマークから復元", systemImage: "square.and.arrow.down")
+            
+                .font(.body.weight(.medium))
+                .buttonStyle(.bordered)
+        }
+    }
+}
+
+private struct SharePlay誘導セクション: View {
+    @EnvironmentObject var 📱: 📱アプリモデル
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    var body: some View {
+        if self.ⓖroupStateObserver.isEligibleForGroupSession {
+            Section {
+                NavigationLink {
+                    👥SharePlayガイド()
+                } label: {
+                    Label("アクティビティ", systemImage: "shareplay")
+                        .badge("共有将棋盤")
                 }
+            } header: {
+                Text("SharePlay")
+                    .textCase(.none)
             }
         }
     }
@@ -222,7 +166,7 @@ private struct 盤面初期化ボタン: View {
     var body: some View {
         Button {
             withAnimation { 📱.盤面を初期化する() }
-            📱.🚩メニューを表示 = false
+            📱.シートを表示 = nil
         } label: {
             Label("盤面を初期化", systemImage: "arrow.counterclockwise")
         }
@@ -251,7 +195,7 @@ private struct 編集モード開始ボタン: View {
     var body: some View {
         Button {
             withAnimation { 📱.編集状態 = .盤面を編集中 }
-            📱.🚩メニューを表示 = false
+            📱.シートを表示 = nil
             💥フィードバック.軽め()
         } label: {
             Label(self.タイトル, systemImage: "wand.and.rays")

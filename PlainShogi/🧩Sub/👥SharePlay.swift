@@ -88,13 +88,11 @@ struct 👥SharePlayインジケーター: View {
     private var 🚩SharePlay中: Bool {
         [.waiting, .joined].contains(📱.ⓖroupSession?.state)
     }
-    @State private var 🚩ガイドを表示: Bool = false
     private var 参加人数: String { 📱.参加人数?.description ?? "0" }
     var body: some View {
         if self.ⓖroupStateObserver.isEligibleForGroupSession {
             Button {
-                self.🚩ガイドを表示 = true
-                💥フィードバック.軽め()
+                📱.シートを表示 = .SharePlayガイド
             } label: {
                 Group {
                     if self.🚩SharePlay中 {
@@ -112,13 +110,6 @@ struct 👥SharePlayインジケーター: View {
             .buttonBorderShape(.capsule)
             .dynamicTypeSize(...DynamicTypeSize.accessibility1)
             .foregroundStyle(self.🚩SharePlay中 ? .primary : .secondary)
-            .sheet(isPresented: self.$🚩ガイドを表示) {
-                NavigationView {
-                    👥SharePlayガイド(self.$🚩ガイドを表示)
-                        .toolbar { self.閉じるボタン() }
-                }
-                .navigationViewStyle(.stack)
-            }
         }
     }
     private struct ボタンスタイル: ViewModifier {
@@ -135,23 +126,10 @@ struct 👥SharePlayインジケーター: View {
             }
         }
     }
-    private func 閉じるボタン() -> some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
-            Button {
-                self.🚩ガイドを表示 = false
-                💥フィードバック.軽め()
-            } label: {
-                Image(systemName: "chevron.down")
-                    .grayscale(1.0)
-            }
-            .accessibilityLabel("Dismiss")
-        }
-    }
 }
 
 struct 👥SharePlayガイド: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @Binding private var 🚩シートを表示: Bool
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     private var 🚩SharePlay中: Bool {
         [.waiting, .joined].contains(📱.ⓖroupSession?.state)
@@ -198,7 +176,7 @@ struct 👥SharePlayガイド: View {
                 .padding(8)
             Button {
                 👥GroupActivity.アクティビティを起動する()
-                self.🚩シートを表示 = false
+                📱.シートを表示 = nil
             } label: {
                 Label("アクティビティ「共有将棋盤」を起動する", systemImage: "power")
                     .font(.body.weight(.medium))
@@ -218,7 +196,7 @@ struct 👥SharePlayガイド: View {
                     Button {
                         📱.ⓖroupSession?.leave()
                         💥フィードバック.警告()
-                        self.🚩シートを表示 = false
+                        📱.シートを表示 = nil
                     } label: {
                         Label("アクティビティから離脱する", systemImage: "escape")
                     }
@@ -241,7 +219,7 @@ struct 👥SharePlayガイド: View {
                     Button(role: .destructive) {
                         📱.ⓖroupSession?.end()
                         💥フィードバック.エラー()
-                        self.🚩シートを表示 = false
+                        📱.シートを表示 = nil
                     } label: {
                         Label("はい、アクティビティを終了します", systemImage: "power.dotted")
                     }
@@ -266,9 +244,6 @@ struct 👥SharePlayガイド: View {
                 }
             }
         }
-    }
-    init(_ シートを表示: Binding<Bool>) {
-        self._🚩シートを表示 = シートを表示
     }
 }
 

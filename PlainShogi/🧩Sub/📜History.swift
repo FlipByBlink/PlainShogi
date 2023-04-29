@@ -81,6 +81,51 @@ struct 📜履歴メニュー: View {
     }
 }
 
+struct 📜ブックマークメニュー: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @State private var ブックマーク: 局面モデル? = .ブックマーク
+    var body: some View {
+        List {
+            if let ブックマーク {
+                Section {
+                    VStack(spacing: 20) {
+                        局面プレビュー(ブックマーク)
+                        Button {
+                            📱.任意の局面を現在の局面として適用する(ブックマーク)
+                        } label: {
+                            Label("復元", systemImage: "square.and.arrow.down")
+                                .font(.body.weight(.medium))
+                        }
+                        .buttonStyle(.bordered)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .contextMenu { self.デバッグ用削除ボタン() }
+                }
+            } else {
+                Label("ブックマークはありません", systemImage: "bookmark.slash")
+                    .foregroundStyle(.secondary)
+            }
+            Section {
+                Button {
+                    📱.現在の局面をブックマークする()
+                    withAnimation { self.ブックマーク = .ブックマーク }
+                } label: {
+                    Label("現在の局面をブックマーク", systemImage: "bookmark")
+                }
+            }
+            Label("ブックマークに保存できる局面は1つだけです", systemImage: "1.circle")
+        }
+        .navigationTitle("ブックマーク")
+    }
+    private func デバッグ用削除ボタン() -> some View {
+        Button("削除") {
+            💾ICloud.remove(key: "ブックマーク")
+            self.ブックマーク = nil
+        }
+    }
+}
+
 private struct ブックマークメニューリンク: View {
     @State private var ブックマーク: 局面モデル? = .ブックマーク
     var body: some View {
