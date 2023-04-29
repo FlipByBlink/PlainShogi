@@ -22,6 +22,7 @@ class 📱アプリモデル: ObservableObject {
     init() {
         self.局面 = Self.起動時の局面を読み込む()
         💾ICloud.addObserver(self, #selector(self.iCloudによる外部からの履歴変更を適用する(_:)))
+        💾ICloud.synchronize()
     }
     
     //SharePlay
@@ -310,7 +311,6 @@ extension 📱アプリモデル {
         print("🖨️", notification.userInfo.debugDescription)
         guard 💾ICloud.このキーが変更された(key: "履歴", notification) else { return }
         Task { @MainActor in
-            //💾ICloud.synchronize() TODO: 再検討
             guard let 外部で変更された局面 = 局面モデル.履歴.last else { return }
             self.局面 = 外部で変更された局面
             self.SharePlay中なら現在の局面を参加者に送信する()

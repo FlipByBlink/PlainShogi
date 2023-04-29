@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 enum 💾ICloud {
     private static var api: NSUbiquitousKeyValueStore { .default }
@@ -23,6 +24,18 @@ extension 💾ICloud {
             return false
         }
         return ⓚeys.contains(ⓚey)
+    }
+}
+
+struct 💾アクティブ復帰時にiCloudを明示的に同期: ViewModifier {
+    @Environment(\.scenePhase) private var scenePhase
+    func body(content: Content) -> some View {
+        content
+            .onChange(of: self.scenePhase) {
+                if $0 == .active {
+                    💾ICloud.synchronize()
+                }
+            }
     }
 }
 

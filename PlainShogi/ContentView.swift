@@ -13,6 +13,7 @@ struct ContentView: View {
         .modifier(🗄️初回起動時に駒の動かし方の説明バナー())
         .modifier(🗄️MacCatalystでタイトルバー非表示())
         .modifier(🗄️自動スリープ無効化())
+        .modifier(💾アクティブ復帰時にiCloudを明示的に同期())
         .modifier(📣広告コンテンツ())
         .modifier(👥SharePlay環境構築())
         .overlay(alignment: .top) { 🚧フォントデバッグメニュー() }

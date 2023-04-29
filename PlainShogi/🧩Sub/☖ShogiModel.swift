@@ -226,6 +226,7 @@ extension 局面モデル {
         do {
             let ⓓata = try JSONEncoder().encode(新しい履歴)
             💾ICloud.set(ⓓata, key: "履歴")
+            💾ICloud.synchronize()
         } catch {
             assertionFailure()
         }
