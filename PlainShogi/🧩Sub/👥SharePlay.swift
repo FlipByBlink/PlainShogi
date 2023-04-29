@@ -252,7 +252,7 @@ struct 👥SharePlay紹介リンク: View {
         NavigationLink {
             List {
                 self.概要セクション()
-                SharingControllerボタン()
+                self.招待ボタン()
                 Section {
                     Text("FaceTime中にこのアプリを立ち上げると、アクティビティを起動することが出来ます。アクティビティを起動すると、通話相手のデバイスではSharePlay参加を促す通知が表示されます。")
                         .padding(8)
@@ -299,6 +299,13 @@ struct 👥SharePlay紹介リンク: View {
             Text("https://support.apple.com/guide/iphone/shareplay-watch-listen-play-iphb657eb791/ios")
         }
     }
+    private func 招待ボタン() -> some View {
+#if !targetEnvironment(macCatalyst)
+        SharingControllerボタン()
+#else
+        EmptyView()
+#endif
+    }
     private func メッセージアプリ説明セクション() -> some View {
         Section {
             Text("iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
@@ -342,6 +349,7 @@ struct 👥SharePlay紹介リンク: View {
     }
 }
 
+#if !targetEnvironment(macCatalyst)
 private struct SharingControllerボタン: View {
     @State private var 🚩SharingControllerを表示: Bool = false
     @State private var 🚩GroupActivity準備完了: Bool = false
@@ -405,3 +413,4 @@ private struct SharingControllerボタン: View {
         }
     }
 }
+#endif

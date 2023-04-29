@@ -31,6 +31,7 @@ struct 🪧シート: ViewModifier {
                     .grayscale(1.0)
             }
             .accessibilityLabel("Dismiss")
+            .keyboardShortcut(.cancelAction)
         }
     }
 }

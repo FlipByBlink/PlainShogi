@@ -61,7 +61,7 @@ enum 🗄️固定値 {
             case .phone: return 16
             case .pad:
 #if targetEnvironment(macCatalyst)
-                return 32
+                return 40
 #else
                 return 24
 #endif
@@ -107,16 +107,17 @@ struct 🗄️初回起動時に駒の動かし方の説明バナー: ViewModifi
     }
 }
 
-struct 🗄️MacCatalystでタイトルバー非表示: ViewModifier {
+struct 🗄️MacCatalyst用の微調整: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .onAppear {
 #if targetEnvironment(macCatalyst)
-                UIApplication.shared.connectedScenes.first as? UIWindowScene
+            .onAppear {
+                (UIApplication.shared.connectedScenes.first as? UIWindowScene)?
                     .titlebar?
                     .titleVisibility = .hidden
-#endif
             }
+            .padding(.bottom, 24)
+#endif
     }
 }
 
