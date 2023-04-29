@@ -83,6 +83,9 @@ struct 📜履歴メニュー: View {
 struct 📜ブックマークメニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @State private var ブックマーク: 局面モデル? = nil
+    private var 現在の局面とブックマークは同じ: Bool {
+        📱.局面.更新日時 == self.ブックマーク?.更新日時
+    }
     var body: some View {
         List {
             if let ブックマーク {
@@ -96,6 +99,7 @@ struct 📜ブックマークメニュー: View {
                                 .font(.body.weight(.medium))
                         }
                         .buttonStyle(.bordered)
+                        .disabled(self.現在の局面とブックマークは同じ)
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -113,7 +117,7 @@ struct 📜ブックマークメニュー: View {
                     Label("現在の局面をブックマーク", systemImage: "bookmark")
                         .font(.body.weight(.semibold))
                 }
-                .disabled(📱.局面.更新日時 == self.ブックマーク?.更新日時)
+                .disabled(self.現在の局面とブックマークは同じ)
             }
             Label("ブックマークに保存できる局面は1つだけです", systemImage: "1.circle")
         }

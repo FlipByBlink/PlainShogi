@@ -45,6 +45,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                 return ["☖ShogiView.swift",
                         "☖ShogiModel.swift",
                         "🛠AppMenu.swift",
+                        "🪧Sheet.swift",
                         "📬DropDelegate.swift",
                         "🪄EditMode.swift",
                         "📜History.swift",
