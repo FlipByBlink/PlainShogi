@@ -82,7 +82,7 @@ private struct メニューボタン: View {
             Menu {
                 強調表示クリアボタン()
                 盤面初期化ボタン()
-                編集モード開始ボタン(タイトル: "編集モード")
+                編集モード開始ボタン()
                 一手戻すボタン()
                 self.上下反転ボタン()
                 self.履歴ボタン()
@@ -148,8 +148,7 @@ private struct 盤面初期化ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
-            withAnimation { 📱.盤面を初期化する() }
-            📱.シートを表示 = nil
+            📱.盤面を初期化する()
         } label: {
             Label("盤面を初期化", systemImage: "arrow.counterclockwise")
         }
@@ -173,13 +172,11 @@ private struct 強調表示クリアボタン: View {
 }
 
 private struct 編集モード開始ボタン: View {
-    var タイトル: LocalizedStringKey
+    var タイトル: LocalizedStringKey = "編集モード"
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
-            withAnimation { 📱.編集中 = true }
-            📱.シートを表示 = nil
-            💥フィードバック.軽め()
+            📱.編集モードを開始する()
         } label: {
             Label(self.タイトル, systemImage: "wand.and.rays")
         }

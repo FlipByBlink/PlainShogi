@@ -11,9 +11,8 @@ struct 🪧シート: ViewModifier {
                             case .メニュー: 🛠アプリメニュー()
                             case .履歴: 📜履歴メニュー()
                             case .ブックマーク: 📜ブックマークメニュー()
-                            case .手駒編集(let 陣営): 手駒編集メニュー(陣営)
+                            case .手駒編集(let 陣営): 🪄手駒編集メニュー(陣営)
                             case .SharePlayガイド: 👥SharePlayガイド()
-                            //case .広告: 📣ADView
                         }
                     }
                     .toolbar { self.閉じるボタン() }
@@ -37,6 +36,6 @@ struct 🪧シート: ViewModifier {
 }
 
 enum シートカテゴリ: Identifiable, Hashable {
-    case メニュー, 履歴, ブックマーク, 手駒編集(王側か玉側か), SharePlayガイド//, 広告
+    case メニュー, 履歴, ブックマーク, 手駒編集(王側か玉側か), SharePlayガイド
     var id: Self { self }
 }

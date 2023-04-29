@@ -21,7 +21,6 @@ struct 📜履歴類セクション: View {
 struct 📜履歴メニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @State private var 🚩履歴削除完了: Bool = false
-    @Binding var 🚩メニューボタンから直接履歴シートを表示: Bool
     var body: some View {
         List {
             Section {
@@ -41,7 +40,6 @@ struct 📜履歴メニュー: View {
                             .font(.subheadline)
                         Spacer()
                         Button {
-                            self.🚩メニューボタンから直接履歴シートを表示 = false
                             📱.任意の局面を現在の局面として適用する(局面)
                         } label: {
                             HStack {
@@ -80,14 +78,11 @@ struct 📜履歴メニュー: View {
         .accessibilityLabel("削除")
         .disabled(局面モデル.履歴.isEmpty)
     }
-    init(_ メニューボタンから表示: Binding<Bool> = .constant(true)) {
-        self._🚩メニューボタンから直接履歴シートを表示 = メニューボタンから表示
-    }
 }
 
-struct 📜ブックマークメニュー: View { //TODO: アプリメニューでのバグ修正
+struct 📜ブックマークメニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @State private var ブックマーク: 局面モデル? = .ブックマーク
+    @State private var ブックマーク: 局面モデル? = nil
     var body: some View {
         List {
             if let ブックマーク {
@@ -113,14 +108,17 @@ struct 📜ブックマークメニュー: View { //TODO: アプリメニュー�
             Section {
                 Button {
                     📱.現在の局面をブックマークする()
-                    withAnimation { self.ブックマーク = .ブックマーク }
+                    withAnimation { self.ブックマーク = .ブックマークを読み込む() }
                 } label: {
                     Label("現在の局面をブックマーク", systemImage: "bookmark")
+                        .font(.body.weight(.semibold))
                 }
+                .disabled(📱.局面.更新日時 == self.ブックマーク?.更新日時)
             }
             Label("ブックマークに保存できる局面は1つだけです", systemImage: "1.circle")
         }
         .navigationTitle("ブックマーク")
+        .task { self.ブックマーク = .ブックマークを読み込む() }
     }
     private func デバッグ用削除ボタン() -> some View {
         Button("削除") {
@@ -129,62 +127,6 @@ struct 📜ブックマークメニュー: View { //TODO: アプリメニュー�
         }
     }
 }
-
-//private struct ブックマークメニューリンク: View {
-//    @State private var ブックマーク: 局面モデル? = .ブックマーク
-//    var body: some View {
-//        NavigationLink {
-//            Self.メニュー(self.$ブックマーク)
-//        } label: {
-//            Label("ブックマーク", systemImage: "bookmark")
-//        }
-//    }
-//    private struct メニュー: View {
-//        @EnvironmentObject private var 📱: 📱アプリモデル
-//        @Binding private var ブックマーク: 局面モデル?
-//        var body: some View {
-//            List {
-//                if let ブックマーク {
-//                    Section {
-//                        VStack(spacing: 20) {
-//                            局面プレビュー(ブックマーク)
-//                            Button {
-//                                📱.任意の局面を現在の局面として適用する(ブックマーク)
-//                            } label: {
-//                                Label("復元", systemImage: "square.and.arrow.down")
-//                                    .font(.body.weight(.medium))
-//                            }
-//                            .buttonStyle(.bordered)
-//                        }
-//                        .padding()
-//                        .frame(maxWidth: .infinity)
-//                        .contextMenu { self.デバッグ用削除ボタン() }
-//                    }
-//                } else {
-//                    Label("ブックマークはありません", systemImage: "bookmark.slash")
-//                        .foregroundStyle(.secondary)
-//                }
-//                Section {
-//                    Button {
-//                        📱.現在の局面をブックマークする()
-//                        withAnimation { self.ブックマーク = .ブックマーク }
-//                    } label: {
-//                        Label("現在の局面をブックマーク", systemImage: "bookmark")
-//                    }
-//                }
-//                Label("ブックマークに保存できる局面は1つだけです", systemImage: "1.circle")
-//            }
-//            .navigationTitle("ブックマーク")
-//        }
-//        init(_ ﾌﾞｯｸﾏｰｸ: Binding<局面モデル?>) { self._ブックマーク = ﾌﾞｯｸﾏｰｸ }
-//        private func デバッグ用削除ボタン() -> some View {
-//            Button("削除") {
-//                💾ICloud.remove(key: "ブックマーク")
-//                self.ブックマーク = nil
-//            }
-//        }
-//    }
-//}
 
 private struct 局面プレビュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル

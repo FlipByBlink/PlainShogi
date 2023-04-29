@@ -51,8 +51,7 @@ struct 🪄編集完了ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
-            withAnimation { 📱.編集中 = false }
-            💥フィードバック.成功()
+            📱.編集モードを終了する()
         } label: {
             Image(systemName: "checkmark.circle.fill")
                 .font(.title)
@@ -64,7 +63,7 @@ struct 🪄編集完了ボタン: View {
     }
 }
 
-struct 手駒編集メニュー: View {
+struct 🪄手駒編集メニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 陣営: 王側か玉側か
     var body: some View {

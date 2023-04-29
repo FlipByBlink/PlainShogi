@@ -239,7 +239,7 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
                                    強調表示: self.この駒は操作直後))
                     .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
                     .rotationEffect(.degrees(📱.編集中 ? 15 : 0))
-                    .onChange(of: 📱.編集中) { _ in 📱.選択中の駒 = .なし }
+                    .onChange(of: 📱.編集中) { _ in 📱.駒の選択を解除する() }
             }
             .border(.tint, width: self.この駒を選択中 ? 2 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
@@ -327,7 +327,7 @@ private struct 操作エリア外で駒選択を解除: ViewModifier {
         content
             .background {
                 Color(uiColor: .systemBackground)
-                    .onTapGesture { 📱.選択中の駒 = .なし }
+                    .onTapGesture { 📱.駒の選択を解除する() }
             }
     }
 }

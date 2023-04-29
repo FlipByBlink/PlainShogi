@@ -12,10 +12,10 @@ class 📱アプリモデル: ObservableObject {
     @AppStorage("上下反転") var 🚩上下反転: Bool = false
     
     @Published var シートを表示: シートカテゴリ? = nil
-    @Published var 編集中: Bool = false
-    @Published var ドラッグ中の駒: ドラッグ対象 = .無し
-    @Published var 選択中の駒: 駒の場所 = .なし
     @Published var 成駒確認アラートを表示: Bool = false
+    @Published private(set) var 編集中: Bool = false
+    @Published private(set) var ドラッグ中の駒: ドラッグ対象 = .無し
+    @Published private(set) var 選択中の駒: 駒の場所 = .なし
     
     init() {
         self.局面 = Self.起動時の局面を読み込む()
@@ -26,9 +26,9 @@ class 📱アプリモデル: ObservableObject {
     //SharePlay
     private var ⓢubscriptions = Set<AnyCancellable>()
     private var ⓣasks = Set<Task<Void, Never>>()
-    @Published var ⓖroupSession: GroupSession<👥GroupActivity>?
+    @Published private(set) var ⓖroupSession: GroupSession<👥GroupActivity>?
     private var ⓜessenger: GroupSessionMessenger?
-    @Published var 参加人数: Int?
+    @Published private(set) var 参加人数: Int?
 }
 
 //MARK: - ==== 局面関連 ====
@@ -144,10 +144,23 @@ extension 📱アプリモデル {
         }
     }
     func 盤面を初期化する() {
-        self.局面.初期化する()
+        withAnimation { self.局面.初期化する() }
         self.選択中の駒 = .なし
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.エラー()
+        self.シートを表示 = nil
+    }
+    func 駒の選択を解除する() {
+        self.選択中の駒 = .なし
+    }
+    func 編集モードを開始する() {
+        self.シートを表示 = nil
+        withAnimation { self.編集中 = true }
+        💥フィードバック.軽め()
+    }
+    func 編集モードを終了する() {
+        withAnimation { self.編集中 = false }
+        💥フィードバック.成功()
     }
     func 編集モードでこの手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         self.局面.編集モードでこの手駒を一個増やす(陣営, 職名)
@@ -290,7 +303,7 @@ extension 📱アプリモデル {
             }
         }
     }
-    func 任意の局面を現在の局面として適用する(_ 局面: 局面モデル) {
+    func 任意の局面を現在の局面として適用する(_ 局面: 局面モデル) { //履歴, ブックマーク
         self.シートを表示 = nil
         withAnimation { self.局面.現在の局面として適用する(局面) }
         self.SharePlay中なら現在の局面を参加者に送信する()
