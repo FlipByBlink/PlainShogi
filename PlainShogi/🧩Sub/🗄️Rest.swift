@@ -6,18 +6,16 @@ struct 🚧フォントデバッグメニュー: View {
     @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
     var body: some View {
         HStack {
-            Toggle(isOn: self.$セリフ体) { Label("セリフ体", systemImage: "paintbrush.pointed") }
+            Toggle("セリフ体", isOn: self.$セリフ体)
                 .toggleStyle(.button)
-            Toggle(isOn: self.$太字) { Label("太字", systemImage: "bold") }
+            Toggle("太字", isOn: self.$太字)
                 .toggleStyle(.button)
-            Picker(selection: self.$サイズ) {
+            Picker("サイズ", selection: self.$サイズ) {
                 ForEach(フォント.サイズ.allCases) { Text($0.rawValue) }
-            } label: {
-                Label("サイズ", systemImage: "magnifyingglass")
             }
             .pickerStyle(.segmented)
         }
-        .font(.system(size: 12))
+        .font(.system(size: 14))
         .padding()
     }
 }
