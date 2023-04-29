@@ -7,7 +7,7 @@ struct 🚧フォントデバッグメニュー: View {
     var body: some View {
         HStack {
             Toggle(isOn: self.$セリフ体) { Label("セリフ体", systemImage: "paintbrush.pointed") }
-            .toggleStyle(.button)
+                .toggleStyle(.button)
             Toggle(isOn: self.$太字) { Label("太字", systemImage: "bold") }
                 .toggleStyle(.button)
             Picker(selection: self.$サイズ) {
@@ -17,7 +17,8 @@ struct 🚧フォントデバッグメニュー: View {
             }
             .pickerStyle(.segmented)
         }
-        .font(.system(size: 10))
+        .font(.system(size: 12))
+        .padding()
     }
 }
 

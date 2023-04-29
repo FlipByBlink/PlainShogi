@@ -16,10 +16,14 @@ let 🔗appStoreProductURL = URL(string: "https://apps.apple.com/app/id162026847
 let 👤privacyPolicyDescription = """
 2022-04-21
 
-### Japanese
+
+日本語(Japanese)
+
 このアプリ自身において、ユーザーの情報を一切収集しません。
 
-### English
+
+English
+
 This application don't collect user infomation.
 """
 
