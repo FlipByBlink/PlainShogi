@@ -17,6 +17,7 @@ struct 🚧フォントデバッグメニュー: View {
         }
         .font(.system(size: 14))
         .padding()
+        .padding(.trailing, 64)
     }
 }
 

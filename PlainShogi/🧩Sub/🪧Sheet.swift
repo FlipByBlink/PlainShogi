@@ -40,4 +40,3 @@ enum シートカテゴリ: Identifiable, Hashable {
     case メニュー, 履歴, ブックマーク, 手駒編集(王側か玉側か), SharePlayガイド//, 広告
     var id: Self { self }
 }
-

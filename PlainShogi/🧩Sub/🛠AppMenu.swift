@@ -76,7 +76,7 @@ private struct メニューボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     var body: some View {
-        if 📱.編集状態 != nil {
+        if 📱.編集中 {
             🪄編集完了ボタン()
         } else {
             Menu {
@@ -86,18 +86,12 @@ private struct メニューボタン: View {
                 一手戻すボタン()
                 self.上下反転ボタン()
                 self.履歴ボタン()
-                self.ブックマーク保存ボタン()
-                self.ブックマーク復元ボタン()
+                self.ブックマーク表示ボタン()
             } label: {
                 Image(systemName: self.セリフ体 ? "gear" : "gearshape")
+                    .font(.title3)
                     .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                    .padding(2)
-                    .background {
-                        Circle()
-                            .foregroundStyle(.background)
-                            .opacity(0.8)
-                    }
-                    .padding(8)
+                    .padding(12)
             } primaryAction: {
                 📱.シートを表示 = .メニュー
             }
@@ -121,22 +115,11 @@ private struct メニューボタン: View {
             Label("履歴を表示", systemImage: "clock")
         }
     }
-    private func ブックマーク保存ボタン() -> some View {
+    private func ブックマーク表示ボタン() -> some View {
         Button {
-            📱.現在の局面をブックマークする()
+            📱.シートを表示 = .ブックマーク
         } label: {
-            Label("この局面をブックマーク", systemImage: "bookmark")
-        }
-    }
-    private func ブックマーク復元ボタン() -> some View {
-        Button {
-            guard let 局面 = 局面モデル.ブックマーク else { return }
-            📱.任意の局面を現在の局面として適用する(局面)
-        } label: {
-            Label("ブックマークから復元", systemImage: "square.and.arrow.down")
-            
-                .font(.body.weight(.medium))
-                .buttonStyle(.bordered)
+            Label("ブックマークを表示", systemImage: "bookmark")
         }
     }
 }
@@ -194,7 +177,7 @@ private struct 編集モード開始ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
-            withAnimation { 📱.編集状態 = .盤面を編集中 }
+            withAnimation { 📱.編集中 = true }
             📱.シートを表示 = nil
             💥フィードバック.軽め()
         } label: {

@@ -1,16 +1,12 @@
 import SwiftUI
 
-enum 🪄編集モード: Equatable {
-    case 盤面を編集中, 手駒を編集中(王側か玉側か)
-}
-
 struct 🪄手駒編集ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 陣営: 王側か玉側か
     @AppStorage("太字") private var 太字: Bool = false
     var body: some View {
-        if 📱.編集状態 != nil {
+        if 📱.編集中 {
             Button {
                 📱.シートを表示 = .手駒編集(self.陣営)
             } label: {
@@ -22,11 +18,6 @@ struct 🪄手駒編集ボタン: View {
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
             .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
-            .onChange(of: 📱.編集状態) {
-                guard case .手駒を編集中(let 選択された陣営) = $0,
-                      選択された陣営 == self.陣営 else { return }
-                📱.シートを表示 = .手駒編集(選択された陣営)
-            }
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
@@ -40,7 +31,7 @@ struct 🪄編集モード用ⓧマーク: ViewModifier {
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .topLeading) {
-                if 📱.編集状態 != nil , case .盤駒(_) = 場所 {
+                if 📱.編集中, case .盤駒(_) = 場所 {
                     Image(systemName: "xmark.circle.fill")
                         .resizable()
                         .symbolRenderingMode(.palette)
@@ -60,7 +51,7 @@ struct 🪄編集完了ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         Button {
-            withAnimation { 📱.編集状態 = nil }
+            withAnimation { 📱.編集中 = false }
             💥フィードバック.成功()
         } label: {
             Image(systemName: "checkmark.circle.fill")
@@ -99,10 +90,6 @@ struct 手駒編集メニュー: View {
         }
         .listStyle(.plain)
         .navigationTitle(self.陣営 == .王側 ? "王側の手駒" : "玉側の手駒")
-        .onDisappear {
-            📱.シートを表示 = nil
-            📱.編集状態 = .盤面を編集中
-        }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }

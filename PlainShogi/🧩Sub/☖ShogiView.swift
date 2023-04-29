@@ -238,8 +238,8 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
                     .modifier(フォント(カテゴリ: .コマ,
                                    強調表示: self.この駒は操作直後))
                     .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
-                    .rotationEffect(.degrees(📱.編集状態 != nil ? 15 : 0))
-                    .onChange(of: 📱.編集状態) { _ in 📱.選択中の駒 = .なし }
+                    .rotationEffect(.degrees(📱.編集中 ? 15 : 0))
+                    .onChange(of: 📱.編集中) { _ in 📱.選択中の駒 = .なし }
             }
             .border(.tint, width: self.この駒を選択中 ? 2 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
@@ -259,9 +259,9 @@ private struct 成駒確認アラート: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     func body(content: Content) -> some View {
         content
-            .alert("成りますか？", isPresented: $📱.🚩成駒確認アラートを表示) {
+            .alert("成りますか？", isPresented: $📱.成駒確認アラートを表示) {
                 Button("成る") { 📱.今移動した駒を成る() }
-                Button("キャンセル", role: .cancel) { 📱.🚩成駒確認アラートを表示 = false }
+                Button("キャンセル", role: .cancel) { 📱.成駒確認アラートを表示 = false }
             } message: {
                 Text(📱.成駒確認メッセージ)
             }

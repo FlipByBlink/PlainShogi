@@ -12,11 +12,10 @@ class 📱アプリモデル: ObservableObject {
     @AppStorage("上下反転") var 🚩上下反転: Bool = false
     
     @Published var シートを表示: シートカテゴリ? = nil
-    @Published var 編集状態: 🪄編集モード? = nil
+    @Published var 編集中: Bool = false
     @Published var ドラッグ中の駒: ドラッグ対象 = .無し
     @Published var 選択中の駒: 駒の場所 = .なし
-    
-    @Published var 🚩成駒確認アラートを表示: Bool = false
+    @Published var 成駒確認アラートを表示: Bool = false
     
     init() {
         self.局面 = Self.起動時の局面を読み込む()
@@ -72,48 +71,45 @@ extension 📱アプリモデル {
         💥フィードバック.軽め()
     }
     func この駒を選択する(_ 今選択した場所: 駒の場所) {
-        switch self.編集状態 {
-            case .none:
-                switch self.選択中の駒 {
-                    case .なし:
-                        if self.局面.ここに駒がある(今選択した場所) {
-                            self.選択中の駒 = 今選択した場所
-                            💥フィードバック.軽め()
-                        }
-                    case .盤駒(let 位置) where self.選択中の駒 == 今選択した場所:
-                        if self.局面.この駒は成る事ができる(位置) {
-                            self.この駒を裏返す(位置)
-                        }
-                        self.選択中の駒 = .なし
-                    default:
-                        switch 今選択した場所 {
-                            case .盤駒(let 位置):
-                                if self.局面.ここからここへは移動不可(self.選択中の駒, .盤上(位置)) {
-                                    if self.局面.これとこれは同じ陣営(self.選択中の駒, 今選択した場所) {
-                                        self.選択中の駒 = 今選択した場所
-                                        💥フィードバック.軽め()
-                                    }
-                                } else {
-                                    self.盤上に駒を移動させる(.盤上(位置))
-                                }
-                            case .手駒(let 陣営, _):
-                                self.こちらの手駒エリアを選択する(陣営)
-                            default:
-                                break
-                        }
-                }
-            case .盤面を編集中:
-                switch 今選択した場所 {
-                    case .盤駒(_):
-                        self.編集モードでこの盤駒を消す(今選択した場所)
-                    case .手駒(let 陣営, _):
-                        self.編集状態 = .手駒を編集中(陣営)
+        if !self.編集中 {
+            switch self.選択中の駒 {
+                case .なし:
+                    if self.局面.ここに駒がある(今選択した場所) {
+                        self.選択中の駒 = 今選択した場所
                         💥フィードバック.軽め()
-                    default:
-                        break
-                }
-            case .手駒を編集中:
-                assertionFailure()
+                    }
+                case .盤駒(let 位置) where self.選択中の駒 == 今選択した場所:
+                    if self.局面.この駒は成る事ができる(位置) {
+                        self.この駒を裏返す(位置)
+                    }
+                    self.選択中の駒 = .なし
+                default:
+                    switch 今選択した場所 {
+                        case .盤駒(let 位置):
+                            if self.局面.ここからここへは移動不可(self.選択中の駒, .盤上(位置)) {
+                                if self.局面.これとこれは同じ陣営(self.選択中の駒, 今選択した場所) {
+                                    self.選択中の駒 = 今選択した場所
+                                    💥フィードバック.軽め()
+                                }
+                            } else {
+                                self.盤上に駒を移動させる(.盤上(位置))
+                            }
+                        case .手駒(let 陣営, _):
+                            self.こちらの手駒エリアを選択する(陣営)
+                        default:
+                            break
+                    }
+            }
+        } else {
+            switch 今選択した場所 {
+                case .盤駒(_):
+                    self.編集モードでこの盤駒を消す(今選択した場所)
+                case .手駒(let 陣営, _):
+                    self.シートを表示 = .手駒編集(陣営)
+                    💥フィードバック.軽め()
+                default:
+                    break
+            }
         }
     }
     func こちらの手駒エリアを選択する(_ 陣営: 王側か玉側か) {
@@ -189,7 +185,7 @@ extension 📱アプリモデル {
         if case .盤上(let 位置) = 置いた場所 {
             if self.局面.この駒移動で成る事が可能(.盤駒(位置), 出発場所) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                    self.🚩成駒確認アラートを表示 = true
+                    self.成駒確認アラートを表示 = true
                 }
             }
         }
