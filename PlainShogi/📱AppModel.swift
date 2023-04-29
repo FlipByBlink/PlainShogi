@@ -417,6 +417,13 @@ extension 📱アプリモデル {
     func 現在の盤面をテキストに変換する() -> String {
         📃テキスト連携機能.テキストに変換する(self.局面)
     }
+    func テキストを局面に変換して読み込む(_ テキスト: String) {
+        if let インポートした局面 = 📃テキスト連携機能.局面モデルに変換する(テキスト) {
+            self.局面.現在の局面として適用する(インポートした局面)
+            self.SharePlay中なら現在の局面を参加者に送信する()
+            💥フィードバック.成功()
+        }
+    }
     private func このアイテムを盤面に反映する(_ ⓘtemProviders: [NSItemProvider]) {
         Task { @MainActor in
             do {
@@ -424,11 +431,7 @@ extension 📱アプリモデル {
                 let ⓢecureCodingObject = try await ⓘtemProvider.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
                 guard let データ = ⓢecureCodingObject as? Data else { return }
                 guard let テキスト = String(data: データ, encoding: .utf8) else { return }
-                if let インポートした局面 = 📃テキスト連携機能.局面モデルに変換する(テキスト) {
-                    self.局面.現在の局面として適用する(インポートした局面)
-                    self.SharePlay中なら現在の局面を参加者に送信する()
-                    💥フィードバック.成功()
-                }
+                self.テキストを局面に変換して読み込む(テキスト)
                 self.ドラッグ中の駒 = .無し
             } catch {
                 print(#function, error)

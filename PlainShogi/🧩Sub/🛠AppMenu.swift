@@ -1,5 +1,6 @@
 import SwiftUI
 import GroupActivities
+import UniformTypeIdentifiers
 
 struct 🛠非SharePlay時のメニューボタン: ViewModifier {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -284,6 +285,24 @@ private struct テキスト書き出し読み込み紹介リンク: View {
         NavigationLink {
             List {
                 Section {
+                    Text(📱.現在の盤面をテキストに変換する())
+                        .padding()
+                        .accessibilityLabel("テキスト")
+                        .textSelection(.enabled)
+                        .frame(maxWidth: .infinity)
+                        .overlay(alignment: .bottomTrailing) {
+                            Button {
+                                UIPasteboard.general.string = 📱.現在の盤面をテキストに変換する()
+                            } label: {
+                                Label("コピー", systemImage: "doc.on.doc")
+                            }
+                            .buttonStyle(.bordered)
+                            .padding()
+                        }
+                } header: {
+                    Text("テキスト書き出し例")
+                }
+                Section {
                     Label("駒を他のアプリへドラッグして盤面をテキストとして書き出せます。",
                           systemImage: "square.and.arrow.up")
                     テキスト変換プレビュー(フォルダー名: "TextExport", 枚数: 4)
@@ -296,12 +315,13 @@ private struct テキスト書き出し読み込み紹介リンク: View {
                 }
                 .listRowSeparator(.hidden)
                 Section {
-                    Text(📱.現在の盤面をテキストに変換する())
-                        .padding()
-                        .accessibilityLabel("テキスト")
-                        .textSelection(.enabled)
-                } header: {
-                    Text("テキスト書き出し例")
+                    Button {
+                        guard let テキスト = UIPasteboard.general.string else { return }
+                        📱.テキストを局面に変換して読み込む(テキスト)
+                        📱.シートを表示 = nil
+                    } label: {
+                        Label("テキストを局面としてペーストする", systemImage: "doc.on.clipboard")
+                    }
                 }
             }
             .navigationTitle("テキスト機能")

@@ -32,6 +32,7 @@ struct 📣ADView: View {
         .onChange(of: self.scenePhase) {
             if $0 == .background { 🛒.🚩showADSheet = false }
         }
+        .onChange(of: 🛒.🚩purchased) { if $0 { self.🚩disableDismiss = false } }
         .interactiveDismissDisabled(self.🚩disableDismiss)
         .onReceive(self.🕒timer) { _ in
             if self.🕒countdown > 1 {
