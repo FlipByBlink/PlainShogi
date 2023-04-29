@@ -396,8 +396,8 @@ struct フォント: ViewModifier {
             switch self {
                 case .小: return .caption
                 case .標準: return .body
-                case .大: return .title3
-                case .最大: return .title
+                case .大: return .title2
+                case .最大: return .largeTitle
             }
         }
     }

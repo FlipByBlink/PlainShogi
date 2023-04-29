@@ -104,6 +104,7 @@ private struct ブックマークメニューリンク: View {
                         }
                         .padding()
                         .frame(maxWidth: .infinity)
+                        .contextMenu { self.デバッグ用削除ボタン() }
                     }
                 } else {
                     Label("ブックマークはありません", systemImage: "bookmark.slash")
@@ -122,6 +123,12 @@ private struct ブックマークメニューリンク: View {
             .navigationTitle("ブックマーク")
         }
         init(_ ﾌﾞｯｸﾏｰｸ: Binding<局面モデル?>) { self._ブックマーク = ﾌﾞｯｸﾏｰｸ }
+        private func デバッグ用削除ボタン() -> some View {
+            Button("削除") {
+                💾ICloud.remove(key: "ブックマーク")
+                self.ブックマーク = nil
+            }
+        }
     }
 }
 

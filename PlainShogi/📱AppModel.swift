@@ -21,7 +21,7 @@ class 📱アプリモデル: ObservableObject {
     
     init() {
         self.局面 = Self.起動時の局面を読み込む()
-        💾ICloud.addObserver(self, #selector(self.iCloudの外部変更を適用する(_:)))
+        💾ICloud.addObserver(self, #selector(self.iCloudによる外部からの履歴変更を適用する(_:)))
     }
     
     //SharePlay
@@ -306,8 +306,12 @@ extension 📱アプリモデル {
         💥フィードバック.軽め()
     }
     @objc @MainActor
-    func iCloudの外部変更を適用する(_ notification: Notification) {
+    func iCloudによる外部からの履歴変更を適用する(_ notification: Notification) {
         print("🖨️", notification.userInfo.debugDescription)
+        guard let ⓚeys = notification.userInfo?["NSUbiquitousKeyValueStoreChangedKeysKey"] as? [NSString],
+              ⓚeys.contains("履歴") else {
+            return
+        }
         Task { @MainActor in
             💾ICloud.synchronize()
             guard let 外部で変更された局面 = 局面モデル.履歴.last else { return }
