@@ -1,4 +1,5 @@
 import SwiftUI
+import GroupActivities
 
 struct 🗄️コマンド: Commands {
     @ObservedObject var 📱: 📱アプリモデル
@@ -29,12 +30,18 @@ struct 🗄️コマンド: Commands {
                     .disabled(📱.選択中の駒 == .なし)
                 Button("テキストとしてコピー") { 📱.現在の局面をテキストとしてコピー() }
                     .keyboardShortcut("c", modifiers: [])
-                Button("テキストを局面としてペーストする") { 📱.テキストを局面としてペースト() }
+                Button("テキストを局面としてペースト") { 📱.テキストを局面としてペースト() }
                     .keyboardShortcut("v", modifiers: [])
+                self.SharePlayメニューボタン()
             }
             .disabled(📱.シートを表示 == .広告)
         }
         CommandMenu("見た目") { Self.見た目コマンド() }
+    }
+    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    private func SharePlayメニューボタン() -> some View {
+        Button("SharePlayメニューを表示") { 📱.シートを表示 = .SharePlayガイド }
+            .disabled(!self.ⓖroupStateObserver.isEligibleForGroupSession)
     }
     private struct 見た目コマンド: View {
         @AppStorage("上下反転") private var 上下反転: Bool = false
@@ -109,35 +116,6 @@ struct 🗄️自動スリープ無効化: ViewModifier {
     }
 }
 
-struct 🗄️初回起動時に駒の動かし方の説明バナー: ViewModifier {
-    @AppStorage("起動回数") private var 起動回数: Int = 0
-    @State private var 🚩バナーを表示: Bool = false
-    func body(content: Content) -> some View {
-        content
-            .onAppear(perform: self.起動直後の確認作業)
-            .overlay(alignment: .top) {
-                if self.🚩バナーを表示 {
-                    Label("長押しして駒を持ち上げ、そのままスライドして移動させる。",
-                          systemImage: "hand.point.up.left")
-                    .font(.caption)
-                    .foregroundColor(.primary)
-                    .padding()
-                    .onTapGesture { self.🚩バナーを表示 = false }
-                }
-            }
-            .animation(.default.speed(0.33), value: self.🚩バナーを表示)
-    }
-    private func 起動直後の確認作業() {
-        self.起動回数 += 1
-        if self.起動回数 == 1 {
-            self.🚩バナーを表示 = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                self.🚩バナーを表示 = false
-            }
-        }
-    }
-}
-
 enum 🗄️MacCatalyst {
     class Delegate: UIResponder, UIApplicationDelegate {
 #if targetEnvironment(macCatalyst)
@@ -184,8 +162,7 @@ enum 🗄️MacCatalyst {
     }
 }
 
-struct 💬RequestUserReview: ViewModifier {
-    //@EnvironmentObject var 📱: 📱AppModel
+struct 🗄️RequestUserReview: ViewModifier {
     @State private var ⓒheckToRequest: Bool = false
     func body(content: Content) -> some View {
         content
