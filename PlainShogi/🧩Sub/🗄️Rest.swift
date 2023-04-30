@@ -39,10 +39,6 @@ struct 🗄️コマンド: Commands {
             Button("編集を開始") { 📱.編集モードを開始する() }
                 .keyboardShortcut(.return, modifiers: [])
                 .disabled(📱.編集中)
-            Button("上下反転") {
-                withAnimation { 📱.🚩上下反転.toggle() }
-            }
-            .keyboardShortcut("r", modifiers: [])
             Button("盤面を初期化") { 📱.盤面を初期化する() }
                 .keyboardShortcut(.delete)
             Button("強調表示をクリア") { 📱.強調表示をクリア() }
@@ -51,10 +47,27 @@ struct 🗄️コマンド: Commands {
                 .keyboardShortcut(.cancelAction)
                 .disabled(📱.選択中の駒 == .なし)
         }
+        CommandMenu("見た目") { Self.見た目コマンド() }
     }
-    init(_ 📱: 📱アプリモデル) {
-        self.📱 = 📱
+    private struct 見た目コマンド: View {
+        @AppStorage("上下反転") private var 上下反転: Bool = false
+        @AppStorage("セリフ体") private var セリフ体: Bool = false
+        @AppStorage("太字") private var 太字: Bool = false
+        @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
+        @AppStorage("English表記") private var English表記: Bool = false
+        @AppStorage("直近操作強調表示機能オフ") private var 直近操作強調オフ: Bool = false
+        var body: some View {
+            Toggle("上下反転", isOn: self.$上下反転)
+            Toggle("セリフ体", isOn: self.$セリフ体)
+            Toggle("太字", isOn: self.$太字)
+            Picker("駒のサイズ", selection: self.$サイズ) {
+                ForEach(フォント.サイズ.allCases) { Text($0.rawValue) }
+            }
+            Toggle("English表記", isOn: self.$English表記)
+            Toggle("操作した直後の駒を強調表示を常に無効", isOn: self.$直近操作強調オフ)
+        }
     }
+    init(_ 📱: 📱アプリモデル) { self.📱 = 📱 }
 }
 
 enum 🗄️データ移行ver_1_3 {

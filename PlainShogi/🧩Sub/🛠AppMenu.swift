@@ -115,7 +115,7 @@ private struct メニューボタン: View { // ⚙️
     }
     private func 上下反転ボタン() -> some View {
         Button {
-            withAnimation { 📱.🚩上下反転.toggle() }
+            📱.🚩上下反転.toggle()
             💥フィードバック.成功()
         } label: {
             Label(📱.🚩上下反転 ? "上下反転を元に戻す" : "上下反転させる",

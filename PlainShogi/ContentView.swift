@@ -15,7 +15,6 @@ struct ContentView: View {
         .modifier(💾アクティブ復帰時にiCloudを明示的に同期())
         .modifier(📣広告コンテンツ())
         .modifier(👥SharePlay環境構築())
-        //.overlay(alignment: .top) { 🚧フォントデバッグメニュー() }
         .modifier(🪧シート())
     }
 }

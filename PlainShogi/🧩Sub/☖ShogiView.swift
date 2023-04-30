@@ -13,6 +13,7 @@ struct 将棋View: View {
         .modifier(操作エリア外で駒選択を解除())
         .modifier(成駒確認アラート())
         .modifier(レイアウト.推定())
+        .modifier(アニメーション())
     }
 }
 
@@ -403,5 +404,21 @@ struct フォント: ViewModifier {
     }
     enum 対象カテゴリ {
         case コマ, 段筋
+    }
+}
+
+private struct アニメーション: ViewModifier {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @AppStorage("セリフ体") private var セリフ体: Bool = false
+    @AppStorage("太字") private var 太字: Bool = false
+    @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
+    func body(content: Content) -> some View {
+        content
+            .animation(.default, value: 📱.🚩English表記)
+            .animation(.default, value: 📱.🚩上下反転)
+            .animation(.default, value: 📱.編集中)
+            .animation(.default, value: self.セリフ体)
+            .animation(.default, value: self.太字)
+            .animation(.default, value: self.サイズ)
     }
 }

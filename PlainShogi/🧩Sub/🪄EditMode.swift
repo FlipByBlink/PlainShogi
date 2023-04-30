@@ -28,17 +28,34 @@ struct 🪄編集モード用ⓧマーク: ViewModifier {
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 場所: 駒の場所
     @AppStorage("太字") private var 太字: Bool = false
+    private var 編集中の盤上の駒: Bool {
+        if 📱.編集中, case .盤駒(_) = self.場所 {
+            return true
+        } else {
+            return false
+        }
+    }
     func body(content: Content) -> some View {
         content
-            .overlay(alignment: .topLeading) {
-                if 📱.編集中, case .盤駒(_) = 場所 {
-                    Image(systemName: "xmark.circle.fill")
-                        .resizable()
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.primary, .background)
-                        .font(.body.weight(self.太字 ? .medium : .light))
-                        .minimumScaleFactor(0.1)
+            .mask {
+                if self.編集中の盤上の駒 {
+                    Circle()
+                        .padding(.trailing, self.マスの大きさ / 2)
+                        .padding(.bottom, self.マスの大きさ / 2)
+                        .background(Color.white)
                         .padding(2)
+                        .compositingGroup()
+                        .luminanceToAlpha()
+                } else {
+                    Rectangle()
+                }
+            }
+            .overlay(alignment: .topLeading) {
+                if self.編集中の盤上の駒 {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .padding(self.マスの大きさ / 8)
+                        .font(.body.weight(self.太字 ? .heavy : .semibold))
                         .frame(width: self.マスの大きさ / 2,
                                height: self.マスの大きさ / 2)
                 }
