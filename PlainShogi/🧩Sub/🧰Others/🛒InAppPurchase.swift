@@ -138,12 +138,8 @@ class 🛒StoreModel: ObservableObject {
     
     private let 🆔productID: String
     
-    @Published var 🚩showADSheet: Bool = false
-    
-    func checkToShowADSheet() {
-        if !self.🚩purchased && (self.ⓛaunchCount > 5) {
-            self.🚩showADSheet = true
-        }
+    func checkToShowADSheet() -> Bool {
+        !self.🚩purchased && (self.ⓛaunchCount > 5)
     }
     
     @Published private(set) var 🎫product: Product?

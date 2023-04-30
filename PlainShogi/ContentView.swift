@@ -13,7 +13,6 @@ struct ContentView: View {
         .modifier(🗄️MacCatalyst.微調整())
         .modifier(🗄️自動スリープ無効化())
         .modifier(💾アクティブ復帰時にiCloudを明示的に同期())
-        .modifier(📣広告コンテンツ())
         .modifier(👥SharePlay環境構築())
         .modifier(🪧シート())
     }

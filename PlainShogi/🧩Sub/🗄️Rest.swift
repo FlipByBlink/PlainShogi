@@ -6,29 +6,33 @@ struct 🗄️コマンド: Commands {
         CommandGroup(replacing: .appSettings) {
             Button("メニューを表示") { 📱.シートを表示 = .メニュー }
                 .keyboardShortcut(",")
+                .disabled(📱.シートを表示 == .広告)
         }
         CommandMenu("ショートカット") {
-            Button("一手だけ戻す") { 📱.一手戻す() }
-                .keyboardShortcut("z", modifiers: [])
-            Button("履歴を表示") { 📱.シートを表示 = .履歴 }
-                .keyboardShortcut("y", modifiers: [])
-                .disabled(局面モデル.履歴.isEmpty)
-            Button("ブックマークを表示") { 📱.シートを表示 = .ブックマーク }
-                .keyboardShortcut("d", modifiers: [])
-            Button("編集を開始") { 📱.編集モードを開始する() }
-                .keyboardShortcut(.return, modifiers: [])
-                .disabled(📱.編集中)
-            Button("盤面を初期化") { 📱.盤面を初期化する() }
-                .keyboardShortcut(.delete)
-            Button("強調表示をクリア") { 📱.強調表示をクリア() }
-                .keyboardShortcut(.delete, modifiers: [.command, .shift])
-            Button("駒の選択を解除") { 📱.駒の選択を解除する() }
-                .keyboardShortcut(.cancelAction)
-                .disabled(📱.選択中の駒 == .なし)
-            Button("テキストとしてコピー") { 📱.現在の局面をテキストとしてコピー() }
-                .keyboardShortcut("c", modifiers: [])
-            Button("テキストを局面としてペーストする") { 📱.テキストを局面としてペースト() }
-                .keyboardShortcut("v", modifiers: [])
+            Group {
+                Button("一手だけ戻す") { 📱.一手戻す() }
+                    .keyboardShortcut("z", modifiers: [])
+                Button("履歴を表示") { 📱.シートを表示 = .履歴 }
+                    .keyboardShortcut("y", modifiers: [])
+                    .disabled(局面モデル.履歴.isEmpty)
+                Button("ブックマークを表示") { 📱.シートを表示 = .ブックマーク }
+                    .keyboardShortcut("d", modifiers: [])
+                Button("編集を開始") { 📱.編集モードを開始する() }
+                    .keyboardShortcut(.return, modifiers: [])
+                    .disabled(📱.編集中)
+                Button("盤面を初期化") { 📱.盤面を初期化する() }
+                    .keyboardShortcut(.delete)
+                Button("強調表示をクリア") { 📱.強調表示をクリア() }
+                    .keyboardShortcut(.delete, modifiers: [.command, .shift])
+                Button("駒の選択を解除") { 📱.駒の選択を解除する() }
+                    .keyboardShortcut(.cancelAction)
+                    .disabled(📱.選択中の駒 == .なし)
+                Button("テキストとしてコピー") { 📱.現在の局面をテキストとしてコピー() }
+                    .keyboardShortcut("c", modifiers: [])
+                Button("テキストを局面としてペーストする") { 📱.テキストを局面としてペースト() }
+                    .keyboardShortcut("v", modifiers: [])
+            }
+            .disabled(📱.シートを表示 == .広告)
         }
         CommandMenu("見た目") { Self.見た目コマンド() }
     }

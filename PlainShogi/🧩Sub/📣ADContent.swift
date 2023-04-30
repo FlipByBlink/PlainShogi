@@ -2,17 +2,9 @@ import SwiftUI
 
 typealias 🛒Storeモデル = 🛒StoreModel
 
-struct 📣広告コンテンツ: ViewModifier {
-    @EnvironmentObject private var 🛒: 🛒StoreModel
+struct 📣広告コンテンツ: View {
     @State private var ⓐpp: 📣MyApp = .pickUpAppWithout(.PlainShogiBoard)
-    func body(content: Content) -> some View {
-        content
-            .sheet(isPresented: $🛒.🚩showADSheet) {
-                📣ADView(self.ⓐpp, second: 15)
-                    .environmentObject(🛒)
-            }
-            .onAppear {
-                🛒.checkToShowADSheet()
-            }
+    var body: some View {
+        📣ADView(self.ⓐpp, second: 20)
     }
 }

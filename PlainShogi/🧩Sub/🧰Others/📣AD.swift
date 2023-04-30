@@ -15,6 +15,7 @@ struct 📣ADView: View {
     @EnvironmentObject private var 🛒: 🛒StoreModel
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.verticalSizeClass) private var verticalSizeClass
+    @Environment(\.dismiss) private var dismiss
     @State private var 🚩disableDismiss: Bool = true
     private let 🕒timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     @State private var 🕒countdown: Int
@@ -30,7 +31,7 @@ struct 📣ADView: View {
             }
         }
         .onChange(of: self.scenePhase) {
-            if $0 == .background { 🛒.🚩showADSheet = false }
+            if $0 == .background { self.dismiss() }
         }
         .onChange(of: 🛒.🚩purchased) { if $0 { self.🚩disableDismiss = false } }
         .interactiveDismissDisabled(self.🚩disableDismiss)
@@ -154,7 +155,7 @@ struct 📣ADView: View {
     }
     private func ⓓismissButton() -> some View {
         Button {
-            🛒.🚩showADSheet = false
+            self.dismiss()
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         } label: {
             if self.🚩disableDismiss {
@@ -164,6 +165,7 @@ struct 📣ADView: View {
                     .font(.body.weight(.medium))
             }
         }
+        .keyboardShortcut(.cancelAction)
         .foregroundStyle(self.🚩disableDismiss ? .tertiary : .primary)
         .disabled(self.🚩disableDismiss)
         .animation(.default, value: self.🚩disableDismiss)

@@ -11,7 +11,7 @@ class 📱アプリモデル: ObservableObject {
     @AppStorage("直近操作強調表示機能オフ") var 🚩直近操作強調表示機能オフ: Bool = false
     @AppStorage("上下反転") var 🚩上下反転: Bool = false
     
-    @Published var シートを表示: シートカテゴリ? = nil
+    @Published var シートを表示: 🪧シートカテゴリ? = nil
     @Published var 成駒確認アラートを表示: Bool = false
     @Published private(set) var 編集中: Bool = false
     @Published private(set) var ドラッグ中の駒: ドラッグ対象 = .無し
