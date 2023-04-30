@@ -25,6 +25,10 @@ struct 🗄️コマンド: Commands {
             Button("駒の選択を解除") { 📱.駒の選択を解除する() }
                 .keyboardShortcut(.cancelAction)
                 .disabled(📱.選択中の駒 == .なし)
+            Button("テキストとしてコピー") { 📱.現在の局面をテキストとしてコピー() }
+                .keyboardShortcut("c", modifiers: [])
+            Button("テキストを局面としてペーストする") { 📱.テキストを局面としてペースト() }
+                .keyboardShortcut("v", modifiers: [])
         }
         CommandMenu("見た目") { Self.見た目コマンド() }
     }

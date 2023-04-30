@@ -29,11 +29,8 @@ struct 🪄編集モード用ⓧマーク: ViewModifier {
     private var 場所: 駒の場所
     @AppStorage("太字") private var 太字: Bool = false
     private var 編集中の盤上の駒: Bool {
-        if 📱.編集中, case .盤駒(_) = self.場所 {
-            return true
-        } else {
-            return false
-        }
+        guard 📱.編集中, case .盤駒(_) = self.場所 else { return false }
+        return true
     }
     func body(content: Content) -> some View {
         content

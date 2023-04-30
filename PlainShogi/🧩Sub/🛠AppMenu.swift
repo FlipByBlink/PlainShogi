@@ -283,6 +283,7 @@ private struct 細かな使い方リンク: View {
     }
     private func メニューショートカットセクション() -> some View {
         Section {
+#if !targetEnvironment(macCatalyst)
             VStack {
                 Text("メニューボタンを長押しすると「初期化ボタン」や「編集ボタン」を呼び出せます。")
                     .minimumScaleFactor(0.1)
@@ -294,6 +295,7 @@ private struct 細かな使い方リンク: View {
                     .padding(8)
             }
             .padding()
+#endif
         }
     }
 }
@@ -311,7 +313,7 @@ private struct テキスト書き出し読み込み紹介リンク: View {
                         .frame(maxWidth: .infinity)
                         .overlay(alignment: .bottomTrailing) {
                             Button {
-                                UIPasteboard.general.string = 📱.現在の盤面をテキストに変換する()
+                                📱.現在の局面をテキストとしてコピー()
                             } label: {
                                 Label("コピー", systemImage: "doc.on.doc")
                             }
@@ -335,8 +337,7 @@ private struct テキスト書き出し読み込み紹介リンク: View {
                 .listRowSeparator(.hidden)
                 Section {
                     Button {
-                        guard let テキスト = UIPasteboard.general.string else { return }
-                        📱.テキストを局面に変換して読み込む(テキスト)
+                        📱.テキストを局面としてペースト()
                         📱.シートを表示 = nil
                     } label: {
                         Label("テキストを局面としてペーストする", systemImage: "doc.on.clipboard")

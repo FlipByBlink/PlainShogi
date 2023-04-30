@@ -220,83 +220,6 @@ extension 📱アプリモデル {
     }
 }
 
-//MARK: - ==== ドラッグ関連 ====
-extension 📱アプリモデル {
-    func この駒をドラッグし始める(_ 場所: 駒の場所) -> NSItemProvider {
-        self.選択中の駒 = .なし
-        💥フィードバック.軽め()
-        self.ドラッグ中の駒 = .アプリ内の駒(場所)
-        return self.ドラッグ対象となるアイテムを用意する()
-    }
-    private func ドラッグ対象となるアイテムを用意する() -> NSItemProvider {
-        let テキスト = self.現在の盤面をテキストに変換する()
-        let ⓘtemProvider = NSItemProvider(object: テキスト as NSItemProviderWriting)
-        ⓘtemProvider.suggestedName = "アプリ内でのコマ移動"
-        return ⓘtemProvider
-    }
-}
-
-//MARK: - ==== ドロップ関連 ====
-extension 📱アプリモデル {
-    func ここにドロップする(_ 置いた場所: 駒の移動先パターン, _ ⓘnfo: DropInfo) -> Bool {
-        do {
-            switch self.ドラッグ中の駒 {
-                case .アプリ内の駒(let 出発場所):
-                    try self.局面.駒を移動させる(出発場所, 置いた場所)
-                    self.駒移動後の成駒について対応する(出発場所, 置いた場所)
-                    self.ドラッグ中の駒 = .無し
-                    self.SharePlay中なら現在の局面を参加者に送信する()
-                    💥フィードバック.軽め()
-                case .アプリ外のコンテンツ:
-                    let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
-                    self.このアイテムを盤面に反映する(ⓘtemProviders)
-                case .無し:
-                    return false
-            }
-            return true
-        } catch 局面モデル.🚨駒移動エラー.無効 {
-            return false
-        } catch {
-            print("🚨", error.localizedDescription)
-            assertionFailure()
-            return false
-        }
-    }
-    func ここはドロップ可能か確認する(_ 移動先: 駒の移動先パターン) -> DropProposal? {
-        guard case .アプリ内の駒(let ドラッグし始めた場所) = self.ドラッグ中の駒 else { return nil }
-        if self.局面.ここからここへは移動不可(ドラッグし始めた場所, 移動先) {
-            return DropProposal(operation: .cancel)
-        } else {
-            return nil
-        }
-    }
-    func 有効なドロップかチェックする(_ ⓘnfo: DropInfo) -> Bool {
-        let ⓘtemProviders = ⓘnfo.itemProviders(for: [.utf8PlainText])
-        guard let ⓘtemProvider = ⓘtemProviders.first else { return false }
-#if targetEnvironment(macCatalyst)
-        if 🗄️MacCatalyst.このアイテムはアプリ内でのドラッグ(ⓘtemProvider) {
-            return true
-        } else {
-            self.ドラッグ中の駒 = .アプリ外のコンテンツ
-            return true
-        }
-#else
-        if let ⓢuggestedName = ⓘtemProvider.suggestedName {
-            if ⓢuggestedName != "アプリ内でのコマ移動" {
-                print("アプリ外部からのアイテムです")
-                print("itemProvider.suggestedName: ", ⓢuggestedName)
-                self.ドラッグ中の駒 = .アプリ外のコンテンツ
-            }
-        } else {
-            print("アプリ外部からのアイテムです")
-            print("itemProvider.suggestedNameがありません")
-            self.ドラッグ中の駒 = .アプリ外のコンテンツ
-        }
-        return true
-#endif
-    }
-}
-
 //MARK: - ==== 局面の読み込みや復元 ====
 extension 📱アプリモデル {
     private static func 起動時の局面を読み込む() -> 局面モデル {
@@ -332,6 +255,77 @@ extension 📱アプリモデル {
             self.SharePlay中なら現在の局面を参加者に送信する()
             💥フィードバック.成功()
         }
+    }
+}
+
+//MARK: - ==== ドラッグ関連 ====
+extension 📱アプリモデル {
+    func この駒をドラッグし始める(_ 場所: 駒の場所) -> NSItemProvider {
+        self.選択中の駒 = .なし
+        💥フィードバック.軽め()
+        self.ドラッグ中の駒 = .アプリ内の駒(場所)
+        return self.ドラッグ対象となるアイテムを用意する()
+    }
+    private func ドラッグ対象となるアイテムを用意する() -> NSItemProvider {
+        let テキスト = self.現在の盤面をテキストに変換する()
+        let ⓘtemProvider = NSItemProvider(object: テキスト as NSItemProviderWriting)
+        ⓘtemProvider.suggestedName = "アプリ内でのコマ移動"
+        return ⓘtemProvider
+    }
+}
+
+//MARK: - ==== ドロップ関連 ====
+extension 📱アプリモデル {
+    func ここにドロップする(_ 置いた場所: 駒の移動先パターン, _ ⓘnfo: DropInfo) -> Bool {
+        do {
+            switch self.ドラッグ中の駒 {
+                case .アプリ内の駒(let 出発場所):
+                    try self.局面.駒を移動させる(出発場所, 置いた場所)
+                    self.駒移動後の成駒について対応する(出発場所, 置いた場所)
+                    self.ドラッグ中の駒 = .無し
+                    self.SharePlay中なら現在の局面を参加者に送信する()
+                    💥フィードバック.軽め()
+                case .アプリ外のコンテンツ:
+                    let ⓘtemProviders = ⓘnfo.itemProviders(for: [.utf8PlainText])
+                    self.このアイテムを盤面に反映する(ⓘtemProviders)
+                case .無し:
+                    return false
+            }
+            return true
+        } catch 局面モデル.🚨駒移動エラー.無効 {
+            return false
+        } catch {
+            print("🚨", error.localizedDescription)
+            assertionFailure()
+            return false
+        }
+    }
+    func ここはドロップ可能か確認する(_ 移動先: 駒の移動先パターン) -> DropProposal? {
+        guard case .アプリ内の駒(let ドラッグし始めた場所) = self.ドラッグ中の駒 else { return nil }
+        if self.局面.ここからここへは移動不可(ドラッグし始めた場所, 移動先) {
+            return DropProposal(operation: .cancel)
+        } else {
+            return nil
+        }
+    }
+    func 有効なドロップかチェックする(_ ⓘnfo: DropInfo) -> Bool {
+        let ⓘtemProviders = ⓘnfo.itemProviders(for: [.utf8PlainText])
+        guard let ⓘtemProvider = ⓘtemProviders.first else { return false }
+#if targetEnvironment(macCatalyst)
+        if !🗄️MacCatalyst.このアイテムはアプリ内でのドラッグ(ⓘtemProvider) {
+            self.ドラッグ中の駒 = .アプリ外のコンテンツ
+        }
+        return true
+#else
+        if let ⓢuggestedName = ⓘtemProvider.suggestedName {
+            if ⓢuggestedName != "アプリ内でのコマ移動" {
+                self.ドラッグ中の駒 = .アプリ外のコンテンツ
+            }
+        } else {
+            self.ドラッグ中の駒 = .アプリ外のコンテンツ
+        }
+        return true
+#endif
     }
 }
 
@@ -426,12 +420,19 @@ extension 📱アプリモデル {
     func 現在の盤面をテキストに変換する() -> String {
         📃テキスト連携機能.テキストに変換する(self.局面)
     }
-    func テキストを局面に変換して読み込む(_ テキスト: String) {
+    private func テキストを局面に変換して読み込む(_ テキスト: String) {
         if let インポートした局面 = 📃テキスト連携機能.局面モデルに変換する(テキスト) {
             self.局面.現在の局面として適用する(インポートした局面)
             self.SharePlay中なら現在の局面を参加者に送信する()
             💥フィードバック.成功()
         }
+    }
+    func 現在の局面をテキストとしてコピー() {
+        UIPasteboard.general.string = self.現在の盤面をテキストに変換する()
+    }
+    func テキストを局面としてペースト() {
+        guard let テキスト = UIPasteboard.general.string else { return }
+        self.テキストを局面に変換して読み込む(テキスト)
     }
     private func このアイテムを盤面に反映する(_ ⓘtemProviders: [NSItemProvider]) {
         Task { @MainActor in
