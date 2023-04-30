@@ -108,6 +108,7 @@ struct 👥SharePlayインジケーター: View {
             .accessibilityLabel("SharePlayメニュー")
             .modifier(Self.ボタンスタイル())
             .buttonBorderShape(.capsule)
+            .padding(.top, 🗄️固定値.SharePlayインジケーター上部パディング)
             .dynamicTypeSize(...DynamicTypeSize.accessibility1)
             .foregroundStyle(self.🚩SharePlay中 ? .primary : .secondary)
         }

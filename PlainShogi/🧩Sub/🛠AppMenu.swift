@@ -2,42 +2,20 @@ import SwiftUI
 import GroupActivities
 import UniformTypeIdentifiers
 
-struct 🛠非SharePlay時のメニューボタン: ViewModifier {
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
-    private var 縦並び: Bool {
-        self.verticalSizeClass == .regular
-        && self.horizontalSizeClass == .compact
-    }
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+struct 🛠ツールボタン: ViewModifier {
+    @EnvironmentObject private var 📱: 📱アプリモデル
     func body(content: Content) -> some View {
         content
-            .overlay(alignment: self.縦並び ? .bottomTrailing : .topTrailing) {
-                if !self.ⓖroupStateObserver.isEligibleForGroupSession {
-                    ツールボタン()
-                        .padding()
+            .overlay(alignment: .topTrailing) {
+                Group {
+                    if 📱.編集中 {
+                        🪄編集完了ボタン()
+                    } else {
+                        メニューボタン()
+                    }
                 }
+                .animation(.default, value: 📱.編集中)
             }
-    }
-}
-
-struct 🛠SharePlayインジケーターやメニューボタン: View {
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-    var body: some View {
-        if self.ⓖroupStateObserver.isEligibleForGroupSession {
-#if !targetEnvironment(macCatalyst)
-            HStack {
-                👥SharePlayインジケーター()
-                    .padding(.leading, 12)
-                    .padding(.top)
-                Spacer()
-                ツールボタン()
-            }
-#else
-            👥SharePlayインジケーター()
-                .padding(.top)
-#endif
-        }
     }
 }
 
@@ -81,25 +59,17 @@ struct 🛠アプリメニュー: View {
     }
 }
 
-private struct ツールボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    var body: some View {
-#if !targetEnvironment(macCatalyst)
-        if 📱.編集中 {
-            🪄編集完了ボタン()
-        } else {
-            メニューボタン()
-        }
-#else
-        EmptyView()
-#endif
-    }
-}
-
 private struct メニューボタン: View { // ⚙️
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     var body: some View {
+#if !targetEnvironment(macCatalyst)
+        self.ⓒontent()
+#else
+        EmptyView()
+#endif
+    }
+    private func ⓒontent() -> some View {
         Menu {
             強調表示クリアボタン()
             盤面初期化ボタン()
@@ -111,9 +81,10 @@ private struct メニューボタン: View { // ⚙️
             self.駒の選択解除ボタン()
         } label: {
             Image(systemName: self.セリフ体 ? "gear" : "gearshape")
-                .font(.title3)
+                .font(.title2)
                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                .padding(12)
+                .padding()
+                .padding(.trailing, 8)
         } primaryAction: {
             📱.シートを表示 = .メニュー
         }

@@ -68,12 +68,13 @@ struct 🪄編集完了ボタン: View {
             📱.編集モードを終了する()
         } label: {
             Image(systemName: "checkmark.circle.fill")
-                .font(.title)
-                .dynamicTypeSize(...DynamicTypeSize.accessibility3)
-                .padding(10)
+                .font(.title2.weight(.medium))
+                .dynamicTypeSize(...DynamicTypeSize.accessibility1)
+                .padding()
+                .padding(.trailing, 8)
         }
         .keyboardShortcut(.cancelAction)
-        .tint(.secondary)
+        .tint(.primary)
         .accessibilityLabel("Done")
     }
 }

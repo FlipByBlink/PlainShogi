@@ -4,10 +4,10 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
             将棋View()
-            🛠SharePlayインジケーターやメニューボタン()
+            👥SharePlayインジケーター()
         }
         .padding(🗄️固定値.全体パディング)
-        .modifier(🛠非SharePlay時のメニューボタン())
+        .modifier(🛠ツールボタン())
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .modifier(🗄️MacCatalyst.微調整())
         .modifier(🗄️自動スリープ無効化())

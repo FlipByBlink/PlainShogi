@@ -107,6 +107,13 @@ enum 🗄️固定値 {
             default: return 16
         }
     }
+    static var SharePlayインジケーター上部パディング: CGFloat {
+        switch UIDevice.current.userInterfaceIdiom {
+            case .phone: return 12
+            case .pad: return 16
+            default: return 16
+        }
+    }
 }
 
 struct 🗄️自動スリープ無効化: ViewModifier {
@@ -135,19 +142,13 @@ enum 🗄️MacCatalyst {
         func body(content: Content) -> some View {
 #if targetEnvironment(macCatalyst)
             content
-                .padding(24)
+                .padding(20)
                 .onAppear {
                     (UIApplication.shared.connectedScenes.first as? UIWindowScene)?
                         .titlebar?
                         .titleVisibility = .hidden
                 }
                 .ignoresSafeArea()
-                .overlay(alignment: .topTrailing) {
-                    if 📱.編集中 {
-                        🪄編集完了ボタン()
-                            .padding()
-                    }
-                }
             //titlebarのheightは36?
 #else
             content
