@@ -271,8 +271,16 @@ extension 📱アプリモデル {
         }
     }
     func 有効なドロップかチェックする(_ ⓘnfo: DropInfo) -> Bool {
-        let ⓘtemProviders = ⓘnfo.itemProviders(for: [UTType.utf8PlainText])
+        let ⓘtemProviders = ⓘnfo.itemProviders(for: [.utf8PlainText])
         guard let ⓘtemProvider = ⓘtemProviders.first else { return false }
+#if targetEnvironment(macCatalyst)
+        if 🗄️MacCatalyst.このアイテムはアプリ内でのドラッグ(ⓘtemProvider) {
+            return true
+        } else {
+            self.ドラッグ中の駒 = .アプリ外のコンテンツ
+            return true
+        }
+#else
         if let ⓢuggestedName = ⓘtemProvider.suggestedName {
             if ⓢuggestedName != "アプリ内でのコマ移動" {
                 print("アプリ外部からのアイテムです")
@@ -285,6 +293,7 @@ extension 📱アプリモデル {
             self.ドラッグ中の駒 = .アプリ外のコンテンツ
         }
         return true
+#endif
     }
 }
 

@@ -162,6 +162,12 @@ enum 🗄️MacCatalyst {
 #endif
         }
     }
+    static func このアイテムはアプリ内でのドラッグ(_ ⓘtemProvider: NSItemProvider) -> Bool {
+        ⓘtemProvider.hasRepresentationConforming(toTypeIdentifier: "com.apple.uikit.private.drag-item")
+        //- MacではSuggestNameが利用不可っぽい。
+        //- iOSと違いMac上ではregisteredTypeに"com.apple.uikit.private.drag-item"が追加されている。
+        //- なので代わりにそれで判定。
+    }
 }
 
 struct 💬RequestUserReview: ViewModifier {
