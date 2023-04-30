@@ -21,7 +21,7 @@ struct 🚧フォントデバッグメニュー: View {
     }
 }
 
-struct 🗄️コマンド: Commands { //TODO: Work in progress
+struct 🗄️コマンド: Commands {
     @ObservedObject var 📱: 📱アプリモデル
     var body: some Commands {
         CommandGroup(replacing: .appSettings) {
@@ -47,6 +47,9 @@ struct 🗄️コマンド: Commands { //TODO: Work in progress
                 .keyboardShortcut(.delete)
             Button("強調表示をクリア") { 📱.強調表示をクリア() }
                 .keyboardShortcut(.delete, modifiers: [.command, .shift])
+            Button("駒の選択を解除") { 📱.駒の選択を解除する() }
+                .keyboardShortcut(.cancelAction)
+                .disabled(📱.選択中の駒 == .なし)
         }
     }
     init(_ 📱: 📱アプリモデル) {

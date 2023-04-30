@@ -14,7 +14,7 @@ struct 🛠非SharePlay時のメニューボタン: ViewModifier {
         content
             .overlay(alignment: self.縦並び ? .bottomTrailing : .topTrailing) {
                 if !self.ⓖroupStateObserver.isEligibleForGroupSession {
-                    メニューボタン()
+                    ツールボタン()
                         .padding()
                 }
             }
@@ -28,8 +28,9 @@ struct 🛠SharePlayインジケーターやメニューボタン: View {
             HStack {
                 👥SharePlayインジケーター()
                     .padding(.leading, 12)
+                    .padding(.top)
                 Spacer()
-                メニューボタン()
+                ツールボタン()
             }
         }
     }
@@ -71,35 +72,46 @@ struct 🛠アプリメニュー: View {
             ℹ️AboutAppLink()
         }
         .navigationTitle("メニュー")
+        .animation(.default, value: self.ⓖroupStateObserver.isEligibleForGroupSession)
     }
 }
 
-private struct メニューボタン: View {
+private struct ツールボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
     var body: some View {
         if 📱.編集中 {
             🪄編集完了ボタン()
         } else {
-            Menu {
-                強調表示クリアボタン()
-                盤面初期化ボタン()
-                編集モード開始ボタン()
-                一手戻すボタン()
-                self.上下反転ボタン()
-                self.履歴ボタン()
-                self.ブックマーク表示ボタン()
-            } label: {
-                Image(systemName: self.セリフ体 ? "gear" : "gearshape")
-                    .font(.title3)
-                    .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                    .padding(12)
-            } primaryAction: {
-                📱.シートを表示 = .メニュー
-            }
-            .tint(.primary)
-            .accessibilityLabel("Open menu")
+#if !targetEnvironment(macCatalyst)
+            メニューボタン()
+#endif
         }
+    }
+}
+
+private struct メニューボタン: View { // ⚙️
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @AppStorage("セリフ体") private var セリフ体: Bool = false
+    var body: some View {
+        Menu {
+            強調表示クリアボタン()
+            盤面初期化ボタン()
+            編集モード開始ボタン()
+            一手戻すボタン()
+            self.上下反転ボタン()
+            self.履歴ボタン()
+            self.ブックマーク表示ボタン()
+            self.駒の選択解除ボタン()
+        } label: {
+            Image(systemName: self.セリフ体 ? "gear" : "gearshape")
+                .font(.title3)
+                .dynamicTypeSize(...DynamicTypeSize.accessibility1)
+                .padding(12)
+        } primaryAction: {
+            📱.シートを表示 = .メニュー
+        }
+        .tint(.primary)
+        .accessibilityLabel("Open menu")
     }
     private func 上下反転ボタン() -> some View {
         Button {
@@ -122,6 +134,17 @@ private struct メニューボタン: View {
             📱.シートを表示 = .ブックマーク
         } label: {
             Label("ブックマークを表示", systemImage: "bookmark")
+        }
+    }
+    private func 駒の選択解除ボタン() -> some View {
+        Group {
+            if 📱.選択中の駒 != .なし {
+                Button {
+                    📱.駒の選択を解除する()
+                } label: {
+                    Label("駒の選択を解除", systemImage: "square.slash")
+                }
+            }
         }
     }
 }
