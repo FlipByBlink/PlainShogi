@@ -25,6 +25,7 @@ struct 🛠SharePlayインジケーターやメニューボタン: View {
     @StateObject private var ⓖroupStateObserver = GroupStateObserver()
     var body: some View {
         if self.ⓖroupStateObserver.isEligibleForGroupSession {
+#if !targetEnvironment(macCatalyst)
             HStack {
                 👥SharePlayインジケーター()
                     .padding(.leading, 12)
@@ -32,6 +33,10 @@ struct 🛠SharePlayインジケーターやメニューボタン: View {
                 Spacer()
                 ツールボタン()
             }
+#else
+            👥SharePlayインジケーター()
+                .padding(.top)
+#endif
         }
     }
 }
@@ -79,13 +84,15 @@ struct 🛠アプリメニュー: View {
 private struct ツールボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
+#if !targetEnvironment(macCatalyst)
         if 📱.編集中 {
             🪄編集完了ボタン()
         } else {
-#if !targetEnvironment(macCatalyst)
             メニューボタン()
-#endif
         }
+#else
+        EmptyView()
+#endif
     }
 }
 

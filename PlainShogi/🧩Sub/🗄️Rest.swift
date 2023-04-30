@@ -95,12 +95,7 @@ enum 🗄️固定値 {
     static var 全体パディング: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
             case .phone: return 16
-            case .pad:
-#if targetEnvironment(macCatalyst)
-                return 40
-#else
-                return 24
-#endif
+            case .pad: return 24
             case .tv: return 36
             default: return 16
         }
@@ -158,15 +153,26 @@ enum 🗄️MacCatalyst {
 #endif
     }
     struct 微調整: ViewModifier {
+        @EnvironmentObject var 📱: 📱アプリモデル
         func body(content: Content) -> some View {
-            content
 #if targetEnvironment(macCatalyst)
+            content
+                .padding(24)
                 .onAppear {
                     (UIApplication.shared.connectedScenes.first as? UIWindowScene)?
                         .titlebar?
                         .titleVisibility = .hidden
                 }
-                .padding(.bottom, 24)
+                .ignoresSafeArea()
+                .overlay(alignment: .topTrailing) {
+                    if 📱.編集中 {
+                        🪄編集完了ボタン()
+                            .padding()
+                    }
+                }
+            //titlebarのheightは36?
+#else
+            content
 #endif
         }
     }
