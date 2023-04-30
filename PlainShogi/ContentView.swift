@@ -10,7 +10,7 @@ struct ContentView: View {
         .modifier(🛠非SharePlay時のメニューボタン())
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .modifier(🗄️初回起動時に駒の動かし方の説明バナー())
-        .modifier(🗄️MacCatalyst用の微調整())
+        .modifier(🗄️MacCatalyst.微調整())
         .modifier(🗄️自動スリープ無効化())
         .modifier(💾アクティブ復帰時にiCloudを明示的に同期())
         .modifier(📣広告コンテンツ())

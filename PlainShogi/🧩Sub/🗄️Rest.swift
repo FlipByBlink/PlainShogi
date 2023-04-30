@@ -1,26 +1,5 @@
 import SwiftUI
 
-struct 🚧フォントデバッグメニュー: View {
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
-    @AppStorage("太字") private var 太字: Bool = false
-    @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
-    var body: some View {
-        HStack {
-            Toggle("セリフ体", isOn: self.$セリフ体)
-                .toggleStyle(.button)
-            Toggle("太字", isOn: self.$太字)
-                .toggleStyle(.button)
-            Picker("サイズ", selection: self.$サイズ) {
-                ForEach(フォント.サイズ.allCases) { Text($0.rawValue) }
-            }
-            .pickerStyle(.segmented)
-        }
-        .font(.system(size: 14))
-        .padding()
-        .padding(.trailing, 64)
-    }
-}
-
 struct 🗄️コマンド: Commands {
     @ObservedObject var 📱: 📱アプリモデル
     var body: some Commands {
@@ -156,17 +135,32 @@ struct 🗄️初回起動時に駒の動かし方の説明バナー: ViewModifi
     }
 }
 
-struct 🗄️MacCatalyst用の微調整: ViewModifier {
-    func body(content: Content) -> some View {
-        content
+enum 🗄️MacCatalyst {
+    class Delegate: UIResponder, UIApplicationDelegate {
 #if targetEnvironment(macCatalyst)
-            .onAppear {
-                (UIApplication.shared.connectedScenes.first as? UIWindowScene)?
-                    .titlebar?
-                    .titleVisibility = .hidden
-            }
-            .padding(.bottom, 24)
+        override func buildMenu(with builder: UIMenuBuilder) {
+            builder.remove(menu: .services)
+            builder.remove(menu: .file)
+            builder.remove(menu: .edit)
+            builder.remove(menu: .format)
+            builder.remove(menu: .toolbar)
+            builder.remove(menu: .sidebar)
+            builder.remove(menu: .help)
+        }
 #endif
+    }
+    struct 微調整: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+#if targetEnvironment(macCatalyst)
+                .onAppear {
+                    (UIApplication.shared.connectedScenes.first as? UIWindowScene)?
+                        .titlebar?
+                        .titleVisibility = .hidden
+                }
+                .padding(.bottom, 24)
+#endif
+        }
     }
 }
 
