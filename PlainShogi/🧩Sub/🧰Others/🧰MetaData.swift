@@ -1,10 +1,10 @@
-import Foundation
 import SwiftUI
 
 let ℹ️appName: LocalizedStringKey = "Plain将棋盤"
 let ℹ️appSubTitle: LocalizedStringKey = "iPhone / iPad / Apple Watch / Mac / Apple TV"
 
-let 📜versionInfos = 📜VersionInfo.history(("1.3", "2023-01-22"),
+let 📜versionInfos = 📜VersionInfo.history(("1.4", "2023-05-01"),
+                                           ("1.3", "2023-01-22"),
                                            ("1.2.2", "2022-08-18"),
                                            ("1.2.1", "2022-07-21"),
                                            ("1.2", "2022-07-09"),
@@ -31,7 +31,7 @@ let 🔗webRepositoryURL = URL(string: "https://github.com/FlipByBlink/PlainShog
 let 🔗webMirrorRepositoryURL = URL(string: "https://gitlab.com/FlipByBlink/PlainShogi_Mirror")!
 
 enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
-    case main, Shared, Sub, Others, WatchApp, WatchComplication
+    case main, Shared, Sub, Others, WatchApp, WatchComplication, tvApp
     var id: Self { self }
     var fileNames: [String] {
         switch self {
@@ -63,6 +63,8 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
             case .WatchApp:
                 return []
             case .WatchComplication:
+                return []
+            case .tvApp:
                 return []
         }
     }

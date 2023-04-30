@@ -13,7 +13,7 @@ struct ContentView: View {
         .modifier(🗄️自動スリープ無効化())
         .modifier(💾アクティブ復帰時にiCloudを明示的に同期())
         .modifier(👥SharePlay環境構築())
-        .modifier(🗄️RequestUserReview())
+        .modifier(🗄️ユーザーレビュー依頼())
         .modifier(🪧シート())
     }
 }

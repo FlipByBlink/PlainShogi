@@ -162,7 +162,7 @@ enum 🗄️MacCatalyst {
     }
 }
 
-struct 🗄️RequestUserReview: ViewModifier {
+struct 🗄️ユーザーレビュー依頼: ViewModifier {
     @State private var ⓒheckToRequest: Bool = false
     func body(content: Content) -> some View {
         content

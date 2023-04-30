@@ -164,8 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				128D156A280FE47E003FF480 /* Plain将棋盤App.swift */,
-				128D156C280FE47E003FF480 /* ContentView.swift */,
 				128D1578280FE4E4003FF480 /* 📱AppModel.swift */,
+				128D156C280FE47E003FF480 /* ContentView.swift */,
 				12D436992865CD6D00B707F5 /* 🧩Sub */,
 				12A925252866AB9F0035DC83 /* 🌏Localization */,
 			);
