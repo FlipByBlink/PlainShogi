@@ -21,6 +21,39 @@ struct 🚧フォントデバッグメニュー: View {
     }
 }
 
+struct 🗄️コマンド: Commands { //TODO: Work in progress
+    @ObservedObject var 📱: 📱アプリモデル
+    var body: some Commands {
+        CommandGroup(replacing: .appSettings) {
+            Button("メニューを表示") { 📱.シートを表示 = .メニュー }
+                .keyboardShortcut(",")
+        }
+        CommandMenu("ショートカット") {
+            Button("一手だけ戻す") { 📱.一手戻す() }
+                .keyboardShortcut("z", modifiers: [])
+            Button("履歴を表示") { 📱.シートを表示 = .履歴 }
+                .keyboardShortcut("y", modifiers: [])
+                .disabled(局面モデル.履歴.isEmpty)
+            Button("ブックマークを表示") { 📱.シートを表示 = .ブックマーク }
+                .keyboardShortcut("d", modifiers: [])
+            Button("編集を開始") { 📱.編集モードを開始する() }
+                .keyboardShortcut(.return, modifiers: [])
+                .disabled(📱.編集中)
+            Button("上下反転") {
+                withAnimation { 📱.🚩上下反転.toggle() }
+            }
+            .keyboardShortcut("r", modifiers: [])
+            Button("盤面を初期化") { 📱.盤面を初期化する() }
+                .keyboardShortcut(.delete)
+            Button("強調表示をクリア") { 📱.強調表示をクリア() }
+                .keyboardShortcut(.delete, modifiers: [.command, .shift])
+        }
+    }
+    init(_ 📱: 📱アプリモデル) {
+        self.📱 = 📱
+    }
+}
+
 enum 🗄️データ移行ver_1_3 {
     static var ローカルのデータがある: Bool {
         UserDefaults.standard.data(forKey: "履歴") != nil

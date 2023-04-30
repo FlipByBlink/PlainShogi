@@ -58,6 +58,7 @@ struct 🪄編集完了ボタン: View {
                 .dynamicTypeSize(...DynamicTypeSize.accessibility3)
                 .padding(10)
         }
+        .keyboardShortcut(.cancelAction)
         .tint(.secondary)
         .accessibilityLabel("Done")
     }

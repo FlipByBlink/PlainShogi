@@ -88,31 +88,35 @@ struct 📜ブックマークメニュー: View {
     }
     var body: some View {
         List {
-            if let ブックマーク {
-                Section {
-                    VStack(spacing: 20) {
+            Section {
+                VStack(spacing: 20) {
+                    if let ブックマーク {
                         局面プレビュー(ブックマーク)
-                        Button {
-                            📱.任意の局面を現在の局面として適用する(ブックマーク)
-                        } label: {
-                            Label("復元", systemImage: "square.and.arrow.down")
-                                .font(.body.weight(.medium))
-                        }
-                        .buttonStyle(.bordered)
-                        .disabled(self.現在の局面とブックマークは同じ)
+                    } else {
+                        局面プレビュー(.初期セット)
+                            .foregroundStyle(.quaternary)
                     }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .contextMenu { self.デバッグ用削除ボタン() }
+                    Button {
+                        guard let ブックマーク else { return }
+                        📱.任意の局面を現在の局面として適用する(ブックマーク)
+                    } label: {
+                        Label("復元", systemImage: "square.and.arrow.down")
+                            .font(.body.weight(.medium))
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(self.現在の局面とブックマークは同じ)
+                    .disabled(self.ブックマーク == nil)
                 }
-            } else {
-                Label("ブックマークはありません", systemImage: "bookmark.slash")
-                    .foregroundStyle(.secondary)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .contextMenu { self.デバッグ用削除ボタン() }
             }
             Section {
                 Button {
-                    📱.現在の局面をブックマークする()
-                    withAnimation { self.ブックマーク = .ブックマークを読み込む() }
+                    withAnimation {
+                        📱.現在の局面をブックマークする()
+                        self.ブックマーク = .ブックマークを読み込む()
+                    }
                 } label: {
                     Label("現在の局面をブックマーク", systemImage: "bookmark")
                         .font(.body.weight(.semibold))
@@ -122,7 +126,7 @@ struct 📜ブックマークメニュー: View {
             Label("ブックマークに保存できる局面は1つだけです", systemImage: "1.circle")
         }
         .navigationTitle("ブックマーク")
-        .task { self.ブックマーク = .ブックマークを読み込む() }
+        .onAppear { self.ブックマーク = .ブックマークを読み込む() }
     }
     private func デバッグ用削除ボタン() -> some View {
         Button("削除") {

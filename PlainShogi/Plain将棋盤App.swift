@@ -10,5 +10,6 @@ struct Plain将棋盤App: App {
                 .environmentObject(📱)
                 .environmentObject(🛒)
         }
+        .commands { 🗄️コマンド(📱) }
     }
 }
