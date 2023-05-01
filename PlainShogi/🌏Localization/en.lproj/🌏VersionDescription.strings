@@ -7,7 +7,9 @@ ADD Bookmark.
 ADD Keyboard shortcut(iPad, Mac).
 ADD Mac support.
 ADD Apple TV support.
-ADD Apple Watch support.";
+ADD Apple Watch support.
+IMPROVE Font rendering on non-japanese environment.
+OTHER Various bug-fixes and improvements.";
 "1.3" = "Support SharePlay.
 Show shift sign.
 Show 段(dan) and 筋(suji).

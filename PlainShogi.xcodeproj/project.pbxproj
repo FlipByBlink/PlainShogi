@@ -45,6 +45,7 @@
 		F57D6F0829FD3FA200EA0D79 /* 🪧Sheet.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* 🪧Sheet.swift */; };
 		F5951A2028ADEEBC00516538 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */; };
 		F5B5578B29FF851800A14074 /* 🔠Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 🔠Font.swift */; };
+		F5B5578C29FFD9A600A14074 /* 🔠Font.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 🔠Font.swift */; };
 		F5BBD85C2973A68E0034CCB8 /* 🛒InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD8592973A68E0034CCB8 /* 🛒InAppPurchase.swift */; };
 		F5BBD85D2973A68E0034CCB8 /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */; };
 		F5BBD85E2973A68E0034CCB8 /* 📣AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85B2973A68E0034CCB8 /* 📣AD.swift */; };
@@ -65,6 +66,7 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				F5B5578C29FFD9A600A14074 /* 🔠Font.swift in CopyFiles */,
 				F57D6F0829FD3FA200EA0D79 /* 🪧Sheet.swift in CopyFiles */,
 				F5E054A029FB678D004DC425 /* ☖ShogiView.swift in CopyFiles */,
 				F5E054A129FB678D004DC425 /* 💾Data.swift in CopyFiles */,

@@ -149,7 +149,6 @@ extension 局面モデル {
               case .盤駒(let 位置) = 場所,
               let 駒 = self.盤駒[位置],
               駒.陣営 == .玉側,
-              !駒.成り,
               [.銀, .桂].contains(駒.職名) else { return false }
         return true
     }
