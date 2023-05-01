@@ -1,25 +1,35 @@
-
 // ======== Japanese key ========
 "Plain将棋盤" = "PlainShogiBoard";
-"あそび方" = "How to";
-"駒の動かし方" = "How to";
 "はじめる" = "OK";
 "成りますか？" = "Promotion?";
 "成る" = "Yes";
 "キャンセル" = "Cancel";
 "メニュー" = "Menu";
 "長押しして駒を持ち上げ、そのままスライドして移動させる" = "Long press a piece, move it";
-"長押しして駒を持ち上げ、そのままスライドして移動させる。" = "Long press a piece, move it.";
-"ダブルタップで盤上の駒を裏返す" = " Turn a piece on the board by double tap";
+"メニューを表示" = "Show menu";
+"ショートカット" = "Shortcut";
+"駒の選択を解除" = "Unfocus";
+"編集" = "Edit";
+"編集モード" = "Edit mode";
+"編集を開始" = "Edit mode";
 "盤面を初期化" = "Initialize";
 "駒を消したり増やしたりする" = "Edit pieces";
 "手駒を整理する" = "Edit captured pieces";
 "王側の手駒" = "Piece in hand";
 "玉側の手駒" = "Piece in hand";
 "強調表示をクリア" = "Clear shift sign";
+"見た目をカスタマイズ" = "Customize font";
+"見た目" = "Customize";
 "セリフ体" = "Serif font";
+"太字" = "Weight";
+"駒のサイズ" = "Size";
+"小" = "Small";
+"標準" = "Default";
+"大" = "Large";
+"最大" = "Max";
 "一手だけ戻す" = "Return 1 action";
 "履歴" = "History";
+"履歴を表示" = "Show history";
 "復元" = "Restore";
 "削除" = "Remove";
 "直近の約30局面を履歴として保存します" = "Save 30 stages";
@@ -31,17 +41,22 @@
 "上下反転" = "Reverse vertically";
 "上下反転させる" = "Reverse vertically";
 "上下反転を元に戻す" = "Restore reverse";
-"操作した直後の駒を強調表示する機能を常に無効にする" = "Always disable shift sign";
+"操作した直後の駒の強調表示を常に無効" = "Always disable shift sign";
 "English表記" = "English term";
+"ブックマーク" = "Bookmark";
+"ブックマークを表示" = "Show bookmark";
+"現在の局面をブックマーク" = "Bookmark now";
+"ブックマークに保存できる局面は1つだけです" = "1 bookmark only.";
 "細かな使い方" = "More how to";
 "メニューボタンを長押しすると「初期化ボタン」や「編集ボタン」を呼び出せます。" = "Launch \"Initialize Button\" / \"Edit Button\" by long press Menu button.";
-"Dynamic Type に対応しているので、OSの設定に合わせて駒の字の大きさを変えたり太文字にしたりできます。" = "Character adapts font size and weight by OS option.";
 "テキスト機能" = "Plain text";
 "テキスト書き出し/読み込み機能" = "Text Export / Import";
 "駒を他のアプリへドラッグして盤面をテキストとして書き出せます。" = "Export shogi board as plain text by dropping a piece into other apps";
 "他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。" = "Import shogi board by dropping export-text into shogi board. The text head is 「☗」. ";
 "テキスト書き出し例" = "Example";
-"テキスト" = "Text";
+"コピー" = "Copy";
+"テキストとしてコピー" = "Copy as text";
+"テキストを局面としてペースト" = "Paste a text as shogi board";
 
 // ==== SharePlay ====
 "概要" = "Description";
@@ -80,14 +95,20 @@
 "iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。" = "On devices running iOS 16 or later, SharePlay is also available in \"Messages\" app. If you are invited to \"SharedShogi\" activity in \"Messages\" app, please join the activity in \"Messages\" app.";
 "**以下の項目はユーザー間で同期されません**
 ・「上下反転」オプション
+・「セリフ体」オプション
+・「太字」オプション
+・「駒のサイズ」オプション
 ・「English表記」オプション
 ・「強調表示を常時オフ」オプション
 ・編集モードに移行しているかどうか
+・選択中の駒の様子(駒の移動等を完了させたタイミングで操作結果が同期されます)
 ・ドラッグしている最中の駒の様子(ドラッグを完了させたタイミングで操作結果が同期されます)" = "**No sync between users**
 ・Reverse vertically option
+・Font option: Serif, Weight, Size
 ・English term option
 ・Disable shift sign option
 ・On edit mode
+・Selecting state
 ・Dragging state";
 "注意事項" = "Notice";
 "SharePlayではユーザーのデバイス間で同期するすべてのセッションデータに対してエンドツーエンド暗号化が用いられます。アプリ開発者やAppleは、このデータの復号鍵を保持していません。つまり、SharePlay中に通信されるデータを第三者が確認する事はありません。" = "The Group Activities framework uses end-to-end encryption on all session data. Developer and Apple doesn’t have the keys to decrypt this data.";
@@ -95,3 +116,4 @@
 "友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する" = "Call FaceTime, or Contact on \"Message\"";
 "友達に「FaceTime」通話をかける" = "Call FaceTime";
 "SharePlayの準備をする" = "Prepare SharePlay";
+"SharePlayメニューを表示" = "Prepare SharePlay";

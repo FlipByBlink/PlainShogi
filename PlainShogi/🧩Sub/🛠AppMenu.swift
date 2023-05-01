@@ -223,7 +223,7 @@ private struct 見た目カスタマイズメニューリンク: View {
                             .font(.body.bold())
                     }
                     Picker(selection: self.$サイズ) {
-                        ForEach(フォント.サイズ.allCases) { Text($0.rawValue) }
+                        ForEach(フォント.サイズ.allCases) { Text($0.ローカライズキー) }
                     } label: {
                         Label("駒のサイズ", systemImage: "magnifyingglass")
                             .font(self.サイズ.ピッカーフォント)
@@ -232,7 +232,7 @@ private struct 見た目カスタマイズメニューリンク: View {
                         Label("English表記", systemImage: "p.circle")
                     }
                     Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
-                        Label("操作した直後の駒を強調表示する機能を常に無効にする",
+                        Label("操作した直後の駒の強調表示を常に無効",
                               systemImage: "square.slash")
                     }
                 } header: {
@@ -284,20 +284,18 @@ private struct テキスト書き出し読み込み紹介リンク: View {
         NavigationLink {
             List {
                 Section {
-                    Text(📱.現在の盤面をテキストに変換する())
-                        .padding()
-                        .accessibilityLabel("テキスト")
-                        .textSelection(.enabled)
-                        .frame(maxWidth: .infinity)
-                        .overlay(alignment: .bottomTrailing) {
-                            Button {
-                                📱.現在の局面をテキストとしてコピー()
-                            } label: {
-                                Label("コピー", systemImage: "doc.on.doc")
-                            }
-                            .buttonStyle(.bordered)
-                            .padding()
+                    HStack(alignment: .bottom) {
+                        Text(📱.現在の盤面をテキストに変換する())
+                            .textSelection(.enabled)
+                        Spacer()
+                        Button {
+                            📱.現在の局面をテキストとしてコピー()
+                        } label: {
+                            Label("コピー", systemImage: "doc.on.doc")
                         }
+                        .buttonStyle(.bordered)
+                    }
+                    .padding()
                 } header: {
                     Text("テキスト書き出し例")
                 }
@@ -318,7 +316,7 @@ private struct テキスト書き出し読み込み紹介リンク: View {
                         📱.テキストを局面としてペースト()
                         📱.シートを表示 = nil
                     } label: {
-                        Label("テキストを局面としてペーストする", systemImage: "doc.on.clipboard")
+                        Label("テキストを局面としてペースト", systemImage: "doc.on.clipboard")
                     }
                 }
             }

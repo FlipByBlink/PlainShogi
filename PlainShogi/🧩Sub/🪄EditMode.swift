@@ -12,7 +12,7 @@ struct 🪄手駒編集ボタン: View {
             } label: {
                 Image(systemName: "plusminus")
                     .font(.system(size: self.マスの大きさ * 0.45,
-                                  weight: self.太字 ? .semibold : .light))
+                                  weight: self.太字 ? .semibold : .regular))
                     .padding(.horizontal, 12)
             }
             .accessibilityLabel("手駒を整理する")

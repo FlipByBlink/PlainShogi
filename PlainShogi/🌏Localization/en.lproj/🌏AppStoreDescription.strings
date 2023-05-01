@@ -4,13 +4,17 @@ You can move a piece freely.
 
 This app based on iOS system UI design.
 
-Character adapts font size and weight by OS option.
-
 You can reduce / increase pieces.
+
+Font option: Size / Weight / Serif
 
 English term option.
 
 Output/Input function to/from plain text.
+
+Sync between devices by iCloud.
+
+Support multi platform: iPhone, iPad, Apple Watch, Mac, Apple TV
 
 
 Support SharePlay.

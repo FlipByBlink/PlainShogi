@@ -55,10 +55,10 @@ struct 🗄️コマンド: Commands {
             Toggle("セリフ体", isOn: self.$セリフ体)
             Toggle("太字", isOn: self.$太字)
             Picker("駒のサイズ", selection: self.$サイズ) {
-                ForEach(フォント.サイズ.allCases) { Text($0.rawValue) }
+                ForEach(フォント.サイズ.allCases) { Text($0.ローカライズキー) }
             }
             Toggle("English表記", isOn: self.$English表記)
-            Toggle("操作した直後の駒を強調表示を常に無効", isOn: self.$直近操作強調オフ)
+            Toggle("操作した直後の駒の強調表示を常に無効", isOn: self.$直近操作強調オフ)
         }
     }
     init(_ 📱: 📱アプリモデル) { self.📱 = 📱 }
