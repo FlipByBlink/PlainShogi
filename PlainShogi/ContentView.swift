@@ -15,5 +15,6 @@ struct ContentView: View {
         .modifier(👥SharePlay環境構築())
         .modifier(🗄️ユーザーレビュー依頼())
         .modifier(🪧シート())
+        .environment(\.layoutDirection, .leftToRight)
     }
 }

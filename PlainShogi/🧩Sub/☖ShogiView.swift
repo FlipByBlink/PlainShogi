@@ -401,9 +401,7 @@ struct フォント: ViewModifier {
                 case .最大: return .largeTitle
             }
         }
-        var ローカライズキー: LocalizedStringKey {
-            .init(self.rawValue)
-        }
+        var ローカライズキー: LocalizedStringKey { .init(self.rawValue) }
     }
     enum 対象カテゴリ {
         case コマ, 段筋
