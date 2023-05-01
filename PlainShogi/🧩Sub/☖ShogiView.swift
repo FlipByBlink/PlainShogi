@@ -211,11 +211,14 @@ private struct 盤外のコマ: View {
                 .onDrag {
                     📱.この駒をドラッグし始める(self.場所)
                 } preview: {
-                    ドラッグプレビュー用コマ(📱.この手駒のプレビュー表記(self.場所),
-                                 self.マスの大きさ,
-                                 📱.この駒は下向き(self.場所))
+                    self.プレビュー()
                 }
         }
+    }
+    private func プレビュー() -> some View {
+        ドラッグプレビュー用コマ(📱.この手駒のプレビュー表記(self.場所),
+                     self.マスの大きさ,
+                     📱.この駒は下向き(self.場所))
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼｮｸﾒｲ: 駒の種類) {
         self.場所 = .手駒(ｼﾞﾝｴｲ, ｼｮｸﾒｲ)
@@ -234,13 +237,12 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
         if let 表記 {
             ZStack {
                 Color(.systemBackground)
-                Text(表記)
-                    .underline(📱.この駒にはアンダーラインが必要(self.場所))
-                    .modifier(フォント(カテゴリ: .コマ,
-                                   強調表示: self.この駒は操作直後))
-                    .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
-                    .rotationEffect(.degrees(📱.編集中 ? 15 : 0))
-                    .onChange(of: 📱.編集中) { _ in 📱.駒の選択を解除する() }
+                テキスト(字: 表記,
+                     強調: self.この駒は操作直後,
+                     下線: 📱.この駒にはアンダーラインが必要(self.場所))
+                .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
+                .rotationEffect(.degrees(📱.編集中 ? 15 : 0))
+                .onChange(of: 📱.編集中) { _ in 📱.駒の選択を解除する() }
             }
             .border(.tint, width: self.この駒を選択中 ? 2 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
@@ -276,9 +278,8 @@ private struct ドラッグプレビュー用コマ: View {
     var body: some View {
         ZStack {
             Color(.systemBackground)
-            Text(self.表記)
-                .modifier(フォント(カテゴリ: .コマ,
-                               プレビューの大きさ: self.コマの大きさ))
+            テキスト(字: self.表記,
+                 対象: .プレビュー(self.コマの大きさ))
         }
         .frame(width: self.コマの大きさ, height: self.コマの大きさ)
         .rotationEffect(self.上下反転 ? .degrees(180) : .zero)
@@ -295,8 +296,7 @@ private struct 筋: View {
     var body: some View {
         HStack(spacing: 0) {
             ForEach(📱.🚩上下反転 ? Self.字.reversed() : Self.字, id: \.self) {
-                Text($0)
-                    .modifier(フォント(カテゴリ: .段筋))
+                テキスト(字: $0, 対象: .段筋)
                     .frame(width: self.マスの大きさ,
                            height: self.マスの大きさ * レイアウト.マスに対する段筋の大きさの比率)
             }
@@ -313,8 +313,7 @@ private struct 段: View {
     var body: some View {
         VStack(spacing: 0) {
             ForEach(📱.🚩上下反転 ? self.字.reversed() : self.字, id: \.self) {
-                Text($0)
-                    .modifier(フォント(カテゴリ: .段筋))
+                テキスト(字: $0, 対象: .段筋)
                     .frame(width: self.マスの大きさ * レイアウト.マスに対する段筋の大きさの比率,
                            height: self.マスの大きさ)
             }
@@ -352,67 +351,11 @@ private struct ドラッグ直後の効果: ViewModifier {
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
 }
 
-struct フォント: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
-    var カテゴリ: 対象カテゴリ
-    var 強調表示: Bool = false
-    var プレビューの大きさ: CGFloat = 60
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
-    @AppStorage("太字") private var 太字オプション: Bool = false
-    @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
-    private var サイズポイント: CGFloat {
-        self.マスの大きさ * self.サイズ.比率(self.カテゴリ)
-    }
-    var 太字: Bool { self.強調表示 || self.太字オプション }
-    func body(content: Content) -> some View {
-        content
-            .font(.system(size: self.サイズポイント,
-                          weight: self.太字 ? .bold : .regular,
-                          design: self.セリフ体 ? .serif : .default))
-            .minimumScaleFactor(0.5)
-    }
-    enum サイズ: String, CaseIterable, Identifiable {
-        case 小, 標準, 大, 最大
-        var id: Self { self }
-        func 比率(_ カテゴリ: 対象カテゴリ) -> Double {
-            switch カテゴリ {
-                case .コマ:
-                    switch self {
-                        case .小: return 0.4
-                        case .標準: return 0.5
-                        case .大: return 0.65
-                        case .最大: return 1.0
-                    }
-                case .段筋:
-                    switch self {
-                        case .小: return 0.3
-                        case .標準: return 0.35
-                        case .大: return 0.40
-                        case .最大: return 0.45
-                    }
-            }
-        }
-        var ピッカーフォント: Font {
-            switch self {
-                case .小: return .caption
-                case .標準: return .body
-                case .大: return .title
-                case .最大: return .largeTitle
-            }
-        }
-        var ローカライズキー: LocalizedStringKey { .init(self.rawValue) }
-    }
-    enum 対象カテゴリ {
-        case コマ, 段筋
-    }
-}
-
 private struct アニメーション: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字: Bool = false
-    @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
+    @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
     func body(content: Content) -> some View {
         content
             .animation(.default, value: 📱.🚩English表記)
@@ -421,5 +364,41 @@ private struct アニメーション: ViewModifier {
             .animation(.default, value: self.セリフ体)
             .animation(.default, value: self.太字)
             .animation(.default, value: self.サイズ)
+    }
+}
+
+private struct テキスト: View {
+    var 字: String
+    var 対象: 🔠フォント.対象カテゴリ = .コマ
+    var 強調: Bool = false
+    var 下線: Bool = false
+    @Environment(\.マスの大きさ) private var マスの大きさ
+    @AppStorage("セリフ体") private var セリフ体: Bool = false
+    @AppStorage("太字") private var 太字オプション: Bool = false
+    @AppStorage("サイズ") private var サイズオプション: 🔠フォント.サイズ = .標準
+    private var サイズポイント: CGFloat {
+        switch self.対象 {
+            case .コマ, .段筋:
+                return self.マスの大きさ * self.サイズオプション.比率(self.対象)
+            case .プレビュー(let コマの大きさ):
+                return コマの大きさ * self.サイズオプション.比率(self.対象)
+        }
+    }
+    private var 太字: Bool { self.強調 || self.太字オプション }
+    private var フォント: Font {
+        .system(size: self.サイズポイント,
+                weight: self.太字 ? .bold : .regular,
+                design: self.セリフ体 ? .serif : .default)
+    }
+    private var 装飾文字: AttributedString {
+        var 値 = AttributedString(stringLiteral: self.字)
+        値.font = self.フォント
+        if self.下線 { 値.underlineStyle = .single }
+        値.languageIdentifier = "ja"
+        return 値
+    }
+    var body: some View {
+        Text(self.装飾文字)
+            .minimumScaleFactor(0.5)
     }
 }

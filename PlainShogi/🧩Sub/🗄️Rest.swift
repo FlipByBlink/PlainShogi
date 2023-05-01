@@ -47,7 +47,7 @@ struct 🗄️コマンド: Commands {
         @AppStorage("上下反転") private var 上下反転: Bool = false
         @AppStorage("セリフ体") private var セリフ体: Bool = false
         @AppStorage("太字") private var 太字: Bool = false
-        @AppStorage("サイズ") private var サイズ: フォント.サイズ = .標準
+        @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
         @AppStorage("English表記") private var English表記: Bool = false
         @AppStorage("直近操作強調表示機能オフ") private var 直近操作強調オフ: Bool = false
         var body: some View {
@@ -55,7 +55,7 @@ struct 🗄️コマンド: Commands {
             Toggle("セリフ体", isOn: self.$セリフ体)
             Toggle("太字", isOn: self.$太字)
             Picker("駒のサイズ", selection: self.$サイズ) {
-                ForEach(フォント.サイズ.allCases) { Text($0.ローカライズキー) }
+                ForEach(🔠フォント.サイズ.allCases) { Text($0.ローカライズキー) }
             }
             Toggle("English表記", isOn: self.$English表記)
             Toggle("操作した直後の駒の強調表示を常に無効", isOn: self.$直近操作強調オフ)

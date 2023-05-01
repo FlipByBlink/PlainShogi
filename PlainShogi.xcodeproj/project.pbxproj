@@ -44,6 +44,7 @@
 		F57D6F0729FCD60D00EA0D79 /* 🪧Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* 🪧Sheet.swift */; };
 		F57D6F0829FD3FA200EA0D79 /* 🪧Sheet.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* 🪧Sheet.swift */; };
 		F5951A2028ADEEBC00516538 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */; };
+		F5B5578B29FF851800A14074 /* 🔠Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 🔠Font.swift */; };
 		F5BBD85C2973A68E0034CCB8 /* 🛒InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD8592973A68E0034CCB8 /* 🛒InAppPurchase.swift */; };
 		F5BBD85D2973A68E0034CCB8 /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */; };
 		F5BBD85E2973A68E0034CCB8 /* 📣AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85B2973A68E0034CCB8 /* 📣AD.swift */; };
@@ -114,6 +115,7 @@
 		F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📃TextImportExport.swift"; sourceTree = "<group>"; };
 		F57D6F0629FCD60D00EA0D79 /* 🪧Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧Sheet.swift"; sourceTree = "<group>"; };
 		F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F5B5578A29FF851800A14074 /* 🔠Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔠Font.swift"; sourceTree = "<group>"; };
 		F5BBD8592973A68E0034CCB8 /* 🛒InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒InAppPurchase.swift"; sourceTree = "<group>"; };
 		F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
 		F5BBD85B2973A68E0034CCB8 /* 📣AD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣AD.swift"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				126C18F22816460F002CD046 /* ☖ShogiModel.swift */,
 				12F4444D286D4B580008A663 /* 🛠AppMenu.swift */,
 				F57D6F0629FCD60D00EA0D79 /* 🪧Sheet.swift */,
+				F5B5578A29FF851800A14074 /* 🔠Font.swift */,
 				12D424412871893D002D3E80 /* 📬DropDelegate.swift */,
 				127132E72873CDF20008AE46 /* 🪄EditMode.swift */,
 				F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */,
@@ -307,6 +310,7 @@
 			files = (
 				F5BBD85C2973A68E0034CCB8 /* 🛒InAppPurchase.swift in Sources */,
 				128D156D280FE47E003FF480 /* ContentView.swift in Sources */,
+				F5B5578B29FF851800A14074 /* 🔠Font.swift in Sources */,
 				F5BBD8602973A7260034CCB8 /* 📣ADContent.swift in Sources */,
 				F52437AF29F6125A00EA770E /* 🗄️Rest.swift in Sources */,
 				F52437B529F6499100EA770E /* 🧰MetaData.swift in Sources */,
