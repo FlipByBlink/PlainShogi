@@ -1,13 +1,29 @@
 import SwiftUI
 
 struct ContentView_watchOSApp: View {
-    @State private var showMenu: Bool = false
     var body: some View {
         将棋View_watchOSApp()
-            .onLongPressGesture { self.showMenu = true }
-            .sheet(isPresented: self.$showMenu) {
-                メニュートップ()
-            }
+    }
+}
+
+struct メニューボタン: View { // ⚙️
+    @Environment(\.マスの大きさ) private var マスの大きさ
+    @State private var シートを表示: Bool = false
+    var body: some View {
+        Button {
+            self.シートを表示 = true
+            💥フィードバック.軽め()
+        } label: {
+            Image(systemName: "gearshape")
+                .resizable()
+                .frame(width: self.マスの大きさ * 0.75,
+                       height: self.マスの大きさ * 0.75)
+                .padding(.horizontal, 8)
+        }
+        .buttonStyle(.plain)
+        .sheet(isPresented: self.$シートを表示) {
+            メニュートップ()
+        }
     }
 }
 
@@ -21,11 +37,6 @@ private struct メニュートップ: View {
             .navigationTitle(ℹ️appName)
         }
     }
-}
-
-enum 🪧シートカテゴリ: Identifiable, Hashable {
-    case メニュー, 履歴, ブックマーク, 手駒編集(王側か玉側か), SharePlayガイド, 広告
-    var id: Self { self }
 }
 
 private struct 💁GuideMenu: View {

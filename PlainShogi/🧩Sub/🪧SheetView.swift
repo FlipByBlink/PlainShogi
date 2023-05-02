@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 🪧シート: ViewModifier {
+struct 🪧シートビュー: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @EnvironmentObject private var 🛒: 🛒Storeモデル
     func body(content: Content) -> some View {
@@ -44,9 +44,4 @@ struct 🪧シート: ViewModifier {
             .keyboardShortcut(.cancelAction)
         }
     }
-}
-
-enum 🪧シートカテゴリ: Identifiable, Hashable {
-    case メニュー, 履歴, ブックマーク, 手駒編集(王側か玉側か), SharePlayガイド, 広告
-    var id: Self { self }
 }

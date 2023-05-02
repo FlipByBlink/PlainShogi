@@ -117,6 +117,9 @@ private struct 盤外: View {
                height: self.マスの大きさ)
         .contentShape(Rectangle())
         .onTapGesture { 📱.こちらの手駒エリアを選択する(self.陣営) }
+        .overlay(alignment: .leading) {
+            if self.立場 == .手前 { メニューボタン() }
+        }
     }
     init(_ ﾀﾁﾊﾞ: 手前か対面か) { self.立場 = ﾀﾁﾊﾞ }
 }
