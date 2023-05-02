@@ -1,7 +1,9 @@
 import Combine
 import SwiftUI
 import UniformTypeIdentifiers
+#if os(iOS)
 import GroupActivities
+#endif
 
 @MainActor
 class 📱アプリモデル: ObservableObject {
@@ -23,12 +25,13 @@ class 📱アプリモデル: ObservableObject {
         💾ICloud.synchronize()
     }
     
-    //SharePlay
+#if os(iOS) //SharePlay
     private var ⓢubscriptions = Set<AnyCancellable>()
     private var ⓣasks = Set<Task<Void, Never>>()
     @Published private(set) var ⓖroupSession: GroupSession<👥GroupActivity>?
     private var ⓜessenger: GroupSessionMessenger?
     @Published private(set) var 参加人数: Int?
+#endif
 }
 
 //MARK: - ==== 局面関連 ====
@@ -223,17 +226,17 @@ extension 📱アプリモデル {
 //MARK: - ==== 局面の読み込みや復元 ====
 extension 📱アプリモデル {
     private static func 起動時の局面を読み込む() -> 局面モデル {
+#if os(iOS)
         if 🗄️データ移行ver_1_3.ローカルのデータがある {
             let 前回の局面 = 🗄️データ移行ver_1_3.ローカルの直近の局面を読み込む()
             🗄️データ移行ver_1_3.ローカルのデータを削除する()
             return 前回の局面
         } else {
-            if let 前回の局面 = 局面モデル.履歴.last {
-                return 前回の局面
-            } else {
-                return .初期セット
-            }
+            return 局面モデル.前回の局面 ?? .初期セット
         }
+#else
+        局面モデル.前回の局面 ?? .初期セット
+#endif
     }
     func 任意の局面を現在の局面として適用する(_ 局面: 局面モデル) { //履歴, ブックマーク
         self.シートを表示 = nil
@@ -258,6 +261,7 @@ extension 📱アプリモデル {
     }
 }
 
+#if os(iOS) //ドラッグ&ドロップ, ShrePlay, テキスト書き出し読み込み機能
 //MARK: - ==== ドラッグ関連 ====
 extension 📱アプリモデル {
     func この駒をドラッグし始める(_ 場所: 駒の場所) -> NSItemProvider {
@@ -449,7 +453,12 @@ extension 📱アプリモデル {
         }
     }
 }
+#endif
 
-enum 🚨エラー: Error {
-    case 要修正
+#if os(watchOS) || os(tvOS)
+extension 📱アプリモデル {
+    private func SharePlay中なら現在の局面を参加者に送信する() {
+        //Unsupport on watchOS, tvOS
+    }
 }
+#endif

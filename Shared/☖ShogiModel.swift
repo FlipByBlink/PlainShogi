@@ -238,6 +238,7 @@ extension 局面モデル {
             assertionFailure(); return []
         }
     }
+    static var 前回の局面: Self? { Self.履歴.last }
     var 一手前の局面: Self? { Self.履歴.last { $0.更新日時 != self.更新日時 } }
     static func 履歴を全て削除する() { 💾ICloud.remove(key: "履歴") }
     func 現在の局面をブックマークする() { 💾ICloud.set(self.エンコード(), key: "ブックマーク") }
@@ -302,6 +303,10 @@ enum 駒の移動先パターン {
     case 盤上(Int), 盤外(王側か玉側か)
 }
 
+enum 手前か対面か {
+    case 手前, 対面
+}
+
 enum ドラッグ対象: Equatable {
     case アプリ内の駒(駒の場所)
     case アプリ外のコンテンツ
@@ -353,6 +358,11 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
             default: return nil
         }
     }
+}
+
+
+enum 🚨エラー: Error {
+    case 要修正
 }
 
 
