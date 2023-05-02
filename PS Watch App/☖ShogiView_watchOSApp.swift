@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 将棋View: View {
+struct 将棋View_watchOSApp: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         ZStack {
@@ -26,9 +26,9 @@ private enum レイアウト {
             }
         }
     }
-    static let 盤と手駒の隙間: CGFloat = 6
-    static let 複数個の盤外コマの幅比率: Double = 1.3
-    struct マスの大きさKey: EnvironmentKey { static let defaultValue = 30.0 }
+    static let 盤と手駒の隙間: CGFloat = 4
+    static let 複数個の盤外コマの幅比率: Double = 1.15
+    struct マスの大きさKey: EnvironmentKey { static let defaultValue = 10.0 }
 }
 
 extension EnvironmentValues {
@@ -53,9 +53,14 @@ private struct 盤面のみ: View {
                 }
             }
         }
-        .border(.primary, width: 0.66)
         .frame(width: self.マスの大きさ * 9,
                height: self.マスの大きさ * 9)
+        .background {
+            Rectangle()
+                .strokeBorder(lineWidth: 1)
+                .frame(width: self.マスの大きさ * 9 + 2,
+                       height: self.マスの大きさ * 9 + 2)
+        }
         .overlay(alignment: .top) {
             盤外(.対面)
                 .alignmentGuide(.top) { _ in self.マスの大きさ + レイアウト.盤と手駒の隙間 }
@@ -103,7 +108,7 @@ private struct 盤外: View {
     }
     var body: some View {
         ZStack(alignment: self.揃え方) {
-            Color.clear //?
+            Color.clear
             HStack(spacing: 0) {
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
             }
@@ -148,7 +153,7 @@ private struct コマの見た目: View { //操作処理などは呼び出し側
     var body: some View {
         if let 表記 {
             ZStack {
-                Color.clear //?
+                Color.clear
                 テキスト(字: 表記,
                      強調: self.この駒は操作直後,
                      下線: 📱.この駒にはアンダーラインが必要(self.場所))
@@ -159,7 +164,7 @@ private struct コマの見た目: View { //操作処理などは呼び出し側
             .contentShape(Rectangle())
             .border(.primary, width: self.この駒を選択中 ? 1.5 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
-            .modifier(🪄編集モード用ⓧマーク(self.場所))
+            .modifier(編集モード用ⓧマーク(self.場所))
             .overlay {
                 if self.太字オプション, self.この駒は操作直後 {
                     Rectangle().fill(.quaternary)
@@ -190,7 +195,7 @@ private struct 操作エリア外で駒選択を解除: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background {
-                Color.clear //?
+                Color.clear
                     .onTapGesture { 📱.駒の選択を解除する() }
             }
     }
@@ -198,14 +203,12 @@ private struct 操作エリア外で駒選択を解除: ViewModifier {
 
 private struct アニメーション: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字: Bool = false
     func body(content: Content) -> some View {
         content
             .animation(.default, value: 📱.🚩English表記)
             .animation(.default, value: 📱.🚩上下反転)
             .animation(.default, value: 📱.編集中)
-            .animation(.default, value: self.セリフ体)
             .animation(.default, value: self.太字)
     }
 }
@@ -216,14 +219,12 @@ private struct テキスト: View {
     var 強調: Bool = false
     var 下線: Bool = false
     @Environment(\.マスの大きさ) private var マスの大きさ
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字オプション: Bool = false
     private var サイズポイント: CGFloat { self.マスの大きさ * 0.75 }
     private var 太字: Bool { self.強調 || self.太字オプション }
     private var フォント: Font {
         .system(size: self.サイズポイント,
-                weight: self.太字 ? .bold : .regular,
-                design: self.セリフ体 ? .serif : .default)
+                weight: self.太字 ? .bold : .regular)
     }
     private var 装飾文字: AttributedString {
         var 値 = AttributedString(stringLiteral: self.字)
@@ -238,7 +239,7 @@ private struct テキスト: View {
     }
 }
 
-private struct 🪄編集モード用ⓧマーク: ViewModifier {
+private struct 編集モード用ⓧマーク: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 場所: 駒の場所

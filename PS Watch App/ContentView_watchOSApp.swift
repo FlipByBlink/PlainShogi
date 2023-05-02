@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView_watchOSApp: View {
     @State private var showMenu: Bool = false
     var body: some View {
-        将棋View()
+        将棋View_watchOSApp()
             .onLongPressGesture { self.showMenu = true }
             .sheet(isPresented: self.$showMenu) {
                 メニュートップ()

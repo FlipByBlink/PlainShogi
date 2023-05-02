@@ -7,7 +7,6 @@ struct PS_Watch_App: App {
         WindowGroup {
             ContentView_watchOSApp()
                 .environmentObject(📱)
-//                .overlay { Color.cyan.opacity(0.5) }
         }
     }
 }
