@@ -3,16 +3,14 @@ import SwiftUI
 struct 将棋View: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
-        VStack(spacing: レイアウト.盤と手駒の隙間) {
-            盤外(.対面)
+        ZStack {
+            Color.clear
+                .ignoresSafeArea()
+                .modifier(操作エリア外で駒選択を解除())
             盤面のみ()
-            盤外(.手前)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .modifier(操作エリア外で駒選択を解除())
-        .modifier(成駒確認アラート())
         .modifier(レイアウト.推定())
-        .ignoresSafeArea()
+        .modifier(成駒確認アラート())
         .modifier(アニメーション())
     }
 }
@@ -23,25 +21,14 @@ private enum レイアウト {
         func body(content: Content) -> some View {
             GeometryReader {
                 content
-                    .environment(\.マスの大きさ, レイアウト.マスの大きさを計算($0))
+                    .environment(\.マスの大きさ,
+                                  min($0.size.width, $0.size.height) / 9)
             }
         }
     }
-    private static func マスの大きさを計算(_ ジオメトリ: GeometryProxy) -> CGFloat {
-        let 横換算 = 一辺を基準にした際の計算式(全体の長さ: ジオメトリ.size.width,
-                                盤外コマの比率: 0)
-        let 縦換算 = 一辺を基準にした際の計算式(全体の長さ: ジオメトリ.size.height,
-                                盤外コマの比率: 2)
-        return min(横換算, 縦換算)
-        func 一辺を基準にした際の計算式(全体の長さ: CGFloat, 盤外コマの比率: Double) -> CGFloat {
-            (全体の長さ - Self.盤と手駒の隙間 * 2)
-            / (9 + Self.マスに対する段筋の大きさの比率 + 盤外コマの比率)
-        }
-    }
-    static let 盤と手駒の隙間: CGFloat = 4
-    static let マスに対する段筋の大きさの比率: Double = 0 //0.5
+    static let 盤と手駒の隙間: CGFloat = 6
     static let 複数個の盤外コマの幅比率: Double = 1.3
-    struct マスの大きさKey: EnvironmentKey { static let defaultValue = 10.0 }
+    struct マスの大きさKey: EnvironmentKey { static let defaultValue = 30.0 }
 }
 
 extension EnvironmentValues {
@@ -66,9 +53,17 @@ private struct 盤面のみ: View {
                 }
             }
         }
-        .border(.primary, width: 1)
+        .border(.primary, width: 0.66)
         .frame(width: self.マスの大きさ * 9,
                height: self.マスの大きさ * 9)
+        .overlay(alignment: .top) {
+            盤外(.対面)
+                .alignmentGuide(.top) { _ in self.マスの大きさ + レイアウト.盤と手駒の隙間 }
+        }
+        .overlay(alignment: .bottom) {
+            盤外(.手前)
+                .alignmentGuide(.bottom) { _ in -レイアウト.盤と手駒の隙間 }
+        }
     }
 }
 
@@ -104,11 +99,10 @@ private struct 盤外: View {
         self.立場 == .手前 ? .Element.allCases : .Element.allCases.reversed()
     }
     private var 揃え方: Alignment {
-        self.立場 == .手前 ? .leading : .trailing
+        self.立場 == .手前 ? .trailing : .leading
     }
     var body: some View {
-        //ZStack(alignment: self.揃え方) {
-        ZStack(alignment: .center) {
+        ZStack(alignment: self.揃え方) {
             Color.clear //?
             HStack(spacing: 0) {
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
@@ -163,7 +157,7 @@ private struct コマの見た目: View { //操作処理などは呼び出し側
                 .onChange(of: 📱.編集中) { _ in 📱.駒の選択を解除する() }
             }
             .contentShape(Rectangle())
-            .border(.tint, width: self.この駒を選択中 ? 2 : 0)
+            .border(.primary, width: self.この駒を選択中 ? 1.5 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
             .modifier(🪄編集モード用ⓧマーク(self.場所))
             .overlay {
@@ -206,7 +200,6 @@ private struct アニメーション: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字: Bool = false
-    @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
     func body(content: Content) -> some View {
         content
             .animation(.default, value: 📱.🚩English表記)
@@ -214,7 +207,6 @@ private struct アニメーション: ViewModifier {
             .animation(.default, value: 📱.編集中)
             .animation(.default, value: self.セリフ体)
             .animation(.default, value: self.太字)
-            .animation(.default, value: self.サイズ)
     }
 }
 
@@ -226,15 +218,7 @@ private struct テキスト: View {
     @Environment(\.マスの大きさ) private var マスの大きさ
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字オプション: Bool = false
-    @AppStorage("サイズ") private var サイズオプション: 🔠フォント.サイズ = .標準
-    private var サイズポイント: CGFloat {
-        switch self.対象 {
-            case .コマ, .段筋:
-                return self.マスの大きさ * 1 //self.サイズオプション.比率(self.対象)
-            case .プレビュー(let コマの大きさ):
-                return コマの大きさ * 1 //self.サイズオプション.比率(self.対象)
-        }
-    }
+    private var サイズポイント: CGFloat { self.マスの大きさ * 0.75 }
     private var 太字: Bool { self.強調 || self.太字オプション }
     private var フォント: Font {
         .system(size: self.サイズポイント,
@@ -250,7 +234,7 @@ private struct テキスト: View {
     }
     var body: some View {
         Text(self.装飾文字)
-            .minimumScaleFactor(0.5)
+            .minimumScaleFactor(0.8)
     }
 }
 

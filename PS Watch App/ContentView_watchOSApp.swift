@@ -1,16 +1,17 @@
 import SwiftUI
 
 struct ContentView_watchOSApp: View {
+    @State private var showMenu: Bool = false
     var body: some View {
-        TabView {
-            将棋View()
-            サブタブ()
-        }
-        .tabViewStyle(.page(indexDisplayMode: .never))
+        将棋View()
+            .onLongPressGesture { self.showMenu = true }
+            .sheet(isPresented: self.$showMenu) {
+                メニュートップ()
+            }
     }
 }
 
-private struct サブタブ: View {
+private struct メニュートップ: View {
     var body: some View {
         NavigationStack {
             List {
