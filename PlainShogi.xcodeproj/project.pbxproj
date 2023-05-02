@@ -21,7 +21,7 @@
 		12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
 		F5119B962A0144460027A74C /* 🪧SheetCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
 		F5119B972A0144460027A74C /* 🪧SheetCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
-		F51F037E2A00C46100F05874 /* 🛠OptionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠OptionMenu.swift */; };
+		F51F037E2A00C46100F05874 /* 🛠Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠Menus.swift */; };
 		F51F039B2A00D03200F05874 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039A2A00D03200F05874 /* WidgetKit.framework */; };
 		F51F039D2A00D03200F05874 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039C2A00D03200F05874 /* SwiftUI.framework */; };
 		F51F03A02A00D03200F05874 /* PSComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* PSComplication.swift */; };
@@ -33,7 +33,7 @@
 		F51F03AF2A01099700F05874 /* PS Watch App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D9F92A2A00BDC600CEE697 /* PS Watch App.swift */; };
 		F51F03B02A01099700F05874 /* ContentView_watchOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D9F92C2A00BDC600CEE697 /* ContentView_watchOSApp.swift */; };
 		F51F03B12A01099700F05874 /* ☖ShogiView_watchOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D9F92B2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift */; };
-		F51F03B22A01099700F05874 /* 🛠OptionMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠OptionMenu.swift */; };
+		F51F03B22A01099700F05874 /* 🛠Menus.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠Menus.swift */; };
 		F51F03B32A01099700F05874 /* PSComplication.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* PSComplication.swift */; };
 		F52437AF29F6125A00EA770E /* 🗄️Rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437AE29F6125900EA770E /* 🗄️Rest.swift */; };
 		F52437B329F613A600EA770E /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* 💥Feedback.swift */; };
@@ -114,7 +114,7 @@
 				F51F03AF2A01099700F05874 /* PS Watch App.swift in CopyFiles */,
 				F51F03B02A01099700F05874 /* ContentView_watchOSApp.swift in CopyFiles */,
 				F51F03B12A01099700F05874 /* ☖ShogiView_watchOSApp.swift in CopyFiles */,
-				F51F03B22A01099700F05874 /* 🛠OptionMenu.swift in CopyFiles */,
+				F51F03B22A01099700F05874 /* 🛠Menus.swift in CopyFiles */,
 				F51F03B32A01099700F05874 /* PSComplication.swift in CopyFiles */,
 				F5B5578C29FFD9A600A14074 /* 🔠Font.swift in CopyFiles */,
 				F57D6F0829FD3FA200EA0D79 /* 🪧SheetView.swift in CopyFiles */,
@@ -179,7 +179,7 @@
 		12F4444D286D4B580008A663 /* 🛠AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠AppMenu.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* memo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = memo.md; sourceTree = "<group>"; };
 		F5119B952A0144460027A74C /* 🪧SheetCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧SheetCategory.swift"; sourceTree = "<group>"; };
-		F51F037D2A00C46100F05874 /* 🛠OptionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠OptionMenu.swift"; sourceTree = "<group>"; };
+		F51F037D2A00C46100F05874 /* 🛠Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menus.swift"; sourceTree = "<group>"; };
 		F51F03992A00D03200F05874 /* PSComplicationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PSComplicationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51F039A2A00D03200F05874 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F51F039C2A00D03200F05874 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -348,7 +348,7 @@
 				F5D9F92A2A00BDC600CEE697 /* PS Watch App.swift */,
 				F5D9F92C2A00BDC600CEE697 /* ContentView_watchOSApp.swift */,
 				F5D9F92B2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift */,
-				F51F037D2A00C46100F05874 /* 🛠OptionMenu.swift */,
+				F51F037D2A00C46100F05874 /* 🛠Menus.swift */,
 				F5BD6A1A2A00C007004AD4A5 /* PS Watch App.entitlements */,
 			);
 			path = "PS Watch App";
@@ -546,7 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D9F92E2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift in Sources */,
-				F51F037E2A00C46100F05874 /* 🛠OptionMenu.swift in Sources */,
+				F51F037E2A00C46100F05874 /* 🛠Menus.swift in Sources */,
 				F5119B972A0144460027A74C /* 🪧SheetCategory.swift in Sources */,
 				F5BD6A112A00BF4C004AD4A5 /* ☖ShogiModel.swift in Sources */,
 				F5BD6A152A00BF7D004AD4A5 /* 🔠Font.swift in Sources */,
