@@ -20,6 +20,12 @@
 		12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D4369C2865CD8300B707F5 /* Configuration.storekit */; };
 		12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
 		F51F037E2A00C46100F05874 /* 🛠OptionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠OptionMenu.swift */; };
+		F51F039B2A00D03200F05874 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039A2A00D03200F05874 /* WidgetKit.framework */; };
+		F51F039D2A00D03200F05874 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039C2A00D03200F05874 /* SwiftUI.framework */; };
+		F51F03A02A00D03200F05874 /* PSComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* PSComplication.swift */; };
+		F51F03A62A00D03400F05874 /* PSComplicationExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F51F03992A00D03200F05874 /* PSComplicationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F51F03AB2A00D18B00F05874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
+		F51F03AC2A00D27400F05874 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		F52437AF29F6125A00EA770E /* 🗄️Rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437AE29F6125900EA770E /* 🗄️Rest.swift */; };
 		F52437B329F613A600EA770E /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* 💥Feedback.swift */; };
 		F52437B529F6499100EA770E /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
@@ -71,6 +77,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F51F03A42A00D03400F05874 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 128D155F280FE47E003FF480 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F51F03982A00D03200F05874;
+			remoteInfo = PSComplicationExtension;
+		};
 		F5D9F9232A00BDAA00CEE697 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 128D155F280FE47E003FF480 /* Project object */;
@@ -109,6 +122,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F51F03A72A00D03400F05874 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F51F03A62A00D03400F05874 /* PSComplicationExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5D9F9262A00BDAA00CEE697 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -139,6 +163,11 @@
 		12F4444D286D4B580008A663 /* 🛠AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠AppMenu.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* memo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = memo.md; sourceTree = "<group>"; };
 		F51F037D2A00C46100F05874 /* 🛠OptionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠OptionMenu.swift"; sourceTree = "<group>"; };
+		F51F03992A00D03200F05874 /* PSComplicationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PSComplicationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F51F039A2A00D03200F05874 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F51F039C2A00D03200F05874 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		F51F039F2A00D03200F05874 /* PSComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSComplication.swift; sourceTree = "<group>"; };
+		F51F03A32A00D03400F05874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F52437AE29F6125900EA770E /* 🗄️Rest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗄️Rest.swift"; sourceTree = "<group>"; };
 		F52437B229F613A600EA770E /* 💥Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "💥Feedback.swift"; sourceTree = "<group>"; };
 		F52437B429F6499100EA770E /* 🧰MetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🧰MetaData.swift"; sourceTree = "<group>"; };
@@ -178,6 +207,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F51F03962A00D03200F05874 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F51F039D2A00D03200F05874 /* SwiftUI.framework in Frameworks */,
+				F51F039B2A00D03200F05874 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5D9F9152A00BDA800CEE697 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -196,6 +234,7 @@
 				128D1569280FE47E003FF480 /* PlainShogi */,
 				128D156E280FE47F003FF480 /* Assets.xcassets */,
 				F5D9F9192A00BDA900CEE697 /* PS Watch App */,
+				F51F039E2A00D03200F05874 /* PSComplication */,
 				128D1568280FE47E003FF480 /* Products */,
 				12A9251C2866A8960035DC83 /* Frameworks */,
 			);
@@ -206,6 +245,7 @@
 			children = (
 				128D1567280FE47E003FF480 /* 将棋盤.app */,
 				F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */,
+				F51F03992A00D03200F05874 /* PSComplicationExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,6 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				12A9251D2866A8960035DC83 /* StoreKit.framework */,
+				F51F039A2A00D03200F05874 /* WidgetKit.framework */,
+				F51F039C2A00D03200F05874 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -274,6 +316,15 @@
 			path = "🧩Sub";
 			sourceTree = "<group>";
 		};
+		F51F039E2A00D03200F05874 /* PSComplication */ = {
+			isa = PBXGroup;
+			children = (
+				F51F039F2A00D03200F05874 /* PSComplication.swift */,
+				F51F03A32A00D03400F05874 /* Info.plist */,
+			);
+			path = PSComplication;
+			sourceTree = "<group>";
+		};
 		F5D9F9192A00BDA900CEE697 /* PS Watch App */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +372,23 @@
 			productReference = 128D1567280FE47E003FF480 /* 将棋盤.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F51F03982A00D03200F05874 /* PSComplicationExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F51F03AA2A00D03400F05874 /* Build configuration list for PBXNativeTarget "PSComplicationExtension" */;
+			buildPhases = (
+				F51F03952A00D03200F05874 /* Sources */,
+				F51F03962A00D03200F05874 /* Frameworks */,
+				F51F03972A00D03200F05874 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PSComplicationExtension;
+			productName = PSComplicationExtension;
+			productReference = F51F03992A00D03200F05874 /* PSComplicationExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F5D9F9172A00BDA800CEE697 /* PS Watch App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5D9F9292A00BDAA00CEE697 /* Build configuration list for PBXNativeTarget "PS Watch App" */;
@@ -328,10 +396,12 @@
 				F5D9F9142A00BDA800CEE697 /* Sources */,
 				F5D9F9152A00BDA800CEE697 /* Frameworks */,
 				F5D9F9162A00BDA800CEE697 /* Resources */,
+				F51F03A72A00D03400F05874 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F51F03A52A00D03400F05874 /* PBXTargetDependency */,
 			);
 			name = "PS Watch App";
 			productName = "PS Watch App";
@@ -350,6 +420,9 @@
 				TargetAttributes = {
 					128D1566280FE47E003FF480 = {
 						CreatedOnToolsVersion = 13.3;
+					};
+					F51F03982A00D03200F05874 = {
+						CreatedOnToolsVersion = 14.3;
 					};
 					F5D9F9172A00BDA800CEE697 = {
 						CreatedOnToolsVersion = 14.3;
@@ -372,6 +445,7 @@
 			targets = (
 				128D1566280FE47E003FF480 /* PlainShogi */,
 				F5D9F9172A00BDA800CEE697 /* PS Watch App */,
+				F51F03982A00D03200F05874 /* PSComplicationExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -388,6 +462,15 @@
 				F5BBD8692973AA7B0034CCB8 /* 🌏VersionDescription.strings in Resources */,
 				128D156F280FE47F003FF480 /* Assets.xcassets in Resources */,
 				12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F51F03972A00D03200F05874 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F51F03AB2A00D18B00F05874 /* Assets.xcassets in Resources */,
+				F51F03AC2A00D27400F05874 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +514,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F51F03952A00D03200F05874 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F51F03A02A00D03200F05874 /* PSComplication.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5D9F9142A00BDA800CEE697 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -451,6 +542,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F51F03A52A00D03400F05874 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F51F03982A00D03200F05874 /* PSComplicationExtension */;
+			targetProxy = F51F03A42A00D03400F05874 /* PBXContainerItemProxy */;
+		};
 		F5D9F9242A00BDAA00CEE697 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F5D9F9172A00BDA800CEE697 /* PS Watch App */;
@@ -690,9 +786,72 @@
 			};
 			name = Release;
 		};
+		F51F03A82A00D03400F05874 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6696GEY228;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PSComplication/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Plain将棋盤";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi.watchkitapp.PSComplication;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		F51F03A92A00D03400F05874 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6696GEY228;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PSComplication/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Plain将棋盤";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi.watchkitapp.PSComplication;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 		F5D9F9272A00BDAA00CEE697 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -724,6 +883,7 @@
 		F5D9F9282A00BDAA00CEE697 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -769,6 +929,15 @@
 			buildConfigurations = (
 				128D1576280FE47F003FF480 /* Debug */,
 				128D1577280FE47F003FF480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F51F03AA2A00D03400F05874 /* Build configuration list for PBXNativeTarget "PSComplicationExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F51F03A82A00D03400F05874 /* Debug */,
+				F51F03A92A00D03400F05874 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
