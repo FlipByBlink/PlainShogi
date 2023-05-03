@@ -19,9 +19,12 @@ private struct 🅂impleEntry: TimelineEntry {
 
 private struct 🄿SComplicationEntryView : View {
     var body: some View {
-        Text("☖")
-            .font(.title)
-            .widgetAccentable()
+        ZStack {
+            AccessoryWidgetBackground()
+            Text("☖")
+                .font(.title)
+        }
+        .widgetAccentable()
     }
 }
 

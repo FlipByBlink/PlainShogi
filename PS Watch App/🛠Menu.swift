@@ -31,7 +31,7 @@ struct 🛠メニューボタン: View { // ⚙️
         } label: {
             Image(systemName: self.アイコンネーム)
                 .imageScale(.small)
-                .foregroundStyle(self.モード == .駒選択解除 ? .secondary : .primary)
+                //.foregroundStyle(self.モード == .駒選択解除 ? .secondary : .primary)
                 .frame(width: self.マスの大きさ * 0.75,
                        height: self.マスの大きさ * 0.75)
                 .padding(.horizontal, 8)
@@ -78,43 +78,31 @@ private struct 編集メニュー: View {
         @EnvironmentObject private var 📱: 📱アプリモデル
         var body: some View {
             List {
-                self.強調表示クリアボタン()
-                self.盤面初期化ボタン()
-                self.編集モード開始ボタン()
-                self.一手戻すボタン()
+                Button {
+                    📱.盤面を初期化する()
+                } label: {
+                    Label("盤面を初期化", systemImage: "arrow.counterclockwise")
+                }
+                Button {
+                    📱.一手戻す()
+                } label: {
+                    Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
+                }
+                .disabled(📱.局面.一手前の局面 == nil)
+                Button {
+                    📱.編集モードを開始する()
+                } label: {
+                    Label("駒を消したり増やしたりする", systemImage: "wand.and.rays")
+                }
+                Button {
+                    📱.強調表示をクリア()
+                } label: {
+                    Label("強調表示をクリア", systemImage: "square.dashed")
+                }
+                .disabled(📱.何も強調表示されていない)
+                .disabled(📱.強調表示常時オフかつ駒が選択されていない)
             }
             .navigationTitle("編集")
-        }
-        private func 強調表示クリアボタン() -> some View {
-            Button {
-                📱.強調表示をクリア()
-            } label: {
-                Label("強調表示をクリア", systemImage: "square.dashed")
-            }
-            .disabled(📱.何も強調表示されていない)
-            .disabled(📱.強調表示常時オフかつ駒が選択されていない)
-        }
-        private func 盤面初期化ボタン() -> some View {
-            Button {
-                📱.盤面を初期化する()
-            } label: {
-                Label("盤面を初期化", systemImage: "arrow.counterclockwise")
-            }
-        }
-        private func 編集モード開始ボタン() -> some View {
-            Button {
-                📱.編集モードを開始する()
-            } label: {
-                Label("駒を消したり増やしたりする", systemImage: "wand.and.rays")
-            }
-        }
-        private func 一手戻すボタン() -> some View {
-            Button {
-                📱.一手戻す()
-            } label: {
-                Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
-            }
-            .disabled(📱.局面.一手前の局面 == nil)
         }
     }
 }
@@ -186,7 +174,7 @@ private struct 履歴メニュー: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.1)
                     }
-                    .padding(8)
+                    .padding(.vertical, 8)
                 }
             }
             .navigationTitle("履歴")
@@ -211,7 +199,7 @@ private struct ブックマークメニュー: View {
         var body: some View {
             List {
                 Section {
-                    VStack(spacing: 20) {
+                    VStack {
                         if let ブックマーク {
                             局面プレビュー(ブックマーク)
                         } else {

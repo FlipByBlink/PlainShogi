@@ -244,6 +244,10 @@ extension 📱アプリモデル {
         局面モデル.前回の局面 ?? .初期セット
 #endif
     }
+    func 念のため局面をリロード() {
+        guard let 局面 = 局面モデル.履歴.last else { return }
+        self.局面 = 局面
+    }
     func 任意の局面を現在の局面として適用する(_ 局面: 局面モデル) { //履歴, ブックマーク
         self.シートを表示 = nil
         withAnimation { self.局面.現在の局面として適用する(局面) }

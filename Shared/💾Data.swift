@@ -28,12 +28,14 @@ extension 💾ICloud {
 }
 
 struct 💾アクティブ復帰時にiCloudを明示的に同期: ViewModifier {
+    @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.scenePhase) private var scenePhase
     func body(content: Content) -> some View {
         content
             .onChange(of: self.scenePhase) {
                 if $0 == .active {
                     💾ICloud.synchronize()
+                    📱.念のため局面をリロード()
                 }
             }
     }

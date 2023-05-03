@@ -69,7 +69,6 @@
 		F5BD6A122A00BF4C004AD4A5 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* 📱AppModel.swift */; };
 		F5BD6A132A00BF4C004AD4A5 /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* 📱AppModel.swift */; };
 		F5BD6A142A00BF76004AD4A5 /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
-		F5BD6A152A00BF7D004AD4A5 /* 🔠Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 🔠Font.swift */; };
 		F5BD6A162A00BF7D004AD4A5 /* 💾Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* 💾Data.swift */; };
 		F5BD6A182A00BF7D004AD4A5 /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* 💥Feedback.swift */; };
 		F5BD6A192A00BF87004AD4A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
@@ -316,6 +315,7 @@
 				F525A7D529F8FB1F001E8D5F /* ☖ShogiView.swift */,
 				12F4444D286D4B580008A663 /* 🛠AppMenu.swift */,
 				F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */,
+				F5B5578A29FF851800A14074 /* 🔠Font.swift */,
 				12D424412871893D002D3E80 /* 📬DropDelegate.swift */,
 				127132E72873CDF20008AE46 /* 🪄EditMode.swift */,
 				F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */,
@@ -359,7 +359,6 @@
 			children = (
 				F5BD6A0E2A00BF4C004AD4A5 /* ☖ShogiModel.swift */,
 				F5BD6A0F2A00BF4C004AD4A5 /* 📱AppModel.swift */,
-				F5B5578A29FF851800A14074 /* 🔠Font.swift */,
 				F5E0549E29FB52A1004DC425 /* 💾Data.swift */,
 				F52437B229F613A600EA770E /* 💥Feedback.swift */,
 				F5119B952A0144460027A74C /* 🪧SheetCategory.swift */,
@@ -549,7 +548,6 @@
 				F51F037E2A00C46100F05874 /* 🛠Menu.swift in Sources */,
 				F5119B972A0144460027A74C /* 🪧SheetCategory.swift in Sources */,
 				F5BD6A112A00BF4C004AD4A5 /* ☖ShogiModel.swift in Sources */,
-				F5BD6A152A00BF7D004AD4A5 /* 🔠Font.swift in Sources */,
 				F5D9F92D2A00BDC600CEE697 /* PS Watch App.swift in Sources */,
 				F5BD6A162A00BF7D004AD4A5 /* 💾Data.swift in Sources */,
 				F5D9F92F2A00BDC600CEE697 /* ContentView_watchOSApp.swift in Sources */,

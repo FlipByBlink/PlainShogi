@@ -228,7 +228,6 @@ private struct アニメーション: ViewModifier {
 
 private struct テキスト: View {
     var 字: String
-    var 対象: 🔠フォント.対象カテゴリ = .コマ
     var 強調: Bool = false
     var 下線: Bool = false
     @Environment(\.マスの大きさ) private var マスの大きさ
