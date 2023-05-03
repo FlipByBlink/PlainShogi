@@ -3,38 +3,50 @@ import SwiftUI
 struct 🛠メニューボタン: View { // ⚙️
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
-    @State private var シートを表示: Bool = false
-    private var 駒を選択していない: Bool {
-        📱.選択中の駒 == .なし
+    private var 駒を選択していない: Bool { 📱.選択中の駒 == .なし }
+    private var モード: Self.モード切り替え {
+        if 📱.編集中 {
+            return .編集完了
+        } else if 📱.選択中の駒 == .なし {
+            return .メニュー
+        } else {
+            return .駒選択解除
+        }
+    }
+    private var アイコンネーム: String {
+        switch self.モード {
+            case .メニュー: return "gearshape"
+            case .駒選択解除: return "escape"
+            case .編集完了: return "checkmark.circle.fill"
+        }
     }
     var body: some View {
         Button {
-            if self.駒を選択していない {
-                self.シートを表示 = true
-            } else {
-                📱.駒の選択を解除する()
+            switch self.モード {
+                case .メニュー: 📱.シートを表示 = .メニュー
+                case .駒選択解除: 📱.駒の選択を解除する()
+                case .編集完了: 📱.編集モードを終了する()
             }
             💥フィードバック.軽め()
         } label: {
-            Group {
-                if self.駒を選択していない {
-                    Image(systemName: "gearshape")
-                        .resizable()
-                } else {
-                    Image(systemName: "escape")
-                        .resizable()
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .frame(width: self.マスの大きさ * 0.75,
-                   height: self.マスの大きさ * 0.75)
-            .padding(.horizontal, 8)
+            Image(systemName: self.アイコンネーム)
+                .foregroundStyle(self.モード == .駒選択解除 ? .secondary : .primary)
+                .frame(width: self.マスの大きさ * 0.75,
+                       height: self.マスの大きさ * 0.75)
+                .padding(.horizontal, 8)
         }
         .buttonStyle(.plain)
-        .sheet(isPresented: self.$シートを表示) {
-            メニュートップ()
+        .sheet(item: $📱.シートを表示) {
+            switch $0 {
+                case .メニュー: メニュートップ()
+                case .手駒編集(let 陣営): 手駒編集メニュー(陣営)
+                default: Text("🐛")
+            }
         }
         .animation(.default, value: self.駒を選択していない)
+    }
+    private enum モード切り替え {
+        case メニュー, 駒選択解除, 編集完了
     }
 }
 
@@ -239,6 +251,7 @@ private struct ブックマークメニュー: View {
                 }
             }
             .navigationTitle("ブックマーク")
+            .onAppear { self.ブックマーク = .ブックマークを読み込む() }
         }
     }
 }
@@ -293,6 +306,33 @@ private struct 局面プレビュー: View {
         .frame(width: Self.コマのサイズ * 9, height: Self.コマのサイズ)
     }
     init(_ ｷｮｸﾒﾝ: 局面モデル) { self.局面 = ｷｮｸﾒﾝ }
+}
+
+private struct 手駒編集メニュー: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    private var 陣営: 王側か玉側か
+    var body: some View {
+        List {
+            ForEach(駒の種類.allCases) { 職名 in
+                Stepper {
+                    HStack(spacing: 6) {
+                        Text(📱.手駒編集シートの駒の表記(職名, self.陣営))
+                        Text(📱.局面.この手駒の数(self.陣営, 職名).description)
+                            .font(.subheadline)
+                            .monospacedDigit()
+                    }
+                    .minimumScaleFactor(0.5)
+                } onIncrement: {
+                    📱.編集モードでこの手駒を一個増やす(self.陣営, 職名)
+                } onDecrement: {
+                    📱.編集モードでこの手駒を一個減らす(self.陣営, 職名)
+                }
+            }
+        }
+        .listStyle(.plain)
+        .navigationTitle(self.陣営 == .王側 ? "王側の手駒" : "玉側の手駒")
+    }
+    init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
 
 private struct ガイドメニュー: View {

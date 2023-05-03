@@ -39,11 +39,11 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                 return ["Plain将棋盤App.swift",
                         "ContentView.swift"]
             case .Shared:
-                return [  "☖ShogiModel.swift",
-                          "📱AppModel.swift",
-                          "🔠Font.swift",
-                          "💾Data.swift",
-                          "💥Feedback.swift"]
+                return ["☖ShogiModel.swift",
+                        "📱AppModel.swift",
+                        "🔠Font.swift",
+                        "💾Data.swift",
+                        "💥Feedback.swift"]
             case .Sub:
                 return ["☖ShogiView.swift",
                         "🛠AppMenu.swift",
@@ -64,7 +64,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                 return ["PS Watch App.swift",
                         "ContentView_watchOSApp.swift",
                         "☖ShogiView_watchOSApp.swift",
-                        "🛠OptionMenu.swift"]
+                        "🛠Menu.swift"]
             case .WatchComplication:
                 return ["PSComplication.swift"]
             case .tvApp:

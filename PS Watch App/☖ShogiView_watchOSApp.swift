@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct 将棋View_watchOSApp: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         ZStack {
             Color.clear
@@ -38,7 +37,6 @@ extension EnvironmentValues {
 }
 
 private struct 盤面のみ: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     var body: some View {
         VStack(spacing: 0) {
@@ -109,11 +107,10 @@ private struct 盤外: View {
         ZStack(alignment: self.揃え方) {
             Color.clear
             HStack(spacing: 0) {
-                if self.立場 == .手前 {
-                    🛠メニューボタン()
-                    Spacer()
-                }
+                if self.立場 == .対面 { 手駒編集ボタン(self.陣営) }
+                if self.立場 == .手前 { 🛠メニューボタン(); Spacer() }
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
+                if self.立場 == .手前 { 手駒編集ボタン(self.陣営) }
             }
         }
         .frame(width:  self.マスの大きさ * 9,
@@ -267,4 +264,28 @@ private struct 編集モード用ⓧマーク: ViewModifier {
             }
     }
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
+}
+
+private struct 手駒編集ボタン: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @Environment(\.マスの大きさ) private var マスの大きさ
+    private var 陣営: 王側か玉側か
+    @AppStorage("太字") private var 太字: Bool = false
+    var body: some View {
+        if 📱.編集中 {
+            Button {
+                📱.シートを表示 = .手駒編集(self.陣営)
+            } label: {
+                Image(systemName: "plusminus")
+                    .font(.system(size: self.マスの大きさ * 0.45,
+                                  weight: self.太字 ? .semibold : .regular))
+                    .padding(.horizontal, 8)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("手駒を整理する")
+            .tint(.primary)
+            .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
+        }
+    }
+    init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
