@@ -9,7 +9,7 @@ struct 🗄️コマンド: Commands {
                 .keyboardShortcut(",")
                 .disabled(📱.シートを表示 == .広告)
         }
-        CommandMenu("編集") {
+        CommandMenu("操作") {
             Group {
                 Button("一手だけ戻す") { 📱.一手戻す() }
                     .keyboardShortcut("z", modifiers: [])
@@ -18,7 +18,7 @@ struct 🗄️コマンド: Commands {
                     .disabled(局面モデル.履歴.isEmpty)
                 Button("ブックマークを表示") { 📱.シートを表示 = .ブックマーク }
                     .keyboardShortcut("d", modifiers: [])
-                Button("増減モードを開始") { 📱.増減モードを開始する() }
+                Button("駒増減モードを開始") { 📱.増減モードを開始する() }
                     .keyboardShortcut(.return, modifiers: [])
                     .disabled(📱.増減モード中)
                 Button("盤面を初期化") { 📱.盤面を初期化する() }
@@ -86,16 +86,27 @@ enum 🗄️データ移行ver_1_3 {
 }
 
 enum 🗄️固定値 {
-    static var 枠線の太さ: CGFloat {
+    static var 盤面枠線の太さ: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
             case .phone: return 1.0
             case .pad:
 #if targetEnvironment(macCatalyst)
-                return 2
+                return 2.5
 #else
                 return 1.33
 #endif
-            case .tv: return 2
+            default: return 1.0
+        }
+    }
+    static var 強調枠線の太さ: CGFloat {
+        switch UIDevice.current.userInterfaceIdiom {
+            case .phone: return 2.0
+            case .pad:
+#if targetEnvironment(macCatalyst)
+                return 3
+#else
+                return 2.5
+#endif
             default: return 1.0
         }
     }
@@ -103,7 +114,6 @@ enum 🗄️固定値 {
         switch UIDevice.current.userInterfaceIdiom {
             case .phone: return 16
             case .pad: return 24
-            case .tv: return 36
             default: return 16
         }
     }

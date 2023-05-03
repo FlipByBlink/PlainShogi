@@ -1,2 +1,3 @@
 
 CFBundleDisplayName = "PlainShogi";
+CFBundleName = "PlainShogiBoard";

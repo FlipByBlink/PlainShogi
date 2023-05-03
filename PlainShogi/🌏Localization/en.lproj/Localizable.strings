@@ -9,6 +9,7 @@
 "メニューを表示" = "Show menu";
 "駒の選択を解除" = "Unfocus";
 "編集" = "Edit";
+"操作" = "Command";
 "駒増減モード" = "Modify mode";
 "駒増減モードを開始" = "Edit mode";
 "盤面を初期化" = "Initialize";

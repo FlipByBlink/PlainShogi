@@ -75,7 +75,7 @@
 		F5BD6A1B2A00C0A0004AD4A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		F5C9FAFF296CF7BB00B513D8 /* 📜History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */; };
 		F5C9FB02296D0A3100B513D8 /* 👥SharePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */; };
-		F5D9F9252A00BDAA00CEE697 /* Plain将棋盤.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F5D9F9252A00BDAA00CEE697 /* Plain将棋盤.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F5D9F92D2A00BDC600CEE697 /* PS Watch App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D9F92A2A00BDC600CEE697 /* PS Watch App.swift */; };
 		F5D9F92E2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D9F92B2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift */; };
 		F5D9F92F2A00BDC600CEE697 /* ContentView_watchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D9F92C2A00BDC600CEE697 /* ContentView_watchOSApp.swift */; };
@@ -567,6 +567,7 @@
 		};
 		F5D9F9242A00BDAA00CEE697 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = F5D9F9172A00BDA800CEE697 /* PS Watch App */;
 			targetProxy = F5D9F9232A00BDAA00CEE697 /* PBXContainerItemProxy */;
 		};

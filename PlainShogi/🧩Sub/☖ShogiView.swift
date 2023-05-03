@@ -109,7 +109,7 @@ private struct 盤面のみ: View {
                 }
             }
         }
-        .border(.primary, width: 🗄️固定値.枠線の太さ)
+        .border(.primary, width: 🗄️固定値.盤面枠線の太さ)
         .frame(width: self.マスの大きさ * 9,
                height: self.マスの大きさ * 9)
     }
@@ -240,7 +240,7 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
                 .rotationEffect(.degrees(📱.増減モード中 ? 15 : 0))
                 .onChange(of: 📱.増減モード中) { _ in 📱.駒の選択を解除する() }
             }
-            .border(.tint, width: self.この駒を選択中 ? 2 : 0)
+            .border(.tint, width: self.この駒を選択中 ? 🗄️固定値.強調枠線の太さ : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
             .modifier(🪄増減モード用ⓧマーク(self.場所))
             .modifier(ドラッグ直後の効果(self.場所))
