@@ -67,7 +67,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "☖ShogiView_watchOSApp.swift",
                         "🛠Menu.swift"]
             case .WatchComplication:
-                return ["PSComplication.swift"]
+                return ["PS Complication.swift"]
             case .tvApp:
                 return []
         }

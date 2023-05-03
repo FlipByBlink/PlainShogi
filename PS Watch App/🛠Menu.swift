@@ -1,17 +1,12 @@
 import SwiftUI
 
-struct 🛠メニューボタン: View { // ⚙️
+struct 🛠ツールボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 駒を選択していない: Bool { 📱.選択中の駒 == .なし }
     private var モード: Self.モード切り替え {
-        if 📱.編集中 {
-            return .編集完了
-        } else if 📱.選択中の駒 == .なし {
-            return .メニュー
-        } else {
-            return .駒選択解除
-        }
+        if 📱.編集中 { return .編集完了 }
+        return (📱.選択中の駒 == .なし) ? .メニュー : .駒選択解除
     }
     private var アイコンネーム: String {
         switch self.モード {
@@ -376,6 +371,20 @@ private struct ガイドメニュー: View {
             Link(destination: 🔗appStoreProductURL) {
                 Label("Open AppStore page", systemImage: "link")
             }
+            Self.補足セクション()
+        }
+    }
+    private static func 補足セクション() -> some View {
+        Section {
+            Text("""
+                iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません。
+                ・SharePlay
+                ・セリフ体フォントオプション
+                ・駒のサイズオプション
+                ・テキスト連携機能
+                """)
+        } header: {
+            Text("補足")
         }
     }
 }
