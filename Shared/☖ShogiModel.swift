@@ -144,6 +144,12 @@ extension 局面モデル {
             default: assertionFailure(); return 0
         }
     }
+    func この駒の陣営の手駒の種類の数(_ 場所: 駒の場所) -> Int {
+        guard let 陣営 = self.この駒の陣営(場所) else { return 0 }
+        return 駒の種類.allCases.reduce(into: 0) {
+            if self.この手駒の数(陣営, $1) > 0 { $0 += 1 }
+        }
+    }
     func この駒にはアンダーラインが必要(_ 場所: 駒の場所, _ English表記: Bool) -> Bool {
         guard English表記,
               case .盤駒(let 位置) = 場所,

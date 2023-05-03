@@ -30,6 +30,7 @@ struct 🛠メニューボタン: View { // ⚙️
             💥フィードバック.軽め()
         } label: {
             Image(systemName: self.アイコンネーム)
+                .imageScale(.small)
                 .foregroundStyle(self.モード == .駒選択解除 ? .secondary : .primary)
                 .frame(width: self.マスの大きさ * 0.75,
                        height: self.マスの大きさ * 0.75)
@@ -175,20 +176,17 @@ private struct 履歴メニュー: View {
                             Text(局面.更新時刻表記)
                                 .font(.subheadline)
                             Spacer()
-                            Button {
+                            Button("復元") {
                                 📱.任意の局面を現在の局面として適用する(局面)
-                            } label: {
-                                Text("復元")
-                                    .font(.caption.weight(.medium))
                             }
+                            .font(.caption.weight(.medium))
                             .buttonStyle(.bordered)
-                            .dynamicTypeSize(...DynamicTypeSize.xLarge)
                         }
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                         .minimumScaleFactor(0.1)
                     }
-                    .padding()
+                    .padding(8)
                 }
             }
             .navigationTitle("履歴")
@@ -259,7 +257,7 @@ private struct ブックマークメニュー: View {
 private struct 局面プレビュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 局面: 局面モデル
-    private static let コマのサイズ: CGFloat = 10
+    private static let コマのサイズ: CGFloat = 9
     var body: some View {
         VStack {
             self.手駒プレビュー(局面, .玉側)
@@ -293,7 +291,7 @@ private struct 局面プレビュー: View {
         .border(.primary, width: 0.66)
     }
     private func 手駒プレビュー(_ 局面: 局面モデル, _ 陣営: 王側か玉側か) -> some View {
-        HStack {
+        HStack(spacing: 2) {
             ForEach(駒の種類.allCases) {
                 if let 表記 = 局面.この駒の表記(.手駒(陣営, $0), 📱.🚩English表記) {
                     Text(表記)
@@ -314,19 +312,39 @@ private struct 手駒編集メニュー: View {
     var body: some View {
         List {
             ForEach(駒の種類.allCases) { 職名 in
-                Stepper {
-                    HStack(spacing: 6) {
+                HStack {
+                    Button {
+                        📱.編集モードでこの手駒を一個減らす(self.陣営, 職名)
+                    } label: {
+                        Image(systemName: "minus.circle.fill")
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.title2)
+                            .imageScale(.small)
+                    }
+                    .buttonStyle(.plain)
+                    Spacer()
+                    HStack(spacing: 12) {
                         Text(📱.手駒編集シートの駒の表記(職名, self.陣営))
+                            .font(.headline)
                         Text(📱.局面.この手駒の数(self.陣営, 職名).description)
                             .font(.subheadline)
                             .monospacedDigit()
                     }
                     .minimumScaleFactor(0.5)
-                } onIncrement: {
-                    📱.編集モードでこの手駒を一個増やす(self.陣営, 職名)
-                } onDecrement: {
-                    📱.編集モードでこの手駒を一個減らす(self.陣営, 職名)
+                    Spacer()
+                    Button {
+                        📱.編集モードでこの手駒を一個増やす(self.陣営, 職名)
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.title2)
+                            .imageScale(.small)
+                    }
+                    .buttonStyle(.plain)
                 }
+                .monospacedDigit()
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
             }
         }
         .listStyle(.plain)

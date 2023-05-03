@@ -25,7 +25,6 @@ private enum レイアウト {
         }
     }
     static let 盤と手駒の隙間: CGFloat = 4
-    static let 複数個の盤外コマの幅比率: Double = 1.15
     struct マスの大きさKey: EnvironmentKey { static let defaultValue = 10.0 }
 }
 
@@ -81,7 +80,7 @@ private struct 盤上のコマもしくはマス: View {
             if 📱.局面.ここに駒がある(self.元々の場所) {
                 コマの見た目(self.元々の場所)
             } else { // ==== マス ====
-                Color.clear //?
+                Color.clear
                     .contentShape(Rectangle())
             }
         }
@@ -106,7 +105,7 @@ private struct 盤外: View {
     var body: some View {
         ZStack(alignment: self.揃え方) {
             Color.clear
-            HStack(spacing: 0) {
+            HStack(spacing: 1) {
                 if self.立場 == .対面 { 手駒編集ボタン(self.陣営) }
                 if self.立場 == .手前 { 🛠メニューボタン(); Spacer() }
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
@@ -126,12 +125,37 @@ private struct 盤外のコマ: View {
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 場所: 駒の場所
     private var 数: Int { 📱.局面.この手駒の数(self.場所) }
+    private var 自陣営の手駒の種類の数: Int {
+        📱.局面.この駒の陣営の手駒の種類の数(self.場所)
+    }
     private var 幅比率: Double {
-        self.数 >= 2 ? レイアウト.複数個の盤外コマの幅比率 : 1
+        switch self.自陣営の手駒の種類の数 {
+            case 0 ..< 6:
+                switch self.数 {
+                    case 1: return 1
+                    case 2...: return 1.15
+                    default: assertionFailure(); return 1
+                }
+            case 6:
+                switch self.数 {
+                    case 1: return 0.9
+                    case 2...: return 1.1
+                    default: assertionFailure(); return 1
+                }
+            case 7, 8:
+                switch self.数 {
+                    case 1: return 0.7
+                    case 2...: return 0.82
+                    default: assertionFailure(); return 1
+                }
+            default:
+                assertionFailure(); return 1
+        }
     }
     var body: some View {
         if self.数 > 0 {
             コマの見た目(self.場所)
+                .environment(\.マスの大きさ, self.マスの大きさ * self.幅比率)
                 .frame(width: self.マスの大きさ * self.幅比率,
                        height: self.マスの大きさ)
                 .onTapGesture { self.📱.この駒を選択する(self.場所) }
@@ -224,7 +248,7 @@ private struct テキスト: View {
     }
     var body: some View {
         Text(self.装飾文字)
-            .minimumScaleFactor(0.8)
+            .minimumScaleFactor(0.6)
     }
 }
 
@@ -245,7 +269,6 @@ private struct 編集モード用ⓧマーク: ViewModifier {
                         .padding(.trailing, self.マスの大きさ / 2)
                         .padding(.bottom, self.マスの大きさ / 2)
                         .background(Color.white)
-                        .padding(2)
                         .compositingGroup()
                         .luminanceToAlpha()
                 } else {
