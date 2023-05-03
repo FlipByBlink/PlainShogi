@@ -36,5 +36,16 @@ enum 💥フィードバック {
     static func 警告() {
         WKInterfaceDevice.current().play(.success)
     }
+#elseif os(tvOS)
+    static func 軽め() {
+    }
+    static func 強め() {
+    }
+    static func 成功() {
+    }
+    static func エラー() {
+    }
+    static func 警告() {
+    }
 #endif
 }
