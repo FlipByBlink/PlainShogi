@@ -50,7 +50,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "🪧SheetView.swift",
                         "🔠Font.swift",
                         "📬DropDelegate.swift",
-                        "🪄EditMode.swift",
+                        "🪄ModifyMode.swift",
                         "📜History.swift",
                         "👥SharePlay.swift",
                         "📣ADContent.swift",

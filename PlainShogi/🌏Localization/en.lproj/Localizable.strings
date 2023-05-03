@@ -7,11 +7,10 @@
 "メニュー" = "Menu";
 "長押しして駒を持ち上げ、そのままスライドして移動させる" = "Long press a piece, move it";
 "メニューを表示" = "Show menu";
-"ショートカット" = "Shortcut";
 "駒の選択を解除" = "Unfocus";
 "編集" = "Edit";
-"編集モード" = "Edit mode";
-"編集を開始" = "Edit mode";
+"駒増減モード" = "Modify mode";
+"駒増減モードを開始" = "Edit mode";
 "盤面を初期化" = "Initialize";
 "駒を消したり増やしたりする" = "Edit pieces";
 "手駒を整理する" = "Edit captured pieces";
@@ -100,7 +99,7 @@
 ・「駒のサイズ」オプション
 ・「English表記」オプション
 ・「強調表示を常時オフ」オプション
-・編集モードに移行しているかどうか
+・駒増減モードに移行しているかどうか
 ・選択中の駒の様子(駒の移動等を完了させたタイミングで操作結果が同期されます)
 ・ドラッグしている最中の駒の様子(ドラッグを完了させたタイミングで操作結果が同期されます)" = "**No sync between users**
 ・Reverse vertically option

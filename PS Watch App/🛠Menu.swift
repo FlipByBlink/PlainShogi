@@ -5,26 +5,19 @@ struct 🛠ツールボタン: View {
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 駒を選択していない: Bool { 📱.選択中の駒 == .なし }
     private var モード: Self.モード切り替え {
-        if 📱.編集中 { return .編集完了 }
+        if 📱.増減モード中 { return .増減モード完了 }
         return (📱.選択中の駒 == .なし) ? .メニュー : .駒選択解除
-    }
-    private var アイコンネーム: String {
-        switch self.モード {
-            case .メニュー: return "gearshape"
-            case .駒選択解除: return "escape"
-            case .編集完了: return "checkmark.circle.fill"
-        }
     }
     var body: some View {
         Button {
             switch self.モード {
                 case .メニュー: 📱.シートを表示 = .メニュー
                 case .駒選択解除: 📱.駒の選択を解除する()
-                case .編集完了: 📱.編集モードを終了する()
+                case .増減モード完了: 📱.増減モードを終了する()
             }
             💥フィードバック.軽め()
         } label: {
-            Image(systemName: self.アイコンネーム)
+            Image(systemName: self.モード.アイコン)
                 .imageScale(.small)
                 .frame(width: self.マスの大きさ * 0.75,
                        height: self.マスの大きさ * 0.75)
@@ -34,14 +27,21 @@ struct 🛠ツールボタン: View {
         .sheet(item: $📱.シートを表示) {
             switch $0 {
                 case .メニュー: メニュートップ()
-                case .手駒編集(let 陣営): 手駒編集メニュー(陣営)
+                case .手駒増減(let 陣営): 手駒増減メニュー(陣営)
                 default: Text("🐛")
             }
         }
         .animation(.default, value: self.駒を選択していない)
     }
     private enum モード切り替え {
-        case メニュー, 駒選択解除, 編集完了
+        case メニュー, 駒選択解除, 増減モード完了
+        var アイコン: String {
+            switch self {
+                case .メニュー: return "gearshape"
+                case .駒選択解除: return "escape"
+                case .増減モード完了: return "checkmark.circle.fill"
+            }
+        }
     }
 }
 
@@ -84,7 +84,7 @@ private struct 編集メニュー: View {
                 }
                 .disabled(📱.局面.一手前の局面 == nil)
                 Button {
-                    📱.編集モードを開始する()
+                    📱.増減モードを開始する()
                 } label: {
                     Label("駒を消したり増やしたりする", systemImage: "wand.and.rays")
                 }
@@ -288,7 +288,7 @@ private struct 局面プレビュー: View {
     init(_ ｷｮｸﾒﾝ: 局面モデル) { self.局面 = ｷｮｸﾒﾝ }
 }
 
-private struct 手駒編集メニュー: View {
+private struct 手駒増減メニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 陣営: 王側か玉側か
     var body: some View {
@@ -296,7 +296,7 @@ private struct 手駒編集メニュー: View {
             ForEach(駒の種類.allCases) { 職名 in
                 HStack {
                     Button {
-                        📱.編集モードでこの手駒を一個減らす(self.陣営, 職名)
+                        📱.増減モードでこの手駒を一個減らす(self.陣営, 職名)
                     } label: {
                         Image(systemName: "minus.circle.fill")
                             .symbolRenderingMode(.hierarchical)
@@ -306,7 +306,7 @@ private struct 手駒編集メニュー: View {
                     .buttonStyle(.plain)
                     Spacer()
                     HStack(spacing: 12) {
-                        Text(📱.手駒編集シートの駒の表記(職名, self.陣営))
+                        Text(📱.手駒増減メニューの駒の表記(職名, self.陣営))
                             .font(.headline)
                         Text(📱.局面.この手駒の数(self.陣営, 職名).description)
                             .font(.subheadline)
@@ -315,7 +315,7 @@ private struct 手駒編集メニュー: View {
                     .minimumScaleFactor(0.5)
                     Spacer()
                     Button {
-                        📱.編集モードでこの手駒を一個増やす(self.陣営, 職名)
+                        📱.増減モードでこの手駒を一個増やす(self.陣営, 職名)
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .symbolRenderingMode(.hierarchical)

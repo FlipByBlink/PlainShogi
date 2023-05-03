@@ -163,10 +163,10 @@ private struct 盤外: View {
     var body: some View {
         ZStack(alignment: self.揃え方) {
             Color(.systemBackground)
-            Self.各種コマと編集ボタンの配置 {
-                if self.立場 == .対面 { 🪄手駒編集ボタン(self.陣営) }
+            Self.各種コマと増減ボタンの配置 {
+                if self.立場 == .対面 { 🪄手駒増減シート表示ボタン(self.陣営) }
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
-                if self.立場 == .手前 { 🪄手駒編集ボタン(self.陣営) }
+                if self.立場 == .手前 { 🪄手駒増減シート表示ボタン(self.陣営) }
             }
         }
         .frame(maxWidth: self.最大の長さ, maxHeight: self.最大の長さ)
@@ -175,7 +175,7 @@ private struct 盤外: View {
                 delegate: 📬DropDelegate(📱, .盤外(self.陣営)))
     }
     init(_ ﾀﾁﾊﾞ: 手前か対面か) { self.立場 = ﾀﾁﾊﾞ }
-    private struct 各種コマと編集ボタンの配置<Content: View>: View {
+    private struct 各種コマと増減ボタンの配置<Content: View>: View {
         @Environment(\.縦並び) private var 縦並び
         @ViewBuilder var content: () -> Content
         var body: some View {
@@ -237,12 +237,12 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
                      強調: self.この駒は操作直後,
                      下線: 📱.この駒にはアンダーラインが必要(self.場所))
                 .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
-                .rotationEffect(.degrees(📱.編集中 ? 15 : 0))
-                .onChange(of: 📱.編集中) { _ in 📱.駒の選択を解除する() }
+                .rotationEffect(.degrees(📱.増減モード中 ? 15 : 0))
+                .onChange(of: 📱.増減モード中) { _ in 📱.駒の選択を解除する() }
             }
             .border(.tint, width: self.この駒を選択中 ? 2 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
-            .modifier(🪄編集モード用ⓧマーク(self.場所))
+            .modifier(🪄増減モード用ⓧマーク(self.場所))
             .modifier(ドラッグ直後の効果(self.場所))
             .overlay {
                 if self.太字オプション, self.この駒は操作直後 {
@@ -356,7 +356,7 @@ private struct アニメーション: ViewModifier {
         content
             .animation(.default, value: 📱.🚩English表記)
             .animation(.default, value: 📱.🚩上下反転)
-            .animation(.default, value: 📱.編集中)
+            .animation(.default, value: 📱.増減モード中)
             .animation(.default, value: self.セリフ体)
             .animation(.default, value: self.太字)
             .animation(.default, value: self.サイズ)

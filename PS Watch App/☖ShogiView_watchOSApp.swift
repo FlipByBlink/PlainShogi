@@ -106,10 +106,10 @@ private struct 盤外: View {
         ZStack(alignment: self.揃え方) {
             Color.clear
             HStack(spacing: 1) {
-                if self.立場 == .対面 { 手駒編集ボタン(self.陣営) }
+                if self.立場 == .対面 { 手駒増減シート表示ボタン(self.陣営) }
                 if self.立場 == .手前 { 🛠ツールボタン(); Spacer() }
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
-                if self.立場 == .手前 { 手駒編集ボタン(self.陣営) }
+                if self.立場 == .手前 { 手駒増減シート表示ボタン(self.陣営) }
             }
         }
         .frame(width:  self.マスの大きさ * 9,
@@ -182,13 +182,13 @@ private struct コマの見た目: View { //操作処理などは呼び出し側
                      強調: self.この駒は操作直後,
                      下線: 📱.この駒にはアンダーラインが必要(self.場所))
                 .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
-                .rotationEffect(.degrees(📱.編集中 ? 15 : 0))
-                .onChange(of: 📱.編集中) { _ in 📱.駒の選択を解除する() }
+                .rotationEffect(.degrees(📱.増減モード中 ? 15 : 0))
+                .onChange(of: 📱.増減モード中) { _ in 📱.駒の選択を解除する() }
             }
             .contentShape(Rectangle())
             .border(.primary, width: self.この駒を選択中 ? 1.5 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
-            .modifier(編集モード用ⓧマーク(self.場所))
+            .modifier(増減モード用ⓧマーク(self.場所))
             .overlay {
                 if self.太字オプション, self.この駒は操作直後 {
                     Rectangle().fill(.quaternary)
@@ -221,7 +221,7 @@ private struct アニメーション: ViewModifier {
         content
             .animation(.default, value: 📱.🚩English表記)
             .animation(.default, value: 📱.🚩上下反転)
-            .animation(.default, value: 📱.編集中)
+            .animation(.default, value: 📱.増減モード中)
             .animation(.default, value: self.太字)
     }
 }
@@ -251,19 +251,19 @@ private struct テキスト: View {
     }
 }
 
-private struct 編集モード用ⓧマーク: ViewModifier {
+private struct 増減モード用ⓧマーク: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 場所: 駒の場所
     @AppStorage("太字") private var 太字: Bool = false
-    private var 編集中の盤上の駒: Bool {
-        guard 📱.編集中, case .盤駒(_) = self.場所 else { return false }
+    private var 増減モード中の盤上の駒: Bool {
+        guard 📱.増減モード中, case .盤駒(_) = self.場所 else { return false }
         return true
     }
     func body(content: Content) -> some View {
         content
             .mask {
-                if self.編集中の盤上の駒 {
+                if self.増減モード中の盤上の駒 {
                     Circle()
                         .padding(.trailing, self.マスの大きさ / 2)
                         .padding(.bottom, self.マスの大きさ / 2)
@@ -275,7 +275,7 @@ private struct 編集モード用ⓧマーク: ViewModifier {
                 }
             }
             .overlay(alignment: .topLeading) {
-                if self.編集中の盤上の駒 {
+                if self.増減モード中の盤上の駒 {
                     Image(systemName: "xmark")
                         .resizable()
                         .padding(self.マスの大きさ / 8)
@@ -288,15 +288,15 @@ private struct 編集モード用ⓧマーク: ViewModifier {
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
 }
 
-private struct 手駒編集ボタン: View {
+private struct 手駒増減シート表示ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 陣営: 王側か玉側か
     @AppStorage("太字") private var 太字: Bool = false
     var body: some View {
-        if 📱.編集中 {
+        if 📱.増減モード中 {
             Button {
-                📱.シートを表示 = .手駒編集(self.陣営)
+                📱.シートを表示 = .手駒増減(self.陣営)
             } label: {
                 Image(systemName: "plusminus")
                     .font(.system(size: self.マスの大きさ * 0.45,

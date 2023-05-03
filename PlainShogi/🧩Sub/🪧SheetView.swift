@@ -16,7 +16,7 @@ struct 🪧シートビュー: ViewModifier {
                                 case .メニュー: 🛠アプリメニュー()
                                 case .履歴: 📜履歴メニュー()
                                 case .ブックマーク: 📜ブックマークメニュー()
-                                case .手駒編集(let 陣営): 🪄手駒編集メニュー(陣営)
+                                case .手駒増減(let 陣営): 🪄手駒増減メニュー(陣営)
                                 case .SharePlayガイド: 👥SharePlayガイド()
                                 case .広告: Text("🐛")
                             }

@@ -15,7 +15,7 @@ class 📱アプリモデル: ObservableObject {
     
     @Published var シートを表示: 🪧シートカテゴリ? = nil
     @Published var 成駒確認アラートを表示: Bool = false
-    @Published private(set) var 編集中: Bool = false
+    @Published private(set) var 増減モード中: Bool = false
     @Published private(set) var ドラッグ中の駒: ドラッグ対象 = .無し
     @Published private(set) var 選択中の駒: 駒の場所 = .なし
     
@@ -39,7 +39,7 @@ extension 📱アプリモデル {
     func この駒の表記(_ 場所: 駒の場所) -> String? {
         self.局面.この駒の表記(場所, self.🚩English表記)
     }
-    func 手駒編集シートの駒の表記(_ 職名: 駒の種類, _ 陣営: 王側か玉側か) -> String {
+    func 手駒増減メニューの駒の表記(_ 職名: 駒の種類, _ 陣営: 王側か玉側か) -> String {
         self.🚩English表記 ? 職名.English生駒表記 : 職名.生駒表記(陣営)
     }
     func この手駒のプレビュー表記(_ 場所: 駒の場所) -> String {
@@ -80,7 +80,7 @@ extension 📱アプリモデル {
         💥フィードバック.軽め()
     }
     func この駒を選択する(_ 今選択した場所: 駒の場所) {
-        if !self.編集中 {
+        if !self.増減モード中 {
             switch self.選択中の駒 {
                 case .なし:
                     if self.局面.ここに駒がある(今選択した場所) {
@@ -112,9 +112,9 @@ extension 📱アプリモデル {
         } else {
             switch 今選択した場所 {
                 case .盤駒(_):
-                    self.編集モードでこの盤駒を消す(今選択した場所)
+                    self.増減モードでこの盤駒を消す(今選択した場所)
                 case .手駒(let 陣営, _):
-                    self.シートを表示 = .手駒編集(陣営)
+                    self.シートを表示 = .手駒増減(陣営)
                     💥フィードバック.軽め()
                 default:
                     break
@@ -162,22 +162,22 @@ extension 📱アプリモデル {
     func 駒の選択を解除する() {
         self.選択中の駒 = .なし
     }
-    func 編集モードを開始する() {
+    func 増減モードを開始する() {
         self.シートを表示 = nil
-        self.編集中 = true
+        self.増減モード中 = true
         💥フィードバック.軽め()
     }
-    func 編集モードを終了する() {
-        self.編集中 = false
+    func 増減モードを終了する() {
+        self.増減モード中 = false
         💥フィードバック.成功()
     }
-    func 編集モードでこの手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
-        self.局面.編集モードでこの手駒を一個増やす(陣営, 職名)
+    func 増減モードでこの手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
+        self.局面.増減モードでこの手駒を一個増やす(陣営, 職名)
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.軽め()
     }
-    func 編集モードでこの手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
-        self.局面.編集モードでこの手駒を一個減らす(陣営, 職名)
+    func 増減モードでこの手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
+        self.局面.増減モードでこの手駒を一個減らす(陣営, 職名)
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.軽め()
     }
@@ -219,10 +219,10 @@ extension 📱アプリモデル {
             💥フィードバック.軽め()
         }
     }
-    private func 編集モードでこの盤駒を消す(_ 場所: 駒の場所) {
+    private func 増減モードでこの盤駒を消す(_ 場所: 駒の場所) {
         guard case .盤駒(let 位置) = 場所 else { return }
         withAnimation(.default.speed(2)) {
-            self.局面.編集モードでこの盤駒を消す(位置)
+            self.局面.増減モードでこの盤駒を消す(位置)
         }
         self.SharePlay中なら現在の局面を参加者に送信する()
         💥フィードバック.軽め()
