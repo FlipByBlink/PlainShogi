@@ -21,6 +21,9 @@
 		12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
 		F5119B962A0144460027A74C /* 🪧SheetCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
 		F5119B972A0144460027A74C /* 🪧SheetCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
+		F5119B9C2A028F330027A74C /* 🪧SheetCategory.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
+		F5119B9D2A028FE10027A74C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
+		F5119B9E2A028FE10027A74C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
 		F51F037E2A00C46100F05874 /* 🛠Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠Menu.swift */; };
 		F51F039B2A00D03200F05874 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039A2A00D03200F05874 /* WidgetKit.framework */; };
 		F51F039D2A00D03200F05874 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039C2A00D03200F05874 /* SwiftUI.framework */; };
@@ -108,6 +111,7 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				F5119B9C2A028F330027A74C /* 🪧SheetCategory.swift in CopyFiles */,
 				F51F03AD2A01099700F05874 /* ☖ShogiModel.swift in CopyFiles */,
 				F51F03AE2A01099700F05874 /* 📱AppModel.swift in CopyFiles */,
 				F51F03AF2A01099700F05874 /* PS Watch App.swift in CopyFiles */,
@@ -487,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F51F03AB2A00D18B00F05874 /* Assets.xcassets in Resources */,
+				F5119B9E2A028FE10027A74C /* InfoPlist.strings in Resources */,
 				F51F03AC2A00D27400F05874 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5BD6A192A00BF87004AD4A5 /* Assets.xcassets in Resources */,
+				F5119B9D2A028FE10027A74C /* InfoPlist.strings in Resources */,
 				F5BD6A1B2A00C0A0004AD4A5 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

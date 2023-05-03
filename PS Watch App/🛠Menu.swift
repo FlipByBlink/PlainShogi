@@ -376,13 +376,16 @@ private struct ガイドメニュー: View {
     }
     private static func 補足セクション() -> some View {
         Section {
-            Text("""
-                iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません。
+            VStack(alignment: .leading, spacing: 4) {
+                Text("iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません")
+                Text("""
                 ・SharePlay
                 ・セリフ体フォントオプション
                 ・駒のサイズオプション
                 ・テキスト連携機能
                 """)
+                .font(.caption)
+            }
         } header: {
             Text("補足")
         }

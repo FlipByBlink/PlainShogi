@@ -57,6 +57,15 @@
 "コピー" = "Copy";
 "テキストとしてコピー" = "Copy as text";
 "テキストを局面としてペースト" = "Paste a text as shogi board";
+"補足" = "Note";
+"iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません" = "Unlike the iOS version, the watchOS version does not support the following features";
+"・SharePlay
+・セリフ体フォントオプション
+・駒のサイズオプション
+・テキスト連携機能" = "・SharePlay
+・Serif font
+・Font size
+・Text import/export";
 
 // ==== SharePlay ====
 "概要" = "Description";
