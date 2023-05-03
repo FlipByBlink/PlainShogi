@@ -13,7 +13,7 @@ struct 将棋View_tvOSApp: View {
             .modifier(成駒確認アラート())
             .modifier(レイアウト.推定())
             .modifier(アニメーション())
-            .padding(32)
+            .padding(64)
         }
         .ignoresSafeArea()
     }
@@ -24,11 +24,11 @@ private enum レイアウト {
         func body(content: Content) -> some View {
             GeometryReader {
                 content
-                    .environment(\.マスの大きさ, $0.size.height / (9 + マスに対する段筋の大きさの比率))
+                    .environment(\.マスの大きさ,
+                                  $0.size.height / (9 + マスに対する段筋の大きさの比率))
             }
         }
     }
-    static let 盤と手駒の隙間: CGFloat = 4
     struct マスの大きさKey: EnvironmentKey { static let defaultValue = 50.0 }
     static let マスに対する段筋の大きさの比率: Double = 0.5
     static let 複数個の盤外コマの幅比率: Double = 1.3
@@ -48,17 +48,11 @@ private struct 盤面と段と筋: View {
         if self.通常の向き {
             VStack(alignment: .leading, spacing: 0) {
                 筋()
-                HStack(spacing: 0) {
-                    盤面のみ()
-                    段()
-                }
+                HStack(spacing: 0) { 盤面のみ(); 段() }
             }
         } else {
             VStack(alignment: .trailing, spacing: 0) {
-                HStack(spacing: 0) {
-                    段()
-                    盤面のみ()
-                }
+                HStack(spacing: 0) { 段(); 盤面のみ() }
                 筋()
             }
         }

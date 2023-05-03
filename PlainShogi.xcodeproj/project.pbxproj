@@ -24,7 +24,7 @@
 		F5119B9C2A028F330027A74C /* 🪧SheetCategory.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
 		F5119B9D2A028FE10027A74C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
 		F5119B9E2A028FE10027A74C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
-		F5119BA62A0291000027A74C /* PS_TV_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BA52A0291000027A74C /* PS_TV_App.swift */; };
+		F5119BA62A0291000027A74C /* PS TV App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BA52A0291000027A74C /* PS TV App.swift */; };
 		F5119BA82A0291000027A74C /* ContentView_tvOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BA72A0291000027A74C /* ContentView_tvOSApp.swift */; };
 		F5119BAA2A0291020027A74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5119BA92A0291020027A74C /* Assets.xcassets */; };
 		F5119BB12A0292580027A74C /* 📱AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* 📱AppModel.swift */; };
@@ -34,6 +34,9 @@
 		F5119BB52A0292580027A74C /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* 💥Feedback.swift */; };
 		F5119BB72A0292E10027A74C /* ☖ShogiView_tvOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BB62A0292E10027A74C /* ☖ShogiView_tvOSApp.swift */; };
 		F5119BB82A0295680027A74C /* 🔠Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 🔠Font.swift */; };
+		F5119BBA2A029C690027A74C /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
+		F5119BBB2A029C6C0027A74C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
+		F5119BBC2A029C6F0027A74C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
 		F51F037E2A00C46100F05874 /* 🛠Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠Menu.swift */; };
 		F51F039B2A00D03200F05874 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039A2A00D03200F05874 /* WidgetKit.framework */; };
 		F51F039D2A00D03200F05874 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039C2A00D03200F05874 /* SwiftUI.framework */; };
@@ -193,10 +196,11 @@
 		F5019FD2296ABBBD007CB14D /* memo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = memo.md; sourceTree = "<group>"; };
 		F5119B952A0144460027A74C /* 🪧SheetCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧SheetCategory.swift"; sourceTree = "<group>"; };
 		F5119BA32A0291000027A74C /* PS TV App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PS TV App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5119BA52A0291000027A74C /* PS_TV_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PS_TV_App.swift; sourceTree = "<group>"; };
+		F5119BA52A0291000027A74C /* PS TV App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PS TV App.swift"; sourceTree = "<group>"; };
 		F5119BA72A0291000027A74C /* ContentView_tvOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_tvOSApp.swift; sourceTree = "<group>"; };
 		F5119BA92A0291020027A74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5119BB62A0292E10027A74C /* ☖ShogiView_tvOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "☖ShogiView_tvOSApp.swift"; sourceTree = "<group>"; };
+		F5119BB92A029B570027A74C /* PS TV App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PS TV App.entitlements"; sourceTree = "<group>"; };
 		F51F037D2A00C46100F05874 /* 🛠Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu.swift"; sourceTree = "<group>"; };
 		F51F03992A00D03200F05874 /* PSComplicationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PSComplicationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51F039A2A00D03200F05874 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -363,9 +367,10 @@
 		F5119BA42A0291000027A74C /* PS TV App */ = {
 			isa = PBXGroup;
 			children = (
-				F5119BA52A0291000027A74C /* PS_TV_App.swift */,
+				F5119BA52A0291000027A74C /* PS TV App.swift */,
 				F5119BA72A0291000027A74C /* ContentView_tvOSApp.swift */,
 				F5119BB62A0292E10027A74C /* ☖ShogiView_tvOSApp.swift */,
+				F5119BB92A029B570027A74C /* PS TV App.entitlements */,
 				F5119BA92A0291020027A74C /* Assets.xcassets */,
 			);
 			path = "PS TV App";
@@ -547,6 +552,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5119BAA2A0291020027A74C /* Assets.xcassets in Resources */,
+				F5119BBC2A029C6F0027A74C /* InfoPlist.strings in Resources */,
+				F5119BBB2A029C6C0027A74C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,13 +615,14 @@
 			files = (
 				F5119BB42A0292580027A74C /* 💾Data.swift in Sources */,
 				F5119BB52A0292580027A74C /* 💥Feedback.swift in Sources */,
+				F5119BBA2A029C690027A74C /* 🧰MetaData.swift in Sources */,
 				F5119BB12A0292580027A74C /* 📱AppModel.swift in Sources */,
 				F5119BB82A0295680027A74C /* 🔠Font.swift in Sources */,
 				F5119BB72A0292E10027A74C /* ☖ShogiView_tvOSApp.swift in Sources */,
 				F5119BB22A0292580027A74C /* ☖ShogiModel.swift in Sources */,
 				F5119BA82A0291000027A74C /* ContentView_tvOSApp.swift in Sources */,
 				F5119BB32A0292580027A74C /* 🪧SheetCategory.swift in Sources */,
-				F5119BA62A0291000027A74C /* PS_TV_App.swift in Sources */,
+				F5119BA62A0291000027A74C /* PS TV App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +905,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "PS TV App/PS TV App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -927,6 +936,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "PS TV App/PS TV App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
