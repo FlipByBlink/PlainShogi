@@ -1,6 +1,44 @@
 import SwiftUI
 
-struct 🛠メニュートップ: View {
+struct 🛠メニューボタン: View { // ⚙️
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @Environment(\.マスの大きさ) private var マスの大きさ
+    @State private var シートを表示: Bool = false
+    private var 駒を選択していない: Bool {
+        📱.選択中の駒 == .なし
+    }
+    var body: some View {
+        Button {
+            if self.駒を選択していない {
+                self.シートを表示 = true
+            } else {
+                📱.駒の選択を解除する()
+            }
+            💥フィードバック.軽め()
+        } label: {
+            Group {
+                if self.駒を選択していない {
+                    Image(systemName: "gearshape")
+                        .resizable()
+                } else {
+                    Image(systemName: "escape")
+                        .resizable()
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .frame(width: self.マスの大きさ * 0.75,
+                   height: self.マスの大きさ * 0.75)
+            .padding(.horizontal, 8)
+        }
+        .buttonStyle(.plain)
+        .sheet(isPresented: self.$シートを表示) {
+            メニュートップ()
+        }
+        .animation(.default, value: self.駒を選択していない)
+    }
+}
+
+private struct メニュートップ: View {
     var body: some View {
         NavigationStack {
             List {
@@ -10,7 +48,7 @@ struct 🛠メニュートップ: View {
                 ブックマークメニュー()
                 ガイドメニュー()
             }
-            .navigationTitle(ℹ️appName)
+            .navigationTitle("メニュー")
         }
     }
 }
@@ -27,12 +65,21 @@ private struct 編集メニュー: View {
         @EnvironmentObject private var 📱: 📱アプリモデル
         var body: some View {
             List {
-                強調表示クリアボタン()
+                self.強調表示クリアボタン()
                 self.盤面初期化ボタン()
                 self.編集モード開始ボタン()
                 self.一手戻すボタン()
             }
             .navigationTitle("編集")
+        }
+        private func 強調表示クリアボタン() -> some View {
+            Button {
+                📱.強調表示をクリア()
+            } label: {
+                Label("強調表示をクリア", systemImage: "square.dashed")
+            }
+            .disabled(📱.何も強調表示されていない)
+            .disabled(📱.強調表示常時オフかつ駒が選択されていない)
         }
         private func 盤面初期化ボタン() -> some View {
             Button {
@@ -56,22 +103,6 @@ private struct 編集メニュー: View {
             }
             .disabled(📱.局面.一手前の局面 == nil)
         }
-    }
-}
-
-private struct 強調表示クリアボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    private var 何も強調表示されていない: Bool {
-        📱.局面.直近の操作 == .なし && 📱.選択中の駒 == .なし
-    }
-    var body: some View {
-        Button {
-            📱.強調表示をクリア()
-        } label: {
-            Label("強調表示をクリア", systemImage: "square.dashed")
-        }
-        .disabled(self.何も強調表示されていない)
-        .disabled(📱.🚩直近操作強調表示機能オフ && (📱.選択中の駒 == .なし))
     }
 }
 
@@ -125,8 +156,7 @@ private struct 履歴メニュー: View {
                 }
                 ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
                     HStack {
-                        Text("局面プレビュー(局面)")
-                            .redacted(reason: .placeholder)
+                        局面プレビュー(局面)
                         Spacer()
                         VStack(alignment: .trailing, spacing: 4) {
                             Text(局面.更新日付表記)
@@ -136,11 +166,8 @@ private struct 履歴メニュー: View {
                             Button {
                                 📱.任意の局面を現在の局面として適用する(局面)
                             } label: {
-                                HStack {
-                                    Image(systemName: "square.and.arrow.down")
-                                    Text("復元")
-                                }
-                                .font(.caption.weight(.medium))
+                                Text("復元")
+                                    .font(.caption.weight(.medium))
                             }
                             .buttonStyle(.bordered)
                             .dynamicTypeSize(...DynamicTypeSize.xLarge)
@@ -175,15 +202,19 @@ private struct ブックマークメニュー: View {
             List {
                 Section {
                     VStack(spacing: 20) {
-                        Text("局面プレビュー(仮)")
-                            .frame(width: 100, height: 100)
-                            .redacted(reason: .placeholder)
+                        if let ブックマーク {
+                            局面プレビュー(ブックマーク)
+                        } else {
+                            局面プレビュー(.初期セット)
+                                .opacity(0.4)
+                        }
                         Button {
                             guard let ブックマーク else { return }
                             📱.任意の局面を現在の局面として適用する(ブックマーク)
                         } label: {
                             Label("復元", systemImage: "square.and.arrow.down")
-                                .font(.body.weight(.medium))
+                                .font(.caption.weight(.medium))
+                                .strikethrough(self.ブックマーク == nil)
                         }
                         .buttonStyle(.bordered)
                         .disabled(self.現在の局面とブックマークは同じ)
@@ -210,6 +241,58 @@ private struct ブックマークメニュー: View {
             .navigationTitle("ブックマーク")
         }
     }
+}
+
+private struct 局面プレビュー: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    private var 局面: 局面モデル
+    private static let コマのサイズ: CGFloat = 10
+    var body: some View {
+        VStack {
+            self.手駒プレビュー(局面, .玉側)
+            self.盤面プレビュー(局面)
+            self.手駒プレビュー(局面, .王側)
+        }
+    }
+    private func 盤面プレビュー(_ 局面: 局面モデル) -> some View {
+        VStack(spacing: 0) {
+            ForEach(0 ..< 9) { 行 in
+                HStack(spacing: 0) {
+                    ForEach(0 ..< 9) { 列 in
+                        let 位置 = 行 * 9 + 列
+                        if let 駒 = 局面.盤駒[位置] {
+                            Text(局面.この駒の表記(.盤駒(位置), 📱.🚩English表記) ?? "🐛")
+                                .underline(局面.この駒にはアンダーラインが必要(.盤駒(位置), 📱.🚩English表記))
+                                .fontWeight(局面.直近の操作 == .盤駒(位置) ? .bold : .light)
+                                .rotationEffect(駒.陣営 == .玉側 ? .degrees(180) : .zero)
+                                .minimumScaleFactor(0.1)
+                                .frame(width: Self.コマのサイズ, height: Self.コマのサイズ)
+                        } else {
+                            Color.clear
+                                .frame(width: Self.コマのサイズ, height: Self.コマのサイズ)
+                        }
+                    }
+                }
+            }
+        }
+        .frame(width: Self.コマのサイズ * 9, height: Self.コマのサイズ * 9)
+        .padding(2)
+        .border(.primary, width: 0.66)
+    }
+    private func 手駒プレビュー(_ 局面: 局面モデル, _ 陣営: 王側か玉側か) -> some View {
+        HStack {
+            ForEach(駒の種類.allCases) {
+                if let 表記 = 局面.この駒の表記(.手駒(陣営, $0), 📱.🚩English表記) {
+                    Text(表記)
+                        .fontWeight(.light)
+                        .minimumScaleFactor(0.1)
+                }
+            }
+        }
+        .rotationEffect(陣営 == .玉側 ? .degrees(180) : .zero)
+        .frame(width: Self.コマのサイズ * 9, height: Self.コマのサイズ)
+    }
+    init(_ ｷｮｸﾒﾝ: 局面モデル) { self.局面 = ｷｮｸﾒﾝ }
 }
 
 private struct ガイドメニュー: View {

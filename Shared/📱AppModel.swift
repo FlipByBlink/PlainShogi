@@ -65,6 +65,12 @@ extension 📱アプリモデル {
             case (.対面, true): return .王側
         }
     }
+    var 何も強調表示されていない: Bool {
+        self.局面.直近の操作 == .なし && self.選択中の駒 == .なし
+    }
+    var 強調表示常時オフかつ駒が選択されていない: Bool {
+        self.🚩直近操作強調表示機能オフ && (self.選択中の駒 == .なし)
+    }
     func 強調表示をクリア() {
         withAnimation {
             self.局面.直近操作情報を消す()

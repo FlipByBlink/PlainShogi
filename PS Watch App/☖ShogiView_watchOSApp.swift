@@ -6,7 +6,6 @@ struct 将棋View_watchOSApp: View {
         ZStack {
             Color.clear
                 .ignoresSafeArea()
-                .modifier(操作エリア外で駒選択を解除())
             盤面のみ()
         }
         .modifier(レイアウト.推定())
@@ -110,6 +109,10 @@ private struct 盤外: View {
         ZStack(alignment: self.揃え方) {
             Color.clear
             HStack(spacing: 0) {
+                if self.立場 == .手前 {
+                    🛠メニューボタン()
+                    Spacer()
+                }
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
             }
         }
@@ -117,9 +120,6 @@ private struct 盤外: View {
                height: self.マスの大きさ)
         .contentShape(Rectangle())
         .onTapGesture { 📱.こちらの手駒エリアを選択する(self.陣営) }
-        .overlay(alignment: .leading) {
-            if self.立場 == .手前 { メニューボタン() }
-        }
     }
     init(_ ﾀﾁﾊﾞ: 手前か対面か) { self.立場 = ﾀﾁﾊﾞ }
 }
@@ -189,17 +189,6 @@ private struct 成駒確認アラート: ViewModifier {
                 Button("キャンセル", role: .cancel) { 📱.成駒確認アラートを表示 = false }
             } message: {
                 Text(📱.成駒確認メッセージ)
-            }
-    }
-}
-
-private struct 操作エリア外で駒選択を解除: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    func body(content: Content) -> some View {
-        content
-            .background {
-                Color.clear
-                    .onTapGesture { 📱.駒の選択を解除する() }
             }
     }
 }
