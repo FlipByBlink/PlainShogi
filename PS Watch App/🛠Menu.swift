@@ -31,7 +31,6 @@ struct 🛠メニューボタン: View { // ⚙️
         } label: {
             Image(systemName: self.アイコンネーム)
                 .imageScale(.small)
-                //.foregroundStyle(self.モード == .駒選択解除 ? .secondary : .primary)
                 .frame(width: self.マスの大きさ * 0.75,
                        height: self.マスの大きさ * 0.75)
                 .padding(.horizontal, 8)
