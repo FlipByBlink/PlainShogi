@@ -88,17 +88,16 @@ private struct 盤上のコマもしくはマス: View {
     }
     private var 元々の場所: 駒の場所 { .盤駒(self.元々の位置) }
     var body: some View {
-        Group {
-            if 📱.局面.ここに駒がある(self.元々の場所) {
-                コマの見た目(self.元々の場所)
-            } else { // ==== マス ====
-                Rectangle()
-                    .foregroundStyle(.background)
+        Rectangle()
+            .foregroundStyle(.background)
+            .overlay {
+                if 📱.局面.ここに駒がある(self.元々の場所) {
+                    コマの見た目(self.元々の場所)
+                }
             }
-        }
-        .onTapGesture { 📱.この駒を選択する(self.元々の場所) }
-        .contentShape(Rectangle())
-        .focusable()
+            .overlay { フォーカス効果() }
+            .focusable()
+            .onTapGesture { 📱.この駒を選択する(self.元々の場所) }
     }
     init(_ 画面上での左上からの位置: Int) {
         self.画面上での左上からの位置 = 画面上での左上からの位置
@@ -119,10 +118,17 @@ private struct 盤外: View {
     private var 揃え方: Alignment {
         self.立場 == .手前 ? .bottom : .top
     }
+    private var 駒選択中かつ手駒なし: Bool {
+        guard 📱.選択中の駒 != .なし else { return false }
+        guard let 手駒 = 📱.局面.手駒[self.陣営] else { assertionFailure(); return false }
+        return 手駒.配分.values.reduce(into: true) { if $1 > 0 { $0 = false } }
+    }
     var body: some View {
         ZStack(alignment: self.揃え方) {
             Rectangle()
                 .foregroundStyle(.background)
+                .overlay { フォーカス効果() }
+                .focusable(self.駒選択中かつ手駒なし)
             VStack {
                 if self.立場 == .対面 { 🪄手駒増減シート表示ボタン(self.陣営) }
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
@@ -130,6 +136,7 @@ private struct 盤外: View {
             }
         }
         .frame(maxWidth: self.最大の長さ, maxHeight: self.最大の長さ)
+        .focusSection()
         .onTapGesture { 📱.こちらの手駒エリアを選択する(self.陣営) }
     }
     init(_ ﾀﾁﾊﾞ: 手前か対面か) { self.立場 = ﾀﾁﾊﾞ }
@@ -148,6 +155,8 @@ private struct 盤外のコマ: View {
             コマの見た目(self.場所)
                 .frame(width: self.マスの大きさ * self.幅比率,
                        height: self.マスの大きさ)
+                .overlay { フォーカス効果() }
+                .focusable()
                 .onTapGesture { self.📱.この駒を選択する(self.場所) }
         }
     }
@@ -174,9 +183,9 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
                      下線: 📱.この駒にはアンダーラインが必要(self.場所))
                 .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
                 .rotationEffect(.degrees(📱.増減モード中 ? 15 : 0))
+                .foregroundStyle(self.この駒を選択中 ? .tertiary : .primary)
                 .onChange(of: 📱.増減モード中) { _ in 📱.駒の選択を解除する() }
             }
-            .border(.tint, width: self.この駒を選択中 ? 3 : 0)
             .animation(.default.speed(2), value: self.この駒を選択中)
             .modifier(🪄増減モード用ⓧマーク(self.場所))
             .modifier(ドラッグ直後の効果(self.場所))
@@ -188,6 +197,16 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
         }
     }
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
+}
+
+private struct フォーカス効果: View {
+    @Environment(\.isFocused) private var isFocused
+    var body: some View {
+        if self.isFocused {
+            Color.clear
+                .border(.tint, width: 2)
+        }
+    }
 }
 
 private struct 成駒確認アラート: ViewModifier {
