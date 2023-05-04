@@ -188,7 +188,6 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
             }
             .animation(.default.speed(2), value: self.この駒を選択中)
             .modifier(🪄増減モード用ⓧマーク(self.場所))
-            .modifier(ドラッグ直後の効果(self.場所))
             .overlay {
                 if self.太字オプション, self.この駒は操作直後 {
                     Rectangle().fill(.quaternary)
@@ -264,25 +263,6 @@ private struct 操作エリア外で駒選択を解除: ViewModifier {
                     .onTapGesture { 📱.駒の選択を解除する() }
             }
     }
-}
-
-private struct ドラッグ直後の効果: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    private var 場所: 駒の場所
-    @State private var ドラッグした直後: Bool = false
-    func body(content: Content) -> some View {
-        content
-            .opacity(self.ドラッグした直後 ? 0.25 : 1.0)
-            .onChange(of: 📱.ドラッグ中の駒) {
-                if case .アプリ内の駒(let 出発地点) = $0, 出発地点 == self.場所 {
-                    self.ドラッグした直後 = true
-                    withAnimation(.easeIn(duration: 1.25).delay(1)) {
-                        self.ドラッグした直後 = false
-                    }
-                }
-            }
-    }
-    init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
 }
 
 private struct アニメーション: ViewModifier {
@@ -362,6 +342,7 @@ struct 🪄手駒増減シート表示ボタン: View {
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
             .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
+            .buttonStyle(.plain)
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
