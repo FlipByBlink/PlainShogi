@@ -6,11 +6,16 @@ struct 将棋View_tvOSApp: View {
             Rectangle()
                 .foregroundStyle(.background)
             HStack {
+                Spacer()
                 盤外(.対面)
+                Spacer()
                 盤面と段と筋()
+                Spacer()
                 盤外(.手前)
+                Spacer()
             }
             .modifier(成駒確認アラート())
+            .modifier(駒選択を解除())
             .modifier(レイアウト.推定())
             .modifier(アニメーション())
             .padding(64)
@@ -133,7 +138,8 @@ private struct 盤外: View {
                 if self.立場 == .手前 { 🪄手駒増減シート表示ボタン(self.陣営) }
             }
         }
-        .frame(maxWidth: self.最大の長さ, maxHeight: self.最大の長さ)
+        .frame(maxWidth: self.マスの大きさ * 1.5,
+               maxHeight: self.最大の長さ)
         .focusSection()
         .onTapGesture { 📱.こちらの手駒エリアを選択する(self.陣営) }
     }
@@ -250,15 +256,14 @@ private struct 段: View {
     }
 }
 
-private struct 操作エリア外で駒選択を解除: ViewModifier {
+private struct 駒選択を解除: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     func body(content: Content) -> some View {
         content
-            .background {
-                Rectangle()
-                    .foregroundStyle(.background)
-                    .onTapGesture { 📱.駒の選択を解除する() }
-            }
+            .onExitCommand(perform: 📱.選択中の駒 != .なし ? self.選択解除 : nil)
+    }
+    private func 選択解除() {
+        📱.駒の選択を解除する()
     }
 }
 
