@@ -88,8 +88,7 @@ private struct 盤上のコマもしくはマス: View {
     }
     private var 元々の場所: 駒の場所 { .盤駒(self.元々の位置) }
     var body: some View {
-        Rectangle()
-            .foregroundStyle(.background)
+        Color.clear
             .overlay {
                 if 📱.局面.ここに駒がある(self.元々の場所) {
                     コマの見た目(self.元々の場所)
@@ -125,8 +124,7 @@ private struct 盤外: View {
     }
     var body: some View {
         ZStack(alignment: self.揃え方) {
-            Rectangle()
-                .foregroundStyle(.background)
+            Color.clear
                 .overlay { フォーカス効果() }
                 .focusable(self.駒選択中かつ手駒なし)
             VStack {
@@ -176,8 +174,7 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
     var body: some View {
         if let 表記 {
             ZStack {
-                Rectangle()
-                    .foregroundStyle(.background)
+                Color.clear
                 テキスト(字: 表記,
                      強調: self.この駒は操作直後,
                      下線: 📱.この駒にはアンダーラインが必要(self.場所))
@@ -338,10 +335,10 @@ struct 🪄手駒増減シート表示ボタン: View {
                     .font(.system(size: self.マスの大きさ * 0.45,
                                   weight: self.太字 ? .semibold : .regular))
                     .padding(.horizontal, 12)
+                    .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
             }
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
-            .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
             .buttonStyle(.plain)
         }
     }
@@ -365,7 +362,7 @@ struct 🪄増減モード用ⓧマーク: ViewModifier {
                         .padding(.trailing, self.マスの大きさ / 2)
                         .padding(.bottom, self.マスの大きさ / 2)
                         .background(Color.white)
-                        .padding(2)
+                        .padding(8)
                         .compositingGroup()
                         .luminanceToAlpha()
                 } else {
@@ -389,17 +386,22 @@ struct 🪄増減モード用ⓧマーク: ViewModifier {
 struct 🪄増減モード完了ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
-        Button {
-            📱.増減モードを終了する()
-        } label: {
-            Image(systemName: "checkmark.circle.fill")
-                .font(.title2.weight(.medium))
-                .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                .padding()
-                .padding(.trailing, 8)
+        if 📱.増減モード中 {
+            VStack {
+                Spacer()
+                Button {
+                    withAnimation {
+                        📱.増減モードを終了する()
+                    }
+                } label: {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.title3)
+                        .padding(8)
+                }
+                .buttonStyle(.plain)
+            }
+            .focusSection()
         }
-        .tint(.primary)
-        .accessibilityLabel("Done")
     }
 }
 
@@ -407,42 +409,44 @@ struct 🪄手駒増減メニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     private var 陣営: 王側か玉側か
     var body: some View {
-        List {
-            ForEach(駒の種類.allCases) { 職名 in
-                HStack {
-                    Button {
-                        📱.増減モードでこの手駒を一個減らす(self.陣営, 職名)
-                    } label: {
-                        Image(systemName: "minus.circle.fill")
-                            .symbolRenderingMode(.hierarchical)
-                            .font(.title2)
-                            .imageScale(.small)
+        NavigationStack {
+            List {
+                ForEach(駒の種類.allCases) { 職名 in
+                    HStack {
+                        Button {
+                            📱.増減モードでこの手駒を一個減らす(self.陣営, 職名)
+                        } label: {
+                            Image(systemName: "minus.circle.fill")
+                                .symbolRenderingMode(.hierarchical)
+                                .font(.title2)
+                                .imageScale(.small)
+                        }
+                        .buttonStyle(.plain)
+                        Spacer()
+                        HStack(spacing: 24) {
+                            Text(📱.手駒増減メニューの駒の表記(職名, self.陣営))
+                                .font(.title3)
+                            Text(📱.局面.この手駒の数(self.陣営, 職名).description)
+                                .font(.subheadline)
+                                .monospacedDigit()
+                        }
+                        .minimumScaleFactor(0.5)
+                        Spacer()
+                        Button {
+                            📱.増減モードでこの手駒を一個増やす(self.陣営, 職名)
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                                .symbolRenderingMode(.hierarchical)
+                                .font(.title2)
+                                .imageScale(.small)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
-                    Spacer()
-                    HStack(spacing: 12) {
-                        Text(📱.手駒増減メニューの駒の表記(職名, self.陣営))
-                            .font(.headline)
-                        Text(📱.局面.この手駒の数(self.陣営, 職名).description)
-                            .font(.subheadline)
-                            .monospacedDigit()
-                    }
-                    .minimumScaleFactor(0.5)
-                    Spacer()
-                    Button {
-                        📱.増減モードでこの手駒を一個増やす(self.陣営, 職名)
-                    } label: {
-                        Image(systemName: "plus.circle.fill")
-                            .symbolRenderingMode(.hierarchical)
-                            .font(.title2)
-                            .imageScale(.small)
-                    }
-                    .buttonStyle(.plain)
                 }
             }
+            .listStyle(.plain)
+            .navigationTitle(self.陣営 == .王側 ? "王側の手駒" : "玉側の手駒")
         }
-        .listStyle(.plain)
-        .navigationTitle(self.陣営 == .王側 ? "王側の手駒" : "玉側の手駒")
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }

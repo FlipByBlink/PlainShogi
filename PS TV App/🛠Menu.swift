@@ -3,19 +3,21 @@ import SwiftUI
 struct メニューボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
-        VStack {
-            Spacer()
-            Button {
-                self.📱.シートを表示 = .メニュー
-            } label: {
-                Image(systemName: "gearshape")
-                    .font(.title3)
-                    .padding(8)
+        if !📱.増減モード中 {
+            VStack {
+                Spacer()
+                Button {
+                    self.📱.シートを表示 = .メニュー
+                } label: {
+                    Image(systemName: "gearshape")
+                        .font(.title3)
+                        .padding(8)
+                }
+                .buttonStyle(.plain)
+                .padding(.bottom)
             }
-            .buttonStyle(.plain)
-            .padding(.bottom)
+            .focusSection()
         }
-        .focusSection()
     }
 }
 
@@ -118,13 +120,7 @@ private struct 見た目カスタマイズメニューリンク: View {
                         Label("太字", systemImage: "bold")
                             .font(.body.bold())
                     }
-                    Picker(selection: self.$サイズ) {
-                        ForEach(🔠フォント.サイズ.allCases) { Text($0.ローカライズキー) }
-                    } label: {
-                        Label("駒のサイズ", systemImage: "magnifyingglass")
-                            .font(self.サイズ.ピッカーフォント)
-                    }
-                    .pickerStyle(.navigationLink)
+                    フォントサイズピッカー()
                     Toggle(isOn: $📱.🚩English表記) {
                         Label("English表記", systemImage: "p.circle")
                     }
@@ -139,5 +135,25 @@ private struct 見た目カスタマイズメニューリンク: View {
             .animation(.default, value: self.サイズ)
             .navigationTitle("見た目をカスタマイズ")
         }
+    }
+}
+
+private struct フォントサイズピッカー: View {
+    @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
+    var body: some View {
+        Picker(selection: self.$サイズ) {
+            ForEach(🔠フォント.サイズ.allCases) { Text($0.ローカライズキー) }
+        } label: {
+            Label("駒のサイズ", systemImage: "magnifyingglass")
+                .font({
+                    switch self.サイズ {
+                        case .小: return .caption
+                        case .標準: return .body
+                        case .大: return .title3
+                        case .最大: return .title2
+                    }
+                }())
+        }
+        .pickerStyle(.navigationLink)
     }
 }

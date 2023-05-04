@@ -5,6 +5,7 @@ struct ContentView: View {
         NavigationStack {
             将棋View_tvOSApp()
                 .overlay(alignment: .leading) { メニューボタン() }
+                .overlay(alignment: .trailing) { 🪄増減モード完了ボタン() }
         }
         .modifier(シート())
         .modifier(💾アクティブ復帰時にiCloudを明示的に同期())
