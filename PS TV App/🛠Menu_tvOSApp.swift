@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct メニューボタン: View {
+struct 🛠メニューボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         if !📱.増減モード中 {
@@ -21,7 +21,7 @@ struct メニューボタン: View {
     }
 }
 
-struct メニューコンテンツ: View {
+struct 🛠メニューコンテンツ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         TabView {
@@ -36,10 +36,15 @@ struct メニューコンテンツ: View {
             Text("Palceholder")
                 .tabItem { Text("アプリについて") }
         }
+        .background {
+            Rectangle()
+                .foregroundStyle(.background)
+                .ignoresSafeArea()
+        }
     }
 }
 
-struct 編集メニュー: View {
+private struct 編集メニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         List {
@@ -82,7 +87,7 @@ struct 編集メニュー: View {
     }
 }
 
-struct オプションメニュー: View {
+private struct オプションメニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字: Bool = false
@@ -158,6 +163,8 @@ private struct 履歴メニュー: View {
             }
             Section {
                 Text("直近の約30局面を履歴として保存します")
+                    .foregroundStyle(.secondary)
+                    .padding(32)
                     .frame(maxWidth: .infinity)
                     .focusable()
             }
@@ -174,7 +181,7 @@ private struct ブックマークメニュー: View {
     var body: some View {
         List {
             Section {
-                VStack {
+                HStack {
                     if let ブックマーク {
                         局面プレビュー(ブックマーク)
                     } else {

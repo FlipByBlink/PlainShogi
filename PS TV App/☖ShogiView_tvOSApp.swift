@@ -92,14 +92,23 @@ private struct 盤上のコマもしくはマス: View {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
     }
     private var 元々の場所: 駒の場所 { .盤駒(self.元々の位置) }
+    private var ここに駒がある: Bool { 📱.局面.ここに駒がある(self.元々の場所) }
+    private var 増減モード中かつここに駒がない: Bool { 📱.増減モード中 && !self.ここに駒がある }
+    private var 通常モード中かつ駒非選択中かつここに駒がある: Bool {
+        !📱.増減モード中 && !ここに駒がある && 📱.選択中の駒 == .なし
+    }
     var body: some View {
         Color.clear
             .overlay {
-                if 📱.局面.ここに駒がある(self.元々の場所) {
+                if self.ここに駒がある {
                     コマの見た目(self.元々の場所)
                 }
             }
-            .overlay { フォーカス効果() }
+            .overlay {
+                フォーカス効果()
+                    .opacity(self.増減モード中かつここに駒がない ? 0.33 : 1)
+                    .opacity(self.通常モード中かつ駒非選択中かつここに駒がある ? 0.33 : 1)
+            }
             .focusable()
             .onTapGesture { 📱.この駒を選択する(self.元々の場所) }
     }
@@ -127,11 +136,18 @@ private struct 盤外: View {
         guard let 手駒 = 📱.局面.手駒[self.陣営] else { assertionFailure(); return false }
         return 手駒.配分.values.reduce(into: true) { if $1 > 0 { $0 = false } }
     }
+    private var 盤駒か相手手駒を選択中: Bool {
+        switch 📱.選択中の駒 {
+            case .盤駒(_): return true
+            case .手駒(let 陣営, _): return 陣営 != self.陣営
+            case .なし: return false
+        }
+    }
     var body: some View {
         ZStack(alignment: self.揃え方) {
             Color.clear
                 .overlay { フォーカス効果() }
-                .focusable(self.駒選択中かつ手駒なし)
+                .focusable(self.駒選択中かつ手駒なし || self.盤駒か相手手駒を選択中)
             VStack {
                 if self.立場 == .対面 { 🪄手駒増減シート表示ボタン(self.陣営) }
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
@@ -160,7 +176,7 @@ private struct 盤外のコマ: View {
                 .frame(width: self.マスの大きさ * self.幅比率,
                        height: self.マスの大きさ)
                 .overlay { フォーカス効果() }
-                .focusable()
+                .focusable(!📱.増減モード中)
                 .onTapGesture { self.📱.この駒を選択する(self.場所) }
         }
     }
@@ -206,7 +222,7 @@ private struct フォーカス効果: View {
     var body: some View {
         if self.isFocused {
             Color.clear
-                .border(.tint, width: 2)
+                .border(.tint, width: 3)
         }
     }
 }
@@ -317,141 +333,4 @@ private struct テキスト: View {
         Text(self.装飾文字)
             .minimumScaleFactor(0.5)
     }
-}
-
-
-
-
-
-
-
-
-struct 🪄手駒増減シート表示ボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
-    private var 陣営: 王側か玉側か
-    @AppStorage("太字") private var 太字: Bool = false
-    var body: some View {
-        if 📱.増減モード中 {
-            Button {
-                📱.シートを表示 = .手駒増減(self.陣営)
-            } label: {
-                Image(systemName: "plusminus")
-                    .font(.system(size: self.マスの大きさ * 0.45,
-                                  weight: self.太字 ? .semibold : .regular))
-                    .padding(.horizontal, 12)
-                    .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
-            }
-            .accessibilityLabel("手駒を整理する")
-            .tint(.primary)
-            .buttonStyle(.plain)
-        }
-    }
-    init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
-}
-
-struct 🪄増減モード用ⓧマーク: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
-    private var 場所: 駒の場所
-    @AppStorage("太字") private var 太字: Bool = false
-    private var 増減モード中の盤上の駒: Bool {
-        guard 📱.増減モード中, case .盤駒(_) = self.場所 else { return false }
-        return true
-    }
-    func body(content: Content) -> some View {
-        content
-            .mask {
-                if self.増減モード中の盤上の駒 {
-                    Circle()
-                        .padding(.trailing, self.マスの大きさ / 2)
-                        .padding(.bottom, self.マスの大きさ / 2)
-                        .background(Color.white)
-                        .padding(8)
-                        .compositingGroup()
-                        .luminanceToAlpha()
-                } else {
-                    Rectangle()
-                }
-            }
-            .overlay(alignment: .topLeading) {
-                if self.増減モード中の盤上の駒 {
-                    Image(systemName: "xmark")
-                        .resizable()
-                        .padding(self.マスの大きさ / 8)
-                        .font(.body.weight(self.太字 ? .heavy : .semibold))
-                        .frame(width: self.マスの大きさ / 2,
-                               height: self.マスの大きさ / 2)
-                }
-            }
-    }
-    init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
-}
-
-struct 🪄増減モード完了ボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    var body: some View {
-        if 📱.増減モード中 {
-            VStack {
-                Spacer()
-                Button {
-                    withAnimation {
-                        📱.増減モードを終了する()
-                    }
-                } label: {
-                    Image(systemName: "checkmark.circle.fill")
-                        .font(.title3)
-                        .padding(8)
-                }
-                .buttonStyle(.plain)
-            }
-            .focusSection()
-        }
-    }
-}
-
-struct 🪄手駒増減メニュー: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    private var 陣営: 王側か玉側か
-    var body: some View {
-        NavigationStack {
-            List {
-                ForEach(駒の種類.allCases) { 職名 in
-                    HStack {
-                        Button {
-                            📱.増減モードでこの手駒を一個減らす(self.陣営, 職名)
-                        } label: {
-                            Image(systemName: "minus.circle.fill")
-                                .symbolRenderingMode(.hierarchical)
-                                .font(.title2)
-                                .imageScale(.small)
-                        }
-                        .buttonStyle(.plain)
-                        Spacer()
-                        HStack(spacing: 24) {
-                            Text(📱.手駒増減メニューの駒の表記(職名, self.陣営))
-                                .font(.title3)
-                            Text(📱.局面.この手駒の数(self.陣営, 職名).description)
-                                .font(.subheadline)
-                                .monospacedDigit()
-                        }
-                        .minimumScaleFactor(0.5)
-                        Spacer()
-                        Button {
-                            📱.増減モードでこの手駒を一個増やす(self.陣営, 職名)
-                        } label: {
-                            Image(systemName: "plus.circle.fill")
-                                .symbolRenderingMode(.hierarchical)
-                                .font(.title2)
-                                .imageScale(.small)
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
-            }
-            .listStyle(.plain)
-            .navigationTitle(self.陣営 == .王側 ? "王側の手駒" : "玉側の手駒")
-        }
-    }
-    init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }

@@ -4,7 +4,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             将棋View_tvOSApp()
-                .overlay(alignment: .leading) { メニューボタン() }
+                .overlay(alignment: .leading) { 🛠メニューボタン() }
                 .overlay(alignment: .trailing) { 🪄増減モード完了ボタン() }
         }
         .modifier(シート())
@@ -13,14 +13,14 @@ struct ContentView: View {
     }
 }
 
-struct シート: ViewModifier {
+private struct シート: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     func body(content: Content) -> some View {
         content
             .sheet(item: $📱.シートを表示) {
                 switch $0 {
                     case .メニュー:
-                        メニューコンテンツ()
+                        🛠メニューコンテンツ()
                     case .手駒増減(let 陣営):
                         🪄手駒増減メニュー(陣営)
                     default:
