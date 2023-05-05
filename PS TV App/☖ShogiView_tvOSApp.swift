@@ -97,6 +97,7 @@ private struct 盤上のコマもしくはマス: View {
     private var 通常モード中かつ駒非選択中かつここに駒がある: Bool {
         !📱.増減モード中 && !ここに駒がある && 📱.選択中の駒 == .なし
     }
+    private var この駒を選択中: Bool { 📱.選択中の駒 == self.元々の場所 }
     var body: some View {
         Color.clear
             .overlay {
@@ -106,6 +107,7 @@ private struct 盤上のコマもしくはマス: View {
             }
             .overlay {
                 フォーカス効果()
+                    .opacity(self.この駒を選択中 ? 0.5 : 1)
                     .opacity(self.増減モード中かつここに駒がない ? 0.33 : 1)
                     .opacity(self.通常モード中かつ駒非選択中かつここに駒がある ? 0.33 : 1)
             }
@@ -148,7 +150,7 @@ private struct 盤外: View {
             Color.clear
                 .overlay { フォーカス効果() }
                 .focusable(self.駒選択中かつ手駒なし || self.盤駒か相手手駒を選択中)
-            VStack {
+            VStack(spacing: 8) {
                 if self.立場 == .対面 { 🪄手駒増減シート表示ボタン(self.陣営) }
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
                 if self.立場 == .手前 { 🪄手駒増減シート表示ボタン(self.陣営) }
@@ -185,7 +187,7 @@ private struct 盤外のコマ: View {
     }
 }
 
-private struct コマの見た目: View { //FrameやDrag処理などは呼び出し側で実装する
+private struct コマの見た目: View { //FrameやTap処理などは呼び出し側で実装する
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     @AppStorage("太字") private var 太字オプション: Bool = false

@@ -53,6 +53,8 @@ private struct 編集メニュー: View {
             self.増減モード開始ボタン()//タイトル: "駒を消したり増やしたりする")
             self.強調表示クリアボタン()
         }
+        .padding(.top, 48)
+        .padding(.horizontal, 480)
     }
     private func 盤面初期化ボタン() -> some View {
         Button {
@@ -94,25 +96,31 @@ private struct オプションメニュー: View {
     @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
     var body: some View {
         NavigationStack {
-            List {
-                Toggle(isOn: $📱.🚩上下反転) {
-                    Label("上下反転", systemImage: "arrow.up.arrow.down")
-                }
-                Toggle(isOn: self.$セリフ体) {
-                    Label("セリフ体", systemImage: "paintbrush.pointed")
-                        .font(.system(.body, design: .serif))
-                }
-                Toggle(isOn: self.$太字) {
-                    Label("太字", systemImage: "bold")
-                        .font(.body.bold())
-                }
-                self.フォントサイズピッカー()
-                Toggle(isOn: $📱.🚩English表記) {
-                    Label("English表記", systemImage: "p.circle")
-                }
-                Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
-                    Label("操作した直後の駒の強調表示を常に無効",
-                          systemImage: "square.slash")
+            HStack {
+                Image(systemName: "photo")
+                    .font(.system(size: 300))
+                    .padding(32)
+                    .foregroundStyle(.tertiary)
+                List {
+                    Toggle(isOn: $📱.🚩上下反転) {
+                        Label("上下反転", systemImage: "arrow.up.arrow.down")
+                    }
+                    Toggle(isOn: self.$セリフ体) {
+                        Label("セリフ体", systemImage: "paintbrush.pointed")
+                            .font(.system(.body, design: .serif))
+                    }
+                    Toggle(isOn: self.$太字) {
+                        Label("太字", systemImage: "bold")
+                            .font(.body.bold())
+                    }
+                    self.フォントサイズピッカー()
+                    Toggle(isOn: $📱.🚩English表記) {
+                        Label("English表記", systemImage: "p.circle")
+                    }
+                    Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
+                        Label("操作した直後の駒の強調表示を常に無効",
+                              systemImage: "square.slash")
+                    }
                 }
             }
             .animation(.default, value: self.サイズ)
@@ -148,18 +156,21 @@ private struct 履歴メニュー: View {
                         Text(局面.更新時刻表記)
                             .font(.subheadline)
                     }
-                    Spacer()
                     局面プレビュー(局面)
                         .padding(.vertical)
-                    Spacer()
-                    Button("復元") {
+                        .padding(.horizontal, 64)
+                    Button {
                         📱.任意の局面を現在の局面として適用する(局面)
+                    } label: {
+                        Label("復元", systemImage: "square.and.arrow.down")
+                            .padding()
                     }
                     .font(.caption.weight(.medium))
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.card)
                     .foregroundStyle(.secondary)
                     Spacer()
                 }
+                .padding(.vertical)
             }
             Section {
                 Text("直近の約30局面を履歴として保存します")
@@ -179,46 +190,46 @@ private struct ブックマークメニュー: View {
         📱.局面.更新日時 == self.ブックマーク?.更新日時
     }
     var body: some View {
-        List {
-            Section {
-                HStack {
-                    if let ブックマーク {
-                        局面プレビュー(ブックマーク)
-                    } else {
-                        局面プレビュー(.初期セット)
-                            .opacity(0.4)
-                    }
-                    Button {
-                        guard let ブックマーク else { return }
-                        📱.任意の局面を現在の局面として適用する(ブックマーク)
-                    } label: {
-                        Label("復元", systemImage: "square.and.arrow.down")
-                            .font(.caption.weight(.medium))
-                            .strikethrough(self.ブックマーク == nil)
-                    }
-                    .buttonStyle(.bordered)
-                    .disabled(self.現在の局面とブックマークは同じ)
-                    .disabled(self.ブックマーク == nil)
+        VStack {
+            Spacer()
+            HStack(spacing: 16) {
+                if let ブックマーク {
+                    局面プレビュー(ブックマーク)
+                } else {
+                    局面プレビュー(.初期セット)
+                        .opacity(0.4)
                 }
-                .padding()
-                .frame(maxWidth: .infinity)
-            }
-            Section {
                 Button {
-                    withAnimation {
-                        📱.現在の局面をブックマークする()
-                        self.ブックマーク = .ブックマークを読み込む()
-                    }
+                    guard let ブックマーク else { return }
+                    📱.任意の局面を現在の局面として適用する(ブックマーク)
                 } label: {
-                    Label("現在の局面をブックマーク", systemImage: "bookmark")
-                        .font(.body.weight(.semibold))
+                    Label("復元", systemImage: "square.and.arrow.down")
+                        .font(.caption.weight(.medium))
+                        .strikethrough(self.ブックマーク == nil)
+                        .padding()
                 }
-                .disabled(self.現在の局面とブックマークは同じ)
-            }
-        }
-        .overlay(alignment: .bottom) {
-            Label("ブックマークに保存できる局面は1つだけです", systemImage: "1.circle")
+                .buttonStyle(.card)
                 .foregroundStyle(.secondary)
+                .disabled(self.現在の局面とブックマークは同じ)
+                .disabled(self.ブックマーク == nil)
+            }
+            Spacer()
+            Button {
+                withAnimation {
+                    📱.現在の局面をブックマークする()
+                    self.ブックマーク = .ブックマークを読み込む()
+                }
+            } label: {
+                Label("現在の局面をブックマーク", systemImage: "bookmark")
+                    .font(.title3.weight(.medium))
+                    .padding(24)
+            }
+            .disabled(self.現在の局面とブックマークは同じ)
+            .buttonStyle(.card)
+            Spacer()
+            Text("ブックマークに保存できる局面は1つだけです")
+                .font(.footnote)
+                .foregroundStyle(.tertiary)
         }
         .onAppear { self.ブックマーク = .ブックマークを読み込む() }
     }
@@ -229,7 +240,7 @@ private struct 局面プレビュー: View {
     private var 局面: 局面モデル
     private static let コマのサイズ: CGFloat = 30
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 12) {
             self.手駒プレビュー(局面, .玉側)
             self.盤面プレビュー(局面)
             self.手駒プレビュー(局面, .王側)

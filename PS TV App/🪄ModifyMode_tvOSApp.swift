@@ -13,7 +13,7 @@ struct 🪄手駒増減シート表示ボタン: View {
                 Image(systemName: "plusminus")
                     .font(.system(size: self.マスの大きさ * 0.45,
                                   weight: self.太字 ? .semibold : .regular))
-                    .padding(.horizontal, 12)
+                    .padding()
                     .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
             }
             .accessibilityLabel("手駒を整理する")
