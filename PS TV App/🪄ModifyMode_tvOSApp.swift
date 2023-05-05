@@ -102,7 +102,6 @@ struct 🪄手駒増減メニュー: View {
                                 .imageScale(.small)
                         }
                         .buttonStyle(.plain)
-                        Spacer()
                         HStack(spacing: 36) {
                             Text(📱.手駒増減メニューの駒の表記(職名, self.陣営))
                                 .font(.title2)
@@ -110,7 +109,7 @@ struct 🪄手駒増減メニュー: View {
                                 .font(.title2)
                                 .monospacedDigit()
                         }
-                        Spacer()
+                        .padding(.horizontal, 128)
                         Button {
                             📱.増減モードでこの手駒を一個増やす(self.陣営, 職名)
                         } label: {

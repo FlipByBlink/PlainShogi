@@ -143,7 +143,7 @@ private struct 履歴メニュー: View {
             ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
                 HStack {
                     Spacer()
-                    VStack(alignment: .trailing, spacing: 4) {
+                    VStack(alignment: .leading, spacing: 6) {
                         Text(局面.更新日付表記)
                         Text(局面.更新時刻表記)
                             .font(.subheadline)
