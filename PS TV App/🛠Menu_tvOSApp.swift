@@ -296,13 +296,17 @@ private struct アプリについてメニュー: View {
                 .shadow(radius: 12)
             Spacer()
             VStack(spacing: 32) {
+                Spacer()
                 Text(ℹ️appName)
                     .font(.largeTitle)
                 Text(ℹ️appSubTitle)
                     .foregroundStyle(.secondary)
+                Spacer()
                 Link(destination: 🔗appStoreProductURL) {
-                    Label("AppStore link", systemImage: "link")
+                    Label("AppStoreリンク", systemImage: "link")
+                        .padding(24)
                 }
+                .buttonStyle(.card)
             }
             Spacer()
         }

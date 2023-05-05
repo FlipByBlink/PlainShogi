@@ -97,24 +97,24 @@ struct 🪄手駒増減メニュー: View {
                             📱.増減モードでこの手駒を一個減らす(self.陣営, 職名)
                         } label: {
                             Image(systemName: "minus.circle.fill")
-                                .symbolRenderingMode(.hierarchical)
                                 .font(.title2)
                                 .imageScale(.small)
                         }
                         .buttonStyle(.plain)
-                        HStack(spacing: 36) {
+                        HStack {
                             Text(📱.手駒増減メニューの駒の表記(職名, self.陣営))
-                                .font(.title2)
+                                .font(.title2.weight(.semibold))
+                            Spacer()
                             Text(📱.局面.この手駒の数(self.陣営, 職名).description)
-                                .font(.title2)
+                                .font(.title3.weight(.light))
                                 .monospacedDigit()
                         }
+                        .frame(width: 150)
                         .padding(.horizontal, 128)
                         Button {
                             📱.増減モードでこの手駒を一個増やす(self.陣営, 職名)
                         } label: {
                             Image(systemName: "plus.circle.fill")
-                                .symbolRenderingMode(.hierarchical)
                                 .font(.title2)
                                 .imageScale(.small)
                         }
