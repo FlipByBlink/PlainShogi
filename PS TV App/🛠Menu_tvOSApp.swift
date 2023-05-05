@@ -33,7 +33,7 @@ struct 🛠メニューコンテンツ: View {
                 .tabItem { Text("履歴") }
             ブックマークメニュー()
                 .tabItem { Text("ブックマーク") }
-            Text("Palceholder")
+            アプリについてメニュー()
                 .tabItem { Text("アプリについて") }
         }
         .background {
@@ -192,7 +192,7 @@ private struct ブックマークメニュー: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack(spacing: 16) {
+            HStack(spacing: 24) {
                 if let ブックマーク {
                     局面プレビュー(ブックマーク)
                 } else {
@@ -221,14 +221,14 @@ private struct ブックマークメニュー: View {
                 }
             } label: {
                 Label("現在の局面をブックマーク", systemImage: "bookmark")
-                    .font(.title3.weight(.medium))
+                    .font(.body.weight(.semibold))
                     .padding(24)
             }
             .disabled(self.現在の局面とブックマークは同じ)
             .buttonStyle(.card)
             Spacer()
             Text("ブックマークに保存できる局面は1つだけです")
-                .font(.footnote)
+                .font(.caption.weight(.light))
                 .foregroundStyle(.tertiary)
         }
         .onAppear { self.ブックマーク = .ブックマークを読み込む() }
@@ -285,4 +285,26 @@ private struct 局面プレビュー: View {
         .frame(width: Self.コマのサイズ * 9, height: Self.コマのサイズ)
     }
     init(_ ｷｮｸﾒﾝ: 局面モデル) { self.局面 = ｷｮｸﾒﾝ }
+}
+
+private struct アプリについてメニュー: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            Image("CombinedAppIcon")
+                .clipShape(RoundedRectangle(cornerRadius: 48, style: .continuous))
+                .shadow(radius: 12)
+            Spacer()
+            VStack(spacing: 32) {
+                Text(ℹ️appName)
+                    .font(.largeTitle)
+                Text(ℹ️appSubTitle)
+                    .foregroundStyle(.secondary)
+                Link(destination: 🔗appStoreProductURL) {
+                    Label("AppStore link", systemImage: "link")
+                }
+            }
+            Spacer()
+        }
+    }
 }

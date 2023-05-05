@@ -31,7 +31,7 @@ let 🔗webRepositoryURL = URL(string: "https://github.com/FlipByBlink/PlainShog
 let 🔗webMirrorRepositoryURL = URL(string: "https://gitlab.com/FlipByBlink/PlainShogi_Mirror")!
 
 enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
-    case main, Shared, Sub, Others, WatchApp, WatchComplication, tvApp
+    case main, Shared, Sub, Others, WatchApp, WatchComplication
     var id: Self { self }
     var fileNames: [String] {
         switch self {
@@ -68,8 +68,6 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "🛠Menu_watchOSApp.swift"]
             case .WatchComplication:
                 return ["PS Complication.swift"]
-            case .tvApp:
-                return []
         }
     }
 }

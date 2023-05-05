@@ -72,10 +72,6 @@
 		F57D6F0729FCD60D00EA0D79 /* 🪧SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */; };
 		F57D6F0829FD3FA200EA0D79 /* 🪧SheetView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */; };
 		F58C48092A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C48082A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift */; };
-		F58C480A2A04BC55006D7C55 /* PS TV App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119BA52A0291000027A74C /* PS TV App.swift */; };
-		F58C480B2A04BC55006D7C55 /* ContentView_tvOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119BA72A0291000027A74C /* ContentView_tvOSApp.swift */; };
-		F58C480C2A04BC55006D7C55 /* ☖ShogiView_tvOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119BB62A0292E10027A74C /* ☖ShogiView_tvOSApp.swift */; };
-		F58C480D2A04BC55006D7C55 /* 🛠Menu_tvOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F58C48082A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift */; };
 		F58C480F2A04CA38006D7C55 /* 🪄ModifyMode_tvOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C480E2A04CA38006D7C55 /* 🪄ModifyMode_tvOSApp.swift */; };
 		F5951A2028ADEEBC00516538 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */; };
 		F5B5578B29FF851800A14074 /* 🔠Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 🔠Font.swift */; };
@@ -130,10 +126,6 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
-				F58C480A2A04BC55006D7C55 /* PS TV App.swift in CopyFiles */,
-				F58C480B2A04BC55006D7C55 /* ContentView_tvOSApp.swift in CopyFiles */,
-				F58C480C2A04BC55006D7C55 /* ☖ShogiView_tvOSApp.swift in CopyFiles */,
-				F58C480D2A04BC55006D7C55 /* 🛠Menu_tvOSApp.swift in CopyFiles */,
 				F5119B9C2A028F330027A74C /* 🪧SheetCategory.swift in CopyFiles */,
 				F51F03AD2A01099700F05874 /* ☖ShogiModel.swift in CopyFiles */,
 				F51F03AE2A01099700F05874 /* 📱AppModel.swift in CopyFiles */,
