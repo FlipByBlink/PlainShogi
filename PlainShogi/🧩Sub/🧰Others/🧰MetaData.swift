@@ -46,7 +46,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "🪧SheetCategory.swift"]
             case .Sub:
                 return ["☖ShogiView.swift",
-                        "🛠AppMenu.swift",
+                        "🛠Menu.swift",
                         "🪧SheetView.swift",
                         "🔠Font.swift",
                         "📬DropDelegate.swift",
@@ -65,7 +65,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                 return ["PS Watch App.swift",
                         "ContentView_watchOSApp.swift",
                         "☖ShogiView_watchOSApp.swift",
-                        "🛠Menu.swift"]
+                        "🛠Menu_watchOSApp.swift"]
             case .WatchComplication:
                 return ["PS Complication.swift"]
             case .tvApp:

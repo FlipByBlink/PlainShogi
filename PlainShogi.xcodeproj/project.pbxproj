@@ -18,7 +18,7 @@
 		12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
 		12D424422871893D002D3E80 /* 📬DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* 📬DropDelegate.swift */; };
 		12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D4369C2865CD8300B707F5 /* Configuration.storekit */; };
-		12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
+		12F4444E286D4B580008A663 /* 🛠Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠Menu.swift */; };
 		F5119B962A0144460027A74C /* 🪧SheetCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
 		F5119B972A0144460027A74C /* 🪧SheetCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
 		F5119B9C2A028F330027A74C /* 🪧SheetCategory.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
@@ -37,7 +37,7 @@
 		F5119BBA2A029C690027A74C /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
 		F5119BBB2A029C6C0027A74C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		F5119BBC2A029C6F0027A74C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
-		F51F037E2A00C46100F05874 /* 🛠Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠Menu.swift */; };
+		F51F037E2A00C46100F05874 /* 🛠Menu_watchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠Menu_watchOSApp.swift */; };
 		F51F039B2A00D03200F05874 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039A2A00D03200F05874 /* WidgetKit.framework */; };
 		F51F039D2A00D03200F05874 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039C2A00D03200F05874 /* SwiftUI.framework */; };
 		F51F03A02A00D03200F05874 /* PS Complication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* PS Complication.swift */; };
@@ -49,13 +49,13 @@
 		F51F03AF2A01099700F05874 /* PS Watch App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D9F92A2A00BDC600CEE697 /* PS Watch App.swift */; };
 		F51F03B02A01099700F05874 /* ContentView_watchOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D9F92C2A00BDC600CEE697 /* ContentView_watchOSApp.swift */; };
 		F51F03B12A01099700F05874 /* ☖ShogiView_watchOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D9F92B2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift */; };
-		F51F03B22A01099700F05874 /* 🛠Menu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠Menu.swift */; };
+		F51F03B22A01099700F05874 /* 🛠Menu_watchOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠Menu_watchOSApp.swift */; };
 		F51F03B32A01099700F05874 /* PS Complication.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* PS Complication.swift */; };
 		F52437AF29F6125A00EA770E /* 🗄️Rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437AE29F6125900EA770E /* 🗄️Rest.swift */; };
 		F52437B329F613A600EA770E /* 💥Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* 💥Feedback.swift */; };
 		F52437B529F6499100EA770E /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
 		F52437B729F64CB000EA770E /* 🪄ModifyMode.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 🪄ModifyMode.swift */; };
-		F52437B829F64CB000EA770E /* 🛠AppMenu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠AppMenu.swift */; };
+		F52437B829F64CB000EA770E /* 🛠Menu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠Menu.swift */; };
 		F52437B929F64CB000EA770E /* 📬DropDelegate.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* 📬DropDelegate.swift */; };
 		F52437BA29F64CB000EA770E /* 📜History.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */; };
 		F52437BB29F64CB000EA770E /* 👥SharePlay.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */; };
@@ -71,7 +71,11 @@
 		F54C93D7295D2DE6008D1D60 /* 📃TextImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */; };
 		F57D6F0729FCD60D00EA0D79 /* 🪧SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */; };
 		F57D6F0829FD3FA200EA0D79 /* 🪧SheetView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */; };
-		F58C48092A03EDFB006D7C55 /* 🛠Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C48082A03EDFB006D7C55 /* 🛠Menu.swift */; };
+		F58C48092A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C48082A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift */; };
+		F58C480A2A04BC55006D7C55 /* PS TV App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119BA52A0291000027A74C /* PS TV App.swift */; };
+		F58C480B2A04BC55006D7C55 /* ContentView_tvOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119BA72A0291000027A74C /* ContentView_tvOSApp.swift */; };
+		F58C480C2A04BC55006D7C55 /* ☖ShogiView_tvOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119BB62A0292E10027A74C /* ☖ShogiView_tvOSApp.swift */; };
+		F58C480D2A04BC55006D7C55 /* 🛠Menu_tvOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F58C48082A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift */; };
 		F5951A2028ADEEBC00516538 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */; };
 		F5B5578B29FF851800A14074 /* 🔠Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 🔠Font.swift */; };
 		F5B5578C29FFD9A600A14074 /* 🔠Font.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 🔠Font.swift */; };
@@ -125,20 +129,24 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				F58C480A2A04BC55006D7C55 /* PS TV App.swift in CopyFiles */,
+				F58C480B2A04BC55006D7C55 /* ContentView_tvOSApp.swift in CopyFiles */,
+				F58C480C2A04BC55006D7C55 /* ☖ShogiView_tvOSApp.swift in CopyFiles */,
+				F58C480D2A04BC55006D7C55 /* 🛠Menu_tvOSApp.swift in CopyFiles */,
 				F5119B9C2A028F330027A74C /* 🪧SheetCategory.swift in CopyFiles */,
 				F51F03AD2A01099700F05874 /* ☖ShogiModel.swift in CopyFiles */,
 				F51F03AE2A01099700F05874 /* 📱AppModel.swift in CopyFiles */,
 				F51F03AF2A01099700F05874 /* PS Watch App.swift in CopyFiles */,
 				F51F03B02A01099700F05874 /* ContentView_watchOSApp.swift in CopyFiles */,
 				F51F03B12A01099700F05874 /* ☖ShogiView_watchOSApp.swift in CopyFiles */,
-				F51F03B22A01099700F05874 /* 🛠Menu.swift in CopyFiles */,
+				F51F03B22A01099700F05874 /* 🛠Menu_watchOSApp.swift in CopyFiles */,
 				F51F03B32A01099700F05874 /* PS Complication.swift in CopyFiles */,
 				F5B5578C29FFD9A600A14074 /* 🔠Font.swift in CopyFiles */,
 				F57D6F0829FD3FA200EA0D79 /* 🪧SheetView.swift in CopyFiles */,
 				F5E054A029FB678D004DC425 /* ☖ShogiView.swift in CopyFiles */,
 				F5E054A129FB678D004DC425 /* 💾Data.swift in CopyFiles */,
 				F52437B729F64CB000EA770E /* 🪄ModifyMode.swift in CopyFiles */,
-				F52437B829F64CB000EA770E /* 🛠AppMenu.swift in CopyFiles */,
+				F52437B829F64CB000EA770E /* 🛠Menu.swift in CopyFiles */,
 				F52437B929F64CB000EA770E /* 📬DropDelegate.swift in CopyFiles */,
 				F52437BA29F64CB000EA770E /* 📜History.swift in CopyFiles */,
 				F52437BB29F64CB000EA770E /* 👥SharePlay.swift in CopyFiles */,
@@ -193,7 +201,7 @@
 		12D198532810DD6500CE6578 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12D424412871893D002D3E80 /* 📬DropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📬DropDelegate.swift"; sourceTree = "<group>"; };
 		12D4369C2865CD8300B707F5 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
-		12F4444D286D4B580008A663 /* 🛠AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠AppMenu.swift"; sourceTree = "<group>"; };
+		12F4444D286D4B580008A663 /* 🛠Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* memo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = memo.md; sourceTree = "<group>"; };
 		F5119B952A0144460027A74C /* 🪧SheetCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧SheetCategory.swift"; sourceTree = "<group>"; };
 		F5119BA32A0291000027A74C /* PS TV App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PS TV App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,7 +210,7 @@
 		F5119BA92A0291020027A74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5119BB62A0292E10027A74C /* ☖ShogiView_tvOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "☖ShogiView_tvOSApp.swift"; sourceTree = "<group>"; };
 		F5119BB92A029B570027A74C /* PS TV App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PS TV App.entitlements"; sourceTree = "<group>"; };
-		F51F037D2A00C46100F05874 /* 🛠Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu.swift"; sourceTree = "<group>"; };
+		F51F037D2A00C46100F05874 /* 🛠Menu_watchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu_watchOSApp.swift"; sourceTree = "<group>"; };
 		F51F03992A00D03200F05874 /* PSComplicationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PSComplicationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51F039A2A00D03200F05874 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F51F039C2A00D03200F05874 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -214,7 +222,7 @@
 		F525A7D529F8FB1F001E8D5F /* ☖ShogiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "☖ShogiView.swift"; sourceTree = "<group>"; };
 		F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📃TextImportExport.swift"; sourceTree = "<group>"; };
 		F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧SheetView.swift"; sourceTree = "<group>"; };
-		F58C48082A03EDFB006D7C55 /* 🛠Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu.swift"; sourceTree = "<group>"; };
+		F58C48082A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu_tvOSApp.swift"; sourceTree = "<group>"; };
 		F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F5B5578A29FF851800A14074 /* 🔠Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🔠Font.swift"; sourceTree = "<group>"; };
 		F5BBD8592973A68E0034CCB8 /* 🛒InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒InAppPurchase.swift"; sourceTree = "<group>"; };
@@ -347,7 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				F525A7D529F8FB1F001E8D5F /* ☖ShogiView.swift */,
-				12F4444D286D4B580008A663 /* 🛠AppMenu.swift */,
+				12F4444D286D4B580008A663 /* 🛠Menu.swift */,
 				F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */,
 				12D424412871893D002D3E80 /* 📬DropDelegate.swift */,
 				127132E72873CDF20008AE46 /* 🪄ModifyMode.swift */,
@@ -372,7 +380,7 @@
 				F5119BA52A0291000027A74C /* PS TV App.swift */,
 				F5119BA72A0291000027A74C /* ContentView_tvOSApp.swift */,
 				F5119BB62A0292E10027A74C /* ☖ShogiView_tvOSApp.swift */,
-				F58C48082A03EDFB006D7C55 /* 🛠Menu.swift */,
+				F58C48082A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift */,
 				F5119BB92A029B570027A74C /* PS TV App.entitlements */,
 				F5119BA92A0291020027A74C /* Assets.xcassets */,
 			);
@@ -394,7 +402,7 @@
 				F5D9F92A2A00BDC600CEE697 /* PS Watch App.swift */,
 				F5D9F92C2A00BDC600CEE697 /* ContentView_watchOSApp.swift */,
 				F5D9F92B2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift */,
-				F51F037D2A00C46100F05874 /* 🛠Menu.swift */,
+				F51F037D2A00C46100F05874 /* 🛠Menu_watchOSApp.swift */,
 				F5BD6A1A2A00C007004AD4A5 /* PS Watch App.entitlements */,
 			);
 			path = "PS Watch App";
@@ -608,7 +616,7 @@
 				F5C9FAFF296CF7BB00B513D8 /* 📜History.swift in Sources */,
 				F5C9FB02296D0A3100B513D8 /* 👥SharePlay.swift in Sources */,
 				127132E82873CDF20008AE46 /* 🪄ModifyMode.swift in Sources */,
-				12F4444E286D4B580008A663 /* 🛠AppMenu.swift in Sources */,
+				12F4444E286D4B580008A663 /* 🛠Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,7 +629,7 @@
 				F5119BBA2A029C690027A74C /* 🧰MetaData.swift in Sources */,
 				F5119BB12A0292580027A74C /* 📱AppModel.swift in Sources */,
 				F5119BB82A0295680027A74C /* 🔠Font.swift in Sources */,
-				F58C48092A03EDFB006D7C55 /* 🛠Menu.swift in Sources */,
+				F58C48092A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift in Sources */,
 				F5119BB72A0292E10027A74C /* ☖ShogiView_tvOSApp.swift in Sources */,
 				F5119BB22A0292580027A74C /* ☖ShogiModel.swift in Sources */,
 				F5119BA82A0291000027A74C /* ContentView_tvOSApp.swift in Sources */,
@@ -643,7 +651,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D9F92E2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift in Sources */,
-				F51F037E2A00C46100F05874 /* 🛠Menu.swift in Sources */,
+				F51F037E2A00C46100F05874 /* 🛠Menu_watchOSApp.swift in Sources */,
 				F5119B972A0144460027A74C /* 🪧SheetCategory.swift in Sources */,
 				F5BD6A112A00BF4C004AD4A5 /* ☖ShogiModel.swift in Sources */,
 				F5D9F92D2A00BDC600CEE697 /* PS Watch App.swift in Sources */,
