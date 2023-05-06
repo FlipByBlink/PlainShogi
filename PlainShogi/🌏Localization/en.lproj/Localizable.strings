@@ -6,6 +6,7 @@
 "キャンセル" = "Cancel";
 "メニュー" = "Menu";
 "長押しして駒を持ち上げ、そのままスライドして移動させる" = "Long press a piece, move it";
+"再開" = "Restart";
 "メニューを表示" = "Show menu";
 "駒の選択を解除" = "Unfocus";
 "編集" = "Edit";
@@ -60,13 +61,21 @@
 "テキストとしてコピー" = "Copy as text";
 "テキストを局面としてペースト" = "Paste a text as shogi board";
 "補足" = "Note";
+"長押しすると「カーソルの枠線」を一時的に非表示にできます" = "Long press gesture to hide focus effect temporarily";
+"iCloudによって端末間でデータ(現在の局面/履歴/ブックマーク)が同期されます" = "Sync data(Board/History/Bookmark) between devices by iCloud";
 "iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません" = "Unlike the iOS version, the watchOS version does not support the following features";
+"iOSアプリ等と異なり、Apple TVアプリでは以下の機能を対応していません" = "Unlike the iOS version, the Apple TV version does not support the following features";
 "・SharePlay
 ・セリフ体フォントオプション
 ・駒のサイズオプション
 ・テキスト連携機能" = "・SharePlay
 ・Serif font
 ・Font size
+・Text import/export";
+"・SharePlay
+・セリフ体フォントオプション
+・テキスト連携機能" = "・SharePlay
+・Serif font
 ・Text import/export";
 "ガイド" = "Guide";
 "アプリについて" = "About";

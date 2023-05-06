@@ -12,13 +12,16 @@ struct 🛠サイドバー: ViewModifier {
             .overlay(alignment: .leading) { self.サイドバー呼び出しボタン() }
             .overlay(alignment: .leading) {
                 if self.表示 {
-                    NavigationStack {
-                        self.メニュー()
-                            .padding(.top, 24)
-                            .padding(.trailing, 40)
+                    ZStack {
+                        Rectangle()
+                            .fill(.ultraThickMaterial)
+                        NavigationStack {
+                            self.メニュー()
+                                .padding(.top, 24)
+                                .padding(.trailing, 40)
+                        }
                     }
                     .frame(width: 600)
-                    .background(.ultraThickMaterial)
                     .compositingGroup()
                     .shadow(radius: 24)
                     .ignoresSafeArea()
@@ -29,15 +32,16 @@ struct 🛠サイドバー: ViewModifier {
                 }
             }
             .animation(.default, value: self.表示)
-            .onExitCommand {
-                guard !📱.増減モード中 else { 📱.増減モードを終了する(); return }
-                if self.表示 == false {
-                    self.表示 = true
-                    self.初期フォーカス = true
-                } else {
-                    self.表示 = false
-                }
-            }
+            .onExitCommand(perform: self.初期フォーカス ? nil : self.戻るアクション)
+    }
+    private func 戻るアクション() {
+        guard !📱.増減モード中 else { 📱.増減モードを終了する(); return }
+        if self.表示 == false {
+            self.表示 = true
+            self.初期フォーカス = true
+        } else {
+            self.表示 = false
+        }
     }
     private func サイドバー呼び出しボタン() -> some View {
         Group {
@@ -61,12 +65,18 @@ struct 🛠サイドバー: ViewModifier {
     private func メニュー() -> some View {
         List {
             Button {
+                self.表示 = false
+            } label: {
+                Label("再開", systemImage: "play")
+            }
+            .focused(self.$初期フォーカス)
+            Divider()
+            Button {
                 self.📱.シートを表示 = .メニュー
                 self.表示 = false
             } label: {
                 Label("メニューを表示", systemImage: "gearshape")
             }
-            .focused(self.$初期フォーカス)
             Divider()
             盤面初期化ボタン()
             一手戻すボタン()
@@ -369,7 +379,7 @@ private struct ガイドメニュー: View {
         List {
             Label("長押しすると「カーソルの枠線」を一時的に非表示にできます", systemImage: "square.dashed")
             Divider()
-            Label("iCloudによってデバイス間でデータを同期します", systemImage: "icloud")
+            Label("iCloudによって端末間でデータ(現在の局面/履歴/ブックマーク)が同期されます", systemImage: "icloud")
             Divider()
             VStack(spacing: 14) {
                 Text("iOSアプリ等と異なり、Apple TVアプリでは以下の機能を対応していません")
