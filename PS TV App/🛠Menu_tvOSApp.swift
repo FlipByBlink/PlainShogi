@@ -5,6 +5,7 @@ struct 🛠サイドバー: ViewModifier {
     @State private var 表示: Bool = false
     @FocusState private var 初期フォーカス: Bool
     @AppStorage("太字") private var 太字: Bool = false
+    @AppStorage("ｻｲﾄﾞﾊﾞｰﾎﾞﾀﾝ非表示") private var サイドバー用ボタン常時非表示: Bool = false
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .leading) { self.サイドバー呼び出しボタン() }
@@ -32,6 +33,7 @@ struct 🛠サイドバー: ViewModifier {
             }
             .animation(.default, value: self.表示)
             .onExitCommand {
+                guard !📱.増減モード中 else { 📱.増減モードを終了する(); return }
                 if self.表示 == false {
                     self.表示 = true
                     self.初期フォーカス = true
@@ -42,7 +44,7 @@ struct 🛠サイドバー: ViewModifier {
     }
     private func サイドバー呼び出しボタン() -> some View {
         Group {
-            if !📱.増減モード中 {
+            if !📱.増減モード中, !self.サイドバー用ボタン常時非表示 {
                 VStack {
                     Button {
                         self.表示 = true
@@ -192,6 +194,7 @@ private struct オプションメニュー: View {
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字: Bool = false
     @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
+    @AppStorage("ｻｲﾄﾞﾊﾞｰﾎﾞﾀﾝ非表示") private var サイドバー用ボタン常時非表示: Bool = false
     var body: some View {
         NavigationStack {
             List {
@@ -216,6 +219,15 @@ private struct オプションメニュー: View {
                 Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
                     Label("操作した直後の駒の強調表示を常に無効",
                           systemImage: "square.slash")
+                }
+                VStack(alignment: .leading, spacing: 6) {
+                    Toggle(isOn: self.$サイドバー用ボタン常時非表示) {
+                        Label("サイドバー呼び出しボタンを常に非表示",
+                              systemImage: "gear.badge.xmark")
+                    }
+                    Text("戻るボタンを押すとサイドバーを表示できます")
+                        .font(.caption)
+                        .foregroundStyle(.tertiary)
                 }
             }
             .padding(.top, 64)
