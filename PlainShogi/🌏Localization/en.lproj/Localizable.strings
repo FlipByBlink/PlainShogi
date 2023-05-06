@@ -42,6 +42,8 @@
 "上下反転させる" = "Reverse vertically";
 "上下反転を元に戻す" = "Restore reverse";
 "操作した直後の駒の強調表示を常に無効" = "Always disable shift sign";
+"サイドバー呼び出しボタンを常に非表示" = "Always hide menu button";
+"戻るボタンを押すとサイドバーを表示できます" = "Press the back button to show the sidebar";
 "English表記" = "English term";
 "ブックマーク" = "Bookmark";
 "ブックマークを表示" = "Show bookmark";

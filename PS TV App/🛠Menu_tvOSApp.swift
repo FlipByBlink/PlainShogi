@@ -2,6 +2,7 @@ import SwiftUI
 
 struct 🛠サイドバー: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     @State private var 表示: Bool = false
     @FocusState private var 初期フォーカス: Bool
     @AppStorage("太字") private var 太字: Bool = false
@@ -26,8 +27,8 @@ struct 🛠サイドバー: ViewModifier {
                     .ignoresSafeArea()
                     .transition(.move(edge: .leading))
                     //.transition(.offset(x: -700))
-                    .onMoveCommand {
-                        if $0 == .right { self.表示 = false }
+                    .onChange(of: self.現在のフォーカス) {
+                        if case .盤上(_) = $0 { self.表示 = false }
                     }
                 }
             }
@@ -52,9 +53,9 @@ struct 🛠サイドバー: ViewModifier {
                     } label: {
                         Image(systemName: "gearshape")
                             .fontWeight(.light)
-                            .padding(4)
+                            .padding()
                     }
-                    .buttonStyle(.plain)
+                    .buttonStyle(.card)
                     Spacer()
                 }
                 .focusSection()
@@ -101,14 +102,9 @@ struct 🛠サイドバー: ViewModifier {
                     Label("駒のサイズ", systemImage: "magnifyingglass")
                 }
                 .pickerStyle(.inline)
-                .onMoveCommand {
-                    if $0 == .right { self.サイドバーを表示 = false }
-                }
             }
             .padding(.trailing, 40)
-            .onExitCommand {
-                self.dismiss()
-            }
+            .onExitCommand { self.dismiss() }
         }
     }
 }
@@ -168,12 +164,15 @@ private struct 編集メニュー: View {
 
 private struct 盤面初期化ボタン: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    @State private var 初期化直後: Bool = false
     var body: some View {
         Button {
             📱.盤面を初期化する()
+            self.初期化直後 = true
         } label: {
             Label("盤面を初期化", systemImage: "arrow.counterclockwise")
         }
+        .disabled(self.初期化直後)
     }
 }
 

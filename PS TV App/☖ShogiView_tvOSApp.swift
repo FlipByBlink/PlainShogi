@@ -16,6 +16,7 @@ struct 将棋View_tvOSApp: View {
             }
             .modifier(成駒確認アラート())
             .modifier(駒選択を解除())
+            .modifier(一時的にフォーカス効果を非表示())
             .modifier(レイアウト.推定())
             .modifier(アニメーション())
             .padding(64)
@@ -246,6 +247,7 @@ private struct コマの見た目: View { //FrameやTap処理などは呼び出�
 
 private struct フォーカス効果: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var 🔍: 🔍フォーカス効果補助モデル
     @Environment(\.isFocused) private var isFocused
     @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     private var 無効: Bool {
@@ -254,10 +256,29 @@ private struct フォーカス効果: View {
         return 選択された陣営 == フォーカスされた陣営
     }
     var body: some View {
-        if self.isFocused, !self.無効 {
+        if self.isFocused, !self.無効, !🔍.一時的に非表示  {
             Color.clear
-                .border(.tint, width: 3)
+                .border(.primary, width: 3)
         }
+    }
+}
+
+private class 🔍フォーカス効果補助モデル: ObservableObject {
+    @Published var 一時的に非表示: Bool = false
+}
+
+private struct 一時的にフォーカス効果を非表示: ViewModifier {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @StateObject private var 🔍 = 🔍フォーカス効果補助モデル()
+    @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
+    func body(content: Content) -> some View {
+        content
+            .environmentObject(🔍)
+            .onLongPressGesture {
+                guard 📱.選択中の駒 == .なし else { return }
+                withAnimation { 🔍.一時的に非表示.toggle() }
+            }
+            .onChange(of: self.現在のフォーカス) { _ in 🔍.一時的に非表示 = false }
     }
 }
 
