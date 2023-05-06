@@ -84,7 +84,9 @@ extension 📱アプリモデル {
             switch self.選択中の駒 {
                 case .なし:
                     if self.局面.ここに駒がある(今選択した場所) {
-                        self.選択中の駒 = 今選択した場所
+                        withAnimation(.default.speed(2.5)) {
+                            self.選択中の駒 = 今選択した場所
+                        }
                         💥フィードバック.軽め()
                     }
                 case .盤駒(let 位置) where self.選択中の駒 == 今選択した場所:

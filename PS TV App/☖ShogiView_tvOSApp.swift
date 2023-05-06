@@ -67,6 +67,7 @@ private struct 盤面と段と筋: View {
 private struct 盤面のみ: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
+    @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     var body: some View {
         VStack(spacing: 0) {
             ForEach(0 ..< 9) { 行 in
@@ -77,16 +78,27 @@ private struct 盤面のみ: View {
                         盤上のコマもしくはマス(行 * 9 + 列)
                     }
                 }
+                .zIndex(この行のマスにフォーカスがある(行) ? 1 : 0)
             }
         }
-        .border(.primary, width: 3)
+        .background {
+            Color.clear
+                .border(.primary, width: 3)
+        }
         .frame(width: self.マスの大きさ * 9,
                height: self.マスの大きさ * 9)
+    }
+    private func この行のマスにフォーカスがある(_ 行: Int) -> Bool {
+        let 本来の行 = 📱.🚩上下反転 ? (8 - 行) : 行
+        guard case .盤上(let 位置) = self.現在のフォーカス,
+              case (本来の行 * 9) ..< (本来の行 * 9 + 9) = 位置 else { return false }
+        return true
     }
 }
 
 private struct 盤上のコマもしくはマス: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     private var 画面上での左上からの位置: Int
     private var 元々の位置: Int {
         📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
@@ -109,8 +121,11 @@ private struct 盤上のコマもしくはマス: View {
                     .opacity(self.増減モード中かつここに駒がない ? 0.33 : 1)
                     .opacity(self.通常モード中かつ駒非選択中かつここに駒がある ? 0.33 : 1)
             }
+            .overlay { 駒選択効果() }
             .focusable()
+            .focusedValue(\.将棋盤フォーカス値, .盤上(self.元々の位置))
             .onTapGesture { 📱.この駒を選択する(self.元々の場所) }
+            .zIndex(self.現在のフォーカス == .盤上(self.元々の位置) ? 1 : 0)
     }
     init(_ 画面上での左上からの位置: Int) {
         self.画面上での左上からの位置 = 画面上での左上からの位置
@@ -176,6 +191,7 @@ private struct 盤外のコマ: View {
                 .frame(width: self.マスの大きさ * self.幅比率,
                        height: self.マスの大きさ)
                 .overlay { フォーカス効果() }
+                .overlay { 駒選択効果() }
                 .focusable(!📱.増減モード中)
                 .onTapGesture { self.📱.この駒を選択する(self.場所) }
         }
@@ -202,7 +218,7 @@ private struct コマの見た目: View { //FrameやTap処理などは呼び出�
                      下線: 📱.この駒にはアンダーラインが必要(self.場所))
                 .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
                 .rotationEffect(.degrees(📱.増減モード中 ? 15 : 0))
-                .foregroundStyle(self.この駒を選択中 ? .tertiary : .primary)
+                .foregroundStyle(self.この駒を選択中 ? .quaternary : .primary)
                 .onChange(of: 📱.増減モード中) { _ in 📱.駒の選択を解除する() }
             }
             .animation(.default.speed(2), value: self.この駒を選択中)
@@ -218,11 +234,35 @@ private struct コマの見た目: View { //FrameやTap処理などは呼び出�
 }
 
 private struct フォーカス効果: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.isFocused) private var isFocused
     var body: some View {
-        if self.isFocused {
+        if self.isFocused, (📱.選択中の駒 == .なし) {
             Color.clear
                 .border(.tint, width: 3)
+        }
+    }
+}
+
+private struct 駒選択効果: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @Environment(\.isFocused) private var isFocused
+    @Environment(\.マスの大きさ) private var マスの大きさ
+    private var 場所: 駒の場所 { 📱.選択中の駒 }
+    private var 表記: String? {
+        📱.局面.この駒の職名表記(self.場所, 📱.🚩English表記)
+    }
+    var body: some View {
+        if self.isFocused, let 表記 {
+            ZStack {
+                Rectangle()
+                    .foregroundStyle(.background)
+                テキスト(字: 表記, 下線: 📱.この駒にはアンダーラインが必要(self.場所))
+                    .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
+            }
+            .frame(width: self.マスの大きさ + 28,
+                   height: self.マスの大きさ + 28)
+            .border(.tint, width: 4)
         }
     }
 }
@@ -252,6 +292,7 @@ private struct 筋: View {
                            height: self.マスの大きさ * レイアウト.マスに対する段筋の大きさの比率)
             }
         }
+        .zIndex(-1)
     }
 }
 
@@ -269,6 +310,7 @@ private struct 段: View {
                            height: self.マスの大きさ)
             }
         }
+        .zIndex(-1)
     }
 }
 
@@ -335,18 +377,17 @@ private struct テキスト: View {
     }
 }
 
-//TODO: 再検討
-//extension FocusedValues {
-//    var 将棋盤フォーカス値: Self.将棋盤フォーカスキー.Value? {
-//        get { self[Self.将棋盤フォーカスキー.self] }
-//        set { self[Self.将棋盤フォーカスキー.self] = newValue }
-//    }
-//    struct 将棋盤フォーカスキー: FocusedValueKey { typealias Value = フォーカス対象 }
-//    enum フォーカス対象 {
-//        case 盤上(_ 位置: Int)
-//        case 手駒(_ 陣営: 王側か玉側か, _ 職名: 駒の種類)
-//        case 手駒エリア全体
-//    }
-//    //@FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
-//    //"focusable"の外側に"focusedValue(\.将棋盤フォーカス値, _)"を呼ぶ。
-//}
+extension FocusedValues {
+    var 将棋盤フォーカス値: Self.将棋盤フォーカスキー.Value? {
+        get { self[Self.将棋盤フォーカスキー.self] }
+        set { self[Self.将棋盤フォーカスキー.self] = newValue }
+    }
+    struct 将棋盤フォーカスキー: FocusedValueKey { typealias Value = フォーカス対象 }
+    enum フォーカス対象: Equatable {
+        case 盤上(_ 位置: Int)
+        case 手駒(_ 陣営: 王側か玉側か, _ 職名: 駒の種類)
+        case 手駒エリア全体
+    }
+    //@FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
+    //"focusable"の外側に"focusedValue(\.将棋盤フォーカス値, _)"を呼ぶ。
+}
