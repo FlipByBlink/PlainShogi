@@ -251,6 +251,7 @@ private struct 履歴メニュー: View {
                     Spacer()
                 }
                 .padding(.vertical)
+                .padding(.top, 局面.更新日時 == 局面モデル.履歴.last?.更新日時 ? 120 : 0)
             }
             Section {
                 Text("直近の約30局面を履歴として保存します")
