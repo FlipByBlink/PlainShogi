@@ -266,18 +266,19 @@ private struct 駒選択効果: View {
     @Environment(\.isFocused) private var isFocused
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 場所: 駒の場所 { 📱.選択中の駒 }
-    private var 表記: String? { 📱.局面.この駒の職名表記(self.場所, 📱.🚩English表記) }
+    private var 表記: String? { 📱.この駒のプレビュー表記(self.場所) }
     var body: some View {
         if self.isFocused, let 表記 {
             ZStack {
                 Rectangle()
                     .foregroundStyle(.background)
                 テキスト(字: 表記, 下線: 📱.この駒にはアンダーラインが必要(self.場所))
+                    .environment(\.マスの大きさ, self.マスの大きさ + 48)
                     .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
             }
             .frame(width: self.マスの大きさ + 24,
                    height: self.マスの大きさ + 24)
-            .border(.tint, width: 4)
+            .border(.tint, width: 3)
         }
     }
 }
@@ -364,12 +365,7 @@ private struct テキスト: View {
     @AppStorage("太字") private var 太字オプション: Bool = false
     @AppStorage("サイズ") private var サイズオプション: 🔠フォント.サイズ = .標準
     private var サイズポイント: CGFloat {
-        switch self.対象 {
-            case .コマ, .段筋:
-                return self.マスの大きさ * self.サイズオプション.比率(self.対象)
-            case .プレビュー(let コマの大きさ):
-                return コマの大きさ * self.サイズオプション.比率(self.対象)
-        }
+        self.マスの大きさ * self.サイズオプション.比率(self.対象)
     }
     private var 太字: Bool { self.強調 || self.太字オプション }
     private var フォント: Font {
