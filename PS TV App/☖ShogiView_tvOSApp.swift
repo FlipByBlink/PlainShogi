@@ -135,6 +135,7 @@ private struct 盤上のコマもしくはマス: View {
 private struct 盤外: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
+    @FocusState private var 手駒郡フォーカス状態: Bool
     private var 立場: 手前か対面か
     private var 陣営: 王側か玉側か { 📱.こちら側の陣営(self.立場) }
     private var 各駒: [駒の種類] {
@@ -169,11 +170,15 @@ private struct 盤外: View {
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
                 if self.立場 == .手前 { 🪄手駒増減シート表示ボタン(self.陣営) }
             }
+            .focused(self.$手駒郡フォーカス状態)
         }
         .frame(maxWidth: self.マスの大きさ * 1.5,
                maxHeight: self.最大の長さ)
         .focusSection()
-        .onTapGesture { 📱.こちらの手駒エリアを選択する(self.陣営) }
+        .onTapGesture {
+            📱.こちらの手駒エリアを選択する(self.陣営)
+            self.手駒郡フォーカス状態 = true
+        }
     }
     init(_ ﾀﾁﾊﾞ: 手前か対面か) { self.立場 = ﾀﾁﾊﾞ }
 }

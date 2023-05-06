@@ -11,11 +11,12 @@ struct 🪄手駒増減シート表示ボタン: View {
                 📱.シートを表示 = .手駒増減(self.陣営)
             } label: {
                 Image(systemName: "plusminus")
-                    .font(.system(size: self.マスの大きさ * 0.45,
+                    .font(.system(size: self.マスの大きさ * 0.66,
                                   weight: self.太字 ? .semibold : .regular))
-                    .padding()
+                    .padding(8)
                     .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
             }
+            .padding(8)
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
             .buttonStyle(.plain)
@@ -104,13 +105,13 @@ struct 🪄手駒増減メニュー: View {
                         HStack {
                             Text(📱.手駒増減メニューの駒の表記(職名, self.陣営))
                                 .font(.title2.weight(.semibold))
-                            Spacer()
+                            Spacer(minLength: 0)
                             Text(📱.局面.この手駒の数(self.陣営, 職名).description)
                                 .font(.title3.weight(.light))
                                 .monospacedDigit()
                         }
-                        .frame(width: 150)
-                        .padding(.horizontal, 128)
+                        .frame(width: 128)
+                        .padding(.horizontal, 96)
                         Button {
                             📱.増減モードでこの手駒を一個増やす(self.陣営, 職名)
                         } label: {
