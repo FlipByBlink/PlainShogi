@@ -1,22 +1,112 @@
 import SwiftUI
 
-struct 🛠メニューボタン: View {
+struct 🛠サイドバー: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    var body: some View {
-        if !📱.増減モード中 {
-            VStack {
-                Spacer()
-                Button {
-                    self.📱.シートを表示 = .メニュー
-                } label: {
-                    Image(systemName: "gearshape")
-                        .font(.title3)
-                        .padding(8)
+    @State private var 表示: Bool = false
+    @FocusState private var 初期フォーカス: Bool
+    @AppStorage("太字") private var 太字: Bool = false
+    func body(content: Content) -> some View {
+        content
+            .overlay(alignment: .leading) { self.サイドバー呼び出しボタン() }
+            .overlay(alignment: .leading) {
+                if self.表示 {
+                    NavigationStack {
+                        self.メニュー()
+                            .padding(.top, 24)
+                            .padding(.trailing, 40)
+                    }
+                    .frame(width: 600)
+                    .background {
+                        Rectangle()
+                            .fill(.ultraThickMaterial)
+                    }
+                    .compositingGroup()
+                    .shadow(radius: 24)
+                    .ignoresSafeArea()
+                    .transition(.move(edge: .leading))
+                    //.transition(.offset(x: -700))
+                    .onMoveCommand {
+                        if $0 == .right { self.表示 = false }
+                    }
                 }
-                .buttonStyle(.plain)
-                .padding(.bottom)
             }
-            .focusSection()
+            .animation(.default, value: self.表示)
+            .onExitCommand {
+                if self.表示 == false {
+                    self.表示 = true
+                    self.初期フォーカス = true
+                } else {
+                    self.表示 = false
+                }
+            }
+    }
+    private func サイドバー呼び出しボタン() -> some View {
+        Group {
+            if !📱.増減モード中 {
+                VStack {
+                    Button {
+                        self.表示 = true
+                        self.初期フォーカス = true
+                    } label: {
+                        Image(systemName: "gearshape")
+                            .fontWeight(.light)
+                            .padding(4)
+                    }
+                    .buttonStyle(.plain)
+                    Spacer()
+                }
+                .focusSection()
+            }
+        }
+    }
+    private func メニュー() -> some View {
+        List {
+            Button {
+                self.📱.シートを表示 = .メニュー
+                self.表示 = false
+            } label: {
+                Label("メニューを表示", systemImage: "gearshape")
+            }
+            .focused(self.$初期フォーカス)
+            Divider()
+            盤面初期化ボタン()
+            一手戻すボタン()
+            Toggle(isOn: $📱.🚩上下反転) {
+                Label("上下反転", systemImage: "arrow.up.arrow.down")
+            }
+            Toggle(isOn: self.$太字) {
+                Label("太字", systemImage: "bold")
+            }
+            Toggle(isOn: $📱.🚩English表記) {
+                Label("English表記", systemImage: "p.circle")
+            }
+            NavigationLink {
+                Self.フォントサイズピッカー(サイドバーを表示: self.$表示)
+            } label: {
+                Label("駒のサイズ", systemImage: "magnifyingglass")
+            }
+        }
+    }
+    private struct フォントサイズピッカー: View {
+        @Environment(\.dismiss) var dismiss
+        @Binding var サイドバーを表示: Bool
+        @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
+        var body: some View {
+            List {
+                Picker(selection: self.$サイズ) {
+                    ForEach(🔠フォント.サイズ.allCases) { Text($0.ローカライズキー) }
+                } label: {
+                    Label("駒のサイズ", systemImage: "magnifyingglass")
+                }
+                .pickerStyle(.inline)
+                .onMoveCommand {
+                    if $0 == .right { self.サイドバーを表示 = false }
+                }
+            }
+            .padding(.trailing, 40)
+            .onExitCommand {
+                self.dismiss()
+            }
         }
     }
 }
@@ -48,28 +138,13 @@ private struct 編集メニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     var body: some View {
         List {
-            self.盤面初期化ボタン()
-            self.一手戻すボタン()
-            self.増減モード開始ボタン()//タイトル: "駒を消したり増やしたりする")
+            盤面初期化ボタン()
+            一手戻すボタン()
+            self.増減モード開始ボタン()
             self.強調表示クリアボタン()
         }
-        .padding(.top, 48)
-        .padding(.horizontal, 480)
-    }
-    private func 盤面初期化ボタン() -> some View {
-        Button {
-            📱.盤面を初期化する()
-        } label: {
-            Label("盤面を初期化", systemImage: "arrow.counterclockwise")
-        }
-    }
-    private func 一手戻すボタン() -> some View {
-        Button {
-            📱.一手戻す()
-        } label: {
-            Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
-        }
-        .disabled(📱.局面.一手前の局面 == nil)
+        .padding(.top, 64)
+        .padding(.horizontal, 400)
     }
     private func 増減モード開始ボタン() -> some View {
         Button {
@@ -89,6 +164,29 @@ private struct 編集メニュー: View {
     }
 }
 
+private struct 盤面初期化ボタン: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    var body: some View {
+        Button {
+            📱.盤面を初期化する()
+        } label: {
+            Label("盤面を初期化", systemImage: "arrow.counterclockwise")
+        }
+    }
+}
+
+private struct 一手戻すボタン: View {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    var body: some View {
+        Button {
+            📱.一手戻す()
+        } label: {
+            Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
+        }
+        .disabled(📱.局面.一手前の局面 == nil)
+    }
+}
+
 private struct オプションメニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("セリフ体") private var セリフ体: Bool = false
@@ -96,51 +194,33 @@ private struct オプションメニュー: View {
     @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
     var body: some View {
         NavigationStack {
-            HStack {
-                Image(systemName: "photo")
-                    .font(.system(size: 300))
-                    .padding(32)
-                    .foregroundStyle(.tertiary)
-                List {
-                    Toggle(isOn: $📱.🚩上下反転) {
-                        Label("上下反転", systemImage: "arrow.up.arrow.down")
-                    }
-                    Toggle(isOn: self.$セリフ体) {
-                        Label("セリフ体", systemImage: "paintbrush.pointed")
-                            .font(.system(.body, design: .serif))
-                    }
-                    Toggle(isOn: self.$太字) {
-                        Label("太字", systemImage: "bold")
-                            .font(.body.bold())
-                    }
-                    self.フォントサイズピッカー()
-                    Toggle(isOn: $📱.🚩English表記) {
-                        Label("English表記", systemImage: "p.circle")
-                    }
-                    Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
-                        Label("操作した直後の駒の強調表示を常に無効",
-                              systemImage: "square.slash")
-                    }
+            List {
+                Toggle(isOn: $📱.🚩上下反転) {
+                    Label("上下反転", systemImage: "arrow.up.arrow.down")
+                }
+                Toggle(isOn: self.$セリフ体) {
+                    Label("セリフ体", systemImage: "paintbrush.pointed")
+                }
+                Toggle(isOn: self.$太字) {
+                    Label("太字", systemImage: "bold")
+                }
+                Picker(selection: self.$サイズ) {
+                    ForEach(🔠フォント.サイズ.allCases) { Text($0.ローカライズキー) }
+                } label: {
+                    Label("駒のサイズ", systemImage: "magnifyingglass")
+                }
+                .pickerStyle(.navigationLink)
+                Toggle(isOn: $📱.🚩English表記) {
+                    Label("English表記", systemImage: "p.circle")
+                }
+                Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
+                    Label("操作した直後の駒の強調表示を常に無効",
+                          systemImage: "square.slash")
                 }
             }
-            .animation(.default, value: self.サイズ)
+            .padding(.top, 64)
+            .padding(.horizontal, 400)
         }
-    }
-    private func フォントサイズピッカー() -> some View {
-        Picker(selection: self.$サイズ) {
-            ForEach(🔠フォント.サイズ.allCases) { Text($0.ローカライズキー) }
-        } label: {
-            Label("駒のサイズ", systemImage: "magnifyingglass")
-                .font({
-                    switch self.サイズ {
-                        case .小: return .caption
-                        case .標準: return .body
-                        case .大: return .title3
-                        case .最大: return .title2
-                    }
-                }())
-        }
-        .pickerStyle(.navigationLink)
     }
 }
 
