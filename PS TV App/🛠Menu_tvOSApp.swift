@@ -55,7 +55,7 @@ struct 🛠サイドバー: ViewModifier {
                             .fontWeight(.light)
                             .padding()
                     }
-                    .buttonStyle(.card)
+                    .buttonStyle(.plain)
                     Spacer()
                 }
                 .focusSection()
@@ -121,6 +121,8 @@ struct 🛠メニューコンテンツ: View {
                 .tabItem { Text("履歴") }
             ブックマークメニュー()
                 .tabItem { Text("ブックマーク") }
+            ガイドメニュー()
+                .tabItem { Text("ガイド") }
             アプリについてメニュー()
                 .tabItem { Text("アプリについて") }
         }
@@ -372,6 +374,17 @@ private struct 局面プレビュー: View {
         .frame(width: Self.コマのサイズ * 9, height: Self.コマのサイズ)
     }
     init(_ ｷｮｸﾒﾝ: 局面モデル) { self.局面 = ｷｮｸﾒﾝ }
+}
+
+private struct ガイドメニュー: View {
+    var body: some View {
+        List {
+            Label("長押しすると「カーソルの枠線」を一時的に非表示にできます", systemImage: "square.dashed")
+            Label("iCloudによってデバイス間でデータを同期します", systemImage: "icloud")
+        }
+        .padding(.top, 64)
+        .padding(.horizontal, 400)
+    }
 }
 
 private struct アプリについてメニュー: View {
