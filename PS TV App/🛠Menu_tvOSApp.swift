@@ -126,11 +126,7 @@ struct 🛠メニューコンテンツ: View {
             アプリについてメニュー()
                 .tabItem { Text("アプリについて") }
         }
-        .background {
-            Rectangle()
-                .foregroundStyle(.background)
-                .ignoresSafeArea()
-        }
+        .background(.background)
     }
 }
 
@@ -380,10 +376,21 @@ private struct ガイドメニュー: View {
     var body: some View {
         List {
             Label("長押しすると「カーソルの枠線」を一時的に非表示にできます", systemImage: "square.dashed")
+            Divider()
             Label("iCloudによってデバイス間でデータを同期します", systemImage: "icloud")
+            Divider()
+            VStack(spacing: 12) {
+                Text("iOSアプリ等と異なり、Apple TVアプリでは以下の機能を対応していません")
+                Text("""
+                ・SharePlay
+                ・セリフ体フォントオプション
+                ・テキスト連携機能
+                """)
+                .font(.caption)
+            }
         }
         .padding(.top, 64)
-        .padding(.horizontal, 400)
+        .padding(.horizontal, 300)
     }
 }
 

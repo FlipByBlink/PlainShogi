@@ -11,7 +11,7 @@ struct 🪄手駒増減シート表示ボタン: View {
                 📱.シートを表示 = .手駒増減(self.陣営)
             } label: {
                 Image(systemName: "plusminus")
-                    .font(.system(size: self.マスの大きさ * 0.66,
+                    .font(.system(size: self.マスの大きさ * 0.6,
                                   weight: self.太字 ? .semibold : .regular))
                     .padding(8)
                     .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
@@ -53,8 +53,8 @@ struct 🪄増減モード用ⓧマーク: ViewModifier {
                 if self.増減モード中の盤上の駒 {
                     Image(systemName: "xmark")
                         .resizable()
-                        .padding(self.マスの大きさ / 8)
-                        .font(.body.weight(self.太字 ? .heavy : .semibold))
+                        .padding(self.マスの大きさ / 7)
+                        .font(.body.weight(self.太字 ? .bold : .medium))
                         .frame(width: self.マスの大きさ / 2,
                                height: self.マスの大きさ / 2)
                 }
@@ -75,7 +75,7 @@ struct 🪄増減モード完了ボタン: View {
                     }
                 } label: {
                     Image(systemName: "checkmark.circle.fill")
-                        .font(.title3)
+                        .font(.title)
                         .padding(8)
                 }
                 .buttonStyle(.plain)
