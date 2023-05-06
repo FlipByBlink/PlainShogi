@@ -18,15 +18,11 @@ struct 🛠サイドバー: ViewModifier {
                             .padding(.trailing, 40)
                     }
                     .frame(width: 600)
-                    .background {
-                        Rectangle()
-                            .fill(.ultraThickMaterial)
-                    }
+                    .background(.ultraThickMaterial)
                     .compositingGroup()
                     .shadow(radius: 24)
                     .ignoresSafeArea()
                     .transition(.move(edge: .leading))
-                    //.transition(.offset(x: -700))
                     .onChange(of: self.現在のフォーカス) {
                         if case .盤上(_) = $0 { self.表示 = false }
                     }
@@ -188,7 +184,6 @@ private struct 一手戻すボタン: View {
 
 private struct オプションメニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字: Bool = false
     @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
     @AppStorage("ｻｲﾄﾞﾊﾞｰﾎﾞﾀﾝ非表示") private var サイドバー用ボタン常時非表示: Bool = false
@@ -197,9 +192,6 @@ private struct オプションメニュー: View {
             List {
                 Toggle(isOn: $📱.🚩上下反転) {
                     Label("上下反転", systemImage: "arrow.up.arrow.down")
-                }
-                Toggle(isOn: self.$セリフ体) {
-                    Label("セリフ体", systemImage: "paintbrush.pointed")
                 }
                 Toggle(isOn: self.$太字) {
                     Label("太字", systemImage: "bold")
@@ -379,7 +371,7 @@ private struct ガイドメニュー: View {
             Divider()
             Label("iCloudによってデバイス間でデータを同期します", systemImage: "icloud")
             Divider()
-            VStack(spacing: 12) {
+            VStack(spacing: 14) {
                 Text("iOSアプリ等と異なり、Apple TVアプリでは以下の機能を対応していません")
                 Text("""
                 ・SharePlay
@@ -387,6 +379,7 @@ private struct ガイドメニュー: View {
                 ・テキスト連携機能
                 """)
                 .font(.caption)
+                .foregroundStyle(.secondary)
             }
         }
         .padding(.top, 64)

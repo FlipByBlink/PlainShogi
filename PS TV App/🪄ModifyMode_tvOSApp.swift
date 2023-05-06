@@ -18,7 +18,6 @@ struct 🪄手駒増減シート表示ボタン: View {
             }
             .padding(8)
             .accessibilityLabel("手駒を整理する")
-            .tint(.primary)
             .buttonStyle(.plain)
         }
     }
@@ -126,11 +125,7 @@ struct 🪄手駒増減メニュー: View {
             }
             .navigationTitle(self.陣営 == .王側 ? "王側の手駒" : "玉側の手駒")
         }
-        .background {
-            Rectangle()
-                .foregroundStyle(.background)
-                .ignoresSafeArea()
-        }
+        .background(.background)
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }

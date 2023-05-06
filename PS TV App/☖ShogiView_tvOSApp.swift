@@ -362,7 +362,6 @@ private struct 駒選択を解除: ViewModifier {
 
 private struct アニメーション: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字: Bool = false
     @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
     func body(content: Content) -> some View {
@@ -370,7 +369,6 @@ private struct アニメーション: ViewModifier {
             .animation(.default, value: 📱.🚩English表記)
             .animation(.default, value: 📱.🚩上下反転)
             .animation(.default, value: 📱.増減モード中)
-            .animation(.default, value: self.セリフ体)
             .animation(.default, value: self.太字)
             .animation(.default, value: self.サイズ)
     }
@@ -382,7 +380,6 @@ private struct テキスト: View {
     var 強調: Bool = false
     var 下線: Bool = false
     @Environment(\.マスの大きさ) private var マスの大きさ
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字オプション: Bool = false
     @AppStorage("サイズ") private var サイズオプション: 🔠フォント.サイズ = .標準
     private var サイズポイント: CGFloat {
@@ -391,8 +388,7 @@ private struct テキスト: View {
     private var 太字: Bool { self.強調 || self.太字オプション }
     private var フォント: Font {
         .system(size: self.サイズポイント,
-                weight: self.太字 ? .bold : .regular,
-                design: self.セリフ体 ? .serif : .default)
+                weight: self.太字 ? .bold : .regular)
     }
     private var 装飾文字: AttributedString {
         var 値 = AttributedString(stringLiteral: self.字)
