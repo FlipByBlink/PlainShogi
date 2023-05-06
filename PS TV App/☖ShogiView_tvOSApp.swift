@@ -78,7 +78,7 @@ private struct 盤面のみ: View {
                         盤上のコマもしくはマス(行 * 9 + 列)
                     }
                 }
-                .zIndex(この行のマスにフォーカスがある(行) ? 1 : 0)
+                .zIndex(self.この行のマスにフォーカスがある(行) ? 1 : 0)
             }
         }
         .background {
@@ -163,6 +163,7 @@ private struct 盤外: View {
             Color.clear
                 .overlay { フォーカス効果() }
                 .focusable(self.駒選択中かつ手駒なし || self.盤駒か対面手駒を選択中)
+                .focusedValue(\.将棋盤フォーカス値, .手駒エリア全体)
             VStack(spacing: 8) {
                 if self.立場 == .対面 { 🪄手駒増減シート表示ボタン(self.陣営) }
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
@@ -185,6 +186,10 @@ private struct 盤外のコマ: View {
     private var 幅比率: Double {
         self.数 >= 2 ? レイアウト.複数個の盤外コマの幅比率 : 1
     }
+    private var フォーカス座標: FocusedValues.フォーカス対象? {
+        guard case .手駒(let 陣営, let 職名) = 場所 else { return nil }
+        return .手駒(陣営, 職名)
+    }
     var body: some View {
         if self.数 > 0 {
             コマの見た目(self.場所)
@@ -193,6 +198,7 @@ private struct 盤外のコマ: View {
                 .overlay { フォーカス効果() }
                 .overlay { 駒選択効果() }
                 .focusable(!📱.増減モード中)
+                .focusedValue(\.将棋盤フォーカス値, self.フォーカス座標)
                 .onTapGesture { self.📱.この駒を選択する(self.場所) }
         }
     }
@@ -236,8 +242,14 @@ private struct コマの見た目: View { //FrameやTap処理などは呼び出�
 private struct フォーカス効果: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.isFocused) private var isFocused
+    @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
+    private var 無効: Bool {
+        guard case .手駒(let 選択された陣営, _) = 📱.選択中の駒,
+              case .手駒(let フォーカスされた陣営, _) = self.現在のフォーカス else { return false }
+        return 選択された陣営 == フォーカスされた陣営
+    }
     var body: some View {
-        if self.isFocused, (📱.選択中の駒 == .なし) {
+        if self.isFocused, !self.無効 {
             Color.clear
                 .border(.tint, width: 3)
         }
@@ -249,9 +261,7 @@ private struct 駒選択効果: View {
     @Environment(\.isFocused) private var isFocused
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 場所: 駒の場所 { 📱.選択中の駒 }
-    private var 表記: String? {
-        📱.局面.この駒の職名表記(self.場所, 📱.🚩English表記)
-    }
+    private var 表記: String? { 📱.局面.この駒の職名表記(self.場所, 📱.🚩English表記) }
     var body: some View {
         if self.isFocused, let 表記 {
             ZStack {
@@ -260,8 +270,8 @@ private struct 駒選択効果: View {
                 テキスト(字: 表記, 下線: 📱.この駒にはアンダーラインが必要(self.場所))
                     .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
             }
-            .frame(width: self.マスの大きさ + 28,
-                   height: self.マスの大きさ + 28)
+            .frame(width: self.マスの大きさ + 24,
+                   height: self.マスの大きさ + 24)
             .border(.tint, width: 4)
         }
     }
@@ -320,9 +330,7 @@ private struct 駒選択を解除: ViewModifier {
         content
             .onExitCommand(perform: 📱.選択中の駒 != .なし ? self.選択解除 : nil)
     }
-    private func 選択解除() {
-        📱.駒の選択を解除する()
-    }
+    private func 選択解除() { 📱.駒の選択を解除する() }
 }
 
 private struct アニメーション: ViewModifier {
