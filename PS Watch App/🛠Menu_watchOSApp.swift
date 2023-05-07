@@ -46,6 +46,7 @@ struct 🛠ツールボタン: View {
 }
 
 private struct メニュートップ: View {
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationStack {
             List {
@@ -56,6 +57,7 @@ private struct メニュートップ: View {
                 ガイドメニュー()
             }
             .navigationTitle("メニュー")
+            .toolbar { 閉じるボタン(self.dismiss) }
         }
     }
 }
@@ -290,6 +292,7 @@ private struct 局面プレビュー: View {
 
 private struct 手駒増減メニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    @Environment(\.dismiss) private var dismiss
     private var 陣営: 王側か玉側か
     var body: some View {
         List {
@@ -332,8 +335,23 @@ private struct 手駒増減メニュー: View {
         }
         .listStyle(.plain)
         .navigationTitle(self.陣営 == .王側 ? "王側の手駒" : "玉側の手駒")
+        .toolbar { 閉じるボタン(self.dismiss) }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
+}
+
+private struct 閉じるボタン: ToolbarContent {
+    private var dismiss: DismissAction
+    var body: some ToolbarContent {
+        ToolbarItem(placement: .cancellationAction) {
+            Button(role: .cancel) {
+                self.dismiss()
+            } label: {
+                Image(systemName: "xmark")
+            }
+        }
+    }
+    init(_ dismiss: DismissAction) { self.dismiss = dismiss }
 }
 
 private struct ガイドメニュー: View {
