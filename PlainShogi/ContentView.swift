@@ -10,10 +10,11 @@ struct ContentView: View {
         .modifier(🛠ツールボタン())
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .modifier(🗄️MacCatalyst.微調整())
+        .modifier(🗄️バックグラウンド時に駒選択を解除())
         .modifier(🗄️自動スリープ無効化())
+        .modifier(🗄️ユーザーレビュー依頼())
         .modifier(💾アクティブ復帰時にiCloudを明示的に同期())
         .modifier(👥SharePlay環境構築())
-        .modifier(🗄️ユーザーレビュー依頼())
         .modifier(🪧シートビュー())
         .environment(\.layoutDirection, .leftToRight)
     }

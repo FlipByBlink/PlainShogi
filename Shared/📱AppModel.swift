@@ -265,9 +265,10 @@ extension 📱アプリモデル {
         print("🖨️", notification.userInfo.debugDescription)
         guard 💾ICloud.このキーが変更された(key: "履歴", notification) else { return }
         Task { @MainActor in
-            guard let 外部で変更された局面 = 局面モデル.履歴.last else { return }
-            self.局面 = 外部で変更された局面
+            guard let 外部で変更された局面の最新 = 局面モデル.履歴.last else { return }
+            self.局面 = 外部で変更された局面の最新
             self.SharePlay中なら現在の局面を参加者に送信する()
+            self.駒の選択を解除する()
             💥フィードバック.成功()
         }
     }
@@ -391,6 +392,7 @@ extension 📱アプリモデル {
         withAnimation(.default.speed(2.5)) {
             self.局面.更新日時を変更せずにモデルを適用する(新規局面)
         }
+        self.駒の選択を解除する()
         💥フィードバック.強め()
     }
     private func リセットする() {

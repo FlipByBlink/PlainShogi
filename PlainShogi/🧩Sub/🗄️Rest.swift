@@ -126,6 +126,17 @@ enum 🗄️固定値 {
     }
 }
 
+struct 🗄️バックグラウンド時に駒選択を解除: ViewModifier {
+    @EnvironmentObject private var 📱: 📱アプリモデル
+    @Environment(\.scenePhase) private var scenePhase
+    func body(content: Content) -> some View {
+        content
+            .onChange(of: self.scenePhase) {
+                if $0 == .background { 📱.駒の選択を解除する() }
+            }
+    }
+}
+
 struct 🗄️自動スリープ無効化: ViewModifier {
     func body(content: Content) -> some View {
         content
