@@ -224,16 +224,20 @@ extension 局面モデル {
         self.現在の局面を履歴に追加する()
     }
     private func 現在の局面を履歴に追加する() {
-        var 新しい履歴: [Self]
-        新しい履歴 = Self.履歴
-        if 新しい履歴.count > 30 { 新しい履歴.removeFirst() }
-        新しい履歴 += [self]
-        do {
-            let ⓓata = try JSONEncoder().encode(新しい履歴)
-            💾ICloud.set(ⓓata, key: "履歴")
-            💾ICloud.synchronize()
-        } catch {
-            assertionFailure()
+        //レスポンス改善(特にwatchOS)のためにTask分離
+        //TODO: 要動作確認
+        Task {
+            var 新しい履歴: [Self]
+            新しい履歴 = Self.履歴
+            if 新しい履歴.count > 30 { 新しい履歴.removeFirst() }
+            新しい履歴 += [self]
+            do {
+                let ⓓata = try JSONEncoder().encode(新しい履歴)
+                💾ICloud.set(ⓓata, key: "履歴")
+                💾ICloud.synchronize()
+            } catch {
+                assertionFailure()
+            }
         }
     }
     static var 履歴: [Self] {
