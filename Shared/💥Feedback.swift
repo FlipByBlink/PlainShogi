@@ -22,10 +22,10 @@ enum 💥フィードバック {
     }
 #elseif os(watchOS)
     static func 軽め() {
-        WKInterfaceDevice.current().play(.click)
+        WKInterfaceDevice.current().play(.start)
     }
     static func 強め() {
-        WKInterfaceDevice.current().play(.click)
+        WKInterfaceDevice.current().play(.start)
     }
     static func 成功() {
         WKInterfaceDevice.current().play(.success)
