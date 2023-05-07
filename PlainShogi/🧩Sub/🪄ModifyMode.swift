@@ -87,10 +87,11 @@ struct 🪄手駒増減メニュー: View {
             ForEach(駒の種類.allCases) { 職名 in
                 Stepper {
                     HStack(spacing: 16) {
-                        Text(📱.手駒増減メニューの駒の表記(職名, self.陣営))
-                            .font(.title)
+                        Text(🔠フォント.テキストを装飾(📱.手駒増減メニューの駒の表記(職名, self.陣営),
+                                            サイズ: 40,
+                                            太字: true))
                         Text(📱.局面.この手駒の数(self.陣営, 職名).description)
-                            .font(.title3)
+                            .font(.title2)
                             .monospacedDigit()
                     }
                     .padding(.leading)

@@ -35,4 +35,11 @@ enum 🔠フォント {
     enum 対象カテゴリ {
         case コマ, 段筋, プレビュー(_ コマの大きさ: CGFloat)
     }
+    static func テキストを装飾(_ 字: String, サイズ: CGFloat, 太字: Bool = false, 下線: Bool = false) -> AttributedString {
+        var 値 = AttributedString(stringLiteral: 字)
+        値.font = .system(size: サイズ * 0.9, weight: 太字 ? .bold : .light)
+        if 下線 { 値.underlineStyle = .single }
+        値.languageIdentifier = "ja"
+        return 値
+    }
 }
