@@ -272,7 +272,7 @@ private struct 細かな使い方リンク: View {
         Section {
 #if !targetEnvironment(macCatalyst)
             VStack {
-                Text("メニューボタンを長押しすると「初期化ボタン」や「編集ボタン」を呼び出せます。")
+                Text("メニューボタンを長押しすると「初期化ボタン」や「一手戻すボタン」などを呼び出せます")
                     .minimumScaleFactor(0.1)
                 Image("MenuLongPress")
                     .resizable()

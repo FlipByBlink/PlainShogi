@@ -381,6 +381,9 @@ private struct ガイドメニュー: View {
             Divider()
             Label("iCloudによって端末間でデータ(現在の局面/履歴/ブックマーク)が同期されます", systemImage: "icloud")
             Divider()
+            Label("一般のApple TVアプリ同様にゲームコントローラーでもこのアプリを操作できます",
+                  systemImage: "gamecontroller")
+            Divider()
             VStack(spacing: 14) {
                 Text("iOSアプリ等と異なり、Apple TVアプリでは以下の機能を対応していません")
                 Text("""

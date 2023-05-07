@@ -12,10 +12,11 @@
 "編集" = "Edit";
 "操作" = "Command";
 "駒増減モード" = "Modify mode";
-"駒増減モードを開始" = "Edit mode";
+"駒を増減" = "Modify mode";
+"駒増減モードを開始" = "Modify mode";
 "盤面を初期化" = "Initialize";
-"駒を消したり増やしたりする" = "Edit pieces";
-"手駒を整理する" = "Edit captured pieces";
+"駒を消したり増やしたりする" = "Modify pieces";
+"手駒を整理する" = "Modify captured pieces";
 "王側の手駒" = "Piece in hand";
 "玉側の手駒" = "Piece in hand";
 "強調表示をクリア" = "Clear shift sign";
@@ -51,7 +52,7 @@
 "現在の局面をブックマーク" = "Bookmark now";
 "ブックマークに保存できる局面は1つだけです" = "1 bookmark only.";
 "細かな使い方" = "More how to";
-"メニューボタンを長押しすると「初期化ボタン」や「編集ボタン」を呼び出せます。" = "Launch \"Initialize Button\" / \"Edit Button\" by long press Menu button.";
+"メニューボタンを長押しすると「初期化ボタン」や「一手戻すボタン」などを呼び出せます" = "Launch \"Initialize Button\" / \"Modify Button\" by long press Menu button";
 "テキスト機能" = "Plain text";
 "テキスト書き出し/読み込み機能" = "Text Export / Import";
 "駒を他のアプリへドラッグして盤面をテキストとして書き出せます。" = "Export shogi board as plain text by dropping a piece into other apps";
@@ -63,6 +64,7 @@
 "補足" = "Note";
 "長押しすると「カーソルの枠線」を一時的に非表示にできます" = "Long press gesture to hide focus effect temporarily";
 "iCloudによって端末間でデータ(現在の局面/履歴/ブックマーク)が同期されます" = "Sync data(Board/History/Bookmark) between devices by iCloud";
+"一般のApple TVアプリ同様にゲームコントローラーでもこのアプリを操作できます" = "This app can be controlled with a game controller (as well as with other Apple TV apps).";
 "iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません" = "Unlike the iOS version, the watchOS version does not support the following features";
 "iOSアプリ等と異なり、Apple TVアプリでは以下の機能を対応していません" = "Unlike the iOS version, the Apple TV version does not support the following features";
 "・SharePlay
