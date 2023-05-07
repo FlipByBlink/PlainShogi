@@ -120,17 +120,17 @@ struct 🛠メニューコンテンツ: View {
     var body: some View {
         TabView {
             編集メニュー()
-                .tabItem { Text("編集") }
+                .tabItem { Label("編集", systemImage: "pencil") }
             オプションメニュー()
-                .tabItem { Text("オプション") }
+                .tabItem { Label("オプション", systemImage: "gear") }
             履歴メニュー()
-                .tabItem { Text("履歴") }
+                .tabItem { Label("履歴", systemImage: "clock") }
             ブックマークメニュー()
-                .tabItem { Text("ブックマーク") }
+                .tabItem { Label("ブックマーク", systemImage: "bookmark") }
             ガイドメニュー()
-                .tabItem { Text("ガイド") }
+                .tabItem { Label("ガイド", systemImage: "doc.text") }
             アプリについてメニュー()
-                .tabItem { Text("アプリについて") }
+                .tabItem { Label("アプリについて", systemImage: "questionmark") }
         }
         .background(.background)
     }

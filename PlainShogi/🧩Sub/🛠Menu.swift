@@ -219,12 +219,7 @@ private struct 見た目カスタマイズメニューリンク: View {
                         Label("太字", systemImage: "bold")
                             .font(.body.bold())
                     }
-                    Picker(selection: self.$サイズ) {
-                        ForEach(🔠フォント.サイズ.allCases) { Text($0.ローカライズキー) }
-                    } label: {
-                        Label("駒のサイズ", systemImage: "magnifyingglass")
-                            .font(self.サイズ.ピッカーフォント)
-                    }
+                    self.サイズピッカー()
                     Toggle(isOn: $📱.🚩English表記) {
                         Label("English表記", systemImage: "p.circle")
                     }
@@ -239,6 +234,22 @@ private struct 見た目カスタマイズメニューリンク: View {
             .animation(.default, value: self.サイズ)
             .navigationTitle("見た目をカスタマイズ")
         }
+        private func サイズピッカー() -> some View {
+            Picker(selection: self.$サイズ) {
+                ForEach(🔠フォント.サイズ.allCases) { Text($0.ローカライズキー) }
+            } label: {
+                Label("駒のサイズ", systemImage: "magnifyingglass")
+                    .font({
+                        switch self.サイズ {
+                            case .小: return .caption
+                            case .標準: return .body
+                            case .大: return .title
+                            case .最大: return .largeTitle
+                        }
+                    }())
+                    .animation(.default, value: self.サイズ)
+            }
+        }
     }
 }
 
@@ -248,7 +259,8 @@ private struct 細かな使い方リンク: View {
             List {
                 Label("長押しして駒を持ち上げ、そのままスライドして移動させる",
                       systemImage: "hand.draw")
-                .padding(.vertical, 8)
+                Label("iCloudによって端末間でデータ(現在の局面/履歴/ブックマーク)が同期されます",
+                      systemImage: "icloud")
                 self.メニューショートカットセクション()
             }
             .navigationTitle("細かな使い方")

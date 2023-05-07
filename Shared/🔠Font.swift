@@ -22,14 +22,6 @@ enum 🔠フォント {
                     }
             }
         }
-        var ピッカーフォント: Font {
-            switch self {
-                case .小: return .caption
-                case .標準: return .body
-                case .大: return .title
-                case .最大: return .largeTitle
-            }
-        }
         var ローカライズキー: LocalizedStringKey { .init(self.rawValue) }
     }
     enum 対象カテゴリ {
@@ -39,7 +31,7 @@ enum 🔠フォント {
         var 値 = AttributedString(stringLiteral: 字)
         値.font = .system(size: サイズ * 0.9, weight: 太字 ? .bold : .light)
         if 下線 { 値.underlineStyle = .single }
-        値.languageIdentifier = "ja"
+        値.languageIdentifier = "ja" //非日本語圏向け日本語駒の表示揺れ対策
         return 値
     }
 }
