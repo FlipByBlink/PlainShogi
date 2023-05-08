@@ -62,7 +62,7 @@
 "テキストとしてコピー" = "Copy as text";
 "テキストを局面としてペースト" = "Paste a text as shogi board";
 "補足" = "Note";
-"駒を長押しすると「カーソルの枠線」を一時的に非表示にできます" = "Long press gesture to hide focus effect temporarily";
+"選択ボタンを長押しすると「カーソルの枠線」を一時的に非表示にできます" = "Long press gesture to hide focus effect temporarily";
 "iCloudによって端末間でデータ(現在の局面/履歴/ブックマーク)が同期されます" = "Sync data(Board/History/Bookmark) between devices by iCloud";
 "一般のApple TVアプリ同様にゲームコントローラーでもこのアプリを操作できます" = "This app can be controlled with a game controller (as well as with other Apple TV apps).";
 "iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません" = "Unlike the iOS version, the watchOS version does not support the following features";

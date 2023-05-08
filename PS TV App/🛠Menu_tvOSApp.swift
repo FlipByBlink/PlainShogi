@@ -377,7 +377,7 @@ private struct 局面プレビュー: View {
 private struct ガイドメニュー: View {
     var body: some View {
         List {
-            Label("駒を長押しすると「カーソルの枠線」を一時的に非表示にできます", systemImage: "square.dashed")
+            Label("選択ボタンを長押しすると「カーソルの枠線」を一時的に非表示にできます", systemImage: "square.dashed")
             Divider()
             Label("iCloudによって端末間でデータ(現在の局面/履歴/ブックマーク)が同期されます", systemImage: "icloud")
             Divider()

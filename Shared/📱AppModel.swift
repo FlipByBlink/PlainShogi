@@ -106,7 +106,14 @@ extension 📱アプリモデル {
                                 self.盤上に駒を移動させる(.盤上(位置))
                             }
                         case .手駒(let 陣営, _):
-                            self.こちらの手駒エリアを選択する(陣営)
+                            if self.局面.これとこれは同じ陣営(self.選択中の駒, 今選択した場所) {
+                                withAnimation(.default.speed(2.5)) {
+                                    self.選択中の駒 = 今選択した場所
+                                }
+                                💥フィードバック.軽め()
+                            } else {
+                                self.こちらの手駒エリアを選択する(陣営)
+                            }
                         default:
                             break
                     }
