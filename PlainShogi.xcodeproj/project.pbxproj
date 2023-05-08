@@ -215,7 +215,7 @@
 		F52437B429F6499100EA770E /* 🧰MetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🧰MetaData.swift"; sourceTree = "<group>"; };
 		F525A7D529F8FB1F001E8D5F /* ☖ShogiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "☖ShogiView.swift"; sourceTree = "<group>"; };
 		F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📃TextImportExport.swift"; sourceTree = "<group>"; };
-		F553013F2A074CA200E1B91D /* PS-TV-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PS-TV-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F553013F2A074CA200E1B91D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧SheetView.swift"; sourceTree = "<group>"; };
 		F58C48082A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu_tvOSApp.swift"; sourceTree = "<group>"; };
 		F58C480E2A04CA38006D7C55 /* 🪄ModifyMode_tvOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪄ModifyMode_tvOSApp.swift"; sourceTree = "<group>"; };
@@ -378,8 +378,8 @@
 				F5119BB62A0292E10027A74C /* ☖ShogiView_tvOSApp.swift */,
 				F58C48082A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift */,
 				F58C480E2A04CA38006D7C55 /* 🪄ModifyMode_tvOSApp.swift */,
-				F553013F2A074CA200E1B91D /* PS-TV-App-Info.plist */,
 				F5119BB92A029B570027A74C /* PS TV App.entitlements */,
+				F553013F2A074CA200E1B91D /* Info.plist */,
 				F5119BA92A0291020027A74C /* Assets.xcassets */,
 			);
 			path = "PS TV App";
@@ -926,7 +926,7 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PS-TV-App-Info.plist";
+				INFOPLIST_FILE = "PS TV App/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
@@ -958,7 +958,7 @@
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PS-TV-App-Info.plist";
+				INFOPLIST_FILE = "PS TV App/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
