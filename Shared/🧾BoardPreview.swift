@@ -15,10 +15,14 @@ struct 🧾局面プレビュー: View {
 #endif
     }
     private var 盤面と手駒の隙間: CGFloat {
-#if os(tvOS)
+#if os(iOS)
+        8
+#elseif os(watchOS)
+        3
+#elseif os(tvOS)
         12
 #else
-        3
+        6
 #endif
     }
     var body: some View {

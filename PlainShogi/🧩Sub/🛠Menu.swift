@@ -208,6 +208,7 @@ private struct 見た目カスタマイズメニューリンク: View {
         @AppStorage("セリフ体") private var セリフ体: Bool = false
         @AppStorage("太字") private var 太字: Bool = false
         @AppStorage("サイズ") private var サイズ: 🔠文字.サイズ = .標準
+        @StateObject private var ⓖroupStateObserver = GroupStateObserver()
         var body: some View {
             List {
                 Section {
@@ -228,7 +229,11 @@ private struct 見た目カスタマイズメニューリンク: View {
                               systemImage: "square.slash")
                     }
                 } header: {
-                    Text("オプション")
+                    if self.ⓖroupStateObserver.isEligibleForGroupSession {
+                        Text("オプション(共有相手との同期なし)")
+                    } else {
+                        Text("オプション")
+                    }
                 }
             }
             .animation(.default, value: self.サイズ)
@@ -272,8 +277,8 @@ private struct 細かな使い方リンク: View {
         Section {
 #if !targetEnvironment(macCatalyst)
             VStack {
-                Text("メニューボタンを長押しすると「初期化ボタン」や「一手戻すボタン」などを呼び出せます")
-                    .minimumScaleFactor(0.1)
+                Label("メニューボタンを長押しすると「初期化ボタン」や「一手戻すボタン」などを呼び出せます",
+                      systemImage: "gearshape")
                 Image("MenuLongPress")
                     .resizable()
                     .scaledToFit()
@@ -281,7 +286,7 @@ private struct 細かな使い方リンク: View {
                     .border(.black)
                     .padding(8)
             }
-            .padding()
+            .padding(.vertical, 8)
 #endif
         }
     }
