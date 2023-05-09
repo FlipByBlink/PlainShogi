@@ -35,16 +35,8 @@ private enum レイアウト {
             }
         }
     }
-    struct マスの大きさKey: EnvironmentKey { static let defaultValue = 50.0 }
     static let マスに対する段筋の大きさの比率: Double = 0.5
     static let 複数個の盤外コマの幅比率: Double = 1.3
-}
-
-extension EnvironmentValues {
-    var マスの大きさ: CGFloat {
-        get { self[レイアウト.マスの大きさKey.self] }
-        set { self[レイアウト.マスの大きさKey.self] = newValue }
-    }
 }
 
 private struct 盤面と段と筋: View {

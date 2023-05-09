@@ -55,19 +55,6 @@ private enum レイアウト {
     static let 盤と手駒の隙間: CGFloat = 4
     static let マスに対する段筋の大きさの比率: Double = 0.5
     static let 複数個の盤外コマの幅比率: Double = 1.3
-    struct 縦並びKey: EnvironmentKey { static let defaultValue = false }
-    struct マスの大きさKey: EnvironmentKey { static let defaultValue = 80.0 }
-}
-
-extension EnvironmentValues {
-    var 縦並び: Bool {
-        get { self[レイアウト.縦並びKey.self] }
-        set { self[レイアウト.縦並びKey.self] = newValue }
-    }
-    var マスの大きさ: CGFloat {
-        get { self[レイアウト.マスの大きさKey.self] }
-        set { self[レイアウト.マスの大きさKey.self] = newValue }
-    }
 }
 
 private struct 盤面と段と筋: View {
@@ -77,17 +64,11 @@ private struct 盤面と段と筋: View {
         if self.通常の向き {
             VStack(alignment: .leading, spacing: 0) {
                 筋()
-                HStack(spacing: 0) {
-                    盤面のみ()
-                    段()
-                }
+                HStack(spacing: 0) { 盤面のみ(); 段() }
             }
         } else {
             VStack(alignment: .trailing, spacing: 0) {
-                HStack(spacing: 0) {
-                    段()
-                    盤面のみ()
-                }
+                HStack(spacing: 0) { 段(); 盤面のみ() }
                 筋()
             }
         }

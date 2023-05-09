@@ -25,14 +25,6 @@ private enum レイアウト {
         }
     }
     static let 盤と手駒の隙間: CGFloat = 4
-    struct マスの大きさKey: EnvironmentKey { static let defaultValue = 10.0 }
-}
-
-extension EnvironmentValues {
-    var マスの大きさ: CGFloat {
-        get { self[レイアウト.マスの大きさKey.self] }
-        set { self[レイアウト.マスの大きさKey.self] = newValue }
-    }
 }
 
 private struct 盤面のみ: View {
