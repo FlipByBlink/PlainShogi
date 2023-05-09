@@ -57,7 +57,6 @@ Use-case: "Play game with a friend", "Discuss shogi problem with many people", e
 
 - English
 
-<br>
 
 🧰 Source code link
 -----------------------
@@ -66,14 +65,16 @@ Use-case: "Play game with a friend", "Discuss shogi problem with many people", e
 ### Source code (Mirror) link
 [gitlab.com/FlipByBlink/PlainShogi_Mirror](https://gitlab.com/FlipByBlink/PlainShogi_Mirror)
 
+
 ✉️ Contact
 --------------
 sear_pandora_0x@icloud.com
 
 <br>
 <br>
+
 * * *
-<br>
+
 <br>
 <br>
 
@@ -89,9 +90,12 @@ This application don't collect user infomation.
 
 <br>
 <br>
+
 * * *
+
 <br>
 <br>
+
 <!-- URL "Support page for AppStore" -->
 <!-- https://flipbyblink.github.io/PlainShogi/ -->
 <!-- URL "Privacy Policy for AppStore" -->
