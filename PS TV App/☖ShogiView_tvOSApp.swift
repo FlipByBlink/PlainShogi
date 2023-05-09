@@ -136,6 +136,7 @@ private struct 盤上のコマもしくはマス: View {
 private struct 盤外: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
+    @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     @FocusState private var 手駒郡フォーカス状態: Bool
     private var 立場: 手前か対面か
     private var 陣営: 王側か玉側か { 📱.こちら側の陣営(self.立場) }
@@ -164,6 +165,8 @@ private struct 盤外: View {
         ZStack(alignment: self.揃え方) {
             Color.clear
                 .overlay { フォーカス効果() }
+                .overlay { 駒選択効果() }
+                .zIndex(self.現在のフォーカス == .手駒エリア全体 ? 1 : 0)
                 .focusable(self.駒選択中かつ手駒なし || self.盤駒か対面手駒を選択中)
                 .focusedValue(\.将棋盤フォーカス値, .手駒エリア全体)
             VStack(spacing: 8) {
@@ -284,22 +287,24 @@ private struct 一時的にフォーカス効果を非表示: ViewModifier {
 
 private struct 駒選択効果: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     @Environment(\.isFocused) private var isFocused
     @Environment(\.マスの大きさ) private var マスの大きさ
-    private var 場所: 駒の場所 { 📱.選択中の駒 }
-    private var 表記: String? { 📱.この駒のプレビュー表記(self.場所) }
+    private var 選択中の駒の場所: 駒の場所 { 📱.選択中の駒 }
+    private var 表記: String? { 📱.この駒のプレビュー表記(self.選択中の駒の場所) }
     var body: some View {
         if self.isFocused, let 表記 {
             ZStack {
                 Rectangle()
                     .foregroundStyle(.background)
-                テキスト(字: 表記, 下線: 📱.この駒にはアンダーラインが必要(self.場所))
+                テキスト(字: 表記, 下線: 📱.この駒にはアンダーラインが必要(self.選択中の駒の場所))
                     .environment(\.マスの大きさ, self.マスの大きさ + 48)
-                    .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
+                    .rotationEffect(📱.この駒は下向き(self.選択中の駒の場所) ? .degrees(180) : .zero)
             }
             .frame(width: self.マスの大きさ + 24,
                    height: self.マスの大きさ + 24)
-            .border(.tint, width: 3)
+            .border(.blue, width: 4)
+            .offset(x: self.現在のフォーカス == .手駒エリア全体 ? self.マスの大きさ : 0)
         }
     }
 }
