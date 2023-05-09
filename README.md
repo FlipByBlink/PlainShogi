@@ -14,20 +14,17 @@ _最もプレーンな将棋盤アプリ。 Most plainly shogi board app._
 
 iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 
-文字のサイズや太さなどはOSシステム設定に適応して変わります。
-
 任意の駒を消したり増やしたりことも出来ます。
+
+文字の「大きさ」や「太さ」、「セリフ体」などをカスタマイズ出来ます。
 
 駒を英語表記に変えられます。
 
 盤面をテキストデータとして書き出したり読み込んだり出来ます。
 
+局面はiCloudによって端末間で同期されます。
 
-SharePlayに対応しています。
-
-FaceTimeしながら友達と将棋盤を囲むことが出来ます。
-
-SharePlay機能では「2人でシンプルに対局する」だけでなく、「大人数で詰将棋を解く」などの様々なユースケースを想定しています。
+マルチプラットフォーム対応: iPhone, iPad, Apple Watch, Mac, Apple TV
 
 
 Simple Shogi board.
@@ -36,13 +33,25 @@ You can move a piece freely.
 
 This app based on iOS system UI design.
 
-Character adapts font size and weight by OS option.
-
 You can reduce / increase pieces.
+
+Font option: Size / Weight / Serif
 
 English term option.
 
 Output/Input function to/from plain text.
+
+Sync between devices by iCloud.
+
+Support multi platform: iPhone, iPad, Apple Watch, Mac, Apple TV
+
+
+### SharePlay
+SharePlayに対応しています。
+
+FaceTimeしながら友達と将棋盤を囲むことが出来ます。
+
+SharePlay機能では「2人でシンプルに対局する」だけでなく、「大人数で詰将棋を解く」などの様々なユースケースを想定しています。
 
 
 Support SharePlay.
@@ -50,12 +59,6 @@ Support SharePlay.
 Play shogi board with FaceTime.
 
 Use-case: "Play game with a friend", "Discuss shogi problem with many people", etc.
-
-
-### Localization: All
-- Japanese(native)
-
-- English
 
 
 🧰 Source code link
