@@ -46,7 +46,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "🪧SheetCategory.swift",
                         "🔠Characters.swift",
                         "🧾BoardPreview.swift",
-                        "🌐EnvironmentValues"]
+                        "🌐EnvironmentValues.swift"]
             case .Sub:
                 return ["☖ShogiView.swift",
                         "🛠Menu.swift",
