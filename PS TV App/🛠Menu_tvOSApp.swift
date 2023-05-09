@@ -327,7 +327,7 @@ private struct ガイドメニュー: View {
         List {
             Label("選択ボタンを長押しすると「カーソルの枠線」を一時的に非表示にできます", systemImage: "square.dashed")
             Divider()
-            Label("iCloudによって端末間でデータ(現在の局面/履歴/ブックマーク)が同期されます", systemImage: "icloud")
+            Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます", systemImage: "icloud")
             Divider()
             Label("一般のApple TVアプリ同様にゲームコントローラーでもこのアプリを操作できます",
                   systemImage: "gamecontroller")

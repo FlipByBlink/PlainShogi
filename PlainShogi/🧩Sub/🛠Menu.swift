@@ -264,7 +264,7 @@ private struct 細かな使い方リンク: View {
             List {
                 Label("長押しして駒を持ち上げ、そのままスライドして移動させる",
                       systemImage: "hand.draw")
-                Label("iCloudによって端末間でデータ(現在の局面/履歴/ブックマーク)が同期されます",
+                Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます",
                       systemImage: "icloud")
                 self.メニューショートカットセクション()
             }
@@ -282,7 +282,7 @@ private struct 細かな使い方リンク: View {
                 Image("MenuLongPress")
                     .resizable()
                     .scaledToFit()
-                    .frame(maxHeight: 160)
+                    .frame(height: 200)
                     .border(.black)
                     .padding(8)
             }

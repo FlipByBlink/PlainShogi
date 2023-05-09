@@ -63,7 +63,7 @@
 "テキストを局面としてペースト" = "Paste a text as shogi board";
 "補足" = "Note";
 "選択ボタンを長押しすると「カーソルの枠線」を一時的に非表示にできます" = "Long press gesture to hide focus effect temporarily";
-"iCloudによって端末間でデータ(現在の局面/履歴/ブックマーク)が同期されます" = "Sync data(Board/History/Bookmark) between devices by iCloud";
+"iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます" = "Sync data(Board/History/Bookmark) between devices by iCloud";
 "一般のApple TVアプリ同様にゲームコントローラーでもこのアプリを操作できます" = "This app can be controlled with a game controller (as well as with other Apple TV apps)";
 "iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません" = "Unlike the iOS version, the watchOS version does not support the following features";
 "iOSアプリ等と異なり、Apple TVアプリでは以下の機能を対応していません" = "Unlike the iOS version, the Apple TV version does not support the following features";
@@ -119,19 +119,11 @@
 "Appleサポートサイトを開く" = "Open Apple support site";
 "iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。" = "On devices running iOS 16 or later, SharePlay is also available in \"Messages\" app. If you are invited to \"SharedShogi\" activity in \"Messages\" app, please join the activity in \"Messages\" app.";
 "**以下の項目はユーザー間で同期されません**
-・「上下反転」オプション
-・「セリフ体」オプション
-・「太字」オプション
-・「駒のサイズ」オプション
-・「English表記」オプション
-・「強調表示を常時オフ」オプション
+・各種オプション(上下反転/セリフ体/太字/駒のサイズ/English表記/強調表示常時オフ)
 ・駒増減モードに移行しているかどうか
 ・選択中の駒の様子(駒の移動等を完了させたタイミングで操作結果が同期されます)
 ・ドラッグしている最中の駒の様子(ドラッグを完了させたタイミングで操作結果が同期されます)" = "**No sync between users**
-・Reverse vertically option
-・Font option: Serif, Weight, Size
-・English term option
-・Disable shift sign option
+・Options(Reverse vertically/Serif font/Bold weight/Font size/English term/Disable shift sign)
 ・On edit mode
 ・Selecting state
 ・Dragging state";

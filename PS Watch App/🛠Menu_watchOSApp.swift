@@ -342,7 +342,7 @@ private struct ガイドメニュー: View {
     }
     private static func 補足セクション() -> some View {
         Section {
-            Label("iCloudによって端末間でデータ(現在の局面/履歴/ブックマーク)が同期されます",
+            Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます",
                   systemImage: "icloud")
             VStack(alignment: .leading, spacing: 4) {
                 Text("iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません")
