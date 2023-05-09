@@ -19,6 +19,10 @@
 		12D424422871893D002D3E80 /* 📬DropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* 📬DropDelegate.swift */; };
 		12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D4369C2865CD8300B707F5 /* Configuration.storekit */; };
 		12F4444E286D4B580008A663 /* 🛠Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠Menu.swift */; };
+		F5091F892A0A1466003F8BB3 /* 🧾BoardPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 🧾BoardPreview.swift */; };
+		F5091F8A2A0A1466003F8BB3 /* 🧾BoardPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 🧾BoardPreview.swift */; };
+		F5091F8B2A0A1466003F8BB3 /* 🧾BoardPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 🧾BoardPreview.swift */; };
+		F5091F8C2A0A1A66003F8BB3 /* 🧾BoardPreview.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 🧾BoardPreview.swift */; };
 		F5119B962A0144460027A74C /* 🪧SheetCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
 		F5119B972A0144460027A74C /* 🪧SheetCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
 		F5119B9C2A028F330027A74C /* 🪧SheetCategory.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* 🪧SheetCategory.swift */; };
@@ -127,6 +131,7 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				F5091F8C2A0A1A66003F8BB3 /* 🧾BoardPreview.swift in CopyFiles */,
 				F5119B9C2A028F330027A74C /* 🪧SheetCategory.swift in CopyFiles */,
 				F51F03AD2A01099700F05874 /* ☖ShogiModel.swift in CopyFiles */,
 				F51F03AE2A01099700F05874 /* 📱AppModel.swift in CopyFiles */,
@@ -197,6 +202,7 @@
 		12D4369C2865CD8300B707F5 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		12F4444D286D4B580008A663 /* 🛠Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* memo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = memo.md; sourceTree = "<group>"; };
+		F5091F882A0A1466003F8BB3 /* 🧾BoardPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🧾BoardPreview.swift"; sourceTree = "<group>"; };
 		F5119B952A0144460027A74C /* 🪧SheetCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧SheetCategory.swift"; sourceTree = "<group>"; };
 		F5119BA32A0291000027A74C /* PS TV App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PS TV App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5119BA52A0291000027A74C /* PS TV App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PS TV App.swift"; sourceTree = "<group>"; };
@@ -415,6 +421,7 @@
 				F52437B229F613A600EA770E /* 💥Feedback.swift */,
 				F5119B952A0144460027A74C /* 🪧SheetCategory.swift */,
 				F5B5578A29FF851800A14074 /* 🔠Characters.swift */,
+				F5091F882A0A1466003F8BB3 /* 🧾BoardPreview.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -606,6 +613,7 @@
 				128D156B280FE47E003FF480 /* Plain将棋盤App.swift in Sources */,
 				F5BD6A102A00BF4C004AD4A5 /* ☖ShogiModel.swift in Sources */,
 				F525A7D629F8FB1F001E8D5F /* ☖ShogiView.swift in Sources */,
+				F5091F892A0A1466003F8BB3 /* 🧾BoardPreview.swift in Sources */,
 				F5E0549F29FB52A1004DC425 /* 💾Data.swift in Sources */,
 				F54C93D7295D2DE6008D1D60 /* 📃TextImportExport.swift in Sources */,
 				12D424422871893D002D3E80 /* 📬DropDelegate.swift in Sources */,
@@ -633,6 +641,7 @@
 				F5119BB22A0292580027A74C /* ☖ShogiModel.swift in Sources */,
 				F5119BA82A0291000027A74C /* ContentView_tvOSApp.swift in Sources */,
 				F5119BB32A0292580027A74C /* 🪧SheetCategory.swift in Sources */,
+				F5091F8B2A0A1466003F8BB3 /* 🧾BoardPreview.swift in Sources */,
 				F5119BA62A0291000027A74C /* PS TV App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,6 +665,7 @@
 				F5BD6A112A00BF4C004AD4A5 /* ☖ShogiModel.swift in Sources */,
 				F5D9F92D2A00BDC600CEE697 /* PS Watch App.swift in Sources */,
 				F5BD6A162A00BF7D004AD4A5 /* 💾Data.swift in Sources */,
+				F5091F8A2A0A1466003F8BB3 /* 🧾BoardPreview.swift in Sources */,
 				F5D9F92F2A00BDC600CEE697 /* ContentView_watchOSApp.swift in Sources */,
 				F5BD6A142A00BF76004AD4A5 /* 🧰MetaData.swift in Sources */,
 				F5BD6A182A00BF7D004AD4A5 /* 💥Feedback.swift in Sources */,

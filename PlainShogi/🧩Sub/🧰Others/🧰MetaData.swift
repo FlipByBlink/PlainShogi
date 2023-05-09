@@ -3,7 +3,7 @@ import SwiftUI
 let ℹ️appName: LocalizedStringKey = "Plain将棋盤"
 let ℹ️appSubTitle: LocalizedStringKey = "iPhone / iPad / Apple Watch / Mac / Apple TV"
 
-let 📜versionInfos = 📜VersionInfo.history(("1.4", "2023-05-01"),
+let 📜versionInfos = 📜VersionInfo.history(("1.4", "2023-05-09"),
                                            ("1.3", "2023-01-22"),
                                            ("1.2.2", "2022-08-18"),
                                            ("1.2.1", "2022-07-21"),
@@ -44,7 +44,8 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "💾Data.swift",
                         "💥Feedback.swift",
                         "🪧SheetCategory.swift",
-                        "🔠Characters.swift"]
+                        "🔠Characters.swift",
+                        "🧾BoardPreview.swift"]
             case .Sub:
                 return ["☖ShogiView.swift",
                         "🛠Menu.swift",

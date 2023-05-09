@@ -153,7 +153,7 @@ private struct 履歴メニュー: View {
                 }
                 ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
                     HStack {
-                        局面プレビュー(局面)
+                        🧾局面プレビュー(局面)
                         Spacer()
                         VStack(alignment: .trailing, spacing: 4) {
                             Text(局面.更新日付表記)
@@ -197,9 +197,9 @@ private struct ブックマークメニュー: View {
                 Section {
                     VStack {
                         if let ブックマーク {
-                            局面プレビュー(ブックマーク)
+                            🧾局面プレビュー(ブックマーク)
                         } else {
-                            局面プレビュー(.初期セット)
+                            🧾局面プレビュー(.初期セット)
                                 .opacity(0.4)
                         }
                         Button {
@@ -236,58 +236,6 @@ private struct ブックマークメニュー: View {
             .onAppear { self.ブックマーク = .ブックマークを読み込む() }
         }
     }
-}
-
-private struct 局面プレビュー: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    private var 局面: 局面モデル
-    private static let コマのサイズ: CGFloat = 9
-    var body: some View {
-        VStack {
-            self.手駒プレビュー(局面, .玉側)
-            self.盤面プレビュー(局面)
-            self.手駒プレビュー(局面, .王側)
-        }
-    }
-    private func 盤面プレビュー(_ 局面: 局面モデル) -> some View {
-        VStack(spacing: 0) {
-            ForEach(0 ..< 9) { 行 in
-                HStack(spacing: 0) {
-                    ForEach(0 ..< 9) { 列 in
-                        let 位置 = 行 * 9 + 列
-                        if let 駒 = 局面.盤駒[位置] {
-                            Text(🔠文字.装飾(局面.この駒の表記(.盤駒(位置), 📱.🚩English表記) ?? "🐛",
-                                         フォント: .system(size: Self.コマのサイズ,
-                                                       weight: 局面.直近の操作 == .盤駒(位置) ? .bold : .light),
-                                         下線: 局面.この駒にはアンダーラインが必要(.盤駒(位置), 📱.🚩English表記)))
-                            .rotationEffect(駒.陣営 == .玉側 ? .degrees(180) : .zero)
-                            .minimumScaleFactor(0.1)
-                            .frame(width: Self.コマのサイズ, height: Self.コマのサイズ)
-                        } else {
-                            Color.clear
-                                .frame(width: Self.コマのサイズ, height: Self.コマのサイズ)
-                        }
-                    }
-                }
-            }
-        }
-        .frame(width: Self.コマのサイズ * 9, height: Self.コマのサイズ * 9)
-        .padding(2)
-        .border(.primary, width: 0.66)
-    }
-    private func 手駒プレビュー(_ 局面: 局面モデル, _ 陣営: 王側か玉側か) -> some View {
-        HStack(spacing: 2) {
-            ForEach(駒の種類.allCases) {
-                if let 表記 = 局面.この駒の表記(.手駒(陣営, $0), 📱.🚩English表記) {
-                    Text(🔠文字.装飾(表記, フォント: .system(size: Self.コマのサイズ, weight: .light)))
-                        .minimumScaleFactor(0.1)
-                }
-            }
-        }
-        .rotationEffect(陣営 == .玉側 ? .degrees(180) : .zero)
-        .frame(width: Self.コマのサイズ * 9, height: Self.コマのサイズ)
-    }
-    init(_ ｷｮｸﾒﾝ: 局面モデル) { self.局面 = ｷｮｸﾒﾝ }
 }
 
 private struct 手駒増減メニュー: View {
