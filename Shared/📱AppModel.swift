@@ -95,27 +95,20 @@ extension 📱アプリモデル {
                     }
                     self.選択中の駒 = .なし
                 default:
-                    switch 今選択した場所 {
-                        case .盤駒(let 位置):
-                            if self.局面.ここからここへは移動不可(self.選択中の駒, .盤上(位置)) {
-                                if self.局面.これとこれは同じ陣営(self.選択中の駒, 今選択した場所) {
-                                    self.選択中の駒 = 今選択した場所
-                                    💥フィードバック.軽め()
+                    if self.局面.これとこれは同じ陣営(self.選択中の駒, 今選択した場所) {
+                        self.選択中の駒 = 今選択した場所
+                        💥フィードバック.軽め()
+                    } else {
+                        switch 今選択した場所 {
+                            case .盤駒(let 位置):
+                                if !self.局面.ここからここへは移動不可(self.選択中の駒, .盤上(位置)) {
+                                    self.盤上に駒を移動させる(.盤上(位置))
                                 }
-                            } else {
-                                self.盤上に駒を移動させる(.盤上(位置))
-                            }
-                        case .手駒(let 陣営, _):
-                            if self.局面.これとこれは同じ陣営(self.選択中の駒, 今選択した場所) {
-                                withAnimation(.default.speed(2.5)) {
-                                    self.選択中の駒 = 今選択した場所
-                                }
-                                💥フィードバック.軽め()
-                            } else {
+                            case .手駒(let 陣営, _):
                                 self.こちらの手駒エリアを選択する(陣営)
-                            }
-                        default:
-                            break
+                            default:
+                                break
+                        }
                     }
             }
         } else {
