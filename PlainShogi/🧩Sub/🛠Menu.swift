@@ -342,9 +342,7 @@ private struct テキスト書き出し読み込み紹介リンク: View {
                 Label("テキストとしてコピー", systemImage: "doc.on.doc")
                     .foregroundStyle(self.完了 ? .secondary : .primary)
             }
-            .overlay {
-                if self.完了 { Image(systemName: "checkmark") }
-            }
+            .badge(self.完了 ? Text(Image(systemName: "checkmark")) : nil)
             .font(.body.weight(.semibold))
         }
     }
