@@ -99,11 +99,11 @@ struct 🛠サイドバー: ViewModifier {
     private struct フォントサイズピッカー: View {
         @Environment(\.dismiss) var dismiss
         @Binding var サイドバーを表示: Bool
-        @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
+        @AppStorage("サイズ") private var サイズ: 🔠文字.サイズ = .標準
         var body: some View {
             List {
                 Picker(selection: self.$サイズ) {
-                    ForEach(🔠フォント.サイズ.allCases) { Text($0.ローカライズキー) }
+                    ForEach(🔠文字.サイズ.allCases) { Text($0.ローカライズキー) }
                 } label: {
                     Label("駒のサイズ", systemImage: "magnifyingglass")
                 }
@@ -195,7 +195,7 @@ private struct 一手戻すボタン: View {
 private struct オプションメニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("太字") private var 太字: Bool = false
-    @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
+    @AppStorage("サイズ") private var サイズ: 🔠文字.サイズ = .標準
     @AppStorage("ｻｲﾄﾞﾊﾞｰﾎﾞﾀﾝ非表示") private var サイドバー用ボタン常時非表示: Bool = false
     var body: some View {
         NavigationStack {
@@ -207,7 +207,7 @@ private struct オプションメニュー: View {
                     Label("太字", systemImage: "bold")
                 }
                 Picker(selection: self.$サイズ) {
-                    ForEach(🔠フォント.サイズ.allCases) { Text($0.ローカライズキー) }
+                    ForEach(🔠文字.サイズ.allCases) { Text($0.ローカライズキー) }
                 } label: {
                     Label("駒のサイズ", systemImage: "magnifyingglass")
                 }
@@ -340,13 +340,13 @@ private struct 局面プレビュー: View {
                     ForEach(0 ..< 9) { 列 in
                         let 位置 = 行 * 9 + 列
                         if let 駒 = 局面.盤駒[位置] {
-                            Text(🔠フォント.テキストを装飾(局面.この駒の表記(.盤駒(位置), 📱.🚩English表記) ?? "🐛",
-                                                サイズ: Self.コマのサイズ,
-                                                太字: 局面.直近の操作 == .盤駒(位置),
-                                                下線: 局面.この駒にはアンダーラインが必要(.盤駒(位置), 📱.🚩English表記)))
-                                .rotationEffect(駒.陣営 == .玉側 ? .degrees(180) : .zero)
-                                .minimumScaleFactor(0.1)
-                                .frame(width: Self.コマのサイズ, height: Self.コマのサイズ)
+                            Text(🔠文字.装飾(局面.この駒の表記(.盤駒(位置), 📱.🚩English表記) ?? "🐛",
+                                         フォント: .system(size: Self.コマのサイズ,
+                                                       weight: 局面.直近の操作 == .盤駒(位置) ? .bold : .light),
+                                         下線: 局面.この駒にはアンダーラインが必要(.盤駒(位置), 📱.🚩English表記)))
+                            .rotationEffect(駒.陣営 == .玉側 ? .degrees(180) : .zero)
+                            .minimumScaleFactor(0.1)
+                            .frame(width: Self.コマのサイズ, height: Self.コマのサイズ)
                         } else {
                             Color.clear
                                 .frame(width: Self.コマのサイズ, height: Self.コマのサイズ)
@@ -363,7 +363,7 @@ private struct 局面プレビュー: View {
         HStack(spacing: 2) {
             ForEach(駒の種類.allCases) {
                 if let 表記 = 局面.この駒の表記(.手駒(陣営, $0), 📱.🚩English表記) {
-                    Text(🔠フォント.テキストを装飾(表記, サイズ: Self.コマのサイズ))
+                    Text(🔠文字.装飾(表記, フォント: .system(size: Self.コマのサイズ, weight: .light)))
                         .minimumScaleFactor(0.1)
                 }
             }

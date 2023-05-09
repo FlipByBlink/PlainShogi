@@ -207,7 +207,7 @@ private struct 見た目カスタマイズメニューリンク: View {
         @EnvironmentObject private var 📱: 📱アプリモデル
         @AppStorage("セリフ体") private var セリフ体: Bool = false
         @AppStorage("太字") private var 太字: Bool = false
-        @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
+        @AppStorage("サイズ") private var サイズ: 🔠文字.サイズ = .標準
         var body: some View {
             List {
                 Section {
@@ -236,7 +236,7 @@ private struct 見た目カスタマイズメニューリンク: View {
         }
         private func サイズピッカー() -> some View {
             Picker(selection: self.$サイズ) {
-                ForEach(🔠フォント.サイズ.allCases) { Text($0.ローカライズキー) }
+                ForEach(🔠文字.サイズ.allCases) { Text($0.ローカライズキー) }
             } label: {
                 Label("駒のサイズ", systemImage: "magnifyingglass")
                     .font({

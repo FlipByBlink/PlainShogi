@@ -43,12 +43,12 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "📱AppModel.swift",
                         "💾Data.swift",
                         "💥Feedback.swift",
-                        "🪧SheetCategory.swift"]
+                        "🪧SheetCategory.swift",
+                        "🔠Characters.swift"]
             case .Sub:
                 return ["☖ShogiView.swift",
                         "🛠Menu.swift",
                         "🪧SheetView.swift",
-                        "🔠Font.swift",
                         "📬DropDelegate.swift",
                         "🪄ModifyMode.swift",
                         "📜History.swift",

@@ -234,20 +234,12 @@ private struct テキスト: View {
     @AppStorage("太字") private var 太字オプション: Bool = false
     private var サイズポイント: CGFloat { self.マスの大きさ * 0.75 }
     private var 太字: Bool { self.強調 || self.太字オプション }
-    private var フォント: Font {
-        .system(size: self.サイズポイント,
-                weight: self.太字 ? .bold : .regular)
-    }
-    private var 装飾文字: AttributedString {
-        var 値 = AttributedString(stringLiteral: self.字)
-        値.font = self.フォント
-        if self.下線 { 値.underlineStyle = .single }
-        値.languageIdentifier = "ja"
-        return 値
-    }
     var body: some View {
-        Text(self.装飾文字)
-            .minimumScaleFactor(0.6)
+        Text(🔠文字.装飾(self.字,
+                     フォント: .system(size: self.サイズポイント,
+                                   weight: self.太字 ? .bold : .regular),
+                     下線: self.下線))
+        .minimumScaleFactor(0.6)
     }
 }
 

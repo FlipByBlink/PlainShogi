@@ -102,9 +102,8 @@ struct 🪄手駒増減メニュー: View {
                         }
                         .buttonStyle(.plain)
                         HStack {
-                            Text(🔠フォント.テキストを装飾(📱.手駒増減メニューの駒の表記(職名, self.陣営),
-                                                サイズ: 70,
-                                                太字: true))
+                            Text(🔠文字.装飾(📱.手駒増減メニューの駒の表記(職名, self.陣営),
+                                         フォント: .system(size: 70, weight: .bold)))
                             Spacer(minLength: 0)
                             Text(📱.局面.この手駒の数(self.陣営, 職名).description)
                                 .font(.title3.weight(.light))

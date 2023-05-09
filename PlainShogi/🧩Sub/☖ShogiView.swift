@@ -351,7 +351,7 @@ private struct アニメーション: ViewModifier {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字: Bool = false
-    @AppStorage("サイズ") private var サイズ: 🔠フォント.サイズ = .標準
+    @AppStorage("サイズ") private var サイズ: 🔠文字.サイズ = .標準
     func body(content: Content) -> some View {
         content
             .animation(.default, value: 📱.🚩English表記)
@@ -365,13 +365,13 @@ private struct アニメーション: ViewModifier {
 
 private struct テキスト: View {
     var 字: String
-    var 対象: 🔠フォント.対象カテゴリ = .コマ
+    var 対象: 🔠文字.対象カテゴリ = .コマ
     var 強調: Bool = false
     var 下線: Bool = false
     @Environment(\.マスの大きさ) private var マスの大きさ
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     @AppStorage("太字") private var 太字オプション: Bool = false
-    @AppStorage("サイズ") private var サイズオプション: 🔠フォント.サイズ = .標準
+    @AppStorage("サイズ") private var サイズオプション: 🔠文字.サイズ = .標準
     private var サイズポイント: CGFloat {
         switch self.対象 {
             case .コマ, .段筋:
@@ -381,20 +381,12 @@ private struct テキスト: View {
         }
     }
     private var 太字: Bool { self.強調 || self.太字オプション }
-    private var フォント: Font {
-        .system(size: self.サイズポイント,
-                weight: self.太字 ? .bold : .regular,
-                design: self.セリフ体 ? .serif : .default)
-    }
-    private var 装飾文字: AttributedString {
-        var 値 = AttributedString(stringLiteral: self.字)
-        値.font = self.フォント
-        if self.下線 { 値.underlineStyle = .single }
-        値.languageIdentifier = "ja"
-        return 値
-    }
     var body: some View {
-        Text(self.装飾文字)
-            .minimumScaleFactor(0.5)
+        Text(🔠文字.装飾(self.字,
+                     フォント: .system(size: self.サイズポイント,
+                                   weight: self.太字 ? .bold : .regular,
+                                   design: self.セリフ体 ? .serif : .default),
+                     下線: self.下線))
+        .minimumScaleFactor(0.5)
     }
 }

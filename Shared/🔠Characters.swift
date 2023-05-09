@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum 🔠フォント {
+enum 🔠文字 {
     enum サイズ: String, CaseIterable, Identifiable {
         case 小, 標準, 大, 最大
         var id: Self { self }
@@ -27,9 +27,9 @@ enum 🔠フォント {
     enum 対象カテゴリ {
         case コマ, 段筋, プレビュー(_ コマの大きさ: CGFloat)
     }
-    static func テキストを装飾(_ 字: String, サイズ: CGFloat, 太字: Bool = false, 下線: Bool = false) -> AttributedString {
+    static func 装飾(_ 字: String, フォント: Font, 下線: Bool = false) -> AttributedString {
         var 値 = AttributedString(stringLiteral: 字)
-        値.font = .system(size: サイズ * 0.9, weight: 太字 ? .bold : .light)
+        値.font = フォント
         if 下線 { 値.underlineStyle = .single }
         値.languageIdentifier = "ja" //非日本語圏向け日本語駒の表示揺れ対策
         return 値
