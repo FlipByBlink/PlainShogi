@@ -262,14 +262,12 @@ extension 📱アプリモデル {
     }
     @objc @MainActor
     func iCloudによる外部からの履歴変更を適用する(_ notification: Notification) {
-        print("🖨️", notification.userInfo.debugDescription)
         guard 💾ICloud.このキーが変更された(key: "履歴", notification) else { return }
         Task { @MainActor in
             guard let 外部で変更された局面の最新 = 局面モデル.履歴.last else { return }
             self.局面 = 外部で変更された局面の最新
             self.SharePlay中なら現在の局面を参加者に送信する()
             self.駒の選択を解除する()
-            💥フィードバック.強め()
         }
     }
 }
