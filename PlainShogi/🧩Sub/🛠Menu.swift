@@ -298,18 +298,10 @@ private struct テキスト書き出し読み込み紹介リンク: View {
         NavigationLink {
             List {
                 Section {
-                    HStack(alignment: .bottom) {
-                        Text(📱.現在の盤面をテキストに変換する())
-                            .textSelection(.enabled)
-                        Spacer()
-                        Button {
-                            📱.現在の局面をテキストとしてコピー()
-                        } label: {
-                            Label("コピー", systemImage: "doc.on.doc")
-                        }
-                        .buttonStyle(.bordered)
-                    }
-                    .padding()
+                    Text(📱.現在の盤面をテキストに変換する())
+                        .textSelection(.enabled)
+                        .padding()
+                    Self.コピーボタン()
                 } header: {
                     Text("テキスト書き出し例")
                 }
@@ -337,6 +329,23 @@ private struct テキスト書き出し読み込み紹介リンク: View {
             .navigationTitle("テキスト機能")
         } label: {
             Label("テキスト書き出し/読み込み機能", systemImage: "square.and.arrow.up.on.square")
+        }
+    }
+    private struct コピーボタン: View {
+        @EnvironmentObject private var 📱: 📱アプリモデル
+        @State private var 完了: Bool = false
+        var body: some View {
+            Button {
+                📱.現在の局面をテキストとしてコピー()
+                withAnimation { self.完了 = true }
+            } label: {
+                Label("テキストとしてコピー", systemImage: "doc.on.doc")
+                    .foregroundStyle(self.完了 ? .secondary : .primary)
+            }
+            .overlay {
+                if self.完了 { Image(systemName: "checkmark") }
+            }
+            .font(.body.weight(.semibold))
         }
     }
 }
