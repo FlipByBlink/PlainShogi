@@ -348,25 +348,26 @@ extension 📱アプリモデル {
 extension 📱アプリモデル {
     func 新規GroupSessionを受信したら設定する() async {
         for await ⓝewSession in 👥GroupActivity.sessions() {
-            self.局面 = .初期セット
+            self.駒の選択を解除する()
+            self.局面.現在の局面として適用する(.初期セット)
             self.ⓖroupSession = ⓝewSession
             let ⓝewMessenger = GroupSessionMessenger(session: ⓝewSession)
             self.ⓜessenger = ⓝewMessenger
             ⓝewSession.$state
-                .sink { ⓢtate in
-                    if case .invalidated = ⓢtate {
+                .sink {
+                    if case .invalidated = $0 {
                         self.ⓖroupSession = nil
                         self.リセットする()
                     }
                 }
                 .store(in: &self.ⓢubscriptions)
             ⓝewSession.$activeParticipants
-                .sink { ⓐctiveParticipants in
-                    let ⓝewParticipants = ⓐctiveParticipants.subtracting(ⓝewSession.activeParticipants)
+                .sink {
+                    self.参加人数 = $0.count
+                    let ⓝewParticipants = $0.subtracting(ⓝewSession.activeParticipants)
                     Task {
                         try? await ⓝewMessenger.send(self.局面, to: .only(ⓝewParticipants))
                     }
-                    self.参加人数 = ⓐctiveParticipants.count
                 }
                 .store(in: &self.ⓢubscriptions)
             let ⓡeceiveDataTask = Task {
