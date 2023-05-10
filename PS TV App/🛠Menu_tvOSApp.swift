@@ -237,9 +237,10 @@ private struct オプションメニュー: View {
 
 private struct 履歴メニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
+    private var 表示対象: [局面モデル] { 局面モデル.履歴メニュー上での表示対象 }
     var body: some View {
         List {
-            ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
+            ForEach(self.表示対象, id: \.更新日時) { 局面 in
                 HStack {
                     Spacer()
                     VStack(alignment: .leading, spacing: 6) {
@@ -262,7 +263,7 @@ private struct 履歴メニュー: View {
                     Spacer()
                 }
                 .padding(.vertical)
-                .padding(.top, 局面.更新日時 == 局面モデル.履歴.last?.更新日時 ? 120 : 0)
+                .padding(.top, 局面.更新日時 == self.表示対象.first?.更新日時 ? 120 : 0)
             }
             Section {
                 Text("直近の約30局面を履歴として保存します")

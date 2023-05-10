@@ -151,7 +151,7 @@ private struct 履歴メニュー: View {
                 Section {
                     Text("直近の約30局面を履歴として保存します")
                 }
-                ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
+                ForEach(局面モデル.履歴メニュー上での表示対象, id: \.更新日時) { 局面 in
                     HStack {
                         🧾局面プレビュー(局面)
                         Spacer()

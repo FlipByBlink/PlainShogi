@@ -274,6 +274,7 @@ extension 局面モデル {
     }
     var 更新日付表記: String { self.更新日時?.formatted(.dateTime.day().month()) ?? "🐛" }
     var 更新時刻表記: String { self.更新日時?.formatted(.dateTime.hour().minute().second()) ?? "🐛" }
+    static var 履歴メニュー上での表示対象: [Self] { Self.履歴.reversed().filter { $0.更新日時 != nil } }
     static var 初期セット: Self { Self(盤駒: 初期配置, 手駒: 空の手駒) }
 }
 
