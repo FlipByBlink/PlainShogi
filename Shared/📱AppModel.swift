@@ -421,9 +421,7 @@ extension 📱アプリモデル {
             case .joined: return "参加中"
             case .invalidated(_): return "無効"
             case .none: return "なし"
-            @unknown default:
-                assertionFailure()
-                return "🐛想定外"
+            @unknown default: assertionFailure(); return "🐛想定外"
         }
     }
     //Sample code

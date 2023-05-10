@@ -138,9 +138,7 @@ private struct 盤外: View {
     private var 最大の長さ: CGFloat {
         self.マスの大きさ * (9 + レイアウト.マスに対する段筋の大きさの比率)
     }
-    private var 揃え方: Alignment {
-        self.立場 == .手前 ? .bottom : .top
-    }
+    private var 揃え方: Alignment { self.立場 == .手前 ? .bottom : .top }
     private var 駒選択中かつ手駒なし: Bool {
         guard 📱.選択中の駒 != .なし else { return false }
         guard let 手駒 = 📱.局面.手駒[self.陣営] else { assertionFailure(); return false }
@@ -295,7 +293,7 @@ private struct 駒選択効果: View {
             }
             .frame(width: self.マスの大きさ + 24,
                    height: self.マスの大きさ + 24)
-            .border(.blue, width: 4)
+            .border(.blue, width: 5)
             .offset(x: self.現在のフォーカス == .手駒エリア全体 ? self.マスの大きさ : 0)
         }
     }

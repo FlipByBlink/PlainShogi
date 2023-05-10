@@ -69,9 +69,7 @@ struct 🪄増減モード完了ボタン: View {
             VStack {
                 Spacer()
                 Button {
-                    withAnimation {
-                        📱.増減モードを終了する()
-                    }
+                    withAnimation { 📱.増減モードを終了する() }
                 } label: {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.title)

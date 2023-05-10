@@ -219,14 +219,15 @@ private struct オプションメニュー: View {
                     Label("操作した直後の駒の強調表示を常に無効",
                           systemImage: "square.slash")
                 }
-                VStack(alignment: .leading, spacing: 6) {
-                    Toggle(isOn: self.$サイドバー用ボタン常時非表示) {
+                Divider()
+                Toggle(isOn: self.$サイドバー用ボタン常時非表示) {
+                    VStack(alignment: .leading, spacing: 8) {
                         Label("サイドバー呼び出しボタンを常に非表示",
                               systemImage: "gear.badge.xmark")
+                        Text("戻るボタンを押すとサイドバーを表示できます")
+                            .font(.caption)
+                            .foregroundStyle(.tertiary)
                     }
-                    Text("戻るボタンを押すとサイドバーを表示できます")
-                        .font(.caption)
-                        .foregroundStyle(.tertiary)
                 }
             }
             .padding(.top, 64)
@@ -301,7 +302,6 @@ private struct ブックマークメニュー: View {
                 }
                 .buttonStyle(.card)
                 .foregroundStyle(.secondary)
-                .disabled(self.現在の局面とブックマークは同じ)
                 .disabled(self.ブックマーク == nil)
             }
             Spacer()
@@ -316,7 +316,7 @@ private struct ブックマークメニュー: View {
                     .padding(24)
             }
             .buttonStyle(.card)
-            .disabled(self.現在の局面とブックマークは同じ)
+            .foregroundStyle(self.現在の局面とブックマークは同じ ? .tertiary : .primary)
             Spacer()
             Text("ブックマークに保存できる局面は1つだけです")
                 .font(.caption.weight(.light))

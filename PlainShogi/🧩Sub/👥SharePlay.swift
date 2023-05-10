@@ -56,11 +56,6 @@ struct 👥SharePlay環境構築: ViewModifier {
                 .overlay {
                     if 📱.ⓖroupSession != nil, 📱.局面.駒が1つも無い {
                         ProgressView()
-                            .background {
-                                Circle()
-                                    .padding()
-                                    .foregroundStyle(.background)
-                            }
                     }
                 }
         }
@@ -251,10 +246,8 @@ struct 👥SharePlayガイド: View {
                 Section {
                     Label("アクティビティ", systemImage: "power")
                         .badge(📱.セッションステート表記)
-                    if let アクティブ参加者数 = 📱.ⓖroupSession?.activeParticipants.count {
-                        Label("現在の参加者数", systemImage: "person.3")
-                            .badge(アクティブ参加者数)
-                    }
+                    Label("現在の参加者数", systemImage: "person.3")
+                        .badge(📱.参加人数?.description)
                 } header: {
                     Text("状況")
                 }
