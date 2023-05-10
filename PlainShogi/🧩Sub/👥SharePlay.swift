@@ -54,7 +54,7 @@ struct 👥SharePlay環境構築: ViewModifier {
         func body(content: Content) -> some View {
             content
                 .overlay {
-                    if 📱.ⓖroupSession != nil, !📱.局面.SharePlay共有可能 {
+                    if 📱.ⓖroupSession != nil, 📱.局面.駒が1つも無い {
                         ProgressView()
                             .background {
                                 Circle()

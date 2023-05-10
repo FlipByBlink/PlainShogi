@@ -189,9 +189,7 @@ private struct ブックマークメニュー: View {
     private struct メニュー: View {
         @EnvironmentObject private var 📱: 📱アプリモデル
         @State private var ブックマーク: 局面モデル? = nil
-        private var 現在の局面とブックマークは同じ: Bool {
-            📱.局面.更新日時 == self.ブックマーク?.更新日時
-        }
+        private var 現在の局面とブックマークは同じ: Bool { 📱.局面 == self.ブックマーク }
         var body: some View {
             List {
                 Section {

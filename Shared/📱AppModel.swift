@@ -364,7 +364,7 @@ extension 📱アプリモデル {
             ⓝewSession.$activeParticipants
                 .sink { ⓐctiveParticipants in
                     self.参加人数 = ⓐctiveParticipants.count
-                    if ⓐctiveParticipants.count == 1, !self.局面.SharePlay共有可能 {
+                    if ⓐctiveParticipants.count == 1, self.局面.駒が1つも無い {
                         self.局面.現在の局面として適用する(.初期セット)
                     }
                     guard self.局面.SharePlay共有可能 else { return }
@@ -376,7 +376,7 @@ extension 📱アプリモデル {
                 .store(in: &self.ⓢubscriptions)
             let ⓡeceiveDataTask = Task {
                 for await (ⓜessage, _) in ⓝewMessenger.messages(of: 局面モデル.self) {
-                    guard self.局面.更新日時 != ⓜessage.更新日時 else { continue }
+                    guard self.局面 != ⓜessage else { continue }
                     self.SharePlay中に共有相手から送信されたモデルを適用する(ⓜessage)
                 }
             }

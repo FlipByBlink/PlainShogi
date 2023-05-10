@@ -263,7 +263,7 @@ private struct 履歴メニュー: View {
                     Spacer()
                 }
                 .padding(.vertical)
-                .padding(.top, 局面.更新日時 == self.表示対象.first?.更新日時 ? 120 : 0)
+                .padding(.top, 局面 == self.表示対象.first ? 120 : 0)
             }
             Section {
                 Text("直近の約30局面を履歴として保存します")
@@ -279,6 +279,7 @@ private struct 履歴メニュー: View {
 private struct ブックマークメニュー: View {
     @EnvironmentObject private var 📱: 📱アプリモデル
     @State private var ブックマーク: 局面モデル? = nil
+    private var 現在の局面とブックマークは同じ: Bool { 📱.局面 == self.ブックマーク }
     var body: some View {
         VStack {
             Spacer()
@@ -300,6 +301,7 @@ private struct ブックマークメニュー: View {
                 }
                 .buttonStyle(.card)
                 .foregroundStyle(.secondary)
+                .disabled(self.現在の局面とブックマークは同じ)
                 .disabled(self.ブックマーク == nil)
             }
             Spacer()
@@ -314,6 +316,7 @@ private struct ブックマークメニュー: View {
                     .padding(24)
             }
             .buttonStyle(.card)
+            .disabled(self.現在の局面とブックマークは同じ)
             Spacer()
             Text("ブックマークに保存できる局面は1つだけです")
                 .font(.caption.weight(.light))

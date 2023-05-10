@@ -9,7 +9,7 @@ import Foundation
 // 72,73,74,75,76,77,78,79,80
 //             王
 
-struct 局面モデル: Codable {
+struct 局面モデル: Codable, Equatable {
     private(set) var 盤駒: [Int: 盤上の駒]
     private(set) var 手駒: [王側か玉側か: 持ち駒]
     private(set) var 直近の操作: 駒の場所 = .なし
@@ -252,7 +252,7 @@ extension 局面モデル {
         }
     }
     static var 前回の局面: Self? { Self.履歴.last }
-    var 一手前の局面: Self? { Self.履歴.last { $0.更新日時 != self.更新日時 } }
+    var 一手前の局面: Self? { Self.履歴.last { $0 != self } }
     static func 履歴を全て削除する() { 💾ICloud.remove(key: "履歴") }
     func 現在の局面をブックマークする() { 💾ICloud.set(self.エンコード(), key: "ブックマーク") }
     static func ブックマークを読み込む() -> Self? { .デコード(💾ICloud.data(key: "ブックマーク")) }
@@ -274,6 +274,7 @@ extension 局面モデル {
     var 更新日付表記: String { self.更新日時?.formatted(.dateTime.day().month()) ?? "🐛" }
     var 更新時刻表記: String { self.更新日時?.formatted(.dateTime.hour().minute().second()) ?? "🐛" }
     var SharePlay共有可能: Bool { self.更新日時 != nil }
+    var 駒が1つも無い: Bool { self == Self(盤駒: [:], 手駒: [:]) }
     static var 履歴メニュー上での表示対象: [Self] { Self.履歴.reversed().filter { $0.更新日時 != nil } }
     static var 初期セット: Self { Self(盤駒: 初期配置, 手駒: 空の手駒) }
 }
@@ -282,7 +283,7 @@ enum 王側か玉側か: String, CaseIterable, Codable {
     case 王側, 玉側
 }
 
-struct 盤上の駒: Codable {
+struct 盤上の駒: Codable, Equatable {
     let 陣営: 王側か玉側か
     let 職名: 駒の種類
     var 成り: Bool
@@ -294,7 +295,7 @@ struct 盤上の駒: Codable {
     }
 }
 
-struct 持ち駒: Codable {
+struct 持ち駒: Codable, Equatable {
     var 配分: [駒の種類: Int] = [:]
     func 個数(_ 職名: 駒の種類) -> Int { self.配分[職名] ?? 0 }
     static var 空: Self { Self(配分: [:]) }
