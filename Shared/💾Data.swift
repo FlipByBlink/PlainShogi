@@ -40,10 +40,3 @@ struct 💾アクティブ復帰時にiCloudを明示的に同期: ViewModifier 
             }
     }
 }
-
-//enum 💾UserDefaults {
-//    private static var api: UserDefaults { .standard }
-//    static func set(_ データ: Data, key ⓚey: String) { Self.api.set(データ, forKey: ⓚey) }
-//    static func data(key ⓚey: String) -> Data? { Self.api.data(forKey: ⓚey) }
-//    static func remove(key ⓚey: String) { Self.api.removeObject(forKey: ⓚey) }
-//}
