@@ -47,6 +47,23 @@ struct 👥SharePlay環境構築: ViewModifier {
             .animation(.default, value: 📱.ⓖroupSession?.state)
             .task { await 📱.新規GroupSessionを受信したら設定する() }
             .modifier(Self.参加完了通知バナー())
+            .modifier(Self.SharePlay設定未完了ローディング())
+    }
+    private struct SharePlay設定未完了ローディング: ViewModifier {
+        @EnvironmentObject private var 📱: 📱アプリモデル
+        func body(content: Content) -> some View {
+            content
+                .overlay {
+                    if 📱.ⓖroupSession != nil, !📱.局面.SharePlay共有可能 {
+                        ProgressView()
+                            .background {
+                                Circle()
+                                    .padding()
+                                    .foregroundStyle(.background)
+                            }
+                    }
+                }
+        }
     }
     private struct 参加完了通知バナー: ViewModifier {
         @EnvironmentObject private var 📱: 📱アプリモデル

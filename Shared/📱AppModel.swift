@@ -25,7 +25,7 @@ class 📱アプリモデル: ObservableObject {
         💾ICloud.synchronize()
     }
     
-#if os(iOS) //SharePlay
+#if os(iOS) //👥SharePlay
     private var ⓢubscriptions = Set<AnyCancellable>()
     private var ⓣasks = Set<Task<Void, Never>>()
     @Published private(set) var ⓖroupSession: GroupSession<👥GroupActivity>?
@@ -344,12 +344,12 @@ extension 📱アプリモデル {
     }
 }
 
-//MARK: - ==== SharePlay ====
+//MARK: - ==== 👥SharePlay ====
 extension 📱アプリモデル {
     func 新規GroupSessionを受信したら設定する() async {
         for await ⓝewSession in 👥GroupActivity.sessions() {
             self.駒の選択を解除する()
-            self.局面.更新日時情報無しの初期セットに変更する()
+            self.局面.何も無い状態に変更する()
             self.ⓖroupSession = ⓝewSession
             let ⓝewMessenger = GroupSessionMessenger(session: ⓝewSession)
             self.ⓜessenger = ⓝewMessenger
@@ -362,9 +362,13 @@ extension 📱アプリモデル {
                 }
                 .store(in: &self.ⓢubscriptions)
             ⓝewSession.$activeParticipants
-                .sink {
-                    self.参加人数 = $0.count
-                    let ⓝewParticipants = $0.subtracting(ⓝewSession.activeParticipants)
+                .sink { ⓐctiveParticipants in
+                    self.参加人数 = ⓐctiveParticipants.count
+                    if ⓐctiveParticipants.count == 1, !self.局面.SharePlay共有可能 {
+                        self.局面.現在の局面として適用する(.初期セット)
+                    }
+                    guard self.局面.SharePlay共有可能 else { return }
+                    let ⓝewParticipants = ⓐctiveParticipants.subtracting(ⓝewSession.activeParticipants)
                     Task {
                         try? await ⓝewMessenger.send(self.局面, to: .only(ⓝewParticipants))
                     }
@@ -372,15 +376,8 @@ extension 📱アプリモデル {
                 .store(in: &self.ⓢubscriptions)
             let ⓡeceiveDataTask = Task {
                 for await (ⓜessage, _) in ⓝewMessenger.messages(of: 局面モデル.self) {
-                    if let 受信データの更新日時 = ⓜessage.更新日時 {
-                        if let 現在の局面の更新日時 = self.局面.更新日時 {
-                            if 受信データの更新日時 > 現在の局面の更新日時 {
-                                self.SharePlay中に共有相手から送信されたモデルを適用する(ⓜessage)
-                            }
-                        } else {
-                            self.SharePlay中に共有相手から送信されたモデルを適用する(ⓜessage)
-                        }
-                    }
+                    guard self.局面.更新日時 != ⓜessage.更新日時 else { continue }
+                    self.SharePlay中に共有相手から送信されたモデルを適用する(ⓜessage)
                 }
             }
             self.ⓣasks.insert(ⓡeceiveDataTask)
@@ -408,6 +405,7 @@ extension 📱アプリモデル {
     }
     private func SharePlay中なら現在の局面を参加者に送信する() {
         if let ⓜessenger {
+            guard self.局面.SharePlay共有可能 else { assertionFailure(); return }
             Task {
                 do {
                     try await ⓜessenger.send(self.局面)
