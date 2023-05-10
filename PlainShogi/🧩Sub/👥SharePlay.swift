@@ -19,9 +19,7 @@ struct 👥GroupActivity: GroupActivity {
                     case .activationPreferred:
                         print("ⓐctivity.prepareForActivation: activationPreferred")
                         let 結果 = try await ⓐctivity.activate()
-                        if !結果 {
-                            throw 🚨エラー.activation失敗
-                        }
+                        if 結果 == false { throw 🚨エラー.activation失敗 }
                     case .activationDisabled:
                         print("ⓐctivity.prepareForActivation: activationDisabled")
                     case .cancelled:

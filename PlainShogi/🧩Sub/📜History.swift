@@ -30,33 +30,35 @@ struct 📜履歴メニュー: View {
                     .accessibilityHidden(true)
             }
             ForEach(局面モデル.履歴.reversed(), id: \.更新日時) { 局面 in
-                HStack {
-                    🧾局面プレビュー(局面)
-                    Spacer()
-                    VStack(alignment: .trailing, spacing: 4) {
-                        Text(局面.更新日付表記)
-                            .font(.title3)
-                        Text(局面.更新時刻表記)
-                            .font(.subheadline)
+                if 局面.更新日時 != nil {
+                    HStack {
+                        🧾局面プレビュー(局面)
                         Spacer()
-                        Button {
-                            📱.任意の局面を現在の局面として適用する(局面)
-                        } label: {
-                            HStack {
-                                Image(systemName: "square.and.arrow.down")
-                                Text("復元")
+                        VStack(alignment: .trailing, spacing: 4) {
+                            Text(局面.更新日付表記)
+                                .font(.title3)
+                            Text(局面.更新時刻表記)
+                                .font(.subheadline)
+                            Spacer()
+                            Button {
+                                📱.任意の局面を現在の局面として適用する(局面)
+                            } label: {
+                                HStack {
+                                    Image(systemName: "square.and.arrow.down")
+                                    Text("復元")
+                                }
+                                .font(.body.weight(.medium))
                             }
-                            .font(.body.weight(.medium))
+                            .buttonStyle(.bordered)
+                            .dynamicTypeSize(...DynamicTypeSize.xLarge)
                         }
-                        .buttonStyle(.bordered)
-                        .dynamicTypeSize(...DynamicTypeSize.xLarge)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.1)
+                        .padding(.vertical, 8)
                     }
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.1)
-                    .padding(.vertical, 8)
+                    .padding()
                 }
-                .padding()
             }
             if self.🚩履歴削除完了 { Text("これまでの履歴を削除しました") }
             if 局面モデル.履歴.isEmpty {

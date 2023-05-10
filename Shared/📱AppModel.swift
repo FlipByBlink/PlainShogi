@@ -349,7 +349,7 @@ extension 📱アプリモデル {
     func 新規GroupSessionを受信したら設定する() async {
         for await ⓝewSession in 👥GroupActivity.sessions() {
             self.駒の選択を解除する()
-            self.局面.現在の局面として適用する(.初期セット)
+            self.局面.更新日時情報無しの初期セットに変更する()
             self.ⓖroupSession = ⓝewSession
             let ⓝewMessenger = GroupSessionMessenger(session: ⓝewSession)
             self.ⓜessenger = ⓝewMessenger

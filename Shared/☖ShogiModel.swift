@@ -217,15 +217,19 @@ extension 局面モデル {
         self = 新規局面
         self.現在の局面を履歴に追加する()
     }
-    //履歴復元や、インポートデータ適用、SharePlay開始時
+    //履歴復元時、インポートデータ適用時
     mutating func 現在の局面として適用する(_ 新規局面: Self) {
         self = 新規局面
         self.更新日時 = .now
         self.現在の局面を履歴に追加する()
     }
+    //SharePlay開始時
+    mutating func 更新日時情報無しの初期セットに変更する() {
+        self = .初期セット
+        self.現在の局面を履歴に追加する()
+    }
     private func 現在の局面を履歴に追加する() {
         //レスポンス改善(特にwatchOS)のためにTask分離
-        //TODO: 要動作確認
         Task {
             var 新しい履歴: [Self]
             新しい履歴 = Self.履歴
