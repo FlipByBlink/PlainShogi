@@ -283,9 +283,9 @@ private struct 手駒増減シート表示ボタン: View {
                 📱.シートを表示 = .手駒増減(self.陣営)
             } label: {
                 Image(systemName: "plusminus")
-                    .font(.system(size: self.マスの大きさ * 0.45,
+                    .font(.system(size: self.マスの大きさ * 0.8,
                                   weight: self.太字 ? .semibold : .regular))
-                    .padding(.horizontal, 8)
+                    .padding(.horizontal, 4)
             }
             .buttonStyle(.plain)
             .accessibilityLabel("手駒を整理する")

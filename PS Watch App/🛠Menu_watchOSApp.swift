@@ -9,14 +9,7 @@ struct 🛠ツールボタン: View {
         return (📱.選択中の駒 == .なし) ? .メニュー : .駒選択解除
     }
     var body: some View {
-        Button {
-            switch self.モード {
-                case .メニュー: 📱.シートを表示 = .メニュー
-                case .駒選択解除: 📱.駒の選択を解除する()
-                case .増減モード完了: 📱.増減モードを終了する()
-            }
-            💥フィードバック.軽め()
-        } label: {
+        Button(action: self.アクション) {
             Image(systemName: self.モード.アイコン)
                 .imageScale(.small)
                 .frame(width: self.マスの大きさ * 0.75,
@@ -32,6 +25,18 @@ struct 🛠ツールボタン: View {
             }
         }
         .animation(.default, value: self.駒を選択していない)
+    }
+    private func アクション() {
+        switch self.モード {
+            case .メニュー:
+                📱.シートを表示 = .メニュー
+                💥フィードバック.軽め()
+            case .駒選択解除:
+                📱.駒の選択を解除する()
+                WKInterfaceDevice.current().play(.click)
+            case .増減モード完了:
+                📱.増減モードを終了する()
+        }
     }
     private enum モード切り替え {
         case メニュー, 駒選択解除, 増減モード完了
@@ -291,6 +296,7 @@ private struct 閉じるボタン: ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
             Button(role: .cancel) {
                 self.dismiss()
+                WKInterfaceDevice.current().play(.click)
             } label: {
                 Image(systemName: "xmark")
             }
