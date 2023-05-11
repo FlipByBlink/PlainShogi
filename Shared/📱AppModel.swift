@@ -77,7 +77,7 @@ extension 📱アプリモデル {
             self.選択中の駒 = .なし
         }
         self.SharePlay中なら現在の局面を参加者に送信する()
-        💥フィードバック.軽め()
+        💥フィードバック.成功()
     }
     func この駒を選択する(_ 今選択した場所: 駒の場所) {
         if !self.増減モード中 {
@@ -128,12 +128,13 @@ extension 📱アプリモデル {
         withAnimation(.default.speed(2)) {
             if self.局面.ここからここへは移動不可(選択中の駒, .盤外(陣営)) {
                 self.選択中の駒 = .なし
+                💥フィードバック.軽め()
             } else {
                 do {
                     try self.局面.駒を移動させる(選択中の駒, .盤外(陣営))
                     self.選択中の駒 = .なし
                     self.SharePlay中なら現在の局面を参加者に送信する()
-                    💥フィードバック.軽め()
+                    💥フィードバック.強め()
                 } catch {
                     assertionFailure()
                 }
@@ -167,7 +168,7 @@ extension 📱アプリモデル {
     func 増減モードを開始する() {
         self.シートを表示 = nil
         self.増減モード中 = true
-        💥フィードバック.軽め()
+        💥フィードバック.成功()
     }
     func 増減モードを終了する() {
         self.増減モード中 = false
@@ -201,7 +202,7 @@ extension 📱アプリモデル {
                 self.SharePlay中なら現在の局面を参加者に送信する()
                 self.駒移動後の成駒について対応する(self.選択中の駒, 移動先)
                 self.選択中の駒 = .なし
-                💥フィードバック.軽め()
+                💥フィードバック.強め()
             } catch {
                 assertionFailure()
             }
@@ -220,7 +221,7 @@ extension 📱アプリモデル {
         if self.局面.この駒は成る事ができる(位置) {
             self.局面.この駒を裏返す(位置)
             self.SharePlay中なら現在の局面を参加者に送信する()
-            💥フィードバック.軽め()
+            💥フィードバック.強め()
         }
     }
     private func 増減モードでこの盤駒を消す(_ 場所: 駒の場所) {
@@ -301,7 +302,7 @@ extension 📱アプリモデル {
                     self.駒移動後の成駒について対応する(出発場所, 置いた場所)
                     self.ドラッグ中の駒 = .無し
                     self.SharePlay中なら現在の局面を参加者に送信する()
-                    💥フィードバック.軽め()
+                    💥フィードバック.強め()
                 case .アプリ外のコンテンツ:
                     let ⓘtemProviders = ⓘnfo.itemProviders(for: [.utf8PlainText])
                     self.このアイテムを盤面に反映する(ⓘtemProviders)
