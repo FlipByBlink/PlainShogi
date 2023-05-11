@@ -28,7 +28,7 @@ class 📱アプリモデル: ObservableObject {
 #if os(iOS) //👥SharePlay
     private var ⓢubscriptions = Set<AnyCancellable>()
     private var ⓣasks = Set<Task<Void, Never>>()
-    @Published private(set) var ⓖroupSession: GroupSession<👥GroupActivity>?
+    @Published private(set) var ⓖroupSession: GroupSession<🄶roupActivity>?
     private var ⓜessenger: GroupSessionMessenger?
     @Published private(set) var 参加人数: Int?
 #endif
@@ -347,7 +347,7 @@ extension 📱アプリモデル {
 //MARK: - ==== 👥SharePlay ====
 extension 📱アプリモデル {
     func 新規GroupSessionを受信したら設定する() async {
-        for await ⓝewSession in 👥GroupActivity.sessions() {
+        for await ⓝewSession in 🄶roupActivity.sessions() {
             self.駒の選択を解除する()
             self.局面.何も無い状態に変更する()
             self.ⓖroupSession = ⓝewSession
@@ -400,7 +400,7 @@ extension 📱アプリモデル {
         if self.ⓖroupSession != nil {
             self.ⓖroupSession?.leave()
             self.ⓖroupSession = nil
-            👥GroupActivity.アクティビティを起動する()
+            🄶roupActivity.アクティビティを起動する()
         }
     }
     private func SharePlay中なら現在の局面を参加者に送信する() {

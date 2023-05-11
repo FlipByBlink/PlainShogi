@@ -3,7 +3,7 @@ import GroupActivities
 import UIKit
 import SwiftUI
 
-struct 👥GroupActivity: GroupActivity {
+struct 🄶roupActivity: GroupActivity {
     var metadata: GroupActivityMetadata {
         var ⓜetadata = GroupActivityMetadata()
         ⓜetadata.title = NSLocalizedString("共有将棋盤", comment: "アクティビティタイトル")
@@ -186,7 +186,7 @@ struct 👥SharePlayガイド: View {
             Text("自分からSharePlayを開始する事もできます。アクティビティを起動したら友達にSharePlay参加を促しましょう。")
                 .padding(8)
             Button {
-                👥GroupActivity.アクティビティを起動する()
+                🄶roupActivity.アクティビティを起動する()
                 📱.シートを表示 = nil
             } label: {
                 Label("アクティビティ「共有将棋盤」を起動する", systemImage: "power")
@@ -380,7 +380,7 @@ private struct SharingControllerボタン: View {
         .onChange(of: ⓖroupStateObserver.isEligibleForGroupSession) { ⓝewValue in
             if ⓝewValue {
                 if self.🚩GroupActivity準備完了 {
-                    👥GroupActivity.アクティビティを起動する()
+                    🄶roupActivity.アクティビティを起動する()
                     self.🚩GroupActivity準備完了 = false
                 }
             }
@@ -408,7 +408,7 @@ private struct SharingControllerボタン: View {
         }
         init?(_ GroupActivity準備完了: Binding<Bool>) {
             do {
-                self.ⓖroupActivitySharingController = try GroupActivitySharingController(👥GroupActivity())
+                self.ⓖroupActivitySharingController = try GroupActivitySharingController(🄶roupActivity())
             } catch {
                 print("🚨", #line, error.localizedDescription)
                 return nil
