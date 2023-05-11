@@ -360,7 +360,7 @@ extension 📱アプリモデル {
                 .sink {
                     if case .invalidated = $0 {
                         self.ⓖroupSession = nil
-                        self.リセットする()
+                        self.アクティビティをリセットする()
                     }
                 }
                 .store(in: &self.ⓢubscriptions)
@@ -394,7 +394,7 @@ extension 📱アプリモデル {
         self.駒の選択を解除する()
         💥フィードバック.強め()
     }
-    private func リセットする() {
+    private func アクティビティをリセットする() {
         self.ⓜessenger = nil
         self.ⓣasks.forEach { $0.cancel() }
         self.ⓣasks = []

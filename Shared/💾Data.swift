@@ -1,4 +1,3 @@
-import Foundation
 import SwiftUI
 
 enum 💾ICloud {
@@ -14,7 +13,7 @@ extension 💾ICloud {
         NotificationCenter.default.addObserver(ⓞbserver,
                                                selector: ⓢelector,
                                                name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-                                               object: NSUbiquitousKeyValueStore.default)
+                                               object: Self.api)
     }
 }
 

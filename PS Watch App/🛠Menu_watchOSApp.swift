@@ -33,7 +33,7 @@ struct 🛠ツールボタン: View {
                 💥フィードバック.軽め()
             case .駒選択解除:
                 📱.駒の選択を解除する()
-                WKInterfaceDevice.current().play(.click)
+                💥フィードバック.軽め()
             case .増減モード完了:
                 📱.増減モードを終了する()
         }
@@ -296,7 +296,7 @@ private struct 閉じるボタン: ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
             Button(role: .cancel) {
                 self.dismiss()
-                WKInterfaceDevice.current().play(.click)
+                💥フィードバック.軽め()
             } label: {
                 Image(systemName: "xmark")
             }
