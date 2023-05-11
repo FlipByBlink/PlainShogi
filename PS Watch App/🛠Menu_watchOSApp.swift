@@ -11,10 +11,10 @@ struct 🛠ツールボタン: View {
     var body: some View {
         Button(action: self.アクション) {
             Image(systemName: self.モード.アイコン)
-                .imageScale(.small)
-                .frame(width: self.マスの大きさ * 0.75,
-                       height: self.マスの大きさ * 0.75)
-                .padding(.horizontal, 8)
+                .resizable()
+                .scaledToFit()
+                .padding(9)
+                .frame(width: self.マスの大きさ + 12, height: self.マスの大きさ + 12)
         }
         .buttonStyle(.plain)
         .sheet(item: $📱.シートを表示) {
