@@ -347,11 +347,10 @@ private struct ガイドメニュー: View {
     private static func 補足セクション() -> some View {
         Section {
             VStack(alignment: .leading, spacing: 4) {
-                Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます",
-                      systemImage: "icloud")
+                Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます", systemImage: "icloud")
                 Text("iCloud同期は簡易的な用途を想定しています。「同時に起動している端末間での同期」といったリアルタイム性の高い用途は想定していません。")
                     .foregroundStyle(.secondary)
-                    .font(.caption)
+                    .font(.footnote)
             }
             VStack(alignment: .leading, spacing: 4) {
                 Text("iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません")
@@ -361,7 +360,8 @@ private struct ガイドメニュー: View {
                 ・駒のサイズオプション
                 ・テキスト連携機能
                 """)
-                .font(.caption)
+                .foregroundStyle(.secondary)
+                .font(.footnote)
             }
         } header: {
             Text("補足")

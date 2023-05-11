@@ -333,14 +333,14 @@ private struct ガイドメニュー: View {
             Divider()
             Label("一般のApple TVアプリ同様にゲームコントローラーでもこのアプリを操作できます", systemImage: "gamecontroller")
             Divider()
-            VStack(spacing: 14) {
+            VStack(alignment: .leading, spacing: 14) {
                 Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます", systemImage: "icloud")
                 Text("iCloud同期は簡易的な用途を想定しています。「同時に起動している端末間での同期」といったリアルタイム性の高い用途は想定していません。")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
             Divider()
-            VStack(spacing: 14) {
+            VStack(alignment: .leading, spacing: 14) {
                 Text("iOSアプリ等と異なり、Apple TVアプリでは以下の機能を対応していません")
                 Text("""
                 ・SharePlay
