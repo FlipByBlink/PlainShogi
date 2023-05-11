@@ -87,6 +87,8 @@
 "ガイド" = "Guide";
 "アプリについて" = "About";
 "AppStoreリンク" = "AppStore link";
+"ショートカット" = "Shortcut";
+"アプリを立ち上げるためのショートカット" = "Shortcut to launch the app";
  
 // ==== SharePlay ====
 "概要" = "Description";

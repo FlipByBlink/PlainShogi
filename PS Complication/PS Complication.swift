@@ -56,8 +56,8 @@ struct 🄿SComplication: Widget {
         StaticConfiguration(kind: "PSComplication", provider: 🄿rovider()) { _ in
             🄴ntryView()
         }
-        .configurationDisplayName("Plain将棋盤")
-        .description("ショートカット")
+        .configurationDisplayName("ショートカット")
+        .description("アプリを立ち上げるためのショートカット")
         .supportedFamilies([.accessoryCircular, .accessoryCorner, .accessoryInline])
     }
 }

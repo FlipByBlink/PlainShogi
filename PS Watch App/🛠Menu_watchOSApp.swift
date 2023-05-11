@@ -14,7 +14,8 @@ struct 🛠ツールボタン: View {
                 .resizable()
                 .scaledToFit()
                 .padding(9)
-                .frame(width: self.マスの大きさ + 12, height: self.マスの大きさ + 12)
+                .frame(width: self.マスの大きさ * 2, height: self.マスの大きさ + 12)
+                .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .sheet(item: $📱.シートを表示) {

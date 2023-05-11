@@ -99,15 +99,15 @@ private struct 盤外: View {
             Color.clear
             HStack(spacing: 1) {
                 if self.立場 == .対面 { 手駒増減シート表示ボタン(self.陣営) }
-                if self.立場 == .手前 { 🛠ツールボタン(); Spacer() }
                 ForEach(self.各駒) { 盤外のコマ(self.陣営, $0) }
                 if self.立場 == .手前 { 手駒増減シート表示ボタン(self.陣営) }
             }
         }
-        .frame(width:  self.マスの大きさ * 9,
-               height: self.マスの大きさ)
+        .frame(width:  self.マスの大きさ * 7, height: self.マスの大きさ)
         .contentShape(Rectangle())
         .onTapGesture { 📱.こちらの手駒エリアを選択する(self.陣営) }
+        .padding(self.立場 == .手前 ? .leading : .trailing, self.マスの大きさ * 2)
+        .overlay(alignment: .leading) { if self.立場 == .手前 { 🛠ツールボタン() } }
     }
     init(_ ﾀﾁﾊﾞ: 手前か対面か) { self.立場 = ﾀﾁﾊﾞ }
 }

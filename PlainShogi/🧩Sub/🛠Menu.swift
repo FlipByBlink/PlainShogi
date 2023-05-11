@@ -82,7 +82,7 @@ private struct メニューボタン: View { // ⚙️
             self.駒の選択解除ボタン()
         } label: {
             Image(systemName: self.セリフ体 ? "gear" : "gearshape")
-                .font(.title2)
+                .font(.title2.weight(.light))
                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                 .padding()
                 .padding(.trailing, 8)
