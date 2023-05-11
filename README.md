@@ -1,6 +1,8 @@
 Plain将棋盤/PlainShogiBoard: iPhone, iPad, Apple Watch, Mac, Apple TV
 --------------------------------------------------------------------
-_最もプレーンな将棋盤アプリ。 Most plainly shogi board app._
+_どこでも。いつでも。みんなと。将棋盤。_
+
+_Anytime. Everywhere. With friends. Shogi board._
 
 <img src="PlainShogi/Assets.xcassets/RoundedIcon.imageset/RoundedIcon.png" width="64">
 
