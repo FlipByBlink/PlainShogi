@@ -265,8 +265,12 @@ private struct 細かな使い方リンク: View {
             List {
                 Label("長押しして駒を持ち上げ、そのままスライドして移動させる",
                       systemImage: "hand.draw")
-                Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます",
-                      systemImage: "icloud")
+                Section {
+                    Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます",
+                          systemImage: "icloud")
+                } footer: {
+                    Text("iCloud同期は簡易的な用途を想定しています。「同時に起動している端末間での同期」といったリアルタイム性の高い用途は想定していません。")
+                }
                 self.メニューショートカットセクション()
             }
             .navigationTitle("細かな使い方")
@@ -299,25 +303,31 @@ private struct テキスト書き出し読み込み紹介リンク: View {
         NavigationLink {
             List {
                 Section {
-                    Text(📱.現在の盤面をテキストに変換する())
-                        .textSelection(.enabled)
-                        .padding()
-                    Self.コピーボタン()
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(📱.現在の盤面をテキストに変換する())
+                            .textSelection(.enabled)
+                        Self.コピーボタン()
+                    }
+                    .padding()
                 } header: {
                     Text("テキスト書き出し例")
                 }
                 Section {
-                    Label("駒を他のアプリへドラッグして盤面をテキストとして書き出せます。",
-                          systemImage: "square.and.arrow.up")
-                    テキスト変換プレビュー(フォルダー名: "TextExport", 枚数: 4)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Label("駒を他のアプリへドラッグして盤面をテキストとして書き出せます。",
+                              systemImage: "square.and.arrow.up")
+                        テキスト変換プレビュー(フォルダー名: "TextExport", 枚数: 4)
+                    }
+                    .padding(.vertical, 4)
                 }
-                .listRowSeparator(.hidden)
                 Section {
-                    Label("他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。",
-                          systemImage: "square.and.arrow.down")
-                    テキスト変換プレビュー(フォルダー名: "TextImport", 枚数: 5)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Label("他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。",
+                              systemImage: "square.and.arrow.down")
+                        テキスト変換プレビュー(フォルダー名: "TextImport", 枚数: 5)
+                    }
+                    .padding(.vertical, 4)
                 }
-                .listRowSeparator(.hidden)
                 Section {
                     Button {
                         📱.テキストを局面としてペースト()
@@ -336,15 +346,19 @@ private struct テキスト書き出し読み込み紹介リンク: View {
         @EnvironmentObject private var 📱: 📱アプリモデル
         @State private var 完了: Bool = false
         var body: some View {
-            Button {
-                📱.現在の局面をテキストとしてコピー()
-                withAnimation { self.完了 = true }
-            } label: {
-                Label("テキストとしてコピー", systemImage: "doc.on.doc")
-                    .foregroundStyle(self.完了 ? .secondary : .primary)
+            HStack {
+                Spacer()
+                if self.完了 { Image(systemName: "checkmark") }
+                Button {
+                    📱.現在の局面をテキストとしてコピー()
+                    withAnimation { self.完了 = true }
+                } label: {
+                    Label("テキストとしてコピー", systemImage: "doc.on.doc")
+                        .foregroundStyle(self.完了 ? .secondary : .primary)
+                        .font(.caption.weight(.medium))
+                }
+                .buttonStyle(.bordered)
             }
-            .badge(self.完了 ? Text(Image(systemName: "checkmark")) : nil)
-            .font(.body.weight(.semibold))
         }
     }
 }

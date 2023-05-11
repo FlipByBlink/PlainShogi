@@ -331,10 +331,14 @@ private struct ガイドメニュー: View {
         List {
             Label("選択ボタンを長押しすると「カーソルの枠線」を一時的に非表示にできます", systemImage: "square.dashed")
             Divider()
-            Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます", systemImage: "icloud")
+            Label("一般のApple TVアプリ同様にゲームコントローラーでもこのアプリを操作できます", systemImage: "gamecontroller")
             Divider()
-            Label("一般のApple TVアプリ同様にゲームコントローラーでもこのアプリを操作できます",
-                  systemImage: "gamecontroller")
+            VStack(spacing: 14) {
+                Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます", systemImage: "icloud")
+                Text("iCloud同期は簡易的な用途を想定しています。「同時に起動している端末間での同期」といったリアルタイム性の高い用途は想定していません。")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
             Divider()
             VStack(spacing: 14) {
                 Text("iOSアプリ等と異なり、Apple TVアプリでは以下の機能を対応していません")
