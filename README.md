@@ -1,4 +1,4 @@
-Plain将棋盤/PlainShogiBoard【iPhone, iPad, Apple Watch, Mac, Apple TV】
+Plain将棋盤/PlainShogiBoard【iPhone/iPad/Apple Watch/Mac/Apple TV】
 --------------------------------------------------------------------
 _どこでも。いつでも。みんなと。将棋盤。_
 
@@ -10,7 +10,7 @@ _Anytime. Everywhere. With friends. Shogi board._
     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
 </a>
 
-<img src="PlainShogi/Assets.xcassets/ConceptImage.imageset/ConceptImage.png" width="600">
+<img src="PlainShogi/Assets.xcassets/README/ConceptImage.imageset/ConceptImage.png" width="600">
 
 
 概要 Description
@@ -47,7 +47,7 @@ Output/Input function to/from plain text.
 Sync between devices by iCloud.
 
 
-<img src="PlainShogi/Assets.xcassets/Screenshots.imageset/Screenshots.png" width="600">
+<img src="PlainShogi/Assets.xcassets/README/Screenshots.imageset/Screenshots.png" width="600">
 
 
 ### SharePlay
@@ -65,6 +65,9 @@ Play shogi board with FaceTime.
 Use-case: "Play game with a friend", "Discuss shogi problem with many people", etc.
 
 
+<img src="PlainShogi/Assets.xcassets/README/SharePlay.imageset/SharePlay.png" width="300">
+
+
 🧰 Source code link
 -----------------------
 [github.com/FlipByBlink/PlainShogi](https://github.com/FlipByBlink/PlainShogi)
@@ -76,6 +79,12 @@ Use-case: "Play game with a friend", "Discuss shogi problem with many people", e
 ✉️ Contact
 --------------
 sear_pandora_0x@icloud.com
+
+
+🔗 AppStore link
+------------------
+[apps.apple.com/app/id1620268476](https://apps.apple.com/app/id1620268476)
+
 
 <br>
 <br>
@@ -107,7 +116,3 @@ This application don't collect user infomation.
 <!-- https://flipbyblink.github.io/PlainShogi/ -->
 <!-- URL "Privacy Policy for AppStore" -->
 <!-- https://flipbyblink.github.io/PlainShogi/#privacy-policy-for-appstore -->
-
-🔗 AppStore link
-------------------
-[apps.apple.com/app/id1620268476](https://apps.apple.com/app/id1620268476)
