@@ -1,4 +1,4 @@
-Plain将棋盤/PlainShogiBoard: iPhone, iPad, Apple Watch, Mac, Apple TV
+Plain将棋盤/PlainShogiBoard【iPhone, iPad, Apple Watch, Mac, Apple TV】
 --------------------------------------------------------------------
 _どこでも。いつでも。みんなと。将棋盤。_
 
@@ -10,11 +10,14 @@ _Anytime. Everywhere. With friends. Shogi board._
     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
 </a>
 
+<img src="PlainShogi/Assets.xcassets/ConceptImage.imageset/ConceptImage.png" width="600">
+
+
 概要 Description
 ---------------------
 駒を自由に動かせるただの将棋盤です。
 
-iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
+OSの標準デザインに沿ったシンプルな将棋盤アプリです。
 
 任意の駒を消したり増やしたりことも出来ます。
 
@@ -26,14 +29,12 @@ iOSの標準デザインに沿ったシンプルな将棋盤アプリです。
 
 局面はiCloudによって端末間で同期されます。
 
-マルチプラットフォーム対応: iPhone, iPad, Apple Watch, Mac, Apple TV
-
 
 Simple Shogi board.
 
 You can move a piece freely.
 
-This app based on iOS system UI design.
+This app based on OS system UI design.
 
 You can reduce / increase pieces.
 
@@ -45,7 +46,8 @@ Output/Input function to/from plain text.
 
 Sync between devices by iCloud.
 
-Support multi platform: iPhone, iPad, Apple Watch, Mac, Apple TV
+
+<img src="PlainShogi/Assets.xcassets/Screenshots.imageset/Screenshots.png" width="600">
 
 
 ### SharePlay
