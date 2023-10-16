@@ -19,7 +19,7 @@ struct 履歴類セクション: View {
 }
 
 struct 履歴メニュー: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     @State private var 履歴削除完了: Bool = false
     var body: some View {
         List {
@@ -81,7 +81,7 @@ struct 履歴メニュー: View {
 }
 
 struct ブックマークメニュー: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     @State private var ブックマーク: 局面モデル? = nil
     private var 現在の局面とブックマークは同じ: Bool { モデル.局面 == self.ブックマーク }
     var body: some View {

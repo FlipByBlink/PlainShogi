@@ -2,7 +2,6 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct 将棋View: View {
-    @EnvironmentObject private var モデル: アプリモデル
     var body: some View {
         盤と手駒を配置 {
             盤外(.対面)
@@ -18,7 +17,7 @@ struct 将棋View: View {
 }
 
 private struct 盤と手駒を配置<Content: View>: View {
-    @Environment(\.縦並び) private var 縦並び
+    @Environment(\.縦並び) var 縦並び
     @ViewBuilder var content: () -> Content
     var body: some View {
         if self.縦並び {
@@ -32,8 +31,8 @@ private struct 盤と手駒を配置<Content: View>: View {
 private enum レイアウト {
     struct 推定: ViewModifier {
         func body(content: Content) -> some View {
-            GeometryReader { 対象領域 in
-                let 計算結果 = レイアウト.配置とマスの大きさを計算(対象領域)
+            GeometryReader {
+                let 計算結果 = レイアウト.配置とマスの大きさを計算($0)
                 content
                     .environment(\.マスの大きさ, 計算結果.マスの大きさ)
                     .environment(\.縦並び, 計算結果.縦並び)
@@ -59,7 +58,7 @@ private enum レイアウト {
 }
 
 private struct 盤面と段と筋: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     private var 通常の向き: Bool { !モデル.上下反転 }
     var body: some View {
         if self.通常の向き {
@@ -77,8 +76,8 @@ private struct 盤面と段と筋: View {
 }
 
 private struct 盤面のみ: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     var body: some View {
         VStack(spacing: 0) {
             ForEach(0 ..< 9) { 行 in
@@ -98,7 +97,7 @@ private struct 盤面のみ: View {
 }
 
 private struct 盤上のコマもしくはマス: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     private var 画面上での左上からの位置: Int
     private var 元々の位置: Int {
         モデル.上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
@@ -123,9 +122,9 @@ private struct 盤上のコマもしくはマス: View {
 }
 
 private struct 盤外: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
-    @Environment(\.縦並び) private var 縦並び
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
+    @Environment(\.縦並び) var 縦並び
     private var 立場: 手前か対面か
     private var 陣営: 王側か玉側か { モデル.こちら側の陣営(self.立場) }
     private var 各駒: [駒の種類] {
@@ -136,10 +135,10 @@ private struct 盤外: View {
     }
     private var 揃え方: Alignment {
         switch (self.縦並び, self.立場) {
-            case (true, .手前): return .leading
-            case (true, .対面): return .trailing
-            case (false, .手前): return .bottom
-            case (false, .対面): return .top
+            case (true, .手前): .leading
+            case (true, .対面): .trailing
+            case (false, .手前): .bottom
+            case (false, .対面): .top
         }
     }
     var body: some View {
@@ -158,7 +157,7 @@ private struct 盤外: View {
     }
     init(_ ﾀﾁﾊﾞ: 手前か対面か) { self.立場 = ﾀﾁﾊﾞ }
     private struct 各種コマと増減ボタンの配置<Content: View>: View {
-        @Environment(\.縦並び) private var 縦並び
+        @Environment(\.縦並び) var 縦並び
         @ViewBuilder var content: () -> Content
         var body: some View {
             if self.縦並び {
@@ -173,8 +172,8 @@ private struct 盤外: View {
 }
 
 private struct 盤外のコマ: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     private var 場所: 駒の場所
     private var 数: Int { モデル.局面.この手駒の数(self.場所) }
     private var 幅比率: Double {
@@ -194,7 +193,7 @@ private struct 盤外のコマ: View {
         }
     }
     private func プレビュー() -> some View {
-        ドラッグプレビュー用コマ(モデル.この駒のプレビュー表記(self.場所) ?? "🐛",
+        ドラッグプレビュー用コマ(モデル.この駒のプレビュー表記(self.場所) ?? "⚠︎",
                      self.マスの大きさ,
                      モデル.この駒は下向き(self.場所))
     }
@@ -204,9 +203,9 @@ private struct 盤外のコマ: View {
 }
 
 private struct コマの見た目: View { //FrameやDrag処理などは呼び出し側で実装する
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
-    @AppStorage("太字") private var 太字オプション: Bool = false
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
+    @AppStorage("太字") var 太字オプション: Bool = false
     private var 場所: 駒の場所
     private var 表記: String? { モデル.この駒の表記(self.場所) }
     private var この駒を選択中: Bool { モデル.選択中の駒 == self.場所 }
@@ -237,7 +236,7 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
 }
 
 private struct 成駒確認アラート: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     func body(content: Content) -> some View {
         content
             .alert("成りますか？", isPresented: $モデル.成駒確認アラートを表示) {
@@ -268,8 +267,8 @@ private struct ドラッグプレビュー用コマ: View {
 }
 
 private struct 筋: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     private static let 字 = ["９","８","７","６","５","４","３","２","１"]
     var body: some View {
         HStack(spacing: 0) {
@@ -283,8 +282,8 @@ private struct 筋: View {
 }
 
 private struct 段: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     private var 字: [String] {
         モデル.english表記 ? ["１","２","３","４","５","６","７","８","９"] : ["一","二","三","四","五","六","七","八","九"]
     }
@@ -300,7 +299,7 @@ private struct 段: View {
 }
 
 private struct 操作エリア外で駒選択を解除: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     func body(content: Content) -> some View {
         content
             .background {
@@ -311,7 +310,7 @@ private struct 操作エリア外で駒選択を解除: ViewModifier {
 }
 
 private struct ドラッグ直後の効果: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     private var 場所: 駒の場所
     @State private var ドラッグした直後: Bool = false
     func body(content: Content) -> some View {
@@ -330,10 +329,10 @@ private struct ドラッグ直後の効果: ViewModifier {
 }
 
 private struct アニメーション: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
-    @AppStorage("太字") private var 太字: Bool = false
-    @AppStorage("サイズ") private var サイズ: 字体.サイズ = .標準
+    @EnvironmentObject var モデル: アプリモデル
+    @AppStorage("セリフ体") var セリフ体: Bool = false
+    @AppStorage("太字") var 太字: Bool = false
+    @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
     func body(content: Content) -> some View {
         content
             .animation(.default, value: モデル.english表記)
@@ -350,16 +349,14 @@ private struct テキスト: View {
     var 対象: 字体.対象カテゴリ = .コマ
     var 強調: Bool = false
     var 下線: Bool = false
-    @Environment(\.マスの大きさ) private var マスの大きさ
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
-    @AppStorage("太字") private var 太字オプション: Bool = false
-    @AppStorage("サイズ") private var サイズオプション: 字体.サイズ = .標準
+    @Environment(\.マスの大きさ) var マスの大きさ
+    @AppStorage("セリフ体") var セリフ体: Bool = false
+    @AppStorage("太字") var 太字オプション: Bool = false
+    @AppStorage("サイズ") var サイズオプション: 字体.サイズ = .標準
     private var サイズポイント: CGFloat {
         switch self.対象 {
-            case .コマ, .段筋:
-                return self.マスの大きさ * self.サイズオプション.比率(self.対象)
-            case .プレビュー(let コマの大きさ):
-                return コマの大きさ * self.サイズオプション.比率(self.対象)
+            case .コマ, .段筋: self.マスの大きさ * self.サイズオプション.比率(self.対象)
+            case .プレビュー(let コマの大きさ): コマの大きさ * self.サイズオプション.比率(self.対象)
         }
     }
     private var 太字: Bool { self.強調 || self.太字オプション }

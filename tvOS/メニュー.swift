@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct サイドバー: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     @State private var 表示: Bool = false
     @FocusState private var 初期フォーカス: Bool
-    @AppStorage("太字") private var 太字: Bool = false
-    @AppStorage("ｻｲﾄﾞﾊﾞｰﾎﾞﾀﾝ非表示") private var サイドバー用ボタン常時非表示: Bool = false
+    @AppStorage("太字") var 太字: Bool = false
+    @AppStorage("ｻｲﾄﾞﾊﾞｰﾎﾞﾀﾝ非表示") var サイドバー用ボタン常時非表示: Bool = false
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .leading) { self.サイドバー呼び出しボタン() }
@@ -99,7 +99,7 @@ struct サイドバー: ViewModifier {
     private struct フォントサイズピッカー: View {
         @Environment(\.dismiss) var dismiss
         @Binding var サイドバーを表示: Bool
-        @AppStorage("サイズ") private var サイズ: 字体.サイズ = .標準
+        @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
         var body: some View {
             List {
                 Picker(selection: self.$サイズ) {
@@ -116,7 +116,7 @@ struct サイドバー: ViewModifier {
 }
 
 struct メニューコンテンツ: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     var body: some View {
         TabView {
             編集メニュー()
@@ -137,7 +137,7 @@ struct メニューコンテンツ: View {
 }
 
 private struct 編集メニュー: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     var body: some View {
         List {
             盤面初期化ボタン()
@@ -167,7 +167,7 @@ private struct 編集メニュー: View {
 }
 
 private struct 盤面初期化ボタン: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     @State private var 初期化直後: Bool = false
     var body: some View {
         Button {
@@ -181,7 +181,7 @@ private struct 盤面初期化ボタン: View {
 }
 
 private struct 一手戻すボタン: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     var body: some View {
         Button {
             モデル.一手戻す()
@@ -193,10 +193,10 @@ private struct 一手戻すボタン: View {
 }
 
 private struct オプションメニュー: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @AppStorage("太字") private var 太字: Bool = false
-    @AppStorage("サイズ") private var サイズ: 字体.サイズ = .標準
-    @AppStorage("ｻｲﾄﾞﾊﾞｰﾎﾞﾀﾝ非表示") private var サイドバー用ボタン常時非表示: Bool = false
+    @EnvironmentObject var モデル: アプリモデル
+    @AppStorage("太字") var 太字: Bool = false
+    @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
+    @AppStorage("ｻｲﾄﾞﾊﾞｰﾎﾞﾀﾝ非表示") var サイドバー用ボタン常時非表示: Bool = false
     var body: some View {
         NavigationStack {
             List {
@@ -237,7 +237,7 @@ private struct オプションメニュー: View {
 }
 
 private struct 履歴メニュー: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     private var 表示対象: [局面モデル] { 局面モデル.履歴メニュー上での表示対象 }
     var body: some View {
         List {
@@ -278,7 +278,7 @@ private struct 履歴メニュー: View {
 }
 
 private struct ブックマークメニュー: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     @State private var ブックマーク: 局面モデル? = nil
     private var 現在の局面とブックマークは同じ: Bool { モデル.局面 == self.ブックマーク }
     var body: some View {

@@ -40,7 +40,7 @@ private enum レイアウト {
 }
 
 private struct 盤面と段と筋: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     private var 通常の向き: Bool { !モデル.上下反転 }
     var body: some View {
         if self.通常の向き {
@@ -58,8 +58,8 @@ private struct 盤面と段と筋: View {
 }
 
 private struct 盤面のみ: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     var body: some View {
         VStack(spacing: 0) {
@@ -90,7 +90,7 @@ private struct 盤面のみ: View {
 }
 
 private struct 盤上のコマもしくはマス: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     private var 画面上での左上からの位置: Int
     private var 元々の位置: Int {
@@ -126,8 +126,8 @@ private struct 盤上のコマもしくはマス: View {
 }
 
 private struct 盤外: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     @FocusState private var 手駒郡フォーカス状態: Bool
     private var 立場: 手前か対面か
@@ -146,9 +146,9 @@ private struct 盤外: View {
     }
     private var 盤駒か対面手駒を選択中: Bool {
         switch モデル.選択中の駒 {
-            case .盤駒(_): return true
-            case .手駒(let 陣営, _): return 陣営 != self.陣営
-            case .なし: return false
+            case .盤駒(_): true
+            case .手駒(let 陣営, _): 陣営 != self.陣営
+            case .なし: false
         }
     }
     var body: some View {
@@ -178,8 +178,8 @@ private struct 盤外: View {
 }
 
 private struct 盤外のコマ: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     private var 場所: 駒の場所
     private var 数: Int { モデル.局面.この手駒の数(self.場所) }
     private var 幅比率: Double {
@@ -207,9 +207,9 @@ private struct 盤外のコマ: View {
 }
 
 private struct コマの見た目: View { //FrameやTap処理などは呼び出し側で実装する
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
-    @AppStorage("太字") private var 太字オプション: Bool = false
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
+    @AppStorage("太字") var 太字オプション: Bool = false
     private var 場所: 駒の場所
     private var 表記: String? { モデル.この駒の表記(self.場所) }
     private var この駒を選択中: Bool { モデル.選択中の駒 == self.場所 }
@@ -239,9 +239,9 @@ private struct コマの見た目: View { //FrameやTap処理などは呼び出�
 }
 
 private struct フォーカス効果: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @EnvironmentObject private var フォーカス効果: フォーカス効果補助モデル
-    @Environment(\.isFocused) private var isFocused
+    @EnvironmentObject var モデル: アプリモデル
+    @EnvironmentObject var フォーカス効果: フォーカス効果補助モデル
+    @Environment(\.isFocused) var isFocused
     @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     private var 無効: Bool {
         guard case .手駒(let 選択された陣営, _) = モデル.選択中の駒,
@@ -261,7 +261,7 @@ private class フォーカス効果補助モデル: ObservableObject {
 }
 
 private struct 一時的にフォーカス効果を非表示: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     @StateObject private var フォーカス効果 = フォーカス効果補助モデル()
     @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     func body(content: Content) -> some View {
@@ -276,10 +276,10 @@ private struct 一時的にフォーカス効果を非表示: ViewModifier {
 }
 
 private struct 駒選択効果: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.isFocused) var isFocused
+    @Environment(\.マスの大きさ) var マスの大きさ
     @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
-    @Environment(\.isFocused) private var isFocused
-    @Environment(\.マスの大きさ) private var マスの大きさ
     private var 選択中の駒の場所: 駒の場所 { モデル.選択中の駒 }
     private var 表記: String? { モデル.この駒のプレビュー表記(self.選択中の駒の場所) }
     var body: some View {
@@ -300,7 +300,7 @@ private struct 駒選択効果: View {
 }
 
 private struct 成駒確認アラート: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     func body(content: Content) -> some View {
         content
             .alert("成りますか？", isPresented: $モデル.成駒確認アラートを表示) {
@@ -313,8 +313,8 @@ private struct 成駒確認アラート: ViewModifier {
 }
 
 private struct 筋: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     private static let 字 = ["９","８","７","６","５","４","３","２","１"]
     var body: some View {
         HStack(spacing: 0) {
@@ -329,8 +329,8 @@ private struct 筋: View {
 }
 
 private struct 段: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     private var 字: [String] {
         モデル.english表記 ? ["１","２","３","４","５","６","７","８","９"] : ["一","二","三","四","五","六","七","八","九"]
     }
@@ -347,7 +347,7 @@ private struct 段: View {
 }
 
 private struct 駒選択を解除: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     func body(content: Content) -> some View {
         content
             .onExitCommand(perform: モデル.選択中の駒 != .なし ? self.選択解除 : nil)
@@ -356,9 +356,9 @@ private struct 駒選択を解除: ViewModifier {
 }
 
 private struct アニメーション: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
-    @AppStorage("太字") private var 太字: Bool = false
-    @AppStorage("サイズ") private var サイズ: 字体.サイズ = .標準
+    @EnvironmentObject var モデル: アプリモデル
+    @AppStorage("太字") var 太字: Bool = false
+    @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
     func body(content: Content) -> some View {
         content
             .animation(.default, value: モデル.english表記)
@@ -374,9 +374,9 @@ private struct テキスト: View {
     var 対象: 字体.対象カテゴリ = .コマ
     var 強調: Bool = false
     var 下線: Bool = false
-    @Environment(\.マスの大きさ) private var マスの大きさ
-    @AppStorage("太字") private var 太字オプション: Bool = false
-    @AppStorage("サイズ") private var サイズオプション: 字体.サイズ = .標準
+    @Environment(\.マスの大きさ) var マスの大きさ
+    @AppStorage("太字") var 太字オプション: Bool = false
+    @AppStorage("サイズ") var サイズオプション: 字体.サイズ = .標準
     private var サイズポイント: CGFloat {
         self.マスの大きさ * self.サイズオプション.比率(self.対象)
     }

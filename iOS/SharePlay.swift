@@ -39,7 +39,7 @@ struct 🄶roupActivity: GroupActivity {
 }
 
 struct SharePlay環境構築: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     @StateObject private var groupStateObserver = GroupStateObserver()
     func body(content: Content) -> some View {
         content
@@ -50,7 +50,7 @@ struct SharePlay環境構築: ViewModifier {
             .modifier(Self.SharePlay設定未完了ローディング())
     }
     private struct SharePlay設定未完了ローディング: ViewModifier {
-        @EnvironmentObject private var モデル: アプリモデル
+        @EnvironmentObject var モデル: アプリモデル
         func body(content: Content) -> some View {
             content
                 .overlay {
@@ -61,7 +61,7 @@ struct SharePlay環境構築: ViewModifier {
         }
     }
     private struct 参加完了通知バナー: ViewModifier {
-        @EnvironmentObject private var モデル: アプリモデル
+        @EnvironmentObject var モデル: アプリモデル
         @State private var 参加完了バナーを表示: Bool = false
         func body(content: Content) -> some View {
             content
@@ -93,7 +93,7 @@ struct SharePlay環境構築: ViewModifier {
 }
 
 struct SharePlayインジケーター: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     @StateObject private var groupStateObserver = GroupStateObserver()
     private var SharePlay中: Bool {
         [.waiting, .joined].contains(モデル.グループセッション?.state)
@@ -140,7 +140,7 @@ struct SharePlayインジケーター: View {
 }
 
 struct SharePlayガイド: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     private var SharePlay中: Bool {
         [.waiting, .joined].contains(モデル.グループセッション?.state)
     }

@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct シート管理: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
-    @EnvironmentObject private var アプリ内課金: アプリ内課金モデル
+    @EnvironmentObject var モデル: アプリモデル
+    @EnvironmentObject var アプリ内課金: アプリ内課金モデル
     func body(content: Content) -> some View {
         content
             .sheet(item: $モデル.表示中のシート) { カテゴリ in
@@ -18,7 +18,7 @@ struct シート管理: ViewModifier {
                                 case .ブックマーク: ブックマークメニュー()
                                 case .手駒増減(let 陣営): 手駒増減メニュー(陣営)
                                 case .SharePlayガイド: SharePlayガイド()
-                                case .広告: Text(verbatim: "🐛")
+                                case .広告: Text(verbatim: "⚠︎")
                             }
                         }
                         .toolbar { self.閉じるボタン() }

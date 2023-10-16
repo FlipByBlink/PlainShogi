@@ -16,7 +16,7 @@ private struct 🄴ntry: TimelineEntry {
 }
 
 private struct 🄴ntryView : View {
-    @Environment(\.widgetFamily) private var widgetFamily
+    @Environment(\.widgetFamily) var widgetFamily
     var body: some View {
         switch self.widgetFamily {
             case .accessoryCircular, .accessoryCorner:
@@ -43,7 +43,7 @@ private struct 🄴ntryView : View {
             case .accessoryInline:
                 Text(verbatim: "☖")
             default:
-                Text(verbatim: "BUG")
+                Text(verbatim: "⚠︎")
         }
     }
 }

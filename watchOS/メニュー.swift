@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct ツールボタン: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     private var 駒を選択していない: Bool { モデル.選択中の駒 == .なし }
     private var モード: Self.モード切り替え {
         if モデル.増減モード中 { return .増減モード完了 }
@@ -22,7 +22,7 @@ struct ツールボタン: View {
             switch $0 {
                 case .メニュー: メニュートップ()
                 case .手駒増減(let 陣営): 手駒増減メニュー(陣営)
-                default: Text(verbatim: "BUG")
+                default: Text(verbatim: "⚠︎")
             }
         }
         .animation(.default, value: self.駒を選択していない)
@@ -43,16 +43,16 @@ struct ツールボタン: View {
         case メニュー, 駒選択解除, 増減モード完了
         var アイコン: String {
             switch self {
-                case .メニュー: return "gearshape"
-                case .駒選択解除: return "escape"
-                case .増減モード完了: return "checkmark.circle.fill"
+                case .メニュー: "gearshape"
+                case .駒選択解除: "escape"
+                case .増減モード完了: "checkmark.circle.fill"
             }
         }
     }
 }
 
 private struct メニュートップ: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationStack {
             List {
@@ -77,7 +77,7 @@ private struct 編集メニュー: View {
         }
     }
     private struct メニュー: View {
-        @EnvironmentObject private var モデル: アプリモデル
+        @EnvironmentObject var モデル: アプリモデル
         var body: some View {
             List {
                 Button {
@@ -118,8 +118,8 @@ private struct オプションメニュー: View {
         }
     }
    private struct メニュー: View {
-       @EnvironmentObject private var モデル: アプリモデル
-       @AppStorage("太字") private var 太字: Bool = false
+       @EnvironmentObject var モデル: アプリモデル
+       @AppStorage("太字") var 太字: Bool = false
         var body: some View {
             List {
                 Toggle(isOn: $モデル.上下反転) {
@@ -151,7 +151,7 @@ private struct 履歴メニュー: View {
         }
     }
     private struct メニュー: View {
-        @EnvironmentObject private var モデル: アプリモデル
+        @EnvironmentObject var モデル: アプリモデル
         var body: some View {
             List {
                 Section {
@@ -193,7 +193,7 @@ private struct ブックマークメニュー: View {
         }
     }
     private struct メニュー: View {
-        @EnvironmentObject private var モデル: アプリモデル
+        @EnvironmentObject var モデル: アプリモデル
         @State private var ブックマーク: 局面モデル? = nil
         private var 現在の局面とブックマークは同じ: Bool { モデル.局面 == self.ブックマーク }
         var body: some View {
@@ -243,8 +243,8 @@ private struct ブックマークメニュー: View {
 }
 
 private struct 手駒増減メニュー: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.dismiss) var dismiss
     private var 陣営: 王側か玉側か
     var body: some View {
         List {

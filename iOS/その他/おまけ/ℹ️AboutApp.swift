@@ -171,7 +171,7 @@ private struct 📜VersionHistoryLink: View {
                 .navigationBarTitle("Version History")
             } label: {
                 Label("Version", systemImage: "signpost.left")
-                    .badge(📜versionInfos.first?.number ?? "🐛")
+                    .badge(📜versionInfos.first?.number ?? "⚠︎")
             }
             .accessibilityLabel("Version History")
         }
@@ -213,10 +213,10 @@ private struct 📓SourceCodeLink: View {
                             self.📰sourceCodeView(ⓒode, ⓝame)
                         }
                     } else {
-                        Text("🐛")
+                        Text("⚠︎")
                     }
                 }
-                if self.ⓒategory.fileNames.isEmpty { Text("🐛") }
+                if self.ⓒategory.fileNames.isEmpty { Text("⚠︎") }
             } header: {
                 Text(self.ⓒategory.rawValue)
                     .textCase(.none)
@@ -359,10 +359,10 @@ private struct 🧑‍💻AboutDeveloperPublisherLink: View {
             Section {
                 ForEach(📃text, id: \.self) { 📃 in
                     HStack {
-                        Text(📃.first ?? "🐛")
+                        Text(📃.first ?? "⚠︎")
                             .font(.caption2)
                             .padding(8)
-                        Text(LocalizedStringKey(📃.last ?? "🐛"))
+                        Text(LocalizedStringKey(📃.last ?? "⚠︎"))
                             .font(.caption)
                     }
                 }

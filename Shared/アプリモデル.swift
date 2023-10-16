@@ -59,10 +59,10 @@ extension アプリモデル {
     }
     func こちら側の陣営(_ 立場: 手前か対面か) -> 王側か玉側か {
         switch (立場, self.上下反転) {
-            case (.手前, false): return .王側
-            case (.対面, false): return .玉側
-            case (.手前, true): return .玉側
-            case (.対面, true): return .王側
+            case (.手前, false): .王側
+            case (.対面, false): .玉側
+            case (.手前, true): .玉側
+            case (.対面, true): .王側
         }
     }
     var 何も強調表示されていない: Bool {
@@ -148,11 +148,11 @@ extension アプリモデル {
     }
     var 成駒確認メッセージ: String {
         guard case .盤駒(let 位置) = self.局面.直近の操作,
-              let 職名 = self.局面.盤駒[位置]?.職名 else { return "🐛" }
+              let 職名 = self.局面.盤駒[位置]?.職名 else { return "⚠︎" }
         if self.english表記 {
-            return 職名.english生駒表記 + " → " + (職名.english成駒表記 ?? "🐛")
+            return 職名.english生駒表記 + " → " + (職名.english成駒表記 ?? "⚠︎")
         } else {
-            return 職名.rawValue + " → " + (職名.成駒表記 ?? "🐛")
+            return 職名.rawValue + " → " + (職名.成駒表記 ?? "⚠︎")
         }
     }
     func 盤面を初期化する() {
@@ -417,11 +417,11 @@ extension アプリモデル {
     }
     var セッションステート表記: LocalizedStringKey {
         switch self.グループセッション?.state {
-            case .waiting: return "待機中"
-            case .joined: return "参加中"
-            case .invalidated(_): return "無効"
-            case .none: return "なし"
-            @unknown default: assertionFailure(); return "!想定外!"
+            case .waiting: "待機中"
+            case .joined: "参加中"
+            case .invalidated(_): "無効"
+            case .none: "なし"
+            @unknown default: "!想定外!"
         }
     }
     //Sample code

@@ -13,7 +13,7 @@ struct 将棋View: View {
     }
 }
 
-//Apple Watch の画面比率は概ね9:11
+//Apple Watch の画面比率は概ね横9:縦11
 private enum レイアウト {
     struct 推定: ViewModifier {
         func body(content: Content) -> some View {
@@ -28,7 +28,7 @@ private enum レイアウト {
 }
 
 private struct 盤面のみ: View {
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @Environment(\.マスの大きさ) var マスの大きさ
     var body: some View {
         VStack(spacing: 0) {
             ForEach(0 ..< 9) { 行 in
@@ -61,7 +61,7 @@ private struct 盤面のみ: View {
 }
 
 private struct 盤上のコマもしくはマス: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     private var 画面上での左上からの位置: Int
     private var 元々の位置: Int {
         モデル.上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
@@ -84,8 +84,8 @@ private struct 盤上のコマもしくはマス: View {
 }
 
 private struct 盤外: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     private var 立場: 手前か対面か
     private var 陣営: 王側か玉側か { モデル.こちら側の陣営(self.立場) }
     private var 各駒: [駒の種類] {
@@ -113,8 +113,8 @@ private struct 盤外: View {
 }
 
 private struct 盤外のコマ: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
     private var 場所: 駒の場所
     private var 数: Int { モデル.局面.この手駒の数(self.場所) }
     private var 自陣営の手駒の種類の数: Int {
@@ -159,9 +159,9 @@ private struct 盤外のコマ: View {
 }
 
 private struct コマの見た目: View { //操作処理などは呼び出し側で実装する
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
-    @AppStorage("太字") private var 太字オプション: Bool = false
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
+    @AppStorage("太字") var 太字オプション: Bool = false
     private var 場所: 駒の場所
     private var 表記: String? { モデル.この駒の表記(self.場所) }
     private var この駒を選択中: Bool { モデル.選択中の駒 == self.場所 }
@@ -187,14 +187,14 @@ private struct コマの見た目: View { //操作処理などは呼び出し側
                 }
             }
         } else {
-            Text(verbatim: "BUG")
+            Text(verbatim: "⚠︎")
         }
     }
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
 }
 
 private struct 成駒確認アラート: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     func body(content: Content) -> some View {
         content
             .alert("成りますか？", isPresented: $モデル.成駒確認アラートを表示) {
@@ -207,8 +207,8 @@ private struct 成駒確認アラート: ViewModifier {
 }
 
 private struct アニメーション: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
-    @AppStorage("太字") private var 太字: Bool = false
+    @EnvironmentObject var モデル: アプリモデル
+    @AppStorage("太字") var 太字: Bool = false
     func body(content: Content) -> some View {
         content
             .animation(.default, value: モデル.english表記)
@@ -222,8 +222,8 @@ private struct テキスト: View {
     var 字: String
     var 強調: Bool = false
     var 下線: Bool = false
-    @Environment(\.マスの大きさ) private var マスの大きさ
-    @AppStorage("太字") private var 太字オプション: Bool = false
+    @Environment(\.マスの大きさ) var マスの大きさ
+    @AppStorage("太字") var 太字オプション: Bool = false
     private var サイズポイント: CGFloat { self.マスの大きさ * 0.75 }
     private var 太字: Bool { self.強調 || self.太字オプション }
     var body: some View {
@@ -236,10 +236,10 @@ private struct テキスト: View {
 }
 
 private struct 増減モード用ⓧマーク: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
+    @AppStorage("太字") var 太字: Bool = false
     private var 場所: 駒の場所
-    @AppStorage("太字") private var 太字: Bool = false
     private var 増減モード中の盤上の駒: Bool {
         guard モデル.増減モード中, case .盤駒(_) = self.場所 else { return false }
         return true
@@ -273,10 +273,10 @@ private struct 増減モード用ⓧマーク: ViewModifier {
 }
 
 private struct 手駒増減シート表示ボタン: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
+    @AppStorage("太字") var 太字: Bool = false
     private var 陣営: 王側か玉側か
-    @AppStorage("太字") private var 太字: Bool = false
     var body: some View {
         if モデル.増減モード中 {
             Button {

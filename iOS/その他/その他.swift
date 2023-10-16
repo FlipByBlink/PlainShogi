@@ -44,12 +44,12 @@ struct コマンド: Commands {
             .disabled(!self.groupStateObserver.isEligibleForGroupSession)
     }
     private struct 見た目コマンド: View {
-        @AppStorage("上下反転") private var 上下反転: Bool = false
-        @AppStorage("セリフ体") private var セリフ体: Bool = false
-        @AppStorage("太字") private var 太字: Bool = false
-        @AppStorage("サイズ") private var サイズ: 字体.サイズ = .標準
-        @AppStorage("English表記") private var english表記: Bool = false
-        @AppStorage("直近操作強調表示機能オフ") private var 直近操作強調オフ: Bool = false
+        @AppStorage("上下反転") var 上下反転: Bool = false
+        @AppStorage("セリフ体") var セリフ体: Bool = false
+        @AppStorage("太字") var 太字: Bool = false
+        @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
+        @AppStorage("English表記") var english表記: Bool = false
+        @AppStorage("直近操作強調表示機能オフ") var 直近操作強調オフ: Bool = false
         var body: some View {
             Toggle("上下反転", isOn: self.$上下反転)
             Toggle("セリフ体", isOn: self.$セリフ体)
@@ -88,47 +88,47 @@ enum データ移行ver_1_3 {
 enum 固定値 {
     static var 盤面枠線の太さ: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
-            case .phone: return 1.0
+            case .phone: 1.0
             case .pad:
 #if targetEnvironment(macCatalyst)
-                return 2.5
+                2.5
 #else
-                return 1.33
+                1.33
 #endif
-            default: return 1.0
+            default: 1.0
         }
     }
     static var 強調枠線の太さ: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
-            case .phone: return 2.0
+            case .phone: 2.0
             case .pad:
 #if targetEnvironment(macCatalyst)
-                return 3
+                3
 #else
-                return 2.5
+                2.5
 #endif
-            default: return 1.0
+            default: 1.0
         }
     }
     static var 全体パディング: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
-            case .phone: return 16
-            case .pad: return 24
-            default: return 16
+            case .phone: 16
+            case .pad: 24
+            default: 16
         }
     }
     static var SharePlayインジケーター上部パディング: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
-            case .phone: return 12
-            case .pad: return 16
-            default: return 16
+            case .phone: 12
+            case .pad: 16
+            default: 16
         }
     }
 }
 
 struct バックグラウンド時に駒選択を解除: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.scenePhase) private var scenePhase
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.scenePhase) var scenePhase
     func body(content: Content) -> some View {
         content
             .onChange(of: self.scenePhase) {

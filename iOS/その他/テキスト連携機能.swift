@@ -136,17 +136,19 @@ struct テキスト連携機能 {
         
         return 局面モデル(盤駒: 盤⃣駒, 手駒: 手⃣駒)
     }
-    
+}
+
+private extension テキスト連携機能 {
     private static func 駒をEnglishプレーンテキストに変換(_ 職名: 駒の種類, _ 成り: Bool = false) -> String {
         switch 職名 {
-            case .歩: return 成り ? "ｐ" : "Ｐ"
-            case .角: return 成り ? "ｂ" : "Ｂ"
-            case .飛: return 成り ? "ｒ" : "Ｒ"
-            case .香: return 成り ? "ｌ" : "Ｌ"
-            case .桂: return 成り ? "ｎ" : "Ｎ"
-            case .銀: return 成り ? "ｓ" : "Ｓ"
-            case .金: return "Ｇ"
-            case .王: return "Ｋ"
+            case .歩: 成り ? "ｐ" : "Ｐ"
+            case .角: 成り ? "ｂ" : "Ｂ"
+            case .飛: 成り ? "ｒ" : "Ｒ"
+            case .香: 成り ? "ｌ" : "Ｌ"
+            case .桂: 成り ? "ｎ" : "Ｎ"
+            case .銀: 成り ? "ｓ" : "Ｓ"
+            case .金: "Ｇ"
+            case .王: "Ｋ"
         }
     }
     
@@ -154,9 +156,9 @@ struct テキスト連携機能 {
         var 陣営: 王側か玉側か = .王側
         var 職名: 駒の種類 = .歩
         var 成り = false
-        
-        if テキスト.unicodeScalars.contains("͙") { 陣営 = .玉側 }
-        
+        if テキスト.unicodeScalars.contains("͙") {
+            陣営 = .玉側
+        }
         if let 職名テキスト = テキスト.unicodeScalars.first?.description {
             switch 職名テキスト {
                 case "歩","Ｐ": 職名 = .歩
@@ -176,7 +178,6 @@ struct テキスト連携機能 {
                 default: return nil
             }
         }
-        
         return (陣営, 職名, 成り)
     }
 }

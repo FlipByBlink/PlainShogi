@@ -3,7 +3,7 @@ import GroupActivities
 import UniformTypeIdentifiers
 
 struct ツールボタン: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .topTrailing) {
@@ -20,7 +20,7 @@ struct ツールボタン: ViewModifier {
 }
 
 struct アプリメニュー: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     @StateObject private var groupStateObserver = GroupStateObserver()
     var body: some View {
         List {
@@ -61,8 +61,8 @@ struct アプリメニュー: View {
 }
 
 private struct メニューボタン: View { // ⚙️
-    @EnvironmentObject private var モデル: アプリモデル
-    @AppStorage("セリフ体") private var セリフ体: Bool = false
+    @EnvironmentObject var モデル: アプリモデル
+    @AppStorage("セリフ体") var セリフ体: Bool = false
     var body: some View {
 #if !targetEnvironment(macCatalyst)
         self.content()
@@ -149,7 +149,7 @@ private struct SharePlay誘導セクション: View {
 }
 
 private struct 盤面初期化ボタン: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     var body: some View {
         Button {
             モデル.盤面を初期化する()
@@ -160,7 +160,7 @@ private struct 盤面初期化ボタン: View {
 }
 
 private struct 強調表示クリアボタン: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     var body: some View {
         Button {
             モデル.強調表示をクリア()
@@ -174,7 +174,7 @@ private struct 強調表示クリアボタン: View {
 
 private struct 増減モード開始ボタン: View {
     var タイトル: LocalizedStringKey = "駒を増減"
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     var body: some View {
         Button {
             モデル.増減モードを開始する()
@@ -185,7 +185,7 @@ private struct 増減モード開始ボタン: View {
 }
 
 private struct 一手戻すボタン: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     var body: some View {
         Button {
             モデル.一手戻す()
@@ -205,11 +205,11 @@ private struct 見た目カスタマイズメニューリンク: View {
         }
     }
     private struct コンテンツ: View {
-        @EnvironmentObject private var モデル: アプリモデル
-        @AppStorage("セリフ体") private var セリフ体: Bool = false
-        @AppStorage("太字") private var 太字: Bool = false
-        @AppStorage("サイズ") private var サイズ: 字体.サイズ = .標準
-        @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+        @EnvironmentObject var モデル: アプリモデル
+        @AppStorage("セリフ体") var セリフ体: Bool = false
+        @AppStorage("太字") var 太字: Bool = false
+        @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
+        @StateObject private var groupStateObserver = GroupStateObserver()
         var body: some View {
             List {
                 Section {
@@ -230,7 +230,7 @@ private struct 見た目カスタマイズメニューリンク: View {
                               systemImage: "square.slash")
                     }
                 } header: {
-                    if self.ⓖroupStateObserver.isEligibleForGroupSession {
+                    if self.groupStateObserver.isEligibleForGroupSession {
                         Text("オプション(共有相手との同期なし)")
                     } else {
                         Text("オプション")
@@ -247,10 +247,10 @@ private struct 見た目カスタマイズメニューリンク: View {
                 Label("駒のサイズ", systemImage: "magnifyingglass")
                     .font({
                         switch self.サイズ {
-                            case .小: return .caption
-                            case .標準: return .body
-                            case .大: return .title
-                            case .最大: return .largeTitle
+                            case .小: .caption
+                            case .標準: .body
+                            case .大: .title
+                            case .最大: .largeTitle
                         }
                     }())
                     .animation(.default, value: self.サイズ)
@@ -298,7 +298,7 @@ private struct 細かな使い方リンク: View {
 }
 
 private struct テキスト書き出し読み込み紹介リンク: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     var body: some View {
         NavigationLink {
             List {
@@ -343,7 +343,7 @@ private struct テキスト書き出し読み込み紹介リンク: View {
         }
     }
     private struct コピーボタン: View {
-        @EnvironmentObject private var モデル: アプリモデル
+        @EnvironmentObject var モデル: アプリモデル
         @State private var 完了: Bool = false
         var body: some View {
             HStack {
@@ -406,7 +406,7 @@ private struct 不具合フィードバックリンク: View {
         }
     }
     private struct メニュー: View {
-        @Environment(\.locale) private var locale
+        @Environment(\.locale) var locale
         private var 日本語環境: Bool { self.locale.language.languageCode == .japanese }
         private static var アドレス: String = "sear_pandora_0x@icloud.com"
         private var ボタンURL: URL {

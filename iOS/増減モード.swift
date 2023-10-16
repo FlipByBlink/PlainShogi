@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct 手駒増減シート表示ボタン: View {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
+    @AppStorage("太字") var 太字: Bool = false
     private var 陣営: 王側か玉側か
-    @AppStorage("太字") private var 太字: Bool = false
     var body: some View {
         if モデル.増減モード中 {
             Button {
@@ -24,10 +24,10 @@ struct 手駒増減シート表示ボタン: View {
 }
 
 struct 増減モード用ⓧマーク: ViewModifier {
-    @EnvironmentObject private var モデル: アプリモデル
-    @Environment(\.マスの大きさ) private var マスの大きさ
+    @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.マスの大きさ) var マスの大きさ
+    @AppStorage("太字") var 太字: Bool = false
     private var 場所: 駒の場所
-    @AppStorage("太字") private var 太字: Bool = false
     private var 増減モード中の盤上の駒: Bool {
         guard モデル.増減モード中, case .盤駒(_) = self.場所 else { return false }
         return true
@@ -62,7 +62,7 @@ struct 増減モード用ⓧマーク: ViewModifier {
 }
 
 struct 増減モード完了ボタン: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     var body: some View {
         Button {
             モデル.増減モードを終了する()
@@ -80,7 +80,7 @@ struct 増減モード完了ボタン: View {
 }
 
 struct 手駒増減メニュー: View {
-    @EnvironmentObject private var モデル: アプリモデル
+    @EnvironmentObject var モデル: アプリモデル
     private var 陣営: 王側か玉側か
     var body: some View {
         List {
