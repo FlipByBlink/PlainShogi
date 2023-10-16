@@ -25,7 +25,7 @@ class アプリモデル: ObservableObject {
         ICloudデータ.synchronize()
     }
     
-#if os(iOS) //SharePlay
+#if os(iOS) //SharePlay関連
     private var サブスクリプションズ = Set<AnyCancellable>()
     private var タスクス = Set<Task<Void, Never>>()
     @Published private(set) var グループセッション: GroupSession<🄶roupActivity>?

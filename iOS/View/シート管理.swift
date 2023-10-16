@@ -10,7 +10,7 @@ struct シート管理: ViewModifier {
                     広告コンテンツ()
                         .environmentObject(アプリ内課金)
                 } else {
-                    NavigationView {
+                    NavigationStack {
                         Group {
                             switch カテゴリ {
                                 case .メニュー: アプリメニュー()

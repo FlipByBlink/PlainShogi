@@ -15,7 +15,7 @@ private struct 🄴ntry: TimelineEntry {
     let date: Date = .now
 }
 
-private struct 🄴ntryView : View {
+private struct 🄴ntryView: View {
     @Environment(\.widgetFamily) var widgetFamily
     var body: some View {
         switch self.widgetFamily {

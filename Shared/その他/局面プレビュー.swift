@@ -3,28 +3,6 @@ import SwiftUI
 struct 局面プレビュー: View {
     @EnvironmentObject var モデル: アプリモデル
     private var 局面: 局面モデル
-    private var マスのサイズ: CGFloat {
-#if os(iOS)
-        20
-#elseif os(watchOS)
-        9
-#elseif os(tvOS)
-        30
-#else
-        20
-#endif
-    }
-    private var 盤面と手駒の隙間: CGFloat {
-#if os(iOS)
-        8
-#elseif os(watchOS)
-        3
-#elseif os(tvOS)
-        12
-#else
-        6
-#endif
-    }
     var body: some View {
         VStack(spacing: self.盤面と手駒の隙間) {
             self.手駒プレビュー(.玉側)
@@ -71,4 +49,29 @@ struct 局面プレビュー: View {
         .frame(width: self.マスのサイズ * 9, height: self.マスのサイズ)
     }
     init(_ 局面: 局面モデル) { self.局面 = 局面 }
+}
+
+private extension 局面プレビュー {
+    private var マスのサイズ: CGFloat {
+#if os(iOS)
+        20
+#elseif os(watchOS)
+        9
+#elseif os(tvOS)
+        30
+#else
+        20
+#endif
+    }
+    private var 盤面と手駒の隙間: CGFloat {
+#if os(iOS)
+        8
+#elseif os(watchOS)
+        3
+#elseif os(tvOS)
+        12
+#else
+        6
+#endif
+    }
 }

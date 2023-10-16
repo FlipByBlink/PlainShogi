@@ -2,23 +2,6 @@ import SwiftUI
 import GroupActivities
 import UniformTypeIdentifiers
 
-struct ツールボタン: ViewModifier {
-    @EnvironmentObject var モデル: アプリモデル
-    func body(content: Content) -> some View {
-        content
-            .overlay(alignment: .topTrailing) {
-                Group {
-                    if モデル.増減モード中 {
-                        増減モード完了ボタン()
-                    } else {
-                        メニューボタン()
-                    }
-                }
-                .animation(.default, value: モデル.増減モード中)
-            }
-    }
-}
-
 struct アプリメニュー: View {
     @EnvironmentObject var モデル: アプリモデル
     @StateObject private var groupStateObserver = GroupStateObserver()
@@ -60,7 +43,7 @@ struct アプリメニュー: View {
     }
 }
 
-private struct メニューボタン: View { // ⚙️
+struct メニューボタン: View { // ⚙️
     @EnvironmentObject var モデル: アプリモデル
     @AppStorage("セリフ体") var セリフ体: Bool = false
     var body: some View {

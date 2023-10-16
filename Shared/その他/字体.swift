@@ -8,17 +8,17 @@ enum 字体 {
             switch カテゴリ {
                 case .コマ, .プレビュー:
                     switch self {
-                        case .小: return 0.4
-                        case .標準: return 0.5
-                        case .大: return 0.65
-                        case .最大: return 1.0
+                        case .小: 0.4
+                        case .標準: 0.5
+                        case .大: 0.65
+                        case .最大: 1.0
                     }
                 case .段筋:
                     switch self {
-                        case .小: return 0.3
-                        case .標準: return 0.35
-                        case .大: return 0.40
-                        case .最大: return 0.45
+                        case .小: 0.3
+                        case .標準: 0.35
+                        case .大: 0.40
+                        case .最大: 0.45
                     }
             }
         }
