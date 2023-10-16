@@ -2,10 +2,21 @@ import SwiftUI
 
 enum ICloudデータ {
     private static var api: NSUbiquitousKeyValueStore { .default }
-    static func synchronize() { self.api.synchronize() }
-    static func set(_ data: Data, key: String) { Self.api.set(data, forKey: key) }
-    static func data(key: String) -> Data? { Self.api.data(forKey: key) }
-    static func remove(key: String) { Self.api.removeObject(forKey: key) }
+}
+
+extension ICloudデータ {
+    static func synchronize() {
+        self.api.synchronize()
+    }
+    static func set(_ data: Data, key: String) {
+        Self.api.set(data, forKey: key)
+    }
+    static func data(key: String) -> Data? {
+        Self.api.data(forKey: key)
+    }
+    static func remove(key: String) {
+        Self.api.removeObject(forKey: key)
+    }
 }
 
 extension ICloudデータ {
