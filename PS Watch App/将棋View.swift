@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 将棋View_watchOSApp: View {
+struct 将棋View: View {
     var body: some View {
         ZStack {
             Color.clear

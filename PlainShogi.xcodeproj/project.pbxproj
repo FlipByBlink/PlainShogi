@@ -10,7 +10,7 @@
 		120363132865E20200636EBD /* App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 128D156A280FE47E003FF480 /* App.swift */; };
 		120363142865E20200636EBD /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
 		124B75552810CD6D00027DCA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
-		127132E82873CDF20008AE46 /* 🪄ModifyMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 🪄ModifyMode.swift */; };
+		127132E82873CDF20008AE46 /* 増減モード.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 増減モード.swift */; };
 		128D156B280FE47E003FF480 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156A280FE47E003FF480 /* App.swift */; };
 		128D156D280FE47E003FF480 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
 		128D156F280FE47F003FF480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
@@ -18,77 +18,73 @@
 		12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
 		12D424422871893D002D3E80 /* ドロップデリゲート.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* ドロップデリゲート.swift */; };
 		12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D4369C2865CD8300B707F5 /* Configuration.storekit */; };
-		12F4444E286D4B580008A663 /* 🛠Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠Menu.swift */; };
+		12F4444E286D4B580008A663 /* アプリメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* アプリメニュー.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8C2A0A1A66003F8BB3 /* 局面プレビュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
-		F5091F8E2A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift */; };
-		F5091F8F2A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift */; };
-		F5091F902A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift */; };
-		F5091F912A0A1E14003F8BB3 /* 🌐EnvironmentValues.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift */; };
+		F5091F8E2A0A1C4B003F8BB3 /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues.swift */; };
+		F5091F8F2A0A1C4B003F8BB3 /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues.swift */; };
+		F5091F902A0A1C4B003F8BB3 /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues.swift */; };
+		F5091F912A0A1E14003F8BB3 /* EnvironmentValues.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues.swift */; };
 		F5119B962A0144460027A74C /* シートカテゴリ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* シートカテゴリ.swift */; };
 		F5119B972A0144460027A74C /* シートカテゴリ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* シートカテゴリ.swift */; };
 		F5119B9C2A028F330027A74C /* シートカテゴリ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* シートカテゴリ.swift */; };
 		F5119B9D2A028FE10027A74C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
 		F5119B9E2A028FE10027A74C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
-		F5119BA62A0291000027A74C /* PS TV App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BA52A0291000027A74C /* PS TV App.swift */; };
-		F5119BA82A0291000027A74C /* ContentView_tvOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BA72A0291000027A74C /* ContentView_tvOSApp.swift */; };
+		F5119BA62A0291000027A74C /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BA52A0291000027A74C /* App.swift */; };
+		F5119BA82A0291000027A74C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BA72A0291000027A74C /* ContentView.swift */; };
 		F5119BAA2A0291020027A74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5119BA92A0291020027A74C /* Assets.xcassets */; };
 		F5119BB12A0292580027A74C /* アプリモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
 		F5119BB22A0292580027A74C /* 将棋モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */; };
 		F5119BB32A0292580027A74C /* シートカテゴリ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* シートカテゴリ.swift */; };
 		F5119BB42A0292580027A74C /* ICloudデータ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */; };
 		F5119BB52A0292580027A74C /* フィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
-		F5119BB72A0292E10027A74C /* ☖ShogiView_tvOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BB62A0292E10027A74C /* ☖ShogiView_tvOSApp.swift */; };
+		F5119BB72A0292E10027A74C /* 将棋View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BB62A0292E10027A74C /* 将棋View.swift */; };
 		F5119BB82A0295680027A74C /* 字体.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 字体.swift */; };
 		F5119BBA2A029C690027A74C /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
 		F5119BBB2A029C6C0027A74C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		F5119BBC2A029C6F0027A74C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
-		F51F037E2A00C46100F05874 /* 🛠Menu_watchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠Menu_watchOSApp.swift */; };
+		F51F037E2A00C46100F05874 /* メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* メニュー.swift */; };
 		F51F039B2A00D03200F05874 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039A2A00D03200F05874 /* WidgetKit.framework */; };
 		F51F039D2A00D03200F05874 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039C2A00D03200F05874 /* SwiftUI.framework */; };
-		F51F03A02A00D03200F05874 /* PS Complication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* PS Complication.swift */; };
+		F51F03A02A00D03200F05874 /* ウィジェット.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* ウィジェット.swift */; };
 		F51F03A62A00D03400F05874 /* PSComplicationExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F51F03992A00D03200F05874 /* PSComplicationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F51F03AB2A00D18B00F05874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
 		F51F03AC2A00D27400F05874 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		F51F03AD2A01099700F05874 /* 将棋モデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */; };
 		F51F03AE2A01099700F05874 /* アプリモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
-		F51F03AF2A01099700F05874 /* PS Watch App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D9F92A2A00BDC600CEE697 /* PS Watch App.swift */; };
-		F51F03B02A01099700F05874 /* ContentView_watchOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D9F92C2A00BDC600CEE697 /* ContentView_watchOSApp.swift */; };
-		F51F03B12A01099700F05874 /* ☖ShogiView_watchOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D9F92B2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift */; };
-		F51F03B22A01099700F05874 /* 🛠Menu_watchOSApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F037D2A00C46100F05874 /* 🛠Menu_watchOSApp.swift */; };
-		F51F03B32A01099700F05874 /* PS Complication.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* PS Complication.swift */; };
-		F52437AF29F6125A00EA770E /* 🗄️Rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437AE29F6125900EA770E /* 🗄️Rest.swift */; };
+		F51F03B32A01099700F05874 /* ウィジェット.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* ウィジェット.swift */; };
+		F52437AF29F6125A00EA770E /* その他.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437AE29F6125900EA770E /* その他.swift */; };
 		F52437B329F613A600EA770E /* フィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
 		F52437B529F6499100EA770E /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
-		F52437B729F64CB000EA770E /* 🪄ModifyMode.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 🪄ModifyMode.swift */; };
-		F52437B829F64CB000EA770E /* 🛠Menu.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* 🛠Menu.swift */; };
+		F52437B729F64CB000EA770E /* 増減モード.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 増減モード.swift */; };
+		F52437B829F64CB000EA770E /* アプリメニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* アプリメニュー.swift */; };
 		F52437B929F64CB000EA770E /* ドロップデリゲート.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* ドロップデリゲート.swift */; };
-		F52437BA29F64CB000EA770E /* 📜History.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */; };
-		F52437BB29F64CB000EA770E /* 👥SharePlay.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */; };
-		F52437BC29F64CB000EA770E /* 📣ADContent.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 📣ADContent.swift */; };
-		F52437BD29F64CB000EA770E /* 📃TextImportExport.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */; };
+		F52437BA29F64CB000EA770E /* 履歴&ブックマーク.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 履歴&ブックマーク.swift */; };
+		F52437BB29F64CB000EA770E /* SharePlay.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlay.swift */; };
+		F52437BC29F64CB000EA770E /* 広告コンテンツ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */; };
+		F52437BD29F64CB000EA770E /* テキスト連携機能.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */; };
 		F52437BF29F64CB000EA770E /* フィードバック.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
-		F52437C029F64CB000EA770E /* 🗄️Rest.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437AE29F6125900EA770E /* 🗄️Rest.swift */; };
+		F52437C029F64CB000EA770E /* その他.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437AE29F6125900EA770E /* その他.swift */; };
 		F52437C129F64CB000EA770E /* 🧰MetaData.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
 		F52437C229F64CB000EA770E /* ℹ️AboutApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */; };
 		F52437C329F64CB000EA770E /* 📣AD.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85B2973A68E0034CCB8 /* 📣AD.swift */; };
 		F52437C429F64CB000EA770E /* 🛒InAppPurchase.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD8592973A68E0034CCB8 /* 🛒InAppPurchase.swift */; };
-		F525A7D629F8FB1F001E8D5F /* ☖ShogiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F525A7D529F8FB1F001E8D5F /* ☖ShogiView.swift */; };
-		F54C93D7295D2DE6008D1D60 /* 📃TextImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */; };
+		F525A7D629F8FB1F001E8D5F /* 将棋View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F525A7D529F8FB1F001E8D5F /* 将棋View.swift */; };
+		F54C93D7295D2DE6008D1D60 /* テキスト連携機能.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */; };
 		F553013B2A0725D800E1B91D /* 字体.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 字体.swift */; };
-		F57D6F0729FCD60D00EA0D79 /* 🪧SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */; };
-		F57D6F0829FD3FA200EA0D79 /* 🪧SheetView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */; };
-		F58C48092A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C48082A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift */; };
-		F58C480F2A04CA38006D7C55 /* 🪄ModifyMode_tvOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C480E2A04CA38006D7C55 /* 🪄ModifyMode_tvOSApp.swift */; };
+		F57D6F0729FCD60D00EA0D79 /* シート管理.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* シート管理.swift */; };
+		F57D6F0829FD3FA200EA0D79 /* シート管理.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* シート管理.swift */; };
+		F58C48092A03EDFB006D7C55 /* メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C48082A03EDFB006D7C55 /* メニュー.swift */; };
+		F58C480F2A04CA38006D7C55 /* 増減モード.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58C480E2A04CA38006D7C55 /* 増減モード.swift */; };
 		F5951A2028ADEEBC00516538 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */; };
 		F5B5578B29FF851800A14074 /* 字体.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 字体.swift */; };
 		F5B5578C29FFD9A600A14074 /* 字体.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 字体.swift */; };
 		F5BBD85C2973A68E0034CCB8 /* 🛒InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD8592973A68E0034CCB8 /* 🛒InAppPurchase.swift */; };
 		F5BBD85D2973A68E0034CCB8 /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */; };
 		F5BBD85E2973A68E0034CCB8 /* 📣AD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85B2973A68E0034CCB8 /* 📣AD.swift */; };
-		F5BBD8602973A7260034CCB8 /* 📣ADContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 📣ADContent.swift */; };
+		F5BBD8602973A7260034CCB8 /* 広告コンテンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */; };
 		F5BBD8652973AA720034CCB8 /* 🌏AppStoreDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5BBD8672973AA720034CCB8 /* 🌏AppStoreDescription.strings */; };
 		F5BBD8692973AA7B0034CCB8 /* 🌏VersionDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5BBD86B2973AA7B0034CCB8 /* 🌏VersionDescription.strings */; };
 		F5BD6A102A00BF4C004AD4A5 /* 将棋モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */; };
@@ -100,14 +96,14 @@
 		F5BD6A182A00BF7D004AD4A5 /* フィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
 		F5BD6A192A00BF87004AD4A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
 		F5BD6A1B2A00C0A0004AD4A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
-		F5C9FAFF296CF7BB00B513D8 /* 📜History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */; };
-		F5C9FB02296D0A3100B513D8 /* 👥SharePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */; };
+		F5C9FAFF296CF7BB00B513D8 /* 履歴&ブックマーク.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 履歴&ブックマーク.swift */; };
+		F5C9FB02296D0A3100B513D8 /* SharePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlay.swift */; };
 		F5D9F9252A00BDAA00CEE697 /* Plain将棋盤.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F5D9F92D2A00BDC600CEE697 /* PS Watch App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D9F92A2A00BDC600CEE697 /* PS Watch App.swift */; };
-		F5D9F92E2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D9F92B2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift */; };
-		F5D9F92F2A00BDC600CEE697 /* ContentView_watchOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D9F92C2A00BDC600CEE697 /* ContentView_watchOSApp.swift */; };
+		F5D9F92D2A00BDC600CEE697 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D9F92A2A00BDC600CEE697 /* App.swift */; };
+		F5D9F92E2A00BDC600CEE697 /* 将棋View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D9F92B2A00BDC600CEE697 /* 将棋View.swift */; };
+		F5D9F92F2A00BDC600CEE697 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D9F92C2A00BDC600CEE697 /* ContentView.swift */; };
 		F5E0549F29FB52A1004DC425 /* ICloudデータ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */; };
-		F5E054A029FB678D004DC425 /* ☖ShogiView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F525A7D529F8FB1F001E8D5F /* ☖ShogiView.swift */; };
+		F5E054A029FB678D004DC425 /* 将棋View.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F525A7D529F8FB1F001E8D5F /* 将棋View.swift */; };
 		F5E054A129FB678D004DC425 /* ICloudデータ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */; };
 /* End PBXBuildFile section */
 
@@ -135,29 +131,25 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
-				F5091F912A0A1E14003F8BB3 /* 🌐EnvironmentValues.swift in CopyFiles */,
+				F5091F912A0A1E14003F8BB3 /* EnvironmentValues.swift in CopyFiles */,
 				F5091F8C2A0A1A66003F8BB3 /* 局面プレビュー.swift in CopyFiles */,
 				F5119B9C2A028F330027A74C /* シートカテゴリ.swift in CopyFiles */,
 				F51F03AD2A01099700F05874 /* 将棋モデル.swift in CopyFiles */,
 				F51F03AE2A01099700F05874 /* アプリモデル.swift in CopyFiles */,
-				F51F03AF2A01099700F05874 /* PS Watch App.swift in CopyFiles */,
-				F51F03B02A01099700F05874 /* ContentView_watchOSApp.swift in CopyFiles */,
-				F51F03B12A01099700F05874 /* ☖ShogiView_watchOSApp.swift in CopyFiles */,
-				F51F03B22A01099700F05874 /* 🛠Menu_watchOSApp.swift in CopyFiles */,
-				F51F03B32A01099700F05874 /* PS Complication.swift in CopyFiles */,
+				F51F03B32A01099700F05874 /* ウィジェット.swift in CopyFiles */,
 				F5B5578C29FFD9A600A14074 /* 字体.swift in CopyFiles */,
-				F57D6F0829FD3FA200EA0D79 /* 🪧SheetView.swift in CopyFiles */,
-				F5E054A029FB678D004DC425 /* ☖ShogiView.swift in CopyFiles */,
+				F57D6F0829FD3FA200EA0D79 /* シート管理.swift in CopyFiles */,
+				F5E054A029FB678D004DC425 /* 将棋View.swift in CopyFiles */,
 				F5E054A129FB678D004DC425 /* ICloudデータ.swift in CopyFiles */,
-				F52437B729F64CB000EA770E /* 🪄ModifyMode.swift in CopyFiles */,
-				F52437B829F64CB000EA770E /* 🛠Menu.swift in CopyFiles */,
+				F52437B729F64CB000EA770E /* 増減モード.swift in CopyFiles */,
+				F52437B829F64CB000EA770E /* アプリメニュー.swift in CopyFiles */,
 				F52437B929F64CB000EA770E /* ドロップデリゲート.swift in CopyFiles */,
-				F52437BA29F64CB000EA770E /* 📜History.swift in CopyFiles */,
-				F52437BB29F64CB000EA770E /* 👥SharePlay.swift in CopyFiles */,
-				F52437BC29F64CB000EA770E /* 📣ADContent.swift in CopyFiles */,
-				F52437BD29F64CB000EA770E /* 📃TextImportExport.swift in CopyFiles */,
+				F52437BA29F64CB000EA770E /* 履歴&ブックマーク.swift in CopyFiles */,
+				F52437BB29F64CB000EA770E /* SharePlay.swift in CopyFiles */,
+				F52437BC29F64CB000EA770E /* 広告コンテンツ.swift in CopyFiles */,
+				F52437BD29F64CB000EA770E /* テキスト連携機能.swift in CopyFiles */,
 				F52437BF29F64CB000EA770E /* フィードバック.swift in CopyFiles */,
-				F52437C029F64CB000EA770E /* 🗄️Rest.swift in CopyFiles */,
+				F52437C029F64CB000EA770E /* その他.swift in CopyFiles */,
 				F52437C129F64CB000EA770E /* 🧰MetaData.swift in CopyFiles */,
 				F52437C229F64CB000EA770E /* ℹ️AboutApp.swift in CopyFiles */,
 				F52437C329F64CB000EA770E /* 📣AD.swift in CopyFiles */,
@@ -194,7 +186,7 @@
 /* Begin PBXFileReference section */
 		124B75562810CD6D00027DCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		124B75582810CD8100027DCA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		127132E72873CDF20008AE46 /* 🪄ModifyMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪄ModifyMode.swift"; sourceTree = "<group>"; };
+		127132E72873CDF20008AE46 /* 増減モード.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "増減モード.swift"; sourceTree = "<group>"; };
 		128D1567280FE47E003FF480 /* 将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		128D156A280FE47E003FF480 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		128D156C280FE47E003FF480 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -205,38 +197,38 @@
 		12D198532810DD6500CE6578 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12D424412871893D002D3E80 /* ドロップデリゲート.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ドロップデリゲート.swift"; sourceTree = "<group>"; };
 		12D4369C2865CD8300B707F5 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
-		12F4444D286D4B580008A663 /* 🛠Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu.swift"; sourceTree = "<group>"; };
+		12F4444D286D4B580008A663 /* アプリメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "アプリメニュー.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* memo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = memo.md; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
-		F5091F8D2A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🌐EnvironmentValues.swift"; sourceTree = "<group>"; };
+		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		F5119B952A0144460027A74C /* シートカテゴリ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "シートカテゴリ.swift"; sourceTree = "<group>"; };
 		F5119BA32A0291000027A74C /* PS TV App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PS TV App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5119BA52A0291000027A74C /* PS TV App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PS TV App.swift"; sourceTree = "<group>"; };
-		F5119BA72A0291000027A74C /* ContentView_tvOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_tvOSApp.swift; sourceTree = "<group>"; };
+		F5119BA52A0291000027A74C /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		F5119BA72A0291000027A74C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F5119BA92A0291020027A74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F5119BB62A0292E10027A74C /* ☖ShogiView_tvOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "☖ShogiView_tvOSApp.swift"; sourceTree = "<group>"; };
+		F5119BB62A0292E10027A74C /* 将棋View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "将棋View.swift"; sourceTree = "<group>"; };
 		F5119BB92A029B570027A74C /* PS TV App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PS TV App.entitlements"; sourceTree = "<group>"; };
-		F51F037D2A00C46100F05874 /* 🛠Menu_watchOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu_watchOSApp.swift"; sourceTree = "<group>"; };
+		F51F037D2A00C46100F05874 /* メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "メニュー.swift"; sourceTree = "<group>"; };
 		F51F03992A00D03200F05874 /* PSComplicationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PSComplicationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51F039A2A00D03200F05874 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F51F039C2A00D03200F05874 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		F51F039F2A00D03200F05874 /* PS Complication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PS Complication.swift"; sourceTree = "<group>"; };
+		F51F039F2A00D03200F05874 /* ウィジェット.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ウィジェット.swift"; sourceTree = "<group>"; };
 		F51F03A32A00D03400F05874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F52437AE29F6125900EA770E /* 🗄️Rest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🗄️Rest.swift"; sourceTree = "<group>"; };
+		F52437AE29F6125900EA770E /* その他.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "その他.swift"; sourceTree = "<group>"; };
 		F52437B229F613A600EA770E /* フィードバック.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "フィードバック.swift"; sourceTree = "<group>"; };
 		F52437B429F6499100EA770E /* 🧰MetaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🧰MetaData.swift"; sourceTree = "<group>"; };
-		F525A7D529F8FB1F001E8D5F /* ☖ShogiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "☖ShogiView.swift"; sourceTree = "<group>"; };
-		F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📃TextImportExport.swift"; sourceTree = "<group>"; };
+		F525A7D529F8FB1F001E8D5F /* 将棋View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "将棋View.swift"; sourceTree = "<group>"; };
+		F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "テキスト連携機能.swift"; sourceTree = "<group>"; };
 		F553013F2A074CA200E1B91D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪧SheetView.swift"; sourceTree = "<group>"; };
-		F58C48082A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🛠Menu_tvOSApp.swift"; sourceTree = "<group>"; };
-		F58C480E2A04CA38006D7C55 /* 🪄ModifyMode_tvOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "🪄ModifyMode_tvOSApp.swift"; sourceTree = "<group>"; };
+		F57D6F0629FCD60D00EA0D79 /* シート管理.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "シート管理.swift"; sourceTree = "<group>"; };
+		F58C48082A03EDFB006D7C55 /* メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "メニュー.swift"; sourceTree = "<group>"; };
+		F58C480E2A04CA38006D7C55 /* 増減モード.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "増減モード.swift"; sourceTree = "<group>"; };
 		F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F5B5578A29FF851800A14074 /* 字体.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "字体.swift"; sourceTree = "<group>"; };
 		F5BBD8592973A68E0034CCB8 /* 🛒InAppPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒InAppPurchase.swift"; sourceTree = "<group>"; };
 		F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
 		F5BBD85B2973A68E0034CCB8 /* 📣AD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣AD.swift"; sourceTree = "<group>"; };
-		F5BBD85F2973A7260034CCB8 /* 📣ADContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADContent.swift"; sourceTree = "<group>"; };
+		F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "広告コンテンツ.swift"; sourceTree = "<group>"; };
 		F5BBD8662973AA720034CCB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/🌏AppStoreDescription.strings"; sourceTree = "<group>"; };
 		F5BBD8682973AA760034CCB8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/🌏AppStoreDescription.strings"; sourceTree = "<group>"; };
 		F5BBD86A2973AA7B0034CCB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/🌏VersionDescription.strings"; sourceTree = "<group>"; };
@@ -245,13 +237,13 @@
 		F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "将棋モデル.swift"; sourceTree = "<group>"; };
 		F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "アプリモデル.swift"; sourceTree = "<group>"; };
 		F5BD6A1A2A00C007004AD4A5 /* PS Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PS Watch App.entitlements"; sourceTree = "<group>"; };
-		F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "📜History.swift"; sourceTree = "<group>"; };
+		F5C9FAFE296CF7BB00B513D8 /* 履歴&ブックマーク.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "履歴&ブックマーク.swift"; sourceTree = "<group>"; };
 		F5C9FB00296CFF7A00B513D8 /* PlainShogi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlainShogi.entitlements; sourceTree = "<group>"; };
-		F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "👥SharePlay.swift"; sourceTree = "<group>"; };
+		F5C9FB01296D0A3100B513D8 /* SharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlay.swift; sourceTree = "<group>"; };
 		F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Plain将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5D9F92A2A00BDC600CEE697 /* PS Watch App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PS Watch App.swift"; sourceTree = "<group>"; };
-		F5D9F92B2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "☖ShogiView_watchOSApp.swift"; sourceTree = "<group>"; };
-		F5D9F92C2A00BDC600CEE697 /* ContentView_watchOSApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView_watchOSApp.swift; sourceTree = "<group>"; };
+		F5D9F92A2A00BDC600CEE697 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		F5D9F92B2A00BDC600CEE697 /* 将棋View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "将棋View.swift"; sourceTree = "<group>"; };
+		F5D9F92C2A00BDC600CEE697 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ICloudデータ.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -362,16 +354,16 @@
 		12D436992865CD6D00B707F5 /* 🧩Sub */ = {
 			isa = PBXGroup;
 			children = (
-				F525A7D529F8FB1F001E8D5F /* ☖ShogiView.swift */,
-				12F4444D286D4B580008A663 /* 🛠Menu.swift */,
-				F57D6F0629FCD60D00EA0D79 /* 🪧SheetView.swift */,
+				F525A7D529F8FB1F001E8D5F /* 将棋View.swift */,
+				12F4444D286D4B580008A663 /* アプリメニュー.swift */,
+				F57D6F0629FCD60D00EA0D79 /* シート管理.swift */,
 				12D424412871893D002D3E80 /* ドロップデリゲート.swift */,
-				127132E72873CDF20008AE46 /* 🪄ModifyMode.swift */,
-				F5C9FAFE296CF7BB00B513D8 /* 📜History.swift */,
-				F5C9FB01296D0A3100B513D8 /* 👥SharePlay.swift */,
-				F5BBD85F2973A7260034CCB8 /* 📣ADContent.swift */,
-				F54C93D6295D2DE6008D1D60 /* 📃TextImportExport.swift */,
-				F52437AE29F6125900EA770E /* 🗄️Rest.swift */,
+				127132E72873CDF20008AE46 /* 増減モード.swift */,
+				F5C9FAFE296CF7BB00B513D8 /* 履歴&ブックマーク.swift */,
+				F5C9FB01296D0A3100B513D8 /* SharePlay.swift */,
+				F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */,
+				F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */,
+				F52437AE29F6125900EA770E /* その他.swift */,
 				F5BBEB662973A4040064F0EF /* Info.plist */,
 				F5C9FB00296CFF7A00B513D8 /* PlainShogi.entitlements */,
 				F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */,
@@ -385,11 +377,11 @@
 		F5119BA42A0291000027A74C /* PS TV App */ = {
 			isa = PBXGroup;
 			children = (
-				F5119BA52A0291000027A74C /* PS TV App.swift */,
-				F5119BA72A0291000027A74C /* ContentView_tvOSApp.swift */,
-				F5119BB62A0292E10027A74C /* ☖ShogiView_tvOSApp.swift */,
-				F58C48082A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift */,
-				F58C480E2A04CA38006D7C55 /* 🪄ModifyMode_tvOSApp.swift */,
+				F5119BA52A0291000027A74C /* App.swift */,
+				F5119BA72A0291000027A74C /* ContentView.swift */,
+				F5119BB62A0292E10027A74C /* 将棋View.swift */,
+				F58C48082A03EDFB006D7C55 /* メニュー.swift */,
+				F58C480E2A04CA38006D7C55 /* 増減モード.swift */,
 				F5119BB92A029B570027A74C /* PS TV App.entitlements */,
 				F553013F2A074CA200E1B91D /* Info.plist */,
 				F5119BA92A0291020027A74C /* Assets.xcassets */,
@@ -400,7 +392,7 @@
 		F51F039E2A00D03200F05874 /* PS Complication */ = {
 			isa = PBXGroup;
 			children = (
-				F51F039F2A00D03200F05874 /* PS Complication.swift */,
+				F51F039F2A00D03200F05874 /* ウィジェット.swift */,
 				F51F03A32A00D03400F05874 /* Info.plist */,
 			);
 			path = "PS Complication";
@@ -409,10 +401,10 @@
 		F5D9F9192A00BDA900CEE697 /* PS Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				F5D9F92A2A00BDC600CEE697 /* PS Watch App.swift */,
-				F5D9F92C2A00BDC600CEE697 /* ContentView_watchOSApp.swift */,
-				F5D9F92B2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift */,
-				F51F037D2A00C46100F05874 /* 🛠Menu_watchOSApp.swift */,
+				F5D9F92A2A00BDC600CEE697 /* App.swift */,
+				F5D9F92C2A00BDC600CEE697 /* ContentView.swift */,
+				F5D9F92B2A00BDC600CEE697 /* 将棋View.swift */,
+				F51F037D2A00C46100F05874 /* メニュー.swift */,
 				F5BD6A1A2A00C007004AD4A5 /* PS Watch App.entitlements */,
 			);
 			path = "PS Watch App";
@@ -428,7 +420,7 @@
 				F5119B952A0144460027A74C /* シートカテゴリ.swift */,
 				F5B5578A29FF851800A14074 /* 字体.swift */,
 				F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */,
-				F5091F8D2A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift */,
+				F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -612,25 +604,25 @@
 				F5119B962A0144460027A74C /* シートカテゴリ.swift in Sources */,
 				128D156D280FE47E003FF480 /* ContentView.swift in Sources */,
 				F5B5578B29FF851800A14074 /* 字体.swift in Sources */,
-				F5BBD8602973A7260034CCB8 /* 📣ADContent.swift in Sources */,
-				F52437AF29F6125A00EA770E /* 🗄️Rest.swift in Sources */,
-				F5091F8E2A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift in Sources */,
+				F5BBD8602973A7260034CCB8 /* 広告コンテンツ.swift in Sources */,
+				F52437AF29F6125A00EA770E /* その他.swift in Sources */,
+				F5091F8E2A0A1C4B003F8BB3 /* EnvironmentValues.swift in Sources */,
 				F52437B529F6499100EA770E /* 🧰MetaData.swift in Sources */,
 				F5BBD85E2973A68E0034CCB8 /* 📣AD.swift in Sources */,
 				F52437B329F613A600EA770E /* フィードバック.swift in Sources */,
 				128D156B280FE47E003FF480 /* App.swift in Sources */,
 				F5BD6A102A00BF4C004AD4A5 /* 将棋モデル.swift in Sources */,
-				F525A7D629F8FB1F001E8D5F /* ☖ShogiView.swift in Sources */,
+				F525A7D629F8FB1F001E8D5F /* 将棋View.swift in Sources */,
 				F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
 				F5E0549F29FB52A1004DC425 /* ICloudデータ.swift in Sources */,
-				F54C93D7295D2DE6008D1D60 /* 📃TextImportExport.swift in Sources */,
+				F54C93D7295D2DE6008D1D60 /* テキスト連携機能.swift in Sources */,
 				12D424422871893D002D3E80 /* ドロップデリゲート.swift in Sources */,
 				F5BBD85D2973A68E0034CCB8 /* ℹ️AboutApp.swift in Sources */,
-				F57D6F0729FCD60D00EA0D79 /* 🪧SheetView.swift in Sources */,
-				F5C9FAFF296CF7BB00B513D8 /* 📜History.swift in Sources */,
-				F5C9FB02296D0A3100B513D8 /* 👥SharePlay.swift in Sources */,
-				127132E82873CDF20008AE46 /* 🪄ModifyMode.swift in Sources */,
-				12F4444E286D4B580008A663 /* 🛠Menu.swift in Sources */,
+				F57D6F0729FCD60D00EA0D79 /* シート管理.swift in Sources */,
+				F5C9FAFF296CF7BB00B513D8 /* 履歴&ブックマーク.swift in Sources */,
+				F5C9FB02296D0A3100B513D8 /* SharePlay.swift in Sources */,
+				127132E82873CDF20008AE46 /* 増減モード.swift in Sources */,
+				12F4444E286D4B580008A663 /* アプリメニュー.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,16 +634,16 @@
 				F5119BB52A0292580027A74C /* フィードバック.swift in Sources */,
 				F5119BBA2A029C690027A74C /* 🧰MetaData.swift in Sources */,
 				F5119BB12A0292580027A74C /* アプリモデル.swift in Sources */,
-				F58C480F2A04CA38006D7C55 /* 🪄ModifyMode_tvOSApp.swift in Sources */,
+				F58C480F2A04CA38006D7C55 /* 増減モード.swift in Sources */,
 				F5119BB82A0295680027A74C /* 字体.swift in Sources */,
-				F58C48092A03EDFB006D7C55 /* 🛠Menu_tvOSApp.swift in Sources */,
-				F5091F902A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift in Sources */,
-				F5119BB72A0292E10027A74C /* ☖ShogiView_tvOSApp.swift in Sources */,
+				F58C48092A03EDFB006D7C55 /* メニュー.swift in Sources */,
+				F5091F902A0A1C4B003F8BB3 /* EnvironmentValues.swift in Sources */,
+				F5119BB72A0292E10027A74C /* 将棋View.swift in Sources */,
 				F5119BB22A0292580027A74C /* 将棋モデル.swift in Sources */,
-				F5119BA82A0291000027A74C /* ContentView_tvOSApp.swift in Sources */,
+				F5119BA82A0291000027A74C /* ContentView.swift in Sources */,
 				F5119BB32A0292580027A74C /* シートカテゴリ.swift in Sources */,
 				F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
-				F5119BA62A0291000027A74C /* PS TV App.swift in Sources */,
+				F5119BA62A0291000027A74C /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,7 +651,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F51F03A02A00D03200F05874 /* PS Complication.swift in Sources */,
+				F51F03A02A00D03200F05874 /* ウィジェット.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,16 +659,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5D9F92E2A00BDC600CEE697 /* ☖ShogiView_watchOSApp.swift in Sources */,
-				F51F037E2A00C46100F05874 /* 🛠Menu_watchOSApp.swift in Sources */,
+				F5D9F92E2A00BDC600CEE697 /* 将棋View.swift in Sources */,
+				F51F037E2A00C46100F05874 /* メニュー.swift in Sources */,
 				F5119B972A0144460027A74C /* シートカテゴリ.swift in Sources */,
 				F553013B2A0725D800E1B91D /* 字体.swift in Sources */,
 				F5BD6A112A00BF4C004AD4A5 /* 将棋モデル.swift in Sources */,
-				F5D9F92D2A00BDC600CEE697 /* PS Watch App.swift in Sources */,
+				F5D9F92D2A00BDC600CEE697 /* App.swift in Sources */,
 				F5BD6A162A00BF7D004AD4A5 /* ICloudデータ.swift in Sources */,
 				F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
-				F5D9F92F2A00BDC600CEE697 /* ContentView_watchOSApp.swift in Sources */,
-				F5091F8F2A0A1C4B003F8BB3 /* 🌐EnvironmentValues.swift in Sources */,
+				F5D9F92F2A00BDC600CEE697 /* ContentView.swift in Sources */,
+				F5091F8F2A0A1C4B003F8BB3 /* EnvironmentValues.swift in Sources */,
 				F5BD6A142A00BF76004AD4A5 /* 🧰MetaData.swift in Sources */,
 				F5BD6A182A00BF7D004AD4A5 /* フィードバック.swift in Sources */,
 				F5BD6A132A00BF4C004AD4A5 /* アプリモデル.swift in Sources */,

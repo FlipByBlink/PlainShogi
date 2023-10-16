@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        将棋View_tvOSApp()
+        将棋View()
             .overlay(alignment: .trailing) { 増減モード完了ボタン() }
             .modifier(シート())
             .modifier(サイドバー())

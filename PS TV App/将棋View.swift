@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct 将棋View_tvOSApp: View {
+struct 将棋View: View {
     var body: some View {
         ZStack {
             Rectangle()

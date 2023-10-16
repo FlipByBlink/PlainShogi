@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct ContentView_watchOSApp: View {
+struct ContentView: View {
     var body: some View {
-        将棋View_watchOSApp()
+        将棋View()
             .modifier(ICloudデータ.アクティブ復帰時に明示的に同期())
             .environment(\.layoutDirection, .leftToRight)
     }
