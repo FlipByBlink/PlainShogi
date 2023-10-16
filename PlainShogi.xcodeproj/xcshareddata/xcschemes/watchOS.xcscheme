@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F5D9F9172A00BDA800CEE697"
                BuildableName = "Plain&#x5c06;&#x68cb;&#x76e4;.app"
-               BlueprintName = "PS Watch App"
+               BlueprintName = "watchOS"
                ReferencedContainer = "container:PlainShogi.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,7 +30,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "128D1566280FE47E003FF480"
                BuildableName = "&#x5c06;&#x68cb;&#x76e4;.app"
-               BlueprintName = "PlainShogi"
+               BlueprintName = "iOS"
                ReferencedContainer = "container:PlainShogi.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -59,7 +59,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F5D9F9172A00BDA800CEE697"
             BuildableName = "Plain&#x5c06;&#x68cb;&#x76e4;.app"
-            BlueprintName = "PS Watch App"
+            BlueprintName = "watchOS"
             ReferencedContainer = "container:PlainShogi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -76,7 +76,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F5D9F9172A00BDA800CEE697"
             BuildableName = "Plain&#x5c06;&#x68cb;&#x76e4;.app"
-            BlueprintName = "PS Watch App"
+            BlueprintName = "watchOS"
             ReferencedContainer = "container:PlainShogi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

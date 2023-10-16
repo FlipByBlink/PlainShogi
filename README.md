@@ -1,4 +1,4 @@
-Plain将棋盤/PlainShogiBoard【iPhone/iPad/Apple Watch/Mac/Apple TV】
+Plain将棋盤 PlainShogiBoard - iPhone, iPad, Apple Watch, Mac, Apple TV
 --------------------------------------------------------------------
 _どこでも。いつでも。みんなと。将棋盤。_
 

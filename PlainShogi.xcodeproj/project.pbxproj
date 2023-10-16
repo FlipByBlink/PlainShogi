@@ -49,7 +49,7 @@
 		F51F039B2A00D03200F05874 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039A2A00D03200F05874 /* WidgetKit.framework */; };
 		F51F039D2A00D03200F05874 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039C2A00D03200F05874 /* SwiftUI.framework */; };
 		F51F03A02A00D03200F05874 /* ウィジェット.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* ウィジェット.swift */; };
-		F51F03A62A00D03400F05874 /* PSComplicationExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F51F03992A00D03200F05874 /* PSComplicationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F51F03A62A00D03400F05874 /* Widget for watchOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F51F03992A00D03200F05874 /* Widget for watchOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F51F03AB2A00D18B00F05874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
 		F51F03AC2A00D27400F05874 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		F51F03AD2A01099700F05874 /* 将棋モデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */; };
@@ -165,7 +165,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				F51F03A62A00D03400F05874 /* PSComplicationExtension.appex in Embed Foundation Extensions */,
+				F51F03A62A00D03400F05874 /* Widget for watchOS.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,7 +190,7 @@
 		128D1567280FE47E003FF480 /* 将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		128D156A280FE47E003FF480 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		128D156C280FE47E003FF480 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		128D156E280FE47F003FF480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PlainShogi/Assets.xcassets; sourceTree = "<group>"; };
+		128D156E280FE47F003FF480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12A9251D2866A8960035DC83 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		12A925222866AA6C0035DC83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12A925242866AA6F0035DC83 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -202,14 +202,14 @@
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		F5119B952A0144460027A74C /* シートカテゴリ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "シートカテゴリ.swift"; sourceTree = "<group>"; };
-		F5119BA32A0291000027A74C /* PS TV App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PS TV App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5119BA32A0291000027A74C /* tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5119BA52A0291000027A74C /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		F5119BA72A0291000027A74C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F5119BA92A0291020027A74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5119BB62A0292E10027A74C /* 将棋View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "将棋View.swift"; sourceTree = "<group>"; };
-		F5119BB92A029B570027A74C /* PS TV App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PS TV App.entitlements"; sourceTree = "<group>"; };
+		F5119BB92A029B570027A74C /* tvOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tvOS.entitlements; sourceTree = "<group>"; };
 		F51F037D2A00C46100F05874 /* メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "メニュー.swift"; sourceTree = "<group>"; };
-		F51F03992A00D03200F05874 /* PSComplicationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PSComplicationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F51F03992A00D03200F05874 /* Widget for watchOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Widget for watchOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51F039A2A00D03200F05874 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F51F039C2A00D03200F05874 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F51F039F2A00D03200F05874 /* ウィジェット.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ウィジェット.swift"; sourceTree = "<group>"; };
@@ -236,9 +236,9 @@
 		F5BBEB662973A4040064F0EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "将棋モデル.swift"; sourceTree = "<group>"; };
 		F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "アプリモデル.swift"; sourceTree = "<group>"; };
-		F5BD6A1A2A00C007004AD4A5 /* PS Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PS Watch App.entitlements"; sourceTree = "<group>"; };
+		F5BD6A1A2A00C007004AD4A5 /* watchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchOS.entitlements; sourceTree = "<group>"; };
 		F5C9FAFE296CF7BB00B513D8 /* 履歴&ブックマーク.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "履歴&ブックマーク.swift"; sourceTree = "<group>"; };
-		F5C9FB00296CFF7A00B513D8 /* PlainShogi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlainShogi.entitlements; sourceTree = "<group>"; };
+		F5C9FB00296CFF7A00B513D8 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		F5C9FB01296D0A3100B513D8 /* SharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlay.swift; sourceTree = "<group>"; };
 		F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Plain将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D9F92A2A00BDC600CEE697 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -287,11 +287,10 @@
 			children = (
 				12D198532810DD6500CE6578 /* README.md */,
 				F5D9F9AF2A00BE1F00CEE697 /* Shared */,
-				128D1569280FE47E003FF480 /* PlainShogi */,
-				128D156E280FE47F003FF480 /* Assets.xcassets */,
-				F5D9F9192A00BDA900CEE697 /* PS Watch App */,
-				F51F039E2A00D03200F05874 /* PS Complication */,
-				F5119BA42A0291000027A74C /* PS TV App */,
+				128D1569280FE47E003FF480 /* iOS */,
+				F5D9F9192A00BDA900CEE697 /* watchOS */,
+				F51F039E2A00D03200F05874 /* Widget */,
+				F5119BA42A0291000027A74C /* tvOS */,
 				128D1568280FE47E003FF480 /* Products */,
 				12A9251C2866A8960035DC83 /* Frameworks */,
 			);
@@ -302,21 +301,28 @@
 			children = (
 				128D1567280FE47E003FF480 /* 将棋盤.app */,
 				F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */,
-				F51F03992A00D03200F05874 /* PSComplicationExtension.appex */,
-				F5119BA32A0291000027A74C /* PS TV App.app */,
+				F51F03992A00D03200F05874 /* Widget for watchOS.appex */,
+				F5119BA32A0291000027A74C /* tvOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		128D1569280FE47E003FF480 /* PlainShogi */ = {
+		128D1569280FE47E003FF480 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				128D156A280FE47E003FF480 /* App.swift */,
 				128D156C280FE47E003FF480 /* ContentView.swift */,
-				12D436992865CD6D00B707F5 /* 🧩Sub */,
-				12A925252866AB9F0035DC83 /* 🌏Localization */,
+				F525A7D529F8FB1F001E8D5F /* 将棋View.swift */,
+				12F4444D286D4B580008A663 /* アプリメニュー.swift */,
+				F57D6F0629FCD60D00EA0D79 /* シート管理.swift */,
+				12D424412871893D002D3E80 /* ドロップデリゲート.swift */,
+				127132E72873CDF20008AE46 /* 増減モード.swift */,
+				F5C9FAFE296CF7BB00B513D8 /* 履歴&ブックマーク.swift */,
+				F5C9FB01296D0A3100B513D8 /* SharePlay.swift */,
+				12D436992865CD6D00B707F5 /* その他 */,
+				169750642ADD690300443DE2 /* サポートファイル */,
 			);
-			path = PlainShogi;
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		12A9251C2866A8960035DC83 /* Frameworks */ = {
@@ -329,18 +335,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		12A925252866AB9F0035DC83 /* 🌏Localization */ = {
+		12A925252866AB9F0035DC83 /* 🌐Localization */ = {
 			isa = PBXGroup;
 			children = (
-				124B75572810CD6D00027DCA /* Localizable.strings */,
-				12A925232866AA6C0035DC83 /* InfoPlist.strings */,
 				F5BBD8672973AA720034CCB8 /* 🌏AppStoreDescription.strings */,
 				F5BBD86B2973AA7B0034CCB8 /* 🌏VersionDescription.strings */,
 			);
-			path = "🌏Localization";
+			path = "🌐Localization";
 			sourceTree = "<group>";
 		};
-		12D4368B2865CD5E00B707F5 /* 🧰Others */ = {
+		12D4368B2865CD5E00B707F5 /* おまけ */ = {
 			isa = PBXGroup;
 			children = (
 				F52437B429F6499100EA770E /* 🧰MetaData.swift */,
@@ -348,33 +352,56 @@
 				F5BBD85B2973A68E0034CCB8 /* 📣AD.swift */,
 				F5BBD8592973A68E0034CCB8 /* 🛒InAppPurchase.swift */,
 			);
-			path = "🧰Others";
+			path = "おまけ";
 			sourceTree = "<group>";
 		};
-		12D436992865CD6D00B707F5 /* 🧩Sub */ = {
+		12D436992865CD6D00B707F5 /* その他 */ = {
 			isa = PBXGroup;
 			children = (
-				F525A7D529F8FB1F001E8D5F /* 将棋View.swift */,
-				12F4444D286D4B580008A663 /* アプリメニュー.swift */,
-				F57D6F0629FCD60D00EA0D79 /* シート管理.swift */,
-				12D424412871893D002D3E80 /* ドロップデリゲート.swift */,
-				127132E72873CDF20008AE46 /* 増減モード.swift */,
-				F5C9FAFE296CF7BB00B513D8 /* 履歴&ブックマーク.swift */,
-				F5C9FB01296D0A3100B513D8 /* SharePlay.swift */,
+				F52437AE29F6125900EA770E /* その他.swift */,
 				F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */,
 				F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */,
-				F52437AE29F6125900EA770E /* その他.swift */,
+				12D4368B2865CD5E00B707F5 /* おまけ */,
+			);
+			path = "その他";
+			sourceTree = "<group>";
+		};
+		169750642ADD690300443DE2 /* サポートファイル */ = {
+			isa = PBXGroup;
+			children = (
 				F5BBEB662973A4040064F0EF /* Info.plist */,
-				F5C9FB00296CFF7A00B513D8 /* PlainShogi.entitlements */,
+				F5C9FB00296CFF7A00B513D8 /* iOS.entitlements */,
 				F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */,
 				12D4369C2865CD8300B707F5 /* Configuration.storekit */,
 				F5019FD2296ABBBD007CB14D /* memo.md */,
-				12D4368B2865CD5E00B707F5 /* 🧰Others */,
+				12A925252866AB9F0035DC83 /* 🌐Localization */,
 			);
-			path = "🧩Sub";
+			name = "サポートファイル";
+			path = "サポートファイル";
 			sourceTree = "<group>";
 		};
-		F5119BA42A0291000027A74C /* PS TV App */ = {
+		169750652ADD69D400443DE2 /* 🌐Localization */ = {
+			isa = PBXGroup;
+			children = (
+				124B75572810CD6D00027DCA /* Localizable.strings */,
+				12A925232866AA6C0035DC83 /* InfoPlist.strings */,
+			);
+			path = "🌐Localization";
+			sourceTree = "<group>";
+		};
+		169750662ADD6E3300443DE2 /* その他 */ = {
+			isa = PBXGroup;
+			children = (
+				F52437B229F613A600EA770E /* フィードバック.swift */,
+				F5119B952A0144460027A74C /* シートカテゴリ.swift */,
+				F5B5578A29FF851800A14074 /* 字体.swift */,
+				F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */,
+				F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues.swift */,
+			);
+			path = "その他";
+			sourceTree = "<group>";
+		};
+		F5119BA42A0291000027A74C /* tvOS */ = {
 			isa = PBXGroup;
 			children = (
 				F5119BA52A0291000027A74C /* App.swift */,
@@ -382,32 +409,32 @@
 				F5119BB62A0292E10027A74C /* 将棋View.swift */,
 				F58C48082A03EDFB006D7C55 /* メニュー.swift */,
 				F58C480E2A04CA38006D7C55 /* 増減モード.swift */,
-				F5119BB92A029B570027A74C /* PS TV App.entitlements */,
+				F5119BB92A029B570027A74C /* tvOS.entitlements */,
 				F553013F2A074CA200E1B91D /* Info.plist */,
 				F5119BA92A0291020027A74C /* Assets.xcassets */,
 			);
-			path = "PS TV App";
+			path = tvOS;
 			sourceTree = "<group>";
 		};
-		F51F039E2A00D03200F05874 /* PS Complication */ = {
+		F51F039E2A00D03200F05874 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
 				F51F039F2A00D03200F05874 /* ウィジェット.swift */,
 				F51F03A32A00D03400F05874 /* Info.plist */,
 			);
-			path = "PS Complication";
+			path = Widget;
 			sourceTree = "<group>";
 		};
-		F5D9F9192A00BDA900CEE697 /* PS Watch App */ = {
+		F5D9F9192A00BDA900CEE697 /* watchOS */ = {
 			isa = PBXGroup;
 			children = (
 				F5D9F92A2A00BDC600CEE697 /* App.swift */,
 				F5D9F92C2A00BDC600CEE697 /* ContentView.swift */,
 				F5D9F92B2A00BDC600CEE697 /* 将棋View.swift */,
 				F51F037D2A00C46100F05874 /* メニュー.swift */,
-				F5BD6A1A2A00C007004AD4A5 /* PS Watch App.entitlements */,
+				F5BD6A1A2A00C007004AD4A5 /* watchOS.entitlements */,
 			);
-			path = "PS Watch App";
+			path = watchOS;
 			sourceTree = "<group>";
 		};
 		F5D9F9AF2A00BE1F00CEE697 /* Shared */ = {
@@ -416,11 +443,9 @@
 				F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */,
 				F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */,
 				F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */,
-				F52437B229F613A600EA770E /* フィードバック.swift */,
-				F5119B952A0144460027A74C /* シートカテゴリ.swift */,
-				F5B5578A29FF851800A14074 /* 字体.swift */,
-				F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */,
-				F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues.swift */,
+				169750662ADD6E3300443DE2 /* その他 */,
+				169750652ADD69D400443DE2 /* 🌐Localization */,
+				128D156E280FE47F003FF480 /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -428,9 +453,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		128D1566280FE47E003FF480 /* PlainShogi */ = {
+		128D1566280FE47E003FF480 /* iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 128D1575280FE47F003FF480 /* Build configuration list for PBXNativeTarget "PlainShogi" */;
+			buildConfigurationList = 128D1575280FE47F003FF480 /* Build configuration list for PBXNativeTarget "iOS" */;
 			buildPhases = (
 				128D1563280FE47E003FF480 /* Sources */,
 				128D1564280FE47E003FF480 /* Frameworks */,
@@ -443,14 +468,14 @@
 			dependencies = (
 				F5D9F9242A00BDAA00CEE697 /* PBXTargetDependency */,
 			);
-			name = PlainShogi;
+			name = iOS;
 			productName = PlainShougi;
 			productReference = 128D1567280FE47E003FF480 /* 将棋盤.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F5119BA22A0291000027A74C /* PS TV App */ = {
+		F5119BA22A0291000027A74C /* tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F5119BB02A0291020027A74C /* Build configuration list for PBXNativeTarget "PS TV App" */;
+			buildConfigurationList = F5119BB02A0291020027A74C /* Build configuration list for PBXNativeTarget "tvOS" */;
 			buildPhases = (
 				F5119B9F2A0291000027A74C /* Sources */,
 				F5119BA02A0291000027A74C /* Frameworks */,
@@ -460,14 +485,14 @@
 			);
 			dependencies = (
 			);
-			name = "PS TV App";
+			name = tvOS;
 			productName = "PS TV App";
-			productReference = F5119BA32A0291000027A74C /* PS TV App.app */;
+			productReference = F5119BA32A0291000027A74C /* tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F51F03982A00D03200F05874 /* PSComplicationExtension */ = {
+		F51F03982A00D03200F05874 /* Widget for watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F51F03AA2A00D03400F05874 /* Build configuration list for PBXNativeTarget "PSComplicationExtension" */;
+			buildConfigurationList = F51F03AA2A00D03400F05874 /* Build configuration list for PBXNativeTarget "Widget for watchOS" */;
 			buildPhases = (
 				F51F03952A00D03200F05874 /* Sources */,
 				F51F03962A00D03200F05874 /* Frameworks */,
@@ -477,14 +502,14 @@
 			);
 			dependencies = (
 			);
-			name = PSComplicationExtension;
+			name = "Widget for watchOS";
 			productName = PSComplicationExtension;
-			productReference = F51F03992A00D03200F05874 /* PSComplicationExtension.appex */;
+			productReference = F51F03992A00D03200F05874 /* Widget for watchOS.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		F5D9F9172A00BDA800CEE697 /* PS Watch App */ = {
+		F5D9F9172A00BDA800CEE697 /* watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F5D9F9292A00BDAA00CEE697 /* Build configuration list for PBXNativeTarget "PS Watch App" */;
+			buildConfigurationList = F5D9F9292A00BDAA00CEE697 /* Build configuration list for PBXNativeTarget "watchOS" */;
 			buildPhases = (
 				F5D9F9142A00BDA800CEE697 /* Sources */,
 				F5D9F9152A00BDA800CEE697 /* Frameworks */,
@@ -496,7 +521,7 @@
 			dependencies = (
 				F51F03A52A00D03400F05874 /* PBXTargetDependency */,
 			);
-			name = "PS Watch App";
+			name = watchOS;
 			productName = "PS Watch App";
 			productReference = F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */;
 			productType = "com.apple.product-type.application";
@@ -539,10 +564,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				128D1566280FE47E003FF480 /* PlainShogi */,
-				F5D9F9172A00BDA800CEE697 /* PS Watch App */,
-				F51F03982A00D03200F05874 /* PSComplicationExtension */,
-				F5119BA22A0291000027A74C /* PS TV App */,
+				128D1566280FE47E003FF480 /* iOS */,
+				F5D9F9172A00BDA800CEE697 /* watchOS */,
+				F51F03982A00D03200F05874 /* Widget for watchOS */,
+				F5119BA22A0291000027A74C /* tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -680,13 +705,13 @@
 /* Begin PBXTargetDependency section */
 		F51F03A52A00D03400F05874 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F51F03982A00D03200F05874 /* PSComplicationExtension */;
+			target = F51F03982A00D03200F05874 /* Widget for watchOS */;
 			targetProxy = F51F03A42A00D03400F05874 /* PBXContainerItemProxy */;
 		};
 		F5D9F9242A00BDAA00CEE697 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
-			target = F5D9F9172A00BDA800CEE697 /* PS Watch App */;
+			target = F5D9F9172A00BDA800CEE697 /* watchOS */;
 			targetProxy = F5D9F9232A00BDAA00CEE697 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -861,14 +886,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "PlainShogi/🧩Sub/PlainShogi.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS/サポートファイル/iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PlainShogi/🧩Sub/Info.plist";
+				INFOPLIST_FILE = "iOS/サポートファイル/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -898,14 +923,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "PlainShogi/🧩Sub/PlainShogi.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS/サポートファイル/iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PlainShogi/🧩Sub/Info.plist";
+				INFOPLIST_FILE = "iOS/サポートファイル/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -935,14 +960,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "PS TV App/PS TV App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = tvOS/tvOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PS TV App/Info.plist";
+				INFOPLIST_FILE = tvOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
@@ -967,14 +992,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "PS TV App/PS TV App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = tvOS/tvOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PS TV App/Info.plist";
+				INFOPLIST_FILE = tvOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
@@ -1003,7 +1028,7 @@
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 6696GEY228;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PS Complication/Info.plist";
+				INFOPLIST_FILE = Widget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Plain将棋盤";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1034,7 +1059,7 @@
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 6696GEY228;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "PS Complication/Info.plist";
+				INFOPLIST_FILE = Widget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Plain将棋盤";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1062,7 +1087,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "PS Watch App/PS Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = watchOS/watchOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1095,7 +1120,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = "PS Watch App/PS Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = watchOS/watchOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1133,7 +1158,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		128D1575280FE47F003FF480 /* Build configuration list for PBXNativeTarget "PlainShogi" */ = {
+		128D1575280FE47F003FF480 /* Build configuration list for PBXNativeTarget "iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				128D1576280FE47F003FF480 /* Debug */,
@@ -1142,7 +1167,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F5119BB02A0291020027A74C /* Build configuration list for PBXNativeTarget "PS TV App" */ = {
+		F5119BB02A0291020027A74C /* Build configuration list for PBXNativeTarget "tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F5119BAE2A0291020027A74C /* Debug */,
@@ -1151,7 +1176,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F51F03AA2A00D03400F05874 /* Build configuration list for PBXNativeTarget "PSComplicationExtension" */ = {
+		F51F03AA2A00D03400F05874 /* Build configuration list for PBXNativeTarget "Widget for watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F51F03A82A00D03400F05874 /* Debug */,
@@ -1160,7 +1185,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F5D9F9292A00BDAA00CEE697 /* Build configuration list for PBXNativeTarget "PS Watch App" */ = {
+		F5D9F9292A00BDAA00CEE697 /* Build configuration list for PBXNativeTarget "watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F5D9F9272A00BDAA00CEE697 /* Debug */,
