@@ -3,7 +3,7 @@ import SwiftUI
 import WatchKit
 #endif
 
-enum 💥フィードバック {
+enum フィードバック {
 #if os(iOS)
     static func 軽め() { UISelectionFeedbackGenerator().selectionChanged() }
     static func 強め() { UIImpactFeedbackGenerator(style: .medium).impactOccurred() }

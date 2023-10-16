@@ -1,70 +1,70 @@
 import SwiftUI
 import GroupActivities
 
-struct 🗄️コマンド: Commands {
-    @ObservedObject var 📱: 📱アプリモデル
+struct コマンド: Commands {
+    @ObservedObject var モデル: アプリモデル
     var body: some Commands {
         CommandGroup(replacing: .appSettings) {
-            Button("メニューを表示") { 📱.シートを表示 = .メニュー }
+            Button("メニューを表示") { モデル.表示中のシート = .メニュー }
                 .keyboardShortcut(",")
-                .disabled(📱.シートを表示 == .広告)
+                .disabled(モデル.表示中のシート == .広告)
         }
         CommandMenu("操作") {
             Group {
-                Button("一手だけ戻す") { 📱.一手戻す() }
+                Button("一手だけ戻す") { モデル.一手戻す() }
                     .keyboardShortcut("z", modifiers: [])
-                Button("履歴を表示") { 📱.シートを表示 = .履歴 }
+                Button("履歴を表示") { モデル.表示中のシート = .履歴 }
                     .keyboardShortcut("y", modifiers: [])
                     .disabled(局面モデル.履歴.isEmpty)
-                Button("ブックマークを表示") { 📱.シートを表示 = .ブックマーク }
+                Button("ブックマークを表示") { モデル.表示中のシート = .ブックマーク }
                     .keyboardShortcut("d", modifiers: [])
-                Button("駒増減モードを開始") { 📱.増減モードを開始する() }
+                Button("駒増減モードを開始") { モデル.増減モードを開始する() }
                     .keyboardShortcut(.return, modifiers: [])
-                    .disabled(📱.増減モード中)
-                Button("盤面を初期化") { 📱.盤面を初期化する() }
+                    .disabled(モデル.増減モード中)
+                Button("盤面を初期化") { モデル.盤面を初期化する() }
                     .keyboardShortcut(.delete)
-                Button("強調表示をクリア") { 📱.強調表示をクリア() }
+                Button("強調表示をクリア") { モデル.強調表示をクリア() }
                     .keyboardShortcut(.delete, modifiers: [.command, .shift])
-                Button("駒の選択を解除") { 📱.駒の選択を解除する() }
+                Button("駒の選択を解除") { モデル.駒の選択を解除する() }
                     .keyboardShortcut(.cancelAction)
-                    .disabled(📱.選択中の駒 == .なし)
-                Button("テキストとしてコピー") { 📱.現在の局面をテキストとしてコピー() }
+                    .disabled(モデル.選択中の駒 == .なし)
+                Button("テキストとしてコピー") { モデル.現在の局面をテキストとしてコピー() }
                     .keyboardShortcut("c", modifiers: [])
-                Button("テキストを局面としてペースト") { 📱.テキストを局面としてペースト() }
+                Button("テキストを局面としてペースト") { モデル.テキストを局面としてペースト() }
                     .keyboardShortcut("v", modifiers: [])
                 self.SharePlayメニューボタン()
             }
-            .disabled(📱.シートを表示 == .広告)
+            .disabled(モデル.表示中のシート == .広告)
         }
         CommandMenu("見た目") { Self.見た目コマンド() }
     }
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    @StateObject private var groupStateObserver = GroupStateObserver()
     private func SharePlayメニューボタン() -> some View {
-        Button("SharePlayメニューを表示") { 📱.シートを表示 = .SharePlayガイド }
-            .disabled(!self.ⓖroupStateObserver.isEligibleForGroupSession)
+        Button("SharePlayメニューを表示") { モデル.表示中のシート = .SharePlayガイド }
+            .disabled(!self.groupStateObserver.isEligibleForGroupSession)
     }
     private struct 見た目コマンド: View {
         @AppStorage("上下反転") private var 上下反転: Bool = false
         @AppStorage("セリフ体") private var セリフ体: Bool = false
         @AppStorage("太字") private var 太字: Bool = false
-        @AppStorage("サイズ") private var サイズ: 🔠文字.サイズ = .標準
-        @AppStorage("English表記") private var English表記: Bool = false
+        @AppStorage("サイズ") private var サイズ: 字体.サイズ = .標準
+        @AppStorage("English表記") private var english表記: Bool = false
         @AppStorage("直近操作強調表示機能オフ") private var 直近操作強調オフ: Bool = false
         var body: some View {
             Toggle("上下反転", isOn: self.$上下反転)
             Toggle("セリフ体", isOn: self.$セリフ体)
             Toggle("太字", isOn: self.$太字)
             Picker("駒のサイズ", selection: self.$サイズ) {
-                ForEach(🔠文字.サイズ.allCases) { Text($0.ローカライズキー) }
+                ForEach(字体.サイズ.allCases) { Text($0.ローカライズキー) }
             }
-            Toggle("English表記", isOn: self.$English表記)
+            Toggle("English表記", isOn: self.$english表記)
             Toggle("操作した直後の駒の強調表示を常に無効", isOn: self.$直近操作強調オフ)
         }
     }
-    init(_ 📱: 📱アプリモデル) { self.📱 = 📱 }
+    init(_ モデル: アプリモデル) { self.モデル = モデル }
 }
 
-enum 🗄️データ移行ver_1_3 {
+enum データ移行ver_1_3 {
     static var ローカルのデータがある: Bool {
         UserDefaults.standard.data(forKey: "履歴") != nil
     }
@@ -85,7 +85,7 @@ enum 🗄️データ移行ver_1_3 {
     }
 }
 
-enum 🗄️固定値 {
+enum 固定値 {
     static var 盤面枠線の太さ: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
             case .phone: return 1.0
@@ -126,25 +126,25 @@ enum 🗄️固定値 {
     }
 }
 
-struct 🗄️バックグラウンド時に駒選択を解除: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+struct バックグラウンド時に駒選択を解除: ViewModifier {
+    @EnvironmentObject private var モデル: アプリモデル
     @Environment(\.scenePhase) private var scenePhase
     func body(content: Content) -> some View {
         content
             .onChange(of: self.scenePhase) {
-                if $0 == .background { 📱.駒の選択を解除する() }
+                if $0 == .background { モデル.駒の選択を解除する() }
             }
     }
 }
 
-struct 🗄️自動スリープ無効化: ViewModifier {
+struct 自動スリープ無効化: ViewModifier {
     func body(content: Content) -> some View {
         content
             .task { UIApplication.shared.isIdleTimerDisabled = true }
     }
 }
 
-enum 🗄️MacCatalyst {
+enum MacCatalyst調整 {
     class Delegate: UIResponder, UIApplicationDelegate {
 #if targetEnvironment(macCatalyst)
         override func buildMenu(with builder: UIMenuBuilder) {
@@ -158,8 +158,8 @@ enum 🗄️MacCatalyst {
         }
 #endif
     }
-    struct 微調整: ViewModifier {
-        @EnvironmentObject var 📱: 📱アプリモデル
+    struct titleBar隠し: ViewModifier {
+        @EnvironmentObject var モデル: アプリモデル
         func body(content: Content) -> some View {
 #if targetEnvironment(macCatalyst)
             content
@@ -176,22 +176,22 @@ enum 🗄️MacCatalyst {
 #endif
         }
     }
-    static func このアイテムはアプリ内でのドラッグ(_ ⓘtemProvider: NSItemProvider) -> Bool {
-        ⓘtemProvider.hasRepresentationConforming(toTypeIdentifier: "com.apple.uikit.private.drag-item")
+    static func このアイテムはアプリ内でのドラッグ(_ itemProvider: NSItemProvider) -> Bool {
+        itemProvider.hasRepresentationConforming(toTypeIdentifier: "com.apple.uikit.private.drag-item")
         //- MacではSuggestNameが利用不可っぽい。
         //- iOSと違いMac上ではregisteredTypeに"com.apple.uikit.private.drag-item"が追加されている。
         //- なので代わりにそれで判定。
     }
 }
 
-struct 🗄️ユーザーレビュー依頼: ViewModifier {
-    @State private var ⓒheckToRequest: Bool = false
+struct ユーザーレビュー依頼: ViewModifier {
+    @State private var checkToRequest: Bool = false
     func body(content: Content) -> some View {
         content
-            .modifier(💬PrepareToRequestUserReview(self.$ⓒheckToRequest))
+            .modifier(💬PrepareToRequestUserReview(self.$checkToRequest))
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
-                    self.ⓒheckToRequest = true
+                    self.checkToRequest = true
                 }
             }
     }

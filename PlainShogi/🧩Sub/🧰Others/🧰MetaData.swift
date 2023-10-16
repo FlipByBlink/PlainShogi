@@ -40,7 +40,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                         "ContentView.swift"]
             case .Shared:
                 return ["☖ShogiModel.swift",
-                        "📱AppModel.swift",
+                        "モデルAppModel.swift",
                         "💾Data.swift",
                         "💥Feedback.swift",
                         "🪧SheetCategory.swift",
@@ -51,7 +51,7 @@ enum 📁SourceCodeCategory: String, CaseIterable, Identifiable {
                 return ["☖ShogiView.swift",
                         "🛠Menu.swift",
                         "🪧SheetView.swift",
-                        "📬DropDelegate.swift",
+                        "ドロップデリゲート.swift",
                         "🪄ModifyMode.swift",
                         "📜History.swift",
                         "👥SharePlay.swift",

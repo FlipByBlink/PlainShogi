@@ -1,4 +1,4 @@
-enum 🪧シートカテゴリ: Identifiable, Hashable {
+enum シートカテゴリ: Identifiable, Hashable {
     case メニュー
     case 履歴
     case ブックマーク

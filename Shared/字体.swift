@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum 🔠文字 {
+enum 字体 {
     enum サイズ: String, CaseIterable, Identifiable {
         case 小, 標準, 大, 最大
         var id: Self { self }

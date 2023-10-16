@@ -1,20 +1,20 @@
 import SwiftUI
 
-struct 🪄手駒増減シート表示ボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+struct 手駒増減シート表示ボタン: View {
+    @EnvironmentObject private var モデル: アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 陣営: 王側か玉側か
     @AppStorage("太字") private var 太字: Bool = false
     var body: some View {
-        if 📱.増減モード中 {
+        if モデル.増減モード中 {
             Button {
-                📱.シートを表示 = .手駒増減(self.陣営)
+                モデル.表示中のシート = .手駒増減(self.陣営)
             } label: {
                 Image(systemName: "plusminus")
                     .font(.system(size: self.マスの大きさ * 0.6,
                                   weight: self.太字 ? .semibold : .regular))
                     .padding(8)
-                    .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
+                    .rotationEffect(モデル.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
             }
             .padding(8)
             .accessibilityLabel("手駒を整理する")
@@ -24,13 +24,13 @@ struct 🪄手駒増減シート表示ボタン: View {
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }
 
-struct 🪄増減モード用ⓧマーク: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+struct 増減モード用ⓧマーク: ViewModifier {
+    @EnvironmentObject private var モデル: アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 場所: 駒の場所
     @AppStorage("太字") private var 太字: Bool = false
     private var 増減モード中の盤上の駒: Bool {
-        guard 📱.増減モード中, case .盤駒(_) = self.場所 else { return false }
+        guard モデル.増減モード中, case .盤駒(_) = self.場所 else { return false }
         return true
     }
     func body(content: Content) -> some View {
@@ -62,14 +62,14 @@ struct 🪄増減モード用ⓧマーク: ViewModifier {
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
 }
 
-struct 🪄増減モード完了ボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+struct 増減モード完了ボタン: View {
+    @EnvironmentObject private var モデル: アプリモデル
     var body: some View {
-        if 📱.増減モード中 {
+        if モデル.増減モード中 {
             VStack {
                 Spacer()
                 Button {
-                    withAnimation { 📱.増減モードを終了する() }
+                    withAnimation { モデル.増減モードを終了する() }
                 } label: {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.title)
@@ -82,8 +82,8 @@ struct 🪄増減モード完了ボタン: View {
     }
 }
 
-struct 🪄手駒増減メニュー: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+struct 手駒増減メニュー: View {
+    @EnvironmentObject private var モデル: アプリモデル
     private var 陣営: 王側か玉側か
     var body: some View {
         NavigationStack {
@@ -92,7 +92,7 @@ struct 🪄手駒増減メニュー: View {
                     HStack {
                         Spacer()
                         Button {
-                            📱.増減モードでこの手駒を一個減らす(self.陣営, 職名)
+                            モデル.増減モードでこの手駒を一個減らす(self.陣営, 職名)
                         } label: {
                             Image(systemName: "minus.circle.fill")
                                 .font(.title2)
@@ -100,17 +100,17 @@ struct 🪄手駒増減メニュー: View {
                         }
                         .buttonStyle(.plain)
                         HStack {
-                            Text(🔠文字.装飾(📱.手駒増減メニューの駒の表記(職名, self.陣営),
+                            Text(字体.装飾(モデル.手駒増減メニューの駒の表記(職名, self.陣営),
                                          フォント: .system(size: 70, weight: .bold)))
                             Spacer(minLength: 0)
-                            Text(📱.局面.この手駒の数(self.陣営, 職名).description)
+                            Text(モデル.局面.この手駒の数(self.陣営, 職名).description)
                                 .font(.title3.weight(.light))
                                 .monospacedDigit()
                         }
                         .frame(width: 128)
                         .padding(.horizontal, 96)
                         Button {
-                            📱.増減モードでこの手駒を一個増やす(self.陣営, 職名)
+                            モデル.増減モードでこの手駒を一個増やす(self.陣営, 職名)
                         } label: {
                             Image(systemName: "plus.circle.fill")
                                 .font(.title2)

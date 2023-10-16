@@ -1,12 +1,12 @@
 import SwiftUI
 
-struct 🛠ツールボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+struct ツールボタン: View {
+    @EnvironmentObject private var モデル: アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
-    private var 駒を選択していない: Bool { 📱.選択中の駒 == .なし }
+    private var 駒を選択していない: Bool { モデル.選択中の駒 == .なし }
     private var モード: Self.モード切り替え {
-        if 📱.増減モード中 { return .増減モード完了 }
-        return (📱.選択中の駒 == .なし) ? .メニュー : .駒選択解除
+        if モデル.増減モード中 { return .増減モード完了 }
+        return (モデル.選択中の駒 == .なし) ? .メニュー : .駒選択解除
     }
     var body: some View {
         Button(action: self.アクション) {
@@ -18,11 +18,11 @@ struct 🛠ツールボタン: View {
                 .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .sheet(item: $📱.シートを表示) {
+        .sheet(item: $モデル.表示中のシート) {
             switch $0 {
                 case .メニュー: メニュートップ()
                 case .手駒増減(let 陣営): 手駒増減メニュー(陣営)
-                default: Text("🐛")
+                default: Text(verbatim: "BUG")
             }
         }
         .animation(.default, value: self.駒を選択していない)
@@ -30,13 +30,13 @@ struct 🛠ツールボタン: View {
     private func アクション() {
         switch self.モード {
             case .メニュー:
-                📱.シートを表示 = .メニュー
-                💥フィードバック.軽め()
+                モデル.表示中のシート = .メニュー
+                フィードバック.軽め()
             case .駒選択解除:
-                📱.駒の選択を解除する()
-                💥フィードバック.軽め()
+                モデル.駒の選択を解除する()
+                フィードバック.軽め()
             case .増減モード完了:
-                📱.増減モードを終了する()
+                モデル.増減モードを終了する()
         }
     }
     private enum モード切り替え {
@@ -77,32 +77,32 @@ private struct 編集メニュー: View {
         }
     }
     private struct メニュー: View {
-        @EnvironmentObject private var 📱: 📱アプリモデル
+        @EnvironmentObject private var モデル: アプリモデル
         var body: some View {
             List {
                 Button {
-                    📱.盤面を初期化する()
+                    モデル.盤面を初期化する()
                 } label: {
                     Label("盤面を初期化", systemImage: "arrow.counterclockwise")
                 }
                 Button {
-                    📱.一手戻す()
+                    モデル.一手戻す()
                 } label: {
                     Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
                 }
-                .disabled(📱.局面.一手前の局面 == nil)
+                .disabled(モデル.局面.一手前の局面 == nil)
                 Button {
-                    📱.増減モードを開始する()
+                    モデル.増減モードを開始する()
                 } label: {
                     Label("駒を消したり増やしたりする", systemImage: "wand.and.rays")
                 }
                 Button {
-                    📱.強調表示をクリア()
+                    モデル.強調表示をクリア()
                 } label: {
                     Label("強調表示をクリア", systemImage: "square.dashed")
                 }
-                .disabled(📱.何も強調表示されていない)
-                .disabled(📱.強調表示常時オフかつ駒が選択されていない)
+                .disabled(モデル.何も強調表示されていない)
+                .disabled(モデル.強調表示常時オフかつ駒が選択されていない)
             }
             .navigationTitle("編集")
         }
@@ -118,21 +118,21 @@ private struct オプションメニュー: View {
         }
     }
    private struct メニュー: View {
-       @EnvironmentObject private var 📱: 📱アプリモデル
+       @EnvironmentObject private var モデル: アプリモデル
        @AppStorage("太字") private var 太字: Bool = false
         var body: some View {
             List {
-                Toggle(isOn: $📱.🚩上下反転) {
+                Toggle(isOn: $モデル.上下反転) {
                     Label("上下反転", systemImage: "arrow.up.arrow.down")
                 }
                 Toggle(isOn: self.$太字) {
                     Label("太字", systemImage: "bold")
                         .font(.body.bold())
                 }
-                Toggle(isOn: $📱.🚩English表記) {
+                Toggle(isOn: $モデル.english表記) {
                     Label("English表記", systemImage: "p.circle")
                 }
-                Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
+                Toggle(isOn: $モデル.直近操作強調表示機能オフ) {
                     Label("操作した直後の駒の強調表示を常に無効",
                           systemImage: "square.slash")
                 }
@@ -151,7 +151,7 @@ private struct 履歴メニュー: View {
         }
     }
     private struct メニュー: View {
-        @EnvironmentObject private var 📱: 📱アプリモデル
+        @EnvironmentObject private var モデル: アプリモデル
         var body: some View {
             List {
                 Section {
@@ -159,7 +159,7 @@ private struct 履歴メニュー: View {
                 }
                 ForEach(局面モデル.履歴メニュー上での表示対象, id: \.更新日時) { 局面 in
                     HStack {
-                        🧾局面プレビュー(局面)
+                        局面プレビュー(局面)
                         Spacer()
                         VStack(alignment: .trailing, spacing: 4) {
                             Text(局面.更新日付表記)
@@ -167,7 +167,7 @@ private struct 履歴メニュー: View {
                                 .font(.subheadline)
                             Spacer()
                             Button("復元") {
-                                📱.任意の局面を現在の局面として適用する(局面)
+                                モデル.任意の局面を現在の局面として適用する(局面)
                             }
                             .font(.caption.weight(.medium))
                             .buttonStyle(.bordered)
@@ -193,22 +193,22 @@ private struct ブックマークメニュー: View {
         }
     }
     private struct メニュー: View {
-        @EnvironmentObject private var 📱: 📱アプリモデル
+        @EnvironmentObject private var モデル: アプリモデル
         @State private var ブックマーク: 局面モデル? = nil
-        private var 現在の局面とブックマークは同じ: Bool { 📱.局面 == self.ブックマーク }
+        private var 現在の局面とブックマークは同じ: Bool { モデル.局面 == self.ブックマーク }
         var body: some View {
             List {
                 Section {
                     VStack {
                         if let ブックマーク {
-                            🧾局面プレビュー(ブックマーク)
+                            局面プレビュー(ブックマーク)
                         } else {
-                            🧾局面プレビュー(.初期セット)
+                            局面プレビュー(.初期セット)
                                 .opacity(0.4)
                         }
                         Button {
                             guard let ブックマーク else { return }
-                            📱.任意の局面を現在の局面として適用する(ブックマーク)
+                            モデル.任意の局面を現在の局面として適用する(ブックマーク)
                         } label: {
                             Label("復元", systemImage: "square.and.arrow.down")
                                 .font(.caption.weight(.medium))
@@ -224,7 +224,7 @@ private struct ブックマークメニュー: View {
                 Section {
                     Button {
                         withAnimation {
-                            📱.現在の局面をブックマークする()
+                            モデル.現在の局面をブックマークする()
                             self.ブックマーク = .ブックマークを読み込む()
                         }
                     } label: {
@@ -243,7 +243,7 @@ private struct ブックマークメニュー: View {
 }
 
 private struct 手駒増減メニュー: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     @Environment(\.dismiss) private var dismiss
     private var 陣営: 王側か玉側か
     var body: some View {
@@ -251,7 +251,7 @@ private struct 手駒増減メニュー: View {
             ForEach(駒の種類.allCases) { 職名 in
                 HStack {
                     Button {
-                        📱.増減モードでこの手駒を一個減らす(self.陣営, 職名)
+                        モデル.増減モードでこの手駒を一個減らす(self.陣営, 職名)
                     } label: {
                         Image(systemName: "minus.circle.fill")
                             .symbolRenderingMode(.hierarchical)
@@ -261,16 +261,16 @@ private struct 手駒増減メニュー: View {
                     .buttonStyle(.plain)
                     Spacer()
                     HStack(spacing: 12) {
-                        Text(🔠文字.装飾(📱.手駒増減メニューの駒の表記(職名, self.陣営),
-                                     フォント: .system(size: 24, weight: .bold)))
-                        Text(📱.局面.この手駒の数(self.陣営, 職名).description)
+                        Text(字体.装飾(モデル.手駒増減メニューの駒の表記(職名, self.陣営),
+                                   フォント: .system(size: 24, weight: .bold)))
+                        Text(モデル.局面.この手駒の数(self.陣営, 職名).description)
                             .font(.subheadline)
                             .monospacedDigit()
                     }
                     .minimumScaleFactor(0.5)
                     Spacer()
                     Button {
-                        📱.増減モードでこの手駒を一個増やす(self.陣営, 職名)
+                        モデル.増減モードでこの手駒を一個増やす(self.陣営, 職名)
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .symbolRenderingMode(.hierarchical)
@@ -297,7 +297,7 @@ private struct 閉じるボタン: ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
             Button(role: .cancel) {
                 self.dismiss()
-                💥フィードバック.軽め()
+                フィードバック.軽め()
             } label: {
                 Image(systemName: "xmark")
             }

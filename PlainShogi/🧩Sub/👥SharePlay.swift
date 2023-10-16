@@ -5,75 +5,75 @@ import SwiftUI
 
 struct 🄶roupActivity: GroupActivity {
     var metadata: GroupActivityMetadata {
-        var ⓜetadata = GroupActivityMetadata()
-        ⓜetadata.title = NSLocalizedString("共有将棋盤", comment: "アクティビティタイトル")
-        ⓜetadata.type = .generic
-        ⓜetadata.previewImage = UIImage(named: "previewImage")!.cgImage
-        return ⓜetadata
+        var 値 = GroupActivityMetadata()
+        値.title = NSLocalizedString("共有将棋盤", comment: "アクティビティタイトル")
+        値.type = .generic
+        値.previewImage = UIImage(named: "previewImage")!.cgImage
+        return 値
     }
     static func アクティビティを起動する() {
         Task {
             do {
-                let ⓐctivity = Self()
-                switch await ⓐctivity.prepareForActivation() {
+                let アクティビティ = Self()
+                switch await アクティビティ.prepareForActivation() {
                     case .activationPreferred:
-                        print("ⓐctivity.prepareForActivation: activationPreferred")
-                        let 結果 = try await ⓐctivity.activate()
-                        if 結果 == false { throw 🚨エラー.activation失敗 }
+                        print("アクティビティ.prepareForActivation: activationPreferred")
+                        let 結果 = try await アクティビティ.activate()
+                        if 結果 == false { throw Self.アクティビティエラー.activation失敗 }
                     case .activationDisabled:
-                        print("ⓐctivity.prepareForActivation: activationDisabled")
+                        print("アクティビティ.prepareForActivation: activationDisabled")
                     case .cancelled:
-                        print("ⓐctivity.prepareForActivation: cancelled")
+                        print("アクティビティ.prepareForActivation: cancelled")
                     @unknown default:
-                        throw 🚨エラー.unknown
+                        throw Self.アクティビティエラー.unknown
                 }
             } catch {
                 print("🚨 activation 失敗: \(error)")
                 assertionFailure()
             }
-            enum 🚨エラー: Error {
-                case activation失敗, unknown
-            }
         }
+    }
+    enum アクティビティエラー: Error {
+        case activation失敗, unknown
     }
 }
 
-struct 👥SharePlay環境構築: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+struct SharePlay環境構築: ViewModifier {
+    @EnvironmentObject private var モデル: アプリモデル
+    @StateObject private var groupStateObserver = GroupStateObserver()
     func body(content: Content) -> some View {
         content
-            .animation(.default, value: self.ⓖroupStateObserver.isEligibleForGroupSession)
-            .animation(.default, value: 📱.ⓖroupSession?.state)
-            .task { await 📱.新規GroupSessionを受信したら設定する() }
+            .animation(.default, value: self.groupStateObserver.isEligibleForGroupSession)
+            .animation(.default, value: モデル.グループセッション?.state)
+            .task { await モデル.新規GroupSessionを受信したら設定する() }
             .modifier(Self.参加完了通知バナー())
             .modifier(Self.SharePlay設定未完了ローディング())
     }
     private struct SharePlay設定未完了ローディング: ViewModifier {
-        @EnvironmentObject private var 📱: 📱アプリモデル
+        @EnvironmentObject private var モデル: アプリモデル
         func body(content: Content) -> some View {
             content
                 .overlay {
-                    if 📱.ⓖroupSession != nil, 📱.局面.駒が1つも無い {
+                    if モデル.グループセッション != nil, モデル.局面.駒が1つも無い {
                         ProgressView()
                     }
                 }
         }
     }
     private struct 参加完了通知バナー: ViewModifier {
-        @EnvironmentObject private var 📱: 📱アプリモデル
-        @State private var 🚩SharePlay参加完了バナーを表示: Bool = false
+        @EnvironmentObject private var モデル: アプリモデル
+        @State private var 参加完了バナーを表示: Bool = false
         func body(content: Content) -> some View {
             content
-                .onChange(of: 📱.ⓖroupSession != nil) {
+                .onChange(of: モデル.グループセッション != nil) {
                     if $0 {
                         withAnimation(.default.speed(2)) {
-                            self.🚩SharePlay参加完了バナーを表示 = true
+                            self.参加完了バナーを表示 = true
                         }
                     }
                 }
                 .overlay {
-                    if self.🚩SharePlay参加完了バナーを表示 {
+                    if self.参加完了バナーを表示 {
                         Label("アクティビティに参加しました", systemImage: "checkmark")
                             .font(.headline)
                             .padding(12)
@@ -82,7 +82,7 @@ struct 👥SharePlay環境構築: ViewModifier {
                             .onAppear {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                     withAnimation(.default.speed(0.33)) {
-                                        self.🚩SharePlay参加完了バナーを表示 = false
+                                        self.参加完了バナーを表示 = false
                                     }
                                 }
                             }
@@ -92,20 +92,20 @@ struct 👥SharePlay環境構築: ViewModifier {
     }
 }
 
-struct 👥SharePlayインジケーター: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-    private var 🚩SharePlay中: Bool {
-        [.waiting, .joined].contains(📱.ⓖroupSession?.state)
+struct SharePlayインジケーター: View {
+    @EnvironmentObject private var モデル: アプリモデル
+    @StateObject private var groupStateObserver = GroupStateObserver()
+    private var SharePlay中: Bool {
+        [.waiting, .joined].contains(モデル.グループセッション?.state)
     }
-    private var 参加人数: String { 📱.参加人数?.description ?? "0" }
+    private var 参加人数: String { モデル.参加人数?.description ?? "0" }
     var body: some View {
-        if self.ⓖroupStateObserver.isEligibleForGroupSession {
+        if self.groupStateObserver.isEligibleForGroupSession {
             Button {
-                📱.シートを表示 = .SharePlayガイド
+                モデル.表示中のシート = .SharePlayガイド
             } label: {
                 Group {
-                    if self.🚩SharePlay中 {
+                    if self.SharePlay中 {
                         Label("現在、\(self.参加人数)人でSharePlay中", systemImage: "shareplay")
                             .animation(.default, value: self.参加人数)
                     } else {
@@ -118,15 +118,15 @@ struct 👥SharePlayインジケーター: View {
             .accessibilityLabel("SharePlayメニュー")
             .modifier(Self.ボタンスタイル())
             .buttonBorderShape(.capsule)
-            .padding(.top, 🗄️固定値.SharePlayインジケーター上部パディング)
+            .padding(.top, 固定値.SharePlayインジケーター上部パディング)
             .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-            .foregroundStyle(self.🚩SharePlay中 ? .primary : .secondary)
+            .foregroundStyle(self.SharePlay中 ? .primary : .secondary)
         }
     }
     private struct ボタンスタイル: ViewModifier {
-        @EnvironmentObject var 📱: 📱アプリモデル
+        @EnvironmentObject var モデル: アプリモデル
         func body(content: Content) -> some View {
-            if 📱.ⓖroupSession != nil {
+            if モデル.グループセッション != nil {
                 content
                     .buttonStyle(.automatic)
                     .font(.subheadline.weight(.light))
@@ -139,24 +139,23 @@ struct 👥SharePlayインジケーター: View {
     }
 }
 
-struct 👥SharePlayガイド: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
-    private var 🚩SharePlay中: Bool {
-        [.waiting, .joined].contains(📱.ⓖroupSession?.state)
+struct SharePlayガイド: View {
+    @EnvironmentObject private var モデル: アプリモデル
+    private var SharePlay中: Bool {
+        [.waiting, .joined].contains(モデル.グループセッション?.state)
     }
     var body: some View {
         List {
-            if !self.🚩SharePlay中 {
+            if !self.SharePlay中 {
                 self.事前準備完セクション()
                 self.アクティビティ参加誘導セクション()
                 self.アクティビティ起動誘導セクション()
             }
             self.ステータスセクション()
             self.離脱ボタンや終了ボタン()
-            Section { 👥SharePlay紹介リンク() }
+            Section { SharePlay紹介リンク() }
         }
-        .animation(.default, value: self.🚩SharePlay中)
+        .animation(.default, value: self.SharePlay中)
         .navigationTitle("共有将棋盤")
     }
     private func 事前準備完セクション() -> some View {
@@ -187,27 +186,27 @@ struct 👥SharePlayガイド: View {
                 .padding(8)
             Button {
                 🄶roupActivity.アクティビティを起動する()
-                📱.シートを表示 = nil
+                モデル.表示中のシート = nil
             } label: {
                 Label("アクティビティ「共有将棋盤」を起動する", systemImage: "power")
                     .font(.body.weight(.medium))
                     .padding(.vertical, 4)
             }
-            .disabled(📱.ⓖroupSession != nil)
+            .disabled(モデル.グループセッション != nil)
         } header: {
             Text("自分からSharePlayを開始する")
                 .textCase(.none)
         }
     }
-    @State private var 🚩終了確認ダイアログ表示: Bool = false
+    @State private var 終了確認ダイアログ表示: Bool = false
     private func 離脱ボタンや終了ボタン() -> some View {
         Group {
-            if self.🚩SharePlay中 {
+            if self.SharePlay中 {
                 Section {
                     Button {
-                        📱.ⓖroupSession?.leave()
-                        💥フィードバック.警告()
-                        📱.シートを表示 = nil
+                        モデル.グループセッション?.leave()
+                        フィードバック.警告()
+                        モデル.表示中のシート = nil
                     } label: {
                         Label("アクティビティから離脱する", systemImage: "escape")
                     }
@@ -216,8 +215,8 @@ struct 👥SharePlayガイド: View {
                 }
                 Section {
                     Button {
-                        self.🚩終了確認ダイアログ表示 = true
-                        💥フィードバック.軽め()
+                        self.終了確認ダイアログ表示 = true
+                        フィードバック.軽め()
                     } label: {
                         Label("アクティビティを終了する", systemImage: "power.dotted")
                     }
@@ -225,12 +224,12 @@ struct 👥SharePlayガイド: View {
                     Text("アクティビティを終了すると、全員がアクティビティから離脱します。")
                 }
                 .confirmationDialog("アクティビティを終了しますか？",
-                                    isPresented: self.$🚩終了確認ダイアログ表示,
+                                    isPresented: self.$終了確認ダイアログ表示,
                                     titleVisibility: .visible) {
                     Button(role: .destructive) {
-                        📱.ⓖroupSession?.end()
-                        💥フィードバック.エラー()
-                        📱.シートを表示 = nil
+                        モデル.グループセッション?.end()
+                        フィードバック.エラー()
+                        モデル.表示中のシート = nil
                     } label: {
                         Label("はい、アクティビティを終了します", systemImage: "power.dotted")
                     }
@@ -242,12 +241,12 @@ struct 👥SharePlayガイド: View {
     }
     private func ステータスセクション() -> some View {
         Group {
-            if 📱.ⓖroupSession != nil {
+            if モデル.グループセッション != nil {
                 Section {
                     Label("アクティビティ", systemImage: "power")
-                        .badge(📱.セッションステート表記)
+                        .badge(モデル.セッションステート表記)
                     Label("現在の参加者数", systemImage: "person.3")
-                        .badge(📱.参加人数?.description)
+                        .badge(モデル.参加人数?.description)
                 } header: {
                     Text("状況")
                 }
@@ -256,7 +255,7 @@ struct 👥SharePlayガイド: View {
     }
 }
 
-struct 👥SharePlay紹介リンク: View {
+struct SharePlay紹介リンク: View {
     var body: some View {
         NavigationLink {
             List {
@@ -355,13 +354,13 @@ struct 👥SharePlay紹介リンク: View {
 
 #if !targetEnvironment(macCatalyst)
 private struct SharingControllerボタン: View {
-    @State private var 🚩SharingControllerを表示: Bool = false
-    @State private var 🚩GroupActivity準備完了: Bool = false
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    @State private var sharingControllerを表示: Bool = false
+    @State private var groupActivity準備完了: Bool = false
+    @StateObject private var groupStateObserver = GroupStateObserver()
     var body: some View {
         Section {
             Button {
-                self.🚩SharingControllerを表示 = true
+                self.sharingControllerを表示 = true
             } label: {
                 if #available(iOS 16, *) {
                     Label("友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する", systemImage: "person.badge.plus")
@@ -369,51 +368,51 @@ private struct SharingControllerボタン: View {
                     Label("友達に「FaceTime」通話をかける", systemImage: "person.badge.plus")
                 }
             }
-            .disabled(self.ⓖroupStateObserver.isEligibleForGroupSession)
+            .disabled(self.groupStateObserver.isEligibleForGroupSession)
         } header: {
             Text("SharePlayの準備をする")
                 .textCase(.none)
         }
-        .sheet(isPresented: self.$🚩SharingControllerを表示) {
-            Self.🅂haringControllerView(self.$🚩GroupActivity準備完了)
+        .sheet(isPresented: self.$sharingControllerを表示) {
+            Self.🅂haringControllerView(self.$groupActivity準備完了)
         }
-        .onChange(of: ⓖroupStateObserver.isEligibleForGroupSession) { ⓝewValue in
-            if ⓝewValue {
-                if self.🚩GroupActivity準備完了 {
+        .onChange(of: groupStateObserver.isEligibleForGroupSession) { newValue in
+            if newValue {
+                if self.groupActivity準備完了 {
                     🄶roupActivity.アクティビティを起動する()
-                    self.🚩GroupActivity準備完了 = false
+                    self.groupActivity準備完了 = false
                 }
             }
         }
     }
     private struct 🅂haringControllerView: UIViewControllerRepresentable {
-        private let ⓖroupActivitySharingController: GroupActivitySharingController
-        @Binding var 🚩GroupActivity準備完了: Bool
+        private let groupActivitySharingController: GroupActivitySharingController
+        @Binding var groupActivity準備完了: Bool
         func makeUIViewController(context: Context) -> GroupActivitySharingController {
             Task {
-                switch await self.ⓖroupActivitySharingController.result {
+                switch await self.groupActivitySharingController.result {
                     case .success:
                         print("🖨️ groupActivitySharingController.result: success")
-                        self.🚩GroupActivity準備完了 = true
+                        self.groupActivity準備完了 = true
                     case .cancelled:
                         print("🖨️ groupActivitySharingController.result: cancelled")
                     @unknown default:
                         assertionFailure()
                 }
             }
-            return self.ⓖroupActivitySharingController
+            return self.groupActivitySharingController
         }
-        func updateUIViewController(_ ⓒontroller: GroupActivitySharingController, context: Context) {
+        func updateUIViewController(_ controller: GroupActivitySharingController, context: Context) {
             print("🖨️ updateUIViewController/context", context)
         }
-        init?(_ GroupActivity準備完了: Binding<Bool>) {
+        init?(_ groupActivity準備完了: Binding<Bool>) {
             do {
-                self.ⓖroupActivitySharingController = try GroupActivitySharingController(🄶roupActivity())
+                self.groupActivitySharingController = try GroupActivitySharingController(🄶roupActivity())
             } catch {
                 print("🚨", #line, error.localizedDescription)
                 return nil
             }
-            self._🚩GroupActivity準備完了 = GroupActivity準備完了
+            self._groupActivity準備完了 = groupActivity準備完了
         }
     }
 }

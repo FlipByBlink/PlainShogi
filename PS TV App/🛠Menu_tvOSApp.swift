@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct 🛠サイドバー: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+struct サイドバー: ViewModifier {
+    @EnvironmentObject private var モデル: アプリモデル
     @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     @State private var 表示: Bool = false
     @FocusState private var 初期フォーカス: Bool
@@ -35,7 +35,7 @@ struct 🛠サイドバー: ViewModifier {
             .onExitCommand(perform: self.初期フォーカス ? nil : self.戻るアクション)
     }
     private func 戻るアクション() {
-        guard !📱.増減モード中 else { 📱.増減モードを終了する(); return }
+        guard !モデル.増減モード中 else { モデル.増減モードを終了する(); return }
         if self.表示 == false {
             self.表示 = true
             self.初期フォーカス = true
@@ -45,7 +45,7 @@ struct 🛠サイドバー: ViewModifier {
     }
     private func サイドバー呼び出しボタン() -> some View {
         Group {
-            if !📱.増減モード中, !self.サイドバー用ボタン常時非表示 {
+            if !モデル.増減モード中, !self.サイドバー用ボタン常時非表示 {
                 VStack {
                     Button {
                         self.表示 = true
@@ -72,7 +72,7 @@ struct 🛠サイドバー: ViewModifier {
             .focused(self.$初期フォーカス)
             Divider()
             Button {
-                self.📱.シートを表示 = .メニュー
+                self.モデル.表示中のシート = .メニュー
                 self.表示 = false
             } label: {
                 Label("メニューを表示", systemImage: "gearshape")
@@ -80,13 +80,13 @@ struct 🛠サイドバー: ViewModifier {
             Divider()
             盤面初期化ボタン()
             一手戻すボタン()
-            Toggle(isOn: $📱.🚩上下反転) {
+            Toggle(isOn: $モデル.上下反転) {
                 Label("上下反転", systemImage: "arrow.up.arrow.down")
             }
             Toggle(isOn: self.$太字) {
                 Label("太字", systemImage: "bold")
             }
-            Toggle(isOn: $📱.🚩English表記) {
+            Toggle(isOn: $モデル.english表記) {
                 Label("English表記", systemImage: "p.circle")
             }
             NavigationLink {
@@ -99,11 +99,11 @@ struct 🛠サイドバー: ViewModifier {
     private struct フォントサイズピッカー: View {
         @Environment(\.dismiss) var dismiss
         @Binding var サイドバーを表示: Bool
-        @AppStorage("サイズ") private var サイズ: 🔠文字.サイズ = .標準
+        @AppStorage("サイズ") private var サイズ: 字体.サイズ = .標準
         var body: some View {
             List {
                 Picker(selection: self.$サイズ) {
-                    ForEach(🔠文字.サイズ.allCases) { Text($0.ローカライズキー) }
+                    ForEach(字体.サイズ.allCases) { Text($0.ローカライズキー) }
                 } label: {
                     Label("駒のサイズ", systemImage: "magnifyingglass")
                 }
@@ -115,8 +115,8 @@ struct 🛠サイドバー: ViewModifier {
     }
 }
 
-struct 🛠メニューコンテンツ: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+struct メニューコンテンツ: View {
+    @EnvironmentObject private var モデル: アプリモデル
     var body: some View {
         TabView {
             編集メニュー()
@@ -137,7 +137,7 @@ struct 🛠メニューコンテンツ: View {
 }
 
 private struct 編集メニュー: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     var body: some View {
         List {
             盤面初期化ボタン()
@@ -150,28 +150,28 @@ private struct 編集メニュー: View {
     }
     private func 増減モード開始ボタン() -> some View {
         Button {
-            📱.増減モードを開始する()
+            モデル.増減モードを開始する()
         } label: {
             Label("駒を消したり増やしたりする", systemImage: "wand.and.rays")
         }
     }
     private func 強調表示クリアボタン() -> some View {
         Button {
-            📱.強調表示をクリア()
+            モデル.強調表示をクリア()
         } label: {
             Label("強調表示をクリア", systemImage: "square.dashed")
         }
-        .disabled(📱.何も強調表示されていない)
-        .disabled(📱.強調表示常時オフかつ駒が選択されていない)
+        .disabled(モデル.何も強調表示されていない)
+        .disabled(モデル.強調表示常時オフかつ駒が選択されていない)
     }
 }
 
 private struct 盤面初期化ボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     @State private var 初期化直後: Bool = false
     var body: some View {
         Button {
-            📱.盤面を初期化する()
+            モデル.盤面を初期化する()
             self.初期化直後 = true
         } label: {
             Label("盤面を初期化", systemImage: "arrow.counterclockwise")
@@ -181,41 +181,41 @@ private struct 盤面初期化ボタン: View {
 }
 
 private struct 一手戻すボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     var body: some View {
         Button {
-            📱.一手戻す()
+            モデル.一手戻す()
         } label: {
             Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
         }
-        .disabled(📱.局面.一手前の局面 == nil)
+        .disabled(モデル.局面.一手前の局面 == nil)
     }
 }
 
 private struct オプションメニュー: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     @AppStorage("太字") private var 太字: Bool = false
-    @AppStorage("サイズ") private var サイズ: 🔠文字.サイズ = .標準
+    @AppStorage("サイズ") private var サイズ: 字体.サイズ = .標準
     @AppStorage("ｻｲﾄﾞﾊﾞｰﾎﾞﾀﾝ非表示") private var サイドバー用ボタン常時非表示: Bool = false
     var body: some View {
         NavigationStack {
             List {
-                Toggle(isOn: $📱.🚩上下反転) {
+                Toggle(isOn: $モデル.上下反転) {
                     Label("上下反転", systemImage: "arrow.up.arrow.down")
                 }
                 Toggle(isOn: self.$太字) {
                     Label("太字", systemImage: "bold")
                 }
                 Picker(selection: self.$サイズ) {
-                    ForEach(🔠文字.サイズ.allCases) { Text($0.ローカライズキー) }
+                    ForEach(字体.サイズ.allCases) { Text($0.ローカライズキー) }
                 } label: {
                     Label("駒のサイズ", systemImage: "magnifyingglass")
                 }
                 .pickerStyle(.navigationLink)
-                Toggle(isOn: $📱.🚩English表記) {
+                Toggle(isOn: $モデル.english表記) {
                     Label("English表記", systemImage: "p.circle")
                 }
-                Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
+                Toggle(isOn: $モデル.直近操作強調表示機能オフ) {
                     Label("操作した直後の駒の強調表示を常に無効",
                           systemImage: "square.slash")
                 }
@@ -237,7 +237,7 @@ private struct オプションメニュー: View {
 }
 
 private struct 履歴メニュー: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     private var 表示対象: [局面モデル] { 局面モデル.履歴メニュー上での表示対象 }
     var body: some View {
         List {
@@ -249,11 +249,11 @@ private struct 履歴メニュー: View {
                         Text(局面.更新時刻表記)
                             .font(.subheadline)
                     }
-                    🧾局面プレビュー(局面)
+                    局面プレビュー(局面)
                         .padding(.vertical)
                         .padding(.horizontal, 64)
                     Button {
-                        📱.任意の局面を現在の局面として適用する(局面)
+                        モデル.任意の局面を現在の局面として適用する(局面)
                     } label: {
                         Label("復元", systemImage: "square.and.arrow.down")
                             .padding()
@@ -278,22 +278,22 @@ private struct 履歴メニュー: View {
 }
 
 private struct ブックマークメニュー: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     @State private var ブックマーク: 局面モデル? = nil
-    private var 現在の局面とブックマークは同じ: Bool { 📱.局面 == self.ブックマーク }
+    private var 現在の局面とブックマークは同じ: Bool { モデル.局面 == self.ブックマーク }
     var body: some View {
         VStack {
             Spacer()
             HStack(spacing: 24) {
                 if let ブックマーク {
-                    🧾局面プレビュー(ブックマーク)
+                    局面プレビュー(ブックマーク)
                 } else {
-                    🧾局面プレビュー(.初期セット)
+                    局面プレビュー(.初期セット)
                         .opacity(0.4)
                 }
                 Button {
                     guard let ブックマーク else { return }
-                    📱.任意の局面を現在の局面として適用する(ブックマーク)
+                    モデル.任意の局面を現在の局面として適用する(ブックマーク)
                 } label: {
                     Label("復元", systemImage: "square.and.arrow.down")
                         .font(.caption.weight(.medium))
@@ -307,7 +307,7 @@ private struct ブックマークメニュー: View {
             Spacer()
             Button {
                 withAnimation {
-                    📱.現在の局面をブックマークする()
+                    モデル.現在の局面をブックマークする()
                     self.ブックマーク = .ブックマークを読み込む()
                 }
             } label: {

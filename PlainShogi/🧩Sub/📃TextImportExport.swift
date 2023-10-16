@@ -1,59 +1,59 @@
 import Foundation
 
-struct 📃テキスト連携機能 {
+struct テキスト連携機能 {
     static func テキストに変換する(_ 局面: 局面モデル) -> String {
-        let 🚩English表記 = UserDefaults.standard.bool(forKey: "English表記")
-        var 📃 = "☗"
+        let english表記 = UserDefaults.standard.bool(forKey: "English表記")
+        var 値 = "☗"
         
         駒の種類.allCases.forEach { 職名 in
             if let 数 = 局面.手駒[.玉側]?.個数(職名) {
                 if 数 >= 1 {
-                    📃 += 🚩English表記 ? Self.駒をEnglishプレーンテキストに変換(職名) : 職名.生駒表記(.玉側)
-                    📃 += "͙"
+                    値 += english表記 ? Self.駒をEnglishプレーンテキストに変換(職名) : 職名.生駒表記(.玉側)
+                    値 += "͙"
                 }
                 
                 if 数 >= 2 {
-                    📃 += 数.description
+                    値 += 数.description
                 }
             }
         }
         
-        📃 += "\n－－－－－－－－－\n"
+        値 += "\n－－－－－－－－－\n"
         
         for 行 in 0 ..< 9 {
             for 列 in 0 ..< 9 {
                 if let 駒 = 局面.盤駒[行 * 9 + 列] {
-                    if 🚩English表記 {
-                        📃 += Self.駒をEnglishプレーンテキストに変換(駒.職名, 駒.成り)
+                    if english表記 {
+                        値 += Self.駒をEnglishプレーンテキストに変換(駒.職名, 駒.成り)
                     } else {
-                        📃 += 駒.成り ? 駒.職名.成駒表記! : 駒.職名.生駒表記(駒.陣営)
+                        値 += 駒.成り ? 駒.職名.成駒表記! : 駒.職名.生駒表記(駒.陣営)
                     }
                     
                     if 駒.陣営 == .玉側 {
-                        📃 += "͙"
+                        値 += "͙"
                     }
                 } else {
-                    📃 += "　"
+                    値 += "　"
                 }
             }
-            📃 += "\n"
+            値 += "\n"
         }
         
-        📃 += "－－－－－－－－－\n☖"
+        値 += "－－－－－－－－－\n☖"
         
         駒の種類.allCases.forEach { 職名 in
             if let 数 = 局面.手駒[.王側]?.個数(職名) {
                 if 数 >= 1 {
-                    📃 += 🚩English表記 ? Self.駒をEnglishプレーンテキストに変換(職名) : 職名.rawValue
+                    値 += english表記 ? Self.駒をEnglishプレーンテキストに変換(職名) : 職名.rawValue
                 }
                 
                 if 数 >= 2 {
-                    📃 += 数.description
+                    値 += 数.description
                 }
             }
         }
         
-        return 📃
+        return 値
     }
     
     static func 局面モデルに変換する(_ テキスト: String) -> 局面モデル? {
@@ -62,6 +62,7 @@ struct 📃テキスト連携機能 {
             return nil
         }
         
+        //var 値: 局面モデル = .init(盤駒: [:], 手駒: [:]) TODO: 再検討
         var 盤⃣駒: [Int: 盤上の駒] = [:]
         var 手⃣駒: [王側か玉側か: 持ち駒] = 空の手駒
         

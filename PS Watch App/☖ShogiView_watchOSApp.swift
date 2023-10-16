@@ -61,22 +61,22 @@ private struct 盤面のみ: View {
 }
 
 private struct 盤上のコマもしくはマス: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     private var 画面上での左上からの位置: Int
     private var 元々の位置: Int {
-        📱.🚩上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
+        モデル.上下反転 ? (80 - self.画面上での左上からの位置) : self.画面上での左上からの位置
     }
     private var 元々の場所: 駒の場所 { .盤駒(self.元々の位置) }
     var body: some View {
         Group {
-            if 📱.局面.ここに駒がある(self.元々の場所) {
+            if モデル.局面.ここに駒がある(self.元々の場所) {
                 コマの見た目(self.元々の場所)
             } else { // ==== マス ====
                 Color.clear
                     .contentShape(Rectangle())
             }
         }
-        .onTapGesture { 📱.この駒を選択する(self.元々の場所) }
+        .onTapGesture { モデル.この駒を選択する(self.元々の場所) }
     }
     init(_ 画面上での左上からの位置: Int) {
         self.画面上での左上からの位置 = 画面上での左上からの位置
@@ -84,10 +84,10 @@ private struct 盤上のコマもしくはマス: View {
 }
 
 private struct 盤外: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 立場: 手前か対面か
-    private var 陣営: 王側か玉側か { 📱.こちら側の陣営(self.立場) }
+    private var 陣営: 王側か玉側か { モデル.こちら側の陣営(self.立場) }
     private var 各駒: [駒の種類] {
         self.立場 == .手前 ? .Element.allCases : .Element.allCases.reversed()
     }
@@ -105,20 +105,20 @@ private struct 盤外: View {
         }
         .frame(width:  self.マスの大きさ * 7, height: self.マスの大きさ)
         .contentShape(Rectangle())
-        .onTapGesture { 📱.こちらの手駒エリアを選択する(self.陣営) }
+        .onTapGesture { モデル.こちらの手駒エリアを選択する(self.陣営) }
         .padding(self.立場 == .手前 ? .leading : .trailing, self.マスの大きさ * 2)
-        .overlay(alignment: .leading) { if self.立場 == .手前 { 🛠ツールボタン() } }
+        .overlay(alignment: .leading) { if self.立場 == .手前 { ツールボタン() } }
     }
     init(_ ﾀﾁﾊﾞ: 手前か対面か) { self.立場 = ﾀﾁﾊﾞ }
 }
 
 private struct 盤外のコマ: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 場所: 駒の場所
-    private var 数: Int { 📱.局面.この手駒の数(self.場所) }
+    private var 数: Int { モデル.局面.この手駒の数(self.場所) }
     private var 自陣営の手駒の種類の数: Int {
-        📱.局面.この駒の陣営の手駒の種類の数(self.場所)
+        モデル.局面.この駒の陣営の手駒の種類の数(self.場所)
     }
     private var 幅比率: Double {
         switch self.自陣営の手駒の種類の数 {
@@ -150,7 +150,7 @@ private struct 盤外のコマ: View {
                 .environment(\.マスの大きさ, self.マスの大きさ * self.幅比率)
                 .frame(width: self.マスの大きさ * self.幅比率,
                        height: self.マスの大きさ)
-                .onTapGesture { self.📱.この駒を選択する(self.場所) }
+                .onTapGesture { self.モデル.この駒を選択する(self.場所) }
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼｮｸﾒｲ: 駒の種類) {
@@ -159,23 +159,23 @@ private struct 盤外のコマ: View {
 }
 
 private struct コマの見た目: View { //操作処理などは呼び出し側で実装する
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     @AppStorage("太字") private var 太字オプション: Bool = false
     private var 場所: 駒の場所
-    private var 表記: String? { 📱.この駒の表記(self.場所) }
-    private var この駒を選択中: Bool { 📱.選択中の駒 == self.場所 }
-    private var この駒は操作直後: Bool { 📱.この駒は操作直後なので強調表示(self.場所) }
+    private var 表記: String? { モデル.この駒の表記(self.場所) }
+    private var この駒を選択中: Bool { モデル.選択中の駒 == self.場所 }
+    private var この駒は操作直後: Bool { モデル.この駒は操作直後なので強調表示(self.場所) }
     var body: some View {
         if let 表記 {
             ZStack {
                 Color.clear
                 テキスト(字: 表記,
                      強調: self.この駒は操作直後,
-                     下線: 📱.この駒にはアンダーラインが必要(self.場所))
-                .rotationEffect(📱.この駒は下向き(self.場所) ? .degrees(180) : .zero)
-                .rotationEffect(.degrees(📱.増減モード中 ? 15 : 0))
-                .onChange(of: 📱.増減モード中) { _ in 📱.駒の選択を解除する() }
+                     下線: モデル.この駒にはアンダーラインが必要(self.場所))
+                .rotationEffect(モデル.この駒は下向き(self.場所) ? .degrees(180) : .zero)
+                .rotationEffect(.degrees(モデル.増減モード中 ? 15 : 0))
+                .onChange(of: モデル.増減モード中) { _ in モデル.駒の選択を解除する() }
             }
             .contentShape(Rectangle())
             .border(.primary, width: self.この駒を選択中 ? 1.5 : 0)
@@ -187,33 +187,33 @@ private struct コマの見た目: View { //操作処理などは呼び出し側
                 }
             }
         } else {
-            Text("🐛")
+            Text(verbatim: "BUG")
         }
     }
     init(_ ﾊﾞｼｮ: 駒の場所) { self.場所 = ﾊﾞｼｮ }
 }
 
 private struct 成駒確認アラート: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     func body(content: Content) -> some View {
         content
-            .alert("成りますか？", isPresented: $📱.成駒確認アラートを表示) {
-                Button("成る") { 📱.今移動した駒を成る() }
-                Button("キャンセル", role: .cancel) { 📱.成駒確認アラートを表示 = false }
+            .alert("成りますか？", isPresented: $モデル.成駒確認アラートを表示) {
+                Button("成る") { モデル.今移動した駒を成る() }
+                Button("キャンセル", role: .cancel) { モデル.成駒確認アラートを表示 = false }
             } message: {
-                Text(📱.成駒確認メッセージ)
+                Text(モデル.成駒確認メッセージ)
             }
     }
 }
 
 private struct アニメーション: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     @AppStorage("太字") private var 太字: Bool = false
     func body(content: Content) -> some View {
         content
-            .animation(.default, value: 📱.🚩English表記)
-            .animation(.default, value: 📱.🚩上下反転)
-            .animation(.default, value: 📱.増減モード中)
+            .animation(.default, value: モデル.english表記)
+            .animation(.default, value: モデル.上下反転)
+            .animation(.default, value: モデル.増減モード中)
             .animation(.default, value: self.太字)
     }
 }
@@ -227,21 +227,21 @@ private struct テキスト: View {
     private var サイズポイント: CGFloat { self.マスの大きさ * 0.75 }
     private var 太字: Bool { self.強調 || self.太字オプション }
     var body: some View {
-        Text(🔠文字.装飾(self.字,
-                     フォント: .system(size: self.サイズポイント,
-                                   weight: self.太字 ? .bold : .regular),
-                     下線: self.下線))
+        Text(字体.装飾(self.字,
+                   フォント: .system(size: self.サイズポイント,
+                                 weight: self.太字 ? .bold : .regular),
+                   下線: self.下線))
         .minimumScaleFactor(0.6)
     }
 }
 
 private struct 増減モード用ⓧマーク: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 場所: 駒の場所
     @AppStorage("太字") private var 太字: Bool = false
     private var 増減モード中の盤上の駒: Bool {
-        guard 📱.増減モード中, case .盤駒(_) = self.場所 else { return false }
+        guard モデル.増減モード中, case .盤駒(_) = self.場所 else { return false }
         return true
     }
     func body(content: Content) -> some View {
@@ -273,14 +273,14 @@ private struct 増減モード用ⓧマーク: ViewModifier {
 }
 
 private struct 手駒増減シート表示ボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     @Environment(\.マスの大きさ) private var マスの大きさ
     private var 陣営: 王側か玉側か
     @AppStorage("太字") private var 太字: Bool = false
     var body: some View {
-        if 📱.増減モード中 {
+        if モデル.増減モード中 {
             Button {
-                📱.シートを表示 = .手駒増減(self.陣営)
+                モデル.表示中のシート = .手駒増減(self.陣営)
             } label: {
                 Image(systemName: "plusminus")
                     .font(.system(size: self.マスの大きさ * 0.8,
@@ -290,7 +290,7 @@ private struct 手駒増減シート表示ボタン: View {
             .buttonStyle(.plain)
             .accessibilityLabel("手駒を整理する")
             .tint(.primary)
-            .rotationEffect(📱.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
+            .rotationEffect(モデル.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
         }
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }

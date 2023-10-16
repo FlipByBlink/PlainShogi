@@ -6,14 +6,14 @@ import GroupActivities
 #endif
 
 @MainActor
-class 📱アプリモデル: ObservableObject {
+class アプリモデル: ObservableObject {
     @Published private(set) var 局面: 局面モデル
     
-    @AppStorage("English表記") var 🚩English表記: Bool = false
-    @AppStorage("直近操作強調表示機能オフ") var 🚩直近操作強調表示機能オフ: Bool = false
-    @AppStorage("上下反転") var 🚩上下反転: Bool = false
+    @AppStorage("English表記") var english表記: Bool = false
+    @AppStorage("直近操作強調表示機能オフ") var 直近操作強調表示機能オフ: Bool = false
+    @AppStorage("上下反転") var 上下反転: Bool = false
     
-    @Published var シートを表示: 🪧シートカテゴリ? = nil
+    @Published var 表示中のシート: シートカテゴリ? = nil
     @Published var 成駒確認アラートを表示: Bool = false
     @Published private(set) var 増減モード中: Bool = false
     @Published private(set) var ドラッグ中の駒: ドラッグ対象 = .無し
@@ -21,44 +21,44 @@ class 📱アプリモデル: ObservableObject {
     
     init() {
         self.局面 = Self.起動時の局面を読み込む()
-        💾ICloud.addObserver(self, #selector(self.iCloudによる外部からの履歴変更を適用する(_:)))
-        💾ICloud.synchronize()
+        ICloudデータ.addObserver(self, #selector(self.iCloudによる外部からの履歴変更を適用する(_:)))
+        ICloudデータ.synchronize()
     }
     
-#if os(iOS) //👥SharePlay
-    private var ⓢubscriptions = Set<AnyCancellable>()
-    private var ⓣasks = Set<Task<Void, Never>>()
-    @Published private(set) var ⓖroupSession: GroupSession<🄶roupActivity>?
-    private var ⓜessenger: GroupSessionMessenger?
+#if os(iOS) //SharePlay
+    private var サブスクリプションズ = Set<AnyCancellable>()
+    private var タスクス = Set<Task<Void, Never>>()
+    @Published private(set) var グループセッション: GroupSession<🄶roupActivity>?
+    private var セッションメッセンジャー: GroupSessionMessenger?
     @Published private(set) var 参加人数: Int?
 #endif
 }
 
 //MARK: - ==== 局面関連 ====
-extension 📱アプリモデル {
+extension アプリモデル {
     func この駒の表記(_ 場所: 駒の場所) -> String? {
-        self.局面.この駒の表記(場所, self.🚩English表記)
+        self.局面.この駒の表記(場所, self.english表記)
     }
     func 手駒増減メニューの駒の表記(_ 職名: 駒の種類, _ 陣営: 王側か玉側か) -> String {
-        self.🚩English表記 ? 職名.English生駒表記 : 職名.生駒表記(陣営)
+        self.english表記 ? 職名.english生駒表記 : 職名.生駒表記(陣営)
     }
     func この駒のプレビュー表記(_ 場所: 駒の場所) -> String? {
-        self.局面.この駒の職名表記(場所, self.🚩English表記)
+        self.局面.この駒の職名表記(場所, self.english表記)
     }
     func この駒は操作直後なので強調表示(_ 場所: 駒の場所) -> Bool {
-        (self.局面.直近の操作 == 場所) && !self.🚩直近操作強調表示機能オフ
+        (self.局面.直近の操作 == 場所) && !self.直近操作強調表示機能オフ
     }
     func この駒にはアンダーラインが必要(_ 場所: 駒の場所) -> Bool {
-        self.局面.この駒にはアンダーラインが必要(場所, self.🚩English表記)
+        self.局面.この駒にはアンダーラインが必要(場所, self.english表記)
     }
     func この駒は下向き(_ 場所: 駒の場所) -> Bool {
-        (self.局面.この駒の陣営(場所) == .玉側) != self.🚩上下反転
+        (self.局面.この駒の陣営(場所) == .玉側) != self.上下反転
     }
     func こちら側のボタンは下向き(_ 陣営: 王側か玉側か) -> Bool {
-        (陣営 == .玉側) != self.🚩上下反転
+        (陣営 == .玉側) != self.上下反転
     }
     func こちら側の陣営(_ 立場: 手前か対面か) -> 王側か玉側か {
-        switch (立場, self.🚩上下反転) {
+        switch (立場, self.上下反転) {
             case (.手前, false): return .王側
             case (.対面, false): return .玉側
             case (.手前, true): return .玉側
@@ -69,7 +69,7 @@ extension 📱アプリモデル {
         self.局面.直近の操作 == .なし && self.選択中の駒 == .なし
     }
     var 強調表示常時オフかつ駒が選択されていない: Bool {
-        self.🚩直近操作強調表示機能オフ && (self.選択中の駒 == .なし)
+        self.直近操作強調表示機能オフ && (self.選択中の駒 == .なし)
     }
     func 強調表示をクリア() {
         withAnimation {
@@ -77,7 +77,7 @@ extension 📱アプリモデル {
             self.選択中の駒 = .なし
         }
         self.SharePlay中なら現在の局面を参加者に送信する()
-        💥フィードバック.成功()
+        フィードバック.成功()
     }
     func この駒を選択する(_ 今選択した場所: 駒の場所) {
         if !self.増減モード中 {
@@ -87,7 +87,7 @@ extension 📱アプリモデル {
                         withAnimation(.default.speed(2.5)) {
                             self.選択中の駒 = 今選択した場所
                         }
-                        💥フィードバック.軽め()
+                        フィードバック.軽め()
                     }
                 case .盤駒(let 位置) where self.選択中の駒 == 今選択した場所:
                     if self.局面.この駒は成る事ができる(位置) {
@@ -97,7 +97,7 @@ extension 📱アプリモデル {
                 default:
                     if self.局面.これとこれは同じ陣営(self.選択中の駒, 今選択した場所) {
                         self.選択中の駒 = 今選択した場所
-                        💥フィードバック.軽め()
+                        フィードバック.軽め()
                     } else {
                         switch 今選択した場所 {
                             case .盤駒(let 位置):
@@ -116,8 +116,8 @@ extension 📱アプリモデル {
                 case .盤駒(_):
                     self.増減モードでこの盤駒を消す(今選択した場所)
                 case .手駒(let 陣営, _):
-                    self.シートを表示 = .手駒増減(陣営)
-                    💥フィードバック.軽め()
+                    self.表示中のシート = .手駒増減(陣営)
+                    フィードバック.軽め()
                 default:
                     break
             }
@@ -128,13 +128,13 @@ extension 📱アプリモデル {
         withAnimation(.default.speed(2)) {
             if self.局面.ここからここへは移動不可(選択中の駒, .盤外(陣営)) {
                 self.選択中の駒 = .なし
-                💥フィードバック.軽め()
+                フィードバック.軽め()
             } else {
                 do {
                     try self.局面.駒を移動させる(選択中の駒, .盤外(陣営))
                     self.選択中の駒 = .なし
                     self.SharePlay中なら現在の局面を参加者に送信する()
-                    💥フィードバック.強め()
+                    フィードバック.強め()
                 } catch {
                     assertionFailure()
                 }
@@ -149,8 +149,8 @@ extension 📱アプリモデル {
     var 成駒確認メッセージ: String {
         guard case .盤駒(let 位置) = self.局面.直近の操作,
               let 職名 = self.局面.盤駒[位置]?.職名 else { return "🐛" }
-        if self.🚩English表記 {
-            return 職名.English生駒表記 + " → " + (職名.English成駒表記 ?? "🐛")
+        if self.english表記 {
+            return 職名.english生駒表記 + " → " + (職名.english成駒表記 ?? "🐛")
         } else {
             return 職名.rawValue + " → " + (職名.成駒表記 ?? "🐛")
         }
@@ -159,40 +159,40 @@ extension 📱アプリモデル {
         withAnimation { self.局面.初期化する() }
         self.選択中の駒 = .なし
         self.SharePlay中なら現在の局面を参加者に送信する()
-        💥フィードバック.エラー()
-        self.シートを表示 = nil
+        フィードバック.エラー()
+        self.表示中のシート = nil
     }
     func 駒の選択を解除する() {
         self.選択中の駒 = .なし
     }
     func 増減モードを開始する() {
-        self.シートを表示 = nil
+        self.表示中のシート = nil
         self.増減モード中 = true
-        💥フィードバック.成功()
+        フィードバック.成功()
     }
     func 増減モードを終了する() {
         self.増減モード中 = false
-        💥フィードバック.成功()
+        フィードバック.成功()
     }
     func 増減モードでこの手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         guard self.局面.増減モードでこの手駒を増やすことが出来る(陣営, 職名) else { return }
         self.局面.増減モードでこの手駒を一個増やす(陣営, 職名)
         self.SharePlay中なら現在の局面を参加者に送信する()
-        💥フィードバック.軽め()
+        フィードバック.軽め()
     }
     func 増減モードでこの手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         guard self.局面.増減モードでこの手駒を減らすことが出来る(陣営, 職名) else { return }
         self.局面.増減モードでこの手駒を一個減らす(陣営, 職名)
         self.SharePlay中なら現在の局面を参加者に送信する()
-        💥フィードバック.軽め()
+        フィードバック.軽め()
     }
     func 一手戻す() {
         guard let 一手前の局面 = self.局面.一手前の局面 else { return }
-        self.シートを表示 = nil
+        self.表示中のシート = nil
         self.選択中の駒 = .なし
         self.局面.現在の局面として適用する(一手前の局面)
         self.SharePlay中なら現在の局面を参加者に送信する()
-        💥フィードバック.成功()
+        フィードバック.成功()
     }
     // ==== private ====
     private func 盤上に駒を移動させる(_ 移動先: 駒の移動先パターン) {
@@ -202,7 +202,7 @@ extension 📱アプリモデル {
                 self.SharePlay中なら現在の局面を参加者に送信する()
                 self.駒移動後の成駒について対応する(self.選択中の駒, 移動先)
                 self.選択中の駒 = .なし
-                💥フィードバック.強め()
+                フィードバック.強め()
             } catch {
                 assertionFailure()
             }
@@ -221,7 +221,7 @@ extension 📱アプリモデル {
         if self.局面.この駒は成る事ができる(位置) {
             self.局面.この駒を裏返す(位置)
             self.SharePlay中なら現在の局面を参加者に送信する()
-            💥フィードバック.強め()
+            フィードバック.強め()
         }
     }
     private func 増減モードでこの盤駒を消す(_ 場所: 駒の場所) {
@@ -230,18 +230,18 @@ extension 📱アプリモデル {
             self.局面.増減モードでこの盤駒を消す(位置)
         }
         self.SharePlay中なら現在の局面を参加者に送信する()
-        💥フィードバック.軽め()
+        フィードバック.軽め()
     }
 }
 
 //MARK: - ==== 局面の読み込みや復元 ====
-extension 📱アプリモデル {
+extension アプリモデル {
     private static func 起動時の局面を読み込む() -> 局面モデル {
 #if os(iOS)
-        if 🗄️データ移行ver_1_3.ローカルのデータがある {
-            let 前回の局面 = 🗄️データ移行ver_1_3.ローカルの直近の局面を読み込む()
+        if データ移行ver_1_3.ローカルのデータがある {
+            let 前回の局面 = データ移行ver_1_3.ローカルの直近の局面を読み込む()
             前回の局面.ver_1_3_の局面を履歴に追加する()
-            🗄️データ移行ver_1_3.ローカルのデータを削除する()
+            データ移行ver_1_3.ローカルのデータを削除する()
             return 前回の局面
         } else {
             return 局面モデル.前回の局面 ?? .初期セット
@@ -251,18 +251,18 @@ extension 📱アプリモデル {
 #endif
     }
     func 任意の局面を現在の局面として適用する(_ 局面: 局面モデル) { //履歴, ブックマーク
-        self.シートを表示 = nil
+        self.表示中のシート = nil
         withAnimation { self.局面.現在の局面として適用する(局面) }
         self.SharePlay中なら現在の局面を参加者に送信する()
-        💥フィードバック.成功()
+        フィードバック.成功()
     }
     func 現在の局面をブックマークする() {
         self.局面.現在の局面をブックマークする()
-        💥フィードバック.軽め()
+        フィードバック.軽め()
     }
     @objc @MainActor
     func iCloudによる外部からの履歴変更を適用する(_ notification: Notification) {
-        guard 💾ICloud.このキーが変更された(key: "履歴", notification) else { return }
+        guard ICloudデータ.このキーが変更された(key: "履歴", notification) else { return }
         Task { @MainActor in
             guard let 外部で変更された局面の最新 = 局面モデル.履歴.last else { return }
             self.局面 = 外部で変更された局面の最新
@@ -274,24 +274,24 @@ extension 📱アプリモデル {
 
 #if os(iOS) //ドラッグ&ドロップ, SharePlay, テキスト書き出し読み込み機能
 //MARK: - ==== ドラッグ関連 ====
-extension 📱アプリモデル {
+extension アプリモデル {
     func この駒をドラッグし始める(_ 場所: 駒の場所) -> NSItemProvider {
         self.選択中の駒 = .なし
-        💥フィードバック.軽め()
+        フィードバック.軽め()
         self.ドラッグ中の駒 = .アプリ内の駒(場所)
         return self.ドラッグ対象となるアイテムを用意する()
     }
     private func ドラッグ対象となるアイテムを用意する() -> NSItemProvider {
         let テキスト = self.現在の盤面をテキストに変換する()
-        let ⓘtemProvider = NSItemProvider(object: テキスト as NSItemProviderWriting)
-        ⓘtemProvider.suggestedName = "アプリ内でのコマ移動"
-        return ⓘtemProvider
+        let itemProvider = NSItemProvider(object: テキスト as NSItemProviderWriting)
+        itemProvider.suggestedName = "アプリ内でのコマ移動"
+        return itemProvider
     }
 }
 
 //MARK: - ==== ドロップ関連 ====
-extension 📱アプリモデル {
-    func ここにドロップする(_ 置いた場所: 駒の移動先パターン, _ ⓘnfo: DropInfo) -> Bool {
+extension アプリモデル {
+    func ここにドロップする(_ 置いた場所: 駒の移動先パターン, _ dropInfo: DropInfo) -> Bool {
         do {
             switch self.ドラッグ中の駒 {
                 case .アプリ内の駒(let 出発場所):
@@ -299,15 +299,15 @@ extension 📱アプリモデル {
                     self.駒移動後の成駒について対応する(出発場所, 置いた場所)
                     self.ドラッグ中の駒 = .無し
                     self.SharePlay中なら現在の局面を参加者に送信する()
-                    💥フィードバック.強め()
+                    フィードバック.強め()
                 case .アプリ外のコンテンツ:
-                    let ⓘtemProviders = ⓘnfo.itemProviders(for: [.utf8PlainText])
-                    self.このアイテムを盤面に反映する(ⓘtemProviders)
+                    let itemProviders = dropInfo.itemProviders(for: [.utf8PlainText])
+                    self.このアイテムを盤面に反映する(itemProviders)
                 case .無し:
                     return false
             }
             return true
-        } catch 局面モデル.🚨駒移動エラー.無効 {
+        } catch 局面モデル.駒移動エラー.無効 {
             return false
         } catch {
             print("🚨", error.localizedDescription)
@@ -323,17 +323,17 @@ extension 📱アプリモデル {
             return nil
         }
     }
-    func 有効なドロップかチェックする(_ ⓘnfo: DropInfo) -> Bool {
-        let ⓘtemProviders = ⓘnfo.itemProviders(for: [.utf8PlainText])
-        guard let ⓘtemProvider = ⓘtemProviders.first else { return false }
+    func 有効なドロップかチェックする(_ dropInfo: DropInfo) -> Bool {
+        let itemProviders = dropInfo.itemProviders(for: [.utf8PlainText])
+        guard let itemProvider = itemProviders.first else { return false }
 #if targetEnvironment(macCatalyst)
-        if !🗄️MacCatalyst.このアイテムはアプリ内でのドラッグ(ⓘtemProvider) {
+        if !MacCatalyst調整.このアイテムはアプリ内でのドラッグ(ⓘtemProvider) {
             self.ドラッグ中の駒 = .アプリ外のコンテンツ
         }
         return true
 #else
-        if let ⓢuggestedName = ⓘtemProvider.suggestedName {
-            if ⓢuggestedName != "アプリ内でのコマ移動" {
+        if let suggestedName = itemProvider.suggestedName {
+            if suggestedName != "アプリ内でのコマ移動" {
                 self.ドラッグ中の駒 = .アプリ外のコンテンツ
             }
         } else {
@@ -344,44 +344,44 @@ extension 📱アプリモデル {
     }
 }
 
-//MARK: - ==== 👥SharePlay ====
-extension 📱アプリモデル {
+//MARK: - ==== SharePlay ====
+extension アプリモデル {
     func 新規GroupSessionを受信したら設定する() async {
-        for await ⓝewSession in 🄶roupActivity.sessions() {
+        for await 新規セッション in 🄶roupActivity.sessions() {
             self.駒の選択を解除する()
             self.局面.何も無い状態に変更する()
-            self.ⓖroupSession = ⓝewSession
-            let ⓝewMessenger = GroupSessionMessenger(session: ⓝewSession)
-            self.ⓜessenger = ⓝewMessenger
-            ⓝewSession.$state
+            self.グループセッション = 新規セッション
+            let 新規メッセンジャー = GroupSessionMessenger(session: 新規セッション)
+            self.セッションメッセンジャー = 新規メッセンジャー
+            新規セッション.$state
                 .sink {
                     if case .invalidated = $0 {
-                        self.ⓖroupSession = nil
+                        self.グループセッション = nil
                         self.アクティビティをリセットする()
                     }
                 }
-                .store(in: &self.ⓢubscriptions)
-            ⓝewSession.$activeParticipants
-                .sink { ⓐctiveParticipants in
-                    self.参加人数 = ⓐctiveParticipants.count
-                    if ⓐctiveParticipants.count == 1, self.局面.駒が1つも無い {
+                .store(in: &self.サブスクリプションズ)
+            新規セッション.$activeParticipants
+                .sink { activeParticipants in
+                    self.参加人数 = activeParticipants.count
+                    if activeParticipants.count == 1, self.局面.駒が1つも無い {
                         self.局面.現在の局面として適用する(.初期セット)
                     }
                     guard self.局面.SharePlay共有可能 else { return }
-                    let ⓝewParticipants = ⓐctiveParticipants.subtracting(ⓝewSession.activeParticipants)
+                    let 新規参加者達 = activeParticipants.subtracting(新規セッション.activeParticipants)
                     Task {
-                        try? await ⓝewMessenger.send(self.局面, to: .only(ⓝewParticipants))
+                        try? await 新規メッセンジャー.send(self.局面, to: .only(新規参加者達))
                     }
                 }
-                .store(in: &self.ⓢubscriptions)
-            let ⓡeceiveDataTask = Task {
-                for await (ⓜessage, _) in ⓝewMessenger.messages(of: 局面モデル.self) {
-                    guard self.局面 != ⓜessage else { continue }
-                    self.SharePlay中に共有相手から送信されたモデルを適用する(ⓜessage)
+                .store(in: &self.サブスクリプションズ)
+            let データ受け取りタスク = Task {
+                for await (受け取った局面, _) in 新規メッセンジャー.messages(of: 局面モデル.self) {
+                    guard self.局面 != 受け取った局面 else { continue }
+                    self.SharePlay中に共有相手から送信されたモデルを適用する(受け取った局面)
                 }
             }
-            self.ⓣasks.insert(ⓡeceiveDataTask)
-            ⓝewSession.join()
+            self.タスクス.insert(データ受け取りタスク)
+            新規セッション.join()
         }
     }
     private func SharePlay中に共有相手から送信されたモデルを適用する(_ 新規局面: 局面モデル) {
@@ -389,26 +389,26 @@ extension 📱アプリモデル {
             self.局面.更新日時を変更せずにモデルを適用する(新規局面)
         }
         self.駒の選択を解除する()
-        💥フィードバック.強め()
+        フィードバック.強め()
     }
     private func アクティビティをリセットする() {
-        self.ⓜessenger = nil
-        self.ⓣasks.forEach { $0.cancel() }
-        self.ⓣasks = []
-        self.ⓢubscriptions = []
+        self.セッションメッセンジャー = nil
+        self.タスクス.forEach { $0.cancel() }
+        self.タスクス = []
+        self.サブスクリプションズ = []
         self.参加人数 = nil
-        if self.ⓖroupSession != nil {
-            self.ⓖroupSession?.leave()
-            self.ⓖroupSession = nil
+        if self.グループセッション != nil {
+            self.グループセッション?.leave()
+            self.グループセッション = nil
             🄶roupActivity.アクティビティを起動する()
         }
     }
     private func SharePlay中なら現在の局面を参加者に送信する() {
-        if let ⓜessenger {
+        if let セッションメッセンジャー {
             guard self.局面.SharePlay共有可能 else { assertionFailure(); return }
             Task {
                 do {
-                    try await ⓜessenger.send(self.局面)
+                    try await セッションメッセンジャー.send(self.局面)
                 } catch {
                     print("🚨", #function, #line, error.localizedDescription)
                 }
@@ -416,12 +416,12 @@ extension 📱アプリモデル {
         }
     }
     var セッションステート表記: LocalizedStringKey {
-        switch self.ⓖroupSession?.state {
+        switch self.グループセッション?.state {
             case .waiting: return "待機中"
             case .joined: return "参加中"
             case .invalidated(_): return "無効"
             case .none: return "なし"
-            @unknown default: assertionFailure(); return "🐛想定外"
+            @unknown default: assertionFailure(); return "!想定外!"
         }
     }
     //Sample code
@@ -429,31 +429,31 @@ extension 📱アプリモデル {
 }
 
 //MARK: - ==== テキスト書き出し読み込み機能 ====
-extension 📱アプリモデル {
+extension アプリモデル {
     func 現在の盤面をテキストに変換する() -> String {
-        📃テキスト連携機能.テキストに変換する(self.局面)
+        テキスト連携機能.テキストに変換する(self.局面)
     }
     private func テキストを局面に変換して読み込む(_ テキスト: String) {
-        if let インポートした局面 = 📃テキスト連携機能.局面モデルに変換する(テキスト) {
+        if let インポートした局面 = テキスト連携機能.局面モデルに変換する(テキスト) {
             self.局面.現在の局面として適用する(インポートした局面)
             self.SharePlay中なら現在の局面を参加者に送信する()
-            💥フィードバック.成功()
+            フィードバック.成功()
         }
     }
     func 現在の局面をテキストとしてコピー() {
         UIPasteboard.general.string = self.現在の盤面をテキストに変換する()
-        💥フィードバック.成功()
+        フィードバック.成功()
     }
     func テキストを局面としてペースト() {
         guard let テキスト = UIPasteboard.general.string else { return }
         self.テキストを局面に変換して読み込む(テキスト)
     }
-    private func このアイテムを盤面に反映する(_ ⓘtemProviders: [NSItemProvider]) {
+    private func このアイテムを盤面に反映する(_ itemProviders: [NSItemProvider]) {
         Task { @MainActor in
             do {
-                guard let ⓘtemProvider = ⓘtemProviders.first else { return }
-                let ⓢecureCodingObject = try await ⓘtemProvider.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
-                guard let データ = ⓢecureCodingObject as? Data else { return }
+                guard let itemProvider = itemProviders.first else { return }
+                let secureCodingObject = try await itemProvider.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
+                guard let データ = secureCodingObject as? Data else { return }
                 guard let テキスト = String(data: データ, encoding: .utf8) else { return }
                 self.テキストを局面に変換して読み込む(テキスト)
                 self.ドラッグ中の駒 = .無し
@@ -466,7 +466,7 @@ extension 📱アプリモデル {
 #endif
 
 #if os(watchOS) || os(tvOS)
-extension 📱アプリモデル {
+extension アプリモデル {
     private func SharePlay中なら現在の局面を参加者に送信する() {
         //Unsupport on watchOS, tvOS
     }

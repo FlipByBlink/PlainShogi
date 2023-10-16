@@ -140,12 +140,12 @@ MacOS(Desiened for iPad)で駒移動ができない不具合
 一度実装したがリリース保留にした「移動直後の駒にマークを付ける機能」
 --------------------------------------------------------
 //struct 移動直後マーク: View {
-//    @EnvironmentObject var 📱: 📱AppModel
+//    @EnvironmentObject var モデル: モデルAppModel
 //    var 位置: Int
 //
 //    var body: some View {
-//        if 📱.🚩移動直後の駒にマークを付ける {
-//            if 📱.移動直後の駒の位置 == 位置 {
+//        if モデル.🚩移動直後の駒にマークを付ける {
+//            if モデル.移動直後の駒の位置 == 位置 {
 //                GeometryReader { 📐 in
 //                    ZStack(alignment: .bottomTrailing) {
 //                        Color.clear
@@ -173,7 +173,7 @@ MacOS(Desiened for iPad)で駒移動ができない不具合
 //
 //@Published var 移動直後の駒の位置: Int?
 //
-//Toggle(isOn: 📱.$🚩移動直後の駒にマークを付ける) {
+//Toggle(isOn: モデル.$🚩移動直後の駒にマークを付ける) {
 //    Label("移動直後の駒にマークを付ける", systemImage: "app.badge.checkmark")
 //}
 //

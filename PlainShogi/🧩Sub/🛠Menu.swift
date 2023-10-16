@@ -2,26 +2,26 @@ import SwiftUI
 import GroupActivities
 import UniformTypeIdentifiers
 
-struct 🛠ツールボタン: ViewModifier {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+struct ツールボタン: ViewModifier {
+    @EnvironmentObject private var モデル: アプリモデル
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .topTrailing) {
                 Group {
-                    if 📱.増減モード中 {
-                        🪄増減モード完了ボタン()
+                    if モデル.増減モード中 {
+                        増減モード完了ボタン()
                     } else {
                         メニューボタン()
                     }
                 }
-                .animation(.default, value: 📱.増減モード中)
+                .animation(.default, value: モデル.増減モード中)
             }
     }
 }
 
-struct 🛠アプリメニュー: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+struct アプリメニュー: View {
+    @EnvironmentObject private var モデル: アプリモデル
+    @StateObject private var groupStateObserver = GroupStateObserver()
     var body: some View {
         List {
             SharePlay誘導セクション()
@@ -34,20 +34,20 @@ struct 🛠アプリメニュー: View {
                 Text("編集")
             }
             Section {
-                Toggle(isOn: $📱.🚩上下反転) {
+                Toggle(isOn: $モデル.上下反転) {
                     Label("上下反転", systemImage: "arrow.up.arrow.down")
                 }
                 見た目カスタマイズメニューリンク()
             } header: {
-                if self.ⓖroupStateObserver.isEligibleForGroupSession {
+                if self.groupStateObserver.isEligibleForGroupSession {
                     Text("オプション(共有相手との同期なし)")
                 } else {
                     Text("オプション")
                 }
             }
-            📜履歴類セクション()
+            履歴類セクション()
             Section {
-                👥SharePlay紹介リンク()
+                SharePlay紹介リンク()
                 細かな使い方リンク()
                 テキスト書き出し読み込み紹介リンク()
                 不具合フィードバックリンク()
@@ -56,21 +56,21 @@ struct 🛠アプリメニュー: View {
             ℹ️AboutAppLink()
         }
         .navigationTitle("メニュー")
-        .animation(.default, value: self.ⓖroupStateObserver.isEligibleForGroupSession)
+        .animation(.default, value: self.groupStateObserver.isEligibleForGroupSession)
     }
 }
 
 private struct メニューボタン: View { // ⚙️
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     @AppStorage("セリフ体") private var セリフ体: Bool = false
     var body: some View {
 #if !targetEnvironment(macCatalyst)
-        self.ⓒontent()
+        self.content()
 #else
         EmptyView()
 #endif
     }
-    private func ⓒontent() -> some View {
+    private func content() -> some View {
         Menu {
             強調表示クリアボタン()
             盤面初期化ボタン()
@@ -87,39 +87,39 @@ private struct メニューボタン: View { // ⚙️
                 .padding()
                 .padding(.trailing, 8)
         } primaryAction: {
-            📱.シートを表示 = .メニュー
+            モデル.表示中のシート = .メニュー
         }
         .tint(.primary)
         .accessibilityLabel("Open menu")
     }
     private func 上下反転ボタン() -> some View {
         Button {
-            📱.🚩上下反転.toggle()
-            💥フィードバック.成功()
+            モデル.上下反転.toggle()
+            フィードバック.成功()
         } label: {
-            Label(📱.🚩上下反転 ? "上下反転を元に戻す" : "上下反転させる",
+            Label(モデル.上下反転 ? "上下反転を元に戻す" : "上下反転させる",
                   systemImage: "arrow.up.arrow.down")
         }
     }
     private func 履歴ボタン() -> some View {
         Button {
-            📱.シートを表示 = .履歴
+            モデル.表示中のシート = .履歴
         } label: {
             Label("履歴を表示", systemImage: "clock")
         }
     }
     private func ブックマーク表示ボタン() -> some View {
         Button {
-            📱.シートを表示 = .ブックマーク
+            モデル.表示中のシート = .ブックマーク
         } label: {
             Label("ブックマークを表示", systemImage: "bookmark")
         }
     }
     private func 駒の選択解除ボタン() -> some View {
         Group {
-            if 📱.選択中の駒 != .なし {
+            if モデル.選択中の駒 != .なし {
                 Button {
-                    📱.駒の選択を解除する()
+                    モデル.駒の選択を解除する()
                 } label: {
                     Label("駒の選択を解除", systemImage: "square.slash")
                 }
@@ -129,13 +129,13 @@ private struct メニューボタン: View { // ⚙️
 }
 
 private struct SharePlay誘導セクション: View {
-    @EnvironmentObject var 📱: 📱アプリモデル
-    @StateObject private var ⓖroupStateObserver = GroupStateObserver()
+    @EnvironmentObject var モデル: アプリモデル
+    @StateObject private var groupStateObserver = GroupStateObserver()
     var body: some View {
-        if self.ⓖroupStateObserver.isEligibleForGroupSession {
+        if self.groupStateObserver.isEligibleForGroupSession {
             Section {
                 NavigationLink {
-                    👥SharePlayガイド()
+                    SharePlayガイド()
                 } label: {
                     Label("アクティビティ", systemImage: "shareplay")
                         .badge("共有将棋盤")
@@ -149,10 +149,10 @@ private struct SharePlay誘導セクション: View {
 }
 
 private struct 盤面初期化ボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     var body: some View {
         Button {
-            📱.盤面を初期化する()
+            モデル.盤面を初期化する()
         } label: {
             Label("盤面を初期化", systemImage: "arrow.counterclockwise")
         }
@@ -160,24 +160,24 @@ private struct 盤面初期化ボタン: View {
 }
 
 private struct 強調表示クリアボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     var body: some View {
         Button {
-            📱.強調表示をクリア()
+            モデル.強調表示をクリア()
         } label: {
             Label("強調表示をクリア", systemImage: "square.dashed")
         }
-        .disabled(📱.何も強調表示されていない)
-        .disabled(📱.強調表示常時オフかつ駒が選択されていない)
+        .disabled(モデル.何も強調表示されていない)
+        .disabled(モデル.強調表示常時オフかつ駒が選択されていない)
     }
 }
 
 private struct 増減モード開始ボタン: View {
     var タイトル: LocalizedStringKey = "駒を増減"
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     var body: some View {
         Button {
-            📱.増減モードを開始する()
+            モデル.増減モードを開始する()
         } label: {
             Label(self.タイトル, systemImage: "wand.and.rays")
         }
@@ -185,14 +185,14 @@ private struct 増減モード開始ボタン: View {
 }
 
 private struct 一手戻すボタン: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     var body: some View {
         Button {
-            📱.一手戻す()
+            モデル.一手戻す()
         } label: {
             Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
         }
-        .disabled(📱.局面.一手前の局面 == nil)
+        .disabled(モデル.局面.一手前の局面 == nil)
     }
 }
 
@@ -205,10 +205,10 @@ private struct 見た目カスタマイズメニューリンク: View {
         }
     }
     private struct コンテンツ: View {
-        @EnvironmentObject private var 📱: 📱アプリモデル
+        @EnvironmentObject private var モデル: アプリモデル
         @AppStorage("セリフ体") private var セリフ体: Bool = false
         @AppStorage("太字") private var 太字: Bool = false
-        @AppStorage("サイズ") private var サイズ: 🔠文字.サイズ = .標準
+        @AppStorage("サイズ") private var サイズ: 字体.サイズ = .標準
         @StateObject private var ⓖroupStateObserver = GroupStateObserver()
         var body: some View {
             List {
@@ -222,10 +222,10 @@ private struct 見た目カスタマイズメニューリンク: View {
                             .font(.body.bold())
                     }
                     self.サイズピッカー()
-                    Toggle(isOn: $📱.🚩English表記) {
+                    Toggle(isOn: $モデル.english表記) {
                         Label("English表記", systemImage: "p.circle")
                     }
-                    Toggle(isOn: $📱.🚩直近操作強調表示機能オフ) {
+                    Toggle(isOn: $モデル.直近操作強調表示機能オフ) {
                         Label("操作した直後の駒の強調表示を常に無効",
                               systemImage: "square.slash")
                     }
@@ -242,7 +242,7 @@ private struct 見た目カスタマイズメニューリンク: View {
         }
         private func サイズピッカー() -> some View {
             Picker(selection: self.$サイズ) {
-                ForEach(🔠文字.サイズ.allCases) { Text($0.ローカライズキー) }
+                ForEach(字体.サイズ.allCases) { Text($0.ローカライズキー) }
             } label: {
                 Label("駒のサイズ", systemImage: "magnifyingglass")
                     .font({
@@ -298,13 +298,13 @@ private struct 細かな使い方リンク: View {
 }
 
 private struct テキスト書き出し読み込み紹介リンク: View {
-    @EnvironmentObject private var 📱: 📱アプリモデル
+    @EnvironmentObject private var モデル: アプリモデル
     var body: some View {
         NavigationLink {
             List {
                 Section {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text(📱.現在の盤面をテキストに変換する())
+                        Text(モデル.現在の盤面をテキストに変換する())
                             .textSelection(.enabled)
                         Self.コピーボタン()
                     }
@@ -330,8 +330,8 @@ private struct テキスト書き出し読み込み紹介リンク: View {
                 }
                 Section {
                     Button {
-                        📱.テキストを局面としてペースト()
-                        📱.シートを表示 = nil
+                        モデル.テキストを局面としてペースト()
+                        モデル.表示中のシート = nil
                     } label: {
                         Label("テキストを局面としてペースト", systemImage: "doc.on.clipboard")
                     }
@@ -343,14 +343,14 @@ private struct テキスト書き出し読み込み紹介リンク: View {
         }
     }
     private struct コピーボタン: View {
-        @EnvironmentObject private var 📱: 📱アプリモデル
+        @EnvironmentObject private var モデル: アプリモデル
         @State private var 完了: Bool = false
         var body: some View {
             HStack {
                 Spacer()
                 if self.完了 { Image(systemName: "checkmark") }
                 Button {
-                    📱.現在の局面をテキストとしてコピー()
+                    モデル.現在の局面をテキストとしてコピー()
                     withAnimation { self.完了 = true }
                 } label: {
                     Label("テキストとしてコピー", systemImage: "doc.on.doc")
@@ -366,7 +366,7 @@ private struct テキスト書き出し読み込み紹介リンク: View {
 private struct テキスト変換プレビュー: View {
     var フォルダー名: String
     var 枚数: Int
-    private let 🕒timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
     @State private var 表示中の画像: Int = 0
     var body: some View {
         VStack(spacing: 4) {
@@ -384,7 +384,7 @@ private struct テキスト変換プレビュー: View {
                 .padding(.horizontal)
                 .accessibilityHidden(true)
         }
-        .onReceive(self.🕒timer) { _ in
+        .onReceive(self.timer) { _ in
             withAnimation(.default.speed(0.5)) {
                 if self.表示中の画像 == self.枚数 - 1 {
                     self.表示中の画像 = 0
@@ -407,7 +407,7 @@ private struct 不具合フィードバックリンク: View {
     }
     private struct メニュー: View {
         @Environment(\.locale) private var locale
-        private var 日本語環境: Bool { self.locale.languageCode == "ja" }
+        private var 日本語環境: Bool { self.locale.language.languageCode == .japanese }
         private static var アドレス: String = "sear_pandora_0x@icloud.com"
         private var ボタンURL: URL {
             var 値 = "mailto:" + Self.アドレス
@@ -446,7 +446,7 @@ private struct 不具合フィードバックリンク: View {
                     Spacer()
                     Button("コピー") {
                         UIPasteboard.general.string = Self.アドレス
-                        💥フィードバック.軽め()
+                        フィードバック.軽め()
                     }
                     .buttonStyle(.bordered)
                 }

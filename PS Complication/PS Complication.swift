@@ -2,14 +2,12 @@ import WidgetKit
 import SwiftUI
 
 private struct 🄿rovider: TimelineProvider {
-    func placeholder(in context: Context) -> 🄴ntry {
-        🄴ntry()
-    }
+    func placeholder(in context: Context) -> 🄴ntry { .init() }
     func getSnapshot(in context: Context, completion: @escaping (🄴ntry) -> ()) {
-        completion(🄴ntry())
+        completion(.init())
     }
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        completion(Timeline(entries: [🄴ntry()], policy: .never))
+        completion(Timeline(entries: [.init()], policy: .never))
     }
 }
 
@@ -24,7 +22,7 @@ private struct 🄴ntryView : View {
             case .accessoryCircular, .accessoryCorner:
                 ZStack {
                     AccessoryWidgetBackground()
-                    GeometryReader { 📐 in
+                    GeometryReader { 形 in
                         Path {
                             $0.addLines([
                                 .init(x: 50, y: 20),
@@ -36,22 +34,22 @@ private struct 🄴ntryView : View {
                             $0.closeSubpath()
                         }
                         .stroke(lineWidth: 6)
-                        .scaleEffect(min(📐.size.width, 📐.size.height) / 100,
+                        .scaleEffect(min(形.size.width, 形.size.height) / 100,
                                      anchor: .topLeading)
                     }
                     .padding(6)
                 }
                 .widgetAccentable()
             case .accessoryInline:
-                Text("☖")
+                Text(verbatim: "☖")
             default:
-                Text("🐛")
+                Text(verbatim: "BUG")
         }
     }
 }
 
 @main
-struct 🄿SComplication: Widget {
+struct ウィジェット: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "PSComplication", provider: 🄿rovider()) { _ in
             🄴ntryView()
