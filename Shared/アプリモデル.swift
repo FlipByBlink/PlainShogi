@@ -6,7 +6,7 @@ import GroupActivities
 #endif
 
 @MainActor
-class アプリモデル: ObservableObject {
+class アプリモデル: NSObject, ObservableObject {
     @Published private(set) var 局面: 局面モデル = .前回の局面 ?? .初期セット
     
     @AppStorage("English表記") var english表記: Bool = false
@@ -18,7 +18,8 @@ class アプリモデル: ObservableObject {
     @Published private(set) var 増減モード中: Bool = false
     @Published private(set) var 選択中の駒: 駒の場所 = .なし
     
-    init() {
+    override init() {
+        super.init()
         ICloudデータ.addObserver(self, #selector(self.iCloudによる外部からの履歴変更を適用する(_:)))
         ICloudデータ.synchronize()
     }
@@ -261,7 +262,9 @@ extension アプリモデル {
     }
 }
 
-#if os(iOS) //ドラッグ&ドロップ, SharePlay, テキスト書き出し読み込み機能
+#if os(iOS) //UIApplicationDelegate, ドラッグ&ドロップ, SharePlay, テキスト書き出し読み込み機能
+extension アプリモデル: UIApplicationDelegate {}
+
 //MARK: - ==== ドラッグ関連 ====
 extension アプリモデル {
     func この駒をドラッグし始める(_ 場所: 駒の場所) -> NSItemProvider {

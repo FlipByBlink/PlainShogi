@@ -2,12 +2,10 @@ import SwiftUI
 
 @main
 struct アプリ: App {
-    @StateObject private var モデル = アプリモデル()
-//    @UIApplicationDelegateAdaptor var delegate: MacCatalyst調整.Delegate
+    @UIApplicationDelegateAdaptor var モデル: アプリモデル
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(モデル)
         }
         .commands { コマンド(モデル) }
     }
