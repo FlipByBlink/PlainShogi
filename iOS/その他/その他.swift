@@ -1,26 +1,5 @@
 import SwiftUI
 
-enum データ移行ver_1_3 {
-    static var ローカルのデータがある: Bool {
-        UserDefaults.standard.data(forKey: "履歴") != nil
-    }
-    static func ローカルのデータを削除する() {
-        UserDefaults.standard.removeObject(forKey: "履歴")
-    }
-    static func ローカルの直近の局面を読み込む() -> 局面モデル {
-        guard let ローカルデータ = UserDefaults.standard.data(forKey: "履歴") else {
-            return .初期セット
-        }
-        do {
-            let ローカルの履歴 = try JSONDecoder().decode([局面モデル].self, from: ローカルデータ)
-            guard let 対象局面 = ローカルの履歴.last else { assertionFailure(); return .初期セット }
-            return 対象局面
-        } catch {
-            assertionFailure(); return .初期セット
-        }
-    }
-}
-
 struct バックグラウンド時に駒選択を解除: ViewModifier {
     @EnvironmentObject var モデル: アプリモデル
     @Environment(\.scenePhase) var scenePhase

@@ -7,7 +7,7 @@ import GroupActivities
 
 @MainActor
 class アプリモデル: ObservableObject {
-    @Published private(set) var 局面: 局面モデル
+    @Published private(set) var 局面: 局面モデル = .前回の局面 ?? .初期セット
     
     @AppStorage("English表記") var english表記: Bool = false
     @AppStorage("直近操作強調表示機能オフ") var 直近操作強調表示機能オフ: Bool = false
@@ -19,7 +19,6 @@ class アプリモデル: ObservableObject {
     @Published private(set) var 選択中の駒: 駒の場所 = .なし
     
     init() {
-        self.局面 = Self.起動時の局面を読み込む()
         ICloudデータ.addObserver(self, #selector(self.iCloudによる外部からの履歴変更を適用する(_:)))
         ICloudデータ.synchronize()
     }
@@ -240,20 +239,6 @@ extension アプリモデル {
 
 //MARK: - ==== 局面の読み込みや復元 ====
 extension アプリモデル {
-    private static func 起動時の局面を読み込む() -> 局面モデル {
-#if os(iOS)
-        if データ移行ver_1_3.ローカルのデータがある {
-            let 前回の局面 = データ移行ver_1_3.ローカルの直近の局面を読み込む()
-            前回の局面.ver_1_3_の局面を履歴に追加する()
-            データ移行ver_1_3.ローカルのデータを削除する()
-            return 前回の局面
-        } else {
-            return 局面モデル.前回の局面 ?? .初期セット
-        }
-#else
-        局面モデル.前回の局面 ?? .初期セット
-#endif
-    }
     func 任意の局面を現在の局面として適用する(_ 局面: 局面モデル) { //履歴, ブックマーク
         self.表示中のシート = nil
         withAnimation { self.局面.現在の局面として適用する(局面) }

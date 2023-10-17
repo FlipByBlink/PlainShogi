@@ -277,6 +277,7 @@
 		169750BE2ADE646600443DE2 /* Screenshots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshots.png; sourceTree = "<group>"; };
 		169750C02ADE671000443DE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		169750F52ADE68AC00443DE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		169750F82ADE701900443DE2 /* マイグレーションver1.3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "マイグレーションver1.3.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -603,9 +604,19 @@
 			isa = PBXGroup;
 			children = (
 				F5019FD2296ABBBD007CB14D /* 雑多メモ.md */,
+				169750F72ADE6FE200443DE2 /* アーカイブ */,
 				169750BB2ADE641C00443DE2 /* READMEAssets */,
 			);
 			path = "その他";
+			sourceTree = "<group>";
+		};
+		169750F72ADE6FE200443DE2 /* アーカイブ */ = {
+			isa = PBXGroup;
+			children = (
+				169750F82ADE701900443DE2 /* マイグレーションver1.3.swift */,
+			);
+			name = "アーカイブ";
+			path = "アーカイブ";
 			sourceTree = "<group>";
 		};
 		F5119BA42A0291000027A74C /* tvOS */ = {
