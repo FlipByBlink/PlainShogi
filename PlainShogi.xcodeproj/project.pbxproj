@@ -272,7 +272,7 @@
 		169750B52ADE254400443DE2 /* 成駒確認アラート.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "成駒確認アラート.swift"; sourceTree = "<group>"; };
 		169750B72ADE255900443DE2 /* オプション変更アニメーション.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "オプション変更アニメーション.swift"; sourceTree = "<group>"; };
 		169750B92ADE25D700443DE2 /* 駒選択を解除.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "駒選択を解除.swift"; sourceTree = "<group>"; };
-		F5019FD2296ABBBD007CB14D /* memo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = memo.md; sourceTree = "<group>"; };
+		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
 		F5119B952A0144460027A74C /* シートカテゴリ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "シートカテゴリ.swift"; sourceTree = "<group>"; };
@@ -516,7 +516,7 @@
 			children = (
 				169750652ADD69D400443DE2 /* ローカライズ */,
 				128D156E280FE47F003FF480 /* Assets.xcassets */,
-				F5019FD2296ABBBD007CB14D /* memo.md */,
+				F5019FD2296ABBBD007CB14D /* 雑多メモ.md */,
 			);
 			name = "サポートファイル";
 			path = "サポートファイル";
@@ -578,6 +578,7 @@
 				169750B52ADE254400443DE2 /* 成駒確認アラート.swift */,
 				169750B92ADE25D700443DE2 /* 駒選択を解除.swift */,
 				169750B72ADE255900443DE2 /* オプション変更アニメーション.swift */,
+				1697507A2ADE0F5700443DE2 /* FocusedValues拡張.swift */,
 			);
 			path = "将棋View";
 			sourceTree = "<group>";
@@ -591,7 +592,6 @@
 				1697507C2ADE108700443DE2 /* シート管理.swift */,
 				F58C48082A03EDFB006D7C55 /* メニュー.swift */,
 				F58C480E2A04CA38006D7C55 /* 増減モード.swift */,
-				1697507A2ADE0F5700443DE2 /* FocusedValues拡張.swift */,
 				169750792ADE08C500443DE2 /* サポートファイル */,
 			);
 			path = tvOS;

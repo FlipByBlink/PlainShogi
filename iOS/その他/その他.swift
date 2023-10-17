@@ -53,7 +53,7 @@ enum MacCatalyst調整 {
         }
 #endif
     }
-    struct titleBar隠し: ViewModifier {
+    struct TitleBar隠し: ViewModifier {
         @EnvironmentObject var モデル: アプリモデル
         func body(content: Content) -> some View {
 #if targetEnvironment(macCatalyst)
