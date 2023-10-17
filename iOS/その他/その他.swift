@@ -19,19 +19,19 @@ struct 自動スリープ無効化: ViewModifier {
 }
 
 enum MacCatalyst調整 {
-    class Delegate: UIResponder, UIApplicationDelegate {
-#if targetEnvironment(macCatalyst)
-        override func buildMenu(with builder: UIMenuBuilder) {
-            builder.remove(menu: .services)
-            builder.remove(menu: .file)
-            builder.remove(menu: .edit)
-            builder.remove(menu: .format)
-            builder.remove(menu: .toolbar)
-            builder.remove(menu: .sidebar)
-            builder.remove(menu: .help)
-        }
-#endif
-    }
+//    class Delegate: UIResponder, UIApplicationDelegate {
+//#if targetEnvironment(macCatalyst)
+//        override func buildMenu(with builder: UIMenuBuilder) {
+//            builder.remove(menu: .services)
+//            builder.remove(menu: .file)
+//            builder.remove(menu: .edit)
+//            builder.remove(menu: .format)
+//            builder.remove(menu: .toolbar)
+//            builder.remove(menu: .sidebar)
+//            builder.remove(menu: .help)
+//        }
+//#endif
+//    }
     struct TitleBar隠し: ViewModifier {
         @EnvironmentObject var モデル: アプリモデル
         func body(content: Content) -> some View {
