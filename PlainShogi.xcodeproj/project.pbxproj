@@ -76,7 +76,7 @@
 		169751072ADE7B3700443DE2 /* 🌐ADAppDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 169751032ADE7B3700443DE2 /* 🌐ADAppDescription.xcstrings */; };
 		1697510A2ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */; };
 		1697510B2ADE7BB800443DE2 /* 📣ADComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169751092ADE7BB800443DE2 /* 📣ADComponents.swift */; };
-		1697510D2ADE7E3500443DE2 /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697510C2ADE7E3400443DE2 /* ℹ️AboutApp.swift */; };
+		1697510D2ADE7E3500443DE2 /* アプリについて.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697510C2ADE7E3400443DE2 /* アプリについて.swift */; };
 		1697510E2ADE7E8700443DE2 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
 		169751102ADE7F4700443DE2 /* ユーザーレビュー依頼.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */; };
 		169751112ADE80C500443DE2 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
@@ -289,8 +289,9 @@
 		169751032ADE7B3700443DE2 /* 🌐ADAppDescription.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐ADAppDescription.xcstrings"; sourceTree = "<group>"; };
 		169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒InAppPurchaseView.swift"; sourceTree = "<group>"; };
 		169751092ADE7BB800443DE2 /* 📣ADComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADComponents.swift"; sourceTree = "<group>"; };
-		1697510C2ADE7E3400443DE2 /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
+		1697510C2ADE7E3400443DE2 /* アプリについて.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "アプリについて.swift"; sourceTree = "<group>"; };
 		1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ユーザーレビュー依頼.swift"; sourceTree = "<group>"; };
+		169751122ADE848100443DE2 /* マイグレーションver1.2.2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "マイグレーションver1.2.2.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -629,6 +630,7 @@
 			isa = PBXGroup;
 			children = (
 				169750F82ADE701900443DE2 /* マイグレーションver1.3.swift */,
+				169751122ADE848100443DE2 /* マイグレーションver1.2.2.swift */,
 			);
 			name = "アーカイブ";
 			path = "アーカイブ";
@@ -678,7 +680,7 @@
 				F51F037D2A00C46100F05874 /* メニュー.swift */,
 				169750722ADE030300443DE2 /* 増減モード.swift */,
 				169750742ADE033D00443DE2 /* 閉じるボタン.swift */,
-				1697510C2ADE7E3400443DE2 /* ℹ️AboutApp.swift */,
+				1697510C2ADE7E3400443DE2 /* アプリについて.swift */,
 				1697507F2ADE141300443DE2 /* サポートファイル */,
 			);
 			path = watchOS;
@@ -986,7 +988,7 @@
 				169750A32ADE194600443DE2 /* 不特定エラー.swift in Sources */,
 				F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
 				F5D9F92F2A00BDC600CEE697 /* ContentView.swift in Sources */,
-				1697510D2ADE7E3500443DE2 /* ℹ️AboutApp.swift in Sources */,
+				1697510D2ADE7E3500443DE2 /* アプリについて.swift in Sources */,
 				169750932ADE18E900443DE2 /* 駒の場所.swift in Sources */,
 				1697508F2ADE18CD00443DE2 /* 持ち駒.swift in Sources */,
 				F5091F8F2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift in Sources */,
