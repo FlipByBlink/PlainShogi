@@ -392,7 +392,6 @@
 				F5C9FB00296CFF7A00B513D8 /* iOS.entitlements */,
 				F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */,
 				12D4369C2865CD8300B707F5 /* Configuration.storekit */,
-				F5019FD2296ABBBD007CB14D /* memo.md */,
 				12A925252866AB9F0035DC83 /* ローカライズ */,
 			);
 			name = "サポートファイル";
@@ -412,11 +411,12 @@
 		169750662ADD6E3300443DE2 /* その他 */ = {
 			isa = PBXGroup;
 			children = (
-				F52437B229F613A600EA770E /* フィードバック.swift */,
 				F5119B952A0144460027A74C /* シートカテゴリ.swift */,
 				F5B5578A29FF851800A14074 /* 字体.swift */,
 				F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */,
+				F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */,
 				F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */,
+				F52437B229F613A600EA770E /* フィードバック.swift */,
 			);
 			path = "その他";
 			sourceTree = "<group>";
@@ -450,6 +450,26 @@
 				F5119BB92A029B570027A74C /* tvOS.entitlements */,
 				F553013F2A074CA200E1B91D /* Info.plist */,
 				F5119BA92A0291020027A74C /* Assets.xcassets */,
+			);
+			name = "サポートファイル";
+			path = "サポートファイル";
+			sourceTree = "<group>";
+		};
+		1697507E2ADE137100443DE2 /* サポートファイル */ = {
+			isa = PBXGroup;
+			children = (
+				169750652ADD69D400443DE2 /* ローカライズ */,
+				128D156E280FE47F003FF480 /* Assets.xcassets */,
+				F5019FD2296ABBBD007CB14D /* memo.md */,
+			);
+			name = "サポートファイル";
+			path = "サポートファイル";
+			sourceTree = "<group>";
+		};
+		1697507F2ADE141300443DE2 /* サポートファイル */ = {
+			isa = PBXGroup;
+			children = (
+				F5BD6A1A2A00C007004AD4A5 /* watchOS.entitlements */,
 			);
 			name = "サポートファイル";
 			path = "サポートファイル";
@@ -489,7 +509,7 @@
 				F51F037D2A00C46100F05874 /* メニュー.swift */,
 				169750722ADE030300443DE2 /* 増減モード.swift */,
 				169750742ADE033D00443DE2 /* 閉じるボタン.swift */,
-				F5BD6A1A2A00C007004AD4A5 /* watchOS.entitlements */,
+				1697507F2ADE141300443DE2 /* サポートファイル */,
 			);
 			path = watchOS;
 			sourceTree = "<group>";
@@ -499,10 +519,8 @@
 			children = (
 				F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */,
 				F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */,
-				F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */,
 				169750662ADD6E3300443DE2 /* その他 */,
-				169750652ADD69D400443DE2 /* ローカライズ */,
-				128D156E280FE47F003FF480 /* Assets.xcassets */,
+				1697507E2ADE137100443DE2 /* サポートファイル */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1154,7 +1172,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = watchOS/watchOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "watchOS/サポートファイル/watchOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1187,7 +1205,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = watchOS/watchOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "watchOS/サポートファイル/watchOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
