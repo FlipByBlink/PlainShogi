@@ -29,6 +29,34 @@
 		169750782ADE048000443DE2 /* ツールボタン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750772ADE048000443DE2 /* ツールボタン.swift */; };
 		1697507B2ADE0F5700443DE2 /* FocusedValues拡張.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697507A2ADE0F5700443DE2 /* FocusedValues拡張.swift */; };
 		1697507D2ADE108700443DE2 /* シート管理.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697507C2ADE108700443DE2 /* シート管理.swift */; };
+		169750822ADE180700443DE2 /* ドラッグ対象.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750812ADE180700443DE2 /* ドラッグ対象.swift */; };
+		169750852ADE186000443DE2 /* 王側か玉側か.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750842ADE186000443DE2 /* 王側か玉側か.swift */; };
+		169750872ADE188300443DE2 /* 盤上の駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750862ADE188300443DE2 /* 盤上の駒.swift */; };
+		169750882ADE188E00443DE2 /* 王側か玉側か.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750842ADE186000443DE2 /* 王側か玉側か.swift */; };
+		1697508A2ADE189000443DE2 /* 王側か玉側か.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750842ADE186000443DE2 /* 王側か玉側か.swift */; };
+		1697508B2ADE189500443DE2 /* 盤上の駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750862ADE188300443DE2 /* 盤上の駒.swift */; };
+		1697508C2ADE189600443DE2 /* 盤上の駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750862ADE188300443DE2 /* 盤上の駒.swift */; };
+		1697508E2ADE18CD00443DE2 /* 持ち駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697508D2ADE18CD00443DE2 /* 持ち駒.swift */; };
+		1697508F2ADE18CD00443DE2 /* 持ち駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697508D2ADE18CD00443DE2 /* 持ち駒.swift */; };
+		169750902ADE18CD00443DE2 /* 持ち駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697508D2ADE18CD00443DE2 /* 持ち駒.swift */; };
+		169750922ADE18E900443DE2 /* 駒の場所.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750912ADE18E900443DE2 /* 駒の場所.swift */; };
+		169750932ADE18E900443DE2 /* 駒の場所.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750912ADE18E900443DE2 /* 駒の場所.swift */; };
+		169750942ADE18E900443DE2 /* 駒の場所.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750912ADE18E900443DE2 /* 駒の場所.swift */; };
+		169750962ADE18FC00443DE2 /* 駒の移動先パターン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750952ADE18FC00443DE2 /* 駒の移動先パターン.swift */; };
+		169750972ADE18FC00443DE2 /* 駒の移動先パターン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750952ADE18FC00443DE2 /* 駒の移動先パターン.swift */; };
+		169750982ADE18FC00443DE2 /* 駒の移動先パターン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750952ADE18FC00443DE2 /* 駒の移動先パターン.swift */; };
+		1697509A2ADE191000443DE2 /* 手前か対面か.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750992ADE191000443DE2 /* 手前か対面か.swift */; };
+		1697509B2ADE191000443DE2 /* 手前か対面か.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750992ADE191000443DE2 /* 手前か対面か.swift */; };
+		1697509C2ADE191000443DE2 /* 手前か対面か.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750992ADE191000443DE2 /* 手前か対面か.swift */; };
+		1697509E2ADE192200443DE2 /* 駒の種類.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697509D2ADE192200443DE2 /* 駒の種類.swift */; };
+		1697509F2ADE192200443DE2 /* 駒の種類.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697509D2ADE192200443DE2 /* 駒の種類.swift */; };
+		169750A02ADE192200443DE2 /* 駒の種類.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697509D2ADE192200443DE2 /* 駒の種類.swift */; };
+		169750A22ADE194600443DE2 /* 不特定エラー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750A12ADE194600443DE2 /* 不特定エラー.swift */; };
+		169750A32ADE194600443DE2 /* 不特定エラー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750A12ADE194600443DE2 /* 不特定エラー.swift */; };
+		169750A42ADE194600443DE2 /* 不特定エラー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750A12ADE194600443DE2 /* 不特定エラー.swift */; };
+		169750A62ADE19A500443DE2 /* 空の手駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750A52ADE19A500443DE2 /* 空の手駒.swift */; };
+		169750A72ADE19A500443DE2 /* 空の手駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750A52ADE19A500443DE2 /* 空の手駒.swift */; };
+		169750A82ADE19A500443DE2 /* 空の手駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750A52ADE19A500443DE2 /* 空の手駒.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -46,7 +74,7 @@
 		F5119BA82A0291000027A74C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BA72A0291000027A74C /* ContentView.swift */; };
 		F5119BAA2A0291020027A74C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5119BA92A0291020027A74C /* Assets.xcassets */; };
 		F5119BB12A0292580027A74C /* アプリモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
-		F5119BB22A0292580027A74C /* 将棋モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */; };
+		F5119BB22A0292580027A74C /* 局面モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
 		F5119BB32A0292580027A74C /* シートカテゴリ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* シートカテゴリ.swift */; };
 		F5119BB42A0292580027A74C /* ICloudデータ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */; };
 		F5119BB52A0292580027A74C /* フィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
@@ -62,7 +90,7 @@
 		F51F03A62A00D03400F05874 /* Widget for watchOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F51F03992A00D03200F05874 /* Widget for watchOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F51F03AB2A00D18B00F05874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
 		F51F03AC2A00D27400F05874 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
-		F51F03AD2A01099700F05874 /* 将棋モデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */; };
+		F51F03AD2A01099700F05874 /* 局面モデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
 		F51F03AE2A01099700F05874 /* アプリモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
 		F51F03B32A01099700F05874 /* ウィジェット.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* ウィジェット.swift */; };
 		F52437AF29F6125A00EA770E /* その他.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437AE29F6125900EA770E /* その他.swift */; };
@@ -97,8 +125,8 @@
 		F5BBD8602973A7260034CCB8 /* 広告コンテンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */; };
 		F5BBD8652973AA720034CCB8 /* 🌏AppStoreDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5BBD8672973AA720034CCB8 /* 🌏AppStoreDescription.strings */; };
 		F5BBD8692973AA7B0034CCB8 /* 🌏VersionDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5BBD86B2973AA7B0034CCB8 /* 🌏VersionDescription.strings */; };
-		F5BD6A102A00BF4C004AD4A5 /* 将棋モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */; };
-		F5BD6A112A00BF4C004AD4A5 /* 将棋モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */; };
+		F5BD6A102A00BF4C004AD4A5 /* 局面モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
+		F5BD6A112A00BF4C004AD4A5 /* 局面モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
 		F5BD6A122A00BF4C004AD4A5 /* アプリモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
 		F5BD6A132A00BF4C004AD4A5 /* アプリモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
 		F5BD6A142A00BF76004AD4A5 /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
@@ -144,7 +172,7 @@
 				F5091F912A0A1E14003F8BB3 /* EnvironmentValues拡張.swift in CopyFiles */,
 				F5091F8C2A0A1A66003F8BB3 /* 局面プレビュー.swift in CopyFiles */,
 				F5119B9C2A028F330027A74C /* シートカテゴリ.swift in CopyFiles */,
-				F51F03AD2A01099700F05874 /* 将棋モデル.swift in CopyFiles */,
+				F51F03AD2A01099700F05874 /* 局面モデル.swift in CopyFiles */,
 				F51F03AE2A01099700F05874 /* アプリモデル.swift in CopyFiles */,
 				F51F03B32A01099700F05874 /* ウィジェット.swift in CopyFiles */,
 				F5B5578C29FFD9A600A14074 /* 字体.swift in CopyFiles */,
@@ -218,6 +246,16 @@
 		169750772ADE048000443DE2 /* ツールボタン.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ツールボタン.swift"; sourceTree = "<group>"; };
 		1697507A2ADE0F5700443DE2 /* FocusedValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FocusedValues拡張.swift"; sourceTree = "<group>"; };
 		1697507C2ADE108700443DE2 /* シート管理.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "シート管理.swift"; sourceTree = "<group>"; };
+		169750812ADE180700443DE2 /* ドラッグ対象.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ドラッグ対象.swift"; sourceTree = "<group>"; };
+		169750842ADE186000443DE2 /* 王側か玉側か.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "王側か玉側か.swift"; sourceTree = "<group>"; };
+		169750862ADE188300443DE2 /* 盤上の駒.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤上の駒.swift"; sourceTree = "<group>"; };
+		1697508D2ADE18CD00443DE2 /* 持ち駒.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "持ち駒.swift"; sourceTree = "<group>"; };
+		169750912ADE18E900443DE2 /* 駒の場所.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "駒の場所.swift"; sourceTree = "<group>"; };
+		169750952ADE18FC00443DE2 /* 駒の移動先パターン.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "駒の移動先パターン.swift"; sourceTree = "<group>"; };
+		169750992ADE191000443DE2 /* 手前か対面か.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "手前か対面か.swift"; sourceTree = "<group>"; };
+		1697509D2ADE192200443DE2 /* 駒の種類.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "駒の種類.swift"; sourceTree = "<group>"; };
+		169750A12ADE194600443DE2 /* 不特定エラー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "不特定エラー.swift"; sourceTree = "<group>"; };
+		169750A52ADE19A500443DE2 /* 空の手駒.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "空の手駒.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* memo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = memo.md; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -254,7 +292,7 @@
 		F5BBD86A2973AA7B0034CCB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/🌏VersionDescription.strings"; sourceTree = "<group>"; };
 		F5BBD86C2973AA7E0034CCB8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/🌏VersionDescription.strings"; sourceTree = "<group>"; };
 		F5BBEB662973A4040064F0EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "将棋モデル.swift"; sourceTree = "<group>"; };
+		F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "局面モデル.swift"; sourceTree = "<group>"; };
 		F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "アプリモデル.swift"; sourceTree = "<group>"; };
 		F5BD6A1A2A00C007004AD4A5 /* watchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchOS.entitlements; sourceTree = "<group>"; };
 		F5C9FAFE296CF7BB00B513D8 /* 履歴.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "履歴.swift"; sourceTree = "<group>"; };
@@ -335,6 +373,7 @@
 				F525A7D529F8FB1F001E8D5F /* 将棋View.swift */,
 				169750762ADE043D00443DE2 /* View */,
 				169750672ADDFCA500443DE2 /* SharePlay */,
+				169750802ADE17E300443DE2 /* ドラッグ&ドロップ */,
 				12D436992865CD6D00B707F5 /* その他 */,
 				169750642ADD690300443DE2 /* サポートファイル */,
 			);
@@ -417,6 +456,7 @@
 				F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */,
 				F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */,
 				F52437B229F613A600EA770E /* フィードバック.swift */,
+				169750A12ADE194600443DE2 /* 不特定エラー.swift */,
 			);
 			path = "その他";
 			sourceTree = "<group>";
@@ -439,7 +479,6 @@
 				127132E72873CDF20008AE46 /* 増減モード.swift */,
 				F5C9FAFE296CF7BB00B513D8 /* 履歴.swift */,
 				1697506A2ADDFD5100443DE2 /* ブックマーク.swift */,
-				12D424412871893D002D3E80 /* ドロップデリゲート.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -473,6 +512,33 @@
 			);
 			name = "サポートファイル";
 			path = "サポートファイル";
+			sourceTree = "<group>";
+		};
+		169750802ADE17E300443DE2 /* ドラッグ&ドロップ */ = {
+			isa = PBXGroup;
+			children = (
+				169750812ADE180700443DE2 /* ドラッグ対象.swift */,
+				12D424412871893D002D3E80 /* ドロップデリゲート.swift */,
+			);
+			name = "ドラッグ&ドロップ";
+			path = "ドラッグ&ドロップ";
+			sourceTree = "<group>";
+		};
+		169750832ADE183E00443DE2 /* 将棋モデル */ = {
+			isa = PBXGroup;
+			children = (
+				F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */,
+				169750842ADE186000443DE2 /* 王側か玉側か.swift */,
+				169750862ADE188300443DE2 /* 盤上の駒.swift */,
+				1697508D2ADE18CD00443DE2 /* 持ち駒.swift */,
+				169750912ADE18E900443DE2 /* 駒の場所.swift */,
+				169750952ADE18FC00443DE2 /* 駒の移動先パターン.swift */,
+				169750992ADE191000443DE2 /* 手前か対面か.swift */,
+				1697509D2ADE192200443DE2 /* 駒の種類.swift */,
+				169750A52ADE19A500443DE2 /* 空の手駒.swift */,
+			);
+			name = "将棋モデル";
+			path = "将棋モデル";
 			sourceTree = "<group>";
 		};
 		F5119BA42A0291000027A74C /* tvOS */ = {
@@ -517,8 +583,8 @@
 		F5D9F9AF2A00BE1F00CEE697 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				F5BD6A0E2A00BF4C004AD4A5 /* 将棋モデル.swift */,
 				F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */,
+				169750832ADE183E00443DE2 /* 将棋モデル */,
 				169750662ADD6E3300443DE2 /* その他 */,
 				1697507E2ADE137100443DE2 /* サポートファイル */,
 			);
@@ -701,24 +767,34 @@
 			files = (
 				1697506F2ADDFE8500443DE2 /* 固定値.swift in Sources */,
 				F5BBD85C2973A68E0034CCB8 /* 🛒InAppPurchase.swift in Sources */,
+				1697508E2ADE18CD00443DE2 /* 持ち駒.swift in Sources */,
 				F5BD6A122A00BF4C004AD4A5 /* アプリモデル.swift in Sources */,
 				1697506B2ADDFD5100443DE2 /* ブックマーク.swift in Sources */,
+				169750962ADE18FC00443DE2 /* 駒の移動先パターン.swift in Sources */,
 				F5119B962A0144460027A74C /* シートカテゴリ.swift in Sources */,
 				128D156D280FE47E003FF480 /* ContentView.swift in Sources */,
+				169750A22ADE194600443DE2 /* 不特定エラー.swift in Sources */,
+				169750852ADE186000443DE2 /* 王側か玉側か.swift in Sources */,
 				F5B5578B29FF851800A14074 /* 字体.swift in Sources */,
 				F5BBD8602973A7260034CCB8 /* 広告コンテンツ.swift in Sources */,
 				F52437AF29F6125A00EA770E /* その他.swift in Sources */,
 				F5091F8E2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift in Sources */,
+				1697509E2ADE192200443DE2 /* 駒の種類.swift in Sources */,
+				1697509A2ADE191000443DE2 /* 手前か対面か.swift in Sources */,
 				169750782ADE048000443DE2 /* ツールボタン.swift in Sources */,
 				F52437B529F6499100EA770E /* 🧰MetaData.swift in Sources */,
 				F5BBD85E2973A68E0034CCB8 /* 📣AD.swift in Sources */,
+				169750922ADE18E900443DE2 /* 駒の場所.swift in Sources */,
 				F52437B329F613A600EA770E /* フィードバック.swift in Sources */,
 				128D156B280FE47E003FF480 /* App.swift in Sources */,
-				F5BD6A102A00BF4C004AD4A5 /* 将棋モデル.swift in Sources */,
+				F5BD6A102A00BF4C004AD4A5 /* 局面モデル.swift in Sources */,
 				F525A7D629F8FB1F001E8D5F /* 将棋View.swift in Sources */,
+				169750822ADE180700443DE2 /* ドラッグ対象.swift in Sources */,
+				169750872ADE188300443DE2 /* 盤上の駒.swift in Sources */,
 				F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
 				1697506D2ADDFE5700443DE2 /* コマンド.swift in Sources */,
 				F5E0549F29FB52A1004DC425 /* ICloudデータ.swift in Sources */,
+				169750A62ADE19A500443DE2 /* 空の手駒.swift in Sources */,
 				F54C93D7295D2DE6008D1D60 /* テキスト連携機能.swift in Sources */,
 				12D424422871893D002D3E80 /* ドロップデリゲート.swift in Sources */,
 				F5BBD85D2973A68E0034CCB8 /* ℹ️AboutApp.swift in Sources */,
@@ -739,17 +815,26 @@
 				F5119BB52A0292580027A74C /* フィードバック.swift in Sources */,
 				F5119BBA2A029C690027A74C /* 🧰MetaData.swift in Sources */,
 				1697507B2ADE0F5700443DE2 /* FocusedValues拡張.swift in Sources */,
+				1697508A2ADE189000443DE2 /* 王側か玉側か.swift in Sources */,
 				F5119BB12A0292580027A74C /* アプリモデル.swift in Sources */,
 				F58C480F2A04CA38006D7C55 /* 増減モード.swift in Sources */,
+				169750A82ADE19A500443DE2 /* 空の手駒.swift in Sources */,
+				1697509C2ADE191000443DE2 /* 手前か対面か.swift in Sources */,
+				1697508C2ADE189600443DE2 /* 盤上の駒.swift in Sources */,
 				F5119BB82A0295680027A74C /* 字体.swift in Sources */,
 				F58C48092A03EDFB006D7C55 /* メニュー.swift in Sources */,
 				1697507D2ADE108700443DE2 /* シート管理.swift in Sources */,
+				169750A42ADE194600443DE2 /* 不特定エラー.swift in Sources */,
 				F5091F902A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift in Sources */,
 				F5119BB72A0292E10027A74C /* 将棋View.swift in Sources */,
-				F5119BB22A0292580027A74C /* 将棋モデル.swift in Sources */,
+				169750942ADE18E900443DE2 /* 駒の場所.swift in Sources */,
+				169750902ADE18CD00443DE2 /* 持ち駒.swift in Sources */,
+				F5119BB22A0292580027A74C /* 局面モデル.swift in Sources */,
 				F5119BA82A0291000027A74C /* ContentView.swift in Sources */,
 				F5119BB32A0292580027A74C /* シートカテゴリ.swift in Sources */,
+				169750A02ADE192200443DE2 /* 駒の種類.swift in Sources */,
 				F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
+				169750982ADE18FC00443DE2 /* 駒の移動先パターン.swift in Sources */,
 				F5119BA62A0291000027A74C /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,17 +855,26 @@
 				F51F037E2A00C46100F05874 /* メニュー.swift in Sources */,
 				F5119B972A0144460027A74C /* シートカテゴリ.swift in Sources */,
 				169750752ADE033D00443DE2 /* 閉じるボタン.swift in Sources */,
+				169750882ADE188E00443DE2 /* 王側か玉側か.swift in Sources */,
 				F553013B2A0725D800E1B91D /* 字体.swift in Sources */,
-				F5BD6A112A00BF4C004AD4A5 /* 将棋モデル.swift in Sources */,
+				F5BD6A112A00BF4C004AD4A5 /* 局面モデル.swift in Sources */,
+				169750A72ADE19A500443DE2 /* 空の手駒.swift in Sources */,
+				1697509B2ADE191000443DE2 /* 手前か対面か.swift in Sources */,
+				1697508B2ADE189500443DE2 /* 盤上の駒.swift in Sources */,
 				F5D9F92D2A00BDC600CEE697 /* App.swift in Sources */,
 				F5BD6A162A00BF7D004AD4A5 /* ICloudデータ.swift in Sources */,
 				169750732ADE030300443DE2 /* 増減モード.swift in Sources */,
+				169750A32ADE194600443DE2 /* 不特定エラー.swift in Sources */,
 				F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
 				F5D9F92F2A00BDC600CEE697 /* ContentView.swift in Sources */,
+				169750932ADE18E900443DE2 /* 駒の場所.swift in Sources */,
+				1697508F2ADE18CD00443DE2 /* 持ち駒.swift in Sources */,
 				F5091F8F2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift in Sources */,
 				F5BD6A142A00BF76004AD4A5 /* 🧰MetaData.swift in Sources */,
 				F5BD6A182A00BF7D004AD4A5 /* フィードバック.swift in Sources */,
+				1697509F2ADE192200443DE2 /* 駒の種類.swift in Sources */,
 				F5BD6A132A00BF4C004AD4A5 /* アプリモデル.swift in Sources */,
+				169750972ADE18FC00443DE2 /* 駒の移動先パターン.swift in Sources */,
 				169750712ADE02C000443DE2 /* ツールボタン.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

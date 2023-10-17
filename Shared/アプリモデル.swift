@@ -16,7 +16,6 @@ class アプリモデル: ObservableObject {
     @Published var 表示中のシート: シートカテゴリ? = nil
     @Published var 成駒確認アラートを表示: Bool = false
     @Published private(set) var 増減モード中: Bool = false
-    @Published private(set) var ドラッグ中の駒: ドラッグ対象 = .無し
     @Published private(set) var 選択中の駒: 駒の場所 = .なし
     
     init() {
@@ -25,7 +24,10 @@ class アプリモデル: ObservableObject {
         ICloudデータ.synchronize()
     }
     
-#if os(iOS) //SharePlay関連
+#if os(iOS)
+    // ↓ ドラッグ&ドロップ関連
+    @Published private(set) var ドラッグ中の駒: ドラッグ対象 = .無し
+    // ↓ SharePlay関連
     private var サブスクリプションズ = Set<AnyCancellable>()
     private var タスクス = Set<Task<Void, Never>>()
     @Published private(set) var グループセッション: GroupSession<🄶roupActivity>?

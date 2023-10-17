@@ -1,6 +1,6 @@
 import Foundation
 
-//MARK: 駒の「位置」
+//======== 駒の「位置」 ========
 //             玉
 // 00,01,02,03,04,05,06,07,08
 // 09,10,11,12,13,14,15,16,17
@@ -8,6 +8,7 @@ import Foundation
 // 63,64,65,66,67,68,69,70,71
 // 72,73,74,75,76,77,78,79,80
 //             王
+//============================
 
 struct 局面モデル: Codable, Equatable {
     private(set) var 盤駒: [Int: 盤上の駒]
@@ -213,11 +214,6 @@ extension 局面モデル {
         self = .初期セット
         self.ユーザー操作時の雑多処理(強調対象: .なし)
     }
-    private mutating func ユーザー操作時の雑多処理(強調対象: 駒の場所) {
-        self.直近の操作 = 強調対象
-        self.更新日時 = .now
-        self.現在の局面を履歴に追加する()
-    }
     //SharePlayデータ受け取り時
     mutating func 更新日時を変更せずにモデルを適用する(_ 新規局面: Self) {
         self = 新規局面
@@ -232,22 +228,6 @@ extension 局面モデル {
     mutating func 何も無い状態に変更する() {
         self = Self(盤駒: [:], 手駒: [:])
         self.現在の局面を履歴に追加する()
-    }
-    private func 現在の局面を履歴に追加する() {
-        //レスポンス改善(特にwatchOS)のためにTask分離
-        Task {
-            var 新しい履歴: [Self]
-            新しい履歴 = Self.履歴
-            if 新しい履歴.count > 30 { 新しい履歴.removeFirst() }
-            新しい履歴 += [self]
-            do {
-                let data = try JSONEncoder().encode(新しい履歴)
-                ICloudデータ.set(data, key: "履歴")
-                ICloudデータ.synchronize()
-            } catch {
-                assertionFailure()
-            }
-        }
     }
     static var 履歴: [Self] {
         guard let data = ICloudデータ.data(key: "履歴") else { return [] }
@@ -283,128 +263,45 @@ extension 局面モデル {
     var SharePlay共有可能: Bool { self.更新日時 != nil }
     var 駒が1つも無い: Bool { self == Self(盤駒: [:], 手駒: [:]) }
     static var 履歴メニュー上での表示対象: [Self] { Self.履歴.reversed().filter { $0.更新日時 != nil } }
-    static var 初期セット: Self { Self(盤駒: 初期配置, 手駒: 空の手駒) }
+    static var 初期セット: Self { Self(盤駒: Self.初期配置, 手駒: 空の手駒) }
 }
 
-enum 王側か玉側か: String, CaseIterable, Codable {
-    case 王側, 玉側
-}
-
-struct 盤上の駒: Codable, Equatable {
-    let 陣営: 王側か玉側か
-    let 職名: 駒の種類
-    var 成り: Bool
-    mutating func 裏返す() {
-        if self.職名.成駒あり { self.成り.toggle() }
+private extension 局面モデル {
+    private mutating func ユーザー操作時の雑多処理(強調対象: 駒の場所) {
+        self.直近の操作 = 強調対象
+        self.更新日時 = .now
+        self.現在の局面を履歴に追加する()
     }
-    init(_ ｼﾞﾝｴｲ: 王側か玉側か, _ ｼｮｸﾒｲ: 駒の種類, _ ﾅﾘ: Bool = false) {
-        (self.陣営, self.職名, self.成り) = (ｼﾞﾝｴｲ, ｼｮｸﾒｲ, ﾅﾘ)
-    }
-}
-
-struct 持ち駒: Codable, Equatable {
-    var 配分: [駒の種類: Int] = [:]
-    func 個数(_ 職名: 駒の種類) -> Int { self.配分[職名] ?? 0 }
-    static var 空: Self { Self(配分: [:]) }
-    mutating func 一個増やす(_ 職名: 駒の種類) {
-        self.配分[職名] = self.個数(職名) + 1
-    }
-    mutating func 一個減らす(_ 職名: 駒の種類) {
-        if self.個数(職名) >= 1 {
-            self.配分[職名] = self.個数(職名) - 1
+    private func 現在の局面を履歴に追加する() {
+        //レスポンス改善(特にwatchOS)のためにTask分離
+        Task {
+            var 新しい履歴: [Self]
+            新しい履歴 = Self.履歴
+            if 新しい履歴.count > 30 { 新しい履歴.removeFirst() }
+            新しい履歴 += [self]
+            do {
+                let data = try JSONEncoder().encode(新しい履歴)
+                ICloudデータ.set(data, key: "履歴")
+                ICloudデータ.synchronize()
+            } catch {
+                assertionFailure()
+            }
         }
     }
-}
-
-enum 駒の場所: Codable, Equatable {
-    case 盤駒(_ 位置: Int)
-    case 手駒(_ 陣営: 王側か玉側か, _ 職名: 駒の種類)
-    case なし
-}
-
-enum 駒の移動先パターン {
-    case 盤上(Int), 盤外(王側か玉側か)
-}
-
-enum 手前か対面か {
-    case 手前, 対面
-}
-
-enum ドラッグ対象: Equatable {
-    case アプリ内の駒(駒の場所)
-    case アプリ外のコンテンツ
-    case 無し
-}
-
-enum 駒の種類: String, CaseIterable, Identifiable, Codable {
-    case 歩, 角, 飛, 香, 桂, 銀, 金, 王
-    var id: Self { self }
-    func 生駒表記(_ 陣営: 王側か玉側か) -> String {
-        if 陣営 == .玉側, self == .王 {
-            "玉"
-        } else {
-            self.rawValue
+    private static let 初期配置: [Int: 盤上の駒] = {
+        var 値: [Int: 盤上の駒] = [:]
+        let テンプレ: [Int: (王側か玉側か, 駒の種類)] = {
+            [00:(.玉側,.香),01:(.玉側,.桂),02:(.玉側,.銀),03:(.玉側,.金),04:(.玉側,.王),05:(.玉側,.金),06:(.玉側,.銀),07:(.玉側,.桂),08:(.玉側,.香),
+                           10:(.玉側,.飛),                                                                     16:(.玉側,.角),
+             18:(.玉側,.歩),19:(.玉側,.歩),20:(.玉側,.歩),21:(.玉側,.歩),22:(.玉側,.歩),23:(.玉側,.歩),24:(.玉側,.歩),25:(.玉側,.歩),26:(.玉側,.歩),
+             
+             54:(.王側,.歩),55:(.王側,.歩),56:(.王側,.歩),57:(.王側,.歩),58:(.王側,.歩),59:(.王側,.歩),60:(.王側,.歩),61:(.王側,.歩),62:(.王側,.歩),
+                           64:(.王側,.角),                                                                     70:(.王側,.飛),
+             72:(.王側,.香),73:(.王側,.桂),74:(.王側,.銀),75:(.王側,.金),76:(.王側,.王),77:(.王側,.金),78:(.王側,.銀),79:(.王側,.桂),80:(.王側,.香)]
+        }()
+        テンプレ.forEach { (位置: Int, 駒: (陣営: 王側か玉側か, 職名: 駒の種類)) in
+            値[位置] = 盤上の駒(駒.陣営, 駒.職名)
         }
-    }
-    var 成駒表記: String? {
-        switch self {
-            case .歩: "と"
-            case .角: "馬"
-            case .飛: "龍"
-            case .香: "杏"
-            case .桂: "圭"
-            case .銀: "全"
-            default: nil
-        }
-    }
-    var 成駒あり: Bool { self.成駒表記 != nil }
-    var english生駒表記: String {
-        switch self {
-            case .歩: "P"
-            case .角: "B"
-            case .飛: "R"
-            case .香: "L"
-            case .桂: "N"//見分けるために目印を付ける必要あり
-            case .銀: "S"//見分けるために目印を付ける必要あり
-            case .金: "G"
-            case .王: "K"
-        }
-    }
-    var english成駒表記: String? {
-        switch self {
-            case .歩: "+P"
-            case .角: "+B"
-            case .飛: "+R"
-            case .香: "+L"
-            case .桂: "+N"
-            case .銀: "+S"
-            default: nil
-        }
-    }
-}
-
-private enum 不特定エラー: Error {
-    case 要修正
-}
-
-
-
-
-let 空の手駒: [王側か玉側か: 持ち駒] = [.王側: 持ち駒.空, .玉側: 持ち駒.空]
-
-private let 初期配置: [Int: 盤上の駒] = {
-    var 値: [Int: 盤上の駒] = [:]
-    let テンプレ: [Int: (王側か玉側か, 駒の種類)] = {
-        [00:(.玉側,.香),01:(.玉側,.桂),02:(.玉側,.銀),03:(.玉側,.金),04:(.玉側,.王),05:(.玉側,.金),06:(.玉側,.銀),07:(.玉側,.桂),08:(.玉側,.香),
-                       10:(.玉側,.飛),                                                                     16:(.玉側,.角),
-         18:(.玉側,.歩),19:(.玉側,.歩),20:(.玉側,.歩),21:(.玉側,.歩),22:(.玉側,.歩),23:(.玉側,.歩),24:(.玉側,.歩),25:(.玉側,.歩),26:(.玉側,.歩),
-         
-         54:(.王側,.歩),55:(.王側,.歩),56:(.王側,.歩),57:(.王側,.歩),58:(.王側,.歩),59:(.王側,.歩),60:(.王側,.歩),61:(.王側,.歩),62:(.王側,.歩),
-                       64:(.王側,.角),                                                                     70:(.王側,.飛),
-         72:(.王側,.香),73:(.王側,.桂),74:(.王側,.銀),75:(.王側,.金),76:(.王側,.王),77:(.王側,.金),78:(.王側,.銀),79:(.王側,.桂),80:(.王側,.香)]
+        return 値
     }()
-    テンプレ.forEach { (位置: Int, 駒: (陣営: 王側か玉側か, 職名: 駒の種類)) in
-        値[位置] = 盤上の駒(駒.陣営, 駒.職名)
-    }
-    return 値
-}()
+}
