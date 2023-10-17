@@ -18,25 +18,11 @@ struct 将棋View: View {
             .modifier(駒選択を解除())
             .modifier(一時的にフォーカス効果を非表示())
             .modifier(レイアウト.推定())
-            .modifier(アニメーション())
+            .modifier(オプション変更アニメーション())
             .padding(64)
         }
         .ignoresSafeArea()
     }
-}
-
-private enum レイアウト {
-    struct 推定: ViewModifier {
-        func body(content: Content) -> some View {
-            GeometryReader {
-                content
-                    .environment(\.マスの大きさ,
-                                  $0.size.height / (9 + マスに対する段筋の大きさの比率))
-            }
-        }
-    }
-    static let マスに対する段筋の大きさの比率: Double = 0.5
-    static let 複数個の盤外コマの幅比率: Double = 1.3
 }
 
 private struct 盤面と段と筋: View {
@@ -299,19 +285,6 @@ private struct 駒選択効果: View {
     }
 }
 
-private struct 成駒確認アラート: ViewModifier {
-    @EnvironmentObject var モデル: アプリモデル
-    func body(content: Content) -> some View {
-        content
-            .alert("成りますか？", isPresented: $モデル.成駒確認アラートを表示) {
-                Button("成る") { モデル.今移動した駒を成る() }
-                Button("キャンセル", role: .cancel) { モデル.成駒確認アラートを表示 = false }
-            } message: {
-                Text(モデル.成駒確認メッセージ)
-            }
-    }
-}
-
 private struct 筋: View {
     @EnvironmentObject var モデル: アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
@@ -343,29 +316,6 @@ private struct 段: View {
             }
         }
         .zIndex(-1)
-    }
-}
-
-private struct 駒選択を解除: ViewModifier {
-    @EnvironmentObject var モデル: アプリモデル
-    func body(content: Content) -> some View {
-        content
-            .onExitCommand(perform: モデル.選択中の駒 != .なし ? self.選択解除 : nil)
-    }
-    private func 選択解除() { モデル.駒の選択を解除する() }
-}
-
-private struct アニメーション: ViewModifier {
-    @EnvironmentObject var モデル: アプリモデル
-    @AppStorage("太字") var 太字: Bool = false
-    @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
-    func body(content: Content) -> some View {
-        content
-            .animation(.default, value: モデル.english表記)
-            .animation(.default, value: モデル.上下反転)
-            .animation(.default, value: モデル.増減モード中)
-            .animation(.default, value: self.太字)
-            .animation(.default, value: self.サイズ)
     }
 }
 
