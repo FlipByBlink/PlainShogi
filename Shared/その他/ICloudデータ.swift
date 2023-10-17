@@ -17,9 +17,6 @@ extension ICloudデータ {
     static func remove(key: String) {
         Self.api.removeObject(forKey: key)
     }
-}
-
-extension ICloudデータ {
     static func addObserver(_ observer: Any, _ selector: Selector) {
         NotificationCenter
             .default

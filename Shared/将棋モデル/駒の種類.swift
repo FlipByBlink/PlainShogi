@@ -1,5 +1,8 @@
 enum 駒の種類: String, CaseIterable, Identifiable, Codable {
     case 歩, 角, 飛, 香, 桂, 銀, 金, 王
+}
+
+extension 駒の種類 {
     var id: Self { self }
     func 生駒表記(_ 陣営: 王側か玉側か) -> String {
         if 陣営 == .玉側, self == .王 {
@@ -19,7 +22,9 @@ enum 駒の種類: String, CaseIterable, Identifiable, Codable {
             default: nil
         }
     }
-    var 成駒あり: Bool { self.成駒表記 != nil }
+    var 成駒あり: Bool { 
+        self.成駒表記 != nil
+    }
     var english生駒表記: String {
         switch self {
             case .歩: "P"

@@ -10,7 +10,6 @@ extension EnvironmentValues {
     }
 }
 
-
 #if os(iOS)
 extension EnvironmentValues {
     var 縦並び: Bool {
