@@ -1,12 +1,12 @@
 Plain将棋盤 / PlainShogiBoard
 ----------------------------
-__Platform: iPhone, iPad, Apple Watch, Mac, Apple TV__
+__iPhone, iPad, Apple Watch, Mac, Apple TV__
 
 _どこでも。いつでも。みんなと。将棋盤。_
 
 _Anytime. Everywhere. With friends. Shogi board._
 
-<img src="PlainShogi/Assets.xcassets/RoundedIcon.imageset/RoundedIcon.png" width="64">
+<img src="Shared/サポートファイル/Assets.xcassets/RoundedIcon.imageset/RoundedIcon.png" width="64">
 
 <a href="https://apps.apple.com/app/id1620268476" target="blank">
     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
@@ -16,7 +16,7 @@ _Anytime. Everywhere. With friends. Shogi board._
 
 
 概要 Description
----------------------
+---------------
 駒を自由に動かせるただの将棋盤です。
 
 OSの標準デザインに沿ったシンプルな将棋盤アプリです。
@@ -70,21 +70,21 @@ Use-case: "Play game with a friend", "Discuss shogi problem with many people", e
 <img src="Shared/サポートファイル/その他/READMEAssets/SharePlay.png" width="300">
 
 
-🧰 Source code link
------------------------
+Source code link
+----------------
 [github.com/FlipByBlink/PlainShogi](https://github.com/FlipByBlink/PlainShogi)
 
 ### Source code (Mirror) link
 [gitlab.com/FlipByBlink/PlainShogi_Mirror](https://gitlab.com/FlipByBlink/PlainShogi_Mirror)
 
 
-✉️ Contact
---------------
+Contact
+-------
 sear_pandora_0x@icloud.com
 
 
-🔗 AppStore link
-------------------
+AppStore link
+-------------
 [apps.apple.com/app/id1620268476](https://apps.apple.com/app/id1620268476)
 
 
