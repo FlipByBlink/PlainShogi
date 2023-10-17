@@ -65,6 +65,8 @@
 		169750B62ADE254400443DE2 /* 成駒確認アラート.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750B52ADE254400443DE2 /* 成駒確認アラート.swift */; };
 		169750B82ADE255900443DE2 /* オプション変更アニメーション.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750B72ADE255900443DE2 /* オプション変更アニメーション.swift */; };
 		169750BA2ADE25D700443DE2 /* 駒選択を解除.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750B92ADE25D700443DE2 /* 駒選択を解除.swift */; };
+		169750C12ADE671000443DE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169750C02ADE671000443DE2 /* Assets.xcassets */; };
+		169750F62ADE68AC00443DE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 169750F52ADE68AC00443DE2 /* Assets.xcassets */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -96,7 +98,6 @@
 		F51F039D2A00D03200F05874 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F51F039C2A00D03200F05874 /* SwiftUI.framework */; };
 		F51F03A02A00D03200F05874 /* ウィジェット.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* ウィジェット.swift */; };
 		F51F03A62A00D03400F05874 /* Widget for watchOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F51F03992A00D03200F05874 /* Widget for watchOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F51F03AB2A00D18B00F05874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
 		F51F03AC2A00D27400F05874 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		F51F03AD2A01099700F05874 /* 局面モデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
 		F51F03AE2A01099700F05874 /* アプリモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
@@ -140,7 +141,6 @@
 		F5BD6A142A00BF76004AD4A5 /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
 		F5BD6A162A00BF7D004AD4A5 /* ICloudデータ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */; };
 		F5BD6A182A00BF7D004AD4A5 /* フィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
-		F5BD6A192A00BF87004AD4A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
 		F5BD6A1B2A00C0A0004AD4A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		F5C9FAFF296CF7BB00B513D8 /* 履歴.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 履歴.swift */; };
 		F5C9FB02296D0A3100B513D8 /* SharePlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayView.swift */; };
@@ -275,6 +275,8 @@
 		169750BC2ADE646600443DE2 /* SharePlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SharePlay.png; sourceTree = "<group>"; };
 		169750BD2ADE646600443DE2 /* ConceptImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConceptImage.png; sourceTree = "<group>"; };
 		169750BE2ADE646600443DE2 /* Screenshots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshots.png; sourceTree = "<group>"; };
+		169750C02ADE671000443DE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		169750F52ADE68AC00443DE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 		169750642ADD690300443DE2 /* サポートファイル */ = {
 			isa = PBXGroup;
 			children = (
+				128D156E280FE47F003FF480 /* Assets.xcassets */,
 				F5BBEB662973A4040064F0EF /* Info.plist */,
 				F5C9FB00296CFF7A00B513D8 /* iOS.entitlements */,
 				F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */,
@@ -517,7 +520,6 @@
 		1697507E2ADE137100443DE2 /* サポートファイル */ = {
 			isa = PBXGroup;
 			children = (
-				128D156E280FE47F003FF480 /* Assets.xcassets */,
 				169750652ADD69D400443DE2 /* ローカライズ */,
 				169750BF2ADE651900443DE2 /* その他 */,
 			);
@@ -529,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				F5BD6A1A2A00C007004AD4A5 /* watchOS.entitlements */,
+				169750C02ADE671000443DE2 /* Assets.xcassets */,
 			);
 			name = "サポートファイル";
 			path = "サポートファイル";
@@ -624,6 +627,7 @@
 			children = (
 				F51F039F2A00D03200F05874 /* ウィジェット.swift */,
 				F51F03A32A00D03400F05874 /* Info.plist */,
+				169750F52ADE68AC00443DE2 /* Assets.xcassets */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -805,8 +809,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F51F03AB2A00D18B00F05874 /* Assets.xcassets in Resources */,
 				F5119B9E2A028FE10027A74C /* InfoPlist.strings in Resources */,
+				169750F62ADE68AC00443DE2 /* Assets.xcassets in Resources */,
 				F51F03AC2A00D27400F05874 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -815,8 +819,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5BD6A192A00BF87004AD4A5 /* Assets.xcassets in Resources */,
 				F5119B9D2A028FE10027A74C /* InfoPlist.strings in Resources */,
+				169750C12ADE671000443DE2 /* Assets.xcassets in Resources */,
 				F5BD6A1B2A00C0A0004AD4A5 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
