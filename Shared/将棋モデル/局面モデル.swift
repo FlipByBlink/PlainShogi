@@ -240,7 +240,6 @@ extension 局面モデル {
     static var 前回の局面: Self? { Self.履歴.last }
     var 一手前の局面: Self? { Self.履歴.last { $0 != self } }
     static func 履歴を全て削除する() { ICloudデータ.remove(key: "履歴") }
-    func ver_1_3_の局面を履歴に追加する() { self.現在の局面を履歴に追加する() }
     func 現在の局面をブックマークする() { ICloudデータ.set(self.エンコード(), key: "ブックマーク") }
     static func ブックマークを読み込む() -> Self? { .デコード(ICloudデータ.data(key: "ブックマーク")) }
     func エンコード() -> Data {

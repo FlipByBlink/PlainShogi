@@ -1,23 +1,5 @@
 import SwiftUI
 
-struct バックグラウンド時に駒選択を解除: ViewModifier {
-    @EnvironmentObject var モデル: アプリモデル
-    @Environment(\.scenePhase) var scenePhase
-    func body(content: Content) -> some View {
-        content
-            .onChange(of: self.scenePhase) {
-                if $0 == .background { モデル.駒の選択を解除する() }
-            }
-    }
-}
-
-struct 自動スリープ無効化: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .task { UIApplication.shared.isIdleTimerDisabled = true }
-    }
-}
-
 enum MacCatalyst調整 {
 //    class Delegate: UIResponder, UIApplicationDelegate {
 //#if targetEnvironment(macCatalyst)
@@ -33,7 +15,6 @@ enum MacCatalyst調整 {
 //#endif
 //    }
     struct TitleBar隠し: ViewModifier {
-        @EnvironmentObject var モデル: アプリモデル
         func body(content: Content) -> some View {
 #if targetEnvironment(macCatalyst)
             content
