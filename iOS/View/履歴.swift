@@ -1,23 +1,5 @@
 import SwiftUI
 
-struct 履歴類セクション: View {
-    var body: some View {
-        Section {
-            NavigationLink {
-                ブックマークメニュー()
-            } label: {
-                Label("ブックマーク", systemImage: "bookmark")
-            }
-            NavigationLink {
-                履歴メニュー()
-            } label: {
-                Label("履歴", systemImage: "clock")
-            }
-            .disabled(局面モデル.履歴.isEmpty)
-        }
-    }
-}
-
 struct 履歴メニュー: View {
     @EnvironmentObject var モデル: アプリモデル
     @State private var 履歴削除完了: Bool = false

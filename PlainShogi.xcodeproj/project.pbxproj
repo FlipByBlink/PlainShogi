@@ -18,7 +18,7 @@
 		12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
 		12D424422871893D002D3E80 /* ドロップデリゲート.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* ドロップデリゲート.swift */; };
 		12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D4369C2865CD8300B707F5 /* Configuration.storekit */; };
-		12F4444E286D4B580008A663 /* アプリメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* アプリメニュー.swift */; };
+		12F4444E286D4B580008A663 /* メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* メニュー.swift */; };
 		169750692ADDFCC100443DE2 /* GroupActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750682ADDFCC100443DE2 /* GroupActivity.swift */; };
 		1697506B2ADDFD5100443DE2 /* ブックマーク.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506A2ADDFD5100443DE2 /* ブックマーク.swift */; };
 		1697506D2ADDFE5700443DE2 /* コマンド.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506C2ADDFE5700443DE2 /* コマンド.swift */; };
@@ -67,7 +67,7 @@
 		F52437B329F613A600EA770E /* フィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
 		F52437B529F6499100EA770E /* 🧰MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B429F6499100EA770E /* 🧰MetaData.swift */; };
 		F52437B729F64CB000EA770E /* 増減モード.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 増減モード.swift */; };
-		F52437B829F64CB000EA770E /* アプリメニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* アプリメニュー.swift */; };
+		F52437B829F64CB000EA770E /* メニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* メニュー.swift */; };
 		F52437B929F64CB000EA770E /* ドロップデリゲート.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* ドロップデリゲート.swift */; };
 		F52437BA29F64CB000EA770E /* 履歴.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 履歴.swift */; };
 		F52437BB29F64CB000EA770E /* SharePlayView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayView.swift */; };
@@ -150,7 +150,7 @@
 				F5E054A029FB678D004DC425 /* 将棋View.swift in CopyFiles */,
 				F5E054A129FB678D004DC425 /* ICloudデータ.swift in CopyFiles */,
 				F52437B729F64CB000EA770E /* 増減モード.swift in CopyFiles */,
-				F52437B829F64CB000EA770E /* アプリメニュー.swift in CopyFiles */,
+				F52437B829F64CB000EA770E /* メニュー.swift in CopyFiles */,
 				F52437B929F64CB000EA770E /* ドロップデリゲート.swift in CopyFiles */,
 				F52437BA29F64CB000EA770E /* 履歴.swift in CopyFiles */,
 				F52437BB29F64CB000EA770E /* SharePlayView.swift in CopyFiles */,
@@ -205,7 +205,7 @@
 		12D198532810DD6500CE6578 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12D424412871893D002D3E80 /* ドロップデリゲート.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ドロップデリゲート.swift"; sourceTree = "<group>"; };
 		12D4369C2865CD8300B707F5 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
-		12F4444D286D4B580008A663 /* アプリメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "アプリメニュー.swift"; sourceTree = "<group>"; };
+		12F4444D286D4B580008A663 /* メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "メニュー.swift"; sourceTree = "<group>"; };
 		169750682ADDFCC100443DE2 /* GroupActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivity.swift; sourceTree = "<group>"; };
 		1697506A2ADDFD5100443DE2 /* ブックマーク.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ブックマーク.swift"; sourceTree = "<group>"; };
 		1697506C2ADDFE5700443DE2 /* コマンド.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "コマンド.swift"; sourceTree = "<group>"; };
@@ -347,13 +347,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		12A925252866AB9F0035DC83 /* 🌐Localization */ = {
+		12A925252866AB9F0035DC83 /* ローカライズ */ = {
 			isa = PBXGroup;
 			children = (
 				F5BBD8672973AA720034CCB8 /* 🌏AppStoreDescription.strings */,
 				F5BBD86B2973AA7B0034CCB8 /* 🌏VersionDescription.strings */,
 			);
-			path = "🌐Localization";
+			name = "ローカライズ";
+			path = "ローカライズ";
 			sourceTree = "<group>";
 		};
 		12D4368B2865CD5E00B707F5 /* おまけ */ = {
@@ -388,19 +389,20 @@
 				F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */,
 				12D4369C2865CD8300B707F5 /* Configuration.storekit */,
 				F5019FD2296ABBBD007CB14D /* memo.md */,
-				12A925252866AB9F0035DC83 /* 🌐Localization */,
+				12A925252866AB9F0035DC83 /* ローカライズ */,
 			);
 			name = "サポートファイル";
 			path = "サポートファイル";
 			sourceTree = "<group>";
 		};
-		169750652ADD69D400443DE2 /* 🌐Localization */ = {
+		169750652ADD69D400443DE2 /* ローカライズ */ = {
 			isa = PBXGroup;
 			children = (
 				124B75572810CD6D00027DCA /* Localizable.strings */,
 				12A925232866AA6C0035DC83 /* InfoPlist.strings */,
 			);
-			path = "🌐Localization";
+			name = "ローカライズ";
+			path = "ローカリゼーション";
 			sourceTree = "<group>";
 		};
 		169750662ADD6E3300443DE2 /* その他 */ = {
@@ -428,14 +430,25 @@
 			isa = PBXGroup;
 			children = (
 				169750772ADE048000443DE2 /* ツールボタン.swift */,
-				12F4444D286D4B580008A663 /* アプリメニュー.swift */,
+				12F4444D286D4B580008A663 /* メニュー.swift */,
 				F57D6F0629FCD60D00EA0D79 /* シート管理.swift */,
-				12D424412871893D002D3E80 /* ドロップデリゲート.swift */,
 				127132E72873CDF20008AE46 /* 増減モード.swift */,
 				F5C9FAFE296CF7BB00B513D8 /* 履歴.swift */,
 				1697506A2ADDFD5100443DE2 /* ブックマーク.swift */,
+				12D424412871893D002D3E80 /* ドロップデリゲート.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		169750792ADE08C500443DE2 /* サポートファイル */ = {
+			isa = PBXGroup;
+			children = (
+				F5119BB92A029B570027A74C /* tvOS.entitlements */,
+				F553013F2A074CA200E1B91D /* Info.plist */,
+				F5119BA92A0291020027A74C /* Assets.xcassets */,
+			);
+			name = "サポートファイル";
+			path = "サポートファイル";
 			sourceTree = "<group>";
 		};
 		F5119BA42A0291000027A74C /* tvOS */ = {
@@ -446,9 +459,7 @@
 				F5119BB62A0292E10027A74C /* 将棋View.swift */,
 				F58C48082A03EDFB006D7C55 /* メニュー.swift */,
 				F58C480E2A04CA38006D7C55 /* 増減モード.swift */,
-				F5119BB92A029B570027A74C /* tvOS.entitlements */,
-				F553013F2A074CA200E1B91D /* Info.plist */,
-				F5119BA92A0291020027A74C /* Assets.xcassets */,
+				169750792ADE08C500443DE2 /* サポートファイル */,
 			);
 			path = tvOS;
 			sourceTree = "<group>";
@@ -484,7 +495,7 @@
 				F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */,
 				F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */,
 				169750662ADD6E3300443DE2 /* その他 */,
-				169750652ADD69D400443DE2 /* 🌐Localization */,
+				169750652ADD69D400443DE2 /* ローカライズ */,
 				128D156E280FE47F003FF480 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -692,7 +703,7 @@
 				F5C9FAFF296CF7BB00B513D8 /* 履歴.swift in Sources */,
 				F5C9FB02296D0A3100B513D8 /* SharePlayView.swift in Sources */,
 				127132E82873CDF20008AE46 /* 増減モード.swift in Sources */,
-				12F4444E286D4B580008A663 /* アプリメニュー.swift in Sources */,
+				12F4444E286D4B580008A663 /* メニュー.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,14 +1019,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = tvOS/tvOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "tvOS/サポートファイル/tvOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = tvOS/Info.plist;
+				INFOPLIST_FILE = "tvOS/サポートファイル/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
@@ -1040,14 +1051,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = tvOS/tvOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "tvOS/サポートファイル/tvOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = tvOS/Info.plist;
+				INFOPLIST_FILE = "tvOS/サポートファイル/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;

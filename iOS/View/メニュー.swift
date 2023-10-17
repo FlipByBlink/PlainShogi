@@ -2,7 +2,7 @@ import SwiftUI
 import GroupActivities
 import UniformTypeIdentifiers
 
-struct アプリメニュー: View {
+struct メニュートップ: View {
     @EnvironmentObject var モデル: アプリモデル
     @StateObject private var groupStateObserver = GroupStateObserver()
     var body: some View {
@@ -28,7 +28,19 @@ struct アプリメニュー: View {
                     Text("オプション")
                 }
             }
-            履歴類セクション()
+            Section {
+                NavigationLink {
+                    ブックマークメニュー()
+                } label: {
+                    Label("ブックマーク", systemImage: "bookmark")
+                }
+                NavigationLink {
+                    履歴メニュー()
+                } label: {
+                    Label("履歴", systemImage: "clock")
+                }
+                .disabled(局面モデル.履歴.isEmpty)
+            }
             Section {
                 SharePlay紹介リンク()
                 細かな使い方リンク()
