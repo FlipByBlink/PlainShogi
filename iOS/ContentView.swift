@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var モデル: アプリモデル
     var body: some View {
         VStack(spacing: 0) {
             将棋View()
@@ -17,5 +18,6 @@ struct ContentView: View {
         .modifier(SharePlay環境構築())
         .modifier(シート管理())
         .environment(\.layoutDirection, .leftToRight)
+        .environmentObject(モデル.アプリ内課金管理)
     }
 }
