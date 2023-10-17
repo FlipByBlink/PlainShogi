@@ -6,7 +6,7 @@ _どこでも。いつでも。みんなと。将棋盤。_
 
 _Anytime. Everywhere. With friends. Shogi board._
 
-<img src="Shared/サポートファイル/Assets.xcassets/RoundedIcon.imageset/RoundedIcon.png" width="64">
+<img src="iOS/サポートファイル/Assets.xcassets/RoundedIcon.imageset/RoundedIcon.png" width="64">
 
 <a href="https://apps.apple.com/app/id1620268476" target="blank">
     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
