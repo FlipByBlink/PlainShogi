@@ -1,5 +1,7 @@
-Plain将棋盤 PlainShogiBoard - iPhone, iPad, Apple Watch, Mac, Apple TV
---------------------------------------------------------------------
+Plain将棋盤 / PlainShogiBoard
+----------------------------
+__Platform: iPhone, iPad, Apple Watch, Mac, Apple TV__
+
 _どこでも。いつでも。みんなと。将棋盤。_
 
 _Anytime. Everywhere. With friends. Shogi board._
@@ -10,7 +12,7 @@ _Anytime. Everywhere. With friends. Shogi board._
     <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
 </a>
 
-<img src="PlainShogi/Assets.xcassets/README/ConceptImage.imageset/ConceptImage.png" width="600">
+<img src="Shared/サポートファイル/その他/READMEAssets/ConceptImage.png" width="600">
 
 
 概要 Description
@@ -47,7 +49,7 @@ Output/Input function to/from plain text.
 Sync between devices by iCloud.
 
 
-<img src="PlainShogi/Assets.xcassets/README/Screenshots.imageset/Screenshots.png" width="600">
+<img src="Shared/サポートファイル/その他/READMEAssets/Screenshots.png" width="600">
 
 
 ### SharePlay
@@ -65,7 +67,7 @@ Play shogi board with FaceTime.
 Use-case: "Play game with a friend", "Discuss shogi problem with many people", etc.
 
 
-<img src="PlainShogi/Assets.xcassets/README/SharePlay.imageset/SharePlay.png" width="300">
+<img src="Shared/サポートファイル/その他/READMEAssets/SharePlay.png" width="300">
 
 
 🧰 Source code link
