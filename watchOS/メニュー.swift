@@ -194,63 +194,39 @@ private struct ブックマークメニュー: View {
 private struct ガイドメニュー: View {
     var body: some View {
         NavigationLink {
-            self.メニュー()
-        } label: {
-            Label("About App", systemImage: "questionmark")
-        }
-    }
-    private func メニュー() -> some View {
-        List {
-            ZStack {
-                Color.clear
-                VStack(spacing: 8) {
-                    Image("RoundedIcon")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .clipShape(Circle())
-                    VStack(spacing: 6) {
-                        Text(ℹ️appName)
-                            .font(.system(.headline))
-                            .tracking(1.5)
-                            .opacity(0.75)
-                        Text(ℹ️appSubTitle)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                            .multilineTextAlignment(.center)
-                    }
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.1)
-                }
-                .padding(.horizontal, 4)
-                .padding(.vertical, 16)
-            }
-            Link(destination: 🔗appStoreProductURL) {
-                Label("Open AppStore page", systemImage: "link")
-            }
             Self.補足セクション()
+        } label: {
+            Label("補足", systemImage: "info")
+        }
+        NavigationLink {
+            ℹ️AboutAppMenu()
+        } label: {
+            Label("アプリについて", systemImage: "questionmark")
         }
     }
     private static func 補足セクション() -> some View {
-        Section {
-            VStack(alignment: .leading, spacing: 4) {
-                Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます", systemImage: "icloud")
-                Text("iCloud同期は簡易的な用途を想定しています。「同時に起動している端末間での同期」といったリアルタイム性の高い用途は想定していません。")
-                    .foregroundStyle(.secondary)
-                    .font(.footnote)
-            }
-            VStack(alignment: .leading, spacing: 4) {
-                Text("iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません")
-                Text("""
+        List {
+            Section {
+                VStack(alignment: .leading, spacing: 4) {
+                    Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます", systemImage: "icloud")
+                    Text("iCloud同期は簡易的な用途を想定しています。「同時に起動している端末間での同期」といったリアルタイム性の高い用途は想定していません。")
+                        .foregroundStyle(.secondary)
+                        .font(.footnote)
+                }
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません")
+                    Text("""
                 ・SharePlay
                 ・セリフ体フォントオプション
                 ・駒のサイズオプション
                 ・テキスト連携機能
                 """)
-                .foregroundStyle(.secondary)
-                .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .font(.footnote)
+                }
+            } header: {
+                Text("補足")
             }
-        } header: {
-            Text("補足")
         }
     }
 }

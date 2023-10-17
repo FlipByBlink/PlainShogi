@@ -366,12 +366,12 @@ private struct アプリについてメニュー: View {
             Spacer()
             VStack(spacing: 32) {
                 Spacer()
-                Text(ℹ️appName)
+                Text(🗒️StaticInfo.appName)
                     .font(.largeTitle)
-                Text(ℹ️appSubTitle)
+                Text(🗒️StaticInfo.appSubTitle)
                     .foregroundStyle(.secondary)
                 Spacer()
-                Link(destination: 🔗appStoreProductURL) {
+                Link(destination: 🗒️StaticInfo.appStoreProductURL) {
                     Label("AppStoreリンク", systemImage: "link")
                         .padding(24)
                 }

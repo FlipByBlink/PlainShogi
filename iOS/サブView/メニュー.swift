@@ -47,8 +47,18 @@ struct メニュートップ: View {
                 テキスト書き出し読み込み紹介リンク()
                 不具合フィードバックリンク()
             }
-            📣ADMenuLink()
-            ℹ️AboutAppLink()
+            Section {
+                ℹ️IconAndName()
+                ℹ️AppStoreLink()
+                NavigationLink {
+                    List { ℹ️AboutAppContent() }
+                        .navigationTitle(String(localized: "About App", table: "🌐AboutApp"))
+                } label: {
+                    Label(String(localized: "About App", table: "🌐AboutApp"),
+                          systemImage: "doc")
+                }
+            }
+            🛒InAppPurchaseMenuLink()
         }
         .navigationTitle("メニュー")
         .animation(.default, value: self.groupStateObserver.isEligibleForGroupSession)

@@ -58,19 +58,6 @@ enum MacCatalyst調整 {
     }
 }
 
-struct ユーザーレビュー依頼: ViewModifier {
-    @State private var checkToRequest: Bool = false
-    func body(content: Content) -> some View {
-        content
-            .modifier(💬PrepareToRequestUserReview(self.$checkToRequest))
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
-                    self.checkToRequest = true
-                }
-            }
-    }
-}
-
 //struct データ管理_ver_1_2_2 {
 //    static var 以前のデータがあるか: Bool {
 //        UserDefaults.standard.dictionary(forKey: "駒の配置") != nil
