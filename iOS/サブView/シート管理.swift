@@ -17,7 +17,7 @@ struct シート管理: ViewModifier {
                                 case .履歴: 履歴メニュー()
                                 case .ブックマーク: ブックマークメニュー()
                                 case .手駒増減(let 陣営): 手駒増減メニュー(陣営)
-                                case .SharePlayガイド: SharePlayガイド()
+                                case .SharePlayガイド: SharePlayガイドメニュー()
                                 case .広告: Text(verbatim: "⚠︎")
                             }
                         }

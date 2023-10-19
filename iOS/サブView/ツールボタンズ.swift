@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ツールボタン: ViewModifier {
+struct ツールボタンズ: ViewModifier {
     @EnvironmentObject var モデル: アプリモデル
     func body(content: Content) -> some View {
         content

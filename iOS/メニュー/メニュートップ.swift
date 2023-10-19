@@ -42,7 +42,7 @@ struct メニュートップ: View {
                 .disabled(局面モデル.履歴.isEmpty)
             }
             Section {
-                SharePlay紹介リンク()
+                SharePlay紹介メニューリンク()
                 細かな使い方リンク()
                 テキスト書き出し読み込み紹介リンク()
                 不具合フィードバックリンク()
@@ -65,74 +65,6 @@ struct メニュートップ: View {
     }
 }
 
-struct メニューボタン: View { // ⚙️
-    @EnvironmentObject var モデル: アプリモデル
-    @AppStorage("セリフ体") var セリフ体: Bool = false
-    var body: some View {
-#if !targetEnvironment(macCatalyst)
-        self.content()
-#else
-        EmptyView()
-#endif
-    }
-    private func content() -> some View {
-        Menu {
-            強調表示クリアボタン()
-            盤面初期化ボタン()
-            増減モード開始ボタン()
-            一手戻すボタン()
-            self.上下反転ボタン()
-            self.履歴ボタン()
-            self.ブックマーク表示ボタン()
-            self.駒の選択解除ボタン()
-        } label: {
-            Image(systemName: self.セリフ体 ? "gear" : "gearshape")
-                .font(.title2.weight(.light))
-                .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                .padding(8)
-                .padding(.trailing)
-        } primaryAction: {
-            モデル.表示中のシート = .メニュー
-        }
-        .tint(.primary)
-        .accessibilityLabel("Open menu")
-    }
-    private func 上下反転ボタン() -> some View {
-        Button {
-            モデル.上下反転.toggle()
-            フィードバック.成功()
-        } label: {
-            Label(モデル.上下反転 ? "上下反転を元に戻す" : "上下反転させる",
-                  systemImage: "arrow.up.arrow.down")
-        }
-    }
-    private func 履歴ボタン() -> some View {
-        Button {
-            モデル.表示中のシート = .履歴
-        } label: {
-            Label("履歴を表示", systemImage: "clock")
-        }
-    }
-    private func ブックマーク表示ボタン() -> some View {
-        Button {
-            モデル.表示中のシート = .ブックマーク
-        } label: {
-            Label("ブックマークを表示", systemImage: "bookmark")
-        }
-    }
-    private func 駒の選択解除ボタン() -> some View {
-        Group {
-            if モデル.選択中の駒 != .なし {
-                Button {
-                    モデル.駒の選択を解除する()
-                } label: {
-                    Label("駒の選択を解除", systemImage: "square.slash")
-                }
-            }
-        }
-    }
-}
-
 private struct SharePlay誘導セクション: View {
     @EnvironmentObject var モデル: アプリモデル
     @StateObject private var groupStateObserver = GroupStateObserver()
@@ -140,7 +72,7 @@ private struct SharePlay誘導セクション: View {
         if self.groupStateObserver.isEligibleForGroupSession {
             Section {
                 NavigationLink {
-                    SharePlayガイド()
+                    SharePlayガイドメニュー()
                 } label: {
                     Label("アクティビティ", systemImage: "shareplay")
                         .badge("共有将棋盤")
@@ -150,54 +82,6 @@ private struct SharePlay誘導セクション: View {
                     .textCase(.none)
             }
         }
-    }
-}
-
-private struct 盤面初期化ボタン: View {
-    @EnvironmentObject var モデル: アプリモデル
-    var body: some View {
-        Button {
-            モデル.盤面を初期化する()
-        } label: {
-            Label("盤面を初期化", systemImage: "arrow.counterclockwise")
-        }
-    }
-}
-
-private struct 強調表示クリアボタン: View {
-    @EnvironmentObject var モデル: アプリモデル
-    var body: some View {
-        Button {
-            モデル.強調表示をクリア()
-        } label: {
-            Label("強調表示をクリア", systemImage: "square.dashed")
-        }
-        .disabled(モデル.何も強調表示されていない)
-        .disabled(モデル.強調表示常時オフかつ駒が選択されていない)
-    }
-}
-
-private struct 増減モード開始ボタン: View {
-    var タイトル: LocalizedStringKey = "駒を増減"
-    @EnvironmentObject var モデル: アプリモデル
-    var body: some View {
-        Button {
-            モデル.増減モードを開始する()
-        } label: {
-            Label(self.タイトル, systemImage: "wand.and.rays")
-        }
-    }
-}
-
-private struct 一手戻すボタン: View {
-    @EnvironmentObject var モデル: アプリモデル
-    var body: some View {
-        Button {
-            モデル.一手戻す()
-        } label: {
-            Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
-        }
-        .disabled(モデル.局面.一手前の局面 == nil)
     }
 }
 
@@ -399,64 +283,5 @@ private struct テキスト変換プレビュー: View {
             }
         }
         .padding(8)
-    }
-}
-
-private struct 不具合フィードバックリンク: View {
-    var body: some View {
-        NavigationLink {
-            Self.メニュー()
-        } label: {
-            Label("不具合フィードバック", systemImage: "ladybug")
-        }
-    }
-    private struct メニュー: View {
-        @Environment(\.locale) var locale
-        private var 日本語環境: Bool { self.locale.language.languageCode == .japanese }
-        private static var アドレス: String = "sear_pandora_0x@icloud.com"
-        private var ボタンURL: URL {
-            var 値 = "mailto:" + Self.アドレス
-            let タイトル: String
-            if self.日本語環境 {
-                タイトル = "☖ Plain将棋盤 不具合フィードバック 🐞"
-            } else {
-                タイトル = "☖ PlainShogiBoard bug feedback 🐞"
-            }
-            値 += "?subject="
-            値 += タイトル.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-            if self.日本語環境 {
-                値 += "&body="
-                値 += "ここに入力してください".addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
-            } else {
-                値 += "&body=Input%20here"
-            }
-            return URL(string: 値)!
-        }
-        var body: some View {
-            List {
-                Section {
-                    Label("もし、このアプリでバグやクラッシュが発生した場合、以下のボタン(もしくはアドレス)からフィードバックを送るとアプリの改善に繋がります",
-                          systemImage: "ladybug")
-                    Label("特にSharePlay中に発生した不具合について報告していただけるととても助かります",
-                          systemImage: "shareplay")
-                }
-                Link(destination: self.ボタンURL) {
-                    Label("メールアプリからフィードバックを送る", systemImage: "envelope")
-                }
-                .badge(Text(Image(systemName: "arrow.up.forward.app")))
-                HStack {
-                    Label(Self.アドレス, systemImage: "link")
-                        .textSelection(.enabled)
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    Button("コピー") {
-                        UIPasteboard.general.string = Self.アドレス
-                        フィードバック.軽め()
-                    }
-                    .buttonStyle(.bordered)
-                }
-            }
-            .navigationTitle("不具合フィードバック")
-        }
     }
 }

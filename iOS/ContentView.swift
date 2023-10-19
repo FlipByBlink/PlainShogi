@@ -9,7 +9,7 @@ struct ContentView: View {
         }
         .padding(固定値.全体パディング)
         .padding(.top, 8)
-        .modifier(ツールボタン())
+        .modifier(ツールボタンズ())
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .modifier(MacCatalyst調整.TitleBar隠し())
         .modifier(バックグラウンド時に駒選択を解除())
