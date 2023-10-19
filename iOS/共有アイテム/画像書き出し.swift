@@ -20,7 +20,7 @@ enum 共有アイテム {
             .suggestedFileName(共有アイテム.ファイル名)
         }
     }
-    static let 一時ファイルURL: URL = .temporaryDirectory.appending(component: "image.png")
+    static let 一時ファイルURL: URL = .cachesDirectory.appending(component: "image.png")
     static var ファイル名: String {
         .init(localized: "☖ Plain将棋盤 ")
         + Date.now.formatted(.dateTime.year().month().day())

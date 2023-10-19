@@ -413,6 +413,7 @@
 				169750762ADE043D00443DE2 /* サブView */,
 				169750672ADDFCA500443DE2 /* SharePlay */,
 				169750802ADE17E300443DE2 /* ドラッグ&ドロップ */,
+				169E41482AE0E8AB00CFA307 /* 共有アイテム */,
 				12D436992865CD6D00B707F5 /* その他 */,
 				169750642ADD690300443DE2 /* サポートファイル */,
 			);
@@ -454,7 +455,6 @@
 			children = (
 				1697506C2ADDFE5700443DE2 /* コマンド.swift */,
 				1697506E2ADDFE8500443DE2 /* 固定値.swift */,
-				F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */,
 				161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */,
 				161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */,
 				F52437AE29F6125900EA770E /* その他.swift */,
@@ -502,7 +502,6 @@
 				F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */,
 				F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */,
 				F52437B229F613A600EA770E /* フィードバック.swift */,
-				161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */,
 				169750A12ADE194600443DE2 /* 不特定エラー.swift */,
 				169750F92ADE7AAC00443DE2 /* おまけ */,
 			);
@@ -653,6 +652,15 @@
 				169750FC2ADE7AB900443DE2 /* 🛒InAppPurchaseModel.swift */,
 			);
 			path = "おまけ";
+			sourceTree = "<group>";
+		};
+		169E41482AE0E8AB00CFA307 /* 共有アイテム */ = {
+			isa = PBXGroup;
+			children = (
+				161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */,
+				F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */,
+			);
+			path = "共有アイテム";
 			sourceTree = "<group>";
 		};
 		F5119BA42A0291000027A74C /* tvOS */ = {
