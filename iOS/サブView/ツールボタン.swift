@@ -9,7 +9,10 @@ struct ツールボタン: ViewModifier {
                     if モデル.増減モード中 {
                         増減モード完了ボタン()
                     } else {
-                        メニューボタン()
+                        HStack {
+                            共有ボタン()
+                            メニューボタン()
+                        }
                     }
                 }
                 .animation(.default, value: モデル.増減モード中)

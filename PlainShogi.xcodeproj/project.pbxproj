@@ -21,6 +21,7 @@
 		12F4444E286D4B580008A663 /* メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* メニュー.swift */; };
 		161FCCCB2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */; };
 		161FCCCD2ADE8FF00088E6AA /* 自動スリープ無効化.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */; };
+		161FCCE92ADF857B0088E6AA /* 画像書き出し.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */; };
 		169750692ADDFCC100443DE2 /* GroupActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750682ADDFCC100443DE2 /* GroupActivity.swift */; };
 		1697506B2ADDFD5100443DE2 /* ブックマーク.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506A2ADDFD5100443DE2 /* ブックマーク.swift */; };
 		1697506D2ADDFE5700443DE2 /* コマンド.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506C2ADDFE5700443DE2 /* コマンド.swift */; };
@@ -250,6 +251,7 @@
 		12F4444D286D4B580008A663 /* メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "メニュー.swift"; sourceTree = "<group>"; };
 		161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "バックグラウンド時に駒選択を解除.swift"; sourceTree = "<group>"; };
 		161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "自動スリープ無効化.swift"; sourceTree = "<group>"; };
+		161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像書き出し.swift"; sourceTree = "<group>"; };
 		169750682ADDFCC100443DE2 /* GroupActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivity.swift; sourceTree = "<group>"; };
 		1697506A2ADDFD5100443DE2 /* ブックマーク.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ブックマーク.swift"; sourceTree = "<group>"; };
 		1697506C2ADDFE5700443DE2 /* コマンド.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "コマンド.swift"; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 				F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */,
 				F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */,
 				F52437B229F613A600EA770E /* フィードバック.swift */,
+				161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */,
 				169750A12ADE194600443DE2 /* 不特定エラー.swift */,
 				169750F92ADE7AAC00443DE2 /* おまけ */,
 			);
@@ -906,6 +909,7 @@
 				1697509A2ADE191000443DE2 /* 手前か対面か.swift in Sources */,
 				169750782ADE048000443DE2 /* ツールボタン.swift in Sources */,
 				169750922ADE18E900443DE2 /* 駒の場所.swift in Sources */,
+				161FCCE92ADF857B0088E6AA /* 画像書き出し.swift in Sources */,
 				1697510B2ADE7BB800443DE2 /* 📣ADComponents.swift in Sources */,
 				F52437B329F613A600EA770E /* フィードバック.swift in Sources */,
 				128D156B280FE47E003FF480 /* App.swift in Sources */,

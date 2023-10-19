@@ -89,8 +89,8 @@ struct メニューボタン: View { // ⚙️
             Image(systemName: self.セリフ体 ? "gear" : "gearshape")
                 .font(.title2.weight(.light))
                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                .padding()
-                .padding(.trailing, 8)
+                .padding(8)
+                .padding(.trailing)
         } primaryAction: {
             モデル.表示中のシート = .メニュー
         }
