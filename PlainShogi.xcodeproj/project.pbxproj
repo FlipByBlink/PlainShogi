@@ -89,6 +89,8 @@
 		169E41512AE1388F00CFA307 /* 不具合フィードバックメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41502AE1388F00CFA307 /* 不具合フィードバックメニュー.swift */; };
 		169E41532AE1491900CFA307 /* SharePlayガイドメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */; };
 		169E41552AE1495600CFA307 /* SharePlay紹介メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */; };
+		169E41572AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41562AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift */; };
+		169E41592AE14AC600CFA307 /* テキスト連携メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41582AE14AC600CFA307 /* テキスト連携メニュー.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -310,6 +312,8 @@
 		169E41502AE1388F00CFA307 /* 不具合フィードバックメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "不具合フィードバックメニュー.swift"; sourceTree = "<group>"; };
 		169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlayガイドメニュー.swift"; sourceTree = "<group>"; };
 		169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlay紹介メニュー.swift"; sourceTree = "<group>"; };
+		169E41562AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "見た目カスタマイズメニュー.swift"; sourceTree = "<group>"; };
+		169E41582AE14AC600CFA307 /* テキスト連携メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "テキスト連携メニュー.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -682,8 +686,10 @@
 				12F4444D286D4B580008A663 /* メニュートップ.swift */,
 				169E414C2AE1371300CFA307 /* メニューボタン.swift */,
 				169E414E2AE1375C00CFA307 /* コマンドボタンズ.swift */,
+				169E41562AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift */,
 				F5C9FAFE296CF7BB00B513D8 /* 履歴メニュー.swift */,
 				1697506A2ADDFD5100443DE2 /* ブックマークメニュー.swift */,
+				169E41582AE14AC600CFA307 /* テキスト連携メニュー.swift */,
 				169E41502AE1388F00CFA307 /* 不具合フィードバックメニュー.swift */,
 			);
 			path = "メニュー";
@@ -953,9 +959,11 @@
 				F52437B329F613A600EA770E /* フィードバック.swift in Sources */,
 				128D156B280FE47E003FF480 /* App.swift in Sources */,
 				F5BD6A102A00BF4C004AD4A5 /* 局面モデル.swift in Sources */,
+				169E41572AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift in Sources */,
 				F525A7D629F8FB1F001E8D5F /* 将棋View.swift in Sources */,
 				169750822ADE180700443DE2 /* ドラッグ対象.swift in Sources */,
 				169750FD2ADE7ABA00443DE2 /* 🗒️StaticInfo.swift in Sources */,
+				169E41592AE14AC600CFA307 /* テキスト連携メニュー.swift in Sources */,
 				169750872ADE188300443DE2 /* 盤上の駒.swift in Sources */,
 				169750AF2ADE233600443DE2 /* 操作エリア外で駒選択を解除.swift in Sources */,
 				F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
