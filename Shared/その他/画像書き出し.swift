@@ -101,6 +101,7 @@ struct 共有ボタン: View {
             .font(.title3.weight(.light))
             .dynamicTypeSize(...DynamicTypeSize.accessibility1)
             .padding(8)
+            .padding(.leading)
             .foregroundStyle(.foreground)
     }
     private var サムネイルアイコン: Image {

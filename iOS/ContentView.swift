@@ -8,6 +8,7 @@ struct ContentView: View {
             SharePlayインジケーター()
         }
         .padding(固定値.全体パディング)
+        .padding(.top, 8)
         .modifier(ツールボタン())
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .modifier(MacCatalyst調整.TitleBar隠し())
