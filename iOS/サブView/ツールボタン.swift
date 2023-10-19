@@ -7,7 +7,6 @@ struct ツールボタン: ViewModifier {
             .overlay(alignment: .top) {
                 HStack {
                     if !モデル.増減モード中 { 共有ボタン() }
-                        
                     Spacer()
                     if モデル.増減モード中 {
                         増減モード完了ボタン()

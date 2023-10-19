@@ -83,6 +83,7 @@
 		1697510E2ADE7E8700443DE2 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
 		169751102ADE7F4700443DE2 /* ユーザーレビュー依頼.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */; };
 		169751112ADE80C500443DE2 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
+		169E414A2AE0F9A300CFA307 /* 共有ボタン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41492AE0F9A300CFA307 /* 共有ボタン.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -298,6 +299,7 @@
 		1697510C2ADE7E3400443DE2 /* アプリについて.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "アプリについて.swift"; sourceTree = "<group>"; };
 		1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ユーザーレビュー依頼.swift"; sourceTree = "<group>"; };
 		169751122ADE848100443DE2 /* マイグレーションver1.2.2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "マイグレーションver1.2.2.swift"; sourceTree = "<group>"; };
+		169E41492AE0F9A300CFA307 /* 共有ボタン.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "共有ボタン.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -657,6 +659,7 @@
 		169E41482AE0E8AB00CFA307 /* 共有アイテム */ = {
 			isa = PBXGroup;
 			children = (
+				169E41492AE0F9A300CFA307 /* 共有ボタン.swift */,
 				161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */,
 				F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */,
 			);
@@ -917,6 +920,7 @@
 				1697509A2ADE191000443DE2 /* 手前か対面か.swift in Sources */,
 				169750782ADE048000443DE2 /* ツールボタン.swift in Sources */,
 				169750922ADE18E900443DE2 /* 駒の場所.swift in Sources */,
+				169E414A2AE0F9A300CFA307 /* 共有ボタン.swift in Sources */,
 				161FCCE92ADF857B0088E6AA /* 画像書き出し.swift in Sources */,
 				1697510B2ADE7BB800443DE2 /* 📣ADComponents.swift in Sources */,
 				F52437B329F613A600EA770E /* フィードバック.swift in Sources */,
