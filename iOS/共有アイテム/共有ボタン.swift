@@ -22,6 +22,8 @@ struct 共有ボタン: View {
                           label: self.ボタンアイコン)
             }
         }
+        .contextMenu { self.サブボタンズ() }
+        .padding(.leading)
         .task(priority: .background) { self.画像保存をリクエスト() }
         .onChange(of: self.モデル.局面) { _ in self.画像保存をリクエスト() }
         .onChange(of: self.モデル.上下反転) { _ in self.画像保存をリクエスト() }
@@ -55,7 +57,6 @@ private extension 共有ボタン {
             .font(.title3.weight(.light))
             .dynamicTypeSize(...DynamicTypeSize.accessibility1)
             .padding(8)
-            .padding(.leading)
             .foregroundStyle(.foreground)
     }
     private enum アイテム {
@@ -76,6 +77,22 @@ private extension 共有ボタン {
                 }
                 .suggestedFileName(画像書き出し.ファイル名)
             }
+        }
+    }
+    private func サブボタンズ() -> some View {
+        Section {
+            Button {
+                self.モデル.表示中のシート = .テキスト共有
+            } label: {
+                Label("テキストとして共有", systemImage: "square.and.arrow.up")
+            }
+            Button {
+                self.モデル.表示中のシート = .画像共有
+            } label: {
+                Label("画像として共有", systemImage: "square.and.arrow.up")
+            }
+        } header: {
+            Text("フォーマットを指定して共有")
         }
     }
 }

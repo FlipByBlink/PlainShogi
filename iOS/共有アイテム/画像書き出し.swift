@@ -28,6 +28,14 @@ enum 画像書き出し {
             return
         }
     }
+    static func 画像を取得() -> Image? {
+        if let データ = try? Data(contentsOf: Self.一時ファイルURL),
+           let uiImage = UIImage(data: データ) {
+            Image(uiImage: uiImage)
+        } else {
+            nil
+        }
+    }
     @MainActor
     static func サムネイルを取得(_ モデル: アプリモデル) -> Image {
         let レンダラー = ImageRenderer(content: {

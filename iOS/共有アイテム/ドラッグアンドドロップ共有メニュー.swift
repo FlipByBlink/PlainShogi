@@ -1,20 +1,10 @@
 import SwiftUI
 
-struct テキスト連携メニューリンク: View {
+struct ドラッグアンドドロップ共有メニューリンク: View {
     @EnvironmentObject var モデル: アプリモデル
     var body: some View {
         NavigationLink {
             List {
-                Section {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(モデル.現在の盤面をテキストに変換する())
-                            .textSelection(.enabled)
-                        Self.コピーボタン()
-                    }
-                    .padding()
-                } header: {
-                    Text("テキスト書き出し例")
-                }
                 Section {
                     VStack(alignment: .leading, spacing: 2) {
                         Label("駒を他のアプリへドラッグして盤面をテキストとして書き出せます。",
@@ -31,39 +21,31 @@ struct テキスト連携メニューリンク: View {
                     }
                     .padding(.vertical, 4)
                 }
-                Section {
-                    Button {
-                        モデル.テキストを局面としてペースト()
-                        モデル.表示中のシート = nil
-                    } label: {
-                        Label("テキストを局面としてペースト", systemImage: "doc.on.clipboard")
-                    }
-                }
             }
-            .navigationTitle("テキスト機能")
+            .navigationTitle("他のアプリとドラッグ&ドロップ")
+            .navigationBarTitleDisplayMode(.inline)
         } label: {
-            Label("テキスト書き出し/読み込み機能", systemImage: "square.and.arrow.up.on.square")
+            Label("ドラッグ&ドロップについて", systemImage: "hand.draw")
         }
     }
 }
 
-private extension テキスト連携メニューリンク {
-    private struct コピーボタン: View {
+private extension ドラッグアンドドロップ共有メニューリンク {
+    private struct コピーボタン: View { //TODO: 再検討
         @EnvironmentObject var モデル: アプリモデル
         @State private var 完了: Bool = false
         var body: some View {
-            HStack {
-                Spacer()
+            Button {
+                モデル.現在の局面をテキストとしてコピー()
+                withAnimation { self.完了 = true }
+            } label: {
+                Label("テキストとしてコピー", systemImage: "doc.on.doc")
+                    .foregroundStyle(self.完了 ? .secondary : .primary)
+                    .font(.subheadline.weight(.medium))
+            }
+            .buttonStyle(.bordered)
+            .overlay {
                 if self.完了 { Image(systemName: "checkmark") }
-                Button {
-                    モデル.現在の局面をテキストとしてコピー()
-                    withAnimation { self.完了 = true }
-                } label: {
-                    Label("テキストとしてコピー", systemImage: "doc.on.doc")
-                        .foregroundStyle(self.完了 ? .secondary : .primary)
-                        .font(.caption.weight(.medium))
-                }
-                .buttonStyle(.bordered)
             }
         }
     }

@@ -18,6 +18,8 @@ struct シート管理: ViewModifier {
                                 case .ブックマーク: ブックマークメニュー()
                                 case .手駒増減(let 陣営): 手駒増減メニュー(陣営)
                                 case .SharePlayガイド: SharePlayガイドメニュー()
+                                case .テキスト共有: Self.テキスト共有メニュー()
+                                case .画像共有: Self.画像共有メニュー()
                                 case .広告: Text(verbatim: "⚠︎")
                             }
                         }
@@ -31,6 +33,9 @@ struct シート管理: ViewModifier {
                 if アプリ内課金.checkToShowADSheet() { モデル.表示中のシート = .広告 }
             }
     }
+}
+
+private extension シート管理 {
     private func 閉じるボタン() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button {
@@ -43,5 +48,17 @@ struct シート管理: ViewModifier {
             .accessibilityLabel("Dismiss")
             .keyboardShortcut(.cancelAction)
         }
+    }
+    private static func テキスト共有メニュー() -> some View {
+        List {
+            テキスト共有メニューコンポーネンツ()
+        }
+        .navigationTitle("テキストとして共有")
+    }
+    private static func 画像共有メニュー() -> some View {
+        List {
+            画像共有メニューコンポーネンツ()
+        }
+        .navigationTitle("画像として共有")
     }
 }

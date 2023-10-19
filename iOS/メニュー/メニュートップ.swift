@@ -39,13 +39,15 @@ struct メニュートップ: View {
                 .disabled(局面モデル.履歴.isEmpty)
             }
             Section {
+                共有メニューリンク()
                 SharePlay紹介メニューリンク()
-                Self.細かな使い方リンク()
-                テキスト連携メニューリンク()
             }
-            🛒InAppPurchaseMenuLink()
+            Section {
+                Self.細かな使い方リンク()
+                不具合フィードバックリンク()
+            }
             Self.アプリについてセクション()
-            不具合フィードバックリンク()
+            🛒InAppPurchaseMenuLink()
         }
         .navigationTitle("メニュー")
         .animation(.default, value: self.groupStateObserver.isEligibleForGroupSession)
