@@ -29,9 +29,6 @@ struct シート管理: ViewModifier {
                     .onAppear { フィードバック.軽め() }
                 }
             }
-            .onAppear {
-                if アプリ内課金.checkToShowADSheet() { モデル.表示中のシート = .広告 }
-            }
     }
 }
 

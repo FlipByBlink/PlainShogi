@@ -19,7 +19,7 @@ struct ContentView: View {
         .modifier(SharePlay環境構築())
         .modifier(シート管理())
         .modifier(共有ボタンや画像キャッシュ())
+        .modifier(アプリ内課金ハンドラー())
         .environment(\.layoutDirection, .leftToRight)
-        .environmentObject(モデル.アプリ内課金管理)
     }
 }

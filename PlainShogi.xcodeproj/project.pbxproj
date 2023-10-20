@@ -100,6 +100,7 @@
 		169E415D2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */; };
 		169E415F2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */; };
 		16B124602AE28710008EF3A0 /* SharePlay環境構築.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */; };
+		16B124622AE29117008EF3A0 /* アプリ内課金ハンドラー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -327,6 +328,7 @@
 		169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "テキスト共有メニューコンポーネンツ.swift"; sourceTree = "<group>"; };
 		169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像共有メニューコンポーネンツ.swift"; sourceTree = "<group>"; };
 		16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlay環境構築.swift"; sourceTree = "<group>"; };
+		16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "アプリ内課金ハンドラー.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 				161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */,
 				160D1D052AE26D84004E14E2 /* MacCatalyst.swift */,
 				F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */,
+				16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */,
 				1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */,
 				12D4368B2865CD5E00B707F5 /* おまけ */,
 			);
@@ -979,6 +982,7 @@
 				161FCCE92ADF857B0088E6AA /* 画像書き出し.swift in Sources */,
 				169E414D2AE1371300CFA307 /* メニューボタン.swift in Sources */,
 				1697510B2ADE7BB800443DE2 /* 📣ADComponents.swift in Sources */,
+				16B124622AE29117008EF3A0 /* アプリ内課金ハンドラー.swift in Sources */,
 				F52437B329F613A600EA770E /* フィードバック.swift in Sources */,
 				128D156B280FE47E003FF480 /* App.swift in Sources */,
 				F5BD6A102A00BF4C004AD4A5 /* 局面モデル.swift in Sources */,

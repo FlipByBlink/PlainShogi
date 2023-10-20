@@ -36,8 +36,6 @@ class アプリモデル: スーパークラス, ObservableObject {
     @Published private(set) var グループセッション: GroupSession<🄶roupActivity>?
     private var セッションメッセンジャー: GroupSessionMessenger?
     @Published private(set) var 参加人数: Int?
-    // ↓ アプリ内課金関連
-    let アプリ内課金管理 = アプリ内課金モデル(id: "PlainShogi.adfree")
 #endif
 }
 
