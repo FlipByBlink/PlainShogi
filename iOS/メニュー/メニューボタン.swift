@@ -2,7 +2,6 @@ import SwiftUI
 
 struct メニューボタン: View { // ⚙️
     @EnvironmentObject var モデル: アプリモデル
-    @AppStorage("セリフ体") var セリフ体: Bool = false
     var body: some View {
 #if !targetEnvironment(macCatalyst)
         Menu {
@@ -15,7 +14,7 @@ struct メニューボタン: View { // ⚙️
             self.ブックマーク表示ボタン()
             self.駒の選択解除ボタン()
         } label: {
-            Image(systemName: self.セリフ体 ? "gear" : "gearshape")
+            Image(systemName: モデル.セリフ体 ? "gear" : "gearshape")
                 .font(.title2.weight(.light))
                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                 .padding(8)

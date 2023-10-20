@@ -5,7 +5,6 @@ struct サイドバー: ViewModifier {
     @FocusedValue(\.将棋盤フォーカス値) private var 現在のフォーカス
     @State private var 表示: Bool = false
     @FocusState private var 初期フォーカス: Bool
-    @AppStorage("太字") var 太字: Bool = false
     @AppStorage("ｻｲﾄﾞﾊﾞｰﾎﾞﾀﾝ非表示") var サイドバー用ボタン常時非表示: Bool = false
     func body(content: Content) -> some View {
         content
@@ -83,7 +82,7 @@ struct サイドバー: ViewModifier {
             Toggle(isOn: $モデル.上下反転) {
                 Label("上下反転", systemImage: "arrow.up.arrow.down")
             }
-            Toggle(isOn: self.$太字) {
+            Toggle(isOn: $モデル.太字) {
                 Label("太字", systemImage: "bold")
             }
             Toggle(isOn: $モデル.english表記) {
@@ -97,12 +96,12 @@ struct サイドバー: ViewModifier {
         }
     }
     private struct フォントサイズピッカー: View {
+        @EnvironmentObject var モデル: アプリモデル
         @Environment(\.dismiss) var dismiss
         @Binding var サイドバーを表示: Bool
-        @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
         var body: some View {
             List {
-                Picker(selection: self.$サイズ) {
+                Picker(selection: $モデル.サイズ) {
                     ForEach(字体.サイズ.allCases) { Text($0.ローカライズキー) }
                 } label: {
                     Label("駒のサイズ", systemImage: "magnifyingglass")
@@ -194,8 +193,6 @@ private struct 一手戻すボタン: View {
 
 private struct オプションメニュー: View {
     @EnvironmentObject var モデル: アプリモデル
-    @AppStorage("太字") var 太字: Bool = false
-    @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
     @AppStorage("ｻｲﾄﾞﾊﾞｰﾎﾞﾀﾝ非表示") var サイドバー用ボタン常時非表示: Bool = false
     var body: some View {
         NavigationStack {
@@ -203,10 +200,10 @@ private struct オプションメニュー: View {
                 Toggle(isOn: $モデル.上下反転) {
                     Label("上下反転", systemImage: "arrow.up.arrow.down")
                 }
-                Toggle(isOn: self.$太字) {
+                Toggle(isOn: $モデル.太字) {
                     Label("太字", systemImage: "bold")
                 }
-                Picker(selection: self.$サイズ) {
+                Picker(selection: $モデル.サイズ) {
                     ForEach(字体.サイズ.allCases) { Text($0.ローカライズキー) }
                 } label: {
                     Label("駒のサイズ", systemImage: "magnifyingglass")

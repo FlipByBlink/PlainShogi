@@ -32,34 +32,31 @@ struct コマンド: Commands {
                     .keyboardShortcut("c", modifiers: [])
                 Button("テキストを局面としてペースト") { try? モデル.テキストを局面としてペースト() }
                     .keyboardShortcut("v", modifiers: [])
-                self.SharePlayメニューボタン()
+                Self.SharePlayメニューボタン(モデル: self.モデル)
             }
             .disabled(モデル.表示中のシート == .広告)
         }
-        CommandMenu("見た目") { Self.見た目コマンド() }
-    }
-    @StateObject private var groupStateObserver = GroupStateObserver()
-    private func SharePlayメニューボタン() -> some View {
-        Button("SharePlayメニューを表示") { モデル.表示中のシート = .SharePlayガイド }
-            .disabled(!self.groupStateObserver.isEligibleForGroupSession)
-    }
-    private struct 見た目コマンド: View {
-        @AppStorage("上下反転") var 上下反転: Bool = false
-        @AppStorage("セリフ体") var セリフ体: Bool = false
-        @AppStorage("太字") var 太字: Bool = false
-        @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
-        @AppStorage("English表記") var english表記: Bool = false
-        @AppStorage("直近操作強調表示機能オフ") var 直近操作強調オフ: Bool = false
-        var body: some View {
-            Toggle("上下反転", isOn: self.$上下反転)
-            Toggle("セリフ体", isOn: self.$セリフ体)
-            Toggle("太字", isOn: self.$太字)
-            Picker("駒のサイズ", selection: self.$サイズ) {
+        CommandMenu("見た目") {
+            Toggle("上下反転", isOn: $モデル.上下反転)
+            Toggle("セリフ体", isOn: $モデル.セリフ体)
+            Toggle("太字", isOn: $モデル.太字)
+            Picker("駒のサイズ", selection: $モデル.サイズ) {
                 ForEach(字体.サイズ.allCases) { Text($0.ローカライズキー) }
             }
-            Toggle("English表記", isOn: self.$english表記)
-            Toggle("操作した直後の駒の強調表示を常に無効", isOn: self.$直近操作強調オフ)
+            Toggle("English表記", isOn: $モデル.english表記)
+            Toggle("操作した直後の駒の強調表示を常に無効", isOn: $モデル.直近操作強調表示機能オフ)
         }
     }
     init(_ モデル: アプリモデル) { self.モデル = モデル }
+}
+
+private extension コマンド {
+    private struct SharePlayメニューボタン: View {
+        @StateObject private var groupStateObserver = GroupStateObserver()
+        @ObservedObject var モデル: アプリモデル
+        var body: some View {
+            Button("SharePlayメニューを表示") { モデル.表示中のシート = .SharePlayガイド }
+                .disabled(!self.groupStateObserver.isEligibleForGroupSession)
+        }
+    }
 }

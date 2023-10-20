@@ -3,19 +3,16 @@ import GroupActivities
 
 struct 見た目カスタマイズメニューリンク: View {
     @EnvironmentObject var モデル: アプリモデル
-    @AppStorage("セリフ体") var セリフ体: Bool = false
-    @AppStorage("太字") var 太字: Bool = false
-    @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
     @StateObject private var groupStateObserver = GroupStateObserver()
     var body: some View {
         NavigationLink {
             List {
                 Section {
-                    Toggle(isOn: self.$セリフ体) {
+                    Toggle(isOn: $モデル.セリフ体) {
                         Label("セリフ体", systemImage: "paintbrush.pointed")
                             .font(.system(.body, design: .serif))
                     }
-                    Toggle(isOn: self.$太字) {
+                    Toggle(isOn: $モデル.太字) {
                         Label("太字", systemImage: "bold")
                             .font(.body.bold())
                     }
@@ -35,26 +32,26 @@ struct 見た目カスタマイズメニューリンク: View {
                     }
                 }
             }
-            .animation(.default, value: self.サイズ)
+            .animation(.default, value: モデル.サイズ)
             .navigationTitle("見た目をカスタマイズ")
         } label: {
             Label("見た目をカスタマイズ", systemImage: "paintpalette")
         }
     }
     private func サイズピッカー() -> some View {
-        Picker(selection: self.$サイズ) {
+        Picker(selection: $モデル.サイズ) {
             ForEach(字体.サイズ.allCases) { Text($0.ローカライズキー) }
         } label: {
             Label("駒のサイズ", systemImage: "magnifyingglass")
                 .font({
-                    switch self.サイズ {
+                    switch モデル.サイズ {
                         case .小: .caption
                         case .標準: .body
                         case .大: .title
                         case .最大: .largeTitle
                     }
                 }())
-                .animation(.default, value: self.サイズ)
+                .animation(.default, value: モデル.サイズ)
         }
     }
 }

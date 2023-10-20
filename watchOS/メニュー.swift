@@ -68,13 +68,12 @@ private struct オプションメニュー: View {
     }
    private struct メニュー: View {
        @EnvironmentObject var モデル: アプリモデル
-       @AppStorage("太字") var 太字: Bool = false
         var body: some View {
             List {
                 Toggle(isOn: $モデル.上下反転) {
                     Label("上下反転", systemImage: "arrow.up.arrow.down")
                 }
-                Toggle(isOn: self.$太字) {
+                Toggle(isOn: $モデル.太字) {
                     Label("太字", systemImage: "bold")
                         .font(.body.bold())
                 }

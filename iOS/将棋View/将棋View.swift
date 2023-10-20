@@ -176,7 +176,6 @@ private struct 盤外のコマ: View {
 private struct コマの見た目: View { //FrameやDrag処理などは呼び出し側で実装する
     @EnvironmentObject var モデル: アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
-    @AppStorage("太字") var 太字オプション: Bool = false
     private var 場所: 駒の場所
     private var 表記: String? { モデル.この駒の表記(self.場所) }
     private var この駒を選択中: Bool { モデル.選択中の駒 == self.場所 }
@@ -197,7 +196,7 @@ private struct コマの見た目: View { //FrameやDrag処理などは呼び出
             .modifier(増減モード用ⓧマーク(self.場所))
             .modifier(ドラッグ直後の効果(self.場所))
             .overlay {
-                if self.太字オプション, self.この駒は操作直後 {
+                if モデル.太字, self.この駒は操作直後 {
                     Rectangle().fill(.quaternary)
                 }
             }
@@ -280,22 +279,20 @@ private struct テキスト: View {
     var 対象: 字体.対象カテゴリ = .コマ
     var 強調: Bool = false
     var 下線: Bool = false
+    @EnvironmentObject var モデル: アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
-    @AppStorage("セリフ体") var セリフ体: Bool = false
-    @AppStorage("太字") var 太字オプション: Bool = false
-    @AppStorage("サイズ") var サイズオプション: 字体.サイズ = .標準
     private var サイズポイント: CGFloat {
         switch self.対象 {
-            case .コマ, .段筋: self.マスの大きさ * self.サイズオプション.比率(self.対象)
-            case .プレビュー(let コマの大きさ): コマの大きさ * self.サイズオプション.比率(self.対象)
+            case .コマ, .段筋: self.マスの大きさ * モデル.サイズ.比率(self.対象)
+            case .プレビュー(let コマの大きさ): コマの大きさ * モデル.サイズ.比率(self.対象)
         }
     }
-    private var 太字: Bool { self.強調 || self.太字オプション }
+    private var 太字適用: Bool { self.強調 || モデル.太字 }
     var body: some View {
         Text(字体.装飾(self.字,
                      フォント: .system(size: self.サイズポイント,
-                                   weight: self.太字 ? .bold : .regular,
-                                   design: self.セリフ体 ? .serif : .default),
+                                   weight: self.太字適用 ? .bold : .regular,
+                                   design: モデル.セリフ体 ? .serif : .default),
                      下線: self.下線))
         .minimumScaleFactor(0.5)
     }

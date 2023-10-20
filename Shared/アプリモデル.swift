@@ -12,6 +12,9 @@ class アプリモデル: スーパークラス, ObservableObject {
     @AppStorage("English表記") var english表記: Bool = false
     @AppStorage("直近操作強調表示機能オフ") var 直近操作強調表示機能オフ: Bool = false
     @AppStorage("上下反転") var 上下反転: Bool = false
+    @AppStorage("セリフ体") var セリフ体: Bool = false
+    @AppStorage("太字") var 太字: Bool = false
+    @AppStorage("サイズ") var サイズ: 字体.サイズ = .標準
     
     @Published var 表示中のシート: シートカテゴリ? = nil
     @Published var 成駒確認アラートを表示: Bool = false

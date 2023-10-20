@@ -161,7 +161,6 @@ private struct 盤外のコマ: View {
 private struct コマの見た目: View { //操作処理などは呼び出し側で実装する
     @EnvironmentObject var モデル: アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
-    @AppStorage("太字") var 太字オプション: Bool = false
     private var 場所: 駒の場所
     private var 表記: String? { モデル.この駒の表記(self.場所) }
     private var この駒を選択中: Bool { モデル.選択中の駒 == self.場所 }
@@ -182,7 +181,7 @@ private struct コマの見た目: View { //操作処理などは呼び出し側
             .animation(.default.speed(2), value: self.この駒を選択中)
             .modifier(増減モード用ⓧマーク(self.場所))
             .overlay {
-                if self.太字オプション, self.この駒は操作直後 {
+                if モデル.太字, self.この駒は操作直後 {
                     Rectangle().fill(.quaternary)
                 }
             }
@@ -208,13 +207,12 @@ private struct 成駒確認アラート: ViewModifier {
 
 private struct オプション変更アニメーション: ViewModifier {
     @EnvironmentObject var モデル: アプリモデル
-    @AppStorage("太字") var 太字: Bool = false
     func body(content: Content) -> some View {
         content
             .animation(.default, value: モデル.english表記)
             .animation(.default, value: モデル.上下反転)
             .animation(.default, value: モデル.増減モード中)
-            .animation(.default, value: self.太字)
+            .animation(.default, value: モデル.太字)
     }
 }
 
@@ -222,14 +220,14 @@ private struct テキスト: View {
     var 字: String
     var 強調: Bool = false
     var 下線: Bool = false
+    @EnvironmentObject var モデル: アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
-    @AppStorage("太字") var 太字オプション: Bool = false
     private var サイズポイント: CGFloat { self.マスの大きさ * 0.75 }
-    private var 太字: Bool { self.強調 || self.太字オプション }
+    private var 太字適用: Bool { self.強調 || モデル.太字 }
     var body: some View {
         Text(字体.装飾(self.字,
                    フォント: .system(size: self.サイズポイント,
-                                 weight: self.太字 ? .bold : .regular),
+                                 weight: self.太字適用 ? .bold : .regular),
                    下線: self.下線))
         .minimumScaleFactor(0.6)
     }

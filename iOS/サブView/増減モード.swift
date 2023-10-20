@@ -3,7 +3,6 @@ import SwiftUI
 struct 手駒増減シート表示ボタン: View {
     @EnvironmentObject var モデル: アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
-    @AppStorage("太字") var 太字: Bool = false
     private var 陣営: 王側か玉側か
     var body: some View {
         if モデル.増減モード中 {
@@ -12,7 +11,7 @@ struct 手駒増減シート表示ボタン: View {
             } label: {
                 Image(systemName: "plusminus")
                     .font(.system(size: self.マスの大きさ * 0.45,
-                                  weight: self.太字 ? .semibold : .regular))
+                                  weight: モデル.太字 ? .semibold : .regular))
                     .padding(.horizontal, 12)
             }
             .accessibilityLabel("手駒を整理する")
@@ -26,7 +25,6 @@ struct 手駒増減シート表示ボタン: View {
 struct 増減モード用ⓧマーク: ViewModifier {
     @EnvironmentObject var モデル: アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
-    @AppStorage("太字") var 太字: Bool = false
     private var 場所: 駒の場所
     private var 増減モード中の盤上の駒: Bool {
         guard モデル.増減モード中, case .盤駒(_) = self.場所 else { return false }
@@ -52,7 +50,7 @@ struct 増減モード用ⓧマーク: ViewModifier {
                     Image(systemName: "xmark")
                         .resizable()
                         .padding(self.マスの大きさ / 8)
-                        .font(.body.weight(self.太字 ? .heavy : .semibold))
+                        .font(.body.weight(モデル.太字 ? .heavy : .semibold))
                         .frame(width: self.マスの大きさ / 2,
                                height: self.マスの大きさ / 2)
                 }
