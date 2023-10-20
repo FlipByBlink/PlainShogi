@@ -4,19 +4,27 @@ import UIKit
 struct 画像共有メニューコンポーネンツ: View {
     @EnvironmentObject var モデル: アプリモデル
     var body: some View {
-        if let 画像 = try? 画像書き出し.画像を取得() {
-            画像
-                .resizable()
-                .frame(width: 240, height: 240)
-                .shadow(radius: 3)
-                .padding()
-        }
+        self.プレビュー()
         Self.写真共有ボタン()
         Self.写真アプリ保存ボタン()
     }
 }
 
 private extension 画像共有メニューコンポーネンツ {
+    private func プレビュー() -> some View {
+        HStack {
+            Spacer()
+            if let 画像 = try? 画像書き出し.画像を取得() {
+                画像
+                    .resizable()
+                    .frame(width: 240, height: 240)
+                    .shadow(radius: 3)
+                    .padding()
+            }
+            Spacer()
+        }
+        .alignmentGuide(.listRowSeparatorLeading) { $0[.leading] }
+    }
     private struct 写真共有ボタン: View {
         var body: some View {
             if let 画像 = try? 画像書き出し.画像を取得() {
@@ -76,8 +84,10 @@ private extension 画像共有メニューコンポーネンツ {
                 if let error {
                     self.失敗アラート = true
                     self.失敗概要 = error.localizedDescription
+                    フィードバック.エラー()
                 } else {
                     withAnimation { self.保存完了 = true }
+                    フィードバック.成功()
                 }
             }
         }

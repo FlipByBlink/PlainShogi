@@ -3,9 +3,7 @@ import SwiftUI
 struct テキスト共有メニューコンポーネンツ: View {
     @EnvironmentObject var モデル: アプリモデル
     var body: some View {
-        Text(モデル.現在の盤面をテキストに変換する())
-            .textSelection(.enabled)
-            .padding()
+        self.プレビュー()
         Self.テキスト共有ボタン()
         Self.コピーボタン()
         Self.ペーストインポートボタン()
@@ -15,6 +13,16 @@ struct テキスト共有メニューコンポーネンツ: View {
 }
 
 private extension テキスト共有メニューコンポーネンツ {
+    private func プレビュー() -> some View {
+        HStack {
+            Spacer()
+            Text(モデル.現在の盤面をテキストに変換する())
+                .textSelection(.enabled)
+                .padding()
+            Spacer()
+        }
+        .alignmentGuide(.listRowSeparatorLeading) { $0[.leading] }
+    }
     private struct テキスト共有ボタン: View {
         @EnvironmentObject var モデル: アプリモデル
         var body: some View {
@@ -54,6 +62,7 @@ private extension テキスト共有メニューコンポーネンツ {
             Button {
                 モデル.現在の局面をテキストとしてコピー()
                 withAnimation { self.完了 = true }
+                フィードバック.成功()
             } label: {
                 Label("プレーンテキストとして「コピー」", systemImage: "doc.on.doc")
                     .foregroundStyle(self.完了 ? .secondary : .primary)
