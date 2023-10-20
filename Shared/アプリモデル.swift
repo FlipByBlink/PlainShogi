@@ -6,7 +6,7 @@ import GroupActivities
 #endif
 
 @MainActor
-class アプリモデル: NSObject, ObservableObject {
+class アプリモデル: スーパークラス, ObservableObject {
     @Published private(set) var 局面: 局面モデル = .前回の局面 ?? .初期セット
     
     @AppStorage("English表記") var english表記: Bool = false

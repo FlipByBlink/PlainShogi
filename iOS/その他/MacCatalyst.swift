@@ -1,20 +1,20 @@
 import SwiftUI
 
+#if targetEnvironment(macCatalyst)
+extension アプリモデル {
+    override func buildMenu(with builder: UIMenuBuilder) {
+        builder.remove(menu: .services)
+        builder.remove(menu: .file)
+        builder.remove(menu: .edit)
+        builder.remove(menu: .format)
+        builder.remove(menu: .toolbar)
+        builder.remove(menu: .sidebar)
+        builder.remove(menu: .help)
+    }
+}
+#endif
+
 enum MacCatalyst調整 {
-//TODO: 再検討
-//    class Delegate: UIResponder, UIApplicationDelegate {
-//#if targetEnvironment(macCatalyst)
-//        override func buildMenu(with builder: UIMenuBuilder) {
-//            builder.remove(menu: .services)
-//            builder.remove(menu: .file)
-//            builder.remove(menu: .edit)
-//            builder.remove(menu: .format)
-//            builder.remove(menu: .toolbar)
-//            builder.remove(menu: .sidebar)
-//            builder.remove(menu: .help)
-//        }
-//#endif
-//    }
     struct TitleBar隠し: ViewModifier {
         func body(content: Content) -> some View {
 #if targetEnvironment(macCatalyst)
