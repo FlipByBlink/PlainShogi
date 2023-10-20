@@ -412,7 +412,6 @@
 				F5D9F9AF2A00BE1F00CEE697 /* Shared */,
 				128D1569280FE47E003FF480 /* iOS */,
 				F5D9F9192A00BDA900CEE697 /* watchOS */,
-				F51F039E2A00D03200F05874 /* Widget */,
 				F5119BA42A0291000027A74C /* tvOS */,
 				128D1568280FE47E003FF480 /* Products */,
 				12A9251C2866A8960035DC83 /* Frameworks */,
@@ -745,6 +744,7 @@
 				169750742ADE033D00443DE2 /* 閉じるボタン.swift */,
 				1697510C2ADE7E3400443DE2 /* アプリについて.swift */,
 				1697507F2ADE141300443DE2 /* サポートファイル */,
+				F51F039E2A00D03200F05874 /* Widget */,
 			);
 			path = watchOS;
 			sourceTree = "<group>";
@@ -1415,7 +1415,7 @@
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 6696GEY228;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_FILE = watchOS/Widget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Plain将棋盤";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1446,7 +1446,7 @@
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 6696GEY228;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_FILE = watchOS/Widget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Plain将棋盤";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
