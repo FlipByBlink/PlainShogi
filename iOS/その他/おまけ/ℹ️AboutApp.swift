@@ -13,7 +13,8 @@ struct ℹ️AboutAppContent: View {
 
 struct ℹ️IconAndName: View {
     var body: some View {
-        VStack(spacing: 0) {
+        HStack {
+            Spacer()
             VStack(spacing: 8) {
                 Image(.roundedIcon)
                     .resizable()
@@ -32,11 +33,9 @@ struct ℹ️IconAndName: View {
                 .minimumScaleFactor(0.6)
             }
             .padding(32)
-            Divider()
-                .padding(.leading)
+            Spacer()
         }
-        .listRowSeparator(.hidden)
-        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+        .alignmentGuide(.listRowSeparatorLeading) { $0[.leading] }
     }
 }
 

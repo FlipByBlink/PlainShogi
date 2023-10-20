@@ -30,7 +30,7 @@ enum 画像書き出し {
         }
     }
     static func 画像を取得() throws -> Image {
-        if let uiImage = UIImage(data: try Data(contentsOf: Self.一時ファイルURL)) {
+        if let uiImage = UIImage(data: try .init(contentsOf: Self.一時ファイルURL)) {
             .init(uiImage: uiImage)
         } else {
             throw Self.エラー.画像取得失敗
