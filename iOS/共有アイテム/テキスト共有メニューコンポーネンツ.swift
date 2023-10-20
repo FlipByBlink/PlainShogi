@@ -6,9 +6,7 @@ struct テキスト共有メニューコンポーネンツ: View {
         Text(モデル.現在の盤面をテキストに変換する())
             .textSelection(.enabled)
             .padding()
-        ShareLink(item: モデル.現在の盤面をテキストに変換する()) {
-            Label("共有", systemImage: "square.and.arrow.up")
-        }
+        Self.テキスト共有ボタン()
         Self.コピーボタン()
         Self.ペーストインポートボタン()
         Self.ファイルインポートボタン()
@@ -17,6 +15,38 @@ struct テキスト共有メニューコンポーネンツ: View {
 }
 
 private extension テキスト共有メニューコンポーネンツ {
+    private struct テキスト共有ボタン: View {
+        @EnvironmentObject var モデル: アプリモデル
+        var body: some View {
+            ShareLink(item: Self.アイテム(テキスト: モデル.現在の盤面をテキストに変換する()),
+                      preview: .init("盤面テキスト")) {
+                Label("共有", systemImage: "square.and.arrow.up")
+            }
+        }
+        private struct アイテム: Transferable {
+            var テキスト: String
+            static var transferRepresentation: some TransferRepresentation {
+                DataRepresentation(exportedContentType: .data) {
+                    if let 値 = $0.テキスト.data(using: .utf8) {
+                        値
+                    } else {
+                        throw Self.エラー.データ化失敗
+                    }
+                }
+                .suggestedFileName(Self.ファイル名)
+                ProxyRepresentation(exporting: \.テキスト)
+                    .suggestedFileName(Self.ファイル名)
+            }
+            private static var ファイル名: String {
+                .init(localized: "☖ Plain将棋盤 ")
+                + Date.now.formatted(.dateTime.year().month().day())
+                + ".txt"
+            }
+            private enum エラー: Error {
+                case データ化失敗
+            }
+        }
+    }
     private struct コピーボタン: View {
         @EnvironmentObject var モデル: アプリモデル
         @State private var 完了: Bool = false

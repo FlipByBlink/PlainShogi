@@ -93,7 +93,7 @@ private extension 共有ボタン {
                 Label("画像として共有", systemImage: "square.and.arrow.up")
             }
         } header: {
-            Text("フォーマットを指定して共有")
+            Text("フォーマットを指定")
         }
     }
 }

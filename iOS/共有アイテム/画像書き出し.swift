@@ -28,13 +28,15 @@ enum 画像書き出し {
             return
         }
     }
-    static func 画像を取得() -> Image? {
-        if let データ = try? Data(contentsOf: Self.一時ファイルURL),
-           let uiImage = UIImage(data: データ) {
-            Image(uiImage: uiImage)
+    static func 画像を取得() throws -> Image {
+        if let uiImage = UIImage(data: try Data(contentsOf: Self.一時ファイルURL)) {
+            .init(uiImage: uiImage)
         } else {
-            nil
+            throw Self.エラー.画像取得失敗
         }
+    }
+    private enum エラー: Error {
+        case 画像取得失敗
     }
     @MainActor
     static func サムネイルを取得(_ モデル: アプリモデル) -> Image {
