@@ -71,12 +71,8 @@ private extension メニュートップ {
                     NavigationLink {
                         SharePlayガイドメニュー()
                     } label: {
-                        Label("アクティビティ", systemImage: "shareplay")
-                            .badge("共有将棋盤")
+                        Label("将棋盤をSharePlay", systemImage: "shareplay")
                     }
-                } header: {
-                    Text("SharePlay")
-                        .textCase(.none)
                 }
             }
         }

@@ -99,6 +99,7 @@
 		169E415B2AE14F6800CFA307 /* 共有メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415A2AE14F6800CFA307 /* 共有メニュー.swift */; };
 		169E415D2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */; };
 		169E415F2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */; };
+		16B124602AE28710008EF3A0 /* SharePlay環境構築.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -138,7 +139,7 @@
 		F52437B829F64CB000EA770E /* メニュートップ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* メニュートップ.swift */; };
 		F52437B929F64CB000EA770E /* ドロップデリゲート.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* ドロップデリゲート.swift */; };
 		F52437BA29F64CB000EA770E /* 履歴メニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 履歴メニュー.swift */; };
-		F52437BB29F64CB000EA770E /* SharePlayView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayView.swift */; };
+		F52437BB29F64CB000EA770E /* SharePlayインジケーター.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */; };
 		F52437BC29F64CB000EA770E /* 広告コンテンツ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */; };
 		F52437BD29F64CB000EA770E /* テキスト連携機能.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */; };
 		F52437BF29F64CB000EA770E /* フィードバック.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
@@ -165,7 +166,7 @@
 		F5BD6A182A00BF7D004AD4A5 /* フィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
 		F5BD6A1B2A00C0A0004AD4A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		F5C9FAFF296CF7BB00B513D8 /* 履歴メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 履歴メニュー.swift */; };
-		F5C9FB02296D0A3100B513D8 /* SharePlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayView.swift */; };
+		F5C9FB02296D0A3100B513D8 /* SharePlayインジケーター.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */; };
 		F5D9F9252A00BDAA00CEE697 /* Plain将棋盤.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F5D9F92D2A00BDC600CEE697 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D9F92A2A00BDC600CEE697 /* App.swift */; };
 		F5D9F92E2A00BDC600CEE697 /* 将棋View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D9F92B2A00BDC600CEE697 /* 将棋View.swift */; };
@@ -213,7 +214,7 @@
 				F52437B829F64CB000EA770E /* メニュートップ.swift in CopyFiles */,
 				F52437B929F64CB000EA770E /* ドロップデリゲート.swift in CopyFiles */,
 				F52437BA29F64CB000EA770E /* 履歴メニュー.swift in CopyFiles */,
-				F52437BB29F64CB000EA770E /* SharePlayView.swift in CopyFiles */,
+				F52437BB29F64CB000EA770E /* SharePlayインジケーター.swift in CopyFiles */,
 				F52437BC29F64CB000EA770E /* 広告コンテンツ.swift in CopyFiles */,
 				F52437BD29F64CB000EA770E /* テキスト連携機能.swift in CopyFiles */,
 				F52437BF29F64CB000EA770E /* フィードバック.swift in CopyFiles */,
@@ -325,6 +326,7 @@
 		169E415A2AE14F6800CFA307 /* 共有メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "共有メニュー.swift"; sourceTree = "<group>"; };
 		169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "テキスト共有メニューコンポーネンツ.swift"; sourceTree = "<group>"; };
 		169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像共有メニューコンポーネンツ.swift"; sourceTree = "<group>"; };
+		16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlay環境構築.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -362,7 +364,7 @@
 		F5BD6A1A2A00C007004AD4A5 /* watchOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = watchOS.entitlements; sourceTree = "<group>"; };
 		F5C9FAFE296CF7BB00B513D8 /* 履歴メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "履歴メニュー.swift"; sourceTree = "<group>"; };
 		F5C9FB00296CFF7A00B513D8 /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
-		F5C9FB01296D0A3100B513D8 /* SharePlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayView.swift; sourceTree = "<group>"; };
+		F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlayインジケーター.swift"; sourceTree = "<group>"; };
 		F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Plain将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5D9F92A2A00BDC600CEE697 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		F5D9F92B2A00BDC600CEE697 /* 将棋View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "将棋View.swift"; sourceTree = "<group>"; };
@@ -538,7 +540,8 @@
 			isa = PBXGroup;
 			children = (
 				169750682ADDFCC100443DE2 /* GroupActivity.swift */,
-				F5C9FB01296D0A3100B513D8 /* SharePlayView.swift */,
+				16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */,
+				F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */,
 				169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */,
 				169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */,
 			);
@@ -950,6 +953,7 @@
 				160D1CFE2AE26009004E14E2 /* 画像キャッシュハンドラー.swift in Sources */,
 				169E41552AE1495600CFA307 /* SharePlay紹介メニュー.swift in Sources */,
 				161FCCCB2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift in Sources */,
+				16B124602AE28710008EF3A0 /* SharePlay環境構築.swift in Sources */,
 				169750B12ADE23CC00443DE2 /* オプション変更アニメーション.swift in Sources */,
 				169750962ADE18FC00443DE2 /* 駒の移動先パターン.swift in Sources */,
 				169750AB2ADE220400443DE2 /* レイアウト.swift in Sources */,
@@ -997,7 +1001,7 @@
 				169E41532AE1491900CFA307 /* SharePlayガイドメニュー.swift in Sources */,
 				F57D6F0729FCD60D00EA0D79 /* シート管理.swift in Sources */,
 				F5C9FAFF296CF7BB00B513D8 /* 履歴メニュー.swift in Sources */,
-				F5C9FB02296D0A3100B513D8 /* SharePlayView.swift in Sources */,
+				F5C9FB02296D0A3100B513D8 /* SharePlayインジケーター.swift in Sources */,
 				169E415F2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift in Sources */,
 				127132E82873CDF20008AE46 /* 増減モード.swift in Sources */,
 				12F4444E286D4B580008A663 /* メニュートップ.swift in Sources */,

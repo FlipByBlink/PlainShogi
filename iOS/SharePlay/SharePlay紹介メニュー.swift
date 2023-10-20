@@ -19,7 +19,7 @@ struct SharePlay紹介メニューリンク: View {
                 } header: {
                     Text("はじめ方")
                 }
-                if #available(iOS 16, *) { self.メッセージアプリ説明セクション() }
+                self.メッセージアプリ説明セクション()
                 self.注意事項セクション()
                 self.データ管理説明セクション()
             }
@@ -63,7 +63,7 @@ struct SharePlay紹介メニューリンク: View {
     }
     private func メッセージアプリ説明セクション() -> some View {
         Section {
-            Text("iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
+            Text("iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
                 .padding(8)
             Image("joinFromMessage")
                 .resizable()
@@ -109,11 +109,7 @@ private struct SharingControllerボタン: View {
             Button {
                 self.sharingControllerを表示 = true
             } label: {
-                if #available(iOS 16, *) {
-                    Label("友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する", systemImage: "person.badge.plus")
-                } else {
-                    Label("友達に「FaceTime」通話をかける", systemImage: "person.badge.plus")
-                }
+                Label("友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する", systemImage: "person.badge.plus")
             }
             .disabled(self.groupStateObserver.isEligibleForGroupSession)
         } header: {

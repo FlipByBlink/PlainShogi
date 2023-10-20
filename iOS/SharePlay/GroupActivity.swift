@@ -4,7 +4,7 @@ import SwiftUI
 struct 🄶roupActivity: GroupActivity {
     var metadata: GroupActivityMetadata {
         var 値 = GroupActivityMetadata()
-        値.title = NSLocalizedString("共有将棋盤", comment: "アクティビティタイトル")
+        値.title = .init(localized: "将棋盤")
         値.type = .generic
         値.previewImage = UIImage(named: "previewImage")!.cgImage
         return 値

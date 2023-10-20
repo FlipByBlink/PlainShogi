@@ -17,7 +17,7 @@ struct SharePlayガイドメニュー: View {
             Section { SharePlay紹介メニューリンク() }
         }
         .animation(.default, value: self.SharePlay中)
-        .navigationTitle("共有将棋盤")
+        .navigationTitle("将棋盤をSharePlay")
     }
     private func 事前準備完セクション() -> some View {
         Section {
@@ -29,7 +29,7 @@ struct SharePlayガイドメニュー: View {
     }
     private func アクティビティ参加誘導セクション() -> some View {
         Section {
-            Text("友達が既に「共有将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。")
+            Text("友達が既に「将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。")
                 .padding(8)
             Image("joinFromBanner")
                 .resizable()
@@ -49,7 +49,7 @@ struct SharePlayガイドメニュー: View {
                 🄶roupActivity.アクティビティを起動する()
                 モデル.表示中のシート = nil
             } label: {
-                Label("アクティビティ「共有将棋盤」を起動する", systemImage: "power")
+                Label("アクティビティ「将棋盤」を起動する", systemImage: "power")
                     .font(.body.weight(.medium))
                     .padding(.vertical, 4)
             }
