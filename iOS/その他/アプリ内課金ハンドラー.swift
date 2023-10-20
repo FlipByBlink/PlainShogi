@@ -1,5 +1,7 @@
 import SwiftUI
 
+typealias アプリ内課金モデル = 🛒InAppPurchaseModel
+
 struct アプリ内課金ハンドラー: ViewModifier {
     @EnvironmentObject var モデル: アプリモデル
     @StateObject var アプリ内課金: アプリ内課金モデル = .init(id: "PlainShogi.adfree")

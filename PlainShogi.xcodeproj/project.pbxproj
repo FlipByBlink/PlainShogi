@@ -465,6 +465,10 @@
 			children = (
 				F5BBD8672973AA720034CCB8 /* 🌐AppStoreDescription.strings */,
 				F5BBD86B2973AA7B0034CCB8 /* 🌐VersionHistory.strings */,
+				169751012ADE7B3700443DE2 /* 🌐AboutApp.xcstrings */,
+				169751002ADE7B3600443DE2 /* 🌐AD&InAppPurchase.xcstrings */,
+				169751032ADE7B3700443DE2 /* 🌐ADAppDescription.xcstrings */,
+				169751022ADE7B3700443DE2 /* 🌐ADAppName.xcstrings */,
 			);
 			name = "ローカライズ";
 			path = "ローカライズ";
@@ -475,7 +479,9 @@
 			children = (
 				F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */,
 				169751092ADE7BB800443DE2 /* 📣ADComponents.swift */,
+				169750FB2ADE7AB900443DE2 /* 📣ADModel.swift */,
 				169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */,
+				169750FC2ADE7AB900443DE2 /* 🛒InAppPurchaseModel.swift */,
 			);
 			path = "おまけ";
 			sourceTree = "<group>";
@@ -515,10 +521,6 @@
 			children = (
 				124B75572810CD6D00027DCA /* Localizable.strings */,
 				12A925232866AA6C0035DC83 /* InfoPlist.strings */,
-				169751012ADE7B3700443DE2 /* 🌐AboutApp.xcstrings */,
-				169751002ADE7B3600443DE2 /* 🌐AD&InAppPurchase.xcstrings */,
-				169751032ADE7B3700443DE2 /* 🌐ADAppDescription.xcstrings */,
-				169751022ADE7B3700443DE2 /* 🌐ADAppName.xcstrings */,
 			);
 			name = "ローカライズ";
 			path = "ローカリゼーション";
@@ -679,8 +681,6 @@
 			isa = PBXGroup;
 			children = (
 				169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */,
-				169750FB2ADE7AB900443DE2 /* 📣ADModel.swift */,
-				169750FC2ADE7AB900443DE2 /* 🛒InAppPurchaseModel.swift */,
 			);
 			path = "おまけ";
 			sourceTree = "<group>";

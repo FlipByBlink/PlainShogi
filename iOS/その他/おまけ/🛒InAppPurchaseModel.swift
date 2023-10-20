@@ -1,8 +1,6 @@
 import SwiftUI
 import StoreKit
 
-typealias アプリ内課金モデル = 🛒InAppPurchaseModel
-
 class 🛒InAppPurchaseModel: ObservableObject {
     
     private let productID: String
