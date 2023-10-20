@@ -71,7 +71,7 @@ Use-case: "Play game with a friend", "Discuss shogi problem with many people", e
 
 
 ### 書き出し例 Export example
-
+```
 ☗
 －－－－－－－－－
 香͙桂͙銀͙金͙玉͙金͙銀͙桂͙香͙
@@ -85,6 +85,7 @@ Use-case: "Play game with a friend", "Discuss shogi problem with many people", e
 香桂銀金王金銀桂香
 －－－－－－－－－
 ☖
+```
 
 
 Source code link
