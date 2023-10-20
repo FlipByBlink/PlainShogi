@@ -93,20 +93,38 @@ private extension メニュートップ {
                     } footer: {
                         Text("iCloud同期は簡易的な用途を想定しています。「同時に起動している端末間での同期」といったリアルタイム性の高い用途は想定していません。")
                     }
-                    self.メニューショートカットセクション()
+                    Self.メニューショートカットセクション()
+                    Self.共有ショートカットセクション()
                 }
                 .navigationTitle("細かな使い方")
             } label: {
                 Label("細かな使い方", systemImage: "magazine")
             }
         }
-        private func メニューショートカットセクション() -> some View {
+        private static func メニューショートカットセクション() -> some View {
             Section {
 #if !targetEnvironment(macCatalyst)
                 VStack {
                     Label("メニューボタンを長押しすると「初期化ボタン」や「一手戻すボタン」などを呼び出せます",
                           systemImage: "gearshape")
                     Image("MenuLongPress")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 200)
+                        .border(.black)
+                        .padding(8)
+                }
+                .padding(.vertical, 8)
+#endif
+            }
+        }
+        private static func 共有ショートカットセクション() -> some View {
+            Section {
+#if !targetEnvironment(macCatalyst)
+                VStack {
+                    Label("共有ボタンを長押しするとフォーマットを指定できます",
+                          systemImage: "gearshape")
+                    Image("MenuLongPress")//TODO: 実装
                         .resizable()
                         .scaledToFit()
                         .frame(height: 200)

@@ -273,7 +273,7 @@ private extension 局面モデル {
     }
     private func 現在の局面を履歴に追加する() {
         //レスポンス改善(特にwatchOS)のためにTask分離
-        Task {
+        Task(priority: .low) {
             var 新しい履歴: [Self]
             新しい履歴 = Self.履歴
             if 新しい履歴.count > 30 { 新しい履歴.removeFirst() }

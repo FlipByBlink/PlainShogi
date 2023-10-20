@@ -70,8 +70,8 @@ struct 増減モード完了ボタン: View {
             Image(systemName: "checkmark.circle.fill")
                 .font(.title2.weight(.medium))
                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                .padding()
-                .padding(.trailing, 8)
+                .padding(8)
+                .padding(.trailing)
         }
         .keyboardShortcut(.cancelAction)
         .tint(.primary)
