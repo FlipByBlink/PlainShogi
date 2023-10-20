@@ -21,8 +21,7 @@ private extension 画像共有メニューコンポーネンツ {
                         イメージ
                             .resizable()
                     } else {
-                        RoundedRectangle(cornerRadius: 16)
-                            .foregroundStyle(.quaternary)
+                        Color.white
                     }
                 }
                 .frame(width: 240, height: 240)
@@ -30,7 +29,6 @@ private extension 画像共有メニューコンポーネンツ {
                 .padding()
                 Spacer()
             }
-            .animation(.default, value: self.イメージ == nil)
             .alignmentGuide(.listRowSeparatorLeading) { $0[.leading] }
             .task { self.イメージをロード() }
             .onChange(of: モデル.表示中のシート) {
