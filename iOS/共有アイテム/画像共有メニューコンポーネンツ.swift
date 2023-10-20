@@ -2,45 +2,59 @@ import SwiftUI
 import UIKit
 
 struct 画像共有メニューコンポーネンツ: View {
-    @EnvironmentObject var モデル: アプリモデル
     var body: some View {
-        self.プレビュー()
+        Self.プレビュー()
         Self.写真共有ボタン()
         Self.写真アプリ保存ボタン()
     }
 }
 
 private extension 画像共有メニューコンポーネンツ {
-    private func プレビュー() -> some View {
-        HStack {
-            Spacer()
-            if let 画像 = try? 画像書き出し.画像を取得() {
-                画像
-                    .resizable()
-                    .frame(width: 240, height: 240)
-                    .shadow(radius: 3)
-                    .padding()
+    private struct プレビュー: View {
+        @EnvironmentObject var モデル: アプリモデル
+        @State private var イメージ: Image?
+        var body: some View {
+            HStack {
+                Spacer()
+                Group {
+                    if let イメージ {
+                        イメージ
+                            .resizable()
+                    } else {
+                        RoundedRectangle(cornerRadius: 16)
+                            .foregroundStyle(.quaternary)
+                    }
+                }
+                .frame(width: 240, height: 240)
+                .shadow(radius: 3)
+                .padding()
+                Spacer()
             }
-            Spacer()
+            .animation(.default, value: self.イメージ == nil)
+            .alignmentGuide(.listRowSeparatorLeading) { $0[.leading] }
+            .task { self.イメージをロード() }
+            .onChange(of: モデル.表示中のシート) {
+                if [.メニュー, .画像共有].contains($0) { self.イメージをロード() }
+            }
         }
-        .alignmentGuide(.listRowSeparatorLeading) { $0[.leading] }
+        private func イメージをロード() {
+            self.イメージ = try? 画像書き出し.画像を取得()
+        }
     }
     private struct 写真共有ボタン: View {
+        @EnvironmentObject var モデル: アプリモデル
         var body: some View {
-            if let 画像 = try? 画像書き出し.画像を取得() {
-                ShareLink(item: Self.アイテム(),
-                          preview: .init("盤面画像", icon: 画像)) {
-                    Label("共有", systemImage: "square.and.arrow.up")
-                }
+            ShareLink(item: Self.アイテム(),
+                      preview: .init("盤面画像")) {
+                Label("共有", systemImage: "square.and.arrow.up")
             }
         }
         private struct アイテム: Transferable {
             static var transferRepresentation: some TransferRepresentation {
-                DataRepresentation(exportedContentType: .png) { _ in
-                    try .init(contentsOf: 画像書き出し.一時ファイルURL)
+                FileRepresentation(exportedContentType: .png) { _ in
+                    SentTransferredFile(画像書き出し.一時ファイルURL)
                 }
                 .suggestedFileName(画像書き出し.ファイル名)
-                ProxyRepresentation { _ in try 画像書き出し.画像を取得() }
             }
         }
     }
@@ -49,17 +63,11 @@ private extension 画像共有メニューコンポーネンツ {
         @StateObject private var セーバー: Self.画像セーバー = .init()
         var body: some View {
             Button {
-                do {
-                    if let uiImage = UIImage(data: try Data(contentsOf: 画像書き出し.一時ファイルURL)) {
-                        self.セーバー.写真アルバムへ保存(画像: uiImage)
-                    } else {
-                        self.セーバー.失敗アラート = true
-                        self.セーバー.失敗概要 = String(localized: "画像化失敗")
-                    }
-                } catch {
-                    self.セーバー.失敗アラート = true
-                    self.セーバー.失敗概要 = error.localizedDescription
+                guard let data = try? Data(contentsOf: 画像書き出し.一時ファイルURL),
+                      let uiImage = UIImage(data: data) else {
+                    return
                 }
+                self.セーバー.写真アルバムへ保存(画像: uiImage)
             } label: {
                 Label("「写真」アプリに保存", systemImage: "photo.badge.arrow.down")
                     .foregroundStyle(self.セーバー.保存完了 ? .secondary : .primary)

@@ -4,10 +4,8 @@ struct ツールボタンズ: ViewModifier {
     @EnvironmentObject var モデル: アプリモデル
     func body(content: Content) -> some View {
         content
-            .overlay(alignment: .top) {
-                HStack {
-                    if !モデル.増減モード中 { 共有ボタン() }
-                    Spacer()
+            .overlay(alignment: .topTrailing) {
+                Group {
                     if モデル.増減モード中 {
                         増減モード完了ボタン()
                     } else {

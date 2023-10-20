@@ -18,6 +18,7 @@ struct ContentView: View {
         .modifier(ICloudデータ.アクティブ復帰時に明示的に同期())
         .modifier(SharePlay環境構築())
         .modifier(シート管理())
+        .modifier(共有ボタンや画像キャッシュ())
         .environment(\.layoutDirection, .leftToRight)
         .environmentObject(モデル.アプリ内課金管理)
     }
