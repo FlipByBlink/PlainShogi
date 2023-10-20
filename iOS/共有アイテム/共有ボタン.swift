@@ -22,6 +22,7 @@ struct 共有ボタン: View {
                           label: self.ボタンアイコン)
             }
         }
+        .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 12))
         .contextMenu { self.サブボタンズ() }
         .padding(.leading)
         .task(priority: .background) { self.画像保存をリクエスト() }

@@ -90,9 +90,9 @@
 		169E41532AE1491900CFA307 /* SharePlayガイドメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */; };
 		169E41552AE1495600CFA307 /* SharePlay紹介メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */; };
 		169E41572AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41562AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift */; };
-		169E41592AE14AC600CFA307 /* ドラッグアンドドロップ共有メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41582AE14AC600CFA307 /* ドラッグアンドドロップ共有メニュー.swift */; };
 		169E415B2AE14F6800CFA307 /* 共有メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415A2AE14F6800CFA307 /* 共有メニュー.swift */; };
-		169E415D2AE1E76D00CFA307 /* 共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415C2AE1E76D00CFA307 /* 共有メニューコンポーネンツ.swift */; };
+		169E415D2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */; };
+		169E415F2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -315,9 +315,9 @@
 		169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlayガイドメニュー.swift"; sourceTree = "<group>"; };
 		169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlay紹介メニュー.swift"; sourceTree = "<group>"; };
 		169E41562AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "見た目カスタマイズメニュー.swift"; sourceTree = "<group>"; };
-		169E41582AE14AC600CFA307 /* ドラッグアンドドロップ共有メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ドラッグアンドドロップ共有メニュー.swift"; sourceTree = "<group>"; };
 		169E415A2AE14F6800CFA307 /* 共有メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "共有メニュー.swift"; sourceTree = "<group>"; };
-		169E415C2AE1E76D00CFA307 /* 共有メニューコンポーネンツ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "共有メニューコンポーネンツ.swift"; sourceTree = "<group>"; };
+		169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "テキスト共有メニューコンポーネンツ.swift"; sourceTree = "<group>"; };
+		169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像共有メニューコンポーネンツ.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -681,8 +681,8 @@
 				161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */,
 				F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */,
 				169E415A2AE14F6800CFA307 /* 共有メニュー.swift */,
-				169E415C2AE1E76D00CFA307 /* 共有メニューコンポーネンツ.swift */,
-				169E41582AE14AC600CFA307 /* ドラッグアンドドロップ共有メニュー.swift */,
+				169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */,
+				169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */,
 			);
 			path = "共有アイテム";
 			sourceTree = "<group>";
@@ -970,12 +970,11 @@
 				F525A7D629F8FB1F001E8D5F /* 将棋View.swift in Sources */,
 				169750822ADE180700443DE2 /* ドラッグ対象.swift in Sources */,
 				169750FD2ADE7ABA00443DE2 /* 🗒️StaticInfo.swift in Sources */,
-				169E41592AE14AC600CFA307 /* ドラッグアンドドロップ共有メニュー.swift in Sources */,
 				169750872ADE188300443DE2 /* 盤上の駒.swift in Sources */,
 				169750AF2ADE233600443DE2 /* 操作エリア外で駒選択を解除.swift in Sources */,
 				F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
 				1697506D2ADDFE5700443DE2 /* コマンド.swift in Sources */,
-				169E415D2AE1E76D00CFA307 /* 共有メニューコンポーネンツ.swift in Sources */,
+				169E415D2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift in Sources */,
 				F5E0549F29FB52A1004DC425 /* ICloudデータ.swift in Sources */,
 				169750A62ADE19A500443DE2 /* 空の手駒.swift in Sources */,
 				F54C93D7295D2DE6008D1D60 /* テキスト連携機能.swift in Sources */,
@@ -987,6 +986,7 @@
 				F57D6F0729FCD60D00EA0D79 /* シート管理.swift in Sources */,
 				F5C9FAFF296CF7BB00B513D8 /* 履歴メニュー.swift in Sources */,
 				F5C9FB02296D0A3100B513D8 /* SharePlayView.swift in Sources */,
+				169E415F2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift in Sources */,
 				127132E82873CDF20008AE46 /* 増減モード.swift in Sources */,
 				12F4444E286D4B580008A663 /* メニュートップ.swift in Sources */,
 			);

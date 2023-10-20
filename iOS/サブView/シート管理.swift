@@ -51,7 +51,11 @@ private extension シート管理 {
     }
     private static func テキスト共有メニュー() -> some View {
         List {
-            テキスト共有メニューコンポーネンツ()
+            Section {
+                テキスト共有メニューコンポーネンツ()
+            } footer: {
+                Text("読み込むテキストは先頭の文字が「☗」である必要があります")
+            }
         }
         .navigationTitle("テキストとして共有")
     }
