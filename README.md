@@ -70,6 +70,23 @@ Use-case: "Play game with a friend", "Discuss shogi problem with many people", e
 <img src="Shared/サポートファイル/その他/READMEAssets/SharePlay.png" width="300">
 
 
+### 書き出し例 Export example
+
+☗
+－－－－－－－－－
+香͙桂͙銀͙金͙玉͙金͙銀͙桂͙香͙
+　飛͙　　　　　角͙
+歩͙歩͙歩͙歩͙歩͙歩͙　歩͙歩͙
+　　　　　　歩͙
+　　　　　　　　　
+　　　　　　　　　
+歩歩歩歩歩歩歩歩歩
+　角　　　　　飛
+香桂銀金王金銀桂香
+－－－－－－－－－
+☖
+
+
 Source code link
 ----------------
 [github.com/FlipByBlink/PlainShogi](https://github.com/FlipByBlink/PlainShogi)

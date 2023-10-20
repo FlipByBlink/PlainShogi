@@ -18,7 +18,7 @@ struct SharePlayインジケーター: View {
                         Label("現在、\(self.参加人数)人でSharePlay中", systemImage: "shareplay")
                             .animation(.default, value: self.参加人数)
                     } else {
-                        Label("現在、SharePlayできます", systemImage: "shareplay")
+                        Label("SharePlayできます", systemImage: "shareplay")
                     }
                 }
                 .lineLimit(1)

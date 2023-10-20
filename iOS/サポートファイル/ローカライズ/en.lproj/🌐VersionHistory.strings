@@ -1,4 +1,8 @@
-"1.5" = "Placeholder";
+"1.5" = "Image export.
+Support AirDrop style SharePlay(iOS17).
+Add share button in main screen.
+Unsupport iOS 15.x.
+Various bug-fixes and improvements.";
 
 "1.4" = "ADD Move by tap.
 ADD Sync by iCloud.
