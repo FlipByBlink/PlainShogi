@@ -63,22 +63,32 @@ private extension テキスト共有メニューコンポーネンツ {
     }
     private struct ペーストインポートボタン: View {
         @EnvironmentObject var モデル: アプリモデル
-        @State private var 完了: Bool = false
+        @State private var 失敗アラート: Bool = false
+        @State private var 失敗概要: String?
         var body: some View {
             Button {
-                //TODO: 実装
-                モデル.テキストを局面としてペースト()
-                モデル.表示中のシート = nil
+                do {
+                    try モデル.テキストを局面としてペースト()
+                    モデル.表示中のシート = nil
+                } catch {
+                    self.失敗アラート = true
+                    self.失敗概要 = error.localizedDescription
+                }
             } label: {
                 Label("プレーンテキストを「貼り付け」して読み込む", systemImage: "doc.on.clipboard")
+            }
+            .alert("読み込み失敗", isPresented: self.$失敗アラート) {
+                Button("了解しました") { self.失敗概要 = nil }
+            } message: {
+                if let 失敗概要 { Text(失敗概要) }
             }
         }
     }
     private struct ファイルインポートボタン: View {
         @EnvironmentObject var モデル: アプリモデル
         @State private var インポーター表示: Bool = false
-        @State private var 読み込み失敗アラート: Bool = false
-        @State private var 読み込み失敗概要: String?
+        @State private var 失敗アラート: Bool = false
+        @State private var 失敗概要: String?
         var body: some View {
             Button {
                 self.インポーター表示.toggle()
@@ -89,25 +99,26 @@ private extension テキスト共有メニューコンポーネンツ {
                 switch $0 {
                     case .success(let url):
                         guard url.startAccessingSecurityScopedResource() else {
-                            self.読み込み失敗アラート = true
+                            self.失敗アラート = true
                             return
                         }
                         do {
-                            モデル.テキストを局面に変換して読み込む(try String(contentsOf: url))
+                            try モデル.テキストを局面に変換して読み込む(try String(contentsOf: url))
                             モデル.表示中のシート = nil
                         } catch {
-                            self.読み込み失敗アラート = true
+                            self.失敗アラート = true
+                            self.失敗概要 = error.localizedDescription
                         }
                         url.stopAccessingSecurityScopedResource()
                     case .failure(let error):
-                        self.読み込み失敗アラート = true
-                        self.読み込み失敗概要 = error.localizedDescription
+                        self.失敗アラート = true
+                        self.失敗概要 = error.localizedDescription
                 }
             }
-            .alert("読み込みに失敗しました", isPresented: self.$読み込み失敗アラート) {
-                Button("了解しました") { self.読み込み失敗概要 = nil }
+            .alert("読み込みに失敗しました", isPresented: self.$失敗アラート) {
+                Button("了解しました") { self.失敗概要 = nil }
             } message: {
-                if let 読み込み失敗概要 { Text(読み込み失敗概要) }
+                if let 失敗概要 { Text(失敗概要) }
             }
         }
     }

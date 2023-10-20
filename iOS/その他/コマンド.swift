@@ -30,7 +30,7 @@ struct コマンド: Commands {
                     .disabled(モデル.選択中の駒 == .なし)
                 Button("テキストとしてコピー") { モデル.現在の局面をテキストとしてコピー() }
                     .keyboardShortcut("c", modifiers: [])
-                Button("テキストを局面としてペースト") { モデル.テキストを局面としてペースト() }
+                Button("テキストを局面としてペースト") { try? モデル.テキストを局面としてペースト() }
                     .keyboardShortcut("v", modifiers: [])
                 self.SharePlayメニューボタン()
             }
