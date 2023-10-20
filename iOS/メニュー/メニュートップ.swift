@@ -7,6 +7,7 @@ struct メニュートップ: View {
     var body: some View {
         List {
             Self.SharePlay誘導セクション()
+#if !targetEnvironment(macCatalyst)
             Section {
                 盤面初期化ボタン()
                 一手戻すボタン()
@@ -38,6 +39,7 @@ struct メニュートップ: View {
                 }
                 .disabled(局面モデル.履歴.isEmpty)
             }
+#endif
             Section {
                 共有メニューリンク()
                 SharePlay紹介メニューリンク()

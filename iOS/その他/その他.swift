@@ -1,6 +1,7 @@
 import SwiftUI
 
 enum MacCatalyst調整 {
+//TODO: 再検討
 //    class Delegate: UIResponder, UIApplicationDelegate {
 //#if targetEnvironment(macCatalyst)
 //        override func buildMenu(with builder: UIMenuBuilder) {

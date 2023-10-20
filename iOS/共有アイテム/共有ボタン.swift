@@ -9,6 +9,7 @@ struct 共有ボタン: View {
     @State private var 現在の盤面を画像として保存: Bool = false
     @State private var サムネイル: Image = .init(.roundedIcon)
     var body: some View {
+#if !targetEnvironment(macCatalyst)
         Group {
             if #available(iOS 17, *) {
                 ShareLink(item: Self.アイテム.IOS17向け(),
@@ -39,6 +40,7 @@ struct 共有ボタン: View {
                 self.現在の盤面を画像として保存 = false
             }
         }
+#endif
     }
 }
 
