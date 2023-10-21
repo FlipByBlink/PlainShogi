@@ -1,3 +1,5 @@
 
 CFBundleDisplayName = "Plain将棋盤";
 CFBundleName = "Plain将棋盤";
+
+NSPhotoLibraryAddUsageDescription = "盤面画像を「写真」アプリに保存するために許可してください。";
