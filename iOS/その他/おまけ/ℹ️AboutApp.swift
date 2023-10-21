@@ -48,7 +48,7 @@ struct ℹ️AppStoreLink: View {
             LabeledContent {
                 Image(systemName: "arrow.up.forward.app")
             } label: {
-                Label(String(localized: "Open AppStore page", table: "🌐AboutApp"),
+                Label(String(localized: "Open App Store page", table: "🌐AboutApp"),
                       systemImage: "link")
             }
         }
@@ -96,7 +96,7 @@ private struct 🏬AppStoreSection: View {
                 LabeledContent {
                     Image(systemName: "arrow.up.forward.app")
                 } label: {
-                    Label(String(localized: "Review on AppStore", table: "🌐AboutApp"),
+                    Label(String(localized: "Review on App Store", table: "🌐AboutApp"),
                           systemImage: "star.bubble")
                 }
             }
@@ -318,7 +318,7 @@ private struct 🧑‍💻AboutDeveloperPublisherLink: View {
         private static var values: [(date: String, description: String)] {
             [("2013-04", "Finished from high school in Okayama Prefecture. Entranced into University-of-the-Ryukyus/faculty-of-engineering in Okinawa Prefecture."),
              ("2018-06", "Final year as an undergraduate student. Developed an iOS application(FlipByBlink) as software for the purpose of research experiments."),
-             ("2019-01", "Released ebook reader app \"FlipByBlink\" ver 1.0 on AppStore. Special feature is to turn a page by slightly-longish-voluntary-blink."),
+             ("2019-01", "Released ebook reader app \"FlipByBlink\" ver 1.0 on App Store. Special feature is to turn a page by slightly-longish-voluntary-blink."),
              ("2019-03", "Graduated from University-of-the-Ryukyus."),
              ("2019-05", "Released alarm clock app with taking a long time \"FadeInAlarm\" ver 1.0. First paid app."),
              ("2019-07", "Migrated to Okayama Prefecture."),

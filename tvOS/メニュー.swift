@@ -369,7 +369,7 @@ private struct アプリについてメニュー: View {
                     .foregroundStyle(.secondary)
                 Spacer()
                 Link(destination: 🗒️StaticInfo.appStoreProductURL) {
-                    Label("AppStoreリンク", systemImage: "link")
+                    Label("App Storeリンク", systemImage: "link")
                         .padding(24)
                 }
                 .buttonStyle(.card)

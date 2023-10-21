@@ -18,10 +18,11 @@ struct メニューボタン: View { // ⚙️
                 .font(.title2.weight(.light))
                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                 .padding(8)
-                .padding(.trailing)
         } primaryAction: {
             モデル.表示中のシート = .メニュー
         }
+        .hoverEffect(.highlight)
+        .padding(.trailing)
         .tint(.primary)
         .accessibilityLabel("Open menu")
 #else

@@ -20,6 +20,7 @@ struct メイン画面の共有ボタン: View {
             }
         }
         .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 12))
+        .hoverEffect(.highlight)
         .contextMenu { self.サブボタンズ() }
         .padding(.leading)
 #endif

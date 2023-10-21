@@ -148,7 +148,7 @@ private extension 📣ADView {
             }
             .foregroundColor(.primary)
         }
-        .accessibilityLabel(Text("Open AppStore page", tableName: "🌐AD&InAppPurchase"))
+        .accessibilityLabel(Text("Open App Store page", tableName: "🌐AD&InAppPurchase"))
         .disabled(🛒.purchased)
     }
     private func menuLink() -> some View {

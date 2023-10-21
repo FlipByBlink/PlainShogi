@@ -279,12 +279,12 @@
         }
       }
     },
-    "Open AppStore page" : {
+    "Open App Store page" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AppStoreページを開く"
+            "value" : "App Storeページを開く"
           }
         }
       }
@@ -352,13 +352,13 @@
         }
       }
     },
-    "Released ebook reader app \"FlipByBlink\" ver 1.0 on AppStore. Special feature is to turn a page by slightly-longish-voluntary-blink." : {
-      "extractionState" : "migrated",
+    "Released ebook reader app \"FlipByBlink\" ver 1.0 on App Store. Special feature is to turn a page by slightly-longish-voluntary-blink." : {
+      "extractionState" : "manual",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "特殊なまばたきでページめくりができる電子書籍リーダーアプリ「FlipByBlink」をver1.0としてAppStoreにリリース。"
+            "value" : "特殊なまばたきでページめくりができる電子書籍リーダーアプリ「FlipByBlink」をver1.0としてApp Storeにリリース。"
           }
         }
       }
@@ -427,12 +427,12 @@
         }
       }
     },
-    "Review on AppStore" : {
+    "Review on App Store" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AppStoreでレビューを書く"
+            "value" : "App Storeでレビューを書く"
           }
         }
       }
