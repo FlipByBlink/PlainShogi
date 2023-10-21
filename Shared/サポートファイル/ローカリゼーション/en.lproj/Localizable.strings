@@ -110,6 +110,7 @@
 "ドラッグ&ドロップについて" = "Drag & Drop";
 "盤面画像" = "Board image";
 "共有ボタンを長押しするとフォーマットを指定できます" = "Select format by long press share button";
+"アプリのリンクを共有" = "Share App Store link";
 
 // ==== SharePlay ====
 "将棋盤をSharePlay" = "Shareplay shogi board";

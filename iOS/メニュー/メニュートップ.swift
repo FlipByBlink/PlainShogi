@@ -133,15 +133,20 @@ private extension メニュートップ {
         }
     }
     private static func アプリについてセクション() -> some View {
-        Section {
-            ℹ️IconAndName()
-            ℹ️AppStoreLink()
-            NavigationLink {
-                List { ℹ️AboutAppContent() }
-                    .navigationTitle(String(localized: "About App", table: "🌐AboutApp"))
-            } label: {
-                Label(String(localized: "About App", table: "🌐AboutApp"),
-                      systemImage: "doc")
+        Group {
+            Section {
+                ℹ️IconAndName()
+                ℹ️AppStoreLink()
+                NavigationLink {
+                    List { ℹ️AboutAppContent() }
+                        .navigationTitle(String(localized: "About App", table: "🌐AboutApp"))
+                } label: {
+                    Label(String(localized: "About App", table: "🌐AboutApp"),
+                          systemImage: "doc")
+                }
+            }
+            ShareLink(item: 🗒️StaticInfo.appStoreProductURL) {
+                Label("アプリのリンクを共有", systemImage: "square.and.arrow.up")
             }
         }
     }

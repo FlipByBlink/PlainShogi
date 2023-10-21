@@ -76,12 +76,16 @@ private extension メイン画面の共有ボタン {
             Button {
                 self.モデル.表示中のシート = .テキスト共有
             } label: {
-                Label("テキストとして共有", systemImage: "square.and.arrow.up")
+                Label("テキストとして共有", systemImage: "text.justify.left")
             }
             Button {
                 self.モデル.表示中のシート = .画像共有
             } label: {
-                Label("画像として共有", systemImage: "square.and.arrow.up")
+                Label("画像として共有", systemImage: "photo")
+            }
+            Divider()
+            ShareLink(item: 🗒️StaticInfo.appStoreProductURL) {
+                Label("アプリのリンクを共有", systemImage: "link")
             }
         } header: {
             Text("フォーマットを指定")
