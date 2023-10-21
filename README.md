@@ -25,6 +25,12 @@ _Anytime. Everywhere. With friends. Shogi board._
 
 Simple Shogi board app.
 
+Pieces move freely. Number of pieces can be increased or decreased.
+
+Font option: Size, weight, serif.
+
+English term option.
+
 <img src="Shared/サポートファイル/その他/READMEAssets/Screenshots.png" width="600">
 
 
@@ -39,9 +45,9 @@ iPhone同士を近付けてボタンを1回押すだけでSharePlayを始める�
 
 Play shogi board with FaceTime or Message.
 
-Use-case: "Play game with a friend", "Discuss shogi problem with many people", etc.
+Use-case: \"Play game with a friend\", \"Discuss shogi problem with many people\", etc.
 
-Support NameDrop style SharePlay.
+Start SharePlay by holding the top of your iPhone near the top of someone else's iPhone.(iOS 17 iPhone only)
 
 <img src="Shared/サポートファイル/その他/READMEAssets/SharePlay.png" width="300">
 
@@ -52,15 +58,18 @@ iPhone / iPad / Apple Watch / Mac / Apple TV
 
 局面はiCloudによって端末間で同期されます。
 
-Sync by iCloud.
+Sync between devices by iCloud.
 
 
-### 書き出し例 Export example
-書き出し/読み込み機能
+### 書き出し/読み込み機能 Export/Import
 
 盤面を画像として書き出せます。
 
 盤面をテキストとして書き出したり読み込んだりできます。
+
+Support for export to image format.
+
+Support for export/import to plain text format.
 
 ```
 ☗

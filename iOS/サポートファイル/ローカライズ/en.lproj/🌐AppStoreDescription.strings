@@ -1,27 +1,33 @@
-"current" = "Simple Shogi board.
+"current" = "Simple Shogi board app.
 
-You can move a piece freely.
+Pieces move freely. Number of pieces can be increased or decreased.
 
-This app based on iOS system UI design.
-
-You can reduce / increase pieces.
-
-Font option: Size / Weight / Serif
+Font option: Size, weight, serif.
 
 English term option.
 
-Output/Input function to/from plain text.
+
+SharePlay
+
+Play shogi board with FaceTime or Message.
+
+Use-case: \"Play game with a friend\", \"Discuss shogi problem with many people\", etc.
+
+Start SharePlay by holding the top of your iPhone near the top of someone else's iPhone.(iOS 17 iPhone only)
+
+
+Multi platform
+
+iPhone, iPad, Apple Watch, Mac, Apple TV.
 
 Sync between devices by iCloud.
 
-Support multi platform: iPhone, iPad, Apple Watch, Mac, Apple TV
 
+Export/Import
 
-Support SharePlay.
+Support for export to image format.
 
-Play shogi board with FaceTime.
-
-Use-case: \"Play game with a friend\", \"Discuss shogi problem with many people\", etc.
+Support for export/import to plain text format.
 
 
 ☗
