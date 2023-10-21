@@ -1,0 +1,20 @@
+{
+  "images" : [
+    {
+      "filename" : "IMG_0077.heic",
+      "idiom" : "universal"
+    },
+    {
+      "filename" : "IMG_0076.heic",
+      "idiom" : "universal",
+      "locale" : "ja"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

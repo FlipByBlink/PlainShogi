@@ -120,7 +120,7 @@ private extension メニュートップ {
                 VStack {
                     Label("共有ボタンを長押しするとフォーマットを指定できます",
                           systemImage: "gearshape")
-                    Image("MenuLongPress")//TODO: 実装
+                    Image(.shareButtonLongPress)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 200)

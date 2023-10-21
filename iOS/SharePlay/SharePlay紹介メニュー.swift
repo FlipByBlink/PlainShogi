@@ -19,6 +19,7 @@ struct SharePlay紹介メニューリンク: View {
                 } header: {
                     Text("はじめ方")
                 }
+                self.NameDropスタイル説明セクション()
                 self.メッセージアプリ説明セクション()
                 self.注意事項セクション()
                 self.データ管理説明セクション()
@@ -60,6 +61,20 @@ struct SharePlay紹介メニューリンク: View {
 #else
         EmptyView()
 #endif
+    }
+    private func NameDropスタイル説明セクション() -> some View {
+        Section {
+            Text("iOS 17 以降のiPhone同士を近付けるだけでSharePlayを開始できます。iPhone同士を近付けるとAirDrop等のボタンが表示されます。「SharePlay」と書かれたボタンを押すと「将棋盤」アクティビティに参加します。")
+                .padding(8)
+            Image(.nameDrop)
+                .resizable()
+                .scaledToFit()
+                .border(.black)
+                .frame(maxWidth: .infinity, maxHeight: 140)
+            //ImageSource: https://www.apple.com/jp/newsroom/2023/09/ios-17-is-available-today/
+        } footer: {
+            Text("Apple IDに紐付いた連絡先を知らない場合は、同じジェスチャーをした際にNameDrop(連絡先を交換するための機能)が起動します。")
+        }
     }
     private func メッセージアプリ説明セクション() -> some View {
         Section {
