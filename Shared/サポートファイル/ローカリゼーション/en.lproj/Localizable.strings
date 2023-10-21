@@ -56,7 +56,7 @@
 "テキスト機能" = "Plain text";
 "テキスト書き出し/読み込み機能" = "Text Export / Import";
 "駒を他のアプリへドラッグして盤面をテキストとして書き出せます。" = "Export shogi board as plain text by dropping a piece into other apps";
-"他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。" = "Import shogi board by dropping export-text into shogi board. The text head is 「☗」. ";
+"他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。" = "Import shogi board by dropping export-text into shogi board. The text head is \"☗\".";
 "テキスト書き出し例" = "Example";
 "コピー" = "Copy";
 "テキストとしてコピー" = "Copy as text";
@@ -90,19 +90,40 @@
 "ショートカット" = "Shortcut";
 "アプリを立ち上げるためのショートカット" = "Shortcut to launch the app";
  
+// ==== 共有 ====
+"盤面を共有" = "Share shogi board";
+"共有" = "Share";
+"テキスト" = "Text";
+"先頭の文字が「☗」のテキストを読み込んでください" = "The text head is \"☗\"";
+"画像" = "Image";
+"テキストとして共有" = "Share as text";
+"画像として共有" = "Share as image";
+"フォーマットを指定" = "Format";
+"☖ Plain将棋盤 " = "☖ PlainShogiBoard ";
+"盤面テキスト" = "Board text";
+"プレーンテキストとして「コピー」" = "Copy as plain text";
+"プレーンテキストを「貼り付け」して読み込む" = "Paste as plain text";
+"読み込みに失敗しました" = "Failed";
+"了解しました" = "OK";
+"テキストファイルを読み込む" = "Import a text file";
+"他のアプリとドラッグ&ドロップ" = "Drag & Drop";
+"ドラッグ&ドロップについて" = "Drag & Drop";
+"盤面画像" = "Board image";
+
 // ==== SharePlay ====
+"将棋盤をSharePlay" = "Shareplay shogi board";
 "概要" = "Description";
 "現在、%@人でSharePlay中" = "SharePlay is active (Number: %@)";
-"現在、SharePlayしていません" = "SharePlay is inactive";
+"SharePlayできます" = "SharePlay ready";
 "SharePlayメニュー" = "SharePlay menu";
 "アクティビティに参加しました" = "Joined activity";
-"共有将棋盤" = "SharedShogi";
+"将棋盤" = "Shogi board";
 "事前準備完了" = "Prepared";
 "現在、友達と繋がっているようです。友達が立ち上げたアクティビティに参加するか、もしくは自分でアクティビティを起動しましょう。" = "You are currently connected to a friend. Join an activity launched by your friend OR launch an activity by yourself.";
-"友達が既に「共有将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。" = "If your friend has already started a \"SharedShogi\" activity, you can join the activity by manipulating the system-side UI.";
+"友達が既に「将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。" = "If your friend has already started a \"Shogi board\" activity, you can join the activity by manipulating the system-side UI.";
 "SharePlayに参加する" = "Join SharePlay";
 "自分からSharePlayを開始する事もできます。アクティビティを起動したら友達にSharePlay参加を促しましょう。" = "You can also start SharePlay yourself. Once you have started an activity, encourage your friends to join SharePlay.";
-"アクティビティ「共有将棋盤」を起動する" = "Activate \"SharedShogi\" activity";
+"アクティビティ「将棋盤」を起動する" = "Activate \"Shogi board\" activity";
 "自分からSharePlayを開始する" = "Start SharePlay by oneself";
 "アクティビティから離脱する" = "Leave the activity";
 "アクティビティから離脱しても、自分以外はアクティビティに参加したままです。" = "Even if you leave the activity, everyone remains in the activity except you.";
@@ -124,7 +145,7 @@
 "\"SharePlayは、FaceTime通話中にほかのAppでも使用できます。\"" = "\"SharePlay can also be used in other apps during a FaceTime call.\"";
 "引用: Apple サポートサイト" = "Quote: Apple support site";
 "Appleサポートサイトを開く" = "Open Apple support site";
-"iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「共有将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。" = "On devices running iOS 16 or later, SharePlay is also available in \"Messages\" app. If you are invited to \"SharedShogi\" activity in \"Messages\" app, please join the activity in \"Messages\" app.";
+"iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。" = "On devices running iOS 16 or later, SharePlay is also available in \"Messages\" app. If you are invited to \"Shogi board\" activity in \"Messages\" app, please join the activity in \"Messages\" app.";
 "**以下の項目はユーザー間で同期されません**
 ・各種オプション(上下反転/セリフ体/太字/駒のサイズ/English表記/強調表示常時オフ)
 ・駒増減モードに移行しているかどうか

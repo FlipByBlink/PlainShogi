@@ -19,6 +19,7 @@ private extension テキスト共有メニューコンポーネンツ {
             Text(モデル.現在の盤面をテキストに変換する())
                 .textSelection(.enabled)
                 .padding()
+                .accessibilityHidden(true)
             Spacer()
         }
         .alignmentGuide(.listRowSeparatorLeading) { $0[.leading] }
@@ -86,7 +87,7 @@ private extension テキスト共有メニューコンポーネンツ {
             } label: {
                 Label("プレーンテキストを「貼り付け」して読み込む", systemImage: "doc.on.clipboard")
             }
-            .alert("読み込み失敗", isPresented: self.$失敗アラート) {
+            .alert("読み込みに失敗しました", isPresented: self.$失敗アラート) {
                 Button("了解しました") { self.失敗概要 = nil }
             } message: {
                 if let 失敗概要 { Text(失敗概要) }
