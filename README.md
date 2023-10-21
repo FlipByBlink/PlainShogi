@@ -17,60 +17,51 @@ _Anytime. Everywhere. With friends. Shogi board._
 
 概要 Description
 ---------------
-駒を自由に動かせるただの将棋盤です。
+シンプルな将棋盤アプリです。
 
-OSの標準デザインに沿ったシンプルな将棋盤アプリです。
+駒は自由に動きます。任意の駒を消したり増やしたりできます。
 
-任意の駒を消したり増やしたりことも出来ます。
+駒のフォントをカスタマイズしたり英語表記に変えたりして自分に合った将棋盤を作りましょう。
 
-文字の「大きさ」や「太さ」、「セリフ体」などをカスタマイズ出来ます。
-
-駒を英語表記に変えられます。
-
-盤面をテキストデータとして書き出したり読み込んだり出来ます。
-
-局面はiCloudによって端末間で同期されます。
-
-
-Simple Shogi board.
-
-You can move a piece freely.
-
-This app based on OS system UI design.
-
-You can reduce / increase pieces.
-
-Font option: Size / Weight / Serif
-
-English term option.
-
-Output/Input function to/from plain text.
-
-Sync between devices by iCloud.
-
+Simple Shogi board app.
 
 <img src="Shared/サポートファイル/その他/READMEAssets/Screenshots.png" width="600">
 
 
 ### SharePlay
-SharePlayに対応しています。
+複数人で1つの将棋盤を同時に操作できます。
 
-FaceTimeしながら友達と将棋盤を囲むことが出来ます。
+インターネット越しに「FaceTime」アプリや「メッセージ」アプリを通じて友達と将棋盤を囲むことができます。
 
 SharePlay機能では「2人でシンプルに対局する」だけでなく、「大人数で詰将棋を解く」などの様々なユースケースを想定しています。
 
+iPhone同士を近付けてボタンを1回押すだけでSharePlayを始めることも出来ます。(iOS 17以降のiPhone限定)
 
-Support SharePlay.
-
-Play shogi board with FaceTime.
+Play shogi board with FaceTime or Message.
 
 Use-case: "Play game with a friend", "Discuss shogi problem with many people", etc.
 
+Support NameDrop style SharePlay.
 
 <img src="Shared/サポートファイル/その他/READMEAssets/SharePlay.png" width="300">
 
 
+### マルチプラットフォーム対応 Multi platform
+
+iPhone / iPad / Apple Watch / Mac / Apple TV
+
+局面はiCloudによって端末間で同期されます。
+
+Sync by iCloud.
+
+
 ### 書き出し例 Export example
+書き出し/読み込み機能
+
+盤面を画像として書き出せます。
+
+盤面をテキストとして書き出したり読み込んだりできます。
+
 ```
 ☗
 －－－－－－－－－
