@@ -179,9 +179,7 @@ extension 🗒️StaticInfo {
                 case .その他: [
                     "ICloudデータ.swift",
                     "フィードバック.swift",
-                    "不特定エラー.swift",
-                    "固定値.swift",
-                    "バックグラウンド時に駒選択を解除.swift"
+                    "不特定エラー.swift"
                 ]
                 case .おまけ: [
                     "🗒️StaticInfo.swift"
