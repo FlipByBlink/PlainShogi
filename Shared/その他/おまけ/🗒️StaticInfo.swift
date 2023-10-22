@@ -68,14 +68,14 @@ extension 🗒️StaticInfo {
                     "成駒確認アラート.swift",
                     "操作エリア外で駒選択を解除.swift",
                     "字体.swift",
-                    "オプション変更アニメーション.swift"
+                    "オプション変更アニメーション.swift",
+                    "EnvironmentValues拡張.swift"
                 ]
                 case .サブView: [
                     "ツールボタンズ.swift",
                     "シートカテゴリ.swift",
                     "シート管理.swift",
-                    "増減モード.swift",
-                    "EnvironmentValues拡張.swift"
+                    "増減モード.swift"
                 ]
                 case .メニュー: [
                     "メニュートップ.swift",
@@ -137,16 +137,58 @@ extension 🗒️StaticInfo {
 #elseif os(watchOS)
 extension 🗒️StaticInfo {
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
-        case main, その他, Widget
+        case main, アプリモデル, 将棋モデル, 将棋View, サブView, メニュー, その他, おまけ, Widget
         var id: Self { self }
         var fileNames: [String] {
             switch self {
-                case .main: ["App.swift",
-                             "ContentView.swift",
-                             "📱AppModel.swift"]
-                case .その他: ["🗒️StaticInfo.swift",
-                             "ℹ️AboutApp.swift"]
-                case .Widget: ["Widget.swift"]
+                case .main: [
+                    "App.swift",
+                    "ContentView.swift"
+                ]
+                case .アプリモデル: [
+                    "アプリモデル.swift",
+                    "アプリモデルのスーパークラス.swift"
+                ]
+                case .将棋モデル: [
+                    "局面モデル.swift",
+                    "王側か玉側か.swift",
+                    "盤上の駒.swift",
+                    "持ち駒.swift",
+                    "駒の場所.swift",
+                    "駒の移動先パターン.swift",
+                    "手前か対面か.swift",
+                    "駒の種類.swift",
+                    "空の手駒.swift"
+                ]
+                case .将棋View: [
+                    "将棋View.swift",
+                    "字体.swift",
+                    "EnvironmentValues拡張.swift"
+                ]
+                case .サブView: [
+                    "ツールボタン.swift",
+                    "シートカテゴリ.swift",
+                    "増減モード.swift",
+                    "閉じるボタン.swift"
+                ]
+                case .メニュー: [
+                    "メニュー.swift",
+                    "局面プレビュー.swift",
+                    "アプリについて.swift"
+                ]
+                case .その他: [
+                    "ICloudデータ.swift",
+                    "フィードバック.swift",
+                    "不特定エラー.swift",
+                    "固定値.swift",
+                    "バックグラウンド時に駒選択を解除.swift"
+                ]
+                case .おまけ: [
+                    "🗒️StaticInfo.swift"
+                ]
+                case .Widget: [
+                    "ウィジェット.swift"
+                ]
             }
         }
     }
