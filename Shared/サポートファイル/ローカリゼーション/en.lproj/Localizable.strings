@@ -75,9 +75,11 @@
 "・SharePlay
 ・セリフ体フォントオプション
 ・駒のサイズオプション
-・テキスト連携機能" = "・SharePlay
+・画像書き出し機能
+・テキスト書き出し/読み込み機能" = "・SharePlay
 ・Serif font
 ・Font size
+・Image export
 ・Text import/export";
 "・SharePlay
 ・セリフ体フォントオプション

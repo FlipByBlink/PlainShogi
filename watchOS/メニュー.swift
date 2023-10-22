@@ -218,7 +218,8 @@ private struct ガイドメニュー: View {
                 ・SharePlay
                 ・セリフ体フォントオプション
                 ・駒のサイズオプション
-                ・テキスト連携機能
+                ・画像書き出し機能
+                ・テキスト書き出し/読み込み機能
                 """)
                     .foregroundStyle(.secondary)
                     .font(.footnote)

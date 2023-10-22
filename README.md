@@ -45,7 +45,7 @@ iPhone同士を近付けてボタンを1回押すだけでSharePlayを始める�
 
 Play shogi board with FaceTime or Message.
 
-Use-case: \"Play game with a friend\", \"Discuss shogi problem with many people\", etc.
+Use-case: "Play game with a friend", "Discuss shogi problem with many people", etc.
 
 Start SharePlay by holding the top of your iPhone near the top of someone else's iPhone.(iOS 17 iPhone only)
 
