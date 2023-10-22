@@ -39,23 +39,96 @@ extension 🗒️StaticInfo {
                                                                   ("1.0", "2022-04-21")] //降順。先頭の方が新しい
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
-        case main, その他
+        case main, アプリモデル, 将棋モデル, 将棋View, サブView, メニュー, SharePlay, ドラッグアンドドロップ, 共有アイテム, その他, おまけ
         var id: Self { self }
         var fileNames: [String] {
             switch self {
-                case .main: ["App.swift",
-                             "ContentView.swift",
-                             "📱AppModel.swift"]
-                case .その他: ["🪧Sheet.swift",
-                             "📣ADContent.swift",
-                             "💬RequestUserReview.swift",
-                             "🩹Workaround.swift",
-                             "🗒️StaticInfo.swift",
-                             "ℹ️AboutApp.swift",
-                             "📣ADModel.swift",
-                             "📣ADComponents.swift",
-                             "🛒InAppPurchaseModel.swift",
-                             "🛒InAppPurchaseView.swift"]
+                case .main: [
+                    "App.swift",
+                    "ContentView.swift"
+                ]
+                case .アプリモデル: [
+                    "アプリモデル.swift",
+                    "アプリモデルのスーパークラス.swift"
+                ]
+                case .将棋モデル: [
+                    "局面モデル.swift",
+                    "王側か玉側か.swift",
+                    "盤上の駒.swift",
+                    "持ち駒.swift",
+                    "駒の場所.swift",
+                    "駒の移動先パターン.swift",
+                    "手前か対面か.swift",
+                    "駒の種類.swift",
+                    "空の手駒.swift"
+                ]
+                case .将棋View: [
+                    "将棋View.swift",
+                    "レイアウト.swift",
+                    "成駒確認アラート.swift",
+                    "操作エリア外で駒選択を解除.swift",
+                    "字体.swift",
+                    "オプション変更アニメーション.swift"
+                ]
+                case .サブView: [
+                    "ツールボタンズ.swift",
+                    "シートカテゴリ.swift",
+                    "シート管理.swift",
+                    "増減モード.swift",
+                    "EnvironmentValues拡張.swift"
+                ]
+                case .メニュー: [
+                    "メニュートップ.swift",
+                    "メニューボタン.swift",
+                    "コマンドボタンズ.swift",
+                    "見た目カスタマイズメニュー.swift",
+                    "履歴メニュー.swift",
+                    "ブックマークメニュー.swift",
+                    "共有メニュー.swift",
+                    "局面プレビュー.swift",
+                    "不具合フィードバックメニュー.swift"
+                ]
+                case .SharePlay: [
+                    "GroupActivity.swift",
+                    "SharePlay環境構築.swift",
+                    "SharePlayインジケーター.swift",
+                    "SharePlayガイドメニュー.swift",
+                    "SharePlay紹介メニュー.swift"
+                ]
+                case .ドラッグアンドドロップ: [
+                    "ドラッグ対象.swift",
+                    "ドロップデリゲート.swift"
+                ]
+                case .共有アイテム: [
+                    "共有ボタンや画像キャッシュ.swift",
+                    "メイン画面の共有ボタン.swift",
+                    "画像書き出し.swift",
+                    "画像キャッシュハンドラー.swift",
+                    "テキスト連携機能.swift",
+                    "テキスト共有メニューコンポーネンツ.swift",
+                    "画像共有メニューコンポーネンツ.swift"
+                ]
+                case .その他: [
+                    "ICloudデータ.swift",
+                    "フィードバック.swift",
+                    "不特定エラー.swift",
+                    "コマンド.swift",
+                    "固定値.swift",
+                    "バックグラウンド時に駒選択を解除.swift",
+                    "自動スリープ無効化.swift",
+                    "MacCatalyst.swift",
+                    "広告コンテンツ.swift",
+                    "アプリ内課金ハンドラー.swift",
+                    "ユーザーレビュー依頼.swift"
+                ]
+                case .おまけ: [
+                    "🗒️StaticInfo.swift",
+                    "ℹ️AboutApp.swift",
+                    "📣ADModel.swift",
+                    "📣ADComponents.swift",
+                    "🛒InAppPurchaseModel.swift",
+                    "🛒InAppPurchaseView.swift"
+                ]
             }
         }
     }
@@ -74,39 +147,6 @@ extension 🗒️StaticInfo {
                 case .その他: ["🗒️StaticInfo.swift",
                              "ℹ️AboutApp.swift"]
                 case .Widget: ["Widget.swift"]
-            }
-        }
-    }
-}
-
-#elseif os(macOS)
-extension 🗒️StaticInfo {
-    static let versionInfos: [(version: String, date: String)] = [("1.1", "2021-03-01"),
-                                                                  ("1.0.1", "2021-02-01"),
-                                                                  ("1.0", "2021-01-01")] //降順。先頭の方が新しい
-    
-    enum SourceCodeCategory: String, CaseIterable, Identifiable {
-        case main, その他
-        var id: Self { self }
-        var fileNames: [String] {
-            switch self {
-                case .main: ["App.swift",
-                             "ContentView.swift",
-                             "📱AppModel.swift",
-                             "📱AppModel(extension).swift"]
-                case .その他: ["📣ADSheet.swift",
-                             "🔧Settings.swift",
-                             "🪄Commands.swift",
-                             "💬RequestUserReview.swift",
-                             "🗒️StaticInfo.swift",
-                             "ℹ️HelpWindows.swift",
-                             "ℹ️HelpCommands.swift",
-                             "📣ADModel.swift",
-                             "📣ADContent.swift",
-                             "🛒InAppPurchaseModel.swift",
-                             "🛒InAppPurchaseWindow.swift",
-                             "🛒InAppPurchaseMenu.swift",
-                             "🛒InAppPurchaseCommand.swift"]
             }
         }
     }
