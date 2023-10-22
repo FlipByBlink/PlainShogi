@@ -103,7 +103,7 @@ struct 手駒増減メニュー: View {
         }
         .listStyle(.plain)
         .navigationTitle(self.陣営 == .王側 ? "王側の手駒" : "玉側の手駒")
-        .toolbar { 閉じるボタン(self.dismiss) }
+        .modifier(閉じるボタン(self.dismiss))
     }
     init(_ ｼﾞﾝｴｲ: 王側か玉側か) { self.陣営 = ｼﾞﾝｴｲ }
 }

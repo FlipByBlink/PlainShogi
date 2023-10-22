@@ -12,7 +12,7 @@ struct メニュートップ: View {
                 ガイドメニュー()
             }
             .navigationTitle("メニュー")
-            .toolbar { 閉じるボタン(self.dismiss) }
+            .modifier(閉じるボタン(self.dismiss))
         }
     }
 }
