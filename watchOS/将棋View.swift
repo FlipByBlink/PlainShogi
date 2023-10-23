@@ -4,10 +4,11 @@ struct 将棋View: View {
     var body: some View {
         ZStack {
             Color.clear
-                .ignoresSafeArea()
             盤面のみ()
         }
         .modifier(レイアウト.推定())
+        .padding(.vertical, 12)
+        .ignoresSafeArea()
         .modifier(成駒確認アラート())
         .modifier(オプション変更アニメーション())
     }
@@ -19,9 +20,11 @@ private enum レイアウト {
         func body(content: Content) -> some View {
             GeometryReader {
                 content
-                    .environment(\.マスの大きさ,
-                                  min($0.size.width, $0.size.height) / 9)
+                    .environment(\.マスの大きさ, Self.マスの大きさを計算($0.size.height))
             }
+        }
+        static private func マスの大きさを計算(_ 盤面と盤外を合わせた高さ: CGFloat) -> CGFloat {
+            (盤面と盤外を合わせた高さ - レイアウト.盤と手駒の隙間 * 2) / 11
         }
     }
     static let 盤と手駒の隙間: CGFloat = 4
@@ -30,32 +33,28 @@ private enum レイアウト {
 private struct 盤面のみ: View {
     @Environment(\.マスの大きさ) var マスの大きさ
     var body: some View {
-        VStack(spacing: 0) {
-            ForEach(0 ..< 9) { 行 in
-                if 行 != 0 { Divider() }
-                HStack(spacing: 0) {
-                    ForEach(0 ..< 9) { 列 in
-                        if 列 != 0 { Divider() }
-                        盤上のコマもしくはマス(行 * 9 + 列)
+        VStack(spacing: レイアウト.盤と手駒の隙間) {
+            盤外(.対面)
+            VStack(spacing: 0) {
+                ForEach(0 ..< 9) { 行 in
+                    if 行 != 0 { Divider() }
+                    HStack(spacing: 0) {
+                        ForEach(0 ..< 9) { 列 in
+                            if 列 != 0 { Divider() }
+                            盤上のコマもしくはマス(行 * 9 + 列)
+                        }
                     }
                 }
             }
-        }
-        .frame(width: self.マスの大きさ * 9,
-               height: self.マスの大きさ * 9)
-        .background {
-            Rectangle()
-                .strokeBorder(lineWidth: 1)
-                .frame(width: self.マスの大きさ * 9 + 2,
-                       height: self.マスの大きさ * 9 + 2)
-        }
-        .overlay(alignment: .top) {
-            盤外(.対面)
-                .alignmentGuide(.top) { _ in self.マスの大きさ + レイアウト.盤と手駒の隙間 }
-        }
-        .overlay(alignment: .bottom) {
+            .frame(width: self.マスの大きさ * 9,
+                   height: self.マスの大きさ * 9)
+            .overlay {
+                Rectangle()
+                    .strokeBorder(lineWidth: 1)
+                    .frame(width: self.マスの大きさ * 9 + 2,
+                           height: self.マスの大きさ * 9 + 2)
+            }
             盤外(.手前)
-                .alignmentGuide(.bottom) { _ in -レイアウト.盤と手駒の隙間 }
         }
     }
 }
