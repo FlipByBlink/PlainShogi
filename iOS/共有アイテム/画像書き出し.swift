@@ -12,11 +12,11 @@ enum 画像書き出し {
         let レンダラー = ImageRenderer(content: {
             将棋View()
                 .environmentObject(モデル)
-                .frame(width: 300, height: 300)
+                .frame(width: 440, height: 440)
                 .padding()
                 .background { Color.white }
         }())
-        レンダラー.scale = 3
+        レンダラー.scale = 2
         guard let データ = レンダラー.uiImage?.pngData() else {
             assertionFailure()
             return
