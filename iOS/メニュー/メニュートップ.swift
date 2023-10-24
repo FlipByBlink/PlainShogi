@@ -100,34 +100,38 @@ private extension メニュートップ {
         private static func メニューショートカットセクション() -> some View {
             Section {
 #if !targetEnvironment(macCatalyst)
-                VStack {
-                    Label("メニューボタンを長押しすると「初期化ボタン」や「一手戻すボタン」などを呼び出せます",
-                          systemImage: "gearshape")
+                Label("メニューボタンを長押しすると「初期化ボタン」や「一手戻すボタン」などを呼び出せます",
+                      systemImage: "gearshape")
+                HStack {
+                    Spacer()
                     Image("MenuLongPress")
                         .resizable()
                         .scaledToFit()
                         .frame(height: 200)
                         .border(.black)
-                        .padding(8)
+                        .padding(.bottom, 12)
+                    Spacer()
                 }
-                .padding(.vertical, 8)
+                .listRowSeparator(.hidden)
 #endif
             }
         }
         private static func 共有ショートカットセクション() -> some View {
             Section {
 #if !targetEnvironment(macCatalyst)
-                VStack {
-                    Label("共有ボタンを長押しするとフォーマットを指定できます",
-                          systemImage: "gearshape")
+                Label("共有ボタンを長押しするとフォーマットを指定できます",
+                      systemImage: "square.and.arrow.up")
+                HStack {
+                    Spacer()
                     Image(.shareButtonLongPress)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 200)
                         .border(.black)
-                        .padding(8)
+                        .padding(.bottom, 12)
+                    Spacer()
                 }
-                .padding(.vertical, 8)
+                .listRowSeparator(.hidden)
 #endif
             }
         }
