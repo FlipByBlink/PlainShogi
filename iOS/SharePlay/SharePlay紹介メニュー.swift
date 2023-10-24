@@ -19,8 +19,8 @@ struct SharePlay紹介メニューリンク: View {
                 } header: {
                     Text("はじめ方")
                 }
-                self.NameDropスタイル説明セクション()
                 self.メッセージアプリ説明セクション()
+                self.NameDropスタイル説明セクション()
                 self.注意事項セクション()
                 self.データ管理説明セクション()
             }
@@ -62,20 +62,6 @@ struct SharePlay紹介メニューリンク: View {
         EmptyView()
 #endif
     }
-    private func NameDropスタイル説明セクション() -> some View {
-        Section {
-            Text("iOS 17 以降のiPhone同士を近付けるだけでSharePlayを開始できます。iPhone同士を近付けるとAirDrop等のボタンが表示されます。「SharePlay」と書かれたボタンを押すと「将棋盤」アクティビティに参加します。")
-                .padding(8)
-            Image(.nameDrop)
-                .resizable()
-                .scaledToFit()
-                .border(.black)
-                .frame(maxWidth: .infinity, maxHeight: 140)
-            //ImageSource: https://www.apple.com/jp/newsroom/2023/09/ios-17-is-available-today/
-        } footer: {
-            Text("Apple IDに紐付いた連絡先を知らない場合は、同じジェスチャーをした際にNameDrop(連絡先を交換するための機能)が起動します。")
-        }
-    }
     private func メッセージアプリ説明セクション() -> some View {
         Section {
             Text("iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
@@ -85,6 +71,36 @@ struct SharePlay紹介メニューリンク: View {
                 .scaledToFit()
                 .border(.black)
                 .frame(maxWidth: .infinity, maxHeight: 120)
+        }
+    }
+    private func NameDropスタイル説明セクション() -> some View {
+        Section {
+            VStack {
+                Image(.nameDrop)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, maxHeight: 140)
+                Text("iOS 17 以降の2台のiPhoneの上部を近付けるだけでSharePlayを開始できます。")
+            }
+            .padding(.vertical)
+            HStack {
+                Image(.bumpSharePlayButton)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 120)
+                    .padding(8)
+                Text("2台のiPhoneの上部を近付けると「SharePlay」と書かれたボタンが表示されます。そのボタンを押すと「将棋盤」アクティビティを起動され、相手にアクティビティの招待を送ります。")
+            }
+            HStack {
+                Image(.openSharePlayButton)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 120)
+                    .padding(8)
+                Text("招待された側は、上部のメニューの「開く」ボタンを押してください。本アプリが起動され、アクティビティに自動的に参加します。")
+            }
+        } footer: {
+            Text("Apple IDに紐付いた連絡先を知らない場合は、同じジェスチャーをした際にNameDrop(連絡先を交換するための機能)が起動します。")
         }
     }
     private func 注意事項セクション() -> some View {

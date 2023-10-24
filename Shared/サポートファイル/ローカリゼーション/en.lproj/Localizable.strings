@@ -150,6 +150,10 @@
 "引用: Apple サポートサイト" = "Quote: Apple support site";
 "Appleサポートサイトを開く" = "Open Apple support site";
 "iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。" = "On devices running iOS 16 or later, SharePlay is also available in \"Messages\" app. If you are invited to \"Shogi board\" activity in \"Messages\" app, please join the activity in \"Messages\" app.";
+"iOS 17 以降の2台のiPhoneの上部を近付けるだけでSharePlayを開始できます。" = "SharePlay can be initiated by simply bringing the tops of two iPhones running iOS 17 or later into close proximity.";
+"2台のiPhoneの上部を近付けると「SharePlay」と書かれたボタンが表示されます。そのボタンを押すと「将棋盤」アクティビティを起動され、相手にアクティビティの招待を送ります。" = "When the tops of the two iPhones are brought close together, a button labeled \"SharePlay\" will appear. Pressing that button will activate the \"Shogi Board\" activity and send an invitation to your partner to participate in the activity.";
+"招待された側は、上部のメニューの「開く」ボタンを押してください。本アプリが起動され、アクティビティに自動的に参加します。" = "The invited partner presses the \"Open\" button in the menu at the top. This application will be launched. The partner will be automatically joined to the activity.";
+"Apple IDに紐付いた連絡先を知らない場合は、同じジェスチャーをした際にNameDrop(連絡先を交換するための機能)が起動します。" = "If you do not know the partner's Apple ID contact information, NameDrop (a feature for exchanging contacts) will be activated.";
 "**以下の項目はユーザー間で同期されません**
 ・各種オプション(上下反転/セリフ体/太字/駒のサイズ/English表記/強調表示常時オフ)
 ・駒増減モードに移行しているかどうか
