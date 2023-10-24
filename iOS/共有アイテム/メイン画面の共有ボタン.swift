@@ -7,13 +7,13 @@ struct メイン画面の共有ボタン: View {
     var body: some View {
 #if !targetEnvironment(macCatalyst)
         Group {
-            if #available(iOS 17, *) {
-                ShareLink(item: Self.アイテム.IOS17向け(),
+            if #available(iOS 17, *), モデル.グループセッション == nil {
+                ShareLink(item: Self.アイテム.アクティビティあり(),
                           message: .init(self.モデル.現在の盤面をテキストに変換する()),
                           preview: .init("盤面を共有", icon: self.サムネイル),
                           label: self.ボタンアイコン)
             } else {
-                ShareLink(item: Self.アイテム.IOS16向け(),
+                ShareLink(item: Self.アイテム.アクティビティなし(),
                           message: .init(self.モデル.現在の盤面をテキストに変換する()),
                           preview: .init("盤面を共有", icon: self.サムネイル),
                           label: self.ボタンアイコン)
@@ -33,35 +33,30 @@ struct メイン画面の共有ボタン: View {
 private extension メイン画面の共有ボタン {
     private enum アイテム {
         @available(iOS 17, *)
-        struct IOS17向け: Transferable {
+        struct アクティビティあり: Transferable {
             static var transferRepresentation: some TransferRepresentation {
                 FileRepresentation(exportedContentType: .png) { _ in
                     SentTransferredFile(画像書き出し.一時ファイルURL)
                 }
                 .suggestedFileName(画像書き出し.ファイル名)
                 GroupActivityTransferRepresentation { _ in 🄶roupActivity() }
-                ProxyRepresentation { _ in
-                    if let uiImage = UIImage(data: try .init(contentsOf: 画像書き出し.一時ファイルURL)) {
-                        Image(uiImage: uiImage)
-                    } else {
-                        throw 不特定エラー.要修正
-                    }
-                }
+                ProxyRepresentation { _ in try アイテム.プロキシ用のImage取得() }
             }
         }
-        struct IOS16向け: Transferable {
+        struct アクティビティなし: Transferable {
             static var transferRepresentation: some TransferRepresentation {
                 FileRepresentation(exportedContentType: .png) { _ in
                     SentTransferredFile(画像書き出し.一時ファイルURL)
                 }
                 .suggestedFileName(画像書き出し.ファイル名)
-                ProxyRepresentation { _ in
-                    if let uiImage = UIImage(data: try .init(contentsOf: 画像書き出し.一時ファイルURL)) {
-                        Image(uiImage: uiImage)
-                    } else {
-                        throw 不特定エラー.要修正
-                    }
-                }
+                ProxyRepresentation { _ in try アイテム.プロキシ用のImage取得() }
+            }
+        }
+        static func プロキシ用のImage取得() throws -> Image {
+            if let uiImage = UIImage(data: try .init(contentsOf: 画像書き出し.一時ファイルURL)) {
+                Image(uiImage: uiImage)
+            } else {
+                throw 不特定エラー.要修正
             }
         }
     }
