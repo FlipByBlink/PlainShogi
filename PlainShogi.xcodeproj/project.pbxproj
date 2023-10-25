@@ -20,7 +20,6 @@
 		12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D4369C2865CD8300B707F5 /* Configuration.storekit */; };
 		12F4444E286D4B580008A663 /* メニュートップ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* メニュートップ.swift */; };
 		160D1CFE2AE26009004E14E2 /* 画像キャッシュハンドラー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1CFD2AE26009004E14E2 /* 画像キャッシュハンドラー.swift */; };
-		160D1D002AE26427004E14E2 /* 共有ボタンや画像キャッシュ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1CFF2AE26427004E14E2 /* 共有ボタンや画像キャッシュ.swift */; };
 		160D1D022AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */; };
 		160D1D032AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */; };
 		160D1D042AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */; };
@@ -128,7 +127,6 @@
 		16C43AF12AE4A65E009D8E26 /* SharePlayガイドメニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */; };
 		16C43AF22AE4A65E009D8E26 /* SharePlay紹介メニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */; };
 		16C43AF32AE4A65E009D8E26 /* ドラッグ対象.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750812ADE180700443DE2 /* ドラッグ対象.swift */; };
-		16C43AF42AE4A65E009D8E26 /* 共有ボタンや画像キャッシュ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160D1CFF2AE26427004E14E2 /* 共有ボタンや画像キャッシュ.swift */; };
 		16C43AF52AE4A65E009D8E26 /* メイン画面の共有ボタン.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E41492AE0F9A300CFA307 /* メイン画面の共有ボタン.swift */; };
 		16C43AF62AE4A65E009D8E26 /* 画像書き出し.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */; };
 		16C43AF72AE4A65E009D8E26 /* 画像キャッシュハンドラー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160D1CFD2AE26009004E14E2 /* 画像キャッシュハンドラー.swift */; };
@@ -301,7 +299,6 @@
 				16C43AF12AE4A65E009D8E26 /* SharePlayガイドメニュー.swift in CopyFiles */,
 				16C43AF22AE4A65E009D8E26 /* SharePlay紹介メニュー.swift in CopyFiles */,
 				16C43AF32AE4A65E009D8E26 /* ドラッグ対象.swift in CopyFiles */,
-				16C43AF42AE4A65E009D8E26 /* 共有ボタンや画像キャッシュ.swift in CopyFiles */,
 				16C43AF52AE4A65E009D8E26 /* メイン画面の共有ボタン.swift in CopyFiles */,
 				16C43AF62AE4A65E009D8E26 /* 画像書き出し.swift in CopyFiles */,
 				16C43AF72AE4A65E009D8E26 /* 画像キャッシュハンドラー.swift in CopyFiles */,
@@ -419,7 +416,6 @@
 		12D4369C2865CD8300B707F5 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		12F4444D286D4B580008A663 /* メニュートップ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "メニュートップ.swift"; sourceTree = "<group>"; };
 		160D1CFD2AE26009004E14E2 /* 画像キャッシュハンドラー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像キャッシュハンドラー.swift"; sourceTree = "<group>"; };
-		160D1CFF2AE26427004E14E2 /* 共有ボタンや画像キャッシュ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "共有ボタンや画像キャッシュ.swift"; sourceTree = "<group>"; };
 		160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "アプリモデルのスーパークラス.swift"; sourceTree = "<group>"; };
 		160D1D052AE26D84004E14E2 /* MacCatalyst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCatalyst.swift; sourceTree = "<group>"; };
 		161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "バックグラウンド時に駒選択を解除.swift"; sourceTree = "<group>"; };
@@ -842,7 +838,6 @@
 		169E41482AE0E8AB00CFA307 /* 共有アイテム */ = {
 			isa = PBXGroup;
 			children = (
-				160D1CFF2AE26427004E14E2 /* 共有ボタンや画像キャッシュ.swift */,
 				169E41492AE0F9A300CFA307 /* メイン画面の共有ボタン.swift */,
 				161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */,
 				160D1CFD2AE26009004E14E2 /* 画像キャッシュハンドラー.swift */,
@@ -1104,7 +1099,6 @@
 				1697506F2ADDFE8500443DE2 /* 固定値.swift in Sources */,
 				1697508E2ADE18CD00443DE2 /* 持ち駒.swift in Sources */,
 				F5BD6A122A00BF4C004AD4A5 /* アプリモデル.swift in Sources */,
-				160D1D002AE26427004E14E2 /* 共有ボタンや画像キャッシュ.swift in Sources */,
 				1697506B2ADDFD5100443DE2 /* ブックマークメニュー.swift in Sources */,
 				1697510A2ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift in Sources */,
 				169E414F2AE1375C00CFA307 /* コマンドボタンズ.swift in Sources */,

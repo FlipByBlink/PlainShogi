@@ -100,7 +100,6 @@ extension 🗒️StaticInfo {
                     "ドロップデリゲート.swift"
                 ]
                 case .共有アイテム: [
-                    "共有ボタンや画像キャッシュ.swift",
                     "メイン画面の共有ボタン.swift",
                     "画像書き出し.swift",
                     "画像キャッシュハンドラー.swift",

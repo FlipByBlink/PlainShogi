@@ -21,6 +21,9 @@ struct 画像キャッシュハンドラー: ViewModifier {
     init(_ サムネイル: Binding<Image>) {
         self._サムネイル = サムネイル
     }
+}
+
+private extension 画像キャッシュハンドラー {
     private func 画像保存をリクエスト() {
         Task(priority: .background) {
             try? await Task.sleep(for: .seconds(0.5))
