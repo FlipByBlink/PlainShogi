@@ -12,10 +12,6 @@ struct メニューボタン: View { // ⚙️
                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                 .padding(8)
         }
-        .hoverEffect(.highlight)
-        .padding(.trailing)
-        .tint(.primary)
-        .accessibilityLabel("Open menu")
         .contextMenu {
             強調表示クリアボタン()
             盤面初期化ボタン()
@@ -26,6 +22,10 @@ struct メニューボタン: View { // ⚙️
             self.ブックマーク表示ボタン()
             self.駒の選択解除ボタン()
         }
+        .hoverEffect(.highlight)
+        .padding(.trailing)
+        .tint(.primary)
+        .accessibilityLabel("Open menu")
 #else
         EmptyView()
 #endif
