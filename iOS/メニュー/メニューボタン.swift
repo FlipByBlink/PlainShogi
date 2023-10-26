@@ -4,7 +4,19 @@ struct メニューボタン: View { // ⚙️
     @EnvironmentObject var モデル: アプリモデル
     var body: some View {
 #if !targetEnvironment(macCatalyst)
-        Menu {
+        Button {
+            モデル.表示中のシート = .メニュー
+        } label: {
+            Image(systemName: モデル.セリフ体 ? "gear" : "gearshape")
+                .font(.title2.weight(.light))
+                .dynamicTypeSize(...DynamicTypeSize.accessibility1)
+                .padding(8)
+        }
+        .hoverEffect(.highlight)
+        .padding(.trailing)
+        .tint(.primary)
+        .accessibilityLabel("Open menu")
+        .contextMenu {
             強調表示クリアボタン()
             盤面初期化ボタン()
             増減モード開始ボタン()
@@ -13,18 +25,7 @@ struct メニューボタン: View { // ⚙️
             self.履歴ボタン()
             self.ブックマーク表示ボタン()
             self.駒の選択解除ボタン()
-        } label: {
-            Image(systemName: モデル.セリフ体 ? "gear" : "gearshape")
-                .font(.title2.weight(.light))
-                .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                .padding(8)
-        } primaryAction: {
-            モデル.表示中のシート = .メニュー
         }
-        .hoverEffect(.highlight)
-        .padding(.trailing)
-        .tint(.primary)
-        .accessibilityLabel("Open menu")
 #else
         EmptyView()
 #endif
