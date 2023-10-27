@@ -61,9 +61,17 @@ private struct 盤面のみ: View {
                 }
             }
         }
-        .border(.primary, width: 固定値.盤面枠線の太さ)
+        .border(.primary, width: self.枠線の太さ)
         .frame(width: self.マスの大きさ * 9,
                height: self.マスの大きさ * 9)
+    }
+    private var 枠線の太さ: CGFloat {
+        switch self.マスの大きさ {
+            case ..<50: 1
+            case 50..<100: 1.5
+            case 100...: 2
+            default: 1
+        }
     }
 }
 
