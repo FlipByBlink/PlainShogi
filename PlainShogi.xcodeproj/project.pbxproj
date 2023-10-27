@@ -627,10 +627,10 @@
 			isa = PBXGroup;
 			children = (
 				F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */,
-				169751092ADE7BB800443DE2 /* 📣ADComponents.swift */,
 				169750FB2ADE7AB900443DE2 /* 📣ADModel.swift */,
-				169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */,
+				169751092ADE7BB800443DE2 /* 📣ADComponents.swift */,
 				169750FC2ADE7AB900443DE2 /* 🛒InAppPurchaseModel.swift */,
+				169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */,
 			);
 			path = "おまけ";
 			sourceTree = "<group>";
