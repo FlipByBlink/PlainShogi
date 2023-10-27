@@ -91,14 +91,16 @@ struct SharePlay紹介メニューリンク: View {
                     .padding(8)
                 Text("2台のiPhoneの上部を近付けると「SharePlay」と書かれたボタンが表示されます。そのボタンを押すと「将棋盤」アクティビティを起動され、相手にアクティビティの招待を送ります。")
             }
-            HStack {
-                Image(.openSharePlayButton)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 120)
-                    .padding(8)
-                Text("招待された側は、上部のメニューの「開く」ボタンを押してください。本アプリが起動され、アクティビティに自動的に参加します。")
-            }
+            /* iOS 17.1 で挙動が不正確になったため一旦コメントアウト
+             HStack {
+             Image(.openSharePlayButton)
+             .resizable()
+             .scaledToFit()
+             .frame(width: 120)
+             .padding(8)
+             Text("招待された側は、上部のメニューの「開く」ボタンを押してください。本アプリが起動され、アクティビティに自動的に参加します。")
+             }
+             */
         } footer: {
             Text("Apple IDに紐付いた連絡先を知らない場合は、同じジェスチャーをした際にNameDrop(連絡先を交換するための機能)が起動します。")
         }
