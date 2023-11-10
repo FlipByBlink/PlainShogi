@@ -76,7 +76,7 @@ struct SharePlay紹介メニューリンク: View {
     private func NameDropスタイル説明セクション() -> some View {
         Section {
             VStack {
-                Image(.nameDrop)
+                Image(.nameDropBump)
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: .infinity, maxHeight: 140)

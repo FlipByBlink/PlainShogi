@@ -1,3 +1,5 @@
+"1.5.1" = "Fix a bug of image-export";
+
 "1.5" = "Support for export to image format.
 Support NameDrop style SharePlay(iOS17).
 Add share button in main screen.

@@ -1429,7 +1429,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "iOS/サポートファイル/iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -1448,7 +1448,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
 				PRODUCT_NAME = "将棋盤";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1468,7 +1468,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "iOS/サポートファイル/iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 6696GEY228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -1487,7 +1487,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
 				PRODUCT_NAME = "将棋盤";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1582,7 +1582,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi.watchkitapp.PSComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1613,7 +1613,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi.watchkitapp.PSComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1646,7 +1646,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi.watchkitapp;
 				PRODUCT_NAME = "Plain将棋盤";
 				SDKROOT = watchos;
@@ -1679,7 +1679,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi.watchkitapp;
 				PRODUCT_NAME = "Plain将棋盤";
 				SDKROOT = watchos;
