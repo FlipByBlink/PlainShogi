@@ -23,9 +23,12 @@ enum 画像書き出し {
         }
         Task(priority: .low) {
             do {
-                try FileManager.default.removeItem(at: Self.一時ファイルURL)
+                if FileManager.default.fileExists(atPath: Self.一時ファイルURL.path()) {
+                    try FileManager.default.removeItem(at: Self.一時ファイルURL)
+                }
                 try データ.write(to: Self.一時ファイルURL)
             } catch {
+                assertionFailure()
                 print(error)
             }
         }
