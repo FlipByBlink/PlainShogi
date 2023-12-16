@@ -1,7 +1,7 @@
 import Combine
 import SwiftUI
 import UniformTypeIdentifiers
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import GroupActivities
 #endif
 
@@ -30,6 +30,8 @@ class アプリモデル: スーパークラス, ObservableObject {
 #if os(iOS)
     // ↓ ドラッグ&ドロップ関連
     @Published private(set) var ドラッグ中の駒: ドラッグ対象 = .無し
+#endif
+#if os(iOS) || os(tvOS)
     // ↓ SharePlay関連
     private var サブスクリプションズ = Set<AnyCancellable>()
     private var タスクス = Set<Task<Void, Never>>()
@@ -336,7 +338,9 @@ extension アプリモデル {
 #endif
     }
 }
+#endif
 
+#if os(iOS) || os(tvOS)
 //MARK: - ==== SharePlay ====
 extension アプリモデル {
     func 新規GroupSessionを受信したら設定する() async {
@@ -420,7 +424,9 @@ extension アプリモデル {
     //Sample code
     //https://developer.apple.com/documentation/groupactivities/drawing_content_in_a_group_session
 }
+#endif
 
+#if os(iOS)
 //MARK: - ==== テキスト書き出し読み込み機能 ====
 extension アプリモデル {
     func 現在の盤面をテキストに変換する() -> String {
@@ -465,7 +471,7 @@ extension アプリモデル {
 }
 #endif
 
-#if os(watchOS) || os(tvOS)
+#if os(watchOS)
 extension アプリモデル {
     private func SharePlay中なら現在の局面を参加者に送信する() {
         //Unsupport on watchOS, tvOS

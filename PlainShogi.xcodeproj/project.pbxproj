@@ -172,6 +172,7 @@
 		16C43B202AE4A931009D8E26 /* アプリについて.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1697510C2ADE7E3400443DE2 /* アプリについて.swift */; };
 		16C43B212AE4A931009D8E26 /* ウィジェット.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* ウィジェット.swift */; };
 		16C43B222AE4ABBC009D8E26 /* 🌐AboutApp.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 169751012ADE7B3700443DE2 /* 🌐AboutApp.xcstrings */; };
+		16E6D0C22B2DAB0800BDB3E8 /* GroupActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750682ADDFCC100443DE2 /* GroupActivity.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -679,6 +680,7 @@
 		169750662ADD6E3300443DE2 /* その他 */ = {
 			isa = PBXGroup;
 			children = (
+				169750682ADDFCC100443DE2 /* GroupActivity.swift */,
 				F5119B952A0144460027A74C /* シートカテゴリ.swift */,
 				F5B5578A29FF851800A14074 /* 字体.swift */,
 				F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */,
@@ -694,7 +696,6 @@
 		169750672ADDFCA500443DE2 /* SharePlay */ = {
 			isa = PBXGroup;
 			children = (
-				169750682ADDFCC100443DE2 /* GroupActivity.swift */,
 				16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */,
 				F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */,
 				169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */,
@@ -1196,6 +1197,7 @@
 				F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
 				169750982ADE18FC00443DE2 /* 駒の移動先パターン.swift in Sources */,
 				F5119BA62A0291000027A74C /* App.swift in Sources */,
+				16E6D0C22B2DAB0800BDB3E8 /* GroupActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
