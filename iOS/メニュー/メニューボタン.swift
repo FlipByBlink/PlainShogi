@@ -5,7 +5,10 @@ struct メニューボタン: View { // ⚙️
     var body: some View {
 #if !targetEnvironment(macCatalyst)
         Button {
-            モデル.表示中のシート = .メニュー
+            Task { @MainActor in
+                await self.共有シートとの競合が起きた場合のワークアラウンド()
+                モデル.表示中のシート = .メニュー
+            }
         } label: {
             Image(systemName: モデル.セリフ体 ? "gear" : "gearshape")
                 .font(.title2.weight(.light))
@@ -65,6 +68,12 @@ private extension メニューボタン {
                     Label("駒の選択を解除", systemImage: "square.slash")
                 }
             }
+        }
+    }
+    private func 共有シートとの競合が起きた場合のワークアラウンド() async {
+        if self.モデル.表示中のシート == .メニュー {
+            self.モデル.表示中のシート = nil
+            try? await Task.sleep(for: .seconds(0.3))
         }
     }
 }
