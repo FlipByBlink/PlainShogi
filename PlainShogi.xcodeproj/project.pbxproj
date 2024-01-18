@@ -27,6 +27,7 @@
 		161FCCCB2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */; };
 		161FCCCD2ADE8FF00088E6AA /* 自動スリープ無効化.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */; };
 		161FCCE92ADF857B0088E6AA /* 画像書き出し.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */; };
+		16267B572B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16267B562B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift */; };
 		169750692ADDFCC100443DE2 /* GroupActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750682ADDFCC100443DE2 /* GroupActivity.swift */; };
 		1697506B2ADDFD5100443DE2 /* ブックマークメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506A2ADDFD5100443DE2 /* ブックマークメニュー.swift */; };
 		1697506D2ADDFE5700443DE2 /* コマンド.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506C2ADDFE5700443DE2 /* コマンド.swift */; };
@@ -421,6 +422,7 @@
 		161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "バックグラウンド時に駒選択を解除.swift"; sourceTree = "<group>"; };
 		161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "自動スリープ無効化.swift"; sourceTree = "<group>"; };
 		161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像書き出し.swift"; sourceTree = "<group>"; };
+		16267B562B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlay用選択中の駒モデル.swift"; sourceTree = "<group>"; };
 		169750682ADDFCC100443DE2 /* GroupActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivity.swift; sourceTree = "<group>"; };
 		1697506A2ADDFD5100443DE2 /* ブックマークメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ブックマークメニュー.swift"; sourceTree = "<group>"; };
 		1697506C2ADDFE5700443DE2 /* コマンド.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "コマンド.swift"; sourceTree = "<group>"; };
@@ -699,6 +701,7 @@
 				F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */,
 				169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */,
 				169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */,
+				16267B562B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift */,
 			);
 			path = SharePlay;
 			sourceTree = "<group>";
@@ -1121,6 +1124,7 @@
 				160D1D062AE26D84004E14E2 /* MacCatalyst.swift in Sources */,
 				169751102ADE7F4700443DE2 /* ユーザーレビュー依頼.swift in Sources */,
 				F5BBD8602973A7260034CCB8 /* 広告コンテンツ.swift in Sources */,
+				16267B572B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift in Sources */,
 				169750FF2ADE7ABA00443DE2 /* 🛒InAppPurchaseModel.swift in Sources */,
 				F5091F8E2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift in Sources */,
 				1697509E2ADE192200443DE2 /* 駒の種類.swift in Sources */,

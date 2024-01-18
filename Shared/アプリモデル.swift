@@ -79,7 +79,7 @@ extension アプリモデル {
     func 強調表示をクリア() {
         withAnimation {
             self.局面.直近操作情報を消す()
-            self.選択中の駒 = .なし
+            self.選択中の駒の値を変更する(.なし)
         }
         self.SharePlay中なら現在の局面を参加者に送信する()
         フィードバック.成功()
@@ -90,7 +90,7 @@ extension アプリモデル {
                 case .なし:
                     if self.局面.ここに駒がある(今選択した場所) {
                         withAnimation(.default.speed(2.5)) {
-                            self.選択中の駒 = 今選択した場所
+                            self.選択中の駒の値を変更する(今選択した場所)
                         }
                         フィードバック.軽め()
                     }
@@ -98,10 +98,10 @@ extension アプリモデル {
                     if self.局面.この駒は成る事ができる(位置) {
                         self.この駒を裏返す(位置)
                     }
-                    self.選択中の駒 = .なし
+                    self.選択中の駒の値を変更する(.なし)
                 default:
                     if self.局面.これとこれは同じ陣営(self.選択中の駒, 今選択した場所) {
-                        self.選択中の駒 = 今選択した場所
+                        self.選択中の駒の値を変更する(今選択した場所)
                         フィードバック.軽め()
                     } else {
                         switch 今選択した場所 {
@@ -132,12 +132,12 @@ extension アプリモデル {
         guard self.選択中の駒 != .なし else { return }
         withAnimation(.default.speed(2)) {
             if self.局面.ここからここへは移動不可(選択中の駒, .盤外(陣営)) {
-                self.選択中の駒 = .なし
+                self.選択中の駒の値を変更する(.なし)
                 フィードバック.軽め()
             } else {
                 do {
                     try self.局面.駒を移動させる(選択中の駒, .盤外(陣営))
-                    self.選択中の駒 = .なし
+                    self.選択中の駒の値を変更する(.なし)
                     self.SharePlay中なら現在の局面を参加者に送信する()
                     フィードバック.強め()
                 } catch {
@@ -162,13 +162,13 @@ extension アプリモデル {
     }
     func 盤面を初期化する() {
         withAnimation { self.局面.初期化する() }
-        self.選択中の駒 = .なし
+        self.選択中の駒の値を変更する(.なし)
         self.SharePlay中なら現在の局面を参加者に送信する()
         フィードバック.エラー()
         self.表示中のシート = nil
     }
     func 駒の選択を解除する() {
-        self.選択中の駒 = .なし
+        self.選択中の駒の値を変更する(.なし)
     }
     func 増減モードを開始する() {
         self.表示中のシート = nil
@@ -194,7 +194,7 @@ extension アプリモデル {
     func 一手戻す() {
         guard let 一手前の局面 = self.局面.一手前の局面 else { return }
         self.表示中のシート = nil
-        self.選択中の駒 = .なし
+        self.選択中の駒の値を変更する(.なし)
         self.局面.現在の局面として適用する(一手前の局面)
         self.SharePlay中なら現在の局面を参加者に送信する()
         フィードバック.成功()
@@ -206,7 +206,7 @@ extension アプリモデル {
                 try self.局面.駒を移動させる(self.選択中の駒, 移動先)
                 self.SharePlay中なら現在の局面を参加者に送信する()
                 self.駒移動後の成駒について対応する(self.選択中の駒, 移動先)
-                self.選択中の駒 = .なし
+                self.選択中の駒の値を変更する(.なし)
                 フィードバック.強め()
             } catch {
                 assertionFailure()
@@ -221,6 +221,10 @@ extension アプリモデル {
                 }
             }
         }
+    }
+    private func 選択中の駒の値を変更する(_ 変更後の値: 駒の場所) {
+        self.選択中の駒 = 変更後の値
+        self.SharePlay中なら現在の選択中の駒を参加者に送信する()
     }
     private func この駒を裏返す(_ 位置: Int) {
         if self.局面.この駒は成る事ができる(位置) {
@@ -269,7 +273,7 @@ extension アプリモデル: UIApplicationDelegate {}
 //MARK: - ==== ドラッグ関連 ====
 extension アプリモデル {
     func この駒をドラッグし始める(_ 場所: 駒の場所) -> NSItemProvider {
-        self.選択中の駒 = .なし
+        self.選択中の駒の値を変更する(.なし)
         フィードバック.軽め()
         self.ドラッグ中の駒 = .アプリ内の駒(場所)
         return self.ドラッグ対象となるアイテムを用意する()
@@ -367,13 +371,21 @@ extension アプリモデル {
                     }
                 }
                 .store(in: &self.サブスクリプションズ)
-            let データ受け取りタスク = Task {
-                for await (受け取った局面, _) in 新規メッセンジャー.messages(of: 局面モデル.self) {
-                    guard self.局面 != 受け取った局面 else { continue }
-                    self.SharePlay中に共有相手から送信されたモデルを適用する(受け取った局面)
+            self.タスクス.insert(
+                Task {
+                    for await (受け取った局面, _) in 新規メッセンジャー.messages(of: 局面モデル.self) {
+                        guard self.局面 != 受け取った局面 else { continue }
+                        self.SharePlay中に共有相手から送信されたモデルを適用する(受け取った局面)
+                    }
                 }
-            }
-            self.タスクス.insert(データ受け取りタスク)
+            )
+            self.タスクス.insert(
+                Task {
+                    for await (メッセージ, _) in 新規メッセンジャー.messages(of: SharePlay用選択中の駒モデル.self) {
+                        self.選択中の駒 = メッセージ.値
+                    }
+                }
+            )
             新規セッション.join()
         }
     }
@@ -402,6 +414,18 @@ extension アプリモデル {
             Task {
                 do {
                     try await セッションメッセンジャー.send(self.局面)
+                } catch {
+                    print("🚨", #function, #line, error.localizedDescription)
+                }
+            }
+        }
+    }
+    private func SharePlay中なら現在の選択中の駒を参加者に送信する() {
+        if let セッションメッセンジャー {
+            guard self.局面.SharePlay共有可能 else { assertionFailure(); return }
+            Task {
+                do {
+                    try await セッションメッセンジャー.send(SharePlay用選択中の駒モデル(値: self.選択中の駒))
                 } catch {
                     print("🚨", #function, #line, error.localizedDescription)
                 }
@@ -467,6 +491,9 @@ extension アプリモデル {
 
 #if os(watchOS) || os(tvOS)
 extension アプリモデル {
+    private func SharePlay中なら現在の選択中の駒を参加者に送信する() {
+        //Unsupport on watchOS, tvOS
+    }
     private func SharePlay中なら現在の局面を参加者に送信する() {
         //Unsupport on watchOS, tvOS
     }
