@@ -66,7 +66,7 @@ struct SharePlayガイドメニュー: View {
                 Section {
                     Button {
                         モデル.グループセッション?.leave()
-                        フィードバック.警告()
+                        システムフィードバック.警告()
                         モデル.表示中のシート = nil
                     } label: {
                         Label("アクティビティから離脱する", systemImage: "escape")
@@ -77,7 +77,7 @@ struct SharePlayガイドメニュー: View {
                 Section {
                     Button {
                         self.終了確認ダイアログ表示 = true
-                        フィードバック.軽め()
+                        システムフィードバック.軽め()
                     } label: {
                         Label("アクティビティを終了する", systemImage: "power.dotted")
                     }
@@ -89,7 +89,7 @@ struct SharePlayガイドメニュー: View {
                                     titleVisibility: .visible) {
                     Button(role: .destructive) {
                         モデル.グループセッション?.end()
-                        フィードバック.エラー()
+                        システムフィードバック.エラー()
                         モデル.表示中のシート = nil
                     } label: {
                         Label("はい、アクティビティを終了します", systemImage: "power.dotted")

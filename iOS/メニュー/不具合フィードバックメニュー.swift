@@ -49,7 +49,7 @@ struct 不具合フィードバックリンク: View {
                     Spacer()
                     Button("コピー") {
                         UIPasteboard.general.string = Self.アドレス
-                        フィードバック.軽め()
+                        システムフィードバック.軽め()
                     }
                     .buttonStyle(.bordered)
                 }

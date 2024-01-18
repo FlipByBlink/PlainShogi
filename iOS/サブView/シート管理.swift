@@ -26,7 +26,7 @@ struct シート管理: ViewModifier {
                         .toolbar { self.閉じるボタン() }
                     }
                     .environmentObject(モデル)
-                    .onAppear { フィードバック.軽め() }
+                    .onAppear { システムフィードバック.軽め() }
                 }
             }
     }
@@ -37,7 +37,7 @@ private extension シート管理 {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button {
                 モデル.表示中のシート = nil
-                フィードバック.軽め()
+                システムフィードバック.軽め()
             } label: {
                 Image(systemName: "chevron.down")
                     .grayscale(1.0)

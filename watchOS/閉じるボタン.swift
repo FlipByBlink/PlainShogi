@@ -11,7 +11,7 @@ struct 閉じるボタン: ViewModifier {
                     ToolbarItem(placement: .cancellationAction) {
                         Button(role: .cancel) {
                             self.dismiss()
-                            フィードバック.軽め()
+                            システムフィードバック.軽め()
                         } label: {
                             Image(systemName: "xmark")
                         }

@@ -21,6 +21,8 @@ class アプリモデル: スーパークラス, ObservableObject {
     @Published private(set) var 増減モード中: Bool = false
     @Published private(set) var 選択中の駒: 駒の場所 = .なし
     
+    private var フィードバック: フィードバックモデル = .init()
+    
     override init() {
         super.init()
         ICloudデータ.addObserver(self, #selector(self.iCloudによる外部からの履歴変更を適用する(_:)))
@@ -82,7 +84,7 @@ extension アプリモデル {
             self.選択中の駒の値を変更する(.なし)
         }
         self.SharePlay中なら現在の局面を参加者に送信する()
-        フィードバック.成功()
+        self.フィードバック.成功()
     }
     func この駒を選択する(_ 今選択した場所: 駒の場所) {
         if !self.増減モード中 {
@@ -92,7 +94,7 @@ extension アプリモデル {
                         withAnimation(.default.speed(2.5)) {
                             self.選択中の駒の値を変更する(今選択した場所)
                         }
-                        フィードバック.軽め()
+                        self.フィードバック.軽め()
                     }
                 case .盤駒(let 位置) where self.選択中の駒 == 今選択した場所:
                     if self.局面.この駒は成る事ができる(位置) {
@@ -102,7 +104,7 @@ extension アプリモデル {
                 default:
                     if self.局面.これとこれは同じ陣営(self.選択中の駒, 今選択した場所) {
                         self.選択中の駒の値を変更する(今選択した場所)
-                        フィードバック.軽め()
+                        self.フィードバック.軽め()
                     } else {
                         switch 今選択した場所 {
                             case .盤駒(let 位置):
@@ -122,7 +124,7 @@ extension アプリモデル {
                     self.増減モードでこの盤駒を消す(今選択した場所)
                 case .手駒(let 陣営, _):
                     self.表示中のシート = .手駒増減(陣営)
-                    フィードバック.軽め()
+                    self.フィードバック.軽め()
                 default:
                     break
             }
@@ -133,13 +135,13 @@ extension アプリモデル {
         withAnimation(.default.speed(2)) {
             if self.局面.ここからここへは移動不可(選択中の駒, .盤外(陣営)) {
                 self.選択中の駒の値を変更する(.なし)
-                フィードバック.軽め()
+                self.フィードバック.軽め()
             } else {
                 do {
                     try self.局面.駒を移動させる(選択中の駒, .盤外(陣営))
                     self.選択中の駒の値を変更する(.なし)
                     self.SharePlay中なら現在の局面を参加者に送信する()
-                    フィードバック.強め()
+                    self.フィードバック.強め()
                 } catch {
                     assertionFailure()
                 }
@@ -164,7 +166,7 @@ extension アプリモデル {
         withAnimation { self.局面.初期化する() }
         self.選択中の駒の値を変更する(.なし)
         self.SharePlay中なら現在の局面を参加者に送信する()
-        フィードバック.エラー()
+        self.フィードバック.エラー()
         self.表示中のシート = nil
     }
     func 駒の選択を解除する() {
@@ -173,23 +175,23 @@ extension アプリモデル {
     func 増減モードを開始する() {
         self.表示中のシート = nil
         self.増減モード中 = true
-        フィードバック.成功()
+        self.フィードバック.成功()
     }
     func 増減モードを終了する() {
         self.増減モード中 = false
-        フィードバック.成功()
+        self.フィードバック.成功()
     }
     func 増減モードでこの手駒を一個増やす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         guard self.局面.増減モードでこの手駒を増やすことが出来る(陣営, 職名) else { return }
         self.局面.増減モードでこの手駒を一個増やす(陣営, 職名)
         self.SharePlay中なら現在の局面を参加者に送信する()
-        フィードバック.軽め()
+        self.フィードバック.軽め()
     }
     func 増減モードでこの手駒を一個減らす(_ 陣営: 王側か玉側か, _ 職名: 駒の種類) {
         guard self.局面.増減モードでこの手駒を減らすことが出来る(陣営, 職名) else { return }
         self.局面.増減モードでこの手駒を一個減らす(陣営, 職名)
         self.SharePlay中なら現在の局面を参加者に送信する()
-        フィードバック.軽め()
+        self.フィードバック.軽め()
     }
     func 一手戻す() {
         guard let 一手前の局面 = self.局面.一手前の局面 else { return }
@@ -197,7 +199,7 @@ extension アプリモデル {
         self.選択中の駒の値を変更する(.なし)
         self.局面.現在の局面として適用する(一手前の局面)
         self.SharePlay中なら現在の局面を参加者に送信する()
-        フィードバック.成功()
+        self.フィードバック.成功()
     }
     // ==== private ====
     private func 盤上に駒を移動させる(_ 移動先: 駒の移動先パターン) {
@@ -207,7 +209,7 @@ extension アプリモデル {
                 self.SharePlay中なら現在の局面を参加者に送信する()
                 self.駒移動後の成駒について対応する(self.選択中の駒, 移動先)
                 self.選択中の駒の値を変更する(.なし)
-                フィードバック.強め()
+                self.フィードバック.強め()
             } catch {
                 assertionFailure()
             }
@@ -230,7 +232,7 @@ extension アプリモデル {
         if self.局面.この駒は成る事ができる(位置) {
             self.局面.この駒を裏返す(位置)
             self.SharePlay中なら現在の局面を参加者に送信する()
-            フィードバック.強め()
+            self.フィードバック.強め()
         }
     }
     private func 増減モードでこの盤駒を消す(_ 場所: 駒の場所) {
@@ -239,7 +241,7 @@ extension アプリモデル {
             self.局面.増減モードでこの盤駒を消す(位置)
         }
         self.SharePlay中なら現在の局面を参加者に送信する()
-        フィードバック.軽め()
+        self.フィードバック.軽め()
     }
 }
 
@@ -249,11 +251,11 @@ extension アプリモデル {
         self.表示中のシート = nil
         withAnimation { self.局面.現在の局面として適用する(局面) }
         self.SharePlay中なら現在の局面を参加者に送信する()
-        フィードバック.成功()
+        self.フィードバック.成功()
     }
     func 現在の局面をブックマークする() {
         self.局面.現在の局面をブックマークする()
-        フィードバック.軽め()
+        self.フィードバック.軽め()
     }
     @objc @MainActor
     func iCloudによる外部からの履歴変更を適用する(_ notification: Notification) {
@@ -274,7 +276,7 @@ extension アプリモデル: UIApplicationDelegate {}
 extension アプリモデル {
     func この駒をドラッグし始める(_ 場所: 駒の場所) -> NSItemProvider {
         self.選択中の駒の値を変更する(.なし)
-        フィードバック.軽め()
+        self.フィードバック.軽め()
         self.ドラッグ中の駒 = .アプリ内の駒(場所)
         return self.ドラッグ対象となるアイテムを用意する()
     }
@@ -296,7 +298,7 @@ extension アプリモデル {
                     self.駒移動後の成駒について対応する(出発場所, 置いた場所)
                     self.ドラッグ中の駒 = .無し
                     self.SharePlay中なら現在の局面を参加者に送信する()
-                    フィードバック.強め()
+                    self.フィードバック.強め()
                 case .アプリ外のコンテンツ:
                     let itemProviders = dropInfo.itemProviders(for: [.utf8PlainText])
                     self.このアイテムを盤面に反映する(itemProviders)
@@ -394,7 +396,7 @@ extension アプリモデル {
             self.局面.更新日時を変更せずにモデルを適用する(新規局面)
         }
         self.駒の選択を解除する()
-        フィードバック.強め()
+        self.フィードバック.強め()
     }
     private func アクティビティをリセットする() {
         self.セッションメッセンジャー = nil
@@ -454,14 +456,14 @@ extension アプリモデル {
         if let インポートした局面 = テキスト連携機能.局面モデルに変換する(テキスト) {
             self.局面.現在の局面として適用する(インポートした局面)
             self.SharePlay中なら現在の局面を参加者に送信する()
-            フィードバック.成功()
+            self.フィードバック.成功()
         } else {
             throw Self.テキスト読み込みエラー.局面変換失敗
         }
     }
     func 現在の局面をテキストとしてコピー() {
         UIPasteboard.general.string = self.現在の盤面をテキストに変換する()
-        フィードバック.成功()
+        self.フィードバック.成功()
     }
     func テキストを局面としてペースト() throws {
         guard let テキスト = UIPasteboard.general.string else {

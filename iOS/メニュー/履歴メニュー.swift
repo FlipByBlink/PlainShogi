@@ -53,7 +53,7 @@ struct 履歴メニュー: View {
         Button {
             局面モデル.履歴を全て削除する()
             self.履歴削除完了 = true
-            フィードバック.警告()
+            システムフィードバック.警告()
         } label: {
             Label("履歴を全て削除する", systemImage: "trash")
         }

@@ -63,7 +63,7 @@ private extension テキスト共有メニューコンポーネンツ {
             Button {
                 モデル.現在の局面をテキストとしてコピー()
                 withAnimation { self.完了 = true }
-                フィードバック.成功()
+                システムフィードバック.成功()
             } label: {
                 Label("プレーンテキストとして「コピー」", systemImage: "doc.on.doc")
                     .foregroundStyle(self.完了 ? .secondary : .primary)

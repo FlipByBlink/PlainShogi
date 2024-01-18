@@ -36,7 +36,7 @@ private extension メニューボタン {
     private func 上下反転ボタン() -> some View {
         Button {
             モデル.上下反転.toggle()
-            フィードバック.成功()
+            システムフィードバック.成功()
         } label: {
             Label(モデル.上下反転 ? "上下反転を元に戻す" : "上下反転させる",
                   systemImage: "arrow.up.arrow.down")

@@ -28,6 +28,15 @@
 		161FCCCD2ADE8FF00088E6AA /* 自動スリープ無効化.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */; };
 		161FCCE92ADF857B0088E6AA /* 画像書き出し.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */; };
 		16267B572B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16267B562B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift */; };
+		16688DDA2B595CAC004CE12B /* システムフィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16688DD92B595CAC004CE12B /* システムフィードバック.swift */; };
+		16688DDB2B595CAC004CE12B /* システムフィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16688DD92B595CAC004CE12B /* システムフィードバック.swift */; };
+		16688DDC2B595CAC004CE12B /* システムフィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16688DD92B595CAC004CE12B /* システムフィードバック.swift */; };
+		16688DDE2B595CF6004CE12B /* 音声フィードバックモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */; };
+		16688DDF2B595CF6004CE12B /* 音声フィードバックモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */; };
+		16688DE02B595CF6004CE12B /* 音声フィードバックモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */; };
+		16688DE22B595F37004CE12B /* 音声アセット.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16688DE12B595F37004CE12B /* 音声アセット.xcassets */; };
+		16688DE32B595F37004CE12B /* 音声アセット.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16688DE12B595F37004CE12B /* 音声アセット.xcassets */; };
+		16688DE42B595F37004CE12B /* 音声アセット.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16688DE12B595F37004CE12B /* 音声アセット.xcassets */; };
 		169750692ADDFCC100443DE2 /* GroupActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750682ADDFCC100443DE2 /* GroupActivity.swift */; };
 		1697506B2ADDFD5100443DE2 /* ブックマークメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506A2ADDFD5100443DE2 /* ブックマークメニュー.swift */; };
 		1697506D2ADDFE5700443DE2 /* コマンド.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506C2ADDFE5700443DE2 /* コマンド.swift */; };
@@ -160,7 +169,7 @@
 		16C43B132AE4A931009D8E26 /* 局面プレビュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		16C43B142AE4A931009D8E26 /* ICloudデータ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */; };
 		16C43B152AE4A931009D8E26 /* EnvironmentValues拡張.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */; };
-		16C43B162AE4A931009D8E26 /* フィードバック.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
+		16C43B162AE4A931009D8E26 /* フィードバックモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバックモデル.swift */; };
 		16C43B172AE4A931009D8E26 /* 不特定エラー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750A12ADE194600443DE2 /* 不特定エラー.swift */; };
 		16C43B182AE4A931009D8E26 /* 🗒️StaticInfo.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
 		16C43B192AE4A931009D8E26 /* App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5D9F92A2A00BDC600CEE697 /* App.swift */; };
@@ -193,7 +202,7 @@
 		F5119BB22A0292580027A74C /* 局面モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
 		F5119BB32A0292580027A74C /* シートカテゴリ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* シートカテゴリ.swift */; };
 		F5119BB42A0292580027A74C /* ICloudデータ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */; };
-		F5119BB52A0292580027A74C /* フィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
+		F5119BB52A0292580027A74C /* フィードバックモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバックモデル.swift */; };
 		F5119BB72A0292E10027A74C /* 将棋View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119BB62A0292E10027A74C /* 将棋View.swift */; };
 		F5119BB82A0295680027A74C /* 字体.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 字体.swift */; };
 		F5119BBB2A029C6C0027A74C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
@@ -207,7 +216,7 @@
 		F51F03AD2A01099700F05874 /* 局面モデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
 		F51F03AE2A01099700F05874 /* アプリモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
 		F51F03B32A01099700F05874 /* ウィジェット.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* ウィジェット.swift */; };
-		F52437B329F613A600EA770E /* フィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
+		F52437B329F613A600EA770E /* フィードバックモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバックモデル.swift */; };
 		F52437B729F64CB000EA770E /* 増減モード.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 増減モード.swift */; };
 		F52437B829F64CB000EA770E /* メニュートップ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* メニュートップ.swift */; };
 		F52437B929F64CB000EA770E /* ドロップデリゲート.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* ドロップデリゲート.swift */; };
@@ -215,7 +224,7 @@
 		F52437BB29F64CB000EA770E /* SharePlayインジケーター.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */; };
 		F52437BC29F64CB000EA770E /* 広告コンテンツ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */; };
 		F52437BD29F64CB000EA770E /* テキスト連携機能.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */; };
-		F52437BF29F64CB000EA770E /* フィードバック.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
+		F52437BF29F64CB000EA770E /* フィードバックモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバックモデル.swift */; };
 		F52437C229F64CB000EA770E /* ℹ️AboutApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */; };
 		F525A7D629F8FB1F001E8D5F /* 将棋View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F525A7D529F8FB1F001E8D5F /* 将棋View.swift */; };
 		F54C93D7295D2DE6008D1D60 /* テキスト連携機能.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */; };
@@ -236,7 +245,7 @@
 		F5BD6A122A00BF4C004AD4A5 /* アプリモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
 		F5BD6A132A00BF4C004AD4A5 /* アプリモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
 		F5BD6A162A00BF7D004AD4A5 /* ICloudデータ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */; };
-		F5BD6A182A00BF7D004AD4A5 /* フィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバック.swift */; };
+		F5BD6A182A00BF7D004AD4A5 /* フィードバックモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバックモデル.swift */; };
 		F5BD6A1B2A00C0A0004AD4A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 124B75572810CD6D00027DCA /* Localizable.strings */; };
 		F5C9FAFF296CF7BB00B513D8 /* 履歴メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 履歴メニュー.swift */; };
 		F5C9FB02296D0A3100B513D8 /* SharePlayインジケーター.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */; };
@@ -333,7 +342,7 @@
 				F52437BB29F64CB000EA770E /* SharePlayインジケーター.swift in CopyFiles */,
 				F52437BC29F64CB000EA770E /* 広告コンテンツ.swift in CopyFiles */,
 				F52437BD29F64CB000EA770E /* テキスト連携機能.swift in CopyFiles */,
-				F52437BF29F64CB000EA770E /* フィードバック.swift in CopyFiles */,
+				F52437BF29F64CB000EA770E /* フィードバックモデル.swift in CopyFiles */,
 				F52437C229F64CB000EA770E /* ℹ️AboutApp.swift in CopyFiles */,
 				120363132865E20200636EBD /* App.swift in CopyFiles */,
 				120363142865E20200636EBD /* ContentView.swift in CopyFiles */,
@@ -362,7 +371,7 @@
 				16C43B132AE4A931009D8E26 /* 局面プレビュー.swift in CopyFiles */,
 				16C43B142AE4A931009D8E26 /* ICloudデータ.swift in CopyFiles */,
 				16C43B152AE4A931009D8E26 /* EnvironmentValues拡張.swift in CopyFiles */,
-				16C43B162AE4A931009D8E26 /* フィードバック.swift in CopyFiles */,
+				16C43B162AE4A931009D8E26 /* フィードバックモデル.swift in CopyFiles */,
 				16C43B172AE4A931009D8E26 /* 不特定エラー.swift in CopyFiles */,
 				16C43B182AE4A931009D8E26 /* 🗒️StaticInfo.swift in CopyFiles */,
 				16C43B192AE4A931009D8E26 /* App.swift in CopyFiles */,
@@ -423,6 +432,9 @@
 		161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "自動スリープ無効化.swift"; sourceTree = "<group>"; };
 		161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像書き出し.swift"; sourceTree = "<group>"; };
 		16267B562B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlay用選択中の駒モデル.swift"; sourceTree = "<group>"; };
+		16688DD92B595CAC004CE12B /* システムフィードバック.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "システムフィードバック.swift"; sourceTree = "<group>"; };
+		16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "音声フィードバックモデル.swift"; sourceTree = "<group>"; };
+		16688DE12B595F37004CE12B /* 音声アセット.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "音声アセット.xcassets"; sourceTree = "<group>"; };
 		169750682ADDFCC100443DE2 /* GroupActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActivity.swift; sourceTree = "<group>"; };
 		1697506A2ADDFD5100443DE2 /* ブックマークメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ブックマークメニュー.swift"; sourceTree = "<group>"; };
 		1697506C2ADDFE5700443DE2 /* コマンド.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "コマンド.swift"; sourceTree = "<group>"; };
@@ -497,7 +509,7 @@
 		F51F039C2A00D03200F05874 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F51F039F2A00D03200F05874 /* ウィジェット.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ウィジェット.swift"; sourceTree = "<group>"; };
 		F51F03A32A00D03400F05874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F52437B229F613A600EA770E /* フィードバック.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "フィードバック.swift"; sourceTree = "<group>"; };
+		F52437B229F613A600EA770E /* フィードバックモデル.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "フィードバックモデル.swift"; sourceTree = "<group>"; };
 		F525A7D529F8FB1F001E8D5F /* 将棋View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "将棋View.swift"; sourceTree = "<group>"; };
 		F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "テキスト連携機能.swift"; sourceTree = "<group>"; };
 		F553013F2A074CA200E1B91D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -653,6 +665,18 @@
 			path = "その他";
 			sourceTree = "<group>";
 		};
+		16688DD82B595C89004CE12B /* フィードバック */ = {
+			isa = PBXGroup;
+			children = (
+				F52437B229F613A600EA770E /* フィードバックモデル.swift */,
+				16688DD92B595CAC004CE12B /* システムフィードバック.swift */,
+				16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */,
+				16688DE12B595F37004CE12B /* 音声アセット.xcassets */,
+			);
+			name = "フィードバック";
+			path = "フィードバック";
+			sourceTree = "<group>";
+		};
 		169750642ADD690300443DE2 /* サポートファイル */ = {
 			isa = PBXGroup;
 			children = (
@@ -686,8 +710,8 @@
 				F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */,
 				F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */,
 				F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */,
-				F52437B229F613A600EA770E /* フィードバック.swift */,
 				169750A12ADE194600443DE2 /* 不特定エラー.swift */,
+				16688DD82B595C89004CE12B /* フィードバック */,
 				169750F92ADE7AAC00443DE2 /* おまけ */,
 			);
 			path = "その他";
@@ -1049,6 +1073,7 @@
 			files = (
 				F5951A2028ADEEBC00516538 /* Launch Screen.storyboard in Resources */,
 				169751062ADE7B3700443DE2 /* 🌐ADAppName.xcstrings in Resources */,
+				16688DE22B595F37004CE12B /* 音声アセット.xcassets in Resources */,
 				169751052ADE7B3700443DE2 /* 🌐AboutApp.xcstrings in Resources */,
 				169751042ADE7B3700443DE2 /* 🌐AD&InAppPurchase.xcstrings in Resources */,
 				F5BBD8652973AA720034CCB8 /* 🌐AppStoreDescription.strings in Resources */,
@@ -1067,6 +1092,7 @@
 			files = (
 				F5119BAA2A0291020027A74C /* Assets.xcassets in Resources */,
 				F5119BBC2A029C6F0027A74C /* InfoPlist.strings in Resources */,
+				16688DE42B595F37004CE12B /* 音声アセット.xcassets in Resources */,
 				F5119BBB2A029C6C0027A74C /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1086,6 +1112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5119B9D2A028FE10027A74C /* InfoPlist.strings in Resources */,
+				16688DE32B595F37004CE12B /* 音声アセット.xcassets in Resources */,
 				169750C12ADE671000443DE2 /* Assets.xcassets in Resources */,
 				F5BD6A1B2A00C0A0004AD4A5 /* Localizable.strings in Resources */,
 				16C43B222AE4ABBC009D8E26 /* 🌐AboutApp.xcstrings in Resources */,
@@ -1133,15 +1160,17 @@
 				169750922ADE18E900443DE2 /* 駒の場所.swift in Sources */,
 				169E414A2AE0F9A300CFA307 /* メイン画面の共有ボタン.swift in Sources */,
 				160D1D022AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift in Sources */,
+				16688DDE2B595CF6004CE12B /* 音声フィードバックモデル.swift in Sources */,
 				161FCCE92ADF857B0088E6AA /* 画像書き出し.swift in Sources */,
 				169E414D2AE1371300CFA307 /* メニューボタン.swift in Sources */,
 				1697510B2ADE7BB800443DE2 /* 📣ADComponents.swift in Sources */,
 				16B124622AE29117008EF3A0 /* アプリ内課金ハンドラー.swift in Sources */,
-				F52437B329F613A600EA770E /* フィードバック.swift in Sources */,
+				F52437B329F613A600EA770E /* フィードバックモデル.swift in Sources */,
 				128D156B280FE47E003FF480 /* App.swift in Sources */,
 				F5BD6A102A00BF4C004AD4A5 /* 局面モデル.swift in Sources */,
 				169E41572AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift in Sources */,
 				F525A7D629F8FB1F001E8D5F /* 将棋View.swift in Sources */,
+				16688DDA2B595CAC004CE12B /* システムフィードバック.swift in Sources */,
 				169750822ADE180700443DE2 /* ドラッグ対象.swift in Sources */,
 				169750FD2ADE7ABA00443DE2 /* 🗒️StaticInfo.swift in Sources */,
 				169750872ADE188300443DE2 /* 盤上の駒.swift in Sources */,
@@ -1171,7 +1200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5119BB42A0292580027A74C /* ICloudデータ.swift in Sources */,
-				F5119BB52A0292580027A74C /* フィードバック.swift in Sources */,
+				F5119BB52A0292580027A74C /* フィードバックモデル.swift in Sources */,
 				160D1D042AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift in Sources */,
 				1697507B2ADE0F5700443DE2 /* FocusedValues拡張.swift in Sources */,
 				1697508A2ADE189000443DE2 /* 王側か玉側か.swift in Sources */,
@@ -1184,6 +1213,7 @@
 				169750B42ADE251900443DE2 /* レイアウト.swift in Sources */,
 				169751112ADE80C500443DE2 /* 🗒️StaticInfo.swift in Sources */,
 				F5119BB82A0295680027A74C /* 字体.swift in Sources */,
+				16688DE02B595CF6004CE12B /* 音声フィードバックモデル.swift in Sources */,
 				F58C48092A03EDFB006D7C55 /* メニュー.swift in Sources */,
 				1697507D2ADE108700443DE2 /* シート管理.swift in Sources */,
 				169750A42ADE194600443DE2 /* 不特定エラー.swift in Sources */,
@@ -1194,6 +1224,7 @@
 				169750902ADE18CD00443DE2 /* 持ち駒.swift in Sources */,
 				F5119BB22A0292580027A74C /* 局面モデル.swift in Sources */,
 				F5119BA82A0291000027A74C /* ContentView.swift in Sources */,
+				16688DDC2B595CAC004CE12B /* システムフィードバック.swift in Sources */,
 				169750B82ADE255900443DE2 /* オプション変更アニメーション.swift in Sources */,
 				F5119BB32A0292580027A74C /* シートカテゴリ.swift in Sources */,
 				169750A02ADE192200443DE2 /* 駒の種類.swift in Sources */,
@@ -1225,7 +1256,9 @@
 				169750A72ADE19A500443DE2 /* 空の手駒.swift in Sources */,
 				1697509B2ADE191000443DE2 /* 手前か対面か.swift in Sources */,
 				1697508B2ADE189500443DE2 /* 盤上の駒.swift in Sources */,
+				16688DDF2B595CF6004CE12B /* 音声フィードバックモデル.swift in Sources */,
 				F5D9F92D2A00BDC600CEE697 /* App.swift in Sources */,
+				16688DDB2B595CAC004CE12B /* システムフィードバック.swift in Sources */,
 				F5BD6A162A00BF7D004AD4A5 /* ICloudデータ.swift in Sources */,
 				169750732ADE030300443DE2 /* 増減モード.swift in Sources */,
 				169750A32ADE194600443DE2 /* 不特定エラー.swift in Sources */,
@@ -1236,7 +1269,7 @@
 				1697508F2ADE18CD00443DE2 /* 持ち駒.swift in Sources */,
 				F5091F8F2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift in Sources */,
 				1697510E2ADE7E8700443DE2 /* 🗒️StaticInfo.swift in Sources */,
-				F5BD6A182A00BF7D004AD4A5 /* フィードバック.swift in Sources */,
+				F5BD6A182A00BF7D004AD4A5 /* フィードバックモデル.swift in Sources */,
 				1697509F2ADE192200443DE2 /* 駒の種類.swift in Sources */,
 				160D1D032AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift in Sources */,
 				F5BD6A132A00BF4C004AD4A5 /* アプリモデル.swift in Sources */,
