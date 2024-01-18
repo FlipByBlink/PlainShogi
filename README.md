@@ -1,6 +1,6 @@
 Plain将棋盤 / PlainShogiBoard
 ----------------------------
-__iPhone, iPad, Apple Watch, Mac, Apple TV__
+__iPhone, iPad, Apple Watch, Mac, Apple TV, Apple Vision Pro__
 
 _どこでも。いつでも。みんなと。将棋盤。_
 
@@ -52,7 +52,7 @@ Start SharePlay by holding the top of your iPhone near the top of someone else's
 
 ### マルチプラットフォーム対応 Multi platform
 
-iPhone / iPad / Apple Watch / Mac / Apple TV
+iPhone / iPad / Apple Watch / Mac / Apple TV / Apple Vision Pro
 
 局面はiCloudによって端末間で同期されます。
 
@@ -99,8 +99,8 @@ Contact
 sear_pandora_0x@icloud.com
 
 
-AppStore link
--------------
+App Store link
+--------------
 [apps.apple.com/app/id1620268476](https://apps.apple.com/app/id1620268476)
 
 
