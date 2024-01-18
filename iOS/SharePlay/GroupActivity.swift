@@ -7,6 +7,7 @@ struct 🄶roupActivity: GroupActivity {
         値.title = .init(localized: "将棋盤")
         値.type = .generic
         値.previewImage = UIImage(named: "previewImage")!.cgImage
+        値.supportsContinuationOnTV = false
         return 値
     }
     static func アクティビティを起動する() {
