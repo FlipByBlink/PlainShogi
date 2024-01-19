@@ -2,7 +2,7 @@ import SwiftUI
 
 enum 🗒️StaticInfo {
     static let appName: LocalizedStringKey = "Plain将棋盤"
-    static let appSubTitle: LocalizedStringKey = "iPhone / iPad / Apple Watch / Mac / Apple TV"
+    static let appSubTitle: LocalizedStringKey = "iPhone / iPad / Apple Watch / Mac / Apple TV / Apple Vision Pro"
     
     static let appStoreProductURL = URL(string: "https://apps.apple.com/app/id1620268476")!
     static var appStoreUserReviewURL: URL { .init(string: "\(Self.appStoreProductURL)?action=write-review")! }
@@ -29,7 +29,8 @@ enum 🗒️StaticInfo {
 
 #if os(iOS)
 extension 🗒️StaticInfo {
-    static let versionInfos: [(version: String, date: String)] = [("1.5.1", "2023-11-10"),
+    static let versionInfos: [(version: String, date: String)] = [("1.6", "2024-02-??"),
+                                                                  ("1.5.1", "2023-11-10"),
                                                                   ("1.5", "2023-10-27"),
                                                                   ("1.4", "2023-05-11"),
                                                                   ("1.3", "2023-01-22"),
@@ -40,7 +41,7 @@ extension 🗒️StaticInfo {
                                                                   ("1.0", "2022-04-21")] //降順。先頭の方が新しい
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
-        case main, アプリモデル, 将棋モデル, 将棋View, サブView, メニュー, SharePlay, ドラッグアンドドロップ, 共有アイテム, その他, おまけ
+        case main, アプリモデル, 将棋モデル, 将棋View, サブView, メニュー, SharePlay, ドラッグアンドドロップ, 共有アイテム, フィードバック, その他, おまけ
         var id: Self { self }
         var fileNames: [String] {
             switch self {
@@ -94,7 +95,8 @@ extension 🗒️StaticInfo {
                     "SharePlay環境構築.swift",
                     "SharePlayインジケーター.swift",
                     "SharePlayガイドメニュー.swift",
-                    "SharePlay紹介メニュー.swift"
+                    "SharePlay紹介メニュー.swift",
+                    "SharePlay用選択中の駒モデル.swift"
                 ]
                 case .ドラッグアンドドロップ: [
                     "ドラッグ対象.swift",
@@ -107,6 +109,11 @@ extension 🗒️StaticInfo {
                     "テキスト連携機能.swift",
                     "テキスト共有メニューコンポーネンツ.swift",
                     "画像共有メニューコンポーネンツ.swift"
+                ]
+                case .フィードバック: [
+                    "フィードバックモデル.swift",
+                    "システムフィードバック.swift",
+                    "音声フィードバックモデル.swift"
                 ]
                 case .その他: [
                     "ICloudデータ.swift",
@@ -137,7 +144,7 @@ extension 🗒️StaticInfo {
 #elseif os(watchOS)
 extension 🗒️StaticInfo {
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
-        case main, アプリモデル, 将棋モデル, 将棋View, サブView, メニュー, その他, おまけ, Widget
+        case main, アプリモデル, 将棋モデル, 将棋View, サブView, メニュー, フィードバック, その他, おまけ, Widget
         var id: Self { self }
         var fileNames: [String] {
             switch self {
@@ -175,6 +182,11 @@ extension 🗒️StaticInfo {
                     "メニュー.swift",
                     "局面プレビュー.swift",
                     "アプリについて.swift"
+                ]
+                case .フィードバック: [
+                    "フィードバックモデル.swift",
+                    "システムフィードバック.swift",
+                    "音声フィードバックモデル.swift"
                 ]
                 case .その他: [
                     "ICloudデータ.swift",
