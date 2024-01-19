@@ -40,6 +40,8 @@
 		16688DE22B595F37004CE12B /* 音声アセット.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16688DE12B595F37004CE12B /* 音声アセット.xcassets */; };
 		16688DE32B595F37004CE12B /* 音声アセット.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16688DE12B595F37004CE12B /* 音声アセット.xcassets */; };
 		16688DE42B595F37004CE12B /* 音声アセット.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16688DE12B595F37004CE12B /* 音声アセット.xcassets */; };
+		168EA4522B5A7E9900522F94 /* システムフィードバック.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16688DD92B595CAC004CE12B /* システムフィードバック.swift */; };
+		168EA4532B5A7E9900522F94 /* 音声フィードバックモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */; };
 		169750692ADDFCC100443DE2 /* GroupActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750682ADDFCC100443DE2 /* GroupActivity.swift */; };
 		1697506B2ADDFD5100443DE2 /* ブックマークメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506A2ADDFD5100443DE2 /* ブックマークメニュー.swift */; };
 		1697506D2ADDFE5700443DE2 /* コマンド.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506C2ADDFE5700443DE2 /* コマンド.swift */; };
@@ -285,6 +287,8 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				168EA4522B5A7E9900522F94 /* システムフィードバック.swift in CopyFiles */,
+				168EA4532B5A7E9900522F94 /* 音声フィードバックモデル.swift in CopyFiles */,
 				160F46B72B5A461F001FE696 /* SharePlay用選択中の駒モデル.swift in CopyFiles */,
 				16C43AD92AE4A65E009D8E26 /* アプリモデルのスーパークラス.swift in CopyFiles */,
 				16C43ADA2AE4A65E009D8E26 /* 王側か玉側か.swift in CopyFiles */,

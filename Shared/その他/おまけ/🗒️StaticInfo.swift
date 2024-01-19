@@ -2,7 +2,12 @@ import SwiftUI
 
 enum 🗒️StaticInfo {
     static let appName: LocalizedStringKey = "Plain将棋盤"
-    static let appSubTitle: LocalizedStringKey = "iPhone / iPad / Apple Watch / Mac / Apple TV / Apple Vision Pro"
+    static var appSubTitle: LocalizedStringKey {
+        """
+        iPhone, iPad, Apple Watch,
+        Mac, Apple TV, Apple Vision Pro
+        """
+    }
     
     static let appStoreProductURL = URL(string: "https://apps.apple.com/app/id1620268476")!
     static var appStoreUserReviewURL: URL { .init(string: "\(Self.appStoreProductURL)?action=write-review")! }
@@ -117,7 +122,6 @@ extension 🗒️StaticInfo {
                 ]
                 case .その他: [
                     "ICloudデータ.swift",
-                    "フィードバック.swift",
                     "不特定エラー.swift",
                     "コマンド.swift",
                     "固定値.swift",

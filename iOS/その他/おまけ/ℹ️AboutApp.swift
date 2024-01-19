@@ -22,14 +22,16 @@ struct ℹ️IconAndName: View {
                 VStack(spacing: 6) {
                     Text(🗒️StaticInfo.appName)
                         .font(.system(.headline, design: .rounded))
+                        .lineLimit(1)
                         .tracking(1.5)
                         .opacity(0.75)
                     Text(🗒️StaticInfo.appSubTitle)
                         .font(.footnote)
                         .fontWeight(.medium)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
                         .foregroundStyle(.secondary)
                 }
-                .lineLimit(1)
                 .minimumScaleFactor(0.6)
             }
             .padding(32)
