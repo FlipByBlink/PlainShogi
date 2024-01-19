@@ -112,7 +112,7 @@ App Store link
 <br>
 <br>
 
-Privacy Policy for AppStore
+Privacy Policy for App Store
 ----------------------------
 2022-04-21
 
@@ -130,7 +130,7 @@ This application don't collect user infomation.
 <br>
 <br>
 
-<!-- URL "Support page for AppStore" -->
+<!-- URL "Support page for App Store" -->
 <!-- https://flipbyblink.github.io/PlainShogi/ -->
-<!-- URL "Privacy Policy for AppStore" -->
-<!-- https://flipbyblink.github.io/PlainShogi/#privacy-policy-for-appstore -->
+<!-- URL "Privacy Policy for App Store" -->
+<!-- https://flipbyblink.github.io/PlainShogi/#privacy-policy-for-app-store -->
