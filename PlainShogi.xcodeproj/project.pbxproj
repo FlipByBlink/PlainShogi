@@ -109,7 +109,7 @@
 		169E41512AE1388F00CFA307 /* 不具合フィードバックメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41502AE1388F00CFA307 /* 不具合フィードバックメニュー.swift */; };
 		169E41532AE1491900CFA307 /* SharePlayガイドメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */; };
 		169E41552AE1495600CFA307 /* SharePlay紹介メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */; };
-		169E41572AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41562AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift */; };
+		169E41572AE14A2E00CFA307 /* 更にカスタマイズメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41562AE14A2E00CFA307 /* 更にカスタマイズメニュー.swift */; };
 		169E415B2AE14F6800CFA307 /* 共有メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415A2AE14F6800CFA307 /* 共有メニュー.swift */; };
 		169E415D2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */; };
 		169E415F2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */; };
@@ -133,7 +133,7 @@
 		16C43AE82AE4A65E009D8E26 /* ツールボタンズ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750772ADE048000443DE2 /* ツールボタンズ.swift */; };
 		16C43AE92AE4A65E009D8E26 /* メニューボタン.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E414C2AE1371300CFA307 /* メニューボタン.swift */; };
 		16C43AEA2AE4A65E009D8E26 /* コマンドボタンズ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E414E2AE1375C00CFA307 /* コマンドボタンズ.swift */; };
-		16C43AEB2AE4A65E009D8E26 /* 見た目カスタマイズメニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E41562AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift */; };
+		16C43AEB2AE4A65E009D8E26 /* 更にカスタマイズメニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E41562AE14A2E00CFA307 /* 更にカスタマイズメニュー.swift */; };
 		16C43AEC2AE4A65E009D8E26 /* ブックマークメニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1697506A2ADDFD5100443DE2 /* ブックマークメニュー.swift */; };
 		16C43AED2AE4A65E009D8E26 /* 共有メニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E415A2AE14F6800CFA307 /* 共有メニュー.swift */; };
 		16C43AEE2AE4A65E009D8E26 /* 不具合フィードバックメニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E41502AE1388F00CFA307 /* 不具合フィードバックメニュー.swift */; };
@@ -308,7 +308,7 @@
 				16C43AE82AE4A65E009D8E26 /* ツールボタンズ.swift in CopyFiles */,
 				16C43AE92AE4A65E009D8E26 /* メニューボタン.swift in CopyFiles */,
 				16C43AEA2AE4A65E009D8E26 /* コマンドボタンズ.swift in CopyFiles */,
-				16C43AEB2AE4A65E009D8E26 /* 見た目カスタマイズメニュー.swift in CopyFiles */,
+				16C43AEB2AE4A65E009D8E26 /* 更にカスタマイズメニュー.swift in CopyFiles */,
 				16C43AEC2AE4A65E009D8E26 /* ブックマークメニュー.swift in CopyFiles */,
 				16C43AED2AE4A65E009D8E26 /* 共有メニュー.swift in CopyFiles */,
 				16C43AEE2AE4A65E009D8E26 /* 不具合フィードバックメニュー.swift in CopyFiles */,
@@ -497,7 +497,7 @@
 		169E41502AE1388F00CFA307 /* 不具合フィードバックメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "不具合フィードバックメニュー.swift"; sourceTree = "<group>"; };
 		169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlayガイドメニュー.swift"; sourceTree = "<group>"; };
 		169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlay紹介メニュー.swift"; sourceTree = "<group>"; };
-		169E41562AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "見た目カスタマイズメニュー.swift"; sourceTree = "<group>"; };
+		169E41562AE14A2E00CFA307 /* 更にカスタマイズメニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "更にカスタマイズメニュー.swift"; sourceTree = "<group>"; };
 		169E415A2AE14F6800CFA307 /* 共有メニュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "共有メニュー.swift"; sourceTree = "<group>"; };
 		169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "テキスト共有メニューコンポーネンツ.swift"; sourceTree = "<group>"; };
 		169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像共有メニューコンポーネンツ.swift"; sourceTree = "<group>"; };
@@ -891,7 +891,7 @@
 				12F4444D286D4B580008A663 /* メニュートップ.swift */,
 				169E414C2AE1371300CFA307 /* メニューボタン.swift */,
 				169E414E2AE1375C00CFA307 /* コマンドボタンズ.swift */,
-				169E41562AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift */,
+				169E41562AE14A2E00CFA307 /* 更にカスタマイズメニュー.swift */,
 				F5C9FAFE296CF7BB00B513D8 /* 履歴メニュー.swift */,
 				1697506A2ADDFD5100443DE2 /* ブックマークメニュー.swift */,
 				169E415A2AE14F6800CFA307 /* 共有メニュー.swift */,
@@ -1178,7 +1178,7 @@
 				F52437B329F613A600EA770E /* フィードバックモデル.swift in Sources */,
 				128D156B280FE47E003FF480 /* App.swift in Sources */,
 				F5BD6A102A00BF4C004AD4A5 /* 局面モデル.swift in Sources */,
-				169E41572AE14A2E00CFA307 /* 見た目カスタマイズメニュー.swift in Sources */,
+				169E41572AE14A2E00CFA307 /* 更にカスタマイズメニュー.swift in Sources */,
 				F525A7D629F8FB1F001E8D5F /* 将棋View.swift in Sources */,
 				16688DDA2B595CAC004CE12B /* システムフィードバック.swift in Sources */,
 				169750822ADE180700443DE2 /* ドラッグ対象.swift in Sources */,

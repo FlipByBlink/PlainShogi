@@ -88,7 +88,7 @@ extension 🗒️StaticInfo {
                     "メニュートップ.swift",
                     "メニューボタン.swift",
                     "コマンドボタンズ.swift",
-                    "見た目カスタマイズメニュー.swift",
+                    "更にカスタマイズメニュー.swift",
                     "履歴メニュー.swift",
                     "ブックマークメニュー.swift",
                     "共有メニュー.swift",

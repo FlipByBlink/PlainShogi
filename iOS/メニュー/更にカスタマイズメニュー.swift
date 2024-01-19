@@ -1,9 +1,10 @@
 import SwiftUI
 import GroupActivities
 
-struct 見た目カスタマイズメニューリンク: View {
+struct 更にカスタマイズメニューリンク: View {
     @EnvironmentObject var モデル: アプリモデル
     @StateObject private var groupStateObserver = GroupStateObserver()
+    @AppStorage("効果音無効化") var 効果音無効化: Bool = false
     var body: some View {
         NavigationLink {
             List {
@@ -24,6 +25,9 @@ struct 見た目カスタマイズメニューリンク: View {
                         Label("操作した直後の駒の強調表示を常に無効",
                               systemImage: "square.slash")
                     }
+                    Toggle(isOn: self.$効果音無効化) {
+                        Label("効果音を無効化", systemImage: "speaker.slash")
+                    }
                 } header: {
                     if self.groupStateObserver.isEligibleForGroupSession {
                         Text("オプション(共有相手との同期なし)")
@@ -33,9 +37,9 @@ struct 見た目カスタマイズメニューリンク: View {
                 }
             }
             .animation(.default, value: モデル.サイズ)
-            .navigationTitle("見た目をカスタマイズ")
+            .navigationTitle("更にカスタマイズ")
         } label: {
-            Label("見た目をカスタマイズ", systemImage: "paintpalette")
+            Label("更にカスタマイズ", systemImage: "paintpalette")
         }
     }
     private func サイズピッカー() -> some View {

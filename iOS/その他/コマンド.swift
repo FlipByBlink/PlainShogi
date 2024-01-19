@@ -3,6 +3,7 @@ import GroupActivities
 
 struct コマンド: Commands {
     @ObservedObject var モデル: アプリモデル
+    @AppStorage("効果音無効化") var 効果音無効化: Bool = false
     var body: some Commands {
         CommandGroup(replacing: .appSettings) {
             Button("メニューを表示") { モデル.表示中のシート = .メニュー }
@@ -36,7 +37,7 @@ struct コマンド: Commands {
             }
             .disabled(モデル.表示中のシート == .広告)
         }
-        CommandMenu("見た目") {
+        CommandMenu("カスタマイズ") {
             Toggle("上下反転", isOn: $モデル.上下反転)
             Toggle("セリフ体", isOn: $モデル.セリフ体)
             Toggle("太字", isOn: $モデル.太字)
@@ -45,6 +46,7 @@ struct コマンド: Commands {
             }
             Toggle("English表記", isOn: $モデル.english表記)
             Toggle("操作した直後の駒の強調表示を常に無効", isOn: $モデル.直近操作強調表示機能オフ)
+            Toggle("効果音を無効化", isOn: self.$効果音無効化)
         }
     }
     init(_ モデル: アプリモデル) { self.モデル = モデル }

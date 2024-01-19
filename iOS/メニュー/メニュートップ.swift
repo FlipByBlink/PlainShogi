@@ -18,7 +18,7 @@ struct メニュートップ: View {
             }
             Section {
                 self.上下反転Toggle()
-                見た目カスタマイズメニューリンク()
+                更にカスタマイズメニューリンク()
             } header: {
                 if self.groupStateObserver.isEligibleForGroupSession {
                     Text("オプション(共有相手との同期なし)")
