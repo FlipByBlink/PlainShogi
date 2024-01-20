@@ -26,7 +26,7 @@ struct 更にカスタマイズメニューリンク: View {
                               systemImage: "square.slash")
                     }
                     Toggle(isOn: self.$効果音無効化) {
-                        Label("効果音を無効化", systemImage: "speaker.slash")
+                        Label("効果音を無効", systemImage: "speaker.slash")
                     }
                 } header: {
                     if self.groupStateObserver.isEligibleForGroupSession {
