@@ -10,7 +10,7 @@ class 音声フィードバックモデル {
             self.メイン音声プレイヤーズ = (1...6).compactMap {
                 if let ﾃﾞｰﾀ = NSDataAsset(name: "mainSound\($0)")?.data,
                    let ﾌﾟﾚｲﾔｰ = try? AVAudioPlayer(data: ﾃﾞｰﾀ) {
-                    ﾌﾟﾚｲﾔｰ.volume = 0.25
+                    ﾌﾟﾚｲﾔｰ.volume = 0.25 //TODO: 再検討
                     ﾌﾟﾚｲﾔｰ.prepareToPlay()
                     return ﾌﾟﾚｲﾔｰ
                 } else {
