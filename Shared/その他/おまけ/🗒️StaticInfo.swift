@@ -194,7 +194,6 @@ extension 🗒️StaticInfo {
                 ]
                 case .その他: [
                     "ICloudデータ.swift",
-                    "フィードバック.swift",
                     "不特定エラー.swift"
                 ]
                 case .おまけ: [
