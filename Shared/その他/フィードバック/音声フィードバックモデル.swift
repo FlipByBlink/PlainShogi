@@ -6,6 +6,7 @@ class 音声フィードバックモデル {
     private var ジャラジャラ音声プレイヤー: AVAudioPlayer?
     init() {
         Task(priority: .background) {
+            Self.音声カテゴリー設定()
             self.メイン音声プレイヤーズ = (1...6).compactMap {
                 if let ﾃﾞｰﾀ = NSDataAsset(name: "mainSound\($0)")?.data,
                    let ﾌﾟﾚｲﾔｰ = try? AVAudioPlayer(data: ﾃﾞｰﾀ) {
@@ -25,7 +26,6 @@ class 音声フィードバックモデル {
             } else {
                 assertionFailure()
             }
-            Self.音声カテゴリー設定()
         }
     }
     func メイン再生() {
