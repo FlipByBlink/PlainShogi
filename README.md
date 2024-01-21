@@ -6,13 +6,13 @@ _どこでも。いつでも。みんなと。将棋盤。_
 
 _Anytime. Everywhere. With friends. Shogi board._
 
-<img src="iOS/サポートファイル/Assets.xcassets/RoundedIcon.imageset/RoundedIcon.png" width="64">
+<img src="Shared/サポートファイル/その他/README assets/icon.png" width="64">
 
 <a href="https://apps.apple.com/app/id1620268476" target="blank">
-    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
+    <img src="Shared/サポートファイル/その他/README assets/appstore_badge.svg">
 </a>
 
-<img src="Shared/サポートファイル/その他/READMEAssets/ConceptImage.png" width="600">
+<img src="Shared/サポートファイル/その他/README assets/ConceptImage.png" width="600">
 
 
 概要 Description
@@ -29,7 +29,7 @@ Pieces move freely. Number of pieces can be increased or decreased.
 
 Options include font size and weight, serif font, English term, etc.
 
-<img src="Shared/サポートファイル/その他/READMEAssets/Screenshots.png" width="600">
+<img src="Shared/サポートファイル/その他/README assets/Screenshots.png" width="600">
 
 
 ### SharePlay
@@ -47,7 +47,7 @@ Use case: "Play a game with your friend", "Discuss a shogi problem with many peo
 
 Start SharePlay by holding the top of your iPhone near the top of someone else's iPhone.(iOS 17 iPhone only)
 
-<img src="Shared/サポートファイル/その他/READMEAssets/SharePlay.png" width="300">
+<img src="Shared/サポートファイル/その他/README assets/SharePlay.png" width="300">
 
 
 ### マルチプラットフォーム対応 Multi platform

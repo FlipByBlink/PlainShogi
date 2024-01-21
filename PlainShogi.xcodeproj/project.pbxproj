@@ -503,6 +503,8 @@
 		169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像共有メニューコンポーネンツ.swift"; sourceTree = "<group>"; };
 		16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlay環境構築.swift"; sourceTree = "<group>"; };
 		16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "アプリ内課金ハンドラー.swift"; sourceTree = "<group>"; };
+		16EF413A2B5D13CD002312FA /* appstore_badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore_badge.svg; sourceTree = "<group>"; };
+		16EF413B2B5D13F1002312FA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -834,14 +836,16 @@
 			path = "将棋View";
 			sourceTree = "<group>";
 		};
-		169750BB2ADE641C00443DE2 /* READMEAssets */ = {
+		169750BB2ADE641C00443DE2 /* README assets */ = {
 			isa = PBXGroup;
 			children = (
+				16EF413B2B5D13F1002312FA /* icon.png */,
+				16EF413A2B5D13CD002312FA /* appstore_badge.svg */,
 				169750BD2ADE646600443DE2 /* ConceptImage.png */,
 				169750BE2ADE646600443DE2 /* Screenshots.png */,
 				169750BC2ADE646600443DE2 /* SharePlay.png */,
 			);
-			path = READMEAssets;
+			path = "README assets";
 			sourceTree = "<group>";
 		};
 		169750BF2ADE651900443DE2 /* その他 */ = {
@@ -849,7 +853,7 @@
 			children = (
 				F5019FD2296ABBBD007CB14D /* 雑多メモ.md */,
 				169750F72ADE6FE200443DE2 /* アーカイブ */,
-				169750BB2ADE641C00443DE2 /* READMEAssets */,
+				169750BB2ADE641C00443DE2 /* README assets */,
 			);
 			path = "その他";
 			sourceTree = "<group>";
