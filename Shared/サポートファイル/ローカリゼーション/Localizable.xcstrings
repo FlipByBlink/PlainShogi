@@ -1,0 +1,1584 @@
+{
+  "sourceLanguage" : "ja",
+  "strings" : {
+    "・SharePlay\n・セリフ体フォントオプション\n・テキスト連携機能" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "・SharePlay\n・Serif font\n・Text import/export"
+          }
+        }
+      }
+    },
+    "・SharePlay\n・セリフ体フォントオプション\n・駒のサイズオプション\n・画像書き出し機能\n・テキスト書き出し/読み込み機能" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "・SharePlay\n・Serif font\n・Font size\n・Image export\n・Text import/export"
+          }
+        }
+      }
+    },
+    "!想定外!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "!ERROR!"
+          }
+        }
+      }
+    },
+    "\"FaceTime App でSharePlayを使用すると、友達や家族とのFaceTime通話中にテレビ番組、映画、ミュージックを同期した状態でストリーム再生することができます。通話に参加しているほかの人とリアルタイムにつながって楽しみましょう。再生が同期され、コントロールが共有されるため、同時に同じ瞬間を見たり聞いたりできます。\"" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"With SharePlay in the FaceTime app, you can stream TV shows, movies, and music in sync with friends and family while on a FaceTime call together. Enjoy a real-time connection with others on the call—with synced playback and shared controls, you see and hear the same moments at the same time.\""
+          }
+        }
+      }
+    },
+    "\"SharePlayは、FaceTime通話中にほかのAppでも使用できます。\"" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"SharePlay can also be used in other apps during a FaceTime call.\""
+          }
+        }
+      }
+    },
+    "**以下の項目はユーザー間で同期されません**\n・各種オプション(上下反転/セリフ体/太字/駒のサイズ/English表記/強調表示常時オフ)\n・駒増減モードに移行しているかどうか\n・選択中の駒の様子(駒の移動等を完了させたタイミングで操作結果が同期されます)\n・ドラッグしている最中の駒の様子(ドラッグを完了させたタイミングで操作結果が同期されます)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**No sync between users**\n・Options(Reverse vertically/Serif font/Bold weight/Font size/English term/Disable shift sign)\n・On edit mode\n・Selecting state\n・Dragging state"
+          }
+        }
+      }
+    },
+    "☖ Plain将棋盤 " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "☖ PlainShogiBoard "
+          }
+        }
+      }
+    },
+    "2台のiPhoneの上部を近付けると「SharePlay」と書かれたボタンが表示されます。そのボタンを押すと「将棋盤」アクティビティを起動され、相手にアクティビティの招待を送ります。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When the tops of the two iPhones are brought close together, a button labeled \"SharePlay\" will appear. Pressing that button will activate the \"Shogi Board\" activity and send an invitation to your partner to participate in the activity."
+          }
+        }
+      }
+    },
+    "App Storeリンク" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store link"
+          }
+        }
+      }
+    },
+    "Apple IDに紐付いた連絡先を知らない場合は、同じジェスチャーをした際にNameDrop(連絡先を交換するための機能)が起動します。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you do not know the partner's Apple ID contact information, NameDrop (a feature for exchanging contacts) will be activated."
+          }
+        }
+      }
+    },
+    "Appleサポートサイトを開く" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Apple support site"
+          }
+        }
+      }
+    },
+    "Done" : {
+
+    },
+    "English表記" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English term"
+          }
+        }
+      }
+    },
+    "Error" : {
+
+    },
+    "FaceTime中にこのアプリを立ち上げると、アクティビティを起動することが出来ます。アクティビティを起動すると、通話相手のデバイスではSharePlay参加を促す通知が表示されます。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you launch this application during FaceTime, you can start an activity. When you launch an activity, the caller's device will show a notification asking them to join SharePlay."
+          }
+        }
+      }
+    },
+    "iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sync data(Board/History/Bookmark) between devices by iCloud"
+          }
+        }
+      }
+    },
+    "iCloud同期は簡易的な用途を想定しています。「同時に起動している端末間での同期」といったリアルタイム性の高い用途は想定していません。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iCloud Sync is intended for casual use. It is not intended for real-time tasks such as \"synchronization between devices running at the same time\"."
+          }
+        }
+      }
+    },
+    "iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On devices running iOS 16 or later, SharePlay is also available in \"Messages\" app. If you are invited to \"Shogi board\" activity in \"Messages\" app, please join the activity in \"Messages\" app."
+          }
+        }
+      }
+    },
+    "iOS 17 以降の2台のiPhoneの上部を近付けるだけでSharePlayを開始できます。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SharePlay can be initiated by simply bringing the tops of two iPhones running iOS 17 or later into close proximity."
+          }
+        }
+      }
+    },
+    "iOSアプリと異なり、watchOSアプリでは以下の機能を対応していません" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlike the iOS version, the watchOS version does not support the following features"
+          }
+        }
+      }
+    },
+    "iOSアプリ等と異なり、Apple TVアプリでは以下の機能を対応していません" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlike the iOS version, the Apple TV version does not support the following features"
+          }
+        }
+      }
+    },
+    "iPhone, iPad, Apple Watch,\nMac, Apple TV, Apple Vision Pro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone, iPad, Apple Watch,\nMac, Apple TV, Apple Vision Pro"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone、iPad、Apple Watch、\nMac、Apple TV、Apple Vision Pro向け"
+          }
+        }
+      }
+    },
+    "Plain将棋盤" : {
+      "comment" : "======== Japanese key ========",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PlainShogiBoard"
+          }
+        }
+      }
+    },
+    "SharePlayできます" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SharePlay ready"
+          }
+        }
+      }
+    },
+    "SharePlayではユーザーのデバイス間で同期するすべてのセッションデータに対してエンドツーエンド暗号化が用いられます。アプリ開発者やAppleは、このデータの復号鍵を保持していません。つまり、SharePlay中に通信されるデータを第三者が確認する事はありません。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Group Activities framework uses end-to-end encryption on all session data. Developer and Apple doesn’t have the keys to decrypt this data."
+          }
+        }
+      }
+    },
+    "SharePlayについて" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About SharePlay"
+          }
+        }
+      }
+    },
+    "SharePlayに参加する" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Join SharePlay"
+          }
+        }
+      }
+    },
+    "SharePlayの準備をする" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepare SharePlay"
+          }
+        }
+      }
+    },
+    "SharePlayメニュー" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SharePlay menu"
+          }
+        }
+      }
+    },
+    "SharePlayメニューを表示" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepare SharePlay"
+          }
+        }
+      }
+    },
+    "アクティビティ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activity"
+          }
+        }
+      }
+    },
+    "アクティビティ「将棋盤」を起動する" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activate \"Shogi board\" activity"
+          }
+        }
+      }
+    },
+    "アクティビティから離脱しても、自分以外はアクティビティに参加したままです。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Even if you leave the activity, everyone remains in the activity except you."
+          }
+        }
+      }
+    },
+    "アクティビティから離脱する" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leave the activity"
+          }
+        }
+      }
+    },
+    "アクティビティに参加しました" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joined activity"
+          }
+        }
+      }
+    },
+    "アクティビティを終了しますか？" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close the activity?"
+          }
+        }
+      }
+    },
+    "アクティビティを終了する" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close the activity"
+          }
+        }
+      }
+    },
+    "アクティビティを終了すると、全員がアクティビティから離脱します。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When you end the activity, everyone will leave the activity."
+          }
+        }
+      }
+    },
+    "アプリについて" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
+      }
+    },
+    "アプリのリンクを共有" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share App Store link"
+          }
+        }
+      }
+    },
+    "アプリを立ち上げるためのショートカット" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shortcut to launch the app"
+          }
+        }
+      }
+    },
+    "オプション" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Option"
+          }
+        }
+      }
+    },
+    "オプション(共有相手との同期なし)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Option(No sync between users)"
+          }
+        }
+      }
+    },
+    "ガイド" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guide"
+          }
+        }
+      }
+    },
+    "カスタマイズ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customize"
+          }
+        }
+      }
+    },
+    "キャンセル" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "コピー" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy"
+          }
+        }
+      }
+    },
+    "これまでの履歴を削除しました" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Removed history"
+          }
+        }
+      }
+    },
+    "サイドバー呼び出しボタンを常に非表示" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always hide menu button"
+          }
+        }
+      }
+    },
+    "ショートカット" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shortcut"
+          }
+        }
+      }
+    },
+    "セリフ体" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serif font"
+          }
+        }
+      }
+    },
+    "データ管理" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data management"
+          }
+        }
+      }
+    },
+    "テキスト" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text"
+          }
+        }
+      }
+    },
+    "テキストとしてコピー" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy as text"
+          }
+        }
+      }
+    },
+    "テキストとして共有" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share as text"
+          }
+        }
+      }
+    },
+    "テキストファイルを読み込む" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import a text file"
+          }
+        }
+      }
+    },
+    "テキストを局面としてペースト" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste a text as shogi board"
+          }
+        }
+      }
+    },
+    "テキスト書き出し/読み込み機能" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text Export / Import"
+          }
+        }
+      }
+    },
+    "テキスト書き出し例" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Example"
+          }
+        }
+      }
+    },
+    "テキスト機能" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plain text"
+          }
+        }
+      }
+    },
+    "ドラッグ&ドロップについて" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag & Drop"
+          }
+        }
+      }
+    },
+    "なし" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nothing"
+          }
+        }
+      }
+    },
+    "はい、アクティビティを終了します" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes, close the activity."
+          }
+        }
+      }
+    },
+    "はじめる" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "はじめ方" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to start"
+          }
+        }
+      }
+    },
+    "フォーマットを指定" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Format"
+          }
+        }
+      }
+    },
+    "ブックマーク" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark"
+          }
+        }
+      }
+    },
+    "ブックマークに保存できる局面は1つだけです" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 bookmark only."
+          }
+        }
+      }
+    },
+    "ブックマークを表示" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show bookmark"
+          }
+        }
+      }
+    },
+    "プレーンテキストとして「コピー」" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy as plain text"
+          }
+        }
+      }
+    },
+    "プレーンテキストを「貼り付け」して読み込む" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste as plain text"
+          }
+        }
+      }
+    },
+    "メールアプリからフィードバックを送る" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback from mail app"
+          }
+        }
+      }
+    },
+    "メニュー" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu"
+          }
+        }
+      }
+    },
+    "メニューボタンを長押しすると「初期化ボタン」や「一手戻すボタン」などを呼び出せます" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch \"Initialize Button\" / \"Modify Button\" by long press Menu button"
+          }
+        }
+      }
+    },
+    "メニューを表示" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show menu"
+          }
+        }
+      }
+    },
+    "メニューを開く" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open menu"
+          }
+        }
+      }
+    },
+    "もし、このアプリでバグやクラッシュが発生した場合、以下のボタン(もしくはアドレス)からフィードバックを送るとアプリの改善に繋がります" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you encounter any bugs or crashes with this app, please send us your feedback to help us improve this app"
+          }
+        }
+      }
+    },
+    "一手だけ戻す" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Return 1 action"
+          }
+        }
+      }
+    },
+    "一般のApple TVアプリ同様にゲームコントローラーでもこのアプリを操作できます" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app can be controlled with a game controller (as well as with other Apple TV apps)"
+          }
+        }
+      }
+    },
+    "上下反転" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reverse vertically"
+          }
+        }
+      }
+    },
+    "上下反転させる" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reverse vertically"
+          }
+        }
+      }
+    },
+    "上下反転を元に戻す" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore reverse"
+          }
+        }
+      }
+    },
+    "不具合フィードバック" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bug feedback"
+          }
+        }
+      }
+    },
+    "了解しました" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "事前準備完了" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepared"
+          }
+        }
+      }
+    },
+    "他のアプリからテキストを盤上にドロップして盤面を読み込めます。「☗」が先頭のテキストをドロップしてください。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import shogi board by dropping export-text into shogi board. The text head is \"☗\"."
+          }
+        }
+      }
+    },
+    "他のアプリとドラッグ&ドロップ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag & Drop"
+          }
+        }
+      }
+    },
+    "先頭の文字が「☗」のテキストを読み込んでください" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The text head is \"☗\""
+          }
+        }
+      }
+    },
+    "共有" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
+          }
+        }
+      }
+    },
+    "共有ボタンを長押しするとフォーマットを指定できます" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select format by long press share button"
+          }
+        }
+      }
+    },
+    "再開" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart"
+          }
+        }
+      }
+    },
+    "最大" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Max"
+          }
+        }
+      }
+    },
+    "削除" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove"
+          }
+        }
+      }
+    },
+    "効果音を無効" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable sound effect"
+          }
+        }
+      }
+    },
+    "参加中" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "joined"
+          }
+        }
+      }
+    },
+    "友達が既に「将棋盤」アクティビティを起動している場合は、システム側のUIを操作してアクティビティに参加しましょう。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If your friend has already started a \"Shogi board\" activity, you can join the activity by manipulating the system-side UI."
+          }
+        }
+      }
+    },
+    "友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Call FaceTime, or Contact on \"Message\""
+          }
+        }
+      }
+    },
+    "友達に「FaceTime」通話をかける" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Call FaceTime"
+          }
+        }
+      }
+    },
+    "大" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Large"
+          }
+        }
+      }
+    },
+    "太字" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weight"
+          }
+        }
+      }
+    },
+    "完了" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "将棋盤" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shogi board"
+          }
+        }
+      }
+    },
+    "将棋盤をSharePlay" : {
+      "comment" : "==== SharePlay ====",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shareplay shogi board"
+          }
+        }
+      }
+    },
+    "小" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Small"
+          }
+        }
+      }
+    },
+    "履歴" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History"
+          }
+        }
+      }
+    },
+    "履歴を全て削除する" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erase history"
+          }
+        }
+      }
+    },
+    "履歴を表示" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show history"
+          }
+        }
+      }
+    },
+    "引用: Apple サポートサイト" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quote: Apple support site"
+          }
+        }
+      }
+    },
+    "強調表示をクリア" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear shift sign"
+          }
+        }
+      }
+    },
+    "待機中" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "waiting"
+          }
+        }
+      }
+    },
+    "復元" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore"
+          }
+        }
+      }
+    },
+    "成りますか？" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Promotion?"
+          }
+        }
+      }
+    },
+    "成る" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        }
+      }
+    },
+    "戻るボタンを押すとサイドバーを表示できます" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press the back button to show the sidebar"
+          }
+        }
+      }
+    },
+    "手駒を整理する" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modify captured pieces"
+          }
+        }
+      }
+    },
+    "招待された側は、上部のメニューの「開く」ボタンを押してください。本アプリが起動され、アクティビティに自動的に参加します。" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The invited partner presses the \"Open\" button in the menu at the top. This application will be launched. The partner will be automatically joined to the activity."
+          }
+        }
+      }
+    },
+    "操作" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Command"
+          }
+        }
+      }
+    },
+    "操作した直後の駒の強調表示を常に無効" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always disable shift sign"
+          }
+        }
+      }
+    },
+    "更にカスタマイズ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More"
+          }
+        }
+      }
+    },
+    "概要" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        }
+      }
+    },
+    "標準" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default"
+          }
+        }
+      }
+    },
+    "注意事項" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notice"
+          }
+        }
+      }
+    },
+    "無効" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "invalidated"
+          }
+        }
+      }
+    },
+    "特にSharePlay中に発生した不具合について報告していただけるととても助かります" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Especially the feedback on the issues that occurred during SharePlay would be very helpful"
+          }
+        }
+      }
+    },
+    "状況" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "State"
+          }
+        }
+      }
+    },
+    "玉側の手駒" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piece in hand"
+          }
+        }
+      }
+    },
+    "王側の手駒" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piece in hand"
+          }
+        }
+      }
+    },
+    "現在、%@人でSharePlay中" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SharePlay is active (Number: %@)"
+          }
+        }
+      }
+    },
+    "現在、友達と繋がっているようです。友達が立ち上げたアクティビティに参加するか、もしくは自分でアクティビティを起動しましょう。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are currently connected to a friend. Join an activity launched by your friend OR launch an activity by yourself."
+          }
+        }
+      }
+    },
+    "現在、履歴はありません" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing"
+          }
+        }
+      }
+    },
+    "現在の参加者数" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active participant"
+          }
+        }
+      }
+    },
+    "現在の局面をブックマーク" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmark now"
+          }
+        }
+      }
+    },
+    "画像" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image"
+          }
+        }
+      }
+    },
+    "画像として共有" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share as image"
+          }
+        }
+      }
+    },
+    "盤面テキスト" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Board text"
+          }
+        }
+      }
+    },
+    "盤面を共有" : {
+      "comment" : "==== 共有 ====",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share shogi board"
+          }
+        }
+      }
+    },
+    "盤面を初期化" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Initialize"
+          }
+        }
+      }
+    },
+    "盤面画像" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Board image"
+          }
+        }
+      }
+    },
+    "直近の約30局面を履歴として保存します" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save 30 stages"
+          }
+        }
+      }
+    },
+    "細かな使い方" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More how to"
+          }
+        }
+      }
+    },
+    "編集" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        }
+      }
+    },
+    "自分からSharePlayを開始する" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start SharePlay by oneself"
+          }
+        }
+      }
+    },
+    "自分からSharePlayを開始する事もできます。アクティビティを起動したら友達にSharePlay参加を促しましょう。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can also start SharePlay yourself. Once you have started an activity, encourage your friends to join SharePlay."
+          }
+        }
+      }
+    },
+    "補足" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note"
+          }
+        }
+      }
+    },
+    "見た目" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customize"
+          }
+        }
+      }
+    },
+    "見た目をカスタマイズ" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customize font"
+          }
+        }
+      }
+    },
+    "読み込みに失敗しました" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed"
+          }
+        }
+      }
+    },
+    "選択ボタンを長押しすると「カーソルの枠線」を一時的に非表示にできます" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Long press gesture to hide focus effect temporarily"
+          }
+        }
+      }
+    },
+    "長押しして駒を持ち上げ、そのままスライドして移動させる" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Long press a piece, move it"
+          }
+        }
+      }
+    },
+    "閉じる" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dismiss"
+          }
+        }
+      }
+    },
+    "駒のサイズ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Size"
+          }
+        }
+      }
+    },
+    "駒の選択を解除" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unfocus"
+          }
+        }
+      }
+    },
+    "駒を他のアプリへドラッグして盤面をテキストとして書き出せます。" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export shogi board as plain text by dropping a piece into other apps"
+          }
+        }
+      }
+    },
+    "駒を増減" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modify mode"
+          }
+        }
+      }
+    },
+    "駒を消したり増やしたりする" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modify pieces"
+          }
+        }
+      }
+    },
+    "駒増減モード" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modify mode"
+          }
+        }
+      }
+    },
+    "駒増減モードを開始" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modify mode"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

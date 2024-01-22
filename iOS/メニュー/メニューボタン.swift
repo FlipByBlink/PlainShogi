@@ -30,7 +30,7 @@ struct メニューボタン: View { // ⚙️
         .hoverEffect(.highlight)
         .padding(.trailing)
         .tint(.primary)
-        .accessibilityLabel("Open menu")
+        .accessibilityLabel("メニューを開く")
 #else
         EmptyView()
 #endif

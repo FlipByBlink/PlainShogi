@@ -52,7 +52,7 @@ struct SharePlay紹介メニューリンク: View {
             Text("概要")
                 .textCase(.none)
         } footer: {
-            Text("https://support.apple.com/guide/iphone/shareplay-watch-listen-play-iphb657eb791/ios")
+            Text(verbatim: "https://support.apple.com/guide/iphone/shareplay-watch-listen-play-iphb657eb791/ios")
         }
     }
     private func 招待ボタン() -> some View {

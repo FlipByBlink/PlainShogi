@@ -73,7 +73,7 @@ struct 増減モード完了ボタン: View {
         }
         .keyboardShortcut(.cancelAction)
         .tint(.primary)
-        .accessibilityLabel("Done")
+        .accessibilityLabel("完了")
     }
 }
 

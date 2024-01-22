@@ -42,7 +42,7 @@ private extension シート管理 {
                 Image(systemName: "chevron.down")
                     .grayscale(1.0)
             }
-            .accessibilityLabel("Dismiss")
+            .accessibilityLabel("閉じる")
             .keyboardShortcut(.cancelAction)
         }
     }
