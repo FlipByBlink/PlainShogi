@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ツールボタンズ: ViewModifier {
     @EnvironmentObject var モデル: アプリモデル
-    @State private var サムネイル: Image = .init(.roundedIcon)
+    @State private var サムネイル: Image = .init(.aboutAppIcon)
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .top) {

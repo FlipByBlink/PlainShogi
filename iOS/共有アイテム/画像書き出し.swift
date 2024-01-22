@@ -55,7 +55,7 @@ enum 画像書き出し {
         }())
         guard let uiImage = レンダラー.uiImage else {
             assertionFailure()
-            return .init(.roundedIcon)
+            return .init(.aboutAppIcon)
         }
         return .init(uiImage: uiImage)
     }

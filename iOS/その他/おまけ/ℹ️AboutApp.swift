@@ -1,3 +1,5 @@
+//MARK: iOS, iPadOS, Mac Catalyst, visionOS
+
 import SwiftUI
 
 struct ℹ️AboutAppContent: View {
@@ -16,7 +18,7 @@ struct ℹ️IconAndName: View {
         HStack {
             Spacer()
             VStack(spacing: 8) {
-                Image(.roundedIcon)
+                Image(.aboutAppIcon)
                     .resizable()
                     .frame(width: 100, height: 100)
                 VStack(spacing: 6) {
@@ -66,7 +68,7 @@ private struct 📰AppStoreDescriptionSection: View {
                         .padding(UIDevice.current.userInterfaceIdiom == .pad ? 32 : 16)
                         .frame(maxWidth: .infinity)
                 }
-                .navigationBarTitle(Text("Description", tableName: "🌐AboutApp"))
+                .navigationBarTitle(.init("Description", tableName: "🌐AboutApp"))
                 .textSelection(.enabled)
             } label: {
                 Text(self.textWithoutEmptyLines)
@@ -74,7 +76,7 @@ private struct 📰AppStoreDescriptionSection: View {
                     .lineSpacing(5)
                     .lineLimit(7)
                     .padding(8)
-                    .accessibilityLabel(Text("Description", tableName: "🌐AboutApp"))
+                    .accessibilityLabel(.init("Description", tableName: "🌐AboutApp"))
             }
         } header: {
             Text("Description", tableName: "🌐AboutApp")
@@ -118,7 +120,7 @@ private struct 👤PrivacyPolicySection: View {
                         .textSelection(.enabled)
                         .frame(maxWidth: .infinity)
                 }
-                .navigationTitle(Text("Privacy Policy", tableName: "🌐AboutApp"))
+                .navigationTitle(.init("Privacy Policy", tableName: "🌐AboutApp"))
             } label: {
                 Label(String(localized: "Privacy Policy", table: "🌐AboutApp"),
                       systemImage: "person.text.rectangle")
@@ -150,44 +152,72 @@ private struct 📜VersionHistoryLink: View {
                         .headerProminence(.increased)
                     }
                 }
-                .navigationBarTitle(Text("Version History", tableName: "🌐AboutApp"))
+                .navigationBarTitle(.init("Version History", tableName: "🌐AboutApp"))
             } label: {
                 Label(String(localized: "Version", table: "🌐AboutApp"),
                       systemImage: "signpost.left")
                 .badge(🗒️StaticInfo.versionInfos.first?.version ?? "🐛")
             }
-            .accessibilityLabel(Text("Version History", tableName: "🌐AboutApp"))
+            .accessibilityLabel(.init("Version History", tableName: "🌐AboutApp"))
         }
     }
+}
+
+private var 📓sourceCodeFolderURL: URL {
+#if targetEnvironment(macCatalyst)
+    Bundle.main.bundleURL.appendingPathComponent("Contents/Resources/📁SourceCode")
+#else
+    Bundle.main.bundleURL.appendingPathComponent("📁SourceCode")
+#endif
 }
 
 private struct 📓SourceCodeLink: View {
     var body: some View {
         NavigationLink {
             List {
+                Self.DebugView()
                 ForEach(🗒️StaticInfo.SourceCodeCategory.allCases) { Self.CodeSection($0) }
                 self.bundleMainInfoDictionary()
                 self.repositoryLinks()
             }
-            .navigationTitle(Text("Source code", tableName: "🌐AboutApp"))
+            .navigationTitle(.init("Source code", tableName: "🌐AboutApp"))
         } label: {
             Label(String(localized: "Source code", table: "🌐AboutApp"),
                   systemImage: "doc.plaintext")
         }
     }
+    private struct DebugView: View {
+        private var fileCounts: Int? {
+            try? FileManager.default
+                .contentsOfDirectory(atPath: 📓sourceCodeFolderURL.path(percentEncoded: false))
+                .count
+        }
+        private var caseCounts: Int {
+            🗒️StaticInfo.SourceCodeCategory.allCases.reduce(into: 0) { $0 += $1.fileNames.count }
+        }
+        var body: some View {
+            if let fileCounts {
+                if fileCounts != self.caseCounts {
+                    Section {
+                        Text(verbatim: "⚠️ mismatch fileCounts")
+                        LabeledContent(String("fileCounts"),
+                                       value: self.fileCounts.debugDescription)
+                        LabeledContent(String("caseCounts"),
+                                       value: self.caseCounts.description)
+                    }
+                }
+            } else {
+                Text(verbatim: "⚠️ contentsOfDirectory failure")
+            }
+        }
+    }
     private struct CodeSection: View {
         private var category: 🗒️StaticInfo.SourceCodeCategory
-        private var url: URL {
-#if targetEnvironment(macCatalyst)
-            Bundle.main.bundleURL.appendingPathComponent("Contents/Resources/📁SourceCode")
-#else
-            Bundle.main.bundleURL.appendingPathComponent("📁SourceCode")
-#endif
-        }
         var body: some View {
             Section {
                 ForEach(self.category.fileNames, id: \.self) { ⓕileName in
-                    if let ⓒode = try? String(contentsOf: self.url.appendingPathComponent(ⓕileName)) {
+                    let ⓤrl = 📓sourceCodeFolderURL.appendingPathComponent(ⓕileName)
+                    if let ⓒode = try? String(contentsOf: ⓤrl) {
                         NavigationLink(ⓕileName) { self.sourceCodeView(ⓒode, ⓕileName) }
                     } else {
                         Text(verbatim: "🐛")
@@ -225,7 +255,7 @@ private struct 📓SourceCodeLink: View {
                         }
                     }
                 }
-                .navigationBarTitle(Text(verbatim: "Bundle.main.infoDictionary"))
+                .navigationBarTitle(.init(verbatim: "Bundle.main.infoDictionary"))
                 .textSelection(.enabled)
             }
         }
@@ -310,39 +340,41 @@ private struct 🧑‍💻AboutDeveloperPublisherLink: View {
                 }
                 Self.jobHuntSection()
             }
-            .navigationTitle(Text("Developer / Publisher", tableName: "🌐AboutApp"))
+            .navigationTitle(.init("Developer / Publisher", tableName: "🌐AboutApp"))
         } label: {
             Label(String(localized: "Developer / Publisher", table: "🌐AboutApp"),
                   systemImage: "person")
         }
     }
     private struct TimelineSection: View {
-        private static var values: [(date: String, description: String)] {
-            [("2013-04", "Finished from high school in Okayama Prefecture. Entranced into University-of-the-Ryukyus/faculty-of-engineering in Okinawa Prefecture."),
-             ("2018-06", "Final year as an undergraduate student. Developed an iOS application(FlipByBlink) as software for the purpose of research experiments."),
-             ("2019-01", "Released ebook reader app \"FlipByBlink\" ver 1.0 on App Store. Special feature is to turn a page by slightly-longish-voluntary-blink."),
-             ("2019-03", "Graduated from University-of-the-Ryukyus."),
-             ("2019-05", "Released alarm clock app with taking a long time \"FadeInAlarm\" ver 1.0. First paid app."),
-             ("2019-07", "Migrated to Okayama Prefecture."),
-             ("2021-12", "Released FlipByBlink ver 3.0 for the first time in three years since ver 2.0."),
-             ("2022-02", "Released FadeInAlarm ver 2.0 for the first time in three years since ver 1.0."),
-             ("2022-04", "Released simple shogi board app \"PlainShogiBoard\" ver 1.0."),
-             ("2022-05", "Released body weight registration app \"TapWeight\" ver 1.0."),
-             ("2022-06", "Released body temperature registration app \"TapTemperature\" ver 1.0."),
-             ("2022-06", "Adopted In-App Purchase model for the first time on TapWeight ver 1.1.1"),
-             ("2022-09", "Released LockInNote and MemorizeWidget on iOS16 release occasion."),
-             ("2023-02", "Released Apple Watch app version of \"TapTemperature\"."),
-             ("2023-04", "Released Mac app version of \"MemorizeWidget\"."),
-             ("2023-05", "Released Apple TV app version of \"PlainShogiBoard\".")]
+        private static var localizedStringResources: [LocalizedStringResource] {
+            [
+                .init("2013-04", table: "🌐Timeline"),
+                .init("2018-06", table: "🌐Timeline"),
+                .init("2019-01", table: "🌐Timeline"),
+                .init("2019-03", table: "🌐Timeline"),
+                .init("2019-05", table: "🌐Timeline"),
+                .init("2019-07", table: "🌐Timeline"),
+                .init("2021-12", table: "🌐Timeline"),
+                .init("2022-02", table: "🌐Timeline"),
+                .init("2022-04", table: "🌐Timeline"),
+                .init("2022-05", table: "🌐Timeline"),
+                .init("2022-06", table: "🌐Timeline"), //two lines
+                .init("2022-09", table: "🌐Timeline"),
+                .init("2023-02", table: "🌐Timeline"),
+                .init("2023-04", table: "🌐Timeline"),
+                .init("2023-05", table: "🌐Timeline"),
+                .init("2024-02", table: "🌐Timeline"),
+            ]
         }
         var body: some View {
             Section {
-                ForEach(Self.values, id: \.self.description) { ⓥalue in
+                ForEach(Self.localizedStringResources, id: \.self.key) { ⓡesource in
                     HStack {
-                        Text(verbatim: ⓥalue.date)
+                        Text(ⓡesource.key)
                             .font(.caption2.monospacedDigit())
                             .padding(8)
-                        Text(LocalizedStringKey(ⓥalue.description), tableName: "🌐AboutApp")
+                        Text(ⓡesource)
                             .font(.caption)
                     }
                 }
