@@ -17,7 +17,7 @@ private struct 🖼️IconAndName: View {
         ZStack {
             Color.clear
             VStack(spacing: 8) {
-                Image(.icon)
+                Image(.aboutAppIcon)
                     .resizable()
                     .frame(width: 60, height: 60)
                     .clipShape(Circle())

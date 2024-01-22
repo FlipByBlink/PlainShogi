@@ -357,7 +357,7 @@ private struct アプリについてメニュー: View {
     var body: some View {
         HStack {
             Spacer()
-            Image("CombinedAppIcon")
+            Image(.aboutAppIcon)
                 .clipShape(RoundedRectangle(cornerRadius: 48, style: .continuous))
                 .shadow(radius: 12)
             Spacer()
