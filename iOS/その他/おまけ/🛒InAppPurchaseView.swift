@@ -157,9 +157,11 @@ private struct 🛒RestoreButton: View {
             }
             .disabled(self.restoringInProgress)
             .alert(isPresented: self.$showAlert) {
-                Alert(title: Text(self.syncSuccess ? "Done" : "Error", tableName: "🌐AD&InAppPurchase"),
-                      message: Text(LocalizedStringKey(self.alertMessage)),
-                      dismissButton: .default(Text("OK", tableName: "🌐AD&InAppPurchase")))
+                Alert(
+                    title: self.syncSuccess ? Text("Done", tableName: "🌐AD&InAppPurchase") : Text("Error", tableName: "🌐AD&InAppPurchase"),
+                    message: Text(LocalizedStringKey(self.alertMessage)),
+                    dismissButton: .default(Text("OK", tableName: "🌐AD&InAppPurchase"))
+                )
             }
         }
     }
