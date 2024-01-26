@@ -208,6 +208,93 @@
 		16E2E11C2B635ECD0017A9A2 /* 駒テキスト.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E10F2B6358B10017A9A2 /* 駒テキスト.swift */; };
 		16E2E1202B6375880017A9A2 /* 🌐VersionHistory.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 16E2E11F2B6375880017A9A2 /* 🌐VersionHistory.xcstrings */; };
 		16E2E1222B6375880017A9A2 /* 🌐AppStoreDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 16E2E1212B6375880017A9A2 /* 🌐AppStoreDescription.xcstrings */; };
+		16E2E1322B63C1780017A9A2 /* アプリアイコン.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16E2E1312B63C1780017A9A2 /* アプリアイコン.xcassets */; };
+		16E2E13C2B63C37F0017A9A2 /* アプリアイコン.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16E2E13B2B63C37F0017A9A2 /* アプリアイコン.xcassets */; };
+		16E2E13D2B63D7D30017A9A2 /* EnvironmentValues拡張.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */; };
+		16E2E13E2B63D7D30017A9A2 /* システムフィードバック.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16688DD92B595CAC004CE12B /* システムフィードバック.swift */; };
+		16E2E13F2B63D7D30017A9A2 /* 盤上の駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750862ADE188300443DE2 /* 盤上の駒.swift */; };
+		16E2E1402B63D7D30017A9A2 /* 空の手駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750A52ADE19A500443DE2 /* 空の手駒.swift */; };
+		16E2E1412B63D7D30017A9A2 /* 音声アセット.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16688DE12B595F37004CE12B /* 音声アセット.xcassets */; };
+		16E2E1422B63D7D30017A9A2 /* アプリモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
+		16E2E1432B63D7D30017A9A2 /* 駒の種類.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697509D2ADE192200443DE2 /* 駒の種類.swift */; };
+		16E2E1442B63D7D30017A9A2 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
+		16E2E1452B63D7D30017A9A2 /* 音声フィードバックモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */; };
+		16E2E1462B63D7D30017A9A2 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
+		16E2E1472B63D7D30017A9A2 /* 駒の移動先パターン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750952ADE18FC00443DE2 /* 駒の移動先パターン.swift */; };
+		16E2E1482B63D7D30017A9A2 /* 駒の場所.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750912ADE18E900443DE2 /* 駒の場所.swift */; };
+		16E2E1492B63D7D30017A9A2 /* シートカテゴリ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* シートカテゴリ.swift */; };
+		16E2E14A2B63D7D30017A9A2 /* 局面モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
+		16E2E14B2B63D7D30017A9A2 /* 王側か玉側か.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750842ADE186000443DE2 /* 王側か玉側か.swift */; };
+		16E2E14C2B63D7D30017A9A2 /* 字体.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 字体.swift */; };
+		16E2E14D2B63D7D30017A9A2 /* 持ち駒.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697508D2ADE18CD00443DE2 /* 持ち駒.swift */; };
+		16E2E14E2B63D7D30017A9A2 /* 不特定エラー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750A12ADE194600443DE2 /* 不特定エラー.swift */; };
+		16E2E14F2B63D7D30017A9A2 /* フィードバックモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバックモデル.swift */; };
+		16E2E1502B63D7D30017A9A2 /* ICloudデータ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */; };
+		16E2E1512B63D7D30017A9A2 /* アプリモデルのスーパークラス.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */; };
+		16E2E1522B63D7D30017A9A2 /* 手前か対面か.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750992ADE191000443DE2 /* 手前か対面か.swift */; };
+		16E2E1532B63D7E60017A9A2 /* Developer_Publisher.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 167FFC612B5E0537006BC0A3 /* Developer_Publisher.xcassets */; };
+		16E2E1542B63D7E60017A9A2 /* AD+InAppPurchase.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 167FFC622B5E0537006BC0A3 /* AD+InAppPurchase.xcassets */; };
+		16E2E1552B63D7E60017A9A2 /* 🌐Timeline.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 167FFC592B5E04BB006BC0A3 /* 🌐Timeline.xcstrings */; };
+		16E2E1562B63D7E60017A9A2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 167FFC652B5E07D0006BC0A3 /* Localizable.xcstrings */; };
+		16E2E1572B63D7E60017A9A2 /* 🌐AboutApp.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 167FFC582B5E04BB006BC0A3 /* 🌐AboutApp.xcstrings */; };
+		16E2E1582B63D7EA0017A9A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12A925232866AA6C0035DC83 /* InfoPlist.strings */; };
+		16E2E1592B63D8200017A9A2 /* アプリ内課金ハンドラー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */; };
+		16E2E15A2B63D8200017A9A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128D156E280FE47F003FF480 /* Assets.xcassets */; };
+		16E2E15B2B63D8200017A9A2 /* GroupActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750682ADDFCC100443DE2 /* GroupActivity.swift */; };
+		16E2E15C2B63D8200017A9A2 /* MacCatalyst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1D052AE26D84004E14E2 /* MacCatalyst.swift */; };
+		16E2E15D2B63D8200017A9A2 /* ドロップデリゲート.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* ドロップデリゲート.swift */; };
+		16E2E15E2B63D8200017A9A2 /* 増減モード.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 増減モード.swift */; };
+		16E2E15F2B63D8200017A9A2 /* 画像書き出し.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */; };
+		16E2E1602B63D8200017A9A2 /* SharePlay環境構築.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */; };
+		16E2E1612B63D8200017A9A2 /* コマンドボタンズ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E414E2AE1375C00CFA307 /* コマンドボタンズ.swift */; };
+		16E2E1622B63D8200017A9A2 /* コマンド.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506C2ADDFE5700443DE2 /* コマンド.swift */; };
+		16E2E1632B63D8200017A9A2 /* メイン画面の共有ボタン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41492AE0F9A300CFA307 /* メイン画面の共有ボタン.swift */; };
+		16E2E1642B63D8200017A9A2 /* SharePlayガイドメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */; };
+		16E2E1652B63D8200017A9A2 /* 🛒InAppPurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FC2ADE7AB900443DE2 /* 🛒InAppPurchaseModel.swift */; };
+		16E2E1662B63D8200017A9A2 /* 盤面と段と筋.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E10B2B6357870017A9A2 /* 盤面と段と筋.swift */; };
+		16E2E1672B63D8200017A9A2 /* 駒テキスト.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E10F2B6358B10017A9A2 /* 駒テキスト.swift */; };
+		16E2E1682B63D8200017A9A2 /* テキスト共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */; };
+		16E2E1692B63D8200017A9A2 /* 更にカスタマイズメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41562AE14A2E00CFA307 /* 更にカスタマイズメニュー.swift */; };
+		16E2E16A2B63D8200017A9A2 /* メニューボタン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E414C2AE1371300CFA307 /* メニューボタン.swift */; };
+		16E2E16B2B63D8200017A9A2 /* バックグラウンド時に駒選択を解除.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */; };
+		16E2E16C2B63D8200017A9A2 /* メニュートップ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* メニュートップ.swift */; };
+		16E2E16D2B63D8200017A9A2 /* ブックマークメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506A2ADDFD5100443DE2 /* ブックマークメニュー.swift */; };
+		16E2E16E2B63D8200017A9A2 /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */; };
+		16E2E16F2B63D8200017A9A2 /* 画像キャッシュハンドラー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1CFD2AE26009004E14E2 /* 画像キャッシュハンドラー.swift */; };
+		16E2E1702B63D8200017A9A2 /* 画像共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */; };
+		16E2E1712B63D8200017A9A2 /* 共有メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415A2AE14F6800CFA307 /* 共有メニュー.swift */; };
+		16E2E1722B63D8200017A9A2 /* 成駒確認アラート.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750AC2ADE231000443DE2 /* 成駒確認アラート.swift */; };
+		16E2E1732B63D8200017A9A2 /* 固定値.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697506E2ADDFE8500443DE2 /* 固定値.swift */; };
+		16E2E1742B63D8200017A9A2 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156A280FE47E003FF480 /* App.swift */; };
+		16E2E1752B63D8200017A9A2 /* 将棋View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F525A7D529F8FB1F001E8D5F /* 将棋View.swift */; };
+		16E2E1762B63D8200017A9A2 /* ドラッグ対象.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750812ADE180700443DE2 /* ドラッグ対象.swift */; };
+		16E2E1772B63D8200017A9A2 /* コマの見た目.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E10D2B63588C0017A9A2 /* コマの見た目.swift */; };
+		16E2E1782B63D8200017A9A2 /* 履歴メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 履歴メニュー.swift */; };
+		16E2E1792B63D8200017A9A2 /* シート管理.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* シート管理.swift */; };
+		16E2E17A2B63D8200017A9A2 /* SharePlay用選択中の駒モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16267B562B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift */; };
+		16E2E17B2B63D8200017A9A2 /* レイアウト.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750AA2ADE220400443DE2 /* レイアウト.swift */; };
+		16E2E17C2B63D8200017A9A2 /* 🛒InAppPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */; };
+		16E2E17D2B63D8200017A9A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
+		16E2E17E2B63D8200017A9A2 /* 操作エリア外で駒選択を解除.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750AE2ADE233600443DE2 /* 操作エリア外で駒選択を解除.swift */; };
+		16E2E17F2B63D8200017A9A2 /* 盤外のコマ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */; };
+		16E2E1802B63D8200017A9A2 /* オプション変更アニメーション.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750B02ADE23CC00443DE2 /* オプション変更アニメーション.swift */; };
+		16E2E1812B63D8200017A9A2 /* SharePlayインジケーター.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */; };
+		16E2E1822B63D8200017A9A2 /* ユーザーレビュー依頼.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */; };
+		16E2E1832B63D8200017A9A2 /* 広告コンテンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */; };
+		16E2E1842B63D8200017A9A2 /* 不具合フィードバックメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41502AE1388F00CFA307 /* 不具合フィードバックメニュー.swift */; };
+		16E2E1852B63D8200017A9A2 /* 自動スリープ無効化.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */; };
+		16E2E1862B63D8200017A9A2 /* 盤外.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1112B6359310017A9A2 /* 盤外.swift */; };
+		16E2E1872B63D8200017A9A2 /* ツールボタンズ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750772ADE048000443DE2 /* ツールボタンズ.swift */; };
+		16E2E1882B63D8200017A9A2 /* SharePlay紹介メニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */; };
+		16E2E1892B63D8200017A9A2 /* 📣ADModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FB2ADE7AB900443DE2 /* 📣ADModel.swift */; };
+		16E2E18A2B63D8200017A9A2 /* 📣ADComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169751092ADE7BB800443DE2 /* 📣ADComponents.swift */; };
+		16E2E18B2B63D8200017A9A2 /* 盤面のみ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1132B6359E20017A9A2 /* 盤面のみ.swift */; };
+		16E2E18C2B63D8200017A9A2 /* テキスト連携機能.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */; };
+		16E2E18E2B63D8590017A9A2 /* 🌐ADAppName.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 169751022ADE7B3700443DE2 /* 🌐ADAppName.xcstrings */; };
+		16E2E18F2B63D8590017A9A2 /* 🌐AD&InAppPurchase.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 169751002ADE7B3600443DE2 /* 🌐AD&InAppPurchase.xcstrings */; };
+		16E2E1902B63D8590017A9A2 /* 🌐ADAppDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 169751032ADE7B3700443DE2 /* 🌐ADAppDescription.xcstrings */; };
+		16E2E1942B63D8880017A9A2 /* 🌐VersionHistory.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 16E2E1922B63D8880017A9A2 /* 🌐VersionHistory.xcstrings */; };
+		16E2E1952B63D8880017A9A2 /* 🌐AppStoreDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 16E2E1932B63D8880017A9A2 /* 🌐AppStoreDescription.xcstrings */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -533,6 +620,13 @@
 		16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤外のコマ.swift"; sourceTree = "<group>"; };
 		16E2E11F2B6375880017A9A2 /* 🌐VersionHistory.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐VersionHistory.xcstrings"; sourceTree = "<group>"; };
 		16E2E1212B6375880017A9A2 /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
+		16E2E1272B63C1750017A9A2 /* visionOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = visionOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16E2E1312B63C1780017A9A2 /* アプリアイコン.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "アプリアイコン.xcassets"; sourceTree = "<group>"; };
+		16E2E1362B63C1780017A9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16E2E13B2B63C37F0017A9A2 /* アプリアイコン.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "アプリアイコン.xcassets"; sourceTree = "<group>"; };
+		16E2E18D2B63D8340017A9A2 /* visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = visionOS.entitlements; sourceTree = "<group>"; };
+		16E2E1922B63D8880017A9A2 /* 🌐VersionHistory.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐VersionHistory.xcstrings"; sourceTree = "<group>"; };
+		16E2E1932B63D8880017A9A2 /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
 		16EF413A2B5D13CD002312FA /* appstore_badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore_badge.svg; sourceTree = "<group>"; };
 		16EF413B2B5D13F1002312FA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
@@ -585,6 +679,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		16E2E1242B63C1750017A9A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5119BA02A0291000027A74C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -616,9 +717,10 @@
 			children = (
 				12D198532810DD6500CE6578 /* README.md */,
 				F5D9F9AF2A00BE1F00CEE697 /* Shared */,
-				128D1569280FE47E003FF480 /* iOS */,
+				128D1569280FE47E003FF480 /* iOS + visionOS */,
 				F5D9F9192A00BDA900CEE697 /* watchOS */,
 				F5119BA42A0291000027A74C /* tvOS */,
+				16E2E1282B63C1750017A9A2 /* PlainShogiBoardForVisionOS */,
 				128D1568280FE47E003FF480 /* Products */,
 				12A9251C2866A8960035DC83 /* Frameworks */,
 			);
@@ -631,11 +733,12 @@
 				F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */,
 				F51F03992A00D03200F05874 /* Widget for watchOS.appex */,
 				F5119BA32A0291000027A74C /* tvOS.app */,
+				16E2E1272B63C1750017A9A2 /* visionOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		128D1569280FE47E003FF480 /* iOS */ = {
+		128D1569280FE47E003FF480 /* iOS + visionOS */ = {
 			isa = PBXGroup;
 			children = (
 				128D156A280FE47E003FF480 /* App.swift */,
@@ -649,7 +752,7 @@
 				12D436992865CD6D00B707F5 /* その他 */,
 				169750642ADD690300443DE2 /* サポートファイル */,
 			);
-			path = iOS;
+			path = "iOS + visionOS";
 			sourceTree = "<group>";
 		};
 		12A9251C2866A8960035DC83 /* Frameworks */ = {
@@ -666,6 +769,7 @@
 			isa = PBXGroup;
 			children = (
 				16E2E11D2B6361A20017A9A2 /* iOS */,
+				16E2E1912B63D8640017A9A2 /* visionOS */,
 				169751002ADE7B3600443DE2 /* 🌐AD&InAppPurchase.xcstrings */,
 				169751032ADE7B3700443DE2 /* 🌐ADAppDescription.xcstrings */,
 				169751022ADE7B3700443DE2 /* 🌐ADAppName.xcstrings */,
@@ -729,6 +833,7 @@
 				128D156E280FE47F003FF480 /* Assets.xcassets */,
 				12D4369C2865CD8300B707F5 /* Configuration.storekit */,
 				16E2E11E2B6361AF0017A9A2 /* iOS */,
+				16E2E13A2B63C1F40017A9A2 /* visionOS */,
 				12A925252866AB9F0035DC83 /* ローカライズ */,
 			);
 			name = "サポートファイル";
@@ -956,11 +1061,38 @@
 		16E2E11E2B6361AF0017A9A2 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				16E2E13B2B63C37F0017A9A2 /* アプリアイコン.xcassets */,
 				F5BBEB662973A4040064F0EF /* Info.plist */,
 				F5C9FB00296CFF7A00B513D8 /* iOS.entitlements */,
 				F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */,
 			);
 			path = iOS;
+			sourceTree = "<group>";
+		};
+		16E2E1282B63C1750017A9A2 /* PlainShogiBoardForVisionOS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PlainShogiBoardForVisionOS;
+			sourceTree = "<group>";
+		};
+		16E2E13A2B63C1F40017A9A2 /* visionOS */ = {
+			isa = PBXGroup;
+			children = (
+				16E2E1312B63C1780017A9A2 /* アプリアイコン.xcassets */,
+				16E2E1362B63C1780017A9A2 /* Info.plist */,
+				16E2E18D2B63D8340017A9A2 /* visionOS.entitlements */,
+			);
+			path = visionOS;
+			sourceTree = "<group>";
+		};
+		16E2E1912B63D8640017A9A2 /* visionOS */ = {
+			isa = PBXGroup;
+			children = (
+				16E2E1932B63D8880017A9A2 /* 🌐AppStoreDescription.xcstrings */,
+				16E2E1922B63D8880017A9A2 /* 🌐VersionHistory.xcstrings */,
+			);
+			path = visionOS;
 			sourceTree = "<group>";
 		};
 		F5119BA42A0291000027A74C /* tvOS */ = {
@@ -1039,6 +1171,25 @@
 			productReference = 128D1567280FE47E003FF480 /* 将棋盤.app */;
 			productType = "com.apple.product-type.application";
 		};
+		16E2E1262B63C1750017A9A2 /* visionOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16E2E1372B63C1780017A9A2 /* Build configuration list for PBXNativeTarget "visionOS" */;
+			buildPhases = (
+				16E2E1232B63C1750017A9A2 /* Sources */,
+				16E2E1242B63C1750017A9A2 /* Frameworks */,
+				16E2E1252B63C1750017A9A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = visionOS;
+			packageProductDependencies = (
+			);
+			productName = PlainShogiBoardForVisionOS;
+			productReference = 16E2E1272B63C1750017A9A2 /* visionOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		F5119BA22A0291000027A74C /* tvOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5119BB02A0291020027A74C /* Build configuration list for PBXNativeTarget "tvOS" */;
@@ -1100,11 +1251,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					128D1566280FE47E003FF480 = {
 						CreatedOnToolsVersion = 13.3;
+					};
+					16E2E1262B63C1750017A9A2 = {
+						CreatedOnToolsVersion = 15.2;
 					};
 					F5119BA22A0291000027A74C = {
 						CreatedOnToolsVersion = 14.3;
@@ -1134,6 +1288,7 @@
 				128D1566280FE47E003FF480 /* iOS */,
 				F5D9F9172A00BDA800CEE697 /* watchOS */,
 				F51F03982A00D03200F05874 /* Widget for watchOS */,
+				16E2E1262B63C1750017A9A2 /* visionOS */,
 				F5119BA22A0291000027A74C /* tvOS */,
 			);
 		};
@@ -1148,6 +1303,7 @@
 				16E2E1202B6375880017A9A2 /* 🌐VersionHistory.xcstrings in Resources */,
 				169751062ADE7B3700443DE2 /* 🌐ADAppName.xcstrings in Resources */,
 				167FFC642B5E0537006BC0A3 /* AD+InAppPurchase.xcassets in Resources */,
+				16E2E13C2B63C37F0017A9A2 /* アプリアイコン.xcassets in Resources */,
 				16688DE22B595F37004CE12B /* 音声アセット.xcassets in Resources */,
 				167FFC632B5E0537006BC0A3 /* Developer_Publisher.xcassets in Resources */,
 				169751042ADE7B3700443DE2 /* 🌐AD&InAppPurchase.xcstrings in Resources */,
@@ -1159,6 +1315,27 @@
 				167FFC5D2B5E04BC006BC0A3 /* 🌐Timeline.xcstrings in Resources */,
 				128D156F280FE47F003FF480 /* Assets.xcassets in Resources */,
 				12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16E2E1252B63C1750017A9A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16E2E1542B63D7E60017A9A2 /* AD+InAppPurchase.xcassets in Resources */,
+				16E2E18E2B63D8590017A9A2 /* 🌐ADAppName.xcstrings in Resources */,
+				16E2E1582B63D7EA0017A9A2 /* InfoPlist.strings in Resources */,
+				16E2E1532B63D7E60017A9A2 /* Developer_Publisher.xcassets in Resources */,
+				16E2E1952B63D8880017A9A2 /* 🌐AppStoreDescription.xcstrings in Resources */,
+				16E2E1562B63D7E60017A9A2 /* Localizable.xcstrings in Resources */,
+				16E2E1412B63D7D30017A9A2 /* 音声アセット.xcassets in Resources */,
+				16E2E1572B63D7E60017A9A2 /* 🌐AboutApp.xcstrings in Resources */,
+				16E2E18F2B63D8590017A9A2 /* 🌐AD&InAppPurchase.xcstrings in Resources */,
+				16E2E1552B63D7E60017A9A2 /* 🌐Timeline.xcstrings in Resources */,
+				16E2E1902B63D8590017A9A2 /* 🌐ADAppDescription.xcstrings in Resources */,
+				16E2E15A2B63D8200017A9A2 /* Assets.xcassets in Resources */,
+				16E2E1942B63D8880017A9A2 /* 🌐VersionHistory.xcstrings in Resources */,
+				16E2E1322B63C1780017A9A2 /* アプリアイコン.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1275,6 +1452,85 @@
 				169E415F2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift in Sources */,
 				127132E82873CDF20008AE46 /* 増減モード.swift in Sources */,
 				12F4444E286D4B580008A663 /* メニュートップ.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16E2E1232B63C1750017A9A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16E2E1752B63D8200017A9A2 /* 将棋View.swift in Sources */,
+				16E2E1692B63D8200017A9A2 /* 更にカスタマイズメニュー.swift in Sources */,
+				16E2E1472B63D7D30017A9A2 /* 駒の移動先パターン.swift in Sources */,
+				16E2E1662B63D8200017A9A2 /* 盤面と段と筋.swift in Sources */,
+				16E2E18B2B63D8200017A9A2 /* 盤面のみ.swift in Sources */,
+				16E2E1722B63D8200017A9A2 /* 成駒確認アラート.swift in Sources */,
+				16E2E1482B63D7D30017A9A2 /* 駒の場所.swift in Sources */,
+				16E2E17B2B63D8200017A9A2 /* レイアウト.swift in Sources */,
+				16E2E1632B63D8200017A9A2 /* メイン画面の共有ボタン.swift in Sources */,
+				16E2E17D2B63D8200017A9A2 /* ContentView.swift in Sources */,
+				16E2E16F2B63D8200017A9A2 /* 画像キャッシュハンドラー.swift in Sources */,
+				16E2E1882B63D8200017A9A2 /* SharePlay紹介メニュー.swift in Sources */,
+				16E2E1512B63D7D30017A9A2 /* アプリモデルのスーパークラス.swift in Sources */,
+				16E2E13D2B63D7D30017A9A2 /* EnvironmentValues拡張.swift in Sources */,
+				16E2E1612B63D8200017A9A2 /* コマンドボタンズ.swift in Sources */,
+				16E2E14E2B63D7D30017A9A2 /* 不特定エラー.swift in Sources */,
+				16E2E1672B63D8200017A9A2 /* 駒テキスト.swift in Sources */,
+				16E2E1892B63D8200017A9A2 /* 📣ADModel.swift in Sources */,
+				16E2E13F2B63D7D30017A9A2 /* 盤上の駒.swift in Sources */,
+				16E2E1622B63D8200017A9A2 /* コマンド.swift in Sources */,
+				16E2E1442B63D7D30017A9A2 /* 局面プレビュー.swift in Sources */,
+				16E2E14A2B63D7D30017A9A2 /* 局面モデル.swift in Sources */,
+				16E2E18C2B63D8200017A9A2 /* テキスト連携機能.swift in Sources */,
+				16E2E14C2B63D7D30017A9A2 /* 字体.swift in Sources */,
+				16E2E1812B63D8200017A9A2 /* SharePlayインジケーター.swift in Sources */,
+				16E2E15F2B63D8200017A9A2 /* 画像書き出し.swift in Sources */,
+				16E2E1792B63D8200017A9A2 /* シート管理.swift in Sources */,
+				16E2E1592B63D8200017A9A2 /* アプリ内課金ハンドラー.swift in Sources */,
+				16E2E15C2B63D8200017A9A2 /* MacCatalyst.swift in Sources */,
+				16E2E17F2B63D8200017A9A2 /* 盤外のコマ.swift in Sources */,
+				16E2E16D2B63D8200017A9A2 /* ブックマークメニュー.swift in Sources */,
+				16E2E1742B63D8200017A9A2 /* App.swift in Sources */,
+				16E2E18A2B63D8200017A9A2 /* 📣ADComponents.swift in Sources */,
+				16E2E1462B63D7D30017A9A2 /* 🗒️StaticInfo.swift in Sources */,
+				16E2E14D2B63D7D30017A9A2 /* 持ち駒.swift in Sources */,
+				16E2E17E2B63D8200017A9A2 /* 操作エリア外で駒選択を解除.swift in Sources */,
+				16E2E1782B63D8200017A9A2 /* 履歴メニュー.swift in Sources */,
+				16E2E1422B63D7D30017A9A2 /* アプリモデル.swift in Sources */,
+				16E2E1642B63D8200017A9A2 /* SharePlayガイドメニュー.swift in Sources */,
+				16E2E1772B63D8200017A9A2 /* コマの見た目.swift in Sources */,
+				16E2E16A2B63D8200017A9A2 /* メニューボタン.swift in Sources */,
+				16E2E1712B63D8200017A9A2 /* 共有メニュー.swift in Sources */,
+				16E2E1852B63D8200017A9A2 /* 自動スリープ無効化.swift in Sources */,
+				16E2E1492B63D7D30017A9A2 /* シートカテゴリ.swift in Sources */,
+				16E2E1872B63D8200017A9A2 /* ツールボタンズ.swift in Sources */,
+				16E2E1432B63D7D30017A9A2 /* 駒の種類.swift in Sources */,
+				16E2E1802B63D8200017A9A2 /* オプション変更アニメーション.swift in Sources */,
+				16E2E1402B63D7D30017A9A2 /* 空の手駒.swift in Sources */,
+				16E2E1602B63D8200017A9A2 /* SharePlay環境構築.swift in Sources */,
+				16E2E1822B63D8200017A9A2 /* ユーザーレビュー依頼.swift in Sources */,
+				16E2E1732B63D8200017A9A2 /* 固定値.swift in Sources */,
+				16E2E1862B63D8200017A9A2 /* 盤外.swift in Sources */,
+				16E2E1702B63D8200017A9A2 /* 画像共有メニューコンポーネンツ.swift in Sources */,
+				16E2E15D2B63D8200017A9A2 /* ドロップデリゲート.swift in Sources */,
+				16E2E14B2B63D7D30017A9A2 /* 王側か玉側か.swift in Sources */,
+				16E2E17C2B63D8200017A9A2 /* 🛒InAppPurchaseView.swift in Sources */,
+				16E2E1762B63D8200017A9A2 /* ドラッグ対象.swift in Sources */,
+				16E2E1452B63D7D30017A9A2 /* 音声フィードバックモデル.swift in Sources */,
+				16E2E15B2B63D8200017A9A2 /* GroupActivity.swift in Sources */,
+				16E2E13E2B63D7D30017A9A2 /* システムフィードバック.swift in Sources */,
+				16E2E16C2B63D8200017A9A2 /* メニュートップ.swift in Sources */,
+				16E2E1502B63D7D30017A9A2 /* ICloudデータ.swift in Sources */,
+				16E2E17A2B63D8200017A9A2 /* SharePlay用選択中の駒モデル.swift in Sources */,
+				16E2E16E2B63D8200017A9A2 /* ℹ️AboutApp.swift in Sources */,
+				16E2E1522B63D7D30017A9A2 /* 手前か対面か.swift in Sources */,
+				16E2E1842B63D8200017A9A2 /* 不具合フィードバックメニュー.swift in Sources */,
+				16E2E16B2B63D8200017A9A2 /* バックグラウンド時に駒選択を解除.swift in Sources */,
+				16E2E15E2B63D8200017A9A2 /* 増減モード.swift in Sources */,
+				16E2E1682B63D8200017A9A2 /* テキスト共有メニューコンポーネンツ.swift in Sources */,
+				16E2E1832B63D8200017A9A2 /* 広告コンテンツ.swift in Sources */,
+				16E2E14F2B63D7D30017A9A2 /* フィードバックモデル.swift in Sources */,
+				16E2E1652B63D8200017A9A2 /* 🛒InAppPurchaseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1520,7 +1776,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "iOS/サポートファイル/iOS/iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS + visionOS/サポートファイル/iOS/iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1528,7 +1784,7 @@
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS/サポートファイル/iOS/Info.plist";
+				INFOPLIST_FILE = "iOS + visionOS/サポートファイル/iOS/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Add shogi board image to photo app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1559,7 +1815,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "iOS/サポートファイル/iOS/iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS + visionOS/サポートファイル/iOS/iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1567,7 +1823,7 @@
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS/サポートファイル/iOS/Info.plist";
+				INFOPLIST_FILE = "iOS + visionOS/サポートファイル/iOS/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Add shogi board image to photo app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1589,6 +1845,71 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		16E2E1382B63C1780017A9A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "iOS + visionOS/サポートファイル/visionOS/visionOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 6696GEY228;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS + visionOS/サポートファイル/visionOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.6;
+				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
+			};
+			name = Debug;
+		};
+		16E2E1392B63C1780017A9A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "iOS + visionOS/サポートファイル/visionOS/visionOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 6696GEY228;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS + visionOS/サポートファイル/visionOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.6;
+				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Release;
 		};
@@ -1801,6 +2122,15 @@
 			buildConfigurations = (
 				128D1576280FE47F003FF480 /* Debug */,
 				128D1577280FE47F003FF480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16E2E1372B63C1780017A9A2 /* Build configuration list for PBXNativeTarget "visionOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16E2E1382B63C1780017A9A2 /* Debug */,
+				16E2E1392B63C1780017A9A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

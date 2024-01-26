@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1500"
+   LastUpgradeVersion = "1520"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "128D1566280FE47E003FF480"
-               BuildableName = "&#x5c06;&#x68cb;&#x76e4;.app"
-               BlueprintName = "iOS"
+               BlueprintIdentifier = "16E2E1262B63C1750017A9A2"
+               BuildableName = "visionOS.app"
+               BlueprintName = "visionOS"
                ReferencedContainer = "container:PlainShogi.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,15 +43,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "128D1566280FE47E003FF480"
-            BuildableName = "&#x5c06;&#x68cb;&#x76e4;.app"
-            BlueprintName = "iOS"
+            BlueprintIdentifier = "16E2E1262B63C1750017A9A2"
+            BuildableName = "visionOS.app"
+            BlueprintName = "visionOS"
             ReferencedContainer = "container:PlainShogi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <StoreKitConfigurationFileReference
-         identifier = "../../iOS + visionOS/&#x30b5;&#x30db;&#x309a;&#x30fc;&#x30c8;&#x30d5;&#x30a1;&#x30a4;&#x30eb;/Configuration.storekit">
-      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -63,9 +60,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "128D1566280FE47E003FF480"
-            BuildableName = "&#x5c06;&#x68cb;&#x76e4;.app"
-            BlueprintName = "iOS"
+            BlueprintIdentifier = "16E2E1262B63C1750017A9A2"
+            BuildableName = "visionOS.app"
+            BlueprintName = "visionOS"
             ReferencedContainer = "container:PlainShogi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

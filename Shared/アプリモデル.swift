@@ -1,7 +1,7 @@
 import Combine
 import SwiftUI
 import UniformTypeIdentifiers
-#if os(iOS)
+#if os(iOS) || os(visionOS)
 import GroupActivities
 #endif
 
@@ -29,7 +29,7 @@ class アプリモデル: スーパークラス, ObservableObject {
         ICloudデータ.synchronize()
     }
     
-#if os(iOS)
+#if os(iOS) || os(visionOS)
     // ↓ ドラッグ&ドロップ関連
     @Published private(set) var ドラッグ中の駒: ドラッグ対象 = .無し
     // ↓ SharePlay関連
@@ -269,7 +269,7 @@ extension アプリモデル {
     }
 }
 
-#if os(iOS) //UIApplicationDelegate, ドラッグ&ドロップ, SharePlay, テキスト書き出し読み込み機能
+#if os(iOS) || os(visionOS) //UIApplicationDelegate, ドラッグ&ドロップ, SharePlay, テキスト書き出し読み込み機能
 extension アプリモデル: UIApplicationDelegate {}
 
 //MARK: - ==== ドラッグ関連 ====

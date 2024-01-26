@@ -10,7 +10,7 @@ extension EnvironmentValues {
     }
 }
 
-#if os(iOS)
+#if os(iOS) || os(visionOS)
 extension EnvironmentValues {
     var 縦並び: Bool {
         get { self[Self.縦並びKey.self] }

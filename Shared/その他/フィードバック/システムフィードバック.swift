@@ -22,5 +22,11 @@ enum システムフィードバック {
     static func 成功() { /* Nothing to do */ }
     static func エラー() { /* Nothing to do */ }
     static func 警告() { /* Nothing to do */ }
+#elseif os(visionOS)
+    static func 軽め() { /* Nothing to do */ }
+    static func 強め() { /* Nothing to do */ }
+    static func 成功() { /* Nothing to do */ }
+    static func エラー() { /* Nothing to do */ }
+    static func 警告() { /* Nothing to do */ }
 #endif
 }
