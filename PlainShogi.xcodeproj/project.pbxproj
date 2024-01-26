@@ -206,6 +206,8 @@
 		16E2E11A2B635ECD0017A9A2 /* 盤外のコマ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */; };
 		16E2E11B2B635ECD0017A9A2 /* コマの見た目.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E10D2B63588C0017A9A2 /* コマの見た目.swift */; };
 		16E2E11C2B635ECD0017A9A2 /* 駒テキスト.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E10F2B6358B10017A9A2 /* 駒テキスト.swift */; };
+		16E2E1202B6375880017A9A2 /* 🌐VersionHistory.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 16E2E11F2B6375880017A9A2 /* 🌐VersionHistory.xcstrings */; };
+		16E2E1222B6375880017A9A2 /* 🌐AppStoreDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 16E2E1212B6375880017A9A2 /* 🌐AppStoreDescription.xcstrings */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -259,8 +261,6 @@
 		F5B5578C29FFD9A600A14074 /* 字体.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 字体.swift */; };
 		F5BBD85D2973A68E0034CCB8 /* ℹ️AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */; };
 		F5BBD8602973A7260034CCB8 /* 広告コンテンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */; };
-		F5BBD8652973AA720034CCB8 /* 🌐AppStoreDescription.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5BBD8672973AA720034CCB8 /* 🌐AppStoreDescription.strings */; };
-		F5BBD8692973AA7B0034CCB8 /* 🌐VersionHistory.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5BBD86B2973AA7B0034CCB8 /* 🌐VersionHistory.strings */; };
 		F5BD6A102A00BF4C004AD4A5 /* 局面モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
 		F5BD6A112A00BF4C004AD4A5 /* 局面モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
 		F5BD6A122A00BF4C004AD4A5 /* アプリモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
@@ -531,6 +531,8 @@
 		16E2E1112B6359310017A9A2 /* 盤外.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤外.swift"; sourceTree = "<group>"; };
 		16E2E1132B6359E20017A9A2 /* 盤面のみ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤面のみ.swift"; sourceTree = "<group>"; };
 		16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤外のコマ.swift"; sourceTree = "<group>"; };
+		16E2E11F2B6375880017A9A2 /* 🌐VersionHistory.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐VersionHistory.xcstrings"; sourceTree = "<group>"; };
+		16E2E1212B6375880017A9A2 /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
 		16EF413A2B5D13CD002312FA /* appstore_badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore_badge.svg; sourceTree = "<group>"; };
 		16EF413B2B5D13F1002312FA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
@@ -560,10 +562,6 @@
 		F5B5578A29FF851800A14074 /* 字体.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "字体.swift"; sourceTree = "<group>"; };
 		F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ℹ️AboutApp.swift"; sourceTree = "<group>"; };
 		F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "広告コンテンツ.swift"; sourceTree = "<group>"; };
-		F5BBD8662973AA720034CCB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/🌐AppStoreDescription.strings"; sourceTree = "<group>"; };
-		F5BBD8682973AA760034CCB8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/🌐AppStoreDescription.strings"; sourceTree = "<group>"; };
-		F5BBD86A2973AA7B0034CCB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/🌐VersionHistory.strings"; sourceTree = "<group>"; };
-		F5BBD86C2973AA7E0034CCB8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/🌐VersionHistory.strings"; sourceTree = "<group>"; };
 		F5BBEB662973A4040064F0EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "局面モデル.swift"; sourceTree = "<group>"; };
 		F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "アプリモデル.swift"; sourceTree = "<group>"; };
@@ -949,8 +947,8 @@
 		16E2E11D2B6361A20017A9A2 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F5BBD8672973AA720034CCB8 /* 🌐AppStoreDescription.strings */,
-				F5BBD86B2973AA7B0034CCB8 /* 🌐VersionHistory.strings */,
+				16E2E1212B6375880017A9A2 /* 🌐AppStoreDescription.xcstrings */,
+				16E2E11F2B6375880017A9A2 /* 🌐VersionHistory.xcstrings */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -1147,18 +1145,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5951A2028ADEEBC00516538 /* Launch Screen.storyboard in Resources */,
+				16E2E1202B6375880017A9A2 /* 🌐VersionHistory.xcstrings in Resources */,
 				169751062ADE7B3700443DE2 /* 🌐ADAppName.xcstrings in Resources */,
 				167FFC642B5E0537006BC0A3 /* AD+InAppPurchase.xcassets in Resources */,
 				16688DE22B595F37004CE12B /* 音声アセット.xcassets in Resources */,
 				167FFC632B5E0537006BC0A3 /* Developer_Publisher.xcassets in Resources */,
 				169751042ADE7B3700443DE2 /* 🌐AD&InAppPurchase.xcstrings in Resources */,
-				F5BBD8652973AA720034CCB8 /* 🌐AppStoreDescription.strings in Resources */,
 				169751072ADE7B3700443DE2 /* 🌐ADAppDescription.xcstrings in Resources */,
 				12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */,
+				16E2E1222B6375880017A9A2 /* 🌐AppStoreDescription.xcstrings in Resources */,
 				167FFC5A2B5E04BC006BC0A3 /* 🌐AboutApp.xcstrings in Resources */,
 				167FFC662B5E07D0006BC0A3 /* Localizable.xcstrings in Resources */,
 				167FFC5D2B5E04BC006BC0A3 /* 🌐Timeline.xcstrings in Resources */,
-				F5BBD8692973AA7B0034CCB8 /* 🌐VersionHistory.strings in Resources */,
 				128D156F280FE47F003FF480 /* Assets.xcassets in Resources */,
 				12A925212866AA6C0035DC83 /* InfoPlist.strings in Resources */,
 			);
@@ -1387,24 +1385,6 @@
 				12A925242866AA6F0035DC83 /* ja */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F5BBD8672973AA720034CCB8 /* 🌐AppStoreDescription.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F5BBD8662973AA720034CCB8 /* en */,
-				F5BBD8682973AA760034CCB8 /* ja */,
-			);
-			name = "🌐AppStoreDescription.strings";
-			sourceTree = "<group>";
-		};
-		F5BBD86B2973AA7B0034CCB8 /* 🌐VersionHistory.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F5BBD86A2973AA7B0034CCB8 /* en */,
-				F5BBD86C2973AA7E0034CCB8 /* ja */,
-			);
-			name = "🌐VersionHistory.strings";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
