@@ -10,6 +10,7 @@ enum 固定値 {
 #else
                 1.33
 #endif
+            case .vision: 1.0
             default: 1.0
         }
     }
@@ -22,6 +23,7 @@ enum 固定値 {
 #else
                 2.5
 #endif
+            case .vision: 2.0
             default: 1.0
         }
     }
@@ -29,6 +31,7 @@ enum 固定値 {
         switch UIDevice.current.userInterfaceIdiom {
             case .phone: 16
             case .pad: 24
+            case .vision: 40
             default: 16
         }
     }
