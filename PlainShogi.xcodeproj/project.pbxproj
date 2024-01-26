@@ -667,8 +667,7 @@
 		12A925252866AB9F0035DC83 /* ローカライズ */ = {
 			isa = PBXGroup;
 			children = (
-				F5BBD8672973AA720034CCB8 /* 🌐AppStoreDescription.strings */,
-				F5BBD86B2973AA7B0034CCB8 /* 🌐VersionHistory.strings */,
+				16E2E11D2B6361A20017A9A2 /* iOS */,
 				169751002ADE7B3600443DE2 /* 🌐AD&InAppPurchase.xcstrings */,
 				169751032ADE7B3700443DE2 /* 🌐ADAppDescription.xcstrings */,
 				169751022ADE7B3700443DE2 /* 🌐ADAppName.xcstrings */,
@@ -730,10 +729,8 @@
 			isa = PBXGroup;
 			children = (
 				128D156E280FE47F003FF480 /* Assets.xcassets */,
-				F5BBEB662973A4040064F0EF /* Info.plist */,
-				F5C9FB00296CFF7A00B513D8 /* iOS.entitlements */,
-				F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */,
 				12D4369C2865CD8300B707F5 /* Configuration.storekit */,
+				16E2E11E2B6361AF0017A9A2 /* iOS */,
 				12A925252866AB9F0035DC83 /* ローカライズ */,
 			);
 			name = "サポートファイル";
@@ -947,6 +944,25 @@
 				169E41502AE1388F00CFA307 /* 不具合フィードバックメニュー.swift */,
 			);
 			path = "メニュー";
+			sourceTree = "<group>";
+		};
+		16E2E11D2B6361A20017A9A2 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F5BBD8672973AA720034CCB8 /* 🌐AppStoreDescription.strings */,
+				F5BBD86B2973AA7B0034CCB8 /* 🌐VersionHistory.strings */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		16E2E11E2B6361AF0017A9A2 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F5BBEB662973A4040064F0EF /* Info.plist */,
+				F5C9FB00296CFF7A00B513D8 /* iOS.entitlements */,
+				F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		F5119BA42A0291000027A74C /* tvOS */ = {
@@ -1524,7 +1540,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "iOS/サポートファイル/iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS/サポートファイル/iOS/iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1532,7 +1548,7 @@
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS/サポートファイル/Info.plist";
+				INFOPLIST_FILE = "iOS/サポートファイル/iOS/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Add shogi board image to photo app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1563,7 +1579,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "iOS/サポートファイル/iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS/サポートファイル/iOS/iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1571,7 +1587,7 @@
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS/サポートファイル/Info.plist";
+				INFOPLIST_FILE = "iOS/サポートファイル/iOS/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Add shogi board image to photo app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
