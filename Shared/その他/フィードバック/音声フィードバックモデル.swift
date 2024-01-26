@@ -10,7 +10,7 @@ class 音声フィードバックモデル {
             self.メイン音声プレイヤーズ = (1...6).compactMap {
                 if let ﾃﾞｰﾀ = NSDataAsset(name: "mainSound\($0)")?.data,
                    let ﾌﾟﾚｲﾔｰ = try? AVAudioPlayer(data: ﾃﾞｰﾀ) {
-                    ﾌﾟﾚｲﾔｰ.volume = 0.2 //TODO: 再検討
+                    ﾌﾟﾚｲﾔｰ.volume = 0.16 //TODO: 再検討
                     ﾌﾟﾚｲﾔｰ.prepareToPlay()
                     return ﾌﾟﾚｲﾔｰ
                 } else {
@@ -20,7 +20,7 @@ class 音声フィードバックモデル {
             }
             if let ﾃﾞｰﾀ = NSDataAsset(name: "errorSound")?.data,
                let ﾌﾟﾚｲﾔｰ = try? AVAudioPlayer(data: ﾃﾞｰﾀ) {
-                ﾌﾟﾚｲﾔｰ.volume = 0.18
+                ﾌﾟﾚｲﾔｰ.volume = 0.14
                 ﾌﾟﾚｲﾔｰ.prepareToPlay()
                 self.ジャラジャラ音声プレイヤー = ﾌﾟﾚｲﾔｰ
             } else {
