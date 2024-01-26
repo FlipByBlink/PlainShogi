@@ -194,6 +194,12 @@
 		16C43B1F2AE4A931009D8E26 /* 閉じるボタン.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750742ADE033D00443DE2 /* 閉じるボタン.swift */; };
 		16C43B202AE4A931009D8E26 /* アプリについて.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1697510C2ADE7E3400443DE2 /* アプリについて.swift */; };
 		16C43B212AE4A931009D8E26 /* ウィジェット.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* ウィジェット.swift */; };
+		16E2E10C2B6357870017A9A2 /* 盤面と段と筋.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E10B2B6357870017A9A2 /* 盤面と段と筋.swift */; };
+		16E2E10E2B63588C0017A9A2 /* コマの見た目.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E10D2B63588C0017A9A2 /* コマの見た目.swift */; };
+		16E2E1102B6358B10017A9A2 /* 駒テキスト.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E10F2B6358B10017A9A2 /* 駒テキスト.swift */; };
+		16E2E1122B6359310017A9A2 /* 盤外.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1112B6359310017A9A2 /* 盤外.swift */; };
+		16E2E1142B6359E20017A9A2 /* 盤面のみ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1132B6359E20017A9A2 /* 盤面のみ.swift */; };
+		16E2E1162B635C670017A9A2 /* 盤外のコマ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -509,6 +515,12 @@
 		169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像共有メニューコンポーネンツ.swift"; sourceTree = "<group>"; };
 		16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharePlay環境構築.swift"; sourceTree = "<group>"; };
 		16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "アプリ内課金ハンドラー.swift"; sourceTree = "<group>"; };
+		16E2E10B2B6357870017A9A2 /* 盤面と段と筋.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤面と段と筋.swift"; sourceTree = "<group>"; };
+		16E2E10D2B63588C0017A9A2 /* コマの見た目.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "コマの見た目.swift"; sourceTree = "<group>"; };
+		16E2E10F2B6358B10017A9A2 /* 駒テキスト.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "駒テキスト.swift"; sourceTree = "<group>"; };
+		16E2E1112B6359310017A9A2 /* 盤外.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤外.swift"; sourceTree = "<group>"; };
+		16E2E1132B6359E20017A9A2 /* 盤面のみ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤面のみ.swift"; sourceTree = "<group>"; };
+		16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤外のコマ.swift"; sourceTree = "<group>"; };
 		16EF413A2B5D13CD002312FA /* appstore_badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore_badge.svg; sourceTree = "<group>"; };
 		16EF413B2B5D13F1002312FA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
@@ -833,6 +845,12 @@
 			children = (
 				F525A7D529F8FB1F001E8D5F /* 将棋View.swift */,
 				169750AA2ADE220400443DE2 /* レイアウト.swift */,
+				16E2E10B2B6357870017A9A2 /* 盤面と段と筋.swift */,
+				16E2E1132B6359E20017A9A2 /* 盤面のみ.swift */,
+				16E2E1112B6359310017A9A2 /* 盤外.swift */,
+				16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */,
+				16E2E10D2B63588C0017A9A2 /* コマの見た目.swift */,
+				16E2E10F2B6358B10017A9A2 /* 駒テキスト.swift */,
 				169750AC2ADE231000443DE2 /* 成駒確認アラート.swift */,
 				169750AE2ADE233600443DE2 /* 操作エリア外で駒選択を解除.swift */,
 				169750B02ADE23CC00443DE2 /* オプション変更アニメーション.swift */,
@@ -1165,12 +1183,15 @@
 				1697508E2ADE18CD00443DE2 /* 持ち駒.swift in Sources */,
 				F5BD6A122A00BF4C004AD4A5 /* アプリモデル.swift in Sources */,
 				1697506B2ADDFD5100443DE2 /* ブックマークメニュー.swift in Sources */,
+				16E2E1142B6359E20017A9A2 /* 盤面のみ.swift in Sources */,
 				1697510A2ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift in Sources */,
 				169E414F2AE1375C00CFA307 /* コマンドボタンズ.swift in Sources */,
+				16E2E1162B635C670017A9A2 /* 盤外のコマ.swift in Sources */,
 				169E415B2AE14F6800CFA307 /* 共有メニュー.swift in Sources */,
 				160D1CFE2AE26009004E14E2 /* 画像キャッシュハンドラー.swift in Sources */,
 				169E41552AE1495600CFA307 /* SharePlay紹介メニュー.swift in Sources */,
 				161FCCCB2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift in Sources */,
+				16E2E10E2B63588C0017A9A2 /* コマの見た目.swift in Sources */,
 				16B124602AE28710008EF3A0 /* SharePlay環境構築.swift in Sources */,
 				169750B12ADE23CC00443DE2 /* オプション変更アニメーション.swift in Sources */,
 				169750962ADE18FC00443DE2 /* 駒の移動先パターン.swift in Sources */,
@@ -1181,6 +1202,7 @@
 				169750A22ADE194600443DE2 /* 不特定エラー.swift in Sources */,
 				169750852ADE186000443DE2 /* 王側か玉側か.swift in Sources */,
 				169750AD2ADE231000443DE2 /* 成駒確認アラート.swift in Sources */,
+				16E2E1122B6359310017A9A2 /* 盤外.swift in Sources */,
 				169E41512AE1388F00CFA307 /* 不具合フィードバックメニュー.swift in Sources */,
 				F5B5578B29FF851800A14074 /* 字体.swift in Sources */,
 				160D1D062AE26D84004E14E2 /* MacCatalyst.swift in Sources */,
@@ -1211,6 +1233,7 @@
 				169750872ADE188300443DE2 /* 盤上の駒.swift in Sources */,
 				169750AF2ADE233600443DE2 /* 操作エリア外で駒選択を解除.swift in Sources */,
 				F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
+				16E2E10C2B6357870017A9A2 /* 盤面と段と筋.swift in Sources */,
 				1697506D2ADDFE5700443DE2 /* コマンド.swift in Sources */,
 				169E415D2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift in Sources */,
 				F5E0549F29FB52A1004DC425 /* ICloudデータ.swift in Sources */,
@@ -1221,6 +1244,7 @@
 				F5BBD85D2973A68E0034CCB8 /* ℹ️AboutApp.swift in Sources */,
 				169750692ADDFCC100443DE2 /* GroupActivity.swift in Sources */,
 				169E41532AE1491900CFA307 /* SharePlayガイドメニュー.swift in Sources */,
+				16E2E1102B6358B10017A9A2 /* 駒テキスト.swift in Sources */,
 				F57D6F0729FCD60D00EA0D79 /* シート管理.swift in Sources */,
 				F5C9FAFF296CF7BB00B513D8 /* 履歴メニュー.swift in Sources */,
 				F5C9FB02296D0A3100B513D8 /* SharePlayインジケーター.swift in Sources */,
