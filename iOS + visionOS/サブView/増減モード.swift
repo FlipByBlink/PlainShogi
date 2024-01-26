@@ -15,7 +15,9 @@ struct 手駒増減シート表示ボタン: View {
                     .padding(.horizontal, 12)
             }
             .accessibilityLabel("手駒を整理する")
+#if os(iOS)
             .tint(.primary)
+#endif
             .rotationEffect(モデル.こちら側のボタンは下向き(self.陣営) ? .degrees(180) : .zero)
         }
     }
@@ -66,13 +68,17 @@ struct 増減モード完了ボタン: View {
             モデル.増減モードを終了する()
         } label: {
             Image(systemName: "checkmark.circle.fill")
+#if os(iOS)
                 .font(.title2.weight(.medium))
                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                 .padding(8)
                 .padding(.trailing)
+#endif
         }
         .keyboardShortcut(.cancelAction)
+#if os(iOS)
         .tint(.primary)
+#endif
         .accessibilityLabel("完了")
     }
 }

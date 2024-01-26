@@ -65,8 +65,12 @@ private extension テキスト共有メニューコンポーネンツ {
                 withAnimation { self.完了 = true }
                 システムフィードバック.成功()
             } label: {
-                Label("プレーンテキストとして「コピー」", systemImage: "doc.on.doc")
-                    .foregroundStyle(self.完了 ? .secondary : .primary)
+                Label {
+                    Text("プレーンテキストとして「コピー」")
+                        .foregroundStyle(self.完了 ? .secondary : .primary)
+                } icon: {
+                    Image(systemName: "doc.on.doc")
+                }
             }
             .badge(self.完了 ? Text(Image(systemName: "checkmark")) : nil)
         }

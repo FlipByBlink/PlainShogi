@@ -19,10 +19,8 @@ struct メイン画面の共有ボタン: View {
                           label: self.ボタンアイコン)
             }
         }
-        .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 12))
-        .hoverEffect(.highlight)
         .contextMenu { self.サブボタンズ() }
-        .padding(.leading)
+        .modifier(Self.IOS向け装飾())
 #endif
     }
     init(_ サムネイル: Binding<Image>) {
@@ -62,10 +60,24 @@ private extension メイン画面の共有ボタン {
     }
     private func ボタンアイコン() -> some View {
         Image(systemName: "square.and.arrow.up")
+#if os(iOS)
             .font(.title3.weight(.light))
             .dynamicTypeSize(...DynamicTypeSize.accessibility1)
             .padding(8)
             .foregroundStyle(.foreground)
+#endif
+    }
+    private struct IOS向け装飾: ViewModifier {
+        func body(content: Content) -> some View {
+#if os(iOS)
+            content
+                .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 12))
+                .hoverEffect(.highlight)
+                .padding(.leading)
+#else
+            content
+#endif
+        }
     }
     private func サブボタンズ() -> some View {
         Section {
