@@ -1,5 +1,6 @@
 "1.6" = "Add sound effect.
-Sync selection state on SharePlay.";
+Sync selection state on SharePlay.
+Add Apple Vision Pro support.";
 
 "1.5.1" = "Fix a bug of image-export";
 
