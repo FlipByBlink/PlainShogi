@@ -74,6 +74,7 @@ extension 🗒️StaticInfo {
                     "レイアウト.swift",
                     "盤面と段と筋.swift",
                     "盤面のみ.swift",
+                    "盤面のコマもしくはマス.swift",
                     "盤外.swift",
                     "盤外のコマ.swift",
                     "コマの見た目.swift",
@@ -153,7 +154,7 @@ extension 🗒️StaticInfo {
 
 #elseif os(visionOS)
 extension 🗒️StaticInfo {
-    static let versionInfos: [(version: String, date: String)] = [("1.6", "2024-02-02")] //降順。先頭の方が新しい
+    static let versionInfos: [(version: String, date: String)] = [("1.6", "2024-02-??")] //降順。先頭の方が新しい
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
         case main, アプリモデル, 将棋モデル, 将棋View, サブView, メニュー, SharePlay, ドラッグアンドドロップ, 共有アイテム, フィードバック, その他, おまけ
@@ -184,6 +185,7 @@ extension 🗒️StaticInfo {
                     "レイアウト.swift",
                     "盤面と段と筋.swift",
                     "盤面のみ.swift",
+                    "盤面のコマもしくはマス.swift",
                     "盤外.swift",
                     "盤外のコマ.swift",
                     "コマの見た目.swift",
