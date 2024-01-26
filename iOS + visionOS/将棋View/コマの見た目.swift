@@ -19,6 +19,7 @@ struct コマの見た目: View { //FrameやDrag処理などは呼び出し側�
             .animation(.default.speed(2), value: self.この駒を選択中)
             .modifier(増減モード用ⓧマーク(self.場所))
             .modifier(Self.ドラッグ直後の効果(self.場所))
+            .modifier(VisionOS向けHoverEffect())
             .overlay {
                 if モデル.太字, self.この駒は操作直後 {
                     Rectangle().fill(.quaternary)

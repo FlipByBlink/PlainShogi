@@ -48,6 +48,7 @@ private extension 盤面のみ {
                     Color(.systemBackground)
                 }
             }
+            .contentShape(.rect)
             .onTapGesture { モデル.この駒を選択する(self.元々の場所) }
             .onDrop(of: [.utf8PlainText],
                     delegate: ドロップデリゲート(モデル, .盤上(self.元々の位置)))

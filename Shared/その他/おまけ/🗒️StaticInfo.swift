@@ -246,7 +246,8 @@ extension 🗒️StaticInfo {
                     "MacCatalyst.swift",
                     "広告コンテンツ.swift",
                     "アプリ内課金ハンドラー.swift",
-                    "ユーザーレビュー依頼.swift"
+                    "ユーザーレビュー依頼.swift",
+                    "VisionOS向けHoverEffect.swift"
                 ]
                 case .おまけ: [
                     "🗒️StaticInfo.swift",

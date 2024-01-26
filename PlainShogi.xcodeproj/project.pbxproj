@@ -367,6 +367,7 @@
 		16E2E1DC2B63DB260017A9A2 /* 📣ADComponents.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169751092ADE7BB800443DE2 /* 📣ADComponents.swift */; };
 		16E2E1DD2B63DB260017A9A2 /* 🛒InAppPurchaseModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750FC2ADE7AB900443DE2 /* 🛒InAppPurchaseModel.swift */; };
 		16E2E1DE2B63DB260017A9A2 /* 🛒InAppPurchaseView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */; };
+		16E2E1E02B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -780,6 +781,7 @@
 		16E2E18D2B63D8340017A9A2 /* visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = visionOS.entitlements; sourceTree = "<group>"; };
 		16E2E1922B63D8880017A9A2 /* 🌐VersionHistory.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐VersionHistory.xcstrings"; sourceTree = "<group>"; };
 		16E2E1932B63D8880017A9A2 /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
+		16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisionOS向けHoverEffect.swift"; sourceTree = "<group>"; };
 		16EF413A2B5D13CD002312FA /* appstore_badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore_badge.svg; sourceTree = "<group>"; };
 		16EF413B2B5D13F1002312FA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
@@ -954,6 +956,7 @@
 				F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */,
 				16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */,
 				1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */,
+				16E2E1E12B647C5A0017A9A2 /* visionOS */,
 				12D4368B2865CD5E00B707F5 /* おまけ */,
 			);
 			path = "その他";
@@ -1244,6 +1247,14 @@
 			children = (
 				16E2E1932B63D8880017A9A2 /* 🌐AppStoreDescription.xcstrings */,
 				16E2E1922B63D8880017A9A2 /* 🌐VersionHistory.xcstrings */,
+			);
+			path = visionOS;
+			sourceTree = "<group>";
+		};
+		16E2E1E12B647C5A0017A9A2 /* visionOS */ = {
+			isa = PBXGroup;
+			children = (
+				16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */,
 			);
 			path = visionOS;
 			sourceTree = "<group>";
@@ -1624,6 +1635,7 @@
 				16E2E1632B63D8200017A9A2 /* メイン画面の共有ボタン.swift in Sources */,
 				16E2E17D2B63D8200017A9A2 /* ContentView.swift in Sources */,
 				16E2E16F2B63D8200017A9A2 /* 画像キャッシュハンドラー.swift in Sources */,
+				16E2E1E02B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift in Sources */,
 				16E2E1882B63D8200017A9A2 /* SharePlay紹介メニュー.swift in Sources */,
 				16E2E1512B63D7D30017A9A2 /* アプリモデルのスーパークラス.swift in Sources */,
 				16E2E13D2B63D7D30017A9A2 /* EnvironmentValues拡張.swift in Sources */,

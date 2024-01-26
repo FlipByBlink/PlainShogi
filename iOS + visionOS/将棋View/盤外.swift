@@ -16,6 +16,7 @@ struct 盤外: View {
             }
         }
         .frame(maxWidth: self.最大の長さ, maxHeight: self.最大の長さ)
+        .contentShape(.rect)
         .onTapGesture { モデル.こちらの手駒エリアを選択する(self.陣営) }
         .onDrop(of: [UTType.utf8PlainText],
                 delegate: ドロップデリゲート(モデル, .盤外(self.陣営)))
