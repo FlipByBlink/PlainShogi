@@ -1,5 +1,5 @@
 {
-  "sourceLanguage" : "ja",
+  "sourceLanguage" : "en",
   "strings" : {
     "(Mirror)" : {
       "localizations" : {
@@ -18,7 +18,7 @@
       }
     },
     "← Select file" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -179,7 +179,7 @@
       }
     },
     "Git repository is public on GitHub.com" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -324,7 +324,7 @@
       }
     },
     "OK" : {
-      "extractionState" : "manual",
+      "extractionState" : "migrated",
       "localizations" : {
         "en" : {
           "stringUnit" : {

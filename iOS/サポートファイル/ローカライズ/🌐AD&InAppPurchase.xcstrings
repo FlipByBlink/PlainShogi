@@ -1,5 +1,5 @@
 {
-  "sourceLanguage" : "ja",
+  "sourceLanguage" : "en",
   "strings" : {
     "About AD" : {
       "localizations" : {
@@ -109,22 +109,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "閉じる"
-          }
-        }
-      }
-    },
-    "Done" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "完了"
           }
         }
       }

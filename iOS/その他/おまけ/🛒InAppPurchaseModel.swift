@@ -69,7 +69,12 @@ class 🛒InAppPurchaseModel: ObservableObject {
     func purchase() async throws {
         guard let ⓟroduct = self.product else { return }
         
+#if os(visionOS)
+        guard let scene = await UIApplication.shared.connectedScenes.first else { return }
+        let ⓡesult = try await ⓟroduct.purchase(confirmIn: scene) //TODO: Test, discuss
+#else
         let ⓡesult = try await ⓟroduct.purchase()
+#endif
         
         switch ⓡesult {
             case .success(let ⓥerification):
