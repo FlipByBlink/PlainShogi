@@ -72,6 +72,12 @@ extension 🗒️StaticInfo {
                 case .将棋View: [
                     "将棋View.swift",
                     "レイアウト.swift",
+                    "盤面と段と筋.swift",
+                    "盤面のみ.swift",
+                    "盤外.swift",
+                    "盤外のコマ.swift",
+                    "コマの見た目.swift",
+                    "駒テキスト.swift",
                     "成駒確認アラート.swift",
                     "操作エリア外で駒選択を解除.swift",
                     "字体.swift",

@@ -200,6 +200,12 @@
 		16E2E1122B6359310017A9A2 /* 盤外.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1112B6359310017A9A2 /* 盤外.swift */; };
 		16E2E1142B6359E20017A9A2 /* 盤面のみ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1132B6359E20017A9A2 /* 盤面のみ.swift */; };
 		16E2E1162B635C670017A9A2 /* 盤外のコマ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */; };
+		16E2E1172B635ECD0017A9A2 /* 盤面と段と筋.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E10B2B6357870017A9A2 /* 盤面と段と筋.swift */; };
+		16E2E1182B635ECD0017A9A2 /* 盤面のみ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1132B6359E20017A9A2 /* 盤面のみ.swift */; };
+		16E2E1192B635ECD0017A9A2 /* 盤外.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1112B6359310017A9A2 /* 盤外.swift */; };
+		16E2E11A2B635ECD0017A9A2 /* 盤外のコマ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */; };
+		16E2E11B2B635ECD0017A9A2 /* コマの見た目.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E10D2B63588C0017A9A2 /* コマの見た目.swift */; };
+		16E2E11C2B635ECD0017A9A2 /* 駒テキスト.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E10F2B6358B10017A9A2 /* 駒テキスト.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -231,7 +237,6 @@
 		F51F03A62A00D03400F05874 /* Widget for watchOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F51F03992A00D03200F05874 /* Widget for watchOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F51F03AD2A01099700F05874 /* 局面モデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
 		F51F03AE2A01099700F05874 /* アプリモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
-		F51F03B32A01099700F05874 /* ウィジェット.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F51F039F2A00D03200F05874 /* ウィジェット.swift */; };
 		F52437B329F613A600EA770E /* フィードバックモデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバックモデル.swift */; };
 		F52437B729F64CB000EA770E /* 増減モード.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 増減モード.swift */; };
 		F52437B829F64CB000EA770E /* メニュートップ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* メニュートップ.swift */; };
@@ -297,6 +302,12 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				16E2E1172B635ECD0017A9A2 /* 盤面と段と筋.swift in CopyFiles */,
+				16E2E1182B635ECD0017A9A2 /* 盤面のみ.swift in CopyFiles */,
+				16E2E1192B635ECD0017A9A2 /* 盤外.swift in CopyFiles */,
+				16E2E11A2B635ECD0017A9A2 /* 盤外のコマ.swift in CopyFiles */,
+				16E2E11B2B635ECD0017A9A2 /* コマの見た目.swift in CopyFiles */,
+				16E2E11C2B635ECD0017A9A2 /* 駒テキスト.swift in CopyFiles */,
 				168EA4522B5A7E9900522F94 /* システムフィードバック.swift in CopyFiles */,
 				168EA4532B5A7E9900522F94 /* 音声フィードバックモデル.swift in CopyFiles */,
 				160F46B72B5A461F001FE696 /* SharePlay用選択中の駒モデル.swift in CopyFiles */,
@@ -348,7 +359,6 @@
 				F5119B9C2A028F330027A74C /* シートカテゴリ.swift in CopyFiles */,
 				F51F03AD2A01099700F05874 /* 局面モデル.swift in CopyFiles */,
 				F51F03AE2A01099700F05874 /* アプリモデル.swift in CopyFiles */,
-				F51F03B32A01099700F05874 /* ウィジェット.swift in CopyFiles */,
 				F5B5578C29FFD9A600A14074 /* 字体.swift in CopyFiles */,
 				F57D6F0829FD3FA200EA0D79 /* シート管理.swift in CopyFiles */,
 				F5E054A029FB678D004DC425 /* 将棋View.swift in CopyFiles */,
