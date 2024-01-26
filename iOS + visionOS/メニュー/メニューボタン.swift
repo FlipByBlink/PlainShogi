@@ -12,10 +12,7 @@ struct メニューボタン: View { // ⚙️
             }
             //共有シートとの競合が起きた場合のワークアラウンドとしてtoggleっぽく実装
         } label: {
-            Image(systemName: モデル.セリフ体 ? "gear" : "gearshape")
-                .font(.title2.weight(.light))
-                .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                .padding(8)
+            self.ラベル()
         }
         .contextMenu {
             強調表示クリアボタン()
@@ -27,9 +24,7 @@ struct メニューボタン: View { // ⚙️
             self.ブックマーク表示ボタン()
             self.駒の選択解除ボタン()
         }
-        .hoverEffect(.highlight)
-        .padding(.trailing)
-        .tint(.primary)
+        .modifier(Self.IOS向け装飾())
         .accessibilityLabel("メニューを開く")
 #else
         EmptyView()
@@ -38,6 +33,26 @@ struct メニューボタン: View { // ⚙️
 }
 
 private extension メニューボタン {
+    private func ラベル() -> some View {
+        Image(systemName: モデル.セリフ体 ? "gear" : "gearshape")
+#if os(iOS)
+            .font(.title2.weight(.light))
+            .dynamicTypeSize(...DynamicTypeSize.accessibility1)
+            .padding(8)
+#endif
+    }
+    private struct IOS向け装飾: ViewModifier {
+        func body(content: Content) -> some View {
+#if os(iOS)
+            content
+                .hoverEffect(.highlight)
+                .padding(.trailing)
+                .tint(.primary)
+#else
+            content
+#endif
+        }
+    }
     private func 上下反転ボタン() -> some View {
         Button {
             モデル.上下反転.toggle()

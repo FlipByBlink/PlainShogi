@@ -49,6 +49,9 @@
             ReferencedContainer = "container:PlainShogi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <StoreKitConfigurationFileReference
+         identifier = "../../iOS + visionOS/&#x30b5;&#x30db;&#x309a;&#x30fc;&#x30c8;&#x30d5;&#x30a1;&#x30a4;&#x30eb;/Configuration.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

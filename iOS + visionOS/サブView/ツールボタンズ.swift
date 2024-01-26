@@ -5,6 +5,7 @@ struct ツールボタンズ: ViewModifier {
     @State private var サムネイル: Image = .init(.aboutAppIcon)
     func body(content: Content) -> some View {
         content
+#if os(iOS)
             .overlay(alignment: .top) {
                 HStack {
                     if Self.このデバイスはiPhone { self.共有ボタン() }
@@ -18,6 +19,18 @@ struct ツールボタンズ: ViewModifier {
                 }
                 .animation(.default, value: モデル.増減モード中)
             }
+#elseif os(visionOS)
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomOrnament) {
+                    if モデル.増減モード中 {
+                        増減モード完了ボタン()
+                    } else {
+                        メニューボタン()
+                    }
+                    self.共有ボタン()
+                }
+            }
+#endif
             .modifier(画像キャッシュハンドラー(self.$サムネイル))
     }
 }

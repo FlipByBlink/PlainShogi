@@ -1,172 +1,19 @@
 {
   "sourceLanguage" : "ja",
   "strings" : {
-    "1.0" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Initial release"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最初のリリース"
-          }
-        }
-      }
-    },
-    "1.1" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add english term option\nAdd plain text export/import function\nAdd function to check source code in app\nAdd self-AD banner\nDelete option to hide edge line\nSmall fix/improve"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "駒を英語表記に変更する機能を追加\nプレーンテキスト書き出し/読み込み機能を追加\nソースコードをアプリ内で確認する機能を追加\nセルフ広告バナーを追加\n枠線を非表示するオプションを削除\nその他、細かな改善をいくつか実施"
-          }
-        }
-      }
-    },
-    "1.2" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "- Directly move a piece to out-of-board\n- Add Edit Mode\n- Add shortcut function by long press menu button\n- Delete function to delete a piece by 3 tapping\n- Add In-App Purchase to hide AD\n- Change frequency in AD (\"1 in 3\" → \"after 5, every\")\n- Widely refactoring\n- Various bugfixes and improvements"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "- 盤面の駒を盤外へ直接移動できるように変更\n- 簡単に駒を消したり増やしたりする機能の追加\n- 初期化等のショートカットをメニューボタン長押しで呼び出す機能を追加\n- 手駒を3回タップして消す機能の削除\n- アプリ内課金で広告非表示にできる機能を実装\n- アプリ内広告バナーの表示頻度を「3回起動毎に起動直後1回」から「起動6回以降は起動直後毎回」に変更\n- 広くリファクタリング\n- いくつかの小さめの改善やバグ修正"
-          }
-        }
-      }
-    },
-    "1.2.1" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "small bug fix"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "軽微なバグ修正"
-          }
-        }
-      }
-    },
-    "1.2.2" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adjust the look on dragging a piece\nsmall bug fix"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "駒を持ち上げた際の見た目を調整\n軽微なバグ修正"
-          }
-        }
-      }
-    },
-    "1.3" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Support SharePlay.\nShow shift sign.\nShow 段(dan) and 筋(suji).\nReverse vertically option.\nPromotion dialog.\nAvoid device sleep.\nHistory function.\nAdd restore function.\nBigger 駒(koma) font.\nChange AD design.\nVarious bug-fixes and improvements"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SharePlayに対応しました。\n操作直後の駒を目立たせるようにしました。\n段と筋を表示するようにしました。\n盤面を上下反転させるオプション。\n敵陣に入った際に成駒確認ダイアログを表示するようにしました。\n無操作時にスリープしないようにしました。\n履歴機能を追加しました。\n局面復元機能を追加しました。\n駒のフォントサイズを大きくしました。\n広告のデザインを変更しました。\nその他、いくつかの小さめの改善やバグ修正をしました。"
-          }
-        }
-      }
-    },
-    "1.4" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ADD Move by tap.\nADD Sync by iCloud.\nADD Font customize option in app.\nADD Landscape layout.\nADD Serif font option.\nADD Bookmark.\nADD Keyboard shortcut(iPad, Mac).\nADD Mac support.\nADD Apple TV support.\nADD Apple Watch support.\nIMPROVE Font rendering on non-japanese environment.\nOTHER Various bug-fixes and improvements."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "タップで移動する機能の追加。\niCloudによるデバイス間同期の追加。\nアプリ内でのフォントカスタマイズ機能の追加。\n横向きレイアウトに対応。\nセリフ体フォントオプションの追加。\nブックマーク機能の追加。\nキーボードショートカットの追加(iPad、 Mac)。\nMacのサポートを追加。\nApple TVのサポートを追加。\nApple Watchのサポートを追加。\n非日本語環境でのフォント表示の改善。\nその他、いくつかの小さめの改善やバグ修正。"
-          }
-        }
-      }
-    },
-    "1.5" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Support for export to image format.\nSupport NameDrop style SharePlay(iOS17).\nAdd share button in main screen.\nUnsupport iOS 15.x."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "画像書き出し機能を追加。\niPhone同士を近付けることでSharePlayを開始できる機能に対応(iOS 17のみ)。\nメイン画面に共有ボタンを追加。\niOS 15.xを非対応にしました。"
-          }
-        }
-      }
-    },
-    "1.5.1" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fix a bug of image-export"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "画像書き出し機能が失敗する不具合を修正しました"
-          }
-        }
-      }
-    },
     "1.6" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add sound effect.\nSync selection state on SharePlay.\nAdd Apple Vision Pro support."
+            "value" : "Initial release for Apple Vision Pro."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "効果音の追加。\nSharePlayにて駒選択状態の同期を追加。\nApple Vision Proのサポートを追加。"
+            "value" : "Apple Vision Pro向けの最初のリリース。"
           }
         }
       }
