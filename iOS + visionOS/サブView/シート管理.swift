@@ -34,16 +34,31 @@ struct シート管理: ViewModifier {
 
 private extension シート管理 {
     private func 閉じるボタン() -> some ToolbarContent {
-        ToolbarItem(placement: .navigationBarTrailing) {
+        ToolbarItem(
+            placement: {
+#if os(iOS)
+                .navigationBarTrailing
+#elseif os(visionOS)
+                .topBarLeading
+#endif
+            }()
+        ) {
             Button {
                 モデル.表示中のシート = nil
                 システムフィードバック.軽め()
             } label: {
+#if os(iOS)
                 Image(systemName: "chevron.down")
                     .grayscale(1.0)
+#elseif os(visionOS)
+                Image(systemName: "xmark")
+#endif
             }
             .accessibilityLabel("閉じる")
             .keyboardShortcut(.cancelAction)
+#if os(visionOS)
+            .buttonBorderShape(.circle)
+#endif
         }
     }
     private static func テキスト共有メニュー() -> some View {
