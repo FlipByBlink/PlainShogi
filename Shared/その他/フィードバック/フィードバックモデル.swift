@@ -7,10 +7,17 @@ class フィードバックモデル {
     func 軽め() {
         システムフィードバック.軽め()
     }
-    func 強め(_ 音声あり: Bool = true) {
+    func 強め(音声あり: Bool = true) {
         システムフィードバック.強め()
 #if !os(watchOS)
         if 音声あり, self.効果音有効 { self.音声.メイン再生() }
+#endif
+    }
+    func ドロップ() {
+#if os(visionOS)
+        self.強め(音声あり: false)
+#else
+        self.強め()
 #endif
     }
     func 成功() {

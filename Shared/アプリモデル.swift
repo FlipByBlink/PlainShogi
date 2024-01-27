@@ -298,7 +298,7 @@ extension アプリモデル {
                     self.駒移動後の成駒について対応する(出発場所, 置いた場所)
                     self.ドラッグ中の駒 = .無し
                     self.SharePlay中なら現在の局面を参加者に送信する()
-                    self.フィードバック.強め()
+                    self.フィードバック.ドロップ()
                 case .アプリ外のコンテンツ:
                     let itemProviders = dropInfo.itemProviders(for: [.utf8PlainText])
                     self.このアイテムを盤面に反映する(itemProviders)
