@@ -36,7 +36,7 @@ private extension 盤面のみ {
         Rectangle()
             .stroke(.primary, lineWidth: self.枠線の太さ)
 #elseif os(visionOS)
-        RoundedRectangle(cornerRadius: self.画像書き出し ? 0 : 8,
+        RoundedRectangle(cornerRadius: self.画像書き出し ? 0 : 6,
                          style: .continuous)
         .stroke(.primary, lineWidth: self.枠線の太さ)
 #endif

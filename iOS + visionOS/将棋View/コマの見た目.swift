@@ -18,11 +18,7 @@ struct コマの見た目: View { //FrameやDrag処理などは呼び出し側�
             .modifier(Self.駒選択効果(self.場所))
             .modifier(増減モード用ⓧマーク(self.場所))
             .modifier(Self.ドラッグ直後の効果(self.場所))
-            .overlay {
-                if モデル.太字, self.この駒は操作直後 {
-                    Rectangle().fill(.quaternary)
-                }
-            }
+            .modifier(Self.太字設定時の駒操作後効果(self.場所))
         }
     }
     init(_ ﾊﾞｼｮ: 駒の場所) {
@@ -74,6 +70,28 @@ private extension コマの見た目 {
                 .scaleEffect(self.条件 ? 1.15 : 1)
                 .animation(.default.speed(2), value: self.条件)
 #endif
+        }
+        init(_ ﾊﾞｼｮ: 駒の場所) {
+            self.場所 = ﾊﾞｼｮ
+        }
+    }
+    private struct 太字設定時の駒操作後効果: ViewModifier {
+        @EnvironmentObject var モデル: アプリモデル
+        private var 場所: 駒の場所
+        private var 条件: Bool { モデル.太字 && モデル.この駒は操作直後なので強調表示(self.場所) }
+        func body(content: Content) -> some View {
+            content
+                .overlay {
+#if os(iOS)
+                    if self.条件 {
+                        Rectangle().fill(.quaternary)
+                    }
+#elseif os(visionOS)
+                    RoundedRectangle(cornerRadius: 6, style: .continuous)
+                        .stroke()
+                        .opacity(self.条件 ? 1 : 0)
+#endif
+                }
         }
         init(_ ﾊﾞｼｮ: 駒の場所) {
             self.場所 = ﾊﾞｼｮ
