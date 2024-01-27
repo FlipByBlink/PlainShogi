@@ -11,7 +11,22 @@ enum SharePlayインジケーター {
 #endif
         }
     }
-    struct ボタン: View {
+    struct VisionOS: View {
+        @EnvironmentObject var モデル: アプリモデル
+        var body: some View {
+#if os(visionOS)
+            if モデル.グループセッション?.state == .joined {
+                SharePlayインジケーター.ボタン()
+            }
+#else
+            EmptyView()
+#endif
+        }
+    }
+}
+
+private extension SharePlayインジケーター {
+    private struct ボタン: View {
         @EnvironmentObject var モデル: アプリモデル
         @StateObject private var groupStateObserver = GroupStateObserver()
         private var SharePlay中: Bool {
@@ -46,9 +61,6 @@ enum SharePlayインジケーター {
             }
         }
     }
-}
-
-private extension SharePlayインジケーター {
     private struct ボタンスタイル: ViewModifier {
         @EnvironmentObject var モデル: アプリモデル
         func body(content: Content) -> some View {
