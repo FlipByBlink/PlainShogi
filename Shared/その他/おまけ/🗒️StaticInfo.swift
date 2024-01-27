@@ -138,7 +138,9 @@ extension 🗒️StaticInfo {
                     "広告コンテンツ.swift",
                     "アプリ内課金ハンドラー.swift",
                     "ユーザーレビュー依頼.swift",
-                    "VisionOS向けHoverEffect.swift"
+                    "VisionOS向けウインドウサイズ.swift",
+                    "VisionOS向けHoverEffect.swift",
+                    "VisionOS向け暗転モード.swift"
                 ]
                 case .おまけ: [
                     "🗒️StaticInfo.swift",
@@ -155,7 +157,7 @@ extension 🗒️StaticInfo {
 
 #elseif os(visionOS)
 extension 🗒️StaticInfo {
-    static let versionInfos: [(version: String, date: String)] = [("1.6", "2024-02-??")] //降順。先頭の方が新しい
+    static let versionInfos: [(version: String, date: String)] = [("1.6", "2024-01-2?")] //降順。先頭の方が新しい
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
         case main, アプリモデル, 将棋モデル, 将棋View, サブView, メニュー, SharePlay, ドラッグアンドドロップ, 共有アイテム, フィードバック, その他, おまけ
@@ -250,7 +252,9 @@ extension 🗒️StaticInfo {
                     "広告コンテンツ.swift",
                     "アプリ内課金ハンドラー.swift",
                     "ユーザーレビュー依頼.swift",
-                    "VisionOS向けHoverEffect.swift"
+                    "VisionOS向けウインドウサイズ.swift",
+                    "VisionOS向けHoverEffect.swift",
+                    "VisionOS向け暗転モード.swift"
                 ]
                 case .おまけ: [
                     "🗒️StaticInfo.swift",

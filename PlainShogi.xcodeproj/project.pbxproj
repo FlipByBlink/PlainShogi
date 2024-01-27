@@ -111,6 +111,10 @@
 		1697510E2ADE7E8700443DE2 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
 		169751102ADE7F4700443DE2 /* ユーザーレビュー依頼.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */; };
 		169751112ADE80C500443DE2 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
+		169C500E2B64D45900151693 /* VisionOS向けウインドウサイズ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */; };
+		169C500F2B64D45900151693 /* VisionOS向け暗転モード.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */; };
+		169C50102B64D46700151693 /* VisionOS向けウインドウサイズ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */; };
+		169C50112B64D46700151693 /* VisionOS向け暗転モード.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */; };
 		169E414A2AE0F9A300CFA307 /* メイン画面の共有ボタン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41492AE0F9A300CFA307 /* メイン画面の共有ボタン.swift */; };
 		169E414D2AE1371300CFA307 /* メニューボタン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E414C2AE1371300CFA307 /* メニューボタン.swift */; };
 		169E414F2AE1375C00CFA307 /* コマンドボタンズ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E414E2AE1375C00CFA307 /* コマンドボタンズ.swift */; };
@@ -473,6 +477,8 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				169C500E2B64D45900151693 /* VisionOS向けウインドウサイズ.swift in CopyFiles */,
+				169C500F2B64D45900151693 /* VisionOS向け暗転モード.swift in CopyFiles */,
 				16E2E1EA2B6482B80017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */,
 				16E2E1E82B6481B40017A9A2 /* VisionOS向けHoverEffect.swift in CopyFiles */,
 				16E2E1172B635ECD0017A9A2 /* 盤面と段と筋.swift in CopyFiles */,
@@ -595,6 +601,8 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				169C50102B64D46700151693 /* VisionOS向けウインドウサイズ.swift in CopyFiles */,
+				169C50112B64D46700151693 /* VisionOS向け暗転モード.swift in CopyFiles */,
 				16E2E1E42B647E6A0017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */,
 				16E2E1E52B647E6A0017A9A2 /* VisionOS向けHoverEffect.swift in CopyFiles */,
 				16E2E1972B63DB260017A9A2 /* アプリモデル.swift in CopyFiles */,
