@@ -371,7 +371,10 @@
 		16E2E1E32B647CD80017A9A2 /* 盤面のコマもしくはマス.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
 		16E2E1E42B647E6A0017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
 		16E2E1E52B647E6A0017A9A2 /* VisionOS向けHoverEffect.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */; };
-		16E2E1E62B647E760017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
+		16E2E1E72B6481A50017A9A2 /* VisionOS向けHoverEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */; };
+		16E2E1E82B6481B40017A9A2 /* VisionOS向けHoverEffect.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */; };
+		16E2E1E92B6481F70017A9A2 /* 盤面のコマもしくはマス.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
+		16E2E1EA2B6482B80017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -466,7 +469,8 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
-				16E2E1E62B647E760017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */,
+				16E2E1EA2B6482B80017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */,
+				16E2E1E82B6481B40017A9A2 /* VisionOS向けHoverEffect.swift in CopyFiles */,
 				16E2E1172B635ECD0017A9A2 /* 盤面と段と筋.swift in CopyFiles */,
 				16E2E1182B635ECD0017A9A2 /* 盤面のみ.swift in CopyFiles */,
 				16E2E1192B635ECD0017A9A2 /* 盤外.swift in CopyFiles */,
@@ -1565,6 +1569,7 @@
 				169E415B2AE14F6800CFA307 /* 共有メニュー.swift in Sources */,
 				160D1CFE2AE26009004E14E2 /* 画像キャッシュハンドラー.swift in Sources */,
 				169E41552AE1495600CFA307 /* SharePlay紹介メニュー.swift in Sources */,
+				16E2E1E72B6481A50017A9A2 /* VisionOS向けHoverEffect.swift in Sources */,
 				161FCCCB2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift in Sources */,
 				16E2E10E2B63588C0017A9A2 /* コマの見た目.swift in Sources */,
 				16B124602AE28710008EF3A0 /* SharePlay環境構築.swift in Sources */,
@@ -1620,6 +1625,7 @@
 				169750692ADDFCC100443DE2 /* GroupActivity.swift in Sources */,
 				169E41532AE1491900CFA307 /* SharePlayガイドメニュー.swift in Sources */,
 				16E2E1102B6358B10017A9A2 /* 駒テキスト.swift in Sources */,
+				16E2E1E92B6481F70017A9A2 /* 盤面のコマもしくはマス.swift in Sources */,
 				F57D6F0729FCD60D00EA0D79 /* シート管理.swift in Sources */,
 				F5C9FAFF296CF7BB00B513D8 /* 履歴メニュー.swift in Sources */,
 				F5C9FB02296D0A3100B513D8 /* SharePlayインジケーター.swift in Sources */,

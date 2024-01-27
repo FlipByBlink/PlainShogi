@@ -15,7 +15,7 @@ struct 盤面のみ: View {
                 }
             }
         }
-        .border(.primary, width: self.枠線の太さ)
+        .overlay { self.枠線() }
         .frame(width: self.マスの大きさ * 9,
                height: self.マスの大きさ * 9)
     }
@@ -29,5 +29,14 @@ private extension 盤面のみ {
             case 100...: 2
             default: 1
         }
+    }
+    private func 枠線() -> some View {
+#if os(iOS)
+        Rectangle()
+            .stroke(.primary, lineWidth: self.枠線の太さ)
+#elseif os(visionOS)
+        RoundedRectangle(cornerRadius: 8, style: .continuous)
+            .stroke(.primary, lineWidth: self.枠線の太さ)
+#endif
     }
 }
