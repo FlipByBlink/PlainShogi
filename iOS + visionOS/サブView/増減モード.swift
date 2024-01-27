@@ -67,8 +67,9 @@ struct 増減モード完了ボタン: View {
         Button {
             モデル.増減モードを終了する()
         } label: {
-            Image(systemName: "checkmark.circle.fill")
+            Image(systemName: "checkmark")
 #if os(iOS)
+                .symbolVariant(.circle.fill)
                 .font(.title2.weight(.medium))
                 .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                 .padding(8)
