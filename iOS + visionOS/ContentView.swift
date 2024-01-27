@@ -5,7 +5,7 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
             将棋View()
-            SharePlayインジケーター()
+            SharePlayインジケーター.IOS()
         }
         .padding(固定値.全体パディング)
         .padding(.top, 8)

@@ -22,6 +22,7 @@ struct ツールボタンズ: ViewModifier {
 #elseif os(visionOS)
             .toolbar {
                 ToolbarItemGroup(placement: .bottomOrnament) {
+                    SharePlayインジケーター.ボタン()
                     if モデル.増減モード中 {
                         増減モード完了ボタン()
                     } else {
