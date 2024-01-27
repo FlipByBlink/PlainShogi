@@ -8,6 +8,8 @@ struct アプリ: App {
             ContentView()
         }
         .commands { コマンド(モデル) }
+#if os(visionOS)
         .windowResizability(.contentMinSize)
+#endif
     }
 }
