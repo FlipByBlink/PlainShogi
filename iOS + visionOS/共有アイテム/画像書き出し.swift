@@ -12,6 +12,7 @@ enum 画像書き出し {
         let レンダラー = ImageRenderer(content: {
             将棋View()
                 .environmentObject(モデル)
+                .environment(\.画像書き出し, true)
                 .frame(width: 440, height: 440)
                 .padding()
                 .background { Color.white }

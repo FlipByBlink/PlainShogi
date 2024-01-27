@@ -19,5 +19,13 @@ extension EnvironmentValues {
     private struct 縦並びKey: EnvironmentKey {
         static let defaultValue = false
     }
+    
+    var 画像書き出し: Bool {
+        get { self[Self.画像書き出しKey.self] }
+        set { self[Self.画像書き出しKey.self] = newValue }
+    }
+    private struct 画像書き出しKey: EnvironmentKey {
+        static let defaultValue = false
+    }
 }
 #endif

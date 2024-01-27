@@ -3,13 +3,14 @@ import SwiftUI
 struct 盤面のみ: View {
     @EnvironmentObject var モデル: アプリモデル
     @Environment(\.マスの大きさ) var マスの大きさ
+    @Environment(\.画像書き出し) var 画像書き出し
     var body: some View {
         VStack(spacing: 0) {
             ForEach(0 ..< 9) { 行 in
-                if 行 != 0 { Divider() }
+                if 行 != 0 { Self.仕切り線() }
                 HStack(spacing: 0) {
                     ForEach(0 ..< 9) { 列 in
-                        if 列 != 0 { Divider() }
+                        if 列 != 0 { Self.仕切り線() }
                         盤面のコマもしくはマス(行 * 9 + 列)
                     }
                 }
@@ -35,8 +36,27 @@ private extension 盤面のみ {
         Rectangle()
             .stroke(.primary, lineWidth: self.枠線の太さ)
 #elseif os(visionOS)
-        RoundedRectangle(cornerRadius: 8, style: .continuous)
-            .stroke(.primary, lineWidth: self.枠線の太さ)
+        RoundedRectangle(cornerRadius: self.画像書き出し ? 0 : 8,
+                         style: .continuous)
+        .stroke(.primary, lineWidth: self.枠線の太さ)
 #endif
+    }
+    private static func 仕切り線() -> some View {
+        Divider()
+            .modifier(Self.VisionOS用画像書き出し用Dividerエフェクト())
+    }
+    private struct VisionOS用画像書き出し用Dividerエフェクト: ViewModifier {
+        @Environment(\.画像書き出し) var 画像書き出し
+        func body(content: Content) -> some View {
+#if os(visionOS)
+            if self.画像書き出し {
+                content.colorMultiply(.black)
+            } else {
+                content
+            }
+#else
+            content
+#endif
+        }
     }
 }
