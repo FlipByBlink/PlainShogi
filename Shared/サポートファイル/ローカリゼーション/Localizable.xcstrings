@@ -980,8 +980,25 @@
         }
       }
     },
+    "友達に声を掛ける" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact your friends"
+          }
+        }
+      }
+    },
     "周りを少し暗くする" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dark effect of your surroundings"
+          }
+        }
+      }
     },
     "大" : {
       "extractionState" : "manual",
@@ -1188,7 +1205,14 @@
       }
     },
     "暗転モード" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark mode"
+          }
+        }
+      }
     },
     "更にカスタマイズ" : {
       "localizations" : {

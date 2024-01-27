@@ -142,7 +142,15 @@ private struct SharingControllerボタン: View {
             Button {
                 self.sharingControllerを表示 = true
             } label: {
-                Label("友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する", systemImage: "person.badge.plus")
+                Label {
+#if os(iOS)
+                    Text("友達に「FaceTime」で通話をかけるか、もしくは「メッセージ」で連絡する")
+#elseif os(visionOS)
+                    Text("友達に声を掛ける")
+#endif
+                } icon: {
+                    Image(systemName: "person.badge.plus")
+                }
             }
             .disabled(self.groupStateObserver.isEligibleForGroupSession)
         } header: {

@@ -378,6 +378,7 @@
 		16E2E1EC2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */; };
 		16E2E1ED2B649E9F0017A9A2 /* VisionOS向けウインドウサイズ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */; };
 		16E2E1EF2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */; };
+		16E2E1F02B64C80C0017A9A2 /* VisionOS向け暗転モード.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -1614,6 +1615,7 @@
 				128D156B280FE47E003FF480 /* App.swift in Sources */,
 				F5BD6A102A00BF4C004AD4A5 /* 局面モデル.swift in Sources */,
 				169E41572AE14A2E00CFA307 /* 更にカスタマイズメニュー.swift in Sources */,
+				16E2E1F02B64C80C0017A9A2 /* VisionOS向け暗転モード.swift in Sources */,
 				F525A7D629F8FB1F001E8D5F /* 将棋View.swift in Sources */,
 				16688DDA2B595CAC004CE12B /* システムフィードバック.swift in Sources */,
 				169750822ADE180700443DE2 /* ドラッグ対象.swift in Sources */,
