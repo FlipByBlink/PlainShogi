@@ -67,7 +67,7 @@ private extension コマの見た目 {
 #if os(visionOS)
             content
                 .background { Rectangle().fill(.quaternary).opacity(self.条件 ? 1 : 0) }
-                .modifier(VisionOS向けHoverEffect())
+                .modifier(VisionOS向けHoverEffect.コマ())
                 .offset(z: self.条件 ? 30 : 0)
                 .scaleEffect(self.条件 ? 1.15 : 1)
                 .animation(.default.speed(2), value: self.条件)

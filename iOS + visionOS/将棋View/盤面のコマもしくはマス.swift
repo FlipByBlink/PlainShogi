@@ -10,6 +10,7 @@ struct 盤面のコマもしくはマス: View {
                     .onDrag { モデル.この駒をドラッグし始める(self.元々の場所) }
             } else { // ==== マス ====
                 Color(.systemBackground)
+                    .modifier(VisionOS向けHoverEffect.マス())
             }
         }
         .contentShape(.rect)

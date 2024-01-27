@@ -1,16 +1,25 @@
 import SwiftUI
 
-struct VisionOS向けHoverEffect: ViewModifier {
-    var 条件: Bool
-    func body(content: Content) -> some View {
+enum VisionOS向けHoverEffect {
+    struct コマ: ViewModifier {
+        func body(content: Content) -> some View {
 #if os(visionOS)
-        content
-            .hoverEffect(isEnabled: self.条件)
+            content.hoverEffect()
 #else
-        content
+            content
 #endif
+        }
     }
-    init(_ 条件: Bool = true) {
-        self.条件 = 条件
+    struct マス: ViewModifier {
+        @EnvironmentObject var モデル: アプリモデル
+        func body(content: Content) -> some View {
+#if os(visionOS)
+            content
+                .border(.gray.opacity(0.001), width: 0.001) //Workaround
+                .hoverEffect(isEnabled: モデル.選択中の駒 != .なし)
+#else
+            content
+#endif
+        }
     }
 }
