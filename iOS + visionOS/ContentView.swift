@@ -19,6 +19,7 @@ struct ContentView: View {
         .modifier(SharePlay環境構築())
         .modifier(シート管理())
         .modifier(アプリ内課金ハンドラー())
+        .modifier(VisionOS向けウインドウサイズ())
         .environment(\.layoutDirection, .leftToRight)
     }
 }

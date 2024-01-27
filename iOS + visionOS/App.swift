@@ -8,5 +8,6 @@ struct アプリ: App {
             ContentView()
         }
         .commands { コマンド(モデル) }
+        .windowResizability(.contentMinSize)
     }
 }
