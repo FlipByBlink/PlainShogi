@@ -369,6 +369,9 @@
 		16E2E1DE2B63DB260017A9A2 /* 🛒InAppPurchaseView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */; };
 		16E2E1E02B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */; };
 		16E2E1E32B647CD80017A9A2 /* 盤面のコマもしくはマス.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
+		16E2E1E42B647E6A0017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
+		16E2E1E52B647E6A0017A9A2 /* VisionOS向けHoverEffect.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */; };
+		16E2E1E62B647E760017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -463,6 +466,7 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				16E2E1E62B647E760017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */,
 				16E2E1172B635ECD0017A9A2 /* 盤面と段と筋.swift in CopyFiles */,
 				16E2E1182B635ECD0017A9A2 /* 盤面のみ.swift in CopyFiles */,
 				16E2E1192B635ECD0017A9A2 /* 盤外.swift in CopyFiles */,
@@ -583,6 +587,8 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				16E2E1E42B647E6A0017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */,
+				16E2E1E52B647E6A0017A9A2 /* VisionOS向けHoverEffect.swift in CopyFiles */,
 				16E2E1972B63DB260017A9A2 /* アプリモデル.swift in CopyFiles */,
 				16E2E1982B63DB260017A9A2 /* アプリモデルのスーパークラス.swift in CopyFiles */,
 				16E2E1992B63DB260017A9A2 /* 局面モデル.swift in CopyFiles */,
