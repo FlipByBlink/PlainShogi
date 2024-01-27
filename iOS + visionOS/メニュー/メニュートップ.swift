@@ -18,6 +18,7 @@ struct メニュートップ: View {
             }
             Section {
                 self.上下反転Toggle()
+                VisionOS向け暗転モード.トグル()
                 更にカスタマイズメニューリンク()
             } header: {
                 if self.groupStateObserver.isEligibleForGroupSession {

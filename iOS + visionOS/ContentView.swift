@@ -20,6 +20,7 @@ struct ContentView: View {
         .modifier(シート管理())
         .modifier(アプリ内課金ハンドラー())
         .modifier(VisionOS向けウインドウサイズ())
+        .modifier(VisionOS向け暗転モード())
         .environment(\.layoutDirection, .leftToRight)
     }
 }

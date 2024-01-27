@@ -980,6 +980,9 @@
         }
       }
     },
+    "周りを少し暗くする" : {
+
+    },
     "大" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1183,6 +1186,9 @@
           }
         }
       }
+    },
+    "暗転モード" : {
+
     },
     "更にカスタマイズ" : {
       "localizations" : {

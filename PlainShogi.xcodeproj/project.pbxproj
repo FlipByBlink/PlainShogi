@@ -377,6 +377,7 @@
 		16E2E1EA2B6482B80017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
 		16E2E1EC2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */; };
 		16E2E1ED2B649E9F0017A9A2 /* VisionOS向けウインドウサイズ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */; };
+		16E2E1EF2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -797,6 +798,7 @@
 		16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisionOS向けHoverEffect.swift"; sourceTree = "<group>"; };
 		16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤面のコマもしくはマス.swift"; sourceTree = "<group>"; };
 		16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisionOS向けウインドウサイズ.swift"; sourceTree = "<group>"; };
+		16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisionOS向け暗転モード.swift"; sourceTree = "<group>"; };
 		16EF413A2B5D13CD002312FA /* appstore_badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore_badge.svg; sourceTree = "<group>"; };
 		16EF413B2B5D13F1002312FA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
@@ -1272,6 +1274,7 @@
 			children = (
 				16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */,
 				16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */,
+				16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */,
 			);
 			path = visionOS;
 			sourceTree = "<group>";
@@ -1693,6 +1696,7 @@
 				16E2E1872B63D8200017A9A2 /* ツールボタンズ.swift in Sources */,
 				16E2E1432B63D7D30017A9A2 /* 駒の種類.swift in Sources */,
 				16E2E1802B63D8200017A9A2 /* オプション変更アニメーション.swift in Sources */,
+				16E2E1EF2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift in Sources */,
 				16E2E1402B63D7D30017A9A2 /* 空の手駒.swift in Sources */,
 				16E2E1602B63D8200017A9A2 /* SharePlay環境構築.swift in Sources */,
 				16E2E1822B63D8200017A9A2 /* ユーザーレビュー依頼.swift in Sources */,

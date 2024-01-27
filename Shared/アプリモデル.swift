@@ -39,6 +39,10 @@ class アプリモデル: スーパークラス, ObservableObject {
     private var セッションメッセンジャー: GroupSessionMessenger?
     @Published private(set) var 参加人数: Int?
 #endif
+    
+#if os(visionOS)
+    @AppStorage("暗転モード") var 暗転モード: Bool = false
+#endif
 }
 
 //MARK: - ==== 局面関連 ====

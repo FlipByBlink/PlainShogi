@@ -23,6 +23,7 @@ struct メニューボタン: View { // ⚙️
             self.履歴ボタン()
             self.ブックマーク表示ボタン()
             self.駒の選択解除ボタン()
+            VisionOS向け暗転モード.トグル()
         }
         .modifier(Self.IOS向け装飾())
         .accessibilityLabel("メニューを開く")
