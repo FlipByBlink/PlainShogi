@@ -157,7 +157,7 @@ extension 🗒️StaticInfo {
 
 #elseif os(visionOS)
 extension 🗒️StaticInfo {
-    static let versionInfos: [(version: String, date: String)] = [("1.6", "2024-01-2?")] //降順。先頭の方が新しい
+    static let versionInfos: [(version: String, date: String)] = [("1.6", "2024-01-28")] //降順。先頭の方が新しい
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
         case main, アプリモデル, 将棋モデル, 将棋View, サブView, メニュー, SharePlay, ドラッグアンドドロップ, 共有アイテム, フィードバック, その他, おまけ
