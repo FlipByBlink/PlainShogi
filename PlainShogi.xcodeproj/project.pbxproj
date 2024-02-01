@@ -727,6 +727,7 @@
 		16688DD92B595CAC004CE12B /* システムフィードバック.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "システムフィードバック.swift"; sourceTree = "<group>"; };
 		16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "音声フィードバックモデル.swift"; sourceTree = "<group>"; };
 		16688DE12B595F37004CE12B /* 音声アセット.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "音声アセット.xcassets"; sourceTree = "<group>"; };
+		1669BEB22B6B435200D0FEEB /* visionOS.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = visionOS.jpg; sourceTree = "<group>"; };
 		167FFC582B5E04BB006BC0A3 /* 🌐AboutApp.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐AboutApp.xcstrings"; sourceTree = "<group>"; };
 		167FFC592B5E04BB006BC0A3 /* 🌐Timeline.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐Timeline.xcstrings"; sourceTree = "<group>"; };
 		167FFC612B5E0537006BC0A3 /* Developer_Publisher.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Developer_Publisher.xcassets; sourceTree = "<group>"; };
@@ -1172,6 +1173,7 @@
 				169750BD2ADE646600443DE2 /* ConceptImage.png */,
 				169750BE2ADE646600443DE2 /* Screenshots.png */,
 				169750BC2ADE646600443DE2 /* SharePlay.png */,
+				1669BEB22B6B435200D0FEEB /* visionOS.jpg */,
 			);
 			path = "README assets";
 			sourceTree = "<group>";
