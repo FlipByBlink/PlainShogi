@@ -902,7 +902,6 @@
 				128D1569280FE47E003FF480 /* iOS + visionOS */,
 				F5D9F9192A00BDA900CEE697 /* watchOS */,
 				F5119BA42A0291000027A74C /* tvOS */,
-				16E2E1282B63C1750017A9A2 /* PlainShogiBoardForVisionOS */,
 				128D1568280FE47E003FF480 /* Products */,
 				12A9251C2866A8960035DC83 /* Frameworks */,
 			);
@@ -1252,13 +1251,6 @@
 				F5951A1F28ADEEBC00516538 /* Launch Screen.storyboard */,
 			);
 			path = iOS;
-			sourceTree = "<group>";
-		};
-		16E2E1282B63C1750017A9A2 /* PlainShogiBoardForVisionOS */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PlainShogiBoardForVisionOS;
 			sourceTree = "<group>";
 		};
 		16E2E13A2B63C1F40017A9A2 /* visionOS */ = {
