@@ -32,6 +32,11 @@
 		161668592C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161668572C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift */; };
 		1616685A2C085180008BB921 /* VisionOS向けSharePlayプロバイダー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160806002C0849350064FCB2 /* VisionOS向けSharePlayプロバイダー.swift */; };
 		1616685B2C085180008BB921 /* VisionOS向け空間非同期テキスト.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161668572C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift */; };
+		1616685D2C08549F008BB921 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1616685C2C085422008BB921 /* PrivacyInfo.xcprivacy */; };
+		1616685E2C0854A0008BB921 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1616685C2C085422008BB921 /* PrivacyInfo.xcprivacy */; };
+		1616685F2C0854A1008BB921 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1616685C2C085422008BB921 /* PrivacyInfo.xcprivacy */; };
+		161668602C0854A1008BB921 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1616685C2C085422008BB921 /* PrivacyInfo.xcprivacy */; };
+		161668612C0854A2008BB921 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1616685C2C085422008BB921 /* PrivacyInfo.xcprivacy */; };
 		161FCCCB2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */; };
 		161FCCCD2ADE8FF00088E6AA /* 自動スリープ無効化.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */; };
 		161FCCE92ADF857B0088E6AA /* 画像書き出し.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */; };
@@ -730,6 +735,7 @@
 		160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "アプリモデルのスーパークラス.swift"; sourceTree = "<group>"; };
 		160D1D052AE26D84004E14E2 /* MacCatalyst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCatalyst.swift; sourceTree = "<group>"; };
 		161668572C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisionOS向け空間非同期テキスト.swift"; sourceTree = "<group>"; };
+		1616685C2C085422008BB921 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "バックグラウンド時に駒選択を解除.swift"; sourceTree = "<group>"; };
 		161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "自動スリープ無効化.swift"; sourceTree = "<group>"; };
 		161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像書き出し.swift"; sourceTree = "<group>"; };
@@ -1190,6 +1196,7 @@
 		169750BF2ADE651900443DE2 /* その他 */ = {
 			isa = PBXGroup;
 			children = (
+				1616685C2C085422008BB921 /* PrivacyInfo.xcprivacy */,
 				F5019FD2296ABBBD007CB14D /* 雑多メモ.md */,
 				169750F72ADE6FE200443DE2 /* アーカイブ */,
 				169750BB2ADE641C00443DE2 /* README assets */,
@@ -1507,6 +1514,7 @@
 				16688DE22B595F37004CE12B /* 音声アセット.xcassets in Resources */,
 				167FFC632B5E0537006BC0A3 /* Developer_Publisher.xcassets in Resources */,
 				169751042ADE7B3700443DE2 /* 🌐AD&InAppPurchase.xcstrings in Resources */,
+				1616685D2C08549F008BB921 /* PrivacyInfo.xcprivacy in Resources */,
 				169751072ADE7B3700443DE2 /* 🌐ADAppDescription.xcstrings in Resources */,
 				12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */,
 				16E2E1222B6375880017A9A2 /* 🌐AppStoreDescription.xcstrings in Resources */,
@@ -1525,6 +1533,7 @@
 				16E2E1542B63D7E60017A9A2 /* AD+InAppPurchase.xcassets in Resources */,
 				16E2E18E2B63D8590017A9A2 /* 🌐ADAppName.xcstrings in Resources */,
 				16E2E1582B63D7EA0017A9A2 /* InfoPlist.strings in Resources */,
+				161668602C0854A1008BB921 /* PrivacyInfo.xcprivacy in Resources */,
 				16E2E1532B63D7E60017A9A2 /* Developer_Publisher.xcassets in Resources */,
 				16E2E1952B63D8880017A9A2 /* 🌐AppStoreDescription.xcstrings in Resources */,
 				16E2E1562B63D7E60017A9A2 /* Localizable.xcstrings in Resources */,
@@ -1543,6 +1552,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161668612C0854A2008BB921 /* PrivacyInfo.xcprivacy in Resources */,
 				167FFC5C2B5E04BC006BC0A3 /* 🌐AboutApp.xcstrings in Resources */,
 				F5119BAA2A0291020027A74C /* Assets.xcassets in Resources */,
 				167FFC692B5E07D0006BC0A3 /* Localizable.xcstrings in Resources */,
@@ -1557,6 +1567,7 @@
 			files = (
 				F5119B9E2A028FE10027A74C /* InfoPlist.strings in Resources */,
 				169750F62ADE68AC00443DE2 /* Assets.xcassets in Resources */,
+				1616685F2C0854A1008BB921 /* PrivacyInfo.xcprivacy in Resources */,
 				167FFC682B5E07D0006BC0A3 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1565,6 +1576,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1616685E2C0854A0008BB921 /* PrivacyInfo.xcprivacy in Resources */,
 				167FFC5B2B5E04BC006BC0A3 /* 🌐AboutApp.xcstrings in Resources */,
 				F5119B9D2A028FE10027A74C /* InfoPlist.strings in Resources */,
 				167FFC672B5E07D0006BC0A3 /* Localizable.xcstrings in Resources */,
