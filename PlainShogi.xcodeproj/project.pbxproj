@@ -18,6 +18,8 @@
 		12D424422871893D002D3E80 /* ドロップデリゲート.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* ドロップデリゲート.swift */; };
 		12D436A42865CD8400B707F5 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12D4369C2865CD8300B707F5 /* Configuration.storekit */; };
 		12F4444E286D4B580008A663 /* メニュートップ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* メニュートップ.swift */; };
+		160806022C0849350064FCB2 /* VisionOS向けSharePlayプロバイダー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160806002C0849350064FCB2 /* VisionOS向けSharePlayプロバイダー.swift */; };
+		160806032C0849D20064FCB2 /* VisionOS向けSharePlayプロバイダー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160806002C0849350064FCB2 /* VisionOS向けSharePlayプロバイダー.swift */; };
 		160D1CFE2AE26009004E14E2 /* 画像キャッシュハンドラー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1CFD2AE26009004E14E2 /* 画像キャッシュハンドラー.swift */; };
 		160D1D022AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */; };
 		160D1D032AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */; };
@@ -717,6 +719,7 @@
 		12D424412871893D002D3E80 /* ドロップデリゲート.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ドロップデリゲート.swift"; sourceTree = "<group>"; };
 		12D4369C2865CD8300B707F5 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		12F4444D286D4B580008A663 /* メニュートップ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "メニュートップ.swift"; sourceTree = "<group>"; };
+		160806002C0849350064FCB2 /* VisionOS向けSharePlayプロバイダー.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VisionOS向けSharePlayプロバイダー.swift"; sourceTree = "<group>"; };
 		160D1CFD2AE26009004E14E2 /* 画像キャッシュハンドラー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像キャッシュハンドラー.swift"; sourceTree = "<group>"; };
 		160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "アプリモデルのスーパークラス.swift"; sourceTree = "<group>"; };
 		160D1D052AE26D84004E14E2 /* MacCatalyst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCatalyst.swift; sourceTree = "<group>"; };
@@ -1278,6 +1281,7 @@
 				16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */,
 				16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */,
 				16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */,
+				160806002C0849350064FCB2 /* VisionOS向けSharePlayプロバイダー.swift */,
 			);
 			path = visionOS;
 			sourceTree = "<group>";
@@ -1601,6 +1605,7 @@
 				16267B572B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift in Sources */,
 				169750FF2ADE7ABA00443DE2 /* 🛒InAppPurchaseModel.swift in Sources */,
 				F5091F8E2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift in Sources */,
+				160806032C0849D20064FCB2 /* VisionOS向けSharePlayプロバイダー.swift in Sources */,
 				1697509E2ADE192200443DE2 /* 駒の種類.swift in Sources */,
 				1697509A2ADE191000443DE2 /* 手前か対面か.swift in Sources */,
 				169750782ADE048000443DE2 /* ツールボタンズ.swift in Sources */,
@@ -1684,6 +1689,7 @@
 				16E2E17F2B63D8200017A9A2 /* 盤外のコマ.swift in Sources */,
 				16E2E16D2B63D8200017A9A2 /* ブックマークメニュー.swift in Sources */,
 				16E2E1742B63D8200017A9A2 /* App.swift in Sources */,
+				160806022C0849350064FCB2 /* VisionOS向けSharePlayプロバイダー.swift in Sources */,
 				16E2E18A2B63D8200017A9A2 /* 📣ADComponents.swift in Sources */,
 				16E2E1462B63D7D30017A9A2 /* 🗒️StaticInfo.swift in Sources */,
 				16E2E14D2B63D7D30017A9A2 /* 持ち駒.swift in Sources */,

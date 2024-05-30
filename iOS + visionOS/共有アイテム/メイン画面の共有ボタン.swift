@@ -7,17 +7,16 @@ struct メイン画面の共有ボタン: View {
     var body: some View {
 #if !targetEnvironment(macCatalyst)
         Group {
+#if os(visionOS)
+            self.アクティビティなしShareLink()
+                .task { VisionOS向けSharePlayプロバイダー.groupActivityを登録() }
+#else
             if #available(iOS 17, *), モデル.グループセッション == nil {
-                ShareLink(item: Self.アイテム.アクティビティあり(),
-                          message: .init(self.モデル.現在の盤面をテキストに変換する()),
-                          preview: .init("盤面を共有", icon: self.サムネイル),
-                          label: self.ボタンアイコン)
+                self.アクティビティありShareLink()
             } else {
-                ShareLink(item: Self.アイテム.アクティビティなし(),
-                          message: .init(self.モデル.現在の盤面をテキストに変換する()),
-                          preview: .init("盤面を共有", icon: self.サムネイル),
-                          label: self.ボタンアイコン)
+                self.アクティビティなしShareLink()
             }
+#endif
         }
         .contextMenu { self.サブボタンズ() }
         .modifier(Self.IOS向け装飾())
@@ -29,6 +28,19 @@ struct メイン画面の共有ボタン: View {
 }
 
 private extension メイン画面の共有ボタン {
+    @available(iOS 17, *)
+    private func アクティビティありShareLink() -> some View {
+        ShareLink(item: Self.アイテム.アクティビティあり(),
+                  message: .init(self.モデル.現在の盤面をテキストに変換する()),
+                  preview: .init("盤面を共有", icon: self.サムネイル),
+                  label: self.ボタンアイコン)
+    }
+    private func アクティビティなしShareLink() -> some View {
+        ShareLink(item: Self.アイテム.アクティビティなし(),
+                  message: .init(self.モデル.現在の盤面をテキストに変換する()),
+                  preview: .init("盤面を共有", icon: self.サムネイル),
+                  label: self.ボタンアイコン)
+    }
     private enum アイテム {
         @available(iOS 17, *)
         struct アクティビティあり: Transferable {
