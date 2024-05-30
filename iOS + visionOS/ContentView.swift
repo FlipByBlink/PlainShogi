@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var モデル: アプリモデル
+    @Environment(\.physicalMetrics) var physicalMetrics
+    @Environment(\.openImmersiveSpace) var openImmersiveSpace
     var body: some View {
         VStack(spacing: 0) {
             将棋View()
@@ -21,6 +23,19 @@ struct ContentView: View {
         .modifier(アプリ内課金ハンドラー())
         .modifier(VisionOS向けウインドウサイズ())
         .modifier(VisionOS向け暗転モード())
+//        .overlay(alignment: .bottom) {
+////            let size = 600.0
+//            let size = physicalMetrics.convert(0.4, from: .meters)
+//            将棋View()
+//                .glassBackgroundEffect(in: .rect(cornerRadius: 16))
+//                .frame(width: size, height: size)
+//                .rotationEffect(.degrees(90))
+//                .rotation3DEffect(.degrees(90), axis: .x)
+//                .offset(z: 300)
+//        }
+        .task {
+            await openImmersiveSpace(id: "immersiveSpace")
+        }
         .environment(\.layoutDirection, .leftToRight)
     }
 }
