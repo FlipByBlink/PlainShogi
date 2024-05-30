@@ -102,7 +102,7 @@ Source code link
 
 Contact
 -------
-sear_pandora_0x@icloud.com
+gabled_copier0l@icloud.com
 
 
 App Store link
