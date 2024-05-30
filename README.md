@@ -41,11 +41,15 @@ SharePlay機能では「2人でシンプルに対局する」だけでなく、�
 
 iPhone同士を近付けてボタンを1回押すだけでSharePlayを始めることも出来ます。(iOS 17以降のiPhone限定)
 
+空間ペルソナの空間SharePlayにも対応しています。
+
 Play a shogi board with FaceTime or Messages.
 
 Use case: "Play a game with your friend", "Discuss a shogi problem with many people", etc.
 
 Start SharePlay by holding the top of your iPhone near the top of someone else's iPhone.(iOS 17 iPhone only)
+
+Supported spatial SharePlay with spatial Personas.
 
 <img src="Shared/サポートファイル/その他/README assets/SharePlay.png" width="300">
 
