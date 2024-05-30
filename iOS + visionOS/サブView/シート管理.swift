@@ -24,7 +24,7 @@ struct シート管理: ViewModifier {
                             }
                         }
                         .toolbar { self.閉じるボタン() }
-                        .modifier(VisionOS向け空間非同期テキスト())
+                        .modifier(VisionOS向け空間無同期テキスト())
                     }
                     .environmentObject(モデル)
                     .onAppear { システムフィードバック.軽め() }

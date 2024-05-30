@@ -257,7 +257,7 @@ extension 🗒️StaticInfo {
                     "VisionOS向けHoverEffect.swift",
                     "VisionOS向け暗転モード.swift",
                     "VisionOS向けSharePlayプロバイダー.swift",
-                    "VisionOS向け空間非同期テキスト.swift"
+                    "VisionOS向け空間無同期テキスト.swift"
                 ]
                 case .おまけ: [
                     "🗒️StaticInfo.swift",

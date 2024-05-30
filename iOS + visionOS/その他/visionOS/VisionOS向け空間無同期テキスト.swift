@@ -1,7 +1,7 @@
 import SwiftUI
 import GroupActivities
 
-struct VisionOS向け空間非同期テキスト: ViewModifier {
+struct VisionOS向け空間無同期テキスト: ViewModifier {
     @EnvironmentObject var モデル: アプリモデル
     func body(content: Content) -> some View {
 #if os(visionOS)
