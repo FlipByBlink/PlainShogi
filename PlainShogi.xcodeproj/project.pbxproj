@@ -28,6 +28,8 @@
 		160F46B72B5A461F001FE696 /* SharePlay用選択中の駒モデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16267B562B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift */; };
 		160F46B82B5A4689001FE696 /* システムフィードバック.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16688DD92B595CAC004CE12B /* システムフィードバック.swift */; };
 		160F46B92B5A4689001FE696 /* 音声フィードバックモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */; };
+		161668582C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161668572C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift */; };
+		161668592C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161668572C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift */; };
 		161FCCCB2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */; };
 		161FCCCD2ADE8FF00088E6AA /* 自動スリープ無効化.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */; };
 		161FCCE92ADF857B0088E6AA /* 画像書き出し.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */; };
@@ -723,6 +725,7 @@
 		160D1CFD2AE26009004E14E2 /* 画像キャッシュハンドラー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像キャッシュハンドラー.swift"; sourceTree = "<group>"; };
 		160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "アプリモデルのスーパークラス.swift"; sourceTree = "<group>"; };
 		160D1D052AE26D84004E14E2 /* MacCatalyst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacCatalyst.swift; sourceTree = "<group>"; };
+		161668572C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisionOS向け空間非同期テキスト.swift"; sourceTree = "<group>"; };
 		161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "バックグラウンド時に駒選択を解除.swift"; sourceTree = "<group>"; };
 		161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "自動スリープ無効化.swift"; sourceTree = "<group>"; };
 		161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "画像書き出し.swift"; sourceTree = "<group>"; };
@@ -1282,6 +1285,7 @@
 				16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */,
 				16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */,
 				160806002C0849350064FCB2 /* VisionOS向けSharePlayプロバイダー.swift */,
+				161668572C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift */,
 			);
 			path = visionOS;
 			sourceTree = "<group>";
@@ -1618,6 +1622,7 @@
 				169E414D2AE1371300CFA307 /* メニューボタン.swift in Sources */,
 				1697510B2ADE7BB800443DE2 /* 📣ADComponents.swift in Sources */,
 				16B124622AE29117008EF3A0 /* アプリ内課金ハンドラー.swift in Sources */,
+				161668582C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift in Sources */,
 				F52437B329F613A600EA770E /* フィードバックモデル.swift in Sources */,
 				128D156B280FE47E003FF480 /* App.swift in Sources */,
 				F5BD6A102A00BF4C004AD4A5 /* 局面モデル.swift in Sources */,
@@ -1702,6 +1707,7 @@
 				16E2E16A2B63D8200017A9A2 /* メニューボタン.swift in Sources */,
 				16E2E1712B63D8200017A9A2 /* 共有メニュー.swift in Sources */,
 				16E2E1852B63D8200017A9A2 /* 自動スリープ無効化.swift in Sources */,
+				161668592C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift in Sources */,
 				16E2E1492B63D7D30017A9A2 /* シートカテゴリ.swift in Sources */,
 				16E2E1872B63D8200017A9A2 /* ツールボタンズ.swift in Sources */,
 				16E2E1432B63D7D30017A9A2 /* 駒の種類.swift in Sources */,
