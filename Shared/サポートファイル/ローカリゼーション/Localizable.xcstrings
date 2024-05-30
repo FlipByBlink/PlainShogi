@@ -449,7 +449,14 @@
       }
     },
     "このメニュー表示は同期していません" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Shared"
+          }
+        }
+      }
     },
     "コピー" : {
       "localizations" : {

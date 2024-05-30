@@ -30,6 +30,8 @@
 		160F46B92B5A4689001FE696 /* 音声フィードバックモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */; };
 		161668582C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161668572C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift */; };
 		161668592C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161668572C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift */; };
+		1616685A2C085180008BB921 /* VisionOS向けSharePlayプロバイダー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160806002C0849350064FCB2 /* VisionOS向けSharePlayプロバイダー.swift */; };
+		1616685B2C085180008BB921 /* VisionOS向け空間非同期テキスト.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161668572C084CC6008BB921 /* VisionOS向け空間非同期テキスト.swift */; };
 		161FCCCB2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */; };
 		161FCCCD2ADE8FF00088E6AA /* 自動スリープ無効化.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */; };
 		161FCCE92ADF857B0088E6AA /* 画像書き出し.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */; };
@@ -605,6 +607,8 @@
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
+				1616685A2C085180008BB921 /* VisionOS向けSharePlayプロバイダー.swift in CopyFiles */,
+				1616685B2C085180008BB921 /* VisionOS向け空間非同期テキスト.swift in CopyFiles */,
 				169C50102B64D46700151693 /* VisionOS向けウインドウサイズ.swift in CopyFiles */,
 				169C50112B64D46700151693 /* VisionOS向け暗転モード.swift in CopyFiles */,
 				16E2E1E42B647E6A0017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */,
