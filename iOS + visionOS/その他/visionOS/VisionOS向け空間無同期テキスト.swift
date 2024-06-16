@@ -10,7 +10,9 @@ struct VisionOS向け空間無同期テキスト: ViewModifier {
                 if モデル.グループセッション?.state == .joined {
                     Text("このメニュー表示は同期していません")
                         .foregroundStyle(.secondary)
-                        .font(.subheadline)
+                        .font(.subheadline.weight(.semibold))
+                        .padding()
+                        .glassBackgroundEffect()
                         .padding()
                 }
             }
