@@ -41,9 +41,12 @@ private extension 画像共有メニューコンポーネンツ {
         @EnvironmentObject var モデル: アプリモデル
         var body: some View {
             ShareLink(item: Self.アイテム(),
-                      preview: .init("盤面画像")) {
+                      preview: .init("盤面画像", icon: self.プレビューアイコン)) {
                 Label("共有", systemImage: "square.and.arrow.up")
             }
+        }
+        private var プレビューアイコン: Image {
+            (try? 画像書き出し.画像を取得()) ?? .init(systemName: "photo")
         }
         private struct アイテム: Transferable {
             static var transferRepresentation: some TransferRepresentation {
