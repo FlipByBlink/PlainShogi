@@ -7,16 +7,11 @@ struct メイン画面の共有ボタン: View {
     var body: some View {
 #if !targetEnvironment(macCatalyst)
         Group {
-#if os(visionOS)
-            self.アクティビティなしShareLink()
-                .task { VisionOS向けSharePlayプロバイダー.groupActivityを登録() }
-#else
             if #available(iOS 17, *), モデル.グループセッション == nil {
                 self.アクティビティありShareLink()
             } else {
                 self.アクティビティなしShareLink()
             }
-#endif
         }
         .contextMenu { self.サブボタンズ() }
         .modifier(Self.IOS向け装飾())

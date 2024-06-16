@@ -28,7 +28,6 @@ struct ツールボタンズ: ViewModifier {
                     } else {
                         メニューボタン()
                     }
-                    self.共有ボタン()
                 }
             }
 #endif
