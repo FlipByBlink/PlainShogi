@@ -19,7 +19,7 @@ struct ContentView: View {
         .modifier(SharePlay環境構築())
         .modifier(シート管理())
         .modifier(アプリ内課金ハンドラー())
-        .task { VisionOS向けSharePlayプロバイダー.groupActivityを登録() }
+        .modifier(VisionOS向けSharePlayプロバイダー())
         .modifier(VisionOS向けウインドウサイズ())
         .modifier(VisionOS向け暗転モード())
         .environment(\.layoutDirection, .leftToRight)

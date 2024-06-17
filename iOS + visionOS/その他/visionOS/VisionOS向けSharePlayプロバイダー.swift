@@ -1,26 +1,30 @@
+import SwiftUI
 import LinkPresentation
 
-enum VisionOS向けSharePlayプロバイダー {
-    static func groupActivityを登録() {
+struct VisionOS向けSharePlayプロバイダー: ViewModifier {
+    func body(content: Content) -> some View {
+        content
 #if os(visionOS)
-        let itemProvider = NSItemProvider()
-        itemProvider.registerGroupActivity(🄶roupActivity())
-        let configuration = UIActivityItemsConfiguration(itemProviders: [itemProvider])
-        configuration.metadataProvider = { key in
-            guard key == .linkPresentationMetadata else { return nil }
-            let metadata = LPLinkMetadata()
-            metadata.title = .init(localized: "将棋盤")
-            metadata.imageProvider = NSItemProvider(object: UIImage(named: "previewImage")!)
-            return metadata
-        }
-        UIApplication.shared
-            .connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .first!
-            .windows
-            .first!
-            .rootViewController!
-            .activityItemsConfiguration = configuration
+            .task {
+                let itemProvider = NSItemProvider()
+                itemProvider.registerGroupActivity(🄶roupActivity())
+                let configuration = UIActivityItemsConfiguration(itemProviders: [itemProvider])
+                configuration.metadataProvider = { key in
+                    guard key == .linkPresentationMetadata else { return nil }
+                    let metadata = LPLinkMetadata()
+                    metadata.title = .init(localized: "将棋盤")
+                    metadata.imageProvider = NSItemProvider(object: UIImage(named: "previewImage")!)
+                    return metadata
+                }
+                UIApplication.shared
+                    .connectedScenes
+                    .compactMap { $0 as? UIWindowScene }
+                    .first!
+                    .windows
+                    .first!
+                    .rootViewController!
+                    .activityItemsConfiguration = configuration
+            }
 #endif
     }
 }
