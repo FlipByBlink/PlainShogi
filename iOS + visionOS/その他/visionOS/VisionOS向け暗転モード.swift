@@ -3,10 +3,9 @@ import SwiftUI
 struct VisionOS向け暗転モード: ViewModifier {
     @EnvironmentObject var モデル: アプリモデル
     func body(content: Content) -> some View {
-#if os(visionOS)
-        content.preferredSurroundingsEffect(モデル.暗転モード ? .systemDark : .none)
-#else
         content
+#if os(visionOS)
+            .preferredSurroundingsEffect(モデル.暗転モード ? .systemDark : .none)
 #endif
     }
 }

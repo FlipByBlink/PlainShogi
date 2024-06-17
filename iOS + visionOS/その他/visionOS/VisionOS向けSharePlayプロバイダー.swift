@@ -8,6 +8,7 @@ struct VisionOS向けSharePlayプロバイダー: ViewModifier {
             .task {
                 let itemProvider = NSItemProvider()
                 itemProvider.registerGroupActivity(🄶roupActivity())
+                
                 let configuration = UIActivityItemsConfiguration(itemProviders: [itemProvider])
                 configuration.metadataProvider = { key in
                     guard key == .linkPresentationMetadata else { return nil }
@@ -16,7 +17,9 @@ struct VisionOS向けSharePlayプロバイダー: ViewModifier {
                     metadata.imageProvider = NSItemProvider(object: UIImage(named: "previewImage")!)
                     return metadata
                 }
-                UIApplication.shared
+                
+                UIApplication
+                    .shared
                     .connectedScenes
                     .compactMap { $0 as? UIWindowScene }
                     .first!
