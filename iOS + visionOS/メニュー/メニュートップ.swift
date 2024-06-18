@@ -84,6 +84,7 @@ private extension メニュートップ {
                 List {
                     Label("長押しして駒を持ち上げ、そのままスライドして移動させる",
                           systemImage: "hand.draw")
+                    Label("駒を2回タップして、盤上の駒を裏返す", systemImage: "rotate.right")
                     Section {
                         Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます",
                               systemImage: "icloud")

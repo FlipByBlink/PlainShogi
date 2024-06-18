@@ -1562,6 +1562,16 @@
         }
       }
     },
+    "駒を2回タップして、盤上の駒を裏返す" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double tap a piece on the board: Turn it"
+          }
+        }
+      }
+    },
     "駒を他のアプリへドラッグして盤面をテキストとして書き出せます。" : {
       "localizations" : {
         "en" : {
