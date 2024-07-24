@@ -1,7 +1,7 @@
 import Combine
 import SwiftUI
 import UniformTypeIdentifiers
-#if os(iOS) || os(visionOS)
+#if os(iOS) || os(visionOS) || os(tvOS)
 import GroupActivities
 #endif
 
@@ -29,7 +29,7 @@ class アプリモデル: スーパークラス, ObservableObject {
         ICloudデータ.synchronize()
     }
     
-#if os(iOS) || os(visionOS)
+#if os(iOS) || os(visionOS) || os(tvOS)
     // ↓ ドラッグ&ドロップ関連
     @Published private(set) var ドラッグ中の駒: ドラッグ対象 = .無し
     // ↓ SharePlay関連
@@ -273,9 +273,11 @@ extension アプリモデル {
     }
 }
 
-#if os(iOS) || os(visionOS) //UIApplicationDelegate, ドラッグ&ドロップ, SharePlay, テキスト書き出し読み込み機能
+#if os(iOS) || os(visionOS) || os(tvOS)//UIApplicationDelegate, ドラッグ&ドロップ, SharePlay, テキスト書き出し読み込み機能
 extension アプリモデル: UIApplicationDelegate {}
+#endif
 
+#if os(iOS) || os(visionOS) //UIApplicationDelegate, ドラッグ&ドロップ, SharePlay, テキスト書き出し読み込み機能
 //MARK: - ==== ドラッグ関連 ====
 extension アプリモデル {
     func この駒をドラッグし始める(_ 場所: 駒の場所) -> NSItemProvider {
@@ -346,7 +348,9 @@ extension アプリモデル {
 #endif
     }
 }
+#endif
 
+#if os(iOS) || os(visionOS) || os(tvOS)
 //MARK: - ==== SharePlay ====
 extension アプリモデル {
     func 新規GroupSessionを受信したら設定する() async {
@@ -454,9 +458,14 @@ extension アプリモデル {
 //MARK: - ==== テキスト書き出し読み込み機能 ====
 extension アプリモデル {
     func 現在の盤面をテキストに変換する() -> String {
+#if !os(tvOS)
         テキスト連携機能.テキストに変換する(self.局面)
+#else
+        ""
+#endif
     }
     func テキストを局面に変換して読み込む(_ テキスト: String) throws {
+#if !os(tvOS)
         if let インポートした局面 = テキスト連携機能.局面モデルに変換する(テキスト) {
             self.局面.現在の局面として適用する(インポートした局面)
             self.SharePlay中なら現在の局面を参加者に送信する()
@@ -464,16 +473,21 @@ extension アプリモデル {
         } else {
             throw Self.テキスト読み込みエラー.局面変換失敗
         }
+#endif
     }
     func 現在の局面をテキストとしてコピー() {
+#if !os(tvOS)
         UIPasteboard.general.string = self.現在の盤面をテキストに変換する()
+#endif
         self.フィードバック.成功()
     }
     func テキストを局面としてペースト() throws {
+#if !os(tvOS)
         guard let テキスト = UIPasteboard.general.string else {
             throw Self.テキスト読み込みエラー.ペーストされたものがテキストではない
         }
         try self.テキストを局面に変換して読み込む(テキスト)
+#endif
     }
     private enum テキスト読み込みエラー: Error {
         case 局面変換失敗, ペーストされたものがテキストではない
@@ -489,13 +503,15 @@ extension アプリモデル {
             } catch {
                 print(#function, error)
             }
+#if !os(tvOS)
             self.ドラッグ中の駒 = .無し
+#endif
         }
     }
 }
 #endif
 
-#if os(watchOS) || os(tvOS)
+#if os(watchOS)
 extension アプリモデル {
     private func SharePlay中なら現在の選択中の駒を参加者に送信する() {
         //Unsupport on watchOS, tvOS

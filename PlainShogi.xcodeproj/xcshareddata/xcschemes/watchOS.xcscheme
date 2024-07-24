@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "128D1566280FE47E003FF480"
-               BuildableName = "&#x5c06;&#x68cb;&#x76e4;.app"
+               BuildableName = "Plain&#x5c06;&#x68cb;&#x76e4;.app"
                BlueprintName = "iOS"
                ReferencedContainer = "container:PlainShogi.xcodeproj">
             </BuildableReference>

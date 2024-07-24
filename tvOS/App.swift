@@ -6,6 +6,7 @@ struct アプリ: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .task { await モデル.新規GroupSessionを受信したら設定する() }
                 .environmentObject(モデル)
         }
     }

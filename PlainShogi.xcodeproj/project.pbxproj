@@ -30,8 +30,8 @@
 		160F46B92B5A4689001FE696 /* 音声フィードバックモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */; };
 		161668582C084CC6008BB921 /* VisionOS向け空間無同期テキスト.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161668572C084CC6008BB921 /* VisionOS向け空間無同期テキスト.swift */; };
 		161668592C084CC6008BB921 /* VisionOS向け空間無同期テキスト.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161668572C084CC6008BB921 /* VisionOS向け空間無同期テキスト.swift */; };
-		1616685A2C085180008BB921 /* VisionOS向けSharePlayプロバイダー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160806002C0849350064FCB2 /* VisionOS向けSharePlayプロバイダー.swift */; };
-		1616685B2C085180008BB921 /* VisionOS向け空間無同期テキスト.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161668572C084CC6008BB921 /* VisionOS向け空間無同期テキスト.swift */; };
+		1616685A2C085180008BB921 /* VisionOS向けSharePlayプロバイダー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 160806002C0849350064FCB2 /* VisionOS向けSharePlayプロバイダー.swift */; };
+		1616685B2C085180008BB921 /* VisionOS向け空間無同期テキスト.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 161668572C084CC6008BB921 /* VisionOS向け空間無同期テキスト.swift */; };
 		1616685D2C08549F008BB921 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1616685C2C085422008BB921 /* PrivacyInfo.xcprivacy */; };
 		1616685E2C0854A0008BB921 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1616685C2C085422008BB921 /* PrivacyInfo.xcprivacy */; };
 		1616685F2C0854A1008BB921 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1616685C2C085422008BB921 /* PrivacyInfo.xcprivacy */; };
@@ -124,8 +124,8 @@
 		169751112ADE80C500443DE2 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
 		169C500E2B64D45900151693 /* VisionOS向けウインドウサイズ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */; };
 		169C500F2B64D45900151693 /* VisionOS向け暗転モード.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */; };
-		169C50102B64D46700151693 /* VisionOS向けウインドウサイズ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */; };
-		169C50112B64D46700151693 /* VisionOS向け暗転モード.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */; };
+		169C50102B64D46700151693 /* VisionOS向けウインドウサイズ.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */; };
+		169C50112B64D46700151693 /* VisionOS向け暗転モード.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */; };
 		169E414A2AE0F9A300CFA307 /* メイン画面の共有ボタン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41492AE0F9A300CFA307 /* メイン画面の共有ボタン.swift */; };
 		169E414D2AE1371300CFA307 /* メニューボタン.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E414C2AE1371300CFA307 /* メニューボタン.swift */; };
 		169E414F2AE1375C00CFA307 /* コマンドボタンズ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E414E2AE1375C00CFA307 /* コマンドボタンズ.swift */; };
@@ -138,6 +138,9 @@
 		169E415F2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */; };
 		16B124602AE28710008EF3A0 /* SharePlay環境構築.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */; };
 		16B124622AE29117008EF3A0 /* アプリ内課金ハンドラー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */; };
+		16C1E34E2C509B6F0098DDF4 /* GroupActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750682ADDFCC100443DE2 /* GroupActivity.swift */; };
+		16C1E34F2C509B7A0098DDF4 /* SharePlay用選択中の駒モデル.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16267B562B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift */; };
+		16C1E3502C509BBA0098DDF4 /* ドラッグ対象.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750812ADE180700443DE2 /* ドラッグ対象.swift */; };
 		16C43AD92AE4A65E009D8E26 /* アプリモデルのスーパークラス.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */; };
 		16C43ADA2AE4A65E009D8E26 /* 王側か玉側か.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750842ADE186000443DE2 /* 王側か玉側か.swift */; };
 		16C43ADB2AE4A65E009D8E26 /* 盤上の駒.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750862ADE188300443DE2 /* 盤上の駒.swift */; };
@@ -310,82 +313,82 @@
 		16E2E1902B63D8590017A9A2 /* 🌐ADAppDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 169751032ADE7B3700443DE2 /* 🌐ADAppDescription.xcstrings */; };
 		16E2E1942B63D8880017A9A2 /* 🌐VersionHistory.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 16E2E1922B63D8880017A9A2 /* 🌐VersionHistory.xcstrings */; };
 		16E2E1952B63D8880017A9A2 /* 🌐AppStoreDescription.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 16E2E1932B63D8880017A9A2 /* 🌐AppStoreDescription.xcstrings */; };
-		16E2E1972B63DB260017A9A2 /* アプリモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
-		16E2E1982B63DB260017A9A2 /* アプリモデルのスーパークラス.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */; };
-		16E2E1992B63DB260017A9A2 /* 局面モデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
-		16E2E19A2B63DB260017A9A2 /* 王側か玉側か.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750842ADE186000443DE2 /* 王側か玉側か.swift */; };
-		16E2E19B2B63DB260017A9A2 /* 盤上の駒.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750862ADE188300443DE2 /* 盤上の駒.swift */; };
-		16E2E19C2B63DB260017A9A2 /* 持ち駒.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1697508D2ADE18CD00443DE2 /* 持ち駒.swift */; };
-		16E2E19D2B63DB260017A9A2 /* 駒の場所.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750912ADE18E900443DE2 /* 駒の場所.swift */; };
-		16E2E19E2B63DB260017A9A2 /* 駒の移動先パターン.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750952ADE18FC00443DE2 /* 駒の移動先パターン.swift */; };
-		16E2E19F2B63DB260017A9A2 /* 手前か対面か.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750992ADE191000443DE2 /* 手前か対面か.swift */; };
-		16E2E1A02B63DB260017A9A2 /* 駒の種類.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1697509D2ADE192200443DE2 /* 駒の種類.swift */; };
-		16E2E1A12B63DB260017A9A2 /* 空の手駒.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750A52ADE19A500443DE2 /* 空の手駒.swift */; };
-		16E2E1A22B63DB260017A9A2 /* シートカテゴリ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* シートカテゴリ.swift */; };
-		16E2E1A32B63DB260017A9A2 /* 字体.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 字体.swift */; };
-		16E2E1A42B63DB260017A9A2 /* 局面プレビュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
-		16E2E1A52B63DB260017A9A2 /* ICloudデータ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */; };
-		16E2E1A62B63DB260017A9A2 /* EnvironmentValues拡張.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */; };
-		16E2E1A72B63DB260017A9A2 /* 不特定エラー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750A12ADE194600443DE2 /* 不特定エラー.swift */; };
-		16E2E1A82B63DB260017A9A2 /* フィードバックモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバックモデル.swift */; };
-		16E2E1A92B63DB260017A9A2 /* システムフィードバック.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16688DD92B595CAC004CE12B /* システムフィードバック.swift */; };
-		16E2E1AA2B63DB260017A9A2 /* 音声フィードバックモデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */; };
-		16E2E1AB2B63DB260017A9A2 /* 🗒️StaticInfo.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
-		16E2E1AC2B63DB260017A9A2 /* App.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 128D156A280FE47E003FF480 /* App.swift */; };
-		16E2E1AD2B63DB260017A9A2 /* ContentView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
-		16E2E1AE2B63DB260017A9A2 /* 将棋View.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F525A7D529F8FB1F001E8D5F /* 将棋View.swift */; };
-		16E2E1AF2B63DB260017A9A2 /* レイアウト.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750AA2ADE220400443DE2 /* レイアウト.swift */; };
-		16E2E1B02B63DB260017A9A2 /* 盤面と段と筋.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E10B2B6357870017A9A2 /* 盤面と段と筋.swift */; };
-		16E2E1B12B63DB260017A9A2 /* 盤面のみ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1132B6359E20017A9A2 /* 盤面のみ.swift */; };
-		16E2E1B22B63DB260017A9A2 /* 盤外.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1112B6359310017A9A2 /* 盤外.swift */; };
-		16E2E1B32B63DB260017A9A2 /* 盤外のコマ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */; };
-		16E2E1B42B63DB260017A9A2 /* コマの見た目.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E10D2B63588C0017A9A2 /* コマの見た目.swift */; };
-		16E2E1B52B63DB260017A9A2 /* 駒テキスト.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E10F2B6358B10017A9A2 /* 駒テキスト.swift */; };
-		16E2E1B62B63DB260017A9A2 /* 成駒確認アラート.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750AC2ADE231000443DE2 /* 成駒確認アラート.swift */; };
-		16E2E1B72B63DB260017A9A2 /* 操作エリア外で駒選択を解除.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750AE2ADE233600443DE2 /* 操作エリア外で駒選択を解除.swift */; };
-		16E2E1B82B63DB260017A9A2 /* オプション変更アニメーション.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750B02ADE23CC00443DE2 /* オプション変更アニメーション.swift */; };
-		16E2E1B92B63DB260017A9A2 /* ツールボタンズ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750772ADE048000443DE2 /* ツールボタンズ.swift */; };
-		16E2E1BA2B63DB260017A9A2 /* シート管理.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* シート管理.swift */; };
-		16E2E1BB2B63DB260017A9A2 /* 増減モード.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 増減モード.swift */; };
-		16E2E1BC2B63DB260017A9A2 /* メニュートップ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* メニュートップ.swift */; };
-		16E2E1BD2B63DB260017A9A2 /* メニューボタン.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E414C2AE1371300CFA307 /* メニューボタン.swift */; };
-		16E2E1BE2B63DB260017A9A2 /* コマンドボタンズ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E414E2AE1375C00CFA307 /* コマンドボタンズ.swift */; };
-		16E2E1BF2B63DB260017A9A2 /* 更にカスタマイズメニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E41562AE14A2E00CFA307 /* 更にカスタマイズメニュー.swift */; };
-		16E2E1C02B63DB260017A9A2 /* 履歴メニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 履歴メニュー.swift */; };
-		16E2E1C12B63DB260017A9A2 /* ブックマークメニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1697506A2ADDFD5100443DE2 /* ブックマークメニュー.swift */; };
-		16E2E1C22B63DB260017A9A2 /* 共有メニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E415A2AE14F6800CFA307 /* 共有メニュー.swift */; };
-		16E2E1C32B63DB260017A9A2 /* 不具合フィードバックメニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E41502AE1388F00CFA307 /* 不具合フィードバックメニュー.swift */; };
-		16E2E1C42B63DB260017A9A2 /* GroupActivity.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750682ADDFCC100443DE2 /* GroupActivity.swift */; };
-		16E2E1C52B63DB260017A9A2 /* SharePlay環境構築.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */; };
-		16E2E1C62B63DB260017A9A2 /* SharePlayインジケーター.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */; };
-		16E2E1C72B63DB260017A9A2 /* SharePlayガイドメニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */; };
-		16E2E1C82B63DB260017A9A2 /* SharePlay紹介メニュー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */; };
-		16E2E1C92B63DB260017A9A2 /* SharePlay用選択中の駒モデル.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16267B562B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift */; };
-		16E2E1CA2B63DB260017A9A2 /* ドラッグ対象.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750812ADE180700443DE2 /* ドラッグ対象.swift */; };
-		16E2E1CB2B63DB260017A9A2 /* ドロップデリゲート.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* ドロップデリゲート.swift */; };
-		16E2E1CC2B63DB260017A9A2 /* メイン画面の共有ボタン.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E41492AE0F9A300CFA307 /* メイン画面の共有ボタン.swift */; };
-		16E2E1CD2B63DB260017A9A2 /* 画像書き出し.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */; };
-		16E2E1CE2B63DB260017A9A2 /* 画像キャッシュハンドラー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160D1CFD2AE26009004E14E2 /* 画像キャッシュハンドラー.swift */; };
-		16E2E1CF2B63DB260017A9A2 /* テキスト連携機能.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */; };
-		16E2E1D02B63DB260017A9A2 /* テキスト共有メニューコンポーネンツ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */; };
-		16E2E1D12B63DB260017A9A2 /* 画像共有メニューコンポーネンツ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */; };
-		16E2E1D22B63DB260017A9A2 /* コマンド.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1697506C2ADDFE5700443DE2 /* コマンド.swift */; };
-		16E2E1D32B63DB260017A9A2 /* 固定値.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1697506E2ADDFE8500443DE2 /* 固定値.swift */; };
-		16E2E1D42B63DB260017A9A2 /* バックグラウンド時に駒選択を解除.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */; };
-		16E2E1D52B63DB260017A9A2 /* 自動スリープ無効化.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */; };
-		16E2E1D62B63DB260017A9A2 /* MacCatalyst.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160D1D052AE26D84004E14E2 /* MacCatalyst.swift */; };
-		16E2E1D72B63DB260017A9A2 /* 広告コンテンツ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */; };
-		16E2E1D82B63DB260017A9A2 /* アプリ内課金ハンドラー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */; };
-		16E2E1D92B63DB260017A9A2 /* ユーザーレビュー依頼.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */; };
-		16E2E1DA2B63DB260017A9A2 /* ℹ️AboutApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */; };
-		16E2E1DB2B63DB260017A9A2 /* 📣ADModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750FB2ADE7AB900443DE2 /* 📣ADModel.swift */; };
-		16E2E1DC2B63DB260017A9A2 /* 📣ADComponents.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169751092ADE7BB800443DE2 /* 📣ADComponents.swift */; };
-		16E2E1DD2B63DB260017A9A2 /* 🛒InAppPurchaseModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750FC2ADE7AB900443DE2 /* 🛒InAppPurchaseModel.swift */; };
-		16E2E1DE2B63DB260017A9A2 /* 🛒InAppPurchaseView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */; };
+		16E2E1972B63DB260017A9A2 /* アプリモデル.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5BD6A0F2A00BF4C004AD4A5 /* アプリモデル.swift */; };
+		16E2E1982B63DB260017A9A2 /* アプリモデルのスーパークラス.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 160D1D012AE26CB0004E14E2 /* アプリモデルのスーパークラス.swift */; };
+		16E2E1992B63DB260017A9A2 /* 局面モデル.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5BD6A0E2A00BF4C004AD4A5 /* 局面モデル.swift */; };
+		16E2E19A2B63DB260017A9A2 /* 王側か玉側か.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750842ADE186000443DE2 /* 王側か玉側か.swift */; };
+		16E2E19B2B63DB260017A9A2 /* 盤上の駒.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750862ADE188300443DE2 /* 盤上の駒.swift */; };
+		16E2E19C2B63DB260017A9A2 /* 持ち駒.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 1697508D2ADE18CD00443DE2 /* 持ち駒.swift */; };
+		16E2E19D2B63DB260017A9A2 /* 駒の場所.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750912ADE18E900443DE2 /* 駒の場所.swift */; };
+		16E2E19E2B63DB260017A9A2 /* 駒の移動先パターン.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750952ADE18FC00443DE2 /* 駒の移動先パターン.swift */; };
+		16E2E19F2B63DB260017A9A2 /* 手前か対面か.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750992ADE191000443DE2 /* 手前か対面か.swift */; };
+		16E2E1A02B63DB260017A9A2 /* 駒の種類.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 1697509D2ADE192200443DE2 /* 駒の種類.swift */; };
+		16E2E1A12B63DB260017A9A2 /* 空の手駒.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750A52ADE19A500443DE2 /* 空の手駒.swift */; };
+		16E2E1A22B63DB260017A9A2 /* シートカテゴリ.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5119B952A0144460027A74C /* シートカテゴリ.swift */; };
+		16E2E1A32B63DB260017A9A2 /* 字体.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5B5578A29FF851800A14074 /* 字体.swift */; };
+		16E2E1A42B63DB260017A9A2 /* 局面プレビュー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
+		16E2E1A52B63DB260017A9A2 /* ICloudデータ.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5E0549E29FB52A1004DC425 /* ICloudデータ.swift */; };
+		16E2E1A62B63DB260017A9A2 /* EnvironmentValues拡張.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */; };
+		16E2E1A72B63DB260017A9A2 /* 不特定エラー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750A12ADE194600443DE2 /* 不特定エラー.swift */; };
+		16E2E1A82B63DB260017A9A2 /* フィードバックモデル.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F52437B229F613A600EA770E /* フィードバックモデル.swift */; };
+		16E2E1A92B63DB260017A9A2 /* システムフィードバック.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16688DD92B595CAC004CE12B /* システムフィードバック.swift */; };
+		16E2E1AA2B63DB260017A9A2 /* 音声フィードバックモデル.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */; };
+		16E2E1AB2B63DB260017A9A2 /* 🗒️StaticInfo.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
+		16E2E1AC2B63DB260017A9A2 /* App.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 128D156A280FE47E003FF480 /* App.swift */; };
+		16E2E1AD2B63DB260017A9A2 /* ContentView.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 128D156C280FE47E003FF480 /* ContentView.swift */; };
+		16E2E1AE2B63DB260017A9A2 /* 将棋View.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F525A7D529F8FB1F001E8D5F /* 将棋View.swift */; };
+		16E2E1AF2B63DB260017A9A2 /* レイアウト.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750AA2ADE220400443DE2 /* レイアウト.swift */; };
+		16E2E1B02B63DB260017A9A2 /* 盤面と段と筋.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16E2E10B2B6357870017A9A2 /* 盤面と段と筋.swift */; };
+		16E2E1B12B63DB260017A9A2 /* 盤面のみ.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16E2E1132B6359E20017A9A2 /* 盤面のみ.swift */; };
+		16E2E1B22B63DB260017A9A2 /* 盤外.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16E2E1112B6359310017A9A2 /* 盤外.swift */; };
+		16E2E1B32B63DB260017A9A2 /* 盤外のコマ.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */; };
+		16E2E1B42B63DB260017A9A2 /* コマの見た目.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16E2E10D2B63588C0017A9A2 /* コマの見た目.swift */; };
+		16E2E1B52B63DB260017A9A2 /* 駒テキスト.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16E2E10F2B6358B10017A9A2 /* 駒テキスト.swift */; };
+		16E2E1B62B63DB260017A9A2 /* 成駒確認アラート.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750AC2ADE231000443DE2 /* 成駒確認アラート.swift */; };
+		16E2E1B72B63DB260017A9A2 /* 操作エリア外で駒選択を解除.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750AE2ADE233600443DE2 /* 操作エリア外で駒選択を解除.swift */; };
+		16E2E1B82B63DB260017A9A2 /* オプション変更アニメーション.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750B02ADE23CC00443DE2 /* オプション変更アニメーション.swift */; };
+		16E2E1B92B63DB260017A9A2 /* ツールボタンズ.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750772ADE048000443DE2 /* ツールボタンズ.swift */; };
+		16E2E1BA2B63DB260017A9A2 /* シート管理.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F57D6F0629FCD60D00EA0D79 /* シート管理.swift */; };
+		16E2E1BB2B63DB260017A9A2 /* 増減モード.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 127132E72873CDF20008AE46 /* 増減モード.swift */; };
+		16E2E1BC2B63DB260017A9A2 /* メニュートップ.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 12F4444D286D4B580008A663 /* メニュートップ.swift */; };
+		16E2E1BD2B63DB260017A9A2 /* メニューボタン.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169E414C2AE1371300CFA307 /* メニューボタン.swift */; };
+		16E2E1BE2B63DB260017A9A2 /* コマンドボタンズ.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169E414E2AE1375C00CFA307 /* コマンドボタンズ.swift */; };
+		16E2E1BF2B63DB260017A9A2 /* 更にカスタマイズメニュー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169E41562AE14A2E00CFA307 /* 更にカスタマイズメニュー.swift */; };
+		16E2E1C02B63DB260017A9A2 /* 履歴メニュー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5C9FAFE296CF7BB00B513D8 /* 履歴メニュー.swift */; };
+		16E2E1C12B63DB260017A9A2 /* ブックマークメニュー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 1697506A2ADDFD5100443DE2 /* ブックマークメニュー.swift */; };
+		16E2E1C22B63DB260017A9A2 /* 共有メニュー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169E415A2AE14F6800CFA307 /* 共有メニュー.swift */; };
+		16E2E1C32B63DB260017A9A2 /* 不具合フィードバックメニュー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169E41502AE1388F00CFA307 /* 不具合フィードバックメニュー.swift */; };
+		16E2E1C42B63DB260017A9A2 /* GroupActivity.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750682ADDFCC100443DE2 /* GroupActivity.swift */; };
+		16E2E1C52B63DB260017A9A2 /* SharePlay環境構築.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16B1245F2AE28710008EF3A0 /* SharePlay環境構築.swift */; };
+		16E2E1C62B63DB260017A9A2 /* SharePlayインジケーター.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */; };
+		16E2E1C72B63DB260017A9A2 /* SharePlayガイドメニュー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169E41522AE1491900CFA307 /* SharePlayガイドメニュー.swift */; };
+		16E2E1C82B63DB260017A9A2 /* SharePlay紹介メニュー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169E41542AE1495600CFA307 /* SharePlay紹介メニュー.swift */; };
+		16E2E1C92B63DB260017A9A2 /* SharePlay用選択中の駒モデル.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16267B562B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift */; };
+		16E2E1CA2B63DB260017A9A2 /* ドラッグ対象.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750812ADE180700443DE2 /* ドラッグ対象.swift */; };
+		16E2E1CB2B63DB260017A9A2 /* ドロップデリゲート.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 12D424412871893D002D3E80 /* ドロップデリゲート.swift */; };
+		16E2E1CC2B63DB260017A9A2 /* メイン画面の共有ボタン.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169E41492AE0F9A300CFA307 /* メイン画面の共有ボタン.swift */; };
+		16E2E1CD2B63DB260017A9A2 /* 画像書き出し.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 161FCCE82ADF857B0088E6AA /* 画像書き出し.swift */; };
+		16E2E1CE2B63DB260017A9A2 /* 画像キャッシュハンドラー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 160D1CFD2AE26009004E14E2 /* 画像キャッシュハンドラー.swift */; };
+		16E2E1CF2B63DB260017A9A2 /* テキスト連携機能.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F54C93D6295D2DE6008D1D60 /* テキスト連携機能.swift */; };
+		16E2E1D02B63DB260017A9A2 /* テキスト共有メニューコンポーネンツ.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169E415C2AE1E76D00CFA307 /* テキスト共有メニューコンポーネンツ.swift */; };
+		16E2E1D12B63DB260017A9A2 /* 画像共有メニューコンポーネンツ.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169E415E2AE1FBE300CFA307 /* 画像共有メニューコンポーネンツ.swift */; };
+		16E2E1D22B63DB260017A9A2 /* コマンド.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 1697506C2ADDFE5700443DE2 /* コマンド.swift */; };
+		16E2E1D32B63DB260017A9A2 /* 固定値.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 1697506E2ADDFE8500443DE2 /* 固定値.swift */; };
+		16E2E1D42B63DB260017A9A2 /* バックグラウンド時に駒選択を解除.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 161FCCCA2ADE8FC80088E6AA /* バックグラウンド時に駒選択を解除.swift */; };
+		16E2E1D52B63DB260017A9A2 /* 自動スリープ無効化.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */; };
+		16E2E1D62B63DB260017A9A2 /* MacCatalyst.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 160D1D052AE26D84004E14E2 /* MacCatalyst.swift */; };
+		16E2E1D72B63DB260017A9A2 /* 広告コンテンツ.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */; };
+		16E2E1D82B63DB260017A9A2 /* アプリ内課金ハンドラー.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */; };
+		16E2E1D92B63DB260017A9A2 /* ユーザーレビュー依頼.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */; };
+		16E2E1DA2B63DB260017A9A2 /* ℹ️AboutApp.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */; };
+		16E2E1DB2B63DB260017A9A2 /* 📣ADModel.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750FB2ADE7AB900443DE2 /* 📣ADModel.swift */; };
+		16E2E1DC2B63DB260017A9A2 /* 📣ADComponents.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169751092ADE7BB800443DE2 /* 📣ADComponents.swift */; };
+		16E2E1DD2B63DB260017A9A2 /* 🛒InAppPurchaseModel.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169750FC2ADE7AB900443DE2 /* 🛒InAppPurchaseModel.swift */; };
+		16E2E1DE2B63DB260017A9A2 /* 🛒InAppPurchaseView.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */; };
 		16E2E1E02B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */; };
 		16E2E1E32B647CD80017A9A2 /* 盤面のコマもしくはマス.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
-		16E2E1E42B647E6A0017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
-		16E2E1E52B647E6A0017A9A2 /* VisionOS向けHoverEffect.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */; };
+		16E2E1E42B647E6A0017A9A2 /* 盤面のコマもしくはマス.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
+		16E2E1E52B647E6A0017A9A2 /* VisionOS向けHoverEffect.swift in Copy Files */ = {isa = PBXBuildFile; fileRef = 16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */; };
 		16E2E1E72B6481A50017A9A2 /* VisionOS向けHoverEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */; };
 		16E2E1E82B6481B40017A9A2 /* VisionOS向けHoverEffect.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1DF2B647A9A0017A9A2 /* VisionOS向けHoverEffect.swift */; };
 		16E2E1E92B6481F70017A9A2 /* 盤面のコマもしくはマス.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1E22B647CD80017A9A2 /* 盤面のコマもしくはマス.swift */; };
@@ -606,91 +609,92 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		16E2E1962B63DAFF0017A9A2 /* CopyFiles */ = {
+		16E2E1962B63DAFF0017A9A2 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "📁SourceCode";
 			dstSubfolderSpec = 7;
 			files = (
-				1616685A2C085180008BB921 /* VisionOS向けSharePlayプロバイダー.swift in CopyFiles */,
-				1616685B2C085180008BB921 /* VisionOS向け空間無同期テキスト.swift in CopyFiles */,
-				169C50102B64D46700151693 /* VisionOS向けウインドウサイズ.swift in CopyFiles */,
-				169C50112B64D46700151693 /* VisionOS向け暗転モード.swift in CopyFiles */,
-				16E2E1E42B647E6A0017A9A2 /* 盤面のコマもしくはマス.swift in CopyFiles */,
-				16E2E1E52B647E6A0017A9A2 /* VisionOS向けHoverEffect.swift in CopyFiles */,
-				16E2E1972B63DB260017A9A2 /* アプリモデル.swift in CopyFiles */,
-				16E2E1982B63DB260017A9A2 /* アプリモデルのスーパークラス.swift in CopyFiles */,
-				16E2E1992B63DB260017A9A2 /* 局面モデル.swift in CopyFiles */,
-				16E2E19A2B63DB260017A9A2 /* 王側か玉側か.swift in CopyFiles */,
-				16E2E19B2B63DB260017A9A2 /* 盤上の駒.swift in CopyFiles */,
-				16E2E19C2B63DB260017A9A2 /* 持ち駒.swift in CopyFiles */,
-				16E2E19D2B63DB260017A9A2 /* 駒の場所.swift in CopyFiles */,
-				16E2E19E2B63DB260017A9A2 /* 駒の移動先パターン.swift in CopyFiles */,
-				16E2E19F2B63DB260017A9A2 /* 手前か対面か.swift in CopyFiles */,
-				16E2E1A02B63DB260017A9A2 /* 駒の種類.swift in CopyFiles */,
-				16E2E1A12B63DB260017A9A2 /* 空の手駒.swift in CopyFiles */,
-				16E2E1A22B63DB260017A9A2 /* シートカテゴリ.swift in CopyFiles */,
-				16E2E1A32B63DB260017A9A2 /* 字体.swift in CopyFiles */,
-				16E2E1A42B63DB260017A9A2 /* 局面プレビュー.swift in CopyFiles */,
-				16E2E1A52B63DB260017A9A2 /* ICloudデータ.swift in CopyFiles */,
-				16E2E1A62B63DB260017A9A2 /* EnvironmentValues拡張.swift in CopyFiles */,
-				16E2E1A72B63DB260017A9A2 /* 不特定エラー.swift in CopyFiles */,
-				16E2E1A82B63DB260017A9A2 /* フィードバックモデル.swift in CopyFiles */,
-				16E2E1A92B63DB260017A9A2 /* システムフィードバック.swift in CopyFiles */,
-				16E2E1AA2B63DB260017A9A2 /* 音声フィードバックモデル.swift in CopyFiles */,
-				16E2E1AB2B63DB260017A9A2 /* 🗒️StaticInfo.swift in CopyFiles */,
-				16E2E1AC2B63DB260017A9A2 /* App.swift in CopyFiles */,
-				16E2E1AD2B63DB260017A9A2 /* ContentView.swift in CopyFiles */,
-				16E2E1AE2B63DB260017A9A2 /* 将棋View.swift in CopyFiles */,
-				16E2E1AF2B63DB260017A9A2 /* レイアウト.swift in CopyFiles */,
-				16E2E1B02B63DB260017A9A2 /* 盤面と段と筋.swift in CopyFiles */,
-				16E2E1B12B63DB260017A9A2 /* 盤面のみ.swift in CopyFiles */,
-				16E2E1B22B63DB260017A9A2 /* 盤外.swift in CopyFiles */,
-				16E2E1B32B63DB260017A9A2 /* 盤外のコマ.swift in CopyFiles */,
-				16E2E1B42B63DB260017A9A2 /* コマの見た目.swift in CopyFiles */,
-				16E2E1B52B63DB260017A9A2 /* 駒テキスト.swift in CopyFiles */,
-				16E2E1B62B63DB260017A9A2 /* 成駒確認アラート.swift in CopyFiles */,
-				16E2E1B72B63DB260017A9A2 /* 操作エリア外で駒選択を解除.swift in CopyFiles */,
-				16E2E1B82B63DB260017A9A2 /* オプション変更アニメーション.swift in CopyFiles */,
-				16E2E1B92B63DB260017A9A2 /* ツールボタンズ.swift in CopyFiles */,
-				16E2E1BA2B63DB260017A9A2 /* シート管理.swift in CopyFiles */,
-				16E2E1BB2B63DB260017A9A2 /* 増減モード.swift in CopyFiles */,
-				16E2E1BC2B63DB260017A9A2 /* メニュートップ.swift in CopyFiles */,
-				16E2E1BD2B63DB260017A9A2 /* メニューボタン.swift in CopyFiles */,
-				16E2E1BE2B63DB260017A9A2 /* コマンドボタンズ.swift in CopyFiles */,
-				16E2E1BF2B63DB260017A9A2 /* 更にカスタマイズメニュー.swift in CopyFiles */,
-				16E2E1C02B63DB260017A9A2 /* 履歴メニュー.swift in CopyFiles */,
-				16E2E1C12B63DB260017A9A2 /* ブックマークメニュー.swift in CopyFiles */,
-				16E2E1C22B63DB260017A9A2 /* 共有メニュー.swift in CopyFiles */,
-				16E2E1C32B63DB260017A9A2 /* 不具合フィードバックメニュー.swift in CopyFiles */,
-				16E2E1C42B63DB260017A9A2 /* GroupActivity.swift in CopyFiles */,
-				16E2E1C52B63DB260017A9A2 /* SharePlay環境構築.swift in CopyFiles */,
-				16E2E1C62B63DB260017A9A2 /* SharePlayインジケーター.swift in CopyFiles */,
-				16E2E1C72B63DB260017A9A2 /* SharePlayガイドメニュー.swift in CopyFiles */,
-				16E2E1C82B63DB260017A9A2 /* SharePlay紹介メニュー.swift in CopyFiles */,
-				16E2E1C92B63DB260017A9A2 /* SharePlay用選択中の駒モデル.swift in CopyFiles */,
-				16E2E1CA2B63DB260017A9A2 /* ドラッグ対象.swift in CopyFiles */,
-				16E2E1CB2B63DB260017A9A2 /* ドロップデリゲート.swift in CopyFiles */,
-				16E2E1CC2B63DB260017A9A2 /* メイン画面の共有ボタン.swift in CopyFiles */,
-				16E2E1CD2B63DB260017A9A2 /* 画像書き出し.swift in CopyFiles */,
-				16E2E1CE2B63DB260017A9A2 /* 画像キャッシュハンドラー.swift in CopyFiles */,
-				16E2E1CF2B63DB260017A9A2 /* テキスト連携機能.swift in CopyFiles */,
-				16E2E1D02B63DB260017A9A2 /* テキスト共有メニューコンポーネンツ.swift in CopyFiles */,
-				16E2E1D12B63DB260017A9A2 /* 画像共有メニューコンポーネンツ.swift in CopyFiles */,
-				16E2E1D22B63DB260017A9A2 /* コマンド.swift in CopyFiles */,
-				16E2E1D32B63DB260017A9A2 /* 固定値.swift in CopyFiles */,
-				16E2E1D42B63DB260017A9A2 /* バックグラウンド時に駒選択を解除.swift in CopyFiles */,
-				16E2E1D52B63DB260017A9A2 /* 自動スリープ無効化.swift in CopyFiles */,
-				16E2E1D62B63DB260017A9A2 /* MacCatalyst.swift in CopyFiles */,
-				16E2E1D72B63DB260017A9A2 /* 広告コンテンツ.swift in CopyFiles */,
-				16E2E1D82B63DB260017A9A2 /* アプリ内課金ハンドラー.swift in CopyFiles */,
-				16E2E1D92B63DB260017A9A2 /* ユーザーレビュー依頼.swift in CopyFiles */,
-				16E2E1DA2B63DB260017A9A2 /* ℹ️AboutApp.swift in CopyFiles */,
-				16E2E1DB2B63DB260017A9A2 /* 📣ADModel.swift in CopyFiles */,
-				16E2E1DC2B63DB260017A9A2 /* 📣ADComponents.swift in CopyFiles */,
-				16E2E1DD2B63DB260017A9A2 /* 🛒InAppPurchaseModel.swift in CopyFiles */,
-				16E2E1DE2B63DB260017A9A2 /* 🛒InAppPurchaseView.swift in CopyFiles */,
+				1616685A2C085180008BB921 /* VisionOS向けSharePlayプロバイダー.swift in Copy Files */,
+				1616685B2C085180008BB921 /* VisionOS向け空間無同期テキスト.swift in Copy Files */,
+				169C50102B64D46700151693 /* VisionOS向けウインドウサイズ.swift in Copy Files */,
+				169C50112B64D46700151693 /* VisionOS向け暗転モード.swift in Copy Files */,
+				16E2E1E42B647E6A0017A9A2 /* 盤面のコマもしくはマス.swift in Copy Files */,
+				16E2E1E52B647E6A0017A9A2 /* VisionOS向けHoverEffect.swift in Copy Files */,
+				16E2E1972B63DB260017A9A2 /* アプリモデル.swift in Copy Files */,
+				16E2E1982B63DB260017A9A2 /* アプリモデルのスーパークラス.swift in Copy Files */,
+				16E2E1992B63DB260017A9A2 /* 局面モデル.swift in Copy Files */,
+				16E2E19A2B63DB260017A9A2 /* 王側か玉側か.swift in Copy Files */,
+				16E2E19B2B63DB260017A9A2 /* 盤上の駒.swift in Copy Files */,
+				16E2E19C2B63DB260017A9A2 /* 持ち駒.swift in Copy Files */,
+				16E2E19D2B63DB260017A9A2 /* 駒の場所.swift in Copy Files */,
+				16E2E19E2B63DB260017A9A2 /* 駒の移動先パターン.swift in Copy Files */,
+				16E2E19F2B63DB260017A9A2 /* 手前か対面か.swift in Copy Files */,
+				16E2E1A02B63DB260017A9A2 /* 駒の種類.swift in Copy Files */,
+				16E2E1A12B63DB260017A9A2 /* 空の手駒.swift in Copy Files */,
+				16E2E1A22B63DB260017A9A2 /* シートカテゴリ.swift in Copy Files */,
+				16E2E1A32B63DB260017A9A2 /* 字体.swift in Copy Files */,
+				16E2E1A42B63DB260017A9A2 /* 局面プレビュー.swift in Copy Files */,
+				16E2E1A52B63DB260017A9A2 /* ICloudデータ.swift in Copy Files */,
+				16E2E1A62B63DB260017A9A2 /* EnvironmentValues拡張.swift in Copy Files */,
+				16E2E1A72B63DB260017A9A2 /* 不特定エラー.swift in Copy Files */,
+				16E2E1A82B63DB260017A9A2 /* フィードバックモデル.swift in Copy Files */,
+				16E2E1A92B63DB260017A9A2 /* システムフィードバック.swift in Copy Files */,
+				16E2E1AA2B63DB260017A9A2 /* 音声フィードバックモデル.swift in Copy Files */,
+				16E2E1AB2B63DB260017A9A2 /* 🗒️StaticInfo.swift in Copy Files */,
+				16E2E1AC2B63DB260017A9A2 /* App.swift in Copy Files */,
+				16E2E1AD2B63DB260017A9A2 /* ContentView.swift in Copy Files */,
+				16E2E1AE2B63DB260017A9A2 /* 将棋View.swift in Copy Files */,
+				16E2E1AF2B63DB260017A9A2 /* レイアウト.swift in Copy Files */,
+				16E2E1B02B63DB260017A9A2 /* 盤面と段と筋.swift in Copy Files */,
+				16E2E1B12B63DB260017A9A2 /* 盤面のみ.swift in Copy Files */,
+				16E2E1B22B63DB260017A9A2 /* 盤外.swift in Copy Files */,
+				16E2E1B32B63DB260017A9A2 /* 盤外のコマ.swift in Copy Files */,
+				16E2E1B42B63DB260017A9A2 /* コマの見た目.swift in Copy Files */,
+				16E2E1B52B63DB260017A9A2 /* 駒テキスト.swift in Copy Files */,
+				16E2E1B62B63DB260017A9A2 /* 成駒確認アラート.swift in Copy Files */,
+				16E2E1B72B63DB260017A9A2 /* 操作エリア外で駒選択を解除.swift in Copy Files */,
+				16E2E1B82B63DB260017A9A2 /* オプション変更アニメーション.swift in Copy Files */,
+				16E2E1B92B63DB260017A9A2 /* ツールボタンズ.swift in Copy Files */,
+				16E2E1BA2B63DB260017A9A2 /* シート管理.swift in Copy Files */,
+				16E2E1BB2B63DB260017A9A2 /* 増減モード.swift in Copy Files */,
+				16E2E1BC2B63DB260017A9A2 /* メニュートップ.swift in Copy Files */,
+				16E2E1BD2B63DB260017A9A2 /* メニューボタン.swift in Copy Files */,
+				16E2E1BE2B63DB260017A9A2 /* コマンドボタンズ.swift in Copy Files */,
+				16E2E1BF2B63DB260017A9A2 /* 更にカスタマイズメニュー.swift in Copy Files */,
+				16E2E1C02B63DB260017A9A2 /* 履歴メニュー.swift in Copy Files */,
+				16E2E1C12B63DB260017A9A2 /* ブックマークメニュー.swift in Copy Files */,
+				16E2E1C22B63DB260017A9A2 /* 共有メニュー.swift in Copy Files */,
+				16E2E1C32B63DB260017A9A2 /* 不具合フィードバックメニュー.swift in Copy Files */,
+				16E2E1C42B63DB260017A9A2 /* GroupActivity.swift in Copy Files */,
+				16E2E1C52B63DB260017A9A2 /* SharePlay環境構築.swift in Copy Files */,
+				16E2E1C62B63DB260017A9A2 /* SharePlayインジケーター.swift in Copy Files */,
+				16E2E1C72B63DB260017A9A2 /* SharePlayガイドメニュー.swift in Copy Files */,
+				16E2E1C82B63DB260017A9A2 /* SharePlay紹介メニュー.swift in Copy Files */,
+				16E2E1C92B63DB260017A9A2 /* SharePlay用選択中の駒モデル.swift in Copy Files */,
+				16E2E1CA2B63DB260017A9A2 /* ドラッグ対象.swift in Copy Files */,
+				16E2E1CB2B63DB260017A9A2 /* ドロップデリゲート.swift in Copy Files */,
+				16E2E1CC2B63DB260017A9A2 /* メイン画面の共有ボタン.swift in Copy Files */,
+				16E2E1CD2B63DB260017A9A2 /* 画像書き出し.swift in Copy Files */,
+				16E2E1CE2B63DB260017A9A2 /* 画像キャッシュハンドラー.swift in Copy Files */,
+				16E2E1CF2B63DB260017A9A2 /* テキスト連携機能.swift in Copy Files */,
+				16E2E1D02B63DB260017A9A2 /* テキスト共有メニューコンポーネンツ.swift in Copy Files */,
+				16E2E1D12B63DB260017A9A2 /* 画像共有メニューコンポーネンツ.swift in Copy Files */,
+				16E2E1D22B63DB260017A9A2 /* コマンド.swift in Copy Files */,
+				16E2E1D32B63DB260017A9A2 /* 固定値.swift in Copy Files */,
+				16E2E1D42B63DB260017A9A2 /* バックグラウンド時に駒選択を解除.swift in Copy Files */,
+				16E2E1D52B63DB260017A9A2 /* 自動スリープ無効化.swift in Copy Files */,
+				16E2E1D62B63DB260017A9A2 /* MacCatalyst.swift in Copy Files */,
+				16E2E1D72B63DB260017A9A2 /* 広告コンテンツ.swift in Copy Files */,
+				16E2E1D82B63DB260017A9A2 /* アプリ内課金ハンドラー.swift in Copy Files */,
+				16E2E1D92B63DB260017A9A2 /* ユーザーレビュー依頼.swift in Copy Files */,
+				16E2E1DA2B63DB260017A9A2 /* ℹ️AboutApp.swift in Copy Files */,
+				16E2E1DB2B63DB260017A9A2 /* 📣ADModel.swift in Copy Files */,
+				16E2E1DC2B63DB260017A9A2 /* 📣ADComponents.swift in Copy Files */,
+				16E2E1DD2B63DB260017A9A2 /* 🛒InAppPurchaseModel.swift in Copy Files */,
+				16E2E1DE2B63DB260017A9A2 /* 🛒InAppPurchaseView.swift in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F51F03A72A00D03400F05874 /* Embed Foundation Extensions */ = {
@@ -719,7 +723,7 @@
 
 /* Begin PBXFileReference section */
 		127132E72873CDF20008AE46 /* 増減モード.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "増減モード.swift"; sourceTree = "<group>"; };
-		128D1567280FE47E003FF480 /* 将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		128D1567280FE47E003FF480 /* Plain将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Plain将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		128D156A280FE47E003FF480 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		128D156C280FE47E003FF480 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		128D156E280FE47F003FF480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -814,7 +818,7 @@
 		16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤外のコマ.swift"; sourceTree = "<group>"; };
 		16E2E11F2B6375880017A9A2 /* 🌐VersionHistory.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐VersionHistory.xcstrings"; sourceTree = "<group>"; };
 		16E2E1212B6375880017A9A2 /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
-		16E2E1272B63C1750017A9A2 /* visionOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = visionOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16E2E1272B63C1750017A9A2 /* Plain将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Plain将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E2E1312B63C1780017A9A2 /* アプリアイコン.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "アプリアイコン.xcassets"; sourceTree = "<group>"; };
 		16E2E1362B63C1780017A9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16E2E13B2B63C37F0017A9A2 /* アプリアイコン.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "アプリアイコン.xcassets"; sourceTree = "<group>"; };
@@ -831,7 +835,7 @@
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
 		F5119B952A0144460027A74C /* シートカテゴリ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "シートカテゴリ.swift"; sourceTree = "<group>"; };
-		F5119BA32A0291000027A74C /* tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5119BA32A0291000027A74C /* Plain将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Plain将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5119BA52A0291000027A74C /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		F5119BA72A0291000027A74C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F5119BA92A0291020027A74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -926,11 +930,11 @@
 		128D1568280FE47E003FF480 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				128D1567280FE47E003FF480 /* 将棋盤.app */,
+				128D1567280FE47E003FF480 /* Plain将棋盤.app */,
 				F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */,
 				F51F03992A00D03200F05874 /* Widget for watchOS.appex */,
-				F5119BA32A0291000027A74C /* tvOS.app */,
-				16E2E1272B63C1750017A9A2 /* visionOS.app */,
+				F5119BA32A0291000027A74C /* Plain将棋盤.app */,
+				16E2E1272B63C1750017A9A2 /* Plain将棋盤.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1374,7 +1378,7 @@
 			);
 			name = iOS;
 			productName = PlainShougi;
-			productReference = 128D1567280FE47E003FF480 /* 将棋盤.app */;
+			productReference = 128D1567280FE47E003FF480 /* Plain将棋盤.app */;
 			productType = "com.apple.product-type.application";
 		};
 		16E2E1262B63C1750017A9A2 /* visionOS */ = {
@@ -1384,7 +1388,7 @@
 				16E2E1232B63C1750017A9A2 /* Sources */,
 				16E2E1242B63C1750017A9A2 /* Frameworks */,
 				16E2E1252B63C1750017A9A2 /* Resources */,
-				16E2E1962B63DAFF0017A9A2 /* CopyFiles */,
+				16E2E1962B63DAFF0017A9A2 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -1394,7 +1398,7 @@
 			packageProductDependencies = (
 			);
 			productName = PlainShogiBoardForVisionOS;
-			productReference = 16E2E1272B63C1750017A9A2 /* visionOS.app */;
+			productReference = 16E2E1272B63C1750017A9A2 /* Plain将棋盤.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F5119BA22A0291000027A74C /* tvOS */ = {
@@ -1411,7 +1415,7 @@
 			);
 			name = tvOS;
 			productName = "PS TV App";
-			productReference = F5119BA32A0291000027A74C /* tvOS.app */;
+			productReference = F5119BA32A0291000027A74C /* Plain将棋盤.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F51F03982A00D03200F05874 /* Widget for watchOS */ = {
@@ -1768,11 +1772,13 @@
 				1697507B2ADE0F5700443DE2 /* FocusedValues拡張.swift in Sources */,
 				1697508A2ADE189000443DE2 /* 王側か玉側か.swift in Sources */,
 				F5119BB12A0292580027A74C /* アプリモデル.swift in Sources */,
+				16C1E34E2C509B6F0098DDF4 /* GroupActivity.swift in Sources */,
 				F58C480F2A04CA38006D7C55 /* 増減モード.swift in Sources */,
 				169750A82ADE19A500443DE2 /* 空の手駒.swift in Sources */,
 				1697509C2ADE191000443DE2 /* 手前か対面か.swift in Sources */,
 				1697508C2ADE189600443DE2 /* 盤上の駒.swift in Sources */,
 				169750B62ADE254400443DE2 /* 成駒確認アラート.swift in Sources */,
+				16C1E3502C509BBA0098DDF4 /* ドラッグ対象.swift in Sources */,
 				169750B42ADE251900443DE2 /* レイアウト.swift in Sources */,
 				169751112ADE80C500443DE2 /* 🗒️StaticInfo.swift in Sources */,
 				F5119BB82A0295680027A74C /* 字体.swift in Sources */,
@@ -1789,6 +1795,7 @@
 				F5119BA82A0291000027A74C /* ContentView.swift in Sources */,
 				16688DDC2B595CAC004CE12B /* システムフィードバック.swift in Sources */,
 				169750B82ADE255900443DE2 /* オプション変更アニメーション.swift in Sources */,
+				16C1E34F2C509B7A0098DDF4 /* SharePlay用選択中の駒モデル.swift in Sources */,
 				F5119BB32A0292580027A74C /* シートカテゴリ.swift in Sources */,
 				169750A02ADE192200443DE2 /* 駒の種類.swift in Sources */,
 				F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */,
@@ -2023,7 +2030,7 @@
 				);
 				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
-				PRODUCT_NAME = "将棋盤";
+				PRODUCT_NAME = "Plain将棋盤";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -2062,7 +2069,7 @@
 				);
 				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
-				PRODUCT_NAME = "将棋盤";
+				PRODUCT_NAME = "Plain将棋盤";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -2095,7 +2102,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Plain将棋盤";
 				SDKROOT = xros;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -2129,7 +2136,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Plain将棋盤";
 				SDKROOT = xros;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2162,7 +2169,7 @@
 				);
 				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Plain将棋盤";
 				SDKROOT = appletvos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2194,7 +2201,7 @@
 				);
 				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Plain将棋盤";
 				SDKROOT = appletvos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
