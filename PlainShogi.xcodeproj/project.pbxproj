@@ -827,6 +827,8 @@
 		16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisionOS向け暗転モード.swift"; sourceTree = "<group>"; };
 		16EF413A2B5D13CD002312FA /* appstore_badge.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = appstore_badge.svg; sourceTree = "<group>"; };
 		16EF413B2B5D13F1002312FA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		1D0CBE042EC0BFF900C38316 /* nearby_SharePlay_demo_640w.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nearby_SharePlay_demo_640w.gif; sourceTree = "<group>"; };
+		1D0CBE052EC0C31F00C38316 /* persona_SharePlay_demo_640w.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = persona_SharePlay_demo_640w.gif; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -1189,6 +1191,8 @@
 				169750BE2ADE646600443DE2 /* Screenshots.png */,
 				169750BC2ADE646600443DE2 /* SharePlay.png */,
 				1669BEB22B6B435200D0FEEB /* visionOS.jpg */,
+				1D0CBE052EC0C31F00C38316 /* persona_SharePlay_demo_640w.gif */,
+				1D0CBE042EC0BFF900C38316 /* nearby_SharePlay_demo_640w.gif */,
 			);
 			path = "README assets";
 			sourceTree = "<group>";

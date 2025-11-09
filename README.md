@@ -31,6 +31,8 @@ Options include font size and weight, serif font, English term, etc.
 
 <img src="Shared/サポートファイル/その他/README assets/Screenshots.png" width="600">
 
+<img src="Shared/サポートファイル/その他/README assets/visionOS.jpg" width="600">
+
 
 ### SharePlay
 複数人で1つの将棋盤を同時に操作できます。
@@ -41,7 +43,7 @@ SharePlay機能では「2人でシンプルに対局する」だけでなく、�
 
 iPhone同士を近付けてボタンを1回押すだけでSharePlayを始めることも出来ます。(iOS 17以降のiPhone限定)
 
-空間ペルソナの空間SharePlayにも対応しています。
+Apple Vision Proの「空間ペルソナのSharePlay」や「近くの人とのSharePlay」にも対応しています。
 
 Play a shogi board with FaceTime or Messages.
 
@@ -49,10 +51,13 @@ Use case: "Play a game with your friend", "Discuss a shogi problem with many peo
 
 Start SharePlay by holding the top of your iPhone near the top of someone else's iPhone.(iOS 17 iPhone only)
 
-Supported spatial SharePlay with spatial Personas.
+Supported spatial SharePlay with Personas and people nearby.
 
 <img src="Shared/サポートファイル/その他/README assets/SharePlay.png" width="300">
 
+<img src="Shared/サポートファイル/その他/README assets/persona_SharePlay_demo_640w.gif" width="640">
+
+<img src="Shared/サポートファイル/その他/README assets/nearby_SharePlay_demo_640w.gif" width="640">
 
 ### マルチプラットフォーム対応 Multi platform
 
@@ -88,8 +93,6 @@ Support for export/import to plain text format.
 －－－－－－－－－
 ☖
 ```
-
-<img src="Shared/サポートファイル/その他/README assets/visionOS.jpg" width="600">
 
 
 Source code link
