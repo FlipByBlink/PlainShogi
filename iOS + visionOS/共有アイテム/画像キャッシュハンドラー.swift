@@ -7,15 +7,15 @@ struct 画像キャッシュハンドラー: ViewModifier {
     func body(content: Content) -> some View {
         content
             .task(priority: .background) { self.画像保存をリクエスト() }
-            .onChange(of: モデル.局面) { _ in self.画像保存をリクエスト() }
-            .onChange(of: モデル.上下反転) { _ in self.画像保存をリクエスト() }
-            .onChange(of: モデル.english表記) { _ in self.画像保存をリクエスト() }
-            .onChange(of: モデル.直近操作強調表示機能オフ) { _ in self.画像保存をリクエスト() }
-            .onChange(of: モデル.セリフ体) { _ in self.画像保存をリクエスト() }
-            .onChange(of: モデル.太字) { _ in self.画像保存をリクエスト() }
-            .onChange(of: モデル.サイズ) { _ in self.画像保存をリクエスト() }
-            .onChange(of: self.現在の盤面を画像として保存) {
-                if $0 { self.画像保存を実行() }
+            .onChange(of: モデル.局面) { _, _ in self.画像保存をリクエスト() }
+            .onChange(of: モデル.上下反転) { _, _ in self.画像保存をリクエスト() }
+            .onChange(of: モデル.english表記) { _, _ in self.画像保存をリクエスト() }
+            .onChange(of: モデル.直近操作強調表示機能オフ) { _, _ in self.画像保存をリクエスト() }
+            .onChange(of: モデル.セリフ体) { _, _ in self.画像保存をリクエスト() }
+            .onChange(of: モデル.太字) { _, _ in self.画像保存をリクエスト() }
+            .onChange(of: モデル.サイズ) { _, _ in self.画像保存をリクエスト() }
+            .onChange(of: self.現在の盤面を画像として保存) { _, newValue in
+                if newValue { self.画像保存を実行() }
             }
     }
     init(_ サムネイル: Binding<Image>) {

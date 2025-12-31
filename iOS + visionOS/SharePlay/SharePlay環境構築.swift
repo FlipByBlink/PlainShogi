@@ -31,8 +31,8 @@ private extension SharePlay環境構築 {
         @State private var 参加完了バナーを表示: Bool = false
         func body(content: Content) -> some View {
             content
-                .onChange(of: モデル.グループセッション != nil) {
-                    if $0 {
+                .onChange(of: モデル.グループセッション != nil) { _, newValue in
+                    if newValue {
                         withAnimation(.default.speed(2)) {
                             self.参加完了バナーを表示 = true
                         }

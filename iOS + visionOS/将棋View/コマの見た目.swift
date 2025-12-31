@@ -13,7 +13,7 @@ struct コマの見た目: View { //FrameやDrag処理などは呼び出し側�
                       下線: モデル.この駒にはアンダーラインが必要(self.場所))
                 .rotationEffect(モデル.この駒は下向き(self.場所) ? .degrees(180) : .zero)
                 .rotationEffect(.degrees(モデル.増減モード中 ? 15 : 0))
-                .onChange(of: モデル.増減モード中) { _ in モデル.駒の選択を解除する() }
+                .onChange(of: モデル.増減モード中) { _, _ in モデル.駒の選択を解除する() }
             }
             .modifier(Self.駒選択効果(self.場所))
             .modifier(増減モード用ⓧマーク(self.場所))
@@ -34,8 +34,9 @@ private extension コマの見た目 {
         func body(content: Content) -> some View {
             content
                 .opacity(self.ドラッグした直後 ? 0.25 : 1.0)
-                .onChange(of: モデル.ドラッグ中の駒) {
-                    if case .アプリ内の駒(let 出発地点) = $0, 出発地点 == self.場所 {
+                .onChange(of: モデル.ドラッグ中の駒) { _, newValue in
+                    if case .アプリ内の駒(let 出発地点) = newValue,
+                       出発地点 == self.場所 {
                         self.ドラッグした直後 = true
                         withAnimation(.easeIn(duration: 1.25).delay(1)) {
                             self.ドラッグした直後 = false

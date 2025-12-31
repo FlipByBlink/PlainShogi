@@ -160,7 +160,7 @@ private struct SharingControllerボタン: View {
         .sheet(isPresented: self.$sharingControllerを表示) {
             Self.🅂haringControllerView(self.$groupActivity準備完了)
         }
-        .onChange(of: groupStateObserver.isEligibleForGroupSession) { newValue in
+        .onChange(of: groupStateObserver.isEligibleForGroupSession) { _, newValue in
             if newValue {
                 if self.groupActivity準備完了 {
                     🄶roupActivity.アクティビティを起動する()

@@ -41,8 +41,10 @@ extension ICloudデータ {
         @Environment(\.scenePhase) private var scenePhase
         func body(content: Content) -> some View {
             content
-                .onChange(of: self.scenePhase) {
-                    if $0 == .active { ICloudデータ.synchronize() }
+                .onChange(of: self.scenePhase) { _, newValue in
+                    if newValue == .active {
+                        ICloudデータ.synchronize()
+                    }
                 }
         }
     }
