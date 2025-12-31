@@ -814,7 +814,7 @@
 		16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤外のコマ.swift"; sourceTree = "<group>"; };
 		16E2E11F2B6375880017A9A2 /* 🌐VersionHistory.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐VersionHistory.xcstrings"; sourceTree = "<group>"; };
 		16E2E1212B6375880017A9A2 /* 🌐AppStoreDescription.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = "🌐AppStoreDescription.xcstrings"; sourceTree = "<group>"; };
-		16E2E1272B63C1750017A9A2 /* visionOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = visionOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16E2E1272B63C1750017A9A2 /* 将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E2E1312B63C1780017A9A2 /* アプリアイコン.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "アプリアイコン.xcassets"; sourceTree = "<group>"; };
 		16E2E1362B63C1780017A9A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16E2E13B2B63C37F0017A9A2 /* アプリアイコン.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "アプリアイコン.xcassets"; sourceTree = "<group>"; };
@@ -833,7 +833,7 @@
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
 		F5119B952A0144460027A74C /* シートカテゴリ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "シートカテゴリ.swift"; sourceTree = "<group>"; };
-		F5119BA32A0291000027A74C /* tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5119BA32A0291000027A74C /* 将棋盤.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "将棋盤.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5119BA52A0291000027A74C /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		F5119BA72A0291000027A74C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F5119BA92A0291020027A74C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -931,8 +931,8 @@
 				128D1567280FE47E003FF480 /* 将棋盤.app */,
 				F5D9F9182A00BDA800CEE697 /* Plain将棋盤.app */,
 				F51F03992A00D03200F05874 /* Widget for watchOS.appex */,
-				F5119BA32A0291000027A74C /* tvOS.app */,
-				16E2E1272B63C1750017A9A2 /* visionOS.app */,
+				F5119BA32A0291000027A74C /* 将棋盤.app */,
+				16E2E1272B63C1750017A9A2 /* 将棋盤.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1398,7 +1398,7 @@
 			packageProductDependencies = (
 			);
 			productName = PlainShogiBoardForVisionOS;
-			productReference = 16E2E1272B63C1750017A9A2 /* visionOS.app */;
+			productReference = 16E2E1272B63C1750017A9A2 /* 将棋盤.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F5119BA22A0291000027A74C /* tvOS */ = {
@@ -1415,7 +1415,7 @@
 			);
 			name = tvOS;
 			productName = "PS TV App";
-			productReference = F5119BA32A0291000027A74C /* tvOS.app */;
+			productReference = F5119BA32A0291000027A74C /* 将棋盤.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F51F03982A00D03200F05874 /* Widget for watchOS */ = {
@@ -2106,7 +2106,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "将棋盤";
 				SDKROOT = xros;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -2139,7 +2139,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "将棋盤";
 				SDKROOT = xros;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2171,7 +2171,7 @@
 				);
 				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "将棋盤";
 				SDKROOT = appletvos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2202,7 +2202,7 @@
 				);
 				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "将棋盤";
 				SDKROOT = appletvos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
