@@ -393,11 +393,7 @@ extension アプリモデル {
                 }
             )
             
-            await
-            新規セッション
-                .systemCoordinator?
-                .configuration
-                .spatialTemplatePreference = .conversational
+            self.visionOSでの立ち位置を設定(新規セッション)
             
             新規セッション.join()
         }
@@ -453,6 +449,15 @@ extension アプリモデル {
             case .none: "なし"
             @unknown default: "!想定外!"
         }
+    }
+    private func visionOSでの立ち位置を設定(_ セッション: GroupSession<🄶roupActivity>) {
+#if os(visionOS)
+        await
+        新規セッション
+            .systemCoordinator?
+            .configuration
+            .spatialTemplatePreference = .conversational
+#endif
     }
     //Sample code
     //https://developer.apple.com/documentation/groupactivities/drawing_content_in_a_group_session
