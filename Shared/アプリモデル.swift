@@ -392,6 +392,13 @@ extension アプリモデル {
                     }
                 }
             )
+            
+            await
+            新規セッション
+                .systemCoordinator?
+                .configuration
+                .spatialTemplatePreference = .conversational
+            
             新規セッション.join()
         }
     }
