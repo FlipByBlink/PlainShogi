@@ -1450,6 +1450,16 @@
         }
       }
     },
+    "視線に反応するエフェクトを無効化" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable gaze hover effect"
+          }
+        }
+      }
+    },
     "細かな使い方" : {
       "localizations" : {
         "en" : {

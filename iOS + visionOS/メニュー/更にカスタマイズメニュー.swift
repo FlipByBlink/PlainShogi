@@ -28,6 +28,7 @@ struct 更にカスタマイズメニューリンク: View {
                     Toggle(isOn: self.$効果音無効化) {
                         Label("効果音を無効", systemImage: "speaker.slash")
                     }
+                    VisionOS向けホバーエフェクト無効化トグル()
                 } header: {
                     if self.groupStateObserver.isEligibleForGroupSession {
                         Text("オプション(共有相手との同期なし)")
@@ -42,6 +43,9 @@ struct 更にカスタマイズメニューリンク: View {
             Label("更にカスタマイズ", systemImage: "paintpalette")
         }
     }
+}
+
+private extension 更にカスタマイズメニューリンク {
     private func サイズピッカー() -> some View {
         Picker(selection: $モデル.サイズ) {
             ForEach(字体.サイズ.allCases) { Text($0.ローカライズキー) }
