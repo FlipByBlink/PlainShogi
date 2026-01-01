@@ -16,37 +16,33 @@ struct VisionOS向けSharePlayプロバイダー: ViewModifier {
     }
 }
 
-/* ==== 参照: "Build spatial SharePlay experiences - WWDC23 - Videos - Apple Developer" ====
-https://developer.apple.com/wwdc23/10087?time=866
+/* ==== 参照 ====
+"近くにいるユーザーとvisionOSの体験を共有 - WWDC25 - ビデオ - Apple Developer"
+https://developer.apple.com/jp/videos/play/wwdc2025/318?time=381
 
 /* (書き起こし)
-グループアクティビティの公開は AirDropでSharePlayを 始めるのと同じ方法で行います
-iOS 17では SharePlayアプリを 開いておく事で AirDropでSharePlayが 始められるようになります
-グループアクティビティをフェッチするのに システムは表示されているシーンの UIレスポンダチェーン内を探し そのうちの一つのレスポンダの アクティビティアイテム設定で 特定されているグループアクティビティを 見つけようとします
-そうすると SharePlayコンテンツを 表示しているビューコントローラの アクティビティアイテム設定で グループアクティビティを設定できて それが自動的にピックアップされます
-アクティビティアイテム設定を行うには まず 有効化できるアクティビティを 作ることから始めます
-次に アイテムプロバイダを作成して そこに グループアクティビティを 登録します
-それからアイテムプロバイダで UIActivityItemsConfigurationを 初期化します
-最後は 設定が公開しているのが 正しいメタデータである事を 確認しましょう
-それがShareメニューで表示されるからです
-そのためには metadataProviderを UIActivityItemsConfigurationで使い LinkPresentationMetadataキーのために LPLinkMetadataオブジェクトを提供します
-Shareメニューにはtitleと imageProviderが使われます
-UIActivityItemsConfigurationReadingに 準拠する自分のクラスを使っても すべてこの通りに作業できます
+まず ボードゲームアプリ用のシンプルな GroupActivityを作成します 名称はBoardGameActivityです GroupActivitiesは SharePlayを 強化するフレームワークであり GroupActivityの定義は 共有体験を作成するための最初の手順です また ゲームのメインシーンを設定するため ボリュメトリックのWindowGroupで BoardGameViewを指定します SwiftUIアプリであるため 共有メニューに BoardGameActivityを公開するには ビューの階層に ShareLinkを追加する必要があります BoardGameActivityを渡すのは それが開始すべき対象だからであり 非表示にしたのは アプリのUIに影響を与えないためです 公開したアクティビティが 共有メニューから共有されると 自動的に有効化され GroupSessionが作成されます この仕組みは GroupActivityでactivate()メソッドを 手動で呼び出す場合と同様です
 */
 
 /* (サンプルコード)
-let activity = ExploreActivity()
-let itemProvider = NSItemProvider()
-itemProvider.registerGroupActivity(activity)
-let configuration = UIActivityItemsConfiguration(itemProviders: [itemProvider])
-configuration.metadataProvider = { key in
-    guard key == .linkPresentationMetadata else { return nil }
-    let metadata = LPLinkMetadata()
-    metadata.title = "Explore Together"
-    metadata.imageProvider = NSItemProvider(object: UIImage(named: "explore-activity")!)
-    return metadata
+struct BoardGameActivity: GroupActivity, Transferable {
+    var metadata: GroupActivityMetadata = {
+        var metadata = GroupActivityMetadata()
+        metadata.title = "Play Together"
+        return metadata
+    }()
 }
-self.activityItemsConfiguration = configuration
+
+struct BoardGameApp: App {
+    var body: some Scene {
+        WindowGroup {
+            BoardGameView()
+            ShareLink(item: BoardGameActivity(), preview: SharePreview("Play Together"))
+                .hidden()
+        }
+        .windowStyle(.volumetric)
+    }
+}
 */
 
-================================================================ */
+======================================== */
