@@ -100,10 +100,7 @@ extension アプリモデル {
                         }
                         self.フィードバック.軽め()
                     }
-                case .盤駒(let 位置) where self.選択中の駒 == 今選択した場所:
-                    if self.局面.この駒は成る事ができる(位置) {
-                        self.この駒を裏返す(位置)
-                    }
+                case .盤駒(_) where self.選択中の駒 == 今選択した場所:
                     self.選択中の駒の値を変更する(.なし)
                 default:
                     if self.局面.これとこれは同じ陣営(self.選択中の駒, 今選択した場所) {
@@ -204,6 +201,12 @@ extension アプリモデル {
         self.局面.現在の局面として適用する(一手前の局面)
         self.SharePlay中なら現在の局面を参加者に送信する()
         self.フィードバック.成功()
+    }
+    func 選択中の駒を裏返す() {
+        guard case .盤駒(let 位置) = self.選択中の駒 else { return }
+        self.表示中のシート = nil
+        self.選択中の駒の値を変更する(.なし)
+        self.この駒を裏返す(位置)
     }
     // ==== private ====
     private func 盤上に駒を移動させる(_ 移動先: 駒の移動先パターン) {

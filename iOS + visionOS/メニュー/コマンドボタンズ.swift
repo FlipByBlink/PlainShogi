@@ -47,3 +47,22 @@ struct 一手戻すボタン: View {
         .disabled(モデル.局面.一手前の局面 == nil)
     }
 }
+
+struct 駒を裏返すボタン: View {
+    @EnvironmentObject var モデル: アプリモデル
+    var body: some View {
+        Button {
+            モデル.選択中の駒を裏返す()
+        } label: {
+            Label("駒を裏返す",
+                  systemImage: "arrow.trianglehead.2.counterclockwise.rotate.90")
+        }
+        .disabled({
+            if case .盤駒(_) = モデル.選択中の駒 {
+                false
+            } else {
+                true
+            }
+        }())
+    }
+}

@@ -29,6 +29,8 @@ struct コマンド: Commands {
                 Button("駒の選択を解除") { モデル.駒の選択を解除する() }
                     .keyboardShortcut(.cancelAction)
                     .disabled(モデル.選択中の駒 == .なし)
+                駒を裏返すボタン()
+                    .labelStyle(.titleOnly)
                 Button("テキストとしてコピー") { モデル.現在の局面をテキストとしてコピー() }
                     .keyboardShortcut("c", modifiers: [])
                 Button("テキストを局面としてペースト") { try? モデル.テキストを局面としてペースト() }

@@ -11,6 +11,7 @@ struct メニュートップ: View {
             Section {
                 盤面初期化ボタン()
                 一手戻すボタン()
+                駒を裏返すボタン()
                 増減モード開始ボタン(タイトル: "駒を消したり増やしたりする")
                 強調表示クリアボタン()
             } header: {
@@ -84,7 +85,6 @@ private extension メニュートップ {
                 List {
                     Label("長押しして駒を持ち上げ、そのままスライドして移動させる",
                           systemImage: "hand.draw")
-                    Label("駒を2回タップして、盤上の駒を裏返す", systemImage: "rotate.right")
                     Section {
                         Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます",
                               systemImage: "icloud")
