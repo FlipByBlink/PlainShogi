@@ -14,9 +14,7 @@ struct 画像キャッシュハンドラー: ViewModifier {
             .onChange(of: モデル.セリフ体) { _, _ in self.画像保存をリクエスト() }
             .onChange(of: モデル.太字) { _, _ in self.画像保存をリクエスト() }
             .onChange(of: モデル.サイズ) { _, _ in self.画像保存をリクエスト() }
-            .onChange(of: self.現在の盤面を画像として保存) { _, newValue in
-                if newValue { self.画像保存を実行() }
-            }
+            .onChange(of: self.現在の盤面を画像として保存) { if $1 { self.画像保存を実行() } }
     }
     init(_ サムネイル: Binding<Image>) {
         self._サムネイル = サムネイル

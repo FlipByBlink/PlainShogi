@@ -29,8 +29,8 @@ private extension 画像共有メニューコンポーネンツ {
             }
             .alignmentGuide(.listRowSeparatorLeading) { $0[.leading] }
             .task { self.イメージをロード() }
-            .onChange(of: モデル.表示中のシート) { _, newValue in
-                if [.メニュー, .画像共有].contains(newValue) { self.イメージをロード() }
+            .onChange(of: モデル.表示中のシート) {
+                if [.メニュー, .画像共有].contains($1) { self.イメージをロード() }
             }
         }
         private func イメージをロード() {

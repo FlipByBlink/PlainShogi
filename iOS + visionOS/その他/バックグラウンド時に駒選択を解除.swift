@@ -5,8 +5,8 @@ struct バックグラウンド時に駒選択を解除: ViewModifier {
     @Environment(\.scenePhase) var scenePhase
     func body(content: Content) -> some View {
         content
-            .onChange(of: self.scenePhase) { _, newValue in
-                if newValue == .background { モデル.駒の選択を解除する() }
+            .onChange(of: self.scenePhase) {
+                if $1 == .background { モデル.駒の選択を解除する() }
             }
     }
 }

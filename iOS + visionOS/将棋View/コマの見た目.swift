@@ -34,8 +34,8 @@ private extension コマの見た目 {
         func body(content: Content) -> some View {
             content
                 .opacity(self.ドラッグした直後 ? 0.25 : 1.0)
-                .onChange(of: モデル.ドラッグ中の駒) { _, newValue in
-                    if case .アプリ内の駒(let 出発地点) = newValue,
+                .onChange(of: モデル.ドラッグ中の駒) {
+                    if case .アプリ内の駒(let 出発地点) = $1,
                        出発地点 == self.場所 {
                         self.ドラッグした直後 = true
                         withAnimation(.easeIn(duration: 1.25).delay(1)) {
