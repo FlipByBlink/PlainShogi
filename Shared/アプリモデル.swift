@@ -42,6 +42,7 @@ class アプリモデル: スーパークラス, ObservableObject {
     
 #if os(visionOS)
     @AppStorage("暗転モード") var 暗転モード: Bool = false
+    @Published private(set) var 駒を持ち上げたのは自分: Bool = false
 #endif
 }
 
@@ -242,6 +243,9 @@ extension アプリモデル {
     private func 選択中の駒の値を変更する(_ 変更後の値: 駒の場所) {
         self.選択中の駒 = 変更後の値
         self.SharePlay中なら現在の選択中の駒を参加者に送信する()
+#if os(visionOS)
+        self.駒を持ち上げたのは自分 = (変更後の値 != .なし)
+#endif
     }
     private func この駒を裏返す(_ 位置: Int) {
         if self.局面.この駒は成る事ができる(位置) {
@@ -400,6 +404,7 @@ extension アプリモデル {
                 Task {
                     for await (メッセージ, _) in 新規メッセンジャー.messages(of: SharePlay用選択中の駒モデル.self) {
                         self.選択中の駒 = メッセージ.値
+                        self.visionOSでの駒持ち上げ状態をリセット()
                     }
                 }
             )
@@ -466,6 +471,11 @@ extension アプリモデル {
             .systemCoordinator?
             .configuration
             .spatialTemplatePreference = .conversational
+#endif
+    }
+    private func visionOSでの駒持ち上げ状態をリセット() {
+#if os(visionOS)
+        self.駒を持ち上げたのは自分 = false
 #endif
     }
     //Sample code
