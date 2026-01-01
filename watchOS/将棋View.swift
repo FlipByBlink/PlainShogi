@@ -173,7 +173,7 @@ private struct コマの見た目: View { //操作処理などは呼び出し側
                      下線: モデル.この駒にはアンダーラインが必要(self.場所))
                 .rotationEffect(モデル.この駒は下向き(self.場所) ? .degrees(180) : .zero)
                 .rotationEffect(.degrees(モデル.増減モード中 ? 15 : 0))
-                .onChange(of: モデル.増減モード中) { _ in モデル.駒の選択を解除する() }
+                .onChange(of: モデル.増減モード中) { モデル.駒の選択を解除する() }
             }
             .contentShape(Rectangle())
             .border(.primary, width: self.この駒を選択中 ? 1.5 : 0)

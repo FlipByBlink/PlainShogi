@@ -12,16 +12,16 @@ enum SharePlayインジケーター {
         }
     }
     struct VisionOS: View {
-        @EnvironmentObject var モデル: アプリモデル
-        var body: some View {
 #if os(visionOS)
-            if モデル.グループセッション?.state == .joined {
+        @StateObject private var groupStateObserver = GroupStateObserver()
+        var body: some View {
+            if self.groupStateObserver.isEligibleForGroupSession {
                 SharePlayインジケーター.ボタン()
             }
-#else
-            EmptyView()
-#endif
         }
+#else
+        var body: some View { EmptyView() }
+#endif
     }
 }
 
@@ -38,6 +38,7 @@ private extension SharePlayインジケーター {
                 Button {
                     モデル.表示中のシート = .SharePlayガイド
                 } label: {
+#if os(iOS)
                     Group {
                         if self.SharePlay中 {
                             Label("現在、\(self.参加人数)人でSharePlay中", systemImage: "shareplay")
@@ -49,6 +50,9 @@ private extension SharePlayインジケーター {
                     .labelStyle(.titleAndIcon)
                     .lineLimit(1)
                     .minimumScaleFactor(0.1)
+#elseif os(visionOS)
+                    Image(systemName: "shareplay")
+#endif
                 }
                 .accessibilityLabel("SharePlayメニュー")
 #if os(iOS)

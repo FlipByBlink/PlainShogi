@@ -34,6 +34,17 @@
           }
         }
       }
+    },
+    "1.7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOSとのSharePlayに対応。\n選択中の駒をもう一度タップした際に裏返すのではなく、選択解除するように仕様を変更。\n空間SharePlay中の参加者の立ち位置を会話しやすいように変更。\n様々な改善や修正。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

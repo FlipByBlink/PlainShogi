@@ -31,6 +31,7 @@ struct コマンド: Commands {
                     .disabled(モデル.選択中の駒 == .なし)
                 駒を裏返すボタン()
                     .labelStyle(.titleOnly)
+                    .environmentObject(self.モデル)
                 Button("テキストとしてコピー") { モデル.現在の局面をテキストとしてコピー() }
                     .keyboardShortcut("c", modifiers: [])
                 Button("テキストを局面としてペースト") { try? モデル.テキストを局面としてペースト() }

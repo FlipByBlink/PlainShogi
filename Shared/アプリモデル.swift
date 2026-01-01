@@ -89,6 +89,7 @@ extension アプリモデル {
         }
         self.SharePlay中なら現在の局面を参加者に送信する()
         self.フィードバック.成功()
+        self.表示中のシート = nil
     }
     func この駒を選択する(_ 今選択した場所: 駒の場所) {
         if !self.増減モード中 {
@@ -155,13 +156,20 @@ extension アプリモデル {
         }
     }
     var 成駒確認メッセージ: String {
+        var 値: String
         guard case .盤駒(let 位置) = self.局面.直近の操作,
               let 職名 = self.局面.盤駒[位置]?.職名 else { return "⚠︎" }
         if self.english表記 {
-            return 職名.english生駒表記 + " → " + (職名.english成駒表記 ?? "⚠︎")
+            値 = 職名.english生駒表記 + " → " + (職名.english成駒表記 ?? "⚠︎")
         } else {
-            return 職名.rawValue + " → " + (職名.成駒表記 ?? "⚠︎")
+            値 = 職名.rawValue + " → " + (職名.成駒表記 ?? "⚠︎")
         }
+#if os(visionOS)
+        if self.グループセッション?.state == .joined {
+            値 += String(localized: "(このダイアログは相手には見えていません)")
+        }
+#endif
+        return 値
     }
     func 盤面を初期化する() {
         withAnimation { self.局面.初期化する() }
@@ -174,9 +182,9 @@ extension アプリモデル {
         self.選択中の駒の値を変更する(.なし)
     }
     func 増減モードを開始する() {
-        self.表示中のシート = nil
         self.増減モード中 = true
         self.フィードバック.成功()
+        self.表示中のシート = nil
     }
     func 増減モードを終了する() {
         self.増減モード中 = false
@@ -196,17 +204,17 @@ extension アプリモデル {
     }
     func 一手戻す() {
         guard let 一手前の局面 = self.局面.一手前の局面 else { return }
-        self.表示中のシート = nil
         self.選択中の駒の値を変更する(.なし)
         self.局面.現在の局面として適用する(一手前の局面)
         self.SharePlay中なら現在の局面を参加者に送信する()
         self.フィードバック.成功()
+        self.表示中のシート = nil
     }
     func 選択中の駒を裏返す() {
         guard case .盤駒(let 位置) = self.選択中の駒 else { return }
-        self.表示中のシート = nil
         self.選択中の駒の値を変更する(.なし)
         self.この駒を裏返す(位置)
+        self.表示中のシート = nil
     }
     // ==== private ====
     private func 盤上に駒を移動させる(_ 移動先: 駒の移動先パターン) {
@@ -395,9 +403,7 @@ extension アプリモデル {
                     }
                 }
             )
-            
-            self.visionOSでの立ち位置を設定(新規セッション)
-            
+            await self.visionOSでの立ち位置を設定(新規セッション)
             新規セッション.join()
         }
     }
@@ -453,10 +459,10 @@ extension アプリモデル {
             @unknown default: "!想定外!"
         }
     }
-    private func visionOSでの立ち位置を設定(_ セッション: GroupSession<🄶roupActivity>) {
+    private func visionOSでの立ち位置を設定(_ セッション: GroupSession<🄶roupActivity>) async {
 #if os(visionOS)
         await
-        新規セッション
+        セッション
             .systemCoordinator?
             .configuration
             .spatialTemplatePreference = .conversational
