@@ -1066,6 +1066,16 @@
         }
       }
     },
+    "将棋盤を共有" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share shogi board"
+          }
+        }
+      }
+    },
     "小" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -4,12 +4,15 @@ import SwiftUI
 struct 🄶roupActivity: GroupActivity {
     var metadata: GroupActivityMetadata {
         var 値 = GroupActivityMetadata()
-        値.title = .init(localized: "将棋盤")
+        値.title = .init(localized: "将棋盤を共有")
         値.type = .generic
         値.previewImage = UIImage(named: "previewImage")!.cgImage
         値.supportsContinuationOnTV = false
         return 値
     }
+}
+
+extension 🄶roupActivity {
     static func アクティビティを起動する() {
         Task {
             do {

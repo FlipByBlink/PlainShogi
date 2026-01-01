@@ -166,7 +166,7 @@ extension アプリモデル {
         }
 #if os(visionOS)
         if self.グループセッション?.state == .joined {
-            値 += String(localized: "(このダイアログは相手には見えていません)")
+            値 += "\n" + String(localized: "(このダイアログは相手には見えていません)")
         }
 #endif
         return 値
