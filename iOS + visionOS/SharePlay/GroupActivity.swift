@@ -12,7 +12,7 @@ struct 🄶roupActivity: GroupActivity {
     }
 }
 
-extension 🄶roupActivity {
+extension 🄶roupActivity: Transferable {
     static func アクティビティを起動する() {
         Task {
             do {
