@@ -56,7 +56,13 @@ extension 🗒️StaticInfo {
                 ]
                 case .アプリモデル: [
                     "アプリモデル.swift",
-                    "アプリモデルのスーパークラス.swift"
+                    "アプリモデルのスーパークラス.swift",
+                    "局面関連.swift",
+                    "局面の読み込みや復元.swift",
+                    "UIApplicationDelegate.swift",
+                    "SharePlay.swift",
+                    "ドラッグアンドドロップ関連.swift",
+                    "テキスト書き出し読み込み機能.swift",
                 ]
                 case .将棋モデル: [
                     "局面モデル.swift",
@@ -158,7 +164,7 @@ extension 🗒️StaticInfo {
 #elseif os(visionOS)
 extension 🗒️StaticInfo {
     static let versionInfos: [(version: String, date: String)] = [
-        ("1.7", "2026-01-01"),
+        ("1.7", "2026-01-03"),
         ("1.6.1", "2024-06-19"),
         ("1.6", "2024-01-28"),
     ] //降順。先頭の方が新しい
@@ -174,7 +180,13 @@ extension 🗒️StaticInfo {
                 ]
                 case .アプリモデル: [
                     "アプリモデル.swift",
-                    "アプリモデルのスーパークラス.swift"
+                    "アプリモデルのスーパークラス.swift",
+                    "局面関連.swift",
+                    "局面の読み込みや復元.swift",
+                    "UIApplicationDelegate.swift",
+                    "SharePlay.swift",
+                    "ドラッグアンドドロップ関連.swift",
+                    "テキスト書き出し読み込み機能.swift",
                 ]
                 case .将棋モデル: [
                     "局面モデル.swift",
@@ -289,7 +301,9 @@ extension 🗒️StaticInfo {
                 ]
                 case .アプリモデル: [
                     "アプリモデル.swift",
-                    "アプリモデルのスーパークラス.swift"
+                    "アプリモデルのスーパークラス.swift",
+                    "局面関連.swift",
+                    "局面の読み込みや復元.swift",
                 ]
                 case .将棋モデル: [
                     "局面モデル.swift",
