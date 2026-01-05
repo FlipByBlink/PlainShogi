@@ -2222,7 +2222,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.6.1;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
 				PRODUCT_NAME = "将棋盤";
 				SDKROOT = xros;
@@ -2255,7 +2255,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 1.6.1;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = net.aaaakkkkssssttttnnnn.PlainShougi;
 				PRODUCT_NAME = "将棋盤";
 				SDKROOT = xros;
