@@ -458,12 +458,12 @@
         }
       }
     },
-    "このメニュー表示は同期していません" : {
+    "この画面は相手には見えていません" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Not Shared"
+            "value" : "This screen is not visible to the other party"
           }
         }
       }
