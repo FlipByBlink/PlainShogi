@@ -1,18 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "(Mirror)" : {
+    " feedback" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(Mirror)"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "(ミラー)"
+            "value" : "フィードバック"
+          }
+        }
+      }
+    },
+    "(Input here)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(ここに入力してください)"
           }
         }
       }
@@ -114,6 +118,16 @@
         }
       }
     },
+    "bug report, feature request, impression..." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不具合レポート、機能リクエスト、感想など"
+          }
+        }
+      }
+    },
     "builded on %@" : {
       "localizations" : {
         "en" : {
@@ -126,6 +140,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ にビルドしました"
+          }
+        }
+      }
+    },
+    "Copy" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コピー"
           }
         }
       }
@@ -178,6 +202,26 @@
         }
       }
     },
+    "Feedback" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィードバック"
+          }
+        }
+      }
+    },
+    "Feedback from mail app" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「メール」アプリからフィードバックを送る"
+          }
+        }
+      }
+    },
     "Git repository is public on GitHub.com" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -191,22 +235,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitリポジトリをGitHub.comで公開しています"
-          }
-        }
-      }
-    },
-    "If you are interested in hiring or acquiring, please contact me." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "If you are interested in hiring or acquiring, please contact me."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "もし雇用や買収に興味がある場合は、下記のメールアドレスに連絡してください"
           }
         }
       }
@@ -271,22 +299,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日本語"
-          }
-        }
-      }
-    },
-    "Job hunting now!" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Job hunting now!"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "職探し中！"
           }
         }
       }
@@ -528,6 +540,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Web リポジトリー"
+          }
+        }
+      }
+    },
+    "Web Repository (Mirror)" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Web リポジトリー (ミラー)"
           }
         }
       }

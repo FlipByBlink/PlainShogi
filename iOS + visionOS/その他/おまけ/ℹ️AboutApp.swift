@@ -5,11 +5,13 @@ import SwiftUI
 struct ℹ️AboutAppContent: View {
     var body: some View {
         📰AppStoreDescriptionSection()
+            .navigationTitle(String(localized: "About App", table: "🌐AboutApp"))
         📜VersionHistoryLink()
         👤PrivacyPolicySection()
         🏬AppStoreSection()
         📓SourceCodeLink()
         🧑‍💻AboutDeveloperPublisherLink()
+        📧FeedbackLink()
     }
 }
 
@@ -65,7 +67,7 @@ private struct 📰AppStoreDescriptionSection: View {
             NavigationLink {
                 ScrollView {
                     Text("current", tableName: "🌐AppStoreDescription")
-                        .padding(UIDevice.current.userInterfaceIdiom == .pad ? 32 : 16)
+                        .padding(Self.padding)
                         .frame(maxWidth: .infinity)
                 }
                 .navigationBarTitle(.init("Description", tableName: "🌐AboutApp"))
@@ -81,6 +83,13 @@ private struct 📰AppStoreDescriptionSection: View {
         } header: {
             Text("Description", tableName: "🌐AboutApp")
         }
+    }
+    private static var padding: Double {
+#if os(iOS)
+        UIDevice.current.userInterfaceIdiom == .pad ? 32 : 16
+#elseif os(visionOS)
+        40
+#endif
     }
     private var textWithoutEmptyLines: String {
         String(localized: "current", table: "🌐AppStoreDescription")
@@ -116,7 +125,7 @@ private struct 👤PrivacyPolicySection: View {
             NavigationLink {
                 ScrollView {
                     Text(🗒️StaticInfo.privacyPolicyDescription)
-                        .padding(24)
+                        .padding(Self.padding)
                         .textSelection(.enabled)
                         .frame(maxWidth: .infinity)
                 }
@@ -126,6 +135,13 @@ private struct 👤PrivacyPolicySection: View {
                       systemImage: "person.text.rectangle")
             }
         }
+    }
+    private static var padding: Double {
+#if os(iOS)
+        UIDevice.current.userInterfaceIdiom == .pad ? 32 : 24
+#elseif os(visionOS)
+        40
+#endif
     }
 }
 
@@ -177,8 +193,7 @@ private struct 📓SourceCodeLink: View {
             List {
                 Self.DebugView()
                 ForEach(🗒️StaticInfo.SourceCodeCategory.allCases) { Self.CodeSection($0) }
-                self.bundleMainInfoDictionary()
-                self.repositoryLinks()
+                Self.RepositoryLinks()
             }
             .navigationTitle(.init("Source code", tableName: "🌐AboutApp"))
         } label: {
@@ -217,7 +232,7 @@ private struct 📓SourceCodeLink: View {
             Section {
                 ForEach(self.category.fileNames, id: \.self) { ⓕileName in
                     let ⓤrl = 📓sourceCodeFolderURL.appendingPathComponent(ⓕileName)
-                    if let ⓒode = try? String(contentsOf: ⓤrl) {
+                    if let ⓒode = try? String(contentsOf: ⓤrl, encoding: .utf8) {
                         NavigationLink(ⓕileName) { self.sourceCodeView(ⓒode, ⓕileName) }
                     } else {
                         Text(verbatim: "🐛")
@@ -245,25 +260,13 @@ private struct 📓SourceCodeLink: View {
             .textSelection(.enabled)
         }
     }
-    private func bundleMainInfoDictionary() -> some View {
-        Section {
-            NavigationLink(String("Bundle.main.infoDictionary")) {
-                List {
-                    if let ⓓictionary = Bundle.main.infoDictionary {
-                        ForEach(ⓓictionary.map({$0.key}).sorted(), id: \.self) {
-                            LabeledContent($0, value: String(describing: ⓓictionary[$0] ?? "🐛"))
-                        }
-                    }
-                }
-                .navigationBarTitle(.init(verbatim: "Bundle.main.infoDictionary"))
-                .textSelection(.enabled)
-            }
-        }
-    }
-    private func repositoryLinks() -> some View {
-        Group {
+    private struct RepositoryLinks: View {
+        @Environment(\.openURL) var openURL
+        var body: some View {
             Section {
-                Link(destination: 🗒️StaticInfo.webRepositoryURL) {
+                Button {
+                    self.openURL(🗒️StaticInfo.webRepositoryURL)
+                } label: {
                     LabeledContent {
                         Image(systemName: "arrow.up.forward.app")
                     } label: {
@@ -275,17 +278,14 @@ private struct 📓SourceCodeLink: View {
                 Text(verbatim: "\(🗒️StaticInfo.webRepositoryURL)")
             }
             Section {
-                Link(destination: 🗒️StaticInfo.webMirrorRepositoryURL) {
+                Button {
+                    self.openURL(🗒️StaticInfo.webMirrorRepositoryURL)
+                } label: {
                     LabeledContent {
                         Image(systemName: "arrow.up.forward.app")
                     } label: {
-                        HStack {
-                            Label(String(localized: "Web Repository", table: "🌐AboutApp"),
-                                  systemImage: "link")
-                            Text("(Mirror)", tableName: "🌐AboutApp")
-                                .font(.subheadline.bold())
-                                .foregroundStyle(.secondary)
-                        }
+                        Label(String(localized: "Web Repository (Mirror)", table: "🌐AboutApp"),
+                              systemImage: "link")
                     }
                 }
             } footer: {
@@ -310,6 +310,7 @@ private struct 🧑‍💻AboutDeveloperPublisherLink: View {
                 }
                 Section {
                     LabeledContent(String("山下 亮"), value: "Yamashita Ryo")
+                        .modifier(Self.TypeSettingLanguage())
                 } header: {
                     Text("Name", tableName: "🌐AboutApp")
                 }
@@ -338,12 +339,20 @@ private struct 🧑‍💻AboutDeveloperPublisherLink: View {
                 } footer: {
                     Text("Taken on 2021-11", tableName: "🌐AboutApp")
                 }
-                Self.jobHuntSection()
             }
             .navigationTitle(.init("Developer / Publisher", tableName: "🌐AboutApp"))
         } label: {
             Label(String(localized: "Developer / Publisher", table: "🌐AboutApp"),
                   systemImage: "person")
+        }
+    }
+    private struct TypeSettingLanguage: ViewModifier {
+        func body(content: Content) -> some View {
+            if #available(iOS 17.0, *) {
+                content.typesettingLanguage(.init(languageCode: .japanese))
+            } else {
+                content
+            }
         }
     }
     private struct TimelineSection: View {
@@ -383,21 +392,66 @@ private struct 🧑‍💻AboutDeveloperPublisherLink: View {
             }
         }
     }
-    private static func jobHuntSection() -> some View {
+}
+
+private struct 📧FeedbackLink: View {
+    var body: some View {
         Section {
-            VStack(spacing: 8) {
-                Text("Job hunting now!", tableName: "🌐AboutApp")
-                    .font(.headline.italic())
-                Text("If you are interested in hiring or acquiring, please contact me.",
-                     tableName: "🌐AboutApp")
-                .font(.subheadline)
-                Text(🗒️StaticInfo.contactAddress)
-                    .textSelection(.enabled)
-                    .italic()
-                    .foregroundStyle(.secondary)
+            NavigationLink {
+                Self.Destination()
+            } label: {
+                Label(String(localized: "Feedback", table: "🌐AboutApp"),
+                      systemImage: "envelope")
             }
-            .padding(12)
-            .frame(maxWidth: .infinity)
+        }
+    }
+    private struct Destination: View {
+        @State private var copied: Bool = false
+        @Environment(\.openURL) var openURL
+        var body: some View {
+            List {
+                Section {
+                    Button {
+                        var ⓤrlString = "mailto:" + 🗒️StaticInfo.contactAddress
+                        ⓤrlString += "?subject="
+                        let ⓣitle = String(localized: 🗒️StaticInfo.appName)
+                        ⓤrlString += ⓣitle
+                        ⓤrlString += String(localized: " feedback", table: "🌐AboutApp")
+                        ⓤrlString += "&body="
+                        ⓤrlString += String(localized: "(Input here)", table: "🌐AboutApp")
+                        self.openURL(.init(string: ⓤrlString)!)
+                    } label: {
+                        Label(String(localized: "Feedback from mail app", table: "🌐AboutApp"),
+                              systemImage: "envelope")
+                        .badge(Text(Image(systemName: "arrow.up.forward.app")))
+                    }
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Text(🗒️StaticInfo.contactAddress)
+                                .textSelection(.enabled)
+                                .italic()
+                            Spacer()
+                        }
+                        Button(String(localized: "Copy", table: "🌐AboutApp")) {
+                            UIPasteboard.general.string = 🗒️StaticInfo.contactAddress
+                            withAnimation { self.copied = true }
+                        }
+                        .opacity(self.copied ? 0.3 : 1)
+                        .buttonStyle(.bordered)
+                        .overlay {
+                            if self.copied {
+                                Image(systemName: "checkmark")
+                                    .bold()
+                            }
+                        }
+                    }
+                    .padding(.vertical)
+                } footer: {
+                    Text("bug report, feature request, impression...", tableName: "🌐AboutApp")
+                }
+            }
+            .navigationBarTitle(String(localized: "Feedback", table: "🌐AboutApp"))
         }
     }
 }
