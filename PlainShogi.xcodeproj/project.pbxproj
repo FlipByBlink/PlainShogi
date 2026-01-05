@@ -797,7 +797,6 @@
 		16688DD92B595CAC004CE12B /* システムフィードバック.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "システムフィードバック.swift"; sourceTree = "<group>"; };
 		16688DDD2B595CF6004CE12B /* 音声フィードバックモデル.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "音声フィードバックモデル.swift"; sourceTree = "<group>"; };
 		16688DE12B595F37004CE12B /* 音声アセット.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "音声アセット.xcassets"; sourceTree = "<group>"; };
-		1669BEB22B6B435200D0FEEB /* visionOS.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = visionOS.jpg; sourceTree = "<group>"; };
 		167FFC582B5E04BB006BC0A3 /* 🌐AboutApp.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐AboutApp.xcstrings"; sourceTree = "<group>"; };
 		167FFC592B5E04BB006BC0A3 /* 🌐Timeline.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = "🌐Timeline.xcstrings"; sourceTree = "<group>"; };
 		167FFC612B5E0537006BC0A3 /* Developer_Publisher.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Developer_Publisher.xcassets; sourceTree = "<group>"; };
@@ -890,6 +889,8 @@
 		1D2853982F0931E2002D6CC8 /* ドラッグアンドドロップ関連.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ドラッグアンドドロップ関連.swift"; sourceTree = "<group>"; };
 		1D28539D2F09323B002D6CC8 /* SharePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlay.swift; sourceTree = "<group>"; };
 		1D2853A22F093289002D6CC8 /* テキスト書き出し読み込み機能.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "テキスト書き出し読み込み機能.swift"; sourceTree = "<group>"; };
+		1D2853B62F0B8ACE002D6CC8 /* AppleVisionPro_w1200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppleVisionPro_w1200.png; sourceTree = "<group>"; };
+		1D2853B72F0B8ACE002D6CC8 /* watch_tv_w1200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watch_tv_w1200.png; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -1251,9 +1252,10 @@
 				169750BD2ADE646600443DE2 /* ConceptImage.png */,
 				169750BE2ADE646600443DE2 /* Screenshots.png */,
 				169750BC2ADE646600443DE2 /* SharePlay.png */,
-				1669BEB22B6B435200D0FEEB /* visionOS.jpg */,
 				1D0CBE052EC0C31F00C38316 /* persona_SharePlay_demo_640w.gif */,
 				1D0CBE042EC0BFF900C38316 /* nearby_SharePlay_demo_640w.gif */,
+				1D2853B62F0B8ACE002D6CC8 /* AppleVisionPro_w1200.png */,
+				1D2853B72F0B8ACE002D6CC8 /* watch_tv_w1200.png */,
 			);
 			path = "README assets";
 			sourceTree = "<group>";

@@ -31,7 +31,9 @@ Options include font size and weight, serif font, English term, etc.
 
 <img src="Shared/サポートファイル/その他/README assets/Screenshots.png" width="600">
 
-<img src="Shared/サポートファイル/その他/README assets/visionOS.jpg" width="600">
+<img src="Shared/サポートファイル/その他/README assets/watch_tv_w1200.png" width="600">
+
+<img src="Shared/サポートファイル/その他/README assets/AppleVisionPro_w1200.png" width="600">
 
 
 ### SharePlay
