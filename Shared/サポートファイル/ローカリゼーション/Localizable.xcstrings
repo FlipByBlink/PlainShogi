@@ -51,12 +51,12 @@
         }
       }
     },
-    "(このダイアログは相手には見えていません)" : {
+    "(この画面は相手には見えていません)" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "(This dialog is not visible to the other party)"
+            "value" : "(This screen is not visible to the other party)"
           }
         }
       }

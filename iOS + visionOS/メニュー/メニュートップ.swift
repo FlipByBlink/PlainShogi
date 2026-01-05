@@ -83,8 +83,10 @@ private extension メニュートップ {
         var body: some View {
             NavigationLink {
                 List {
+#if os(iOS)
                     Label("長押しして駒を持ち上げ、そのままスライドして移動させる",
                           systemImage: "hand.draw")
+#endif
                     Section {
                         Label("iCloudによって端末間でデータ(局面/履歴/ブックマーク)が同期されます",
                               systemImage: "icloud")

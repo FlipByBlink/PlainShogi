@@ -56,13 +56,14 @@ struct SharePlay紹介メニューリンク: View {
         }
     }
     private func 招待ボタン() -> some View {
-#if !targetEnvironment(macCatalyst)
+#if !targetEnvironment(macCatalyst) && os(iOS)
         SharingControllerボタン()
 #else
         EmptyView()
 #endif
     }
     private func メッセージアプリ説明セクション() -> some View {
+#if os(iOS)
         Section {
             Text("iOS 16 以降のデバイスでは、「メッセージ」アプリでもSharePlayを利用できます。「メッセージ」アプリで「将棋盤」アクティビティに招待された場合は、「メッセージ」アプリ上から参加してください。")
                 .padding(8)
@@ -72,8 +73,12 @@ struct SharePlay紹介メニューリンク: View {
                 .border(.black)
                 .frame(maxWidth: .infinity, maxHeight: 120)
         }
+#elseif os(visionOS)
+        EmptyView()
+#endif
     }
     private func NameDropスタイル説明セクション() -> some View {
+#if os(iOS)
         Section {
             VStack {
                 Image(.nameDropBump)
@@ -104,6 +109,9 @@ struct SharePlay紹介メニューリンク: View {
         } footer: {
             Text("Apple IDに紐付いた連絡先を知らない場合は、同じジェスチャーをした際にNameDrop(連絡先を交換するための機能)が起動します。")
         }
+#elseif os(visionOS)
+        EmptyView()
+#endif
     }
     private func 注意事項セクション() -> some View {
         Section {

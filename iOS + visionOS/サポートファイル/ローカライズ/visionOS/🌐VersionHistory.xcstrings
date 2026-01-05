@@ -38,6 +38,12 @@
     "1.7" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supports SharePlay with iOS.\nChanged the specification so that tapping the selected piece again will deselect it instead of flipping it over.\nChanged the position of participants during spatial SharePlay to make conversation easier.\nVarious improvements and fixes."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
