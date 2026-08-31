@@ -5,7 +5,7 @@ import SwiftUI
 extension アプリモデル {
     func この駒をドラッグし始める(_ 場所: 駒の場所) -> NSItemProvider {
         self.選択中の駒の値を変更する(.なし)
-        self.フィードバック.軽め()
+        if self.ドラッグ中の駒 == .無し { self.フィードバック.軽め() } //MARK: ⭐️
         self.ドラッグ中の駒 = .アプリ内の駒(場所)
         return self.ドラッグ対象となるアイテムを用意する()
     }
