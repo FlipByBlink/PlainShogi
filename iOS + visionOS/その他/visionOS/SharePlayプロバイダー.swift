@@ -1,18 +1,15 @@
 import SwiftUI
-import LinkPresentation
 
-struct VisionOS向けSharePlayプロバイダー: ViewModifier {
+struct SharePlayプロバイダー: ViewModifier {
     func body(content: Content) -> some View {
         content
-#if os(visionOS)
-            .overlay(alignment: .topTrailing) {
+            .overlay(alignment: .bottom) {
                 ShareLink(
                     item: 🄶roupActivity(),
                     preview: .init("将棋盤", icon: Image(.preview))
                 )
                 .hidden()
             }
-#endif
     }
 }
 
@@ -25,6 +22,8 @@ https://developer.apple.com/jp/videos/play/wwdc2025/318?time=381
 */
 
 /* (サンプルコード)
+import LinkPresentation
+
 struct BoardGameActivity: GroupActivity, Transferable {
     var metadata: GroupActivityMetadata = {
         var metadata = GroupActivityMetadata()

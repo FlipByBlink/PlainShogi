@@ -170,6 +170,17 @@
           }
         }
       }
+    },
+    "1.8" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone Duoに対応。\n選択中の駒をもう一度タップした際に裏返すのではなく、選択解除するように仕様を変更。\nメイン画面の共有ボタンを削除。\nサポートOSをiOS 27.0以上に変更。\nその他、軽微な修正と改善。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

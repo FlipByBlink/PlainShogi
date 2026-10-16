@@ -34,16 +34,19 @@ enum 🗒️StaticInfo {
 
 #if os(iOS)
 extension 🗒️StaticInfo {
-    static let versionInfos: [(version: String, date: String)] = [("1.6", "2024-01-29"),
-                                                                  ("1.5.1", "2023-11-10"),
-                                                                  ("1.5", "2023-10-27"),
-                                                                  ("1.4", "2023-05-11"),
-                                                                  ("1.3", "2023-01-22"),
-                                                                  ("1.2.2", "2022-08-18"),
-                                                                  ("1.2.1", "2022-07-21"),
-                                                                  ("1.2", "2022-07-09"),
-                                                                  ("1.1", "2022-05-07"),
-                                                                  ("1.0", "2022-04-21")] //降順。先頭の方が新しい
+    static let versionInfos: [(version: String, date: String)] = [
+        ("1.8", "2026-10-18"),
+        ("1.6", "2024-01-29"),
+        ("1.5.1", "2023-11-10"),
+        ("1.5", "2023-10-27"),
+        ("1.4", "2023-05-11"),
+        ("1.3", "2023-01-22"),
+        ("1.2.2", "2022-08-18"),
+        ("1.2.1", "2022-07-21"),
+        ("1.2", "2022-07-09"),
+        ("1.1", "2022-05-07"),
+        ("1.0", "2022-04-21")
+    ] //降順。先頭の方が新しい
     
     enum SourceCodeCategory: String, CaseIterable, Identifiable {
         case main, アプリモデル, 将棋モデル, 将棋View, サブView, メニュー, SharePlay, ドラッグアンドドロップ, 共有アイテム, フィードバック, その他, おまけ
@@ -114,7 +117,8 @@ extension 🗒️StaticInfo {
                     "SharePlayインジケーター.swift",
                     "SharePlayガイドメニュー.swift",
                     "SharePlay紹介メニュー.swift",
-                    "SharePlay用選択中の駒モデル.swift"
+                    "SharePlay用選択中の駒モデル.swift",
+                    "SharePlayプロバイダー.swift",
                 ]
                 case .ドラッグアンドドロップ: [
                     "ドラッグ対象.swift",
@@ -143,7 +147,6 @@ extension 🗒️StaticInfo {
                     "MacCatalyst.swift",
                     "広告コンテンツ.swift",
                     "アプリ内課金ハンドラー.swift",
-                    "ユーザーレビュー依頼.swift",
                     "VisionOS向けウインドウサイズ.swift",
                     "VisionOS向けHoverEffect.swift",
                     "VisionOS向け暗転モード.swift"
@@ -238,7 +241,8 @@ extension 🗒️StaticInfo {
                     "SharePlayインジケーター.swift",
                     "SharePlayガイドメニュー.swift",
                     "SharePlay紹介メニュー.swift",
-                    "SharePlay用選択中の駒モデル.swift"
+                    "SharePlay用選択中の駒モデル.swift",
+                    "SharePlayプロバイダー.swift",
                 ]
                 case .ドラッグアンドドロップ: [
                     "ドラッグ対象.swift",
@@ -271,7 +275,6 @@ extension 🗒️StaticInfo {
                     "VisionOS向けウインドウサイズ.swift",
                     "VisionOS向けHoverEffect.swift",
                     "VisionOS向け暗転モード.swift",
-                    "VisionOS向けSharePlayプロバイダー.swift",
                     "VisionOS向け空間無同期テキスト.swift",
                     "VisionOS向けホバーエフェクト無効化トグル.swift",
                 ]

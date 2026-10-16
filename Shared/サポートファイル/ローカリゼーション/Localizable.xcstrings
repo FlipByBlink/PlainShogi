@@ -1037,6 +1037,7 @@
       }
     },
     "完了" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

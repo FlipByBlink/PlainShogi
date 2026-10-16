@@ -3,13 +3,12 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var モデル: アプリモデル
     var body: some View {
-        VStack(spacing: 0) {
+        NavigationStack {
             将棋View()
-            SharePlayインジケーター.IOS()
+                .padding(固定値.全体パディング)
+                .modifier(ツールボタンズ())
+                .modifier(SharePlayインジケーター.IOS())
         }
-        .padding(固定値.全体パディング)
-        .padding(.top, 8)
-        .modifier(ツールボタンズ())
         .ignoresSafeArea(.keyboard, edges: .bottom)
         .modifier(MacCatalyst調整.TitleBar隠し())
         .modifier(バックグラウンド時に駒選択を解除())
@@ -18,7 +17,7 @@ struct ContentView: View {
         .modifier(SharePlay環境構築())
         .modifier(シート管理())
         .modifier(アプリ内課金ハンドラー())
-        .modifier(VisionOS向けSharePlayプロバイダー())
+        .modifier(SharePlayプロバイダー())
         .modifier(VisionOS向けウインドウサイズ())
         .modifier(VisionOS向け暗転モード())
         .environment(\.layoutDirection, .leftToRight)

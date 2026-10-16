@@ -64,23 +64,13 @@ struct 増減モード用ⓧマーク: ViewModifier {
 struct 増減モード完了ボタン: View {
     @EnvironmentObject var モデル: アプリモデル
     var body: some View {
-        Button {
+        Button(role: .confirm) {
             モデル.増減モードを終了する()
-        } label: {
-            Image(systemName: "checkmark")
-#if os(iOS)
-                .symbolVariant(.circle.fill)
-                .font(.title2.weight(.medium))
-                .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-                .padding(8)
-                .padding(.trailing)
-#endif
         }
         .keyboardShortcut(.cancelAction)
 #if os(iOS)
         .tint(.primary)
 #endif
-        .accessibilityLabel("完了")
     }
 }
 

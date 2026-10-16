@@ -25,6 +25,7 @@ struct メニューボタン: View { // ⚙️
                 モデル.表示中のシート = nil
             }
         }
+        .disabled(モデル.増減モード中)
 #else
         EmptyView()
 #endif

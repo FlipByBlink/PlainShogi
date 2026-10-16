@@ -2,12 +2,15 @@ import SwiftUI
 import GroupActivities
 
 enum SharePlayインジケーター {
-    struct IOS: View {
-        var body: some View {
+    struct IOS: ViewModifier {
+        func body(content: Content) -> some View {
 #if os(iOS)
-            SharePlayインジケーター.ボタン()
+            content
+                .safeAreaInset(edge: .bottom) {
+                    SharePlayインジケーター.ボタン()
+                }
 #else
-            EmptyView()
+            content
 #endif
         }
     }
