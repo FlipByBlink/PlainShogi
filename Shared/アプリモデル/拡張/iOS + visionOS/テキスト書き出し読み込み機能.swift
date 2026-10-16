@@ -32,7 +32,7 @@ extension アプリモデル {
         Task { @MainActor in
             do {
                 guard let itemProvider = itemProviders.first else { return }
-                let secureCodingObject = try await itemProvider.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
+                let secureCodingObject = try await Self.loadItem(itemProvider: itemProvider)
                 guard let データ = secureCodingObject as? Data else { return }
                 guard let テキスト = String(data: データ, encoding: .utf8) else { return }
                 try self.テキストを局面に変換して読み込む(テキスト)
@@ -41,6 +41,10 @@ extension アプリモデル {
             }
             self.ドラッグ中の駒 = .無し
         }
+    }
+    @diagnose(DeprecatedDeclaration, as: ignored)
+    private static func loadItem(itemProvider: NSItemProvider) async throws -> any NSSecureCoding {
+        try await itemProvider.loadItem(forTypeIdentifier: UTType.utf8PlainText.identifier)
     }
 }
 #endif

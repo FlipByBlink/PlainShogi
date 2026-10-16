@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 //struct 📣ADSheet: ViewModifier {
 //    @EnvironmentObject var model: 🛒InAppPurchaseModel
@@ -17,7 +18,7 @@ struct 📣ADView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.dismiss) var dismiss
     @State private var disableDismiss: Bool = true
-    private let timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .default).autoconnect()
     @State private var countDown: Int
     private var targetApp: 📣ADTargetApp
     @State private var showMenu: Bool = false

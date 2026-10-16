@@ -4,17 +4,10 @@ struct メニューボタン: View { // ⚙️
     @EnvironmentObject var モデル: アプリモデル
     var body: some View {
 #if !targetEnvironment(macCatalyst)
-        Button {
-            if self.モデル.表示中のシート == nil {
-                モデル.表示中のシート = .メニュー
-            } else {
-                モデル.表示中のシート = nil
-            }
-            //共有シートとの競合が起きた場合のワークアラウンドとしてtoggleっぽく実装
-        } label: {
-            self.ラベル()
-        }
-        .contextMenu {
+        Menu(
+            "メニュー",
+            systemImage: モデル.セリフ体 ? "gear" : "gearshape"
+        ) {
             強調表示クリアボタン()
             盤面初期化ボタン()
             増減モード開始ボタン()
@@ -25,9 +18,13 @@ struct メニューボタン: View { // ⚙️
             self.駒の選択解除ボタン()
             駒を裏返すボタン()
             VisionOS向け暗転モード.トグル()
+        } primaryAction: {
+            if self.モデル.表示中のシート == nil {
+                モデル.表示中のシート = .メニュー
+            } else {
+                モデル.表示中のシート = nil
+            }
         }
-        .modifier(Self.IOS向け装飾())
-        .accessibilityLabel("メニューを開く")
 #else
         EmptyView()
 #endif
@@ -35,26 +32,6 @@ struct メニューボタン: View { // ⚙️
 }
 
 private extension メニューボタン {
-    private func ラベル() -> some View {
-        Image(systemName: モデル.セリフ体 ? "gear" : "gearshape")
-#if os(iOS)
-            .font(.title2.weight(.light))
-            .dynamicTypeSize(...DynamicTypeSize.accessibility1)
-            .padding(8)
-#endif
-    }
-    private struct IOS向け装飾: ViewModifier {
-        func body(content: Content) -> some View {
-#if os(iOS)
-            content
-                .hoverEffect(.highlight)
-                .padding(.trailing)
-                .tint(.primary)
-#else
-            content
-#endif
-        }
-    }
     private func 上下反転ボタン() -> some View {
         Button {
             モデル.上下反転.toggle()

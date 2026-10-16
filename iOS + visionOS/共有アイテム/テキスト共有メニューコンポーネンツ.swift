@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 struct テキスト共有メニューコンポーネンツ: View {
     @EnvironmentObject var モデル: アプリモデル
@@ -117,7 +118,7 @@ private extension テキスト共有メニューコンポーネンツ {
                             return
                         }
                         do {
-                            try モデル.テキストを局面に変換して読み込む(try String(contentsOf: url))
+                            try モデル.テキストを局面に変換して読み込む(try String(contentsOf: url, encoding: .utf8))
                             モデル.表示中のシート = nil
                         } catch {
                             self.失敗アラート = true
@@ -167,7 +168,7 @@ private extension テキスト共有メニューコンポーネンツ {
         private struct テキスト変換プレビュー: View {
             var フォルダー名: String
             var 枚数: Int
-            private let timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
+            @State private var timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
             @State private var 表示中の画像: Int = 0
             var body: some View {
                 VStack(spacing: 4) {

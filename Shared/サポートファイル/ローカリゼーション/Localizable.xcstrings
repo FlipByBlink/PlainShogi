@@ -763,6 +763,7 @@
       }
     },
     "メニューを開く" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

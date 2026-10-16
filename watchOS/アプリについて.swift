@@ -96,7 +96,7 @@ private struct 📓SourceCodeLink: View {
         var body: some View {
             Section {
                 ForEach(self.category.fileNames, id: \.self) { ⓕileName in
-                    if let ⓒode = try? String(contentsOf: self.url.appendingPathComponent(ⓕileName)) {
+                    if let ⓒode = try? String(contentsOf: self.url.appendingPathComponent(ⓕileName), encoding: .utf8) {
                         NavigationLink(ⓕileName) { self.sourceCodeView(ⓒode, ⓕileName) }
                     } else {
                         Text(verbatim: "🐛")

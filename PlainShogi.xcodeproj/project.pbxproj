@@ -120,7 +120,6 @@
 		1697510B2ADE7BB800443DE2 /* 📣ADComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169751092ADE7BB800443DE2 /* 📣ADComponents.swift */; };
 		1697510D2ADE7E3500443DE2 /* アプリについて.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697510C2ADE7E3400443DE2 /* アプリについて.swift */; };
 		1697510E2ADE7E8700443DE2 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
-		169751102ADE7F4700443DE2 /* ユーザーレビュー依頼.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */; };
 		169751112ADE80C500443DE2 /* 🗒️StaticInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750FA2ADE7AB900443DE2 /* 🗒️StaticInfo.swift */; };
 		169C500E2B64D45900151693 /* VisionOS向けウインドウサイズ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1EB2B649E9B0017A9A2 /* VisionOS向けウインドウサイズ.swift */; };
 		169C500F2B64D45900151693 /* VisionOS向け暗転モード.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16E2E1EE2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift */; };
@@ -176,7 +175,6 @@
 		16C43AFD2AE4A65E009D8E26 /* 自動スリープ無効化.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */; };
 		16C43AFE2AE4A65E009D8E26 /* MacCatalyst.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160D1D052AE26D84004E14E2 /* MacCatalyst.swift */; };
 		16C43AFF2AE4A65E009D8E26 /* アプリ内課金ハンドラー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */; };
-		16C43B002AE4A65E009D8E26 /* ユーザーレビュー依頼.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */; };
 		16C43B012AE4A65E009D8E26 /* 📣ADComponents.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169751092ADE7BB800443DE2 /* 📣ADComponents.swift */; };
 		16C43B022AE4A65E009D8E26 /* 📣ADModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750FB2ADE7AB900443DE2 /* 📣ADModel.swift */; };
 		16C43B032AE4A65E009D8E26 /* 🛒InAppPurchaseView.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */; };
@@ -294,7 +292,6 @@
 		16E2E17F2B63D8200017A9A2 /* 盤外のコマ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2E1152B635C670017A9A2 /* 盤外のコマ.swift */; };
 		16E2E1802B63D8200017A9A2 /* オプション変更アニメーション.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169750B02ADE23CC00443DE2 /* オプション変更アニメーション.swift */; };
 		16E2E1812B63D8200017A9A2 /* SharePlayインジケーター.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C9FB01296D0A3100B513D8 /* SharePlayインジケーター.swift */; };
-		16E2E1822B63D8200017A9A2 /* ユーザーレビュー依頼.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */; };
 		16E2E1832B63D8200017A9A2 /* 広告コンテンツ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */; };
 		16E2E1842B63D8200017A9A2 /* 不具合フィードバックメニュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E41502AE1388F00CFA307 /* 不具合フィードバックメニュー.swift */; };
 		16E2E1852B63D8200017A9A2 /* 自動スリープ無効化.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FCCCC2ADE8FF00088E6AA /* 自動スリープ無効化.swift */; };
@@ -376,7 +373,6 @@
 		16E2E1D62B63DB260017A9A2 /* MacCatalyst.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 160D1D052AE26D84004E14E2 /* MacCatalyst.swift */; };
 		16E2E1D72B63DB260017A9A2 /* 広告コンテンツ.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */; };
 		16E2E1D82B63DB260017A9A2 /* アプリ内課金ハンドラー.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */; };
-		16E2E1D92B63DB260017A9A2 /* ユーザーレビュー依頼.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */; };
 		16E2E1DA2B63DB260017A9A2 /* ℹ️AboutApp.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = F5BBD85A2973A68E0034CCB8 /* ℹ️AboutApp.swift */; };
 		16E2E1DB2B63DB260017A9A2 /* 📣ADModel.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169750FB2ADE7AB900443DE2 /* 📣ADModel.swift */; };
 		16E2E1DC2B63DB260017A9A2 /* 📣ADComponents.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169751092ADE7BB800443DE2 /* 📣ADComponents.swift */; };
@@ -584,7 +580,6 @@
 				16C43AFD2AE4A65E009D8E26 /* 自動スリープ無効化.swift in CopyFiles */,
 				16C43AFE2AE4A65E009D8E26 /* MacCatalyst.swift in CopyFiles */,
 				16C43AFF2AE4A65E009D8E26 /* アプリ内課金ハンドラー.swift in CopyFiles */,
-				16C43B002AE4A65E009D8E26 /* ユーザーレビュー依頼.swift in CopyFiles */,
 				16C43B012AE4A65E009D8E26 /* 📣ADComponents.swift in CopyFiles */,
 				16C43B022AE4A65E009D8E26 /* 📣ADModel.swift in CopyFiles */,
 				16C43B032AE4A65E009D8E26 /* 🛒InAppPurchaseView.swift in CopyFiles */,
@@ -738,7 +733,6 @@
 				16E2E1D62B63DB260017A9A2 /* MacCatalyst.swift in CopyFiles */,
 				16E2E1D72B63DB260017A9A2 /* 広告コンテンツ.swift in CopyFiles */,
 				16E2E1D82B63DB260017A9A2 /* アプリ内課金ハンドラー.swift in CopyFiles */,
-				16E2E1D92B63DB260017A9A2 /* ユーザーレビュー依頼.swift in CopyFiles */,
 				16E2E1DA2B63DB260017A9A2 /* ℹ️AboutApp.swift in CopyFiles */,
 				16E2E1DB2B63DB260017A9A2 /* 📣ADModel.swift in CopyFiles */,
 				16E2E1DC2B63DB260017A9A2 /* 📣ADComponents.swift in CopyFiles */,
@@ -845,7 +839,6 @@
 		169751082ADE7BB800443DE2 /* 🛒InAppPurchaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "🛒InAppPurchaseView.swift"; sourceTree = "<group>"; };
 		169751092ADE7BB800443DE2 /* 📣ADComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "📣ADComponents.swift"; sourceTree = "<group>"; };
 		1697510C2ADE7E3400443DE2 /* アプリについて.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "アプリについて.swift"; sourceTree = "<group>"; };
-		1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ユーザーレビュー依頼.swift"; sourceTree = "<group>"; };
 		169751122ADE848100443DE2 /* マイグレーションver1.2.2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "マイグレーションver1.2.2.swift"; sourceTree = "<group>"; };
 		169E41492AE0F9A300CFA307 /* メイン画面の共有ボタン.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "メイン画面の共有ボタン.swift"; sourceTree = "<group>"; };
 		169E414C2AE1371300CFA307 /* メニューボタン.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "メニューボタン.swift"; sourceTree = "<group>"; };
@@ -1061,7 +1054,6 @@
 				160D1D052AE26D84004E14E2 /* MacCatalyst.swift */,
 				F5BBD85F2973A7260034CCB8 /* 広告コンテンツ.swift */,
 				16B124612AE29117008EF3A0 /* アプリ内課金ハンドラー.swift */,
-				1697510F2ADE7F4700443DE2 /* ユーザーレビュー依頼.swift */,
 				16E2E1E12B647C5A0017A9A2 /* visionOS */,
 				12D4368B2865CD5E00B707F5 /* おまけ */,
 			);
@@ -1723,7 +1715,6 @@
 				169E41512AE1388F00CFA307 /* 不具合フィードバックメニュー.swift in Sources */,
 				F5B5578B29FF851800A14074 /* 字体.swift in Sources */,
 				160D1D062AE26D84004E14E2 /* MacCatalyst.swift in Sources */,
-				169751102ADE7F4700443DE2 /* ユーザーレビュー依頼.swift in Sources */,
 				F5BBD8602973A7260034CCB8 /* 広告コンテンツ.swift in Sources */,
 				16267B572B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift in Sources */,
 				169750FF2ADE7ABA00443DE2 /* 🛒InAppPurchaseModel.swift in Sources */,
@@ -1843,7 +1834,6 @@
 				16E2E1EF2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift in Sources */,
 				16E2E1402B63D7D30017A9A2 /* 空の手駒.swift in Sources */,
 				16E2E1602B63D8200017A9A2 /* SharePlay環境構築.swift in Sources */,
-				16E2E1822B63D8200017A9A2 /* ユーザーレビュー依頼.swift in Sources */,
 				16E2E1732B63D8200017A9A2 /* 固定値.swift in Sources */,
 				16E2E1862B63D8200017A9A2 /* 盤外.swift in Sources */,
 				16E2E1702B63D8200017A9A2 /* 画像共有メニューコンポーネンツ.swift in Sources */,
@@ -2137,6 +2127,7 @@
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS + visionOS/サポートファイル/iOS/Info.plist";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Add shogi board image to photo app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2145,7 +2136,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2179,6 +2170,7 @@
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS + visionOS/サポートファイル/iOS/Info.plist";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Add shogi board image to photo app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2187,7 +2179,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2357,7 +2349,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
 			};
 			name = Debug;
 		};
@@ -2387,7 +2379,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
 			};
 			name = Release;
 		};
@@ -2418,7 +2410,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
 			};
 			name = Debug;
 		};
@@ -2449,7 +2441,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
 			};
 			name = Release;
 		};

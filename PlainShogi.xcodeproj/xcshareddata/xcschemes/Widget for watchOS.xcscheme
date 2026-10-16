@@ -110,7 +110,6 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F51F03982A00D03200F05874"
             BuildableName = "Widget for watchOS.appex"
-            BlueprintName = "Widget for watchOS"
             ReferencedContainer = "container:PlainShogi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

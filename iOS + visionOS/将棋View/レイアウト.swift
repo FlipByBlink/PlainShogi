@@ -12,6 +12,7 @@ enum レイアウト {
         }
     }
     private static func 配置とマスの大きさを計算(_ ジオメトリ: GeometryProxy) -> (縦並び: Bool, マスの大きさ: CGFloat) {
+        guard ジオメトリ.size != .zero else { return (true, 30) }
         let 縦並び = ジオメトリ.size.height + 150 > ジオメトリ.size.width
         let 横換算 = 一辺を基準にした際の計算式(全体の長さ: ジオメトリ.size.width,
                                 盤外コマの比率: 縦並び ? 0 : Self.複数個の盤外コマの幅比率 * 2)

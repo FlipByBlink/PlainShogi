@@ -336,7 +336,7 @@
       }
     },
     "OK" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
