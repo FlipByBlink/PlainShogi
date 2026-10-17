@@ -429,6 +429,10 @@
 		1D2853B02F0938B9002D6CC8 /* テキスト書き出し読み込み機能.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1D2853A22F093289002D6CC8 /* テキスト書き出し読み込み機能.swift */; };
 		1D2853B12F0938C4002D6CC8 /* 局面関連.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1D2853882F093133002D6CC8 /* 局面関連.swift */; };
 		1D2853B22F0938C4002D6CC8 /* 局面の読み込みや復元.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1D28538D2F093155002D6CC8 /* 局面の読み込みや復元.swift */; };
+		1DB5EF51308262FA001BB7E4 /* 盤と手駒を配置.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5EF50308262FA001BB7E4 /* 盤と手駒を配置.swift */; };
+		1DB5EF52308262FA001BB7E4 /* 盤と手駒を配置.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5EF50308262FA001BB7E4 /* 盤と手駒を配置.swift */; };
+		1DB5EF543082630B001BB7E4 /* 全体パディング.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5EF533082630A001BB7E4 /* 全体パディング.swift */; };
+		1DB5EF553082630B001BB7E4 /* 全体パディング.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB5EF533082630A001BB7E4 /* 全体パディング.swift */; };
 		F5091F892A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8A2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
 		F5091F8B2A0A1466003F8BB3 /* 局面プレビュー.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */; };
@@ -884,6 +888,8 @@
 		1D2853A22F093289002D6CC8 /* テキスト書き出し読み込み機能.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "テキスト書き出し読み込み機能.swift"; sourceTree = "<group>"; };
 		1D2853B62F0B8ACE002D6CC8 /* AppleVisionPro_w1200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppleVisionPro_w1200.png; sourceTree = "<group>"; };
 		1D2853B72F0B8ACE002D6CC8 /* watch_tv_w1200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watch_tv_w1200.png; sourceTree = "<group>"; };
+		1DB5EF50308262FA001BB7E4 /* 盤と手駒を配置.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "盤と手駒を配置.swift"; sourceTree = "<group>"; };
+		1DB5EF533082630A001BB7E4 /* 全体パディング.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "全体パディング.swift"; sourceTree = "<group>"; };
 		F5019FD2296ABBBD007CB14D /* 雑多メモ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "雑多メモ.md"; sourceTree = "<group>"; };
 		F5091F882A0A1466003F8BB3 /* 局面プレビュー.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "局面プレビュー.swift"; sourceTree = "<group>"; };
 		F5091F8D2A0A1C4B003F8BB3 /* EnvironmentValues拡張.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues拡張.swift"; sourceTree = "<group>"; };
@@ -1208,6 +1214,7 @@
 			isa = PBXGroup;
 			children = (
 				F525A7D529F8FB1F001E8D5F /* 将棋View.swift */,
+				1DB5EF50308262FA001BB7E4 /* 盤と手駒を配置.swift */,
 				169750AA2ADE220400443DE2 /* レイアウト.swift */,
 				16E2E10B2B6357870017A9A2 /* 盤面と段と筋.swift */,
 				16E2E1132B6359E20017A9A2 /* 盤面のみ.swift */,
@@ -1219,6 +1226,7 @@
 				169750AC2ADE231000443DE2 /* 成駒確認アラート.swift */,
 				169750AE2ADE233600443DE2 /* 操作エリア外で駒選択を解除.swift */,
 				169750B02ADE23CC00443DE2 /* オプション変更アニメーション.swift */,
+				1DB5EF533082630A001BB7E4 /* 全体パディング.swift */,
 			);
 			path = "将棋View";
 			sourceTree = "<group>";
@@ -1714,6 +1722,7 @@
 				16E2E1122B6359310017A9A2 /* 盤外.swift in Sources */,
 				169E41512AE1388F00CFA307 /* 不具合フィードバックメニュー.swift in Sources */,
 				F5B5578B29FF851800A14074 /* 字体.swift in Sources */,
+				1DB5EF553082630B001BB7E4 /* 全体パディング.swift in Sources */,
 				160D1D062AE26D84004E14E2 /* MacCatalyst.swift in Sources */,
 				F5BBD8602973A7260034CCB8 /* 広告コンテンツ.swift in Sources */,
 				16267B572B57FCED000CA8AD /* SharePlay用選択中の駒モデル.swift in Sources */,
@@ -1739,6 +1748,7 @@
 				128D156B280FE47E003FF480 /* App.swift in Sources */,
 				F5BD6A102A00BF4C004AD4A5 /* 局面モデル.swift in Sources */,
 				169E41572AE14A2E00CFA307 /* 更にカスタマイズメニュー.swift in Sources */,
+				1DB5EF52308262FA001BB7E4 /* 盤と手駒を配置.swift in Sources */,
 				16E2E1F02B64C80C0017A9A2 /* VisionOS向け暗転モード.swift in Sources */,
 				F525A7D629F8FB1F001E8D5F /* 将棋View.swift in Sources */,
 				16688DDA2B595CAC004CE12B /* システムフィードバック.swift in Sources */,
@@ -1805,6 +1815,7 @@
 				16E2E14C2B63D7D30017A9A2 /* 字体.swift in Sources */,
 				16E2E1812B63D8200017A9A2 /* SharePlayインジケーター.swift in Sources */,
 				16E2E15F2B63D8200017A9A2 /* 画像書き出し.swift in Sources */,
+				1DB5EF543082630B001BB7E4 /* 全体パディング.swift in Sources */,
 				16E2E1792B63D8200017A9A2 /* シート管理.swift in Sources */,
 				16E2E1592B63D8200017A9A2 /* アプリ内課金ハンドラー.swift in Sources */,
 				16E2E15C2B63D8200017A9A2 /* MacCatalyst.swift in Sources */,
@@ -1830,6 +1841,7 @@
 				16E2E1492B63D7D30017A9A2 /* シートカテゴリ.swift in Sources */,
 				16E2E1872B63D8200017A9A2 /* ツールボタンズ.swift in Sources */,
 				16E2E1432B63D7D30017A9A2 /* 駒の種類.swift in Sources */,
+				1DB5EF51308262FA001BB7E4 /* 盤と手駒を配置.swift in Sources */,
 				16E2E1802B63D8200017A9A2 /* オプション変更アニメーション.swift in Sources */,
 				16E2E1EF2B64B2D70017A9A2 /* VisionOS向け暗転モード.swift in Sources */,
 				16E2E1402B63D7D30017A9A2 /* 空の手駒.swift in Sources */,
@@ -2214,6 +2226,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS + visionOS/サポートファイル/visionOS/Info.plist";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2250,6 +2263,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS + visionOS/サポートファイル/visionOS/Info.plist";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
 				LD_RUNPATH_SEARCH_PATHS = (

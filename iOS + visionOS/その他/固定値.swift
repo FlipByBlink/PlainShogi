@@ -27,14 +27,6 @@ enum 固定値 {
             default: 1.0
         }
     }
-    static var 全体パディング: CGFloat {
-        switch UIDevice.current.userInterfaceIdiom {
-            case .phone: 16
-            case .pad: 24
-            case .vision: 40
-            default: 16
-        }
-    }
     static var SharePlayインジケーター上部パディング: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
             case .phone: 12

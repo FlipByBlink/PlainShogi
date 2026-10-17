@@ -5,7 +5,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             将棋View()
-                .padding(固定値.全体パディング)
+                .modifier(全体パディング())
                 .modifier(ツールボタンズ())
                 .modifier(SharePlayインジケーター.IOS())
         }
