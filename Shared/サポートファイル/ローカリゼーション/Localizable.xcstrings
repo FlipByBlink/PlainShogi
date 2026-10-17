@@ -762,17 +762,6 @@
         }
       }
     },
-    "メニューを開く" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open menu"
-          }
-        }
-      }
-    },
     "もし、このアプリでバグやクラッシュが発生した場合、以下のボタン(もしくはアドレス)からフィードバックを送るとアプリの改善に繋がります" : {
       "localizations" : {
         "en" : {
@@ -903,16 +892,6 @@
         }
       }
     },
-    "共有ボタンを長押しするとフォーマットを指定できます" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select format by long press share button"
-          }
-        }
-      }
-    },
     "再開" : {
       "localizations" : {
         "en" : {
@@ -1032,17 +1011,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Weight"
-          }
-        }
-      }
-    },
-    "完了" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Done"
           }
         }
       }

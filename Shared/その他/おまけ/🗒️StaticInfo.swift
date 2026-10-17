@@ -80,6 +80,7 @@ extension 🗒️StaticInfo {
                 ]
                 case .将棋View: [
                     "将棋View.swift",
+                    "盤と手駒を配置.swift",
                     "レイアウト.swift",
                     "盤面と段と筋.swift",
                     "盤面のみ.swift",
@@ -92,6 +93,7 @@ extension 🗒️StaticInfo {
                     "操作エリア外で駒選択を解除.swift",
                     "字体.swift",
                     "オプション変更アニメーション.swift",
+                    "全体パディング.swift",
                     "EnvironmentValues拡張.swift"
                 ]
                 case .サブView: [

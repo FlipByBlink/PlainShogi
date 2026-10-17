@@ -94,7 +94,6 @@ private extension メニュートップ {
                         Text("iCloud同期は簡易的な用途を想定しています。「同時に起動している端末間での同期」といったリアルタイム性の高い用途は想定していません。")
                     }
                     Self.メニューショートカットセクション()
-                    Self.共有ショートカットセクション()
                 }
                 .navigationTitle("細かな使い方")
             } label: {
@@ -109,25 +108,6 @@ private extension メニュートップ {
                 HStack {
                     Spacer()
                     Image("MenuLongPress")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 200)
-                        .border(.black)
-                        .padding(.bottom, 12)
-                    Spacer()
-                }
-                .listRowSeparator(.hidden)
-#endif
-            }
-        }
-        private static func 共有ショートカットセクション() -> some View {
-            Section {
-#if !targetEnvironment(macCatalyst)
-                Label("共有ボタンを長押しするとフォーマットを指定できます",
-                      systemImage: "square.and.arrow.up")
-                HStack {
-                    Spacer()
-                    Image(.shareButtonLongPress)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 200)

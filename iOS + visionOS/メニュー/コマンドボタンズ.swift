@@ -17,10 +17,19 @@ struct 強調表示クリアボタン: View {
         Button {
             モデル.強調表示をクリア()
         } label: {
-            Label("強調表示をクリア", systemImage: "square.dashed")
+            Label {
+                Text("強調表示をクリア")
+                    .opacity(self.無効化 ? 0.33 : 1)
+            } icon: {
+                Image(systemName: "square.dashed")
+            }
         }
-        .disabled(モデル.何も強調表示されていない)
-        .disabled(モデル.強調表示常時オフかつ駒が選択されていない)
+        .disabled(self.無効化)
+    }
+    private var 無効化: Bool {
+        モデル.何も強調表示されていない
+        ||
+        モデル.強調表示常時オフかつ駒が選択されていない
     }
 }
 
@@ -42,10 +51,16 @@ struct 一手戻すボタン: View {
         Button {
             モデル.一手戻す()
         } label: {
-            Label("一手だけ戻す", systemImage: "arrow.backward.to.line")
+            Label{
+                Text("一手だけ戻す")
+                    .opacity(self.無効化 ? 0.33 : 1)
+            } icon: {
+                Image(systemName: "arrow.backward.to.line")
+            }
         }
-        .disabled(モデル.局面.一手前の局面 == nil)
+        .disabled(self.無効化)
     }
+    private var 無効化: Bool { モデル.局面.一手前の局面 == nil }
 }
 
 struct 駒を裏返すボタン: View {
@@ -54,15 +69,20 @@ struct 駒を裏返すボタン: View {
         Button {
             モデル.選択中の駒を裏返す()
         } label: {
-            Label("駒を裏返す",
-                  systemImage: "arrow.trianglehead.2.counterclockwise.rotate.90")
-        }
-        .disabled({
-            if case .盤駒(_) = モデル.選択中の駒 {
-                false
-            } else {
-                true
+            Label {
+                Text("駒を裏返す")
+                    .opacity(self.無効化 ? 0.33 : 1)
+            } icon: {
+                Image(systemName: "arrow.trianglehead.2.counterclockwise.rotate.90")
             }
-        }())
+        }
+        .disabled(self.無効化)
+    }
+    private var 無効化: Bool {
+        if case .盤駒(_) = モデル.選択中の駒 {
+            false
+        } else {
+            true
+        }
     }
 }

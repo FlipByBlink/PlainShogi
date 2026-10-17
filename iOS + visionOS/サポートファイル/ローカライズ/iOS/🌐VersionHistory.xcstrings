@@ -174,6 +174,12 @@
     "1.8" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support iPhone Duo.\nChanged the specification so that tapping the selected piece again will deselect it instead of flipping it over.\nRemove Share button from main screen.\nUnsupport iOS 26.x.\nVarious improvements and fixes."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
